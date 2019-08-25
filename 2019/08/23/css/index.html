@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="css,即层叠样式表,可以为网页添加样式.应用方式外部样式表 通过&amp;lt;link&amp;gt;引入&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;index.css&amp;quot;&amp;gt;  通过@import引入,注意末尾加;号,CSS语法,只能在CSS内使用. 1234&amp;lt;style&amp;gt;@import url(&quot;index.css&quot;);@impor">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-24T08:22:38.620Z">
+<meta property="og:updated_time" content="2019-08-25T08:50:45.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS">
 <meta name="twitter:description" content="css,即层叠样式表,可以为网页添加样式.应用方式外部样式表 通过&amp;lt;link&amp;gt;引入&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;index.css&amp;quot;&amp;gt;  通过@import引入,注意末尾加;号,CSS语法,只能在CSS内使用. 1234&amp;lt;style&amp;gt;@import url(&quot;index.css&quot;);@impor">
@@ -289,7 +289,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-24 16:22:38" itemprop="dateModified" datetime="2019-08-24T16:22:38+08:00">2019-08-24</time>
+                <time title="修改时间：2019-08-25 16:50:45" itemprop="dateModified" datetime="2019-08-25T16:50:45+08:00">2019-08-25</time>
               </span>
             
           
@@ -580,17 +580,132 @@
 <td align="left"></td>
 </tr>
 </tbody></table>
-<h1 id="CSS的值与单位"><a href="#CSS的值与单位" class="headerlink" title="CSS的值与单位"></a>CSS的值与单位</h1><h1 id="CSS基本样式"><a href="#CSS基本样式" class="headerlink" title="CSS基本样式"></a>CSS基本样式</h1><p>div（块级元素）：高度是由内部文档流元素高度的总和决定的。文档流：文档内元素的流动方向，内联元素是从左往右，块级元素是从上往下<br>span（内联元素）：高度是由其中文字高度决定的，内联元素设置width和height是无效的，上下的margin和padding也无效，要将它们设为<code>display:inline-block</code>才有效。</p>
-<blockquote>
+<h1 id="CSS的值与单位"><a href="#CSS的值与单位" class="headerlink" title="CSS的值与单位"></a>CSS的值与单位</h1><h1 id="CSS基本样式"><a href="#CSS基本样式" class="headerlink" title="CSS基本样式"></a>CSS基本样式</h1><p>div（块级元素）：高度是由内部文档流元素高度的总和决定的。<strong>文档流</strong>：文档内元素的流动方向，<strong>内联元素</strong>是从左往右，<strong>块级元素</strong>是从上往下<br>span（内联元素）：高度是由其中文字高度决定的，内联元素设置width和height是无效的，上下的margin和padding也无效，要将它们设为<code>display:inline-block</code>才有效。</p>
+<ul>
+<li>常见块级元素: <code>div h1~h6 p hr form ul ol li table td tr th dl dt dd pre</code></li>
+<li>常见内联元素: <code>em strong span a br img button input label select textarea code script</code><blockquote>
 <p>尽量不写height和width，这两个属性会引出很多bug，要宽高的时候可以用padding，但img最好先写width，因为可以先占位，因为引用图片时浏览器不知道图片大小，所有等图片下载完成，它后面的元素又要重新排位置，若先写好width，则不用重排，知道height也可以先写好height。<br>另外span元素设置padding的时候要将它设为display:inline-block，因为内联元素不能设置宽高，inline-block具有inline的同行特性，也具有block的高度特性。<br>对于display:inline(内联元素)的元素，设置width/height/上下margin和padding都是无效的</p>
 </blockquote>
+<h2 id="inline-block"><a href="#inline-block" class="headerlink" title="inline-block"></a>inline-block</h2></li>
+</ul>
+<ol>
+<li>inline-block 之间空隙</li>
+</ol>
+<ul>
+<li>inline-block 之间有空格、Tab、换行符。</li>
+<li>给父元素设置 font-size: 0，在 inline-block 元素上重新设置 font-size。</li>
+</ul>
+<ol start="2">
+<li>inline-block 导致父元素增高若干像素</li>
+</ol>
+<ul>
+<li>给 inline-block 元素设置 vertical-align: top</li>
+</ul>
+<p><strong>通用解决办法</strong> 不要设置 inline-block，使用 float 或 flex。</p>
 <h2 id="浏览器默认样式"><a href="#浏览器默认样式" class="headerlink" title="浏览器默认样式"></a>浏览器默认样式</h2><p>浏览器对某些元素设置有默认样式，如 h1, ul, li 等。</p>
 <h3 id="常见处理方式"><a href="#常见处理方式" class="headerlink" title="常见处理方式"></a>常见处理方式</h3><ol>
 <li>Normalize.css</li>
 <li>CSS Reset</li>
-<li>简单去除<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<li>简单去除<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ol>
+<h2 id="CSS常见样式"><a href="#CSS常见样式" class="headerlink" title="CSS常见样式"></a>CSS常见样式</h2><h3 id="边框border"><a href="#边框border" class="headerlink" title="边框border"></a>边框border</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">  <span class="attribute">border-color</span>: red;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">  <span class="attribute">border-bottom</span>: none;<span class="comment">//下边框消失</span></span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;<span class="comment">//圆角</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> red solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="内边距padding"><a href="#内边距padding" class="headerlink" title="内边距padding"></a>内边距padding</h3><p><code>padding: 10px 20px 30px;//按照上右下左,即顺时针,缺哪个补哪个,缺左边,按20px补上.</code></p>
+<h3 id="外边距margin"><a href="#外边距margin" class="headerlink" title="外边距margin"></a>外边距margin</h3><p>margin可以合写,可以分开.可以是数值,可以是百分比(相对于父元素).还可以是负值.有外边距合并问题</p>
+<h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><ul>
+<li>块级: block,list-item,table</li>
+<li>行内: inline,inline-table,inline-block<h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123; </span><br><span class="line">  <span class="attribute">font</span>: <span class="number">12px</span>/<span class="number">1.5</span> Arial;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.5</span>;<span class="comment">//行高是字体的1.5倍</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">14px</span>;<span class="comment">//字体大小</span></span><br><span class="line">  <span class="attribute">font-family</span>: Arial;<span class="comment">//字体</span></span><br><span class="line">  <span class="attribute">font-weight</span>: bold;<span class="comment">//文字粗度,粗体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>Chrome默认字体是16px,最小字体是12px.</p>
+</blockquote>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><ul>
+<li>text-aglin: 文本对齐方式,left,right,center,justify</li>
+<li>text-ident: 文案第一行缩进距离</li>
+<li>text-decoration: 划线,none,underline,line-through,overline</li>
+<li>text-transform: 改变文字大小写,none,uppercase,lowercase,captialize</li>
+<li>word-spacing: 可以改变字(单词)之间的标准间距</li>
+<li>letter-spacing: 字母之间的间隔<h4 id="单行文本溢出加…"><a href="#单行文本溢出加…" class="headerlink" title="单行文本溢出加…"></a>单行文本溢出加…</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&gt;<span class="selector-tag">h3</span> &#123;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><ul>
+<li>单词: red,blue,black,pink,yellow</li>
+<li>十六进制: #000000(黑),#fff(白),#eee(淡灰),#ccc(灰色),#666(深灰)</li>
+<li>rgb:rgb(255,255,255)白色,rgba(0,0,0,0.5)透明度为0.5的黑色<h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3>px rpx em rem的区别</li>
+</ul>
+<ol>
+<li>px是像素pixel，相对于屏幕分辨率的单位</li>
+<li>em是相对单位，相对于当前对象内的文本尺寸。如果没有设置，则相对浏览器默认尺寸16px，1em=16px。<br>为了简化，可以将body里font-size=62.5%，那么em就是16px*62%=10px。1em=10px</li>
+</ol>
+<p><strong>em特点</strong>：em值不固定，会继承父元素字体大小</p>
+<ol start="3">
+<li>rem是root em。只相对于html根元素</li>
+<li>rpx是微信小程序的方案<br>1px=2rpx</li>
+<li>vh vw: 相对单位,1vw为屏幕宽度的1%<h3 id="background"><a href="#background" class="headerlink" title="background"></a>background</h3></li>
+</ol>
+<ul>
+<li>background-color: transparent 透明背景;颜色值;半透明浮层的背景颜色建议使用 rgba() 而不是 opacity 设置透明度。</li>
+<li>background-image: url(../images/bg.png);// 属性用于给元素设置一张或多张背景图。</li>
+<li>background-repeat 控制背景图片的重复方式。<code>no-repeat</code>不重复;<code>repeat-x</code>水平方向重复;<code>repeat-y</code> 垂直方向重复;</li>
+<li>background-position 设置背景图的位置。<code>x y</code>;<code>x% y%</code>;<code>[top|center|bottom][left|center|right]</code></li>
+<li>background-size 设定背景图片的大小。IE9 以下不支持;<code>cover</code>缩放背景图片以完全覆盖背景区，可能背景图片部分看不见;<code>contain</code>缩放背景图片以完全装入背景区，可能背景区部分空白。</li>
+<li>background-clip: 设置元素背景区域覆盖的范围.border-box 覆盖至边框的最外围;padding-box 覆盖至内边距的最外围;content-box 仅覆盖元素内容区域</li>
+</ul>
+<p>缩写:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.avatar</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#fff</span> <span class="built_in">url</span>(avatar.svg) no-repeat left center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="隐藏or透明"><a href="#隐藏or透明" class="headerlink" title="隐藏or透明"></a>隐藏or透明</h3><ul>
+<li>opacity: 0;//透明度为0,整体</li>
+<li>visibility: hidden;//和opacity: 0;类似</li>
+<li>display: none;//消失,不占用位置</li>
+<li>background-color: rgba(0,0,0,0.2);//只是背景色透明<h3 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h3><code>box-shadow: -16px 0 16px 1px rgba(102,102,102,0.4);</code><br>第一个值代表阴影左右偏移，正数往右，负数往左<br>第二个值代表上下偏移，正往下，负往上<br>第三个值越大，模糊面积越大越淡<br>第四个值取正值时，阴影扩大，取负值时，阴影收缩<h3 id="line-height"><a href="#line-height" class="headerlink" title="line-height"></a>line-height</h3></li>
+<li>line-height: 2;//本身字体高度的2倍</li>
+<li>line-height: 200%;//父元素高度的2倍,父元素没写行高就是默认16px*2=32px</li>
+<li>height=line-height;//垂直居中单行文本<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3></li>
+<li>标准盒模型: border-box,即padding,border不在width,height范围内</li>
+<li>IE盒模型: content-box,即width=content尺寸+padding+border<blockquote>
+<p>css3可以设置<code>box-sizing: content-box;//标准盒模型</code></p>
+</blockquote>
+<h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><code>float: left;//向左浮动</code></li>
+<li>浮动元素并不是完全意义上的脱离文档流,至少普通元素里的文本可以发现,行内元素也可以发现</li>
+<li>设置浮动会让块级元素从左到右或从右到左排列.</li>
+<li>块级元素设置浮动呈现inline-block特性,不再撑开父元素,宽度也会收缩</li>
+<li>行内元素设置浮动呈现inline-block特性,可以设置宽高.<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3>问题:</li>
+<li>对后续元素位置产生影响</li>
+<li>父容器高度计算出现问题<br>通用解决方案<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">父元素加<span class="selector-tag">clearfix</span></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="BFC-块级格式化上下文"><a href="#BFC-块级格式化上下文" class="headerlink" title="BFC(块级格式化上下文)"></a>BFC(块级格式化上下文)</h2><p>决定了其子元素将如何定位,以及其他元素的关系和相互作用<br>在正常流中的盒子要么属于块级格式化上下文,要么属于内联格式化上下文</p>
+<h3 id="BFC的产生"><a href="#BFC的产生" class="headerlink" title="BFC的产生"></a>BFC的产生</h3><ol>
+<li>根元素</li>
+<li>float不为none;</li>
+<li>position: absolute/fixed;</li>
+<li>display: inline-block/flex/inline-flex/table-cell;</li>
+<li>overflow不为visible;</li>
+</ol>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol>
+<li>内部的Box会在垂直方向，一个接一个地放置。</li>
+<li>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠每个元素的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</li>
+<li>BFC的区域不会与float box重叠。</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li>
+<li>计算BFC的高度时，浮动元素也参与计算<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3></li>
+<li>阻止margin合并</li>
+<li>contain float</li>
+</ol>
+<h2 id="边距合并"><a href="#边距合并" class="headerlink" title="边距合并"></a>边距合并</h2><h3 id="合并场景"><a href="#合并场景" class="headerlink" title="合并场景"></a>合并场景</h3><ol>
+<li>相邻元素合并,间距为二者中较大值</li>
+<li>父子合并</li>
+<li>自己合并<h3 id="取消合并"><a href="#取消合并" class="headerlink" title="取消合并"></a>取消合并</h3></li>
+<li>加border,padding</li>
+<li>BFC</li>
+</ol>
+<h1 id="CSS布局"><a href="#CSS布局" class="headerlink" title="CSS布局"></a>CSS布局</h1>
     </div>
 
     
@@ -771,7 +886,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#应用方式"><span class="nav-number">1.</span> <span class="nav-text">应用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#外部样式表"><span class="nav-number">1.1.</span> <span class="nav-text">外部样式表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部样式表"><span class="nav-number">1.2.</span> <span class="nav-text">内部样式表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联样式"><span class="nav-number">1.3.</span> <span class="nav-text">内联样式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS选择器"><span class="nav-number">2.</span> <span class="nav-text">CSS选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS的值与单位"><span class="nav-number">3.</span> <span class="nav-text">CSS的值与单位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS基本样式"><span class="nav-number">4.</span> <span class="nav-text">CSS基本样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器默认样式"><span class="nav-number">4.1.</span> <span class="nav-text">浏览器默认样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见处理方式"><span class="nav-number">4.1.1.</span> <span class="nav-text">常见处理方式</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#应用方式"><span class="nav-number">1.</span> <span class="nav-text">应用方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#外部样式表"><span class="nav-number">1.1.</span> <span class="nav-text">外部样式表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部样式表"><span class="nav-number">1.2.</span> <span class="nav-text">内部样式表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内联样式"><span class="nav-number">1.3.</span> <span class="nav-text">内联样式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS选择器"><span class="nav-number">2.</span> <span class="nav-text">CSS选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS的值与单位"><span class="nav-number">3.</span> <span class="nav-text">CSS的值与单位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS基本样式"><span class="nav-number">4.</span> <span class="nav-text">CSS基本样式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#inline-block"><span class="nav-number">4.1.</span> <span class="nav-text">inline-block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器默认样式"><span class="nav-number">4.2.</span> <span class="nav-text">浏览器默认样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见处理方式"><span class="nav-number">4.2.1.</span> <span class="nav-text">常见处理方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS常见样式"><span class="nav-number">4.3.</span> <span class="nav-text">CSS常见样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#边框border"><span class="nav-number">4.3.1.</span> <span class="nav-text">边框border</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内边距padding"><span class="nav-number">4.3.2.</span> <span class="nav-text">内边距padding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外边距margin"><span class="nav-number">4.3.3.</span> <span class="nav-text">外边距margin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#display"><span class="nav-number">4.3.4.</span> <span class="nav-text">display</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#font"><span class="nav-number">4.3.5.</span> <span class="nav-text">font</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本"><span class="nav-number">4.3.6.</span> <span class="nav-text">文本</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单行文本溢出加…"><span class="nav-number">4.3.6.1.</span> <span class="nav-text">单行文本溢出加…</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色"><span class="nav-number">4.3.7.</span> <span class="nav-text">颜色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单位"><span class="nav-number">4.3.8.</span> <span class="nav-text">单位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#background"><span class="nav-number">4.3.9.</span> <span class="nav-text">background</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏or透明"><span class="nav-number">4.3.10.</span> <span class="nav-text">隐藏or透明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#box-shadow"><span class="nav-number">4.3.11.</span> <span class="nav-text">box-shadow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#line-height"><span class="nav-number">4.3.12.</span> <span class="nav-text">line-height</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#盒模型"><span class="nav-number">4.3.13.</span> <span class="nav-text">盒模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮动"><span class="nav-number">4.4.</span> <span class="nav-text">浮动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#清除浮动"><span class="nav-number">4.4.1.</span> <span class="nav-text">清除浮动</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFC-块级格式化上下文"><span class="nav-number">4.5.</span> <span class="nav-text">BFC(块级格式化上下文)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BFC的产生"><span class="nav-number">4.5.1.</span> <span class="nav-text">BFC的产生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">4.5.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">4.5.3.</span> <span class="nav-text">作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#边距合并"><span class="nav-number">4.6.</span> <span class="nav-text">边距合并</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#合并场景"><span class="nav-number">4.6.1.</span> <span class="nav-text">合并场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消合并"><span class="nav-number">4.6.2.</span> <span class="nav-text">取消合并</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS布局"><span class="nav-number">5.</span> <span class="nav-text">CSS布局</span></a></li></ol></div>
             
 
           </div>
