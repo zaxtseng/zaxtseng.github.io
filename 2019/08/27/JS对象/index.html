@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="闭包">
+  <meta name="description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为: 创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype. 初始化实例.函数F被传入参数并调用.关键字this被设定为该实例. 返回实例.123456789function person(name, age)&amp;#123;    this.name = name    th">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS对象">
 <meta property="og:url" content="http://yoursite.com/2019/08/27/JS对象/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="闭包">
+<meta property="og:description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为: 创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype. 初始化实例.函数F被传入参数并调用.关键字this被设定为该实例. 返回实例.123456789function person(name, age)&amp;#123;    this.name = name    th">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T02:16:22.861Z">
+<meta property="og:updated_time" content="2019-08-29T12:07:51.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS对象">
-<meta name="twitter:description" content="闭包">
+<meta name="twitter:description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为: 创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype. 初始化实例.函数F被传入参数并调用.关键字this被设定为该实例. 返回实例.123456789function person(name, age)&amp;#123;    this.name = name    th">
   <link rel="canonical" href="http://yoursite.com/2019/08/27/JS对象/">
 
 
@@ -289,7 +289,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-28 10:16:22" itemprop="dateModified" datetime="2019-08-28T10:16:22+08:00">2019-08-28</time>
+                <time title="修改时间：2019-08-29 20:07:51" itemprop="dateModified" datetime="2019-08-29T20:07:51+08:00">2019-08-29</time>
               </span>
             
           
@@ -325,7 +325,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1>
+        <h1 id="构造对象"><a href="#构造对象" class="headerlink" title="构造对象"></a>构造对象</h1><h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p>new运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为:</p><ol>
+<li>创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype.</li>
+<li>初始化实例.函数F被传入参数并调用.关键字this被设定为该实例.</li>
+<li>返回实例.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">p1 = <span class="keyword">new</span> person(<span class="string">'tom'</span>, <span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol><a id="more"></a>
+
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p>instanceof是一个操作符,可以判断对象是否为某个类型的实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p1 <span class="keyword">instanceof</span> person<span class="comment">//true,说明p1是由person创造的</span></span><br><span class="line">p1 <span class="keyword">instanceof</span> <span class="built_in">Object</span><span class="comment">//true,</span></span><br><span class="line"></span><br><span class="line">p1 <span class="keyword">instanceof</span> <span class="built_in">Number</span><span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="原型与原型链"><a href="#原型与原型链" class="headerlink" title="原型与原型链"></a>原型与原型链</h1><ol>
+<li>当<code>new</code>一个函数的时候会创建一个对象,<code>函数.prototype</code>等于<code>被创建对象.__proto__</code></li>
+<li>一切函数都是由Function这个函数创建的,所以<code>Function.prototye === 被创建函数.__proto__</code></li>
+<li>一切函数的原型对象都是由<code>Object</code>这个函数创建的,所以<code>Object.prototype === 一切函数.prototype.__proto__</code><h1 id="this"><a href="#this" class="headerlink" title="this"></a>this</h1>在函数被直接调用时<code>this</code>绑定到全局对象.即window<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>)<span class="comment">//指向window</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>)<span class="comment">//指向window</span></span><br><span class="line">&#125; </span><br><span class="line">fn1()<span class="comment">//相当于window.fn1()</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="内部函数"><a href="#内部函数" class="headerlink" title="内部函数"></a>内部函数</h2><p>函数嵌套产生的内部函数的<code>this</code>不是他的父函数,仍然是全局,window</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn0</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    fn()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn0()</span><br></pre></td></tr></table></figure>
+
+<h2 id="setTimeOut-和setInterval"><a href="#setTimeOut-和setInterval" class="headerlink" title="setTimeOut()和setInterval()"></a>setTimeOut()和setInterval()</h2><p>这两个函数执行的函数this也是全局</p>
+
     </div>
 
     
@@ -508,7 +530,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闭包"><span class="nav-number">1.</span> <span class="nav-text">闭包</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#构造对象"><span class="nav-number">1.</span> <span class="nav-text">构造对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#new"><span class="nav-number">1.1.</span> <span class="nav-text">new</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instanceof"><span class="nav-number">1.2.</span> <span class="nav-text">instanceof</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原型与原型链"><span class="nav-number">2.</span> <span class="nav-text">原型与原型链</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this"><span class="nav-number">3.</span> <span class="nav-text">this</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内部函数"><span class="nav-number">3.1.</span> <span class="nav-text">内部函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setTimeOut-和setInterval"><span class="nav-number">3.2.</span> <span class="nav-text">setTimeOut()和setInterval()</span></a></li></ol></li></ol></div>
             
 
           </div>

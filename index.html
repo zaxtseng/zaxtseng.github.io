@@ -288,7 +288,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-28 10:16:22" itemprop="dateModified" datetime="2019-08-28T10:16:22+08:00">2019-08-28</time>
+                <time title="修改时间：2019-08-29 20:07:51" itemprop="dateModified" datetime="2019-08-29T20:07:51+08:00">2019-08-29</time>
               </span>
             
           
@@ -324,9 +324,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <h1 id="构造对象"><a href="#构造对象" class="headerlink" title="构造对象"></a>构造对象</h1><h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p>new运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为:</p><ol>
+<li>创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype.</li>
+<li>初始化实例.函数F被传入参数并调用.关键字this被设定为该实例.</li>
+<li>返回实例.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">p1 = <span class="keyword">new</span> person(<span class="string">'tom'</span>, <span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+          <!--noindex-->
           
-            <h1 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h1>
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/27/JS对象/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -924,7 +937,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-28 20:26:13" itemprop="dateModified" datetime="2019-08-28T20:26:13+08:00">2019-08-28</time>
+                <time title="修改时间：2019-08-29 15:01:35" itemprop="dateModified" datetime="2019-08-29T15:01:35+08:00">2019-08-29</time>
               </span>
             
           
