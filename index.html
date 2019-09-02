@@ -394,7 +394,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-02 13:39:13" itemprop="dateModified" datetime="2019-09-02T13:39:13+08:00">2019-09-02</time>
+                <time title="修改时间：2019-09-02 16:49:40" itemprop="dateModified" datetime="2019-09-02T16:49:40+08:00">2019-09-02</time>
               </span>
             
           
@@ -514,9 +514,18 @@
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  <span class="selector-class">.hello</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">+   <span class="attribute">background</span>: url(<span class="string">'./icon.png'</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>重新构建<code>npm run build</code></p>
+<h1 id="Glup"><a href="#Glup" class="headerlink" title="Glup"></a>Glup</h1></li>
+</ol>
+<p><strong>简介</strong><br>它是一款nodejs应用。<br>它是打造前端工作流的利器，打包、压缩、合并、git、远程操作...，<br>简单易用<br>无快不破<br>高质量的插件</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p> 安装gulp<br><code>npm install -g gulp</code><br>如果报<code>Error: EACCES, open &#39;/Users/xxx/xxx.lock</code>错误。先执行：<code>sudo chown -R $(whoami) $HOME/.npm</code></p>
+<p>如果使用npm安装插件太慢（被墙），可执行 <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br>先安装cnpm, 之后再安装插件时用cnpm安装<code>cnpm install gulp</code></p>
+<ol start="2">
+<li>安装各种插件<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm install --<span class="keyword">save</span> gulp            <span class="comment">//本地使用gulp</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-imagemin   <span class="comment">//压缩图片</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-minify-css <span class="comment">//压缩css</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-ruby-sass  <span class="comment">//sass</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-jshint     <span class="comment">//js代码检测</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-uglify     <span class="comment">//js压缩</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-concat     <span class="comment">//文件合并</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-<span class="keyword">rename</span>     <span class="comment">//文件重命名</span></span><br><span class="line">npm install --<span class="keyword">save</span> png-sprite      <span class="comment">//png合并</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-htmlmin    <span class="comment">//压缩html</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-clean      <span class="comment">//清空文件夹</span></span><br><span class="line">npm install --<span class="keyword">save</span> browser-sync    <span class="comment">//文件修改浏览器自动刷新</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-<span class="keyword">shell</span>      <span class="comment">//执行shell命令</span></span><br><span class="line">npm install --<span class="keyword">save</span> gulp-ssh        <span class="comment">//操作远程机器</span></span><br><span class="line">npm install --<span class="keyword">save</span> <span class="keyword">run</span>-sequence    <span class="comment">//task顺序执行</span></span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
-</script></h3></li></ul>
+<p>或者根据package.json 自动安装。把package.json拷贝到自己的工程目录下，进入目录，执行:<code>npm install</code></p>
+<h1 id="语法gulp-API"><a href="#语法gulp-API" class="headerlink" title="语法gulp API"></a>语法gulp API</h1></script></h3></li></ul>
           
         
       
