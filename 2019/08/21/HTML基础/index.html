@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="cookie存储信息到浏览器，可以用js设置，也可以在服务器端通过set-cookie让浏览器种下cookie，存在于响应头里。每次请求都会带上cookie，最大容量4k用途：记录用户名设置cookie时的参数： path: cookie影响到的路径，匹配该路径才发送cookie expires和maxAge:告诉浏览器cookie多久过期不设置就会产生session cookie，当关闭浏览器，">
+  <meta name="description" content="cookie存储信息到浏览器，可以用js设置，也可以在服务器端通过set-cookie让浏览器种下cookie，存在于响应头里。每次请求都会带上cookie，最大容量4k用途：记录用户名">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML基础">
 <meta property="og:url" content="http://yoursite.com/2019/08/21/HTML基础/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="cookie存储信息到浏览器，可以用js设置，也可以在服务器端通过set-cookie让浏览器种下cookie，存在于响应头里。每次请求都会带上cookie，最大容量4k用途：记录用户名设置cookie时的参数： path: cookie影响到的路径，匹配该路径才发送cookie expires和maxAge:告诉浏览器cookie多久过期不设置就会产生session cookie，当关闭浏览器，">
+<meta property="og:description" content="cookie存储信息到浏览器，可以用js设置，也可以在服务器端通过set-cookie让浏览器种下cookie，存在于响应头里。每次请求都会带上cookie，最大容量4k用途：记录用户名">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-26T07:02:05.249Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML基础">
-<meta name="twitter:description" content="cookie存储信息到浏览器，可以用js设置，也可以在服务器端通过set-cookie让浏览器种下cookie，存在于响应头里。每次请求都会带上cookie，最大容量4k用途：记录用户名设置cookie时的参数： path: cookie影响到的路径，匹配该路径才发送cookie expires和maxAge:告诉浏览器cookie多久过期不设置就会产生session cookie，当关闭浏览器，">
+<meta name="twitter:description" content="cookie存储信息到浏览器，可以用js设置，也可以在服务器端通过set-cookie让浏览器种下cookie，存在于响应头里。每次请求都会带上cookie，最大容量4k用途：记录用户名">
   <link rel="canonical" href="http://yoursite.com/2019/08/21/HTML基础/">
 
 
@@ -325,14 +325,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>存储信息到浏览器，可以用js设置，也可以在服务器端通过set-cookie让浏览器种下cookie，存在于响应头里。<br>每次请求都会带上cookie，最大容量4k<br>用途：记录用户名</p><p>设置cookie时的参数：</p><ol>
+        <h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>存储信息到浏览器，可以用js设置，也可以在服务器端通过set-cookie让浏览器种下cookie，存在于响应头里。<br>每次请求都会带上cookie，最大容量4k<br>用途：记录用户名</p><a id="more"></a>
+<p>设置cookie时的参数：</p>
+<ol>
 <li>path: cookie影响到的路径，匹配该路径才发送cookie</li>
 <li>expires和maxAge:告诉浏览器cookie多久过期<br>不设置就会产生session cookie，当关闭浏览器，cookie就被清除</li>
 <li>secure: 为true时，在http无效，在https生效</li>
 <li>httpOnly: 浏览器不允许通过js修改cookie</li>
-</ol><a id="more"></a>
-
-
+</ol>
 <h1 id="session"><a href="#session" class="headerlink" title="session"></a>session</h1><p>用来保存状态。当用户输入用户名密码提交给服务器后，服务器验证通过后创建session用于记录用户信息，session可保存在服务器，也可以保存在数据库</p>
 <ol>
 <li>创建session后，会把关联的session_id通过是set-cookie添加到响应头</li>

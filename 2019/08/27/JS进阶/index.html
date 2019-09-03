@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为: 创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype. 初始化实例.函数F被传入参数并调用.关键字this被设定为该实例. 返回实例.123456789function person(name, age)&amp;#123;    this.name = name    th">
+  <meta name="description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为:">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS进阶">
 <meta property="og:url" content="http://yoursite.com/2019/08/27/JS进阶/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为: 创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype. 初始化实例.函数F被传入参数并调用.关键字this被设定为该实例. 返回实例.123456789function person(name, age)&amp;#123;    this.name = name    th">
+<meta property="og:description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为:">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-09-01T06:22:11.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS进阶">
-<meta name="twitter:description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为: 创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype. 初始化实例.函数F被传入参数并调用.关键字this被设定为该实例. 返回实例.123456789function person(name, age)&amp;#123;    this.name = name    th">
+<meta name="twitter:description" content="构造对象newnew运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为:">
   <link rel="canonical" href="http://yoursite.com/2019/08/27/JS进阶/">
 
 
@@ -325,14 +325,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="构造对象"><a href="#构造对象" class="headerlink" title="构造对象"></a>构造对象</h1><h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p>new运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为:</p><ol>
+        <h1 id="构造对象"><a href="#构造对象" class="headerlink" title="构造对象"></a>构造对象</h1><h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p>new运算符接受一个函数F及其参数: new F(arguments…).这个一过程分为:</p><a id="more"></a>
+<ol>
 <li>创建类的实例.这步是把一个空的对象的proto属性设置为F.prototype.</li>
 <li>初始化实例.函数F被传入参数并调用.关键字this被设定为该实例.</li>
 <li>返回实例.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">p1 = <span class="keyword">new</span> person(<span class="string">'tom'</span>, <span class="number">12</span>)</span><br></pre></td></tr></table></figure>
 
 </li>
-</ol><a id="more"></a>
-
+</ol>
 <h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p>instanceof是一个操作符,可以判断对象是否为某个类型的实例</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p1 <span class="keyword">instanceof</span> person<span class="comment">//true,说明p1是由person创造的</span></span><br><span class="line">p1 <span class="keyword">instanceof</span> <span class="built_in">Object</span><span class="comment">//true,</span></span><br><span class="line"></span><br><span class="line">p1 <span class="keyword">instanceof</span> <span class="built_in">Number</span><span class="comment">//false</span></span><br></pre></td></tr></table></figure>
 

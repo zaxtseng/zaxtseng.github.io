@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="css,即层叠样式表,可以为网页添加样式.应用方式外部样式表 通过&amp;lt;link&amp;gt;引入&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;index.css&amp;quot;&amp;gt;  通过@import引入,注意末尾加;号,CSS语法,只能在CSS内使用. 1234&amp;lt;style&amp;gt;@import url(&quot;index.css&quot;);@impor">
+  <meta name="description" content="css,即层叠样式表,可以为网页添加样式.">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS">
 <meta property="og:url" content="http://yoursite.com/2019/08/23/css/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="css,即层叠样式表,可以为网页添加样式.应用方式外部样式表 通过&amp;lt;link&amp;gt;引入&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;index.css&amp;quot;&amp;gt;  通过@import引入,注意末尾加;号,CSS语法,只能在CSS内使用. 1234&amp;lt;style&amp;gt;@import url(&quot;index.css&quot;);@impor">
+<meta property="og:description" content="css,即层叠样式表,可以为网页添加样式.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-08-27T06:16:16.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS">
-<meta name="twitter:description" content="css,即层叠样式表,可以为网页添加样式.应用方式外部样式表 通过&amp;lt;link&amp;gt;引入&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;index.css&amp;quot;&amp;gt;  通过@import引入,注意末尾加;号,CSS语法,只能在CSS内使用. 1234&amp;lt;style&amp;gt;@import url(&quot;index.css&quot;);@impor">
+<meta name="twitter:description" content="css,即层叠样式表,可以为网页添加样式.">
   <link rel="canonical" href="http://yoursite.com/2019/08/23/css/">
 
 
@@ -325,7 +325,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>css,即层叠样式表,可以为网页添加样式.</p><h1 id="应用方式"><a href="#应用方式" class="headerlink" title="应用方式"></a>应用方式</h1><h2 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h2><ol>
+        <p>css,即层叠样式表,可以为网页添加样式.</p><a id="more"></a>
+<h1 id="应用方式"><a href="#应用方式" class="headerlink" title="应用方式"></a>应用方式</h1><h2 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h2><ol>
 <li><p>通过<code>&lt;link&gt;</code>引入<br><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;index.css&quot;&gt;</code></p>
 </li>
 <li><p>通过<code>@import</code>引入,注意末尾加;号,CSS语法,只能在CSS内使用.</p>
@@ -335,8 +336,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">@media (min-width: <span class="number">801</span>px) &#123;</span><br><span class="line">  body &#123;</span><br><span class="line">    margin: <span class="number">0</span> auto;</span><br><span class="line">    width: <span class="number">800</span>px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/style&gt;</span></span><br></pre></td></tr></table></figure>
 
 </li>
-</ol><a id="more"></a>
-
+</ol>
 <h2 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h2><p>将css放到<code>&lt;style&gt;</code>元素中,一般放到文档的<code>&lt;&gt;</code>中.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"UTF-8"</span> /&gt;</span><br><span class="line">&lt;title&gt;CSS&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">h1 &#123;</span></span><br><span class="line"><span class="regexp">    background: red;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">&lt;h1&gt;AMD yes!&lt;/</span>h1&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
 
