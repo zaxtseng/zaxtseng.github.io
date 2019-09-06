@@ -1049,34 +1049,26 @@ pre .javascript .function {
 }
 .back-to-top {
   background: #222;
-  bottom: -100px;
-  box-sizing: border-box;
-  color: #fff;
   cursor: pointer;
   font-size: 12px;
+  margin: 8px -10px -20px;
   opacity: 1;
-  padding: 0 6px;
-  position: fixed;
-  right: 30px;
   text-align: center;
-  transition-property: bottom;
-  width: 24px;
-  z-index: 1050;
-  transition-delay: 0s;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
+  visibility: hidden;
 }
 .back-to-top:hover {
-  color: #87daff;
-}
-.back-to-top.back-to-top-on {
-  bottom: 19px;
+  opacity: 0.8;
 }
 @media (max-width: 991px) {
   .back-to-top {
-    opacity: 0.8;
-    right: 20px;
+    display: none;
   }
+}
+.back-to-top.back-to-top-on {
+  visibility: visible;
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 .header {
   background: transparent;
@@ -1763,7 +1755,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c4264f;
+  background: #ffe285;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2402,6 +2394,23 @@ ul.breadcrumb li+li:last-child {
 }
 .tag-cloud a:hover {
   color: #222 !important;
+}
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(0,0,0,0.1);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0,0,0,0.3);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: rgba(0,0,0,0.4);
 }
 a {
   border-bottom-color: #ccc;
