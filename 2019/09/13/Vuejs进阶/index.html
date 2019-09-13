@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-<meta name="keywords" content="javascript, Vue, HTML5">
+  <meta name="description" content="render函数初识render1234567891011121314151617181920212223242526272829&amp;lt;template id=&quot;hdom&quot;&amp;gt;//template下只允许有一个子节点,所以用div包裹三个标题	&amp;lt;div&amp;gt;		&amp;lt;h1 v-if=&quot;level==1&quot;&amp;gt;			&amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;		&amp;lt;/h">
+<meta name="keywords" content="Vue.js,Vue.js进阶">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/08/11/hello-world/index.html">
+<meta property="og:title" content="Vue.js进阶">
+<meta property="og:url" content="http://yoursite.com/2019/09/13/Vuejs进阶/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="render函数初识render1234567891011121314151617181920212223242526272829&amp;lt;template id=&quot;hdom&quot;&amp;gt;//template下只允许有一个子节点,所以用div包裹三个标题	&amp;lt;div&amp;gt;		&amp;lt;h1 v-if=&quot;level==1&quot;&amp;gt;			&amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;		&amp;lt;/h">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-20T09:06:48.022Z">
+<meta property="og:updated_time" content="2019-09-13T08:54:16.145Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
-  <link rel="canonical" href="http://yoursite.com/2019/08/11/hello-world/">
+<meta name="twitter:title" content="Vue.js进阶">
+<meta name="twitter:description" content="render函数初识render1234567891011121314151617181920212223242526272829&amp;lt;template id=&quot;hdom&quot;&amp;gt;//template下只允许有一个子节点,所以用div包裹三个标题	&amp;lt;div&amp;gt;		&amp;lt;h1 v-if=&quot;level==1&quot;&amp;gt;			&amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt;		&amp;lt;/h">
+  <link rel="canonical" href="http://yoursite.com/2019/09/13/Vuejs进阶/">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>Hello World | Zax's BLOG</title>
+  <title>Vue.js进阶 | Zax's BLOG</title>
   
 
 
@@ -258,7 +258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/Vuejs进阶/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zax Tseng">
@@ -272,7 +272,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">Vue.js进阶
 
             
           </h1>
@@ -289,19 +289,11 @@
                 
               
 
-              <time title="创建时间：2019-08-11 13:31:09" itemprop="dateCreated datePublished" datetime="2019-08-11T13:31:09+08:00">2019-08-11</time>
+              <time title="创建时间：2019-09-13 15:47:32 / 修改时间：16:54:16" itemprop="dateCreated datePublished" datetime="2019-09-13T15:47:32+08:00">2019-09-13</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-20 17:06:48" itemprop="dateModified" datetime="2019-08-20T17:06:48+08:00">2019-08-20</time>
-              </span>
             
           
 
@@ -316,19 +308,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="render函数"><a href="#render函数" class="headerlink" title="render函数"></a>render函数</h1><h2 id="初识render"><a href="#初识render" class="headerlink" title="初识render"></a>初识render</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;template id=<span class="string">"hdom"</span>&gt;</span><br><span class="line"><span class="comment">//template下只允许有一个子节点,所以用div包裹三个标题</span></span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1 v-<span class="keyword">if</span>=<span class="string">"level==1"</span>&gt;</span><br><span class="line">			&lt;slot&gt;<span class="xml"><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span></span><br><span class="line">		&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">		&lt;h2 v-if="level==2"&gt;</span></span><br><span class="line"><span class="regexp">			&lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">		&lt;h3 v-if="level==3"&gt;</span></span><br><span class="line"><span class="regexp">			&lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/使用template命名的方法将大段代码写在html里</span></span><br><span class="line"><span class="regexp"> Vue.component('child', &#123;</span></span><br><span class="line"><span class="regexp">     props: ['level'],</span></span><br><span class="line"><span class="regexp">     template: '#hdom'</span></span><br><span class="line"><span class="regexp"> &#125;) </span></span><br><span class="line"><span class="regexp"> /</span><span class="regexp">/使用render函数替代template,节省大量代码</span></span><br><span class="line"><span class="regexp"> Vue.component('child', &#123;</span></span><br><span class="line"><span class="regexp">     render: function (createElement) &#123;</span></span><br><span class="line"><span class="regexp">         return createElement('h' + this.level, this.$slots.default);</span></span><br><span class="line"><span class="regexp">     &#125;,</span></span><br><span class="line"><span class="regexp">     props: ['level']</span></span><br><span class="line"><span class="regexp"> &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure><a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h2 id="render函数的第一个参数"><a href="#render函数的第一个参数" class="headerlink" title="render函数的第一个参数"></a>render函数的第一个参数</h2><p>在render函数的方法中,参数必须是<code>createElement</code>,它的类型是<code>function</code><br><code>createElement</code>的第一个参数<strong>必选</strong>.类型可以是<code>String|Object|Function</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'child'</span>,&#123;</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params">createElement</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> createELement(<span class="string">'h1'</span>)</span><br><span class="line">        <span class="comment">//参数是字符串.返回&lt;h1&gt;&lt;/h1&gt;</span></span><br><span class="line">        <span class="keyword">return</span> createElement(&#123;</span><br><span class="line">            template: <span class="string">`&lt;div&gt;鹅鹅鹅&lt;/div&gt;`</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//参数是对象.返回&lt;div&gt;鹅鹅鹅&lt;/div&gt;</span></span><br><span class="line">        <span class="keyword">var</span> domFun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                template: <span class="string">`&lt;div&gt;鹅鹅鹅&lt;/div&gt;`</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> createELement(domFun())</span><br><span class="line">        <span class="comment">//参数是函数.返回&lt;div&gt;鹅鹅鹅&lt;/div&gt;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h2 id="render函数的第二个参数"><a href="#render函数的第二个参数" class="headerlink" title="render函数的第二个参数"></a>render函数的第二个参数</h2><p><code>createElement</code>的第一个参数<strong>可选</strong>.参数是数据对象,只能是<code>Object</code><br>```javascript<br>Vue.component(‘child’,{<br>    render: function(createElement){<br>        return CreateElement({<br>            template: <code>&lt;div&gt;鹅鹅鹅&lt;/div&gt;</code><br>        },{<br>            //添加class选项,其中为true的会添加到模板<div>中<br>            ‘class’:{<br>                foo: true<br>                baz: false<br>            },<br>            //添加style属性<br>            style: {<br>                color: ‘red’,<br>                fontSize: ‘18px’<br>            },<br>            //正常的html属性<br>            attrs: {<br>                id: ‘foo’,<br>                src: ‘xxxx’<br>            },<br>            //原生DOM属性<br>            domProps: {<br>                innerHTML: ‘<span style="color:blue">我是蓝色</span>‘<br>            }<br>        }</div></p>
+<pre><code>    )
+}</code></pre><p>})</p>
 
     </div>
 
@@ -339,21 +326,32 @@
       
 
       <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Vue-js/" rel="tag"><i class="fa fa-tag"></i> Vue.js</a>
+            
+              <a href="/tags/Vue-js进阶/" rel="tag"><i class="fa fa-tag"></i> Vue.js进阶</a>
+            
+          </div>
+        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/09/09/Vue组件/" rel="next" title="Vue组件">
+                  <i class="fa fa-chevron-left"></i> Vue组件
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/18/HTML基础/" rel="prev" title="HTML基础">
-                  HTML基础 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -527,7 +525,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#render函数"><span class="nav-number">1.</span> <span class="nav-text">render函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初识render"><span class="nav-number">1.1.</span> <span class="nav-text">初识render</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render函数的第一个参数"><span class="nav-number">1.2.</span> <span class="nav-text">render函数的第一个参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render函数的第二个参数"><span class="nav-number">1.3.</span> <span class="nav-text">render函数的第二个参数</span></a></li></ol></li></ol></div>
             
 
           </div>
