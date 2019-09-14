@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量">
+  <meta name="description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量在全局作用域下使用let和const声明变量，变量并不会挂载到window">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6">
 <meta property="og:url" content="http://yoursite.com/2019/09/05/ES6/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量">
+<meta property="og:description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量在全局作用域下使用let和const声明变量，变量并不会挂载到window">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-13T02:55:35.330Z">
+<meta property="og:updated_time" content="2019-09-14T01:35:16.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6">
-<meta name="twitter:description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量">
+<meta name="twitter:description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量在全局作用域下使用let和const声明变量，变量并不会挂载到window">
   <link rel="canonical" href="http://yoursite.com/2019/09/05/ES6/">
 
 
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-13 10:55:35" itemprop="dateModified" datetime="2019-09-13T10:55:35+08:00">2019-09-13</time>
+                <time title="修改时间：2019-09-14 09:35:16" itemprop="dateModified" datetime="2019-09-14T09:35:16+08:00">2019-09-14</time>
               </span>
             
           
@@ -336,13 +336,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>ES6常见语法</p><h1 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h1><p><code>let</code>定义局部变量<br><code>var</code>定义全局变量.用<code>var</code>定义的全部变量，有时候会污染整个js的作用域。<br><code>const</code>定义常量</p><a id="more"></a>
+        <p>ES6常见语法</p><h1 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h1><p><code>let</code>定义局部变量<br><code>var</code>定义全局变量.用<code>var</code>定义的全部变量，有时候会污染整个js的作用域。<br><code>const</code>定义常量<br>在全局作用域下使用<code>let</code>和<code>const</code>声明变量，变量并不会挂载到<code>window</code></p><a id="more"></a>
 
 <ol>
-<li><p>var可声明前置</p>
+<li><p>var可声明前置(变量提升)<br>变量会提升，函数也会提升，并且函数优先于变量提升，函数提升会把整个函数提到作用域顶部，变量提升只会把声明提上去.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">4</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>let不可声明前置</p>
+<li><p>let不可声明前置<br>暂时性死区：不能在变量声明之前使用变量</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span> <span class="comment">//报错</span></span><br><span class="line"><span class="keyword">let</span> a</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>let不可重复声明</p>
@@ -361,12 +361,9 @@
 </ol>
 <p>const 对象等于引用类型,obj存的是<code>{a: 1}</code>的地址,里面的东西改变并不影响地址.而<code>obj = {a: 2}</code>是赋给一个新的地址,发生了改变,会报错.</p>
 <ol start="6">
-<li>适用于let同样适用于const</li>
-</ol>
-<p>ES6可以大量使用let,如果认定模块不改变,可以使用const</p>
+<li><p>适用于<code>let</code>同样适用于<code>const</code><br><code>let</code>和<code>const</code>作用基本一致，<code>const</code>声明的变量不能再次赋值<br>ES6可以大量使用<code>let</code>,如果认定模块不改变,可以使用<code>const</code></p>
 <h1 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h1><h2 id="关于数组的解构赋值"><a href="#关于数组的解构赋值" class="headerlink" title="关于数组的解构赋值"></a>关于数组的解构赋值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a,b,c] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="built_in">console</span>.log(a, b, c) </span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a, [b], c] = [<span class="number">2</span>, [<span class="number">3</span>], <span class="number">4</span>]</span><br><span class="line">a <span class="comment">//2</span></span><br><span class="line">b <span class="comment">//3</span></span><br><span class="line">c <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a] = <span class="number">1</span> <span class="comment">//报错,因为[a]是一个数组,把值赋值给数组就报错了</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
+</li>
 <li><p>默认值</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b = <span class="number">2</span>] = [<span class="number">3</span>]</span><br><span class="line">a <span class="comment">// 3</span></span><br><span class="line">b <span class="comment">// 2,因为b没有对应值,所以是undefined,使用默认值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a, b = <span class="number">2</span>] = [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">a <span class="comment">//3</span></span><br><span class="line">b <span class="comment">//4</span></span><br><span class="line">数组对应对值有没有？如果没有（数组对没有指<span class="literal">undefined</span>）就使用默认值，如果有就使用对应值</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a=<span class="number">2</span>, b=<span class="number">3</span>] = [<span class="literal">undefined</span>, <span class="literal">null</span>]</span><br><span class="line">a <span class="comment">//2</span></span><br><span class="line">b <span class="comment">//null</span></span><br><span class="line"><span class="keyword">let</span> [a=<span class="number">1</span>, b=a] = [<span class="number">2</span>]</span><br><span class="line">a <span class="comment">//2</span></span><br><span class="line">b <span class="comment">//2,因为b没有对应值,所以是undefined,使用默认值,此时a的默认值为2</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -439,12 +436,18 @@
 <li><p>构造函数</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  sayHello() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">`hello, <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>, i am <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">等价于</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(  <span class="string">`hello, <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>, i am <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'hunger'</span>, <span class="number">2</span>);</span><br><span class="line">静态方法</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventCenter</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> fire() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'fire'</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> on()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'on'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">等同于</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">EventCenter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">EventCenter.fire = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">EventCenter.on = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>继承</p>
-</li>
-</ol>
+<li><p>继承<br>js中并不存在类，<code>class</code>只是语法糖，本质是函数<br>class继承的核心在于使用<code>extends</code>表明继承自哪个父类，并在子类构造函数中必须调用<code>super</code></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  sayHello() &#123;</span><br><span class="line">      <span class="comment">//写的函数会直接放到原型上</span></span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">`hello, <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>, i am <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, age, score) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name, age); </span><br><span class="line">    <span class="keyword">this</span>.score = score;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  sayScore() &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(  <span class="string">`hello, <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>, i am <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old, i get <span class="subst">$&#123;<span class="keyword">this</span>.score&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><p>写法1</p>
+</li>
+</ol>
+<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><p>为什么使用模块化?</p>
+<ol>
+<li>解决命名冲突</li>
+<li>提供复用性</li>
+<li>提高代码可维护性</li>
+</ol>
+<p>写法1</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// profile.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> firstName = <span class="string">'Michael'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> lastName = <span class="string">'Jackson'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"><span class="comment">//useage.js</span></span><br><span class="line"><span class="keyword">import</span> &#123;firstName, lastName, year&#125; <span class="keyword">from</span> <span class="string">'./profile'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(firstName)</span><br></pre></td></tr></table></figure>
 
 <p>写法2</p>
