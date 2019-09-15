@@ -272,7 +272,7 @@
         
           <h1 class="post-title" itemprop="name headline">
               
-              <a href="/2019/09/14/VueX/" class="post-title-link" itemprop="url">VueX</a>
+              <a href="/2019/09/14/VueX/" class="post-title-link" itemprop="url">Vuex</a>
             
           </h1>
         
@@ -288,11 +288,19 @@
                 
               
 
-              <time title="创建时间：2019-09-14 21:38:29 / 修改时间：21:41:53" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:29+08:00">2019-09-14</time>
+              <time title="创建时间：2019-09-14 21:38:29" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:29+08:00">2019-09-14</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-15 14:25:00" itemprop="dateModified" datetime="2019-09-15T14:25:00+08:00">2019-09-15</time>
+              </span>
             
           
 
@@ -307,9 +315,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <h1 id="Vuex介绍"><a href="#Vuex介绍" class="headerlink" title="Vuex介绍"></a>Vuex介绍</h1><p>每一个Vuex应用的核心就是store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的<strong>状态(state)</strong>。Vuex和单纯的全局对象有以下两点不同：</p>
+          <!--noindex-->
           
-            
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/14/VueX/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -367,11 +382,19 @@
                 
               
 
-              <time title="创建时间：2019-09-14 21:38:12 / 修改时间：21:41:14" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:12+08:00">2019-09-14</time>
+              <time title="创建时间：2019-09-14 21:38:12" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:12+08:00">2019-09-14</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-15 09:22:08" itemprop="dateModified" datetime="2019-09-15T09:22:08+08:00">2019-09-15</time>
+              </span>
             
           
 
@@ -387,13 +410,8 @@
 
       
           <hr><h1 id="vue-router路由"><a href="#vue-router路由" class="headerlink" title="vue-router路由"></a>vue-router路由</h1><ol>
-<li><p>安装vue-router<br><code>npm install --save vue-router</code></p>
-</li>
-<li><p>引用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line">Vue.use(router)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置路由文件,并在Vue实例中注入</p>
-</li>
+<li>安装vue-router<br><code>npm install --save vue-router</code></li>
+<li>引用</li>
 </ol>
           <!--noindex-->
           
@@ -472,7 +490,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-14 21:42:16" itemprop="dateModified" datetime="2019-09-14T21:42:16+08:00">2019-09-14</time>
+                <time title="修改时间：2019-09-15 09:35:10" itemprop="dateModified" datetime="2019-09-15T09:35:10+08:00">2019-09-15</time>
               </span>
             
           
@@ -488,7 +506,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="render函数"><a href="#render函数" class="headerlink" title="render函数"></a>render函数</h1><h2 id="初识render"><a href="#初识render" class="headerlink" title="初识render"></a>初识render</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;template id=<span class="string">"hdom"</span>&gt;</span><br><span class="line"><span class="comment">//template下只允许有一个子节点,所以用div包裹三个标题</span></span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1 v-<span class="keyword">if</span>=<span class="string">"level==1"</span>&gt;</span><br><span class="line">			&lt;slot&gt;<span class="xml"><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span></span><br><span class="line">		&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">		&lt;h2 v-if="level==2"&gt;</span></span><br><span class="line"><span class="regexp">			&lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">		&lt;h3 v-if="level==3"&gt;</span></span><br><span class="line"><span class="regexp">			&lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/使用template命名的方法将大段代码写在html里</span></span><br><span class="line"><span class="regexp"> Vue.component('child', &#123;</span></span><br><span class="line"><span class="regexp">     props: ['level'],</span></span><br><span class="line"><span class="regexp">     template: '#hdom'</span></span><br><span class="line"><span class="regexp"> &#125;) </span></span><br><span class="line"><span class="regexp"> /</span><span class="regexp">/使用render函数替代template,节省大量代码</span></span><br><span class="line"><span class="regexp"> Vue.component('child', &#123;</span></span><br><span class="line"><span class="regexp">     render: function (createElement) &#123;</span></span><br><span class="line"><span class="regexp">         return createElement('h' + this.level, this.$slots.default);</span></span><br><span class="line"><span class="regexp">     &#125;,</span></span><br><span class="line"><span class="regexp">     props: ['level']</span></span><br><span class="line"><span class="regexp"> &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+          <h1 id="render函数"><a href="#render函数" class="headerlink" title="render函数"></a>render函数</h1><h2 id="初识render"><a href="#初识render" class="headerlink" title="初识render"></a>初识render</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;template id=<span class="string">"hdom"</span>&gt;</span><br><span class="line"><span class="comment">//template下只允许有一个子节点,所以用div包裹三个标题</span></span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1 v-<span class="keyword">if</span>=<span class="string">"level==1"</span>&gt;</span><br><span class="line">			&lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">		&lt;h2 v-if="level==2"&gt;</span></span><br><span class="line"><span class="regexp">			&lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">		&lt;h3 v-if="level==3"&gt;</span></span><br><span class="line"><span class="regexp">			&lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"> Vue.component('child', &#123;</span></span><br><span class="line"><span class="regexp">     /</span><span class="regexp">/使用template命名的方法将大段代码写在html里</span></span><br><span class="line"><span class="regexp">     props: ['level'],</span></span><br><span class="line"><span class="regexp">     template: '#hdom'</span></span><br><span class="line"><span class="regexp"> &#125;) </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"> Vue.component('child', &#123;</span></span><br><span class="line"><span class="regexp">      /</span><span class="regexp">/使用render函数替代template,节省大量代码</span></span><br><span class="line"><span class="regexp">     render: function (createElement) &#123;</span></span><br><span class="line"><span class="regexp">         return createElement('h' + this.level, this.$slots.default);</span></span><br><span class="line"><span class="regexp">     &#125;,</span></span><br><span class="line"><span class="regexp">     props: ['level']</span></span><br><span class="line"><span class="regexp"> &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">

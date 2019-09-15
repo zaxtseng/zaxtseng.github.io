@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Zax&apos;s BLOG">
+  <meta name="description" content="Vuex介绍每一个Vuex应用的核心就是store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态(state)。Vuex和单纯的全局对象有以下两点不同：">
 <meta name="keywords" content="Vue.js,Vue.js进阶">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VueX">
+<meta property="og:title" content="Vuex">
 <meta property="og:url" content="http://yoursite.com/2019/09/14/VueX/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="Zax&apos;s BLOG">
+<meta property="og:description" content="Vuex介绍每一个Vuex应用的核心就是store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态(state)。Vuex和单纯的全局对象有以下两点不同：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-14T13:41:53.571Z">
+<meta property="og:updated_time" content="2019-09-15T06:25:00.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="VueX">
-<meta name="twitter:description" content="Zax&apos;s BLOG">
+<meta name="twitter:title" content="Vuex">
+<meta name="twitter:description" content="Vuex介绍每一个Vuex应用的核心就是store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态(state)。Vuex和单纯的全局对象有以下两点不同：">
   <link rel="canonical" href="http://yoursite.com/2019/09/14/VueX/">
 
 
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>VueX | Zax's BLOG</title>
+  <title>Vuex | Zax's BLOG</title>
   
 
 
@@ -272,7 +272,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">VueX
+          <h1 class="post-title" itemprop="name headline">Vuex
 
             
           </h1>
@@ -289,11 +289,19 @@
                 
               
 
-              <time title="创建时间：2019-09-14 21:38:29 / 修改时间：21:41:53" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:29+08:00">2019-09-14</time>
+              <time title="创建时间：2019-09-14 21:38:29" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:29+08:00">2019-09-14</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-15 14:25:00" itemprop="dateModified" datetime="2019-09-15T14:25:00+08:00">2019-09-15</time>
+              </span>
             
           
 
@@ -308,7 +316,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Vuex介绍"><a href="#Vuex介绍" class="headerlink" title="Vuex介绍"></a>Vuex介绍</h1><p>每一个Vuex应用的核心就是store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的<strong>状态(state)</strong>。Vuex和单纯的全局对象有以下两点不同：</p><a id="more"></a>
+<ol>
+<li>Vuex的状态存储是响应式的。当Vue组件从store中读取状态的时候，若store中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
+<li>不能直接改变store中的状态。改变store中的状态的唯一途径就是显式地提交<strong>(commit)mutation</strong>。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。<br>我的理解: Vuex相当于一个扩展板的<code>bus</code>中介.起步虽相似,但功能更丰富.<h2 id="Vuex之store"><a href="#Vuex之store" class="headerlink" title="Vuex之store"></a>Vuex之store</h2>起步: 安装,引入,<code>use</code>,创建状态仓库.在Vue实例中注入(把store写进去).一条龙服务.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建仓库格式</span></span><br><span class="line"><span class="keyword">var</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">        <span class="comment">//定义你的状态</span></span><br><span class="line">        XXX: xxx</span><br><span class="line">    &#125;,</span><br><span class="line">    mutations: &#123;</span><br><span class="line">        <span class="comment">//在此处定义状态改变的方法</span></span><br><span class="line">        increase(state)&#123;</span><br><span class="line">            state.num ++</span><br><span class="line">        &#125;</span><br><span class="line">        decrease(state)&#123;</span><br><span class="line">            state.num --</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions: &#123;</span><br><span class="line">        <span class="comment">//actions中传递的不再是state,而是context</span></span><br><span class="line">        increaseAction(context)&#123;</span><br><span class="line">            <span class="comment">//actions中只能对mutations中的方法进行操作</span></span><br><span class="line">            context.commit(<span class="string">'increase'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<blockquote>
+<p>mutations改变状态:<br>直接通过<code>this.$store.state.XXX</code>拿到状态<br>在methods中.定义一个函数通过<code>this.$store.commit(&#39;xxx&#39;)</code>方法触发状态变更</p>
+</blockquote>
+<blockquote>
+<p>actions改变状态:<br>通过<code>this.$store.dispatch(xxx)</code>调用</p>
+</blockquote>
+<p>二者区别:</p>
+<ol>
+<li>传入参数不同,mutations传入<code>state</code>.actions传入<code>context</code></li>
+<li>调用方式不同,前者<code>this.$store.commit(&#39;xxx&#39;)</code>.后者<code>this.$store.dispatch(xxx)</code></li>
+<li>函数要求不同.mutations中只能有同步操作,actions中可以有异步操作.</li>
+</ol>
+<h2 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h2><p>有时需要对mutations处理后的state进行处理.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">    getNum(state)&#123;</span><br><span class="line">        <span class="comment">//因为要处理state,自然传入state</span></span><br><span class="line">        <span class="keyword">return</span> state.num &gt; <span class="number">0</span> ? state.num : <span class="number">0</span></span><br><span class="line">        <span class="comment">//这里是防止一直减出现负数进行的处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取状态也就改为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件中</span></span><br><span class="line">computed: &#123;</span><br><span class="line">    getCount()&#123;</span><br><span class="line">        <span class="comment">//return this.$store.state.num</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.getNu</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Vuex状态管理流程"><a href="#Vuex状态管理流程" class="headerlink" title="Vuex状态管理流程"></a>Vuex状态管理流程</h1><p>view–&gt;actions–&gt;mutations–&gt;state–&gt;view</p>
+
     </div>
 
     
@@ -375,8 +409,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -498,6 +541,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex介绍"><span class="nav-number">1.</span> <span class="nav-text">Vuex介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex之store"><span class="nav-number">1.1.</span> <span class="nav-text">Vuex之store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getters"><span class="nav-number">1.2.</span> <span class="nav-text">getters</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex状态管理流程"><span class="nav-number">2.</span> <span class="nav-text">Vuex状态管理流程</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
         <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
           
