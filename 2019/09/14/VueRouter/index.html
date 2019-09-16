@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="vue-router路由 安装vue-routernpm install --save vue-router 引用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-15T01:22:08.315Z">
+<meta property="og:updated_time" content="2019-09-15T12:26:10.650Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VueRouter">
 <meta name="twitter:description" content="vue-router路由 安装vue-routernpm install --save vue-router 引用">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-15 09:22:08" itemprop="dateModified" datetime="2019-09-15T09:22:08+08:00">2019-09-15</time>
+                <time title="修改时间：2019-09-15 20:26:10" itemprop="dateModified" datetime="2019-09-15T20:26:10+08:00">2019-09-15</time>
               </span>
             
           
@@ -331,7 +331,7 @@
 <ol start="4">
 <li>确定视图加载的位置</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line"><span class="comment">//把这个写到想注入的位置就可以了</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view&gt;<span class="xml"><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span></span><br><span class="line"><span class="comment">//把这个写到想注入的位置就可以了</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><p>在路由文件中,一般是<code>router/index.js</code>.就是把路由单独写一个文件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">'./components/HelloWorld'</span></span><br><span class="line"><span class="keyword">import</span> HelloEarth <span class="keyword">from</span> <span class="string">'./components/Helloearth'</span></span><br><span class="line"></span><br><span class="line">Vue.use(router) <span class="comment">//引入并且使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> router(&#123;</span><br><span class="line">    routes: [&#123;</span><br><span class="line">        path: <span class="string">'/helloworld'</span>, <span class="comment">//指定要跳转的路径</span></span><br><span class="line">        component: HelloWorld <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        path: <span class="string">'/helloearth'</span>, <span class="comment">//指定要跳转的路径</span></span><br><span class="line">        component: HelloEarth <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -348,7 +348,11 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  &lt;router-link :to=<span class="string">"&#123;path: '/helloearth',query:&#123;msg: 只有一个地球&#125;&#125;"</span>&gt;</span><br><span class="line">    &lt;/router-link&gt;</span><br><span class="line">  <span class="comment">//方式等同于./helloworld?name=xxx&amp;count=xxx</span></span><br><span class="line">  </span><br><span class="line">coust couter = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes:[</span><br><span class="line">  &#123;path: <span class="string">'/search'</span>, component: SearchUser, props: (route) =&gt;(&#123;</span><br><span class="line">  query: route.query.q &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 
-<h1 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h1>
+<h1 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h1><p>导航守卫就是路由跳转过程中的一些钩子函数.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//钩子函数执行后输出的顺序</span></span><br><span class="line">全局前置守卫: beforeEach</span><br><span class="line">路由beforeEnter守卫</span><br><span class="line">组件路由守卫beforeRouteEnter,此时<span class="keyword">this</span>并不指向该组件实例</span><br><span class="line">全局解析守卫: beforeResolve</span><br><span class="line">全局后置守卫: aferEach</span><br><span class="line">组件生命周期: beforeCreate</span><br><span class="line">组件生命周期: created</span><br><span class="line">组件生命周期: borforeMount</span><br><span class="line">组件生命周期: mounted</span><br><span class="line">组件生命周期: beforeRouteEnter的next回调</span><br></pre></td></tr></table></figure>
+
+<p>导航守卫分为：<strong>全局的、单个路由独享的、组件内</strong>的三种.</p>
+
     </div>
 
     
@@ -444,7 +448,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -561,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router路由"><span class="nav-number">1.</span> <span class="nav-text">vue-router路由</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路由跳转"><span class="nav-number">1.1.</span> <span class="nav-text">路由跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-router路由参数传递"><span class="nav-number">1.2.</span> <span class="nav-text">vue-router路由参数传递</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由守卫"><span class="nav-number">2.</span> <span class="nav-text">路由守卫</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router路由"><span class="nav-number">1.</span> <span class="nav-text">vue-router路由</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#路由跳转"><span class="nav-number">1.1.</span> <span class="nav-text">路由跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-router路由参数传递"><span class="nav-number">1.2.</span> <span class="nav-text">vue-router路由参数传递</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导航守卫"><span class="nav-number">2.</span> <span class="nav-text">导航守卫</span></a></li></ol></div>
             
 
           </div>

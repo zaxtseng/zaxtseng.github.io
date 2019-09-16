@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="Vuex介绍每一个Vuex应用的核心就是store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态(state)。Vuex和单纯的全局对象有以下两点不同：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-15T06:25:00.321Z">
+<meta property="og:updated_time" content="2019-09-15T08:15:39.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vuex">
 <meta name="twitter:description" content="Vuex介绍每一个Vuex应用的核心就是store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态(state)。Vuex和单纯的全局对象有以下两点不同：">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-15 14:25:00" itemprop="dateModified" datetime="2019-09-15T14:25:00+08:00">2019-09-15</time>
+                <time title="修改时间：2019-09-15 16:15:39" itemprop="dateModified" datetime="2019-09-15T16:15:39+08:00">2019-09-15</time>
               </span>
             
           
@@ -335,14 +335,21 @@
 <li>调用方式不同,前者<code>this.$store.commit(&#39;xxx&#39;)</code>.后者<code>this.$store.dispatch(xxx)</code></li>
 <li>函数要求不同.mutations中只能有同步操作,actions中可以有异步操作.</li>
 </ol>
-<h2 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h2><p>有时需要对mutations处理后的state进行处理.</p>
+<h2 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h2><p>有时需要对mutations处理后的state进行处理.<br>可以当做vuex的计算属性(computed).</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">    getNum(state)&#123;</span><br><span class="line">        <span class="comment">//因为要处理state,自然传入state</span></span><br><span class="line">        <span class="keyword">return</span> state.num &gt; <span class="number">0</span> ? state.num : <span class="number">0</span></span><br><span class="line">        <span class="comment">//这里是防止一直减出现负数进行的处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>获取状态也就改为</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件中</span></span><br><span class="line">computed: &#123;</span><br><span class="line">    getCount()&#123;</span><br><span class="line">        <span class="comment">//return this.$store.state.num</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.getNu</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="Vuex状态管理流程"><a href="#Vuex状态管理流程" class="headerlink" title="Vuex状态管理流程"></a>Vuex状态管理流程</h1><p>view–&gt;actions–&gt;mutations–&gt;state–&gt;view</p>
+<h1 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h1><p>VueX中<br><code>state</code>相当于<code>data</code><br><code>getter</code>相当于<code>computed</code><br><code>mutation</code>相当于<code>methods</code><br><code>action</code>是异步的<code>mutation</code><br><code>module</code>模块将上述进行封装分块</p>
+<h2 id="mapState和mapGetters"><a href="#mapState和mapGetters" class="headerlink" title="mapState和mapGetters"></a>mapState和mapGetters</h2><p><code>mapState</code>辅助函数仅仅是将store中的<code>getter</code>映射到局部计算属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...Vuex.mapState([<span class="string">'firstName'</span>, <span class="string">'lastName'</span>])</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line">firstName()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.firstName</span><br><span class="line">&#125;,</span><br><span class="line">lastName()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.lastName</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">..Vuex.mapGetters([<span class="string">'fullName'</span>])</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line">fullName()&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.fullName</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>store.commit(‘xxFirstName’, ‘jirengu’)<br>提交mutation中xxFirstName的方法。<br>第一个参数是state中有的，后添加的jirengu是载荷payload。</p>
+<h2 id="提交载荷（payload）"><a href="#提交载荷（payload）" class="headerlink" title="提交载荷（payload）"></a>提交载荷（payload）</h2><p>向store.commit传入额外参数，即mutation的载荷<br>mutations:{<br>increment (state, payload){<br>state.count += payload.amount<br>}<br>}<br>store.commit(‘increment’, {<br>amount: 10<br>})</p>
+<p>actions中传入第一个参数是context，第二个是payload<br>触发action<br>store.dispatch(‘increment’)</p>
+<h1 id="moudle-模块化"><a href="#moudle-模块化" class="headerlink" title="moudle(模块化)"></a>moudle(模块化)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line">  state: &#123; ... &#125;,</span><br><span class="line">  mutations: &#123; ... &#125;,</span><br><span class="line">  actions: &#123; ... &#125;,</span><br><span class="line">  getters: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> moduleB = &#123;</span><br><span class="line">  state: &#123; ... &#125;,</span><br><span class="line">  mutations: &#123; ... &#125;,</span><br><span class="line">  actions: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  modules: &#123;</span><br><span class="line">    a: moduleA,</span><br><span class="line">    b: moduleB</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">store.state.a <span class="comment">// -&gt; moduleA 的状态</span></span><br><span class="line">store.state.b <span class="comment">// -&gt; moduleB 的状态</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -378,6 +385,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/09/15/Vue服务端渲染/" rel="prev" title="Vue服务端渲染">
+                  Vue服务端渲染 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -434,7 +445,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -551,7 +562,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex介绍"><span class="nav-number">1.</span> <span class="nav-text">Vuex介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex之store"><span class="nav-number">1.1.</span> <span class="nav-text">Vuex之store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getters"><span class="nav-number">1.2.</span> <span class="nav-text">getters</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex状态管理流程"><span class="nav-number">2.</span> <span class="nav-text">Vuex状态管理流程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex介绍"><span class="nav-number">1.</span> <span class="nav-text">Vuex介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex之store"><span class="nav-number">1.1.</span> <span class="nav-text">Vuex之store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getters"><span class="nav-number">1.2.</span> <span class="nav-text">getters</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex状态管理流程"><span class="nav-number">2.</span> <span class="nav-text">Vuex状态管理流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新增"><span class="nav-number">3.</span> <span class="nav-text">新增</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mapState和mapGetters"><span class="nav-number">3.1.</span> <span class="nav-text">mapState和mapGetters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交载荷（payload）"><span class="nav-number">3.2.</span> <span class="nav-text">提交载荷（payload）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#moudle-模块化"><span class="nav-number">4.</span> <span class="nav-text">moudle(模块化)</span></a></li></ol></div>
             
 
           </div>
