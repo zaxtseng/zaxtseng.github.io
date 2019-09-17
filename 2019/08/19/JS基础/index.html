@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="数据类型number, boolean, string, undefined, null, object, symbol原始类型，number, string, boolean。指保存在栈内存里的简单数据段引用类型，对象。又可分为狭义的对象，数组，函数，正则。指保存在堆内存中的对象">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-17T05:06:28.341Z">
+<meta property="og:updated_time" content="2019-09-17T05:26:11.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS基础">
 <meta name="twitter:description" content="数据类型number, boolean, string, undefined, null, object, symbol原始类型，number, string, boolean。指保存在栈内存里的简单数据段引用类型，对象。又可分为狭义的对象，数组，函数，正则。指保存在堆内存中的对象">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-17 13:06:28" itemprop="dateModified" datetime="2019-09-17T13:06:28+08:00">2019-09-17</time>
+                <time title="修改时间：2019-09-17 13:26:11" itemprop="dateModified" datetime="2019-09-17T13:26:11+08:00">2019-09-17</time>
               </span>
             
           
@@ -556,7 +556,7 @@
 <li>scrollY：滚动条纵向偏移</li>
 </ol>
 <p>这两个值随着滚动位置变化而变化</p>
-<p><strong>window.frames</strong>返回一个类似数组的对象，成员为页面内的所有框架，包括frame元素和iframe元素。需要注意的是，window.frames的每个成员对应的是框架内的窗口（即框架的window对象），获取每个框架的DOM树，需要使用<code>window.frames[0].document</code>。</p>
+<p><strong>window.frames</strong>返回一个类似数组的对象，成员为页面内的所有框架，包括frame元素和iframe元素。<br>需要注意的是，window.frames的每个成员对应的是框架内的窗口（即框架的window对象），获取每个框架的DOM树，需要使用<code>window.frames[0].document</code>。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> iframe = <span class="built_in">window</span>.getElementsByTagName(<span class="string">"iframe"</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> iframe_title = iframe.contentWindow.title;</span><br></pre></td></tr></table></figure>
 
 <p>上面代码用于获取框架页面的标题。</p>
