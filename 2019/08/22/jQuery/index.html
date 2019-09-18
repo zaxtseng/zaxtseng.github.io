@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="选择器   jQuery基本选择器 解释    $(‘*‘) 匹配所有元素   $(‘#id’) id选择器   $(‘.class’) 类选择器   $(‘element’) 标签选择器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-17T11:45:24.975Z">
+<meta property="og:updated_time" content="2019-09-17T13:50:10.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery">
 <meta name="twitter:description" content="选择器   jQuery基本选择器 解释    $(‘*‘) 匹配所有元素   $(‘#id’) id选择器   $(‘.class’) 类选择器   $(‘element’) 标签选择器">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-17 19:45:24" itemprop="dateModified" datetime="2019-09-17T19:45:24+08:00">2019-09-17</time>
+                <time title="修改时间：2019-09-17 21:50:10" itemprop="dateModified" datetime="2019-09-17T21:50:10+08:00">2019-09-17</time>
               </span>
             
           
@@ -810,10 +810,10 @@
 <ol>
 <li>没参数返回第一个元素index</li>
 <li>如果参数是DOM对象或jQuery对象,则返回参数在集合中的index</li>
-<li>如果参数是选择器,返回第一个匹配元素的index,没有找到返回-1<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> listItem = $(<span class="string">'.bar'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Index:'</span> + $(<span class="string">'li'</span>).index( listItem ))</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>如果参数是选择器,返回第一个匹配元素的index,没有找到返回-1</li>
 </ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> listItem = $(<span class="string">'.bar'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Index:'</span> + $(<span class="string">'li'</span>).index( listItem ))</span><br></pre></td></tr></table></figure>
+
 <h4 id="ready-handler"><a href="#ready-handler" class="headerlink" title=".ready(handler)"></a>.ready(handler)</h4><p>当DOM加载完毕,执行.<br>下面两种等价</p>
 <ul>
 <li><code>$(document).ready(handler)</code></li>
@@ -837,10 +837,10 @@
 <h2 id="jQuery动画"><a href="#jQuery动画" class="headerlink" title="jQuery动画"></a>jQuery动画</h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="hide-duration-easting-fn"><a href="#hide-duration-easting-fn" class="headerlink" title=".hide([duration][,easting][,fn])"></a>.hide([duration][,easting][,fn])</h4><ul>
 <li>duration: 三种预定速度之一的字符串(“slow”,”normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)</li>
 <li>easing: 用来指定切换效果，默认是”swing”，可用参数”linear”</li>
-<li>fn: 在动画完成时执行的函数，每个元素执行一次。<br>用于隐藏元素,没有参数等同于直接设置display属性<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.target'</span>).hide()</span><br><span class="line"><span class="comment">//等同于$('.target').css('display','none')</span></span><br></pre></td></tr></table></figure>
-
-</li>
+<li>fn: 在动画完成时执行的函数，每个元素执行一次。<br>用于隐藏元素,没有参数等同于直接设置display属性</li>
 </ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.target'</span>).hide()</span><br><span class="line"><span class="comment">//等同于$('.target').css('display','none')</span></span><br></pre></td></tr></table></figure>
+
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).hide(<span class="number">300</span>, <span class="string">'linear'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Animation complete.'</span>)</span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
 
 <h4 id="show-duration-easing-fn"><a href="#show-duration-easing-fn" class="headerlink" title=".show([duration][,easing][,fn])"></a>.show([duration][,easing][,fn])</h4><p>显示元素,用法类似hide</p>
@@ -862,23 +862,20 @@
 <li>params:一组包含作为动画属性和终值的样式属性和及其值的集合</li>
 <li>speed:三种预定速度之一的字符串(“slow”,”normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)</li>
 <li>easing:要使用的擦除效果的名称(需要插件支持).默认jQuery提供”linear” 和 “swing”.</li>
-<li>fn:在动画完成时执行的函数，每个元素执行一次。<h4 id="finish"><a href="#finish" class="headerlink" title=".finish"></a>.finish</h4>停止当前动画，并清除动画队列中所有未完成的动画,最终展示动画队列最后一帧的最终状态<h4 id="stop-clearQueue-jumpToEnd"><a href="#stop-clearQueue-jumpToEnd" class="headerlink" title=".stop( [clearQueue] [,jumpToEnd])"></a>.stop( [clearQueue] [,jumpToEnd])</h4>停止当前正在运行的动画</li>
+<li>fn:在动画完成时执行的函数，每个元素执行一次。</li>
 </ul>
+<h4 id="finish"><a href="#finish" class="headerlink" title=".finish"></a>.finish</h4><p>停止当前动画，并清除动画队列中所有未完成的动画,最终展示动画队列最后一帧的最终状态</p>
+<h4 id="stop-clearQueue-jumpToEnd"><a href="#stop-clearQueue-jumpToEnd" class="headerlink" title=".stop( [clearQueue] [,jumpToEnd])"></a>.stop( [clearQueue] [,jumpToEnd])</h4><p>停止当前正在运行的动画</p>
 <h1 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h1><h3 id="jQuery-ajax-url-settings"><a href="#jQuery-ajax-url-settings" class="headerlink" title="jQuery.ajax(url,[settings])"></a>jQuery.ajax(url,[settings])</h3><p>jQuery底层AJAX实现.<code>$.ajax()</code>返回其创建的XMLHttpRequest对象。<br>大多数情况下你无需直接操作该函数，除非你需要操作不常用的选项，以获得更多的灵活性。<br>最简单的情况下，<code>$.ajax()</code>可以不带任何参数直接使用。<br>注意，所有的选项都可以通过<code>$.ajaxSetup()</code>函数来全局设置。<br><strong>回调函数</strong><br>如果要处理<code>$.ajax()</code>得到的数据，则需要使用回调函数。beforeSend、error、dataFilter、success、complete。</p>
 <ul>
-<li><p>beforeSend 在发送请求之前调用，并且传入一个XMLHttpRequest作为参数。</p>
-</li>
-<li><p>error 在请求出错时调用。传入XMLHttpRequest对象，描述错误类型的字符串以及一个异常对象（如果有的话）</p>
-</li>
-<li><p>dataFilter 在请求成功之后调用。传入返回的数据以及”<code>dataType</code>“参数的值。<br>并且必须返回新的数据（可能是处理过的）传递给success回调函数。</p>
-</li>
-<li><p>success 当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。</p>
-</li>
-<li><p>complete 当请求完成之后调用这个函数，无论成功或失败。传入XMLHttpRequest对象，以及一个包含成功或错误代码的字符串。</p>
+<li>beforeSend 在发送请求之前调用，并且传入一个XMLHttpRequest作为参数。</li>
+<li>error 在请求出错时调用。传入XMLHttpRequest对象，描述错误类型的字符串以及一个异常对象（如果有的话）</li>
+<li>dataFilter 在请求成功之后调用。传入返回的数据以及”<code>dataType</code>“参数的值。<br>并且必须返回新的数据（可能是处理过的）传递给success回调函数。</li>
+<li>success 当请求之后调用。传入返回后的数据，以及包含成功代码的字符串。</li>
+<li>complete 当请求完成之后调用这个函数，无论成功或失败。传入XMLHttpRequest对象，以及一个包含成功或错误代码的字符串。</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  url: <span class="string">'test.com'</span>,</span><br><span class="line">  type: <span class="string">'GET'</span>,</span><br><span class="line">  datatype: json,</span><br><span class="line">  data: &#123;</span><br><span class="line">    name: <span class="string">'tom'</span>,</span><br><span class="line">    age: <span class="string">'12'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &lt;!-- success: <span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result)</span><br><span class="line">  &#125; --&gt;</span><br><span class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(result)</span><br><span class="line">&#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params">jqXHR, textStatus</span>)</span>&#123;</span><br><span class="line">  consloe.log(textStatus)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
 <p>url: 一个用来包含发送请求的URL字符串。<br>settings: AJAX请求设置。所有选项都是可选的。</p>
 <h5 id="seting中的设置"><a href="#seting中的设置" class="headerlink" title="seting中的设置"></a>seting中的设置</h5><ol>
 <li><code>async</code>：默认设置下，所有请求均为异步请求（也就是说这是默认设置为 true ）。<br>如果需要发送同步请求，请将此选项设置为 false</li>
