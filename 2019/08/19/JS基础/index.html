@@ -56,14 +56,14 @@
 </script>
 
   <meta name="description" content="数据类型number, boolean, string, undefined, null, object, symbol原始类型，number, string, boolean。指保存在栈内存里的简单数据段引用类型，对象。又可分为狭义的对象，数组，函数，正则。指保存在堆内存中的对象">
-<meta name="keywords" content="javascript, Vue, HTML5">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS基础">
 <meta property="og:url" content="http://yoursite.com/2019/08/19/JS基础/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="数据类型number, boolean, string, undefined, null, object, symbol原始类型，number, string, boolean。指保存在栈内存里的简单数据段引用类型，对象。又可分为狭义的对象，数组，函数，正则。指保存在堆内存中的对象">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-18T07:30:14.467Z">
+<meta property="og:updated_time" content="2019-09-20T06:33:17.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS基础">
 <meta name="twitter:description" content="数据类型number, boolean, string, undefined, null, object, symbol原始类型，number, string, boolean。指保存在栈内存里的简单数据段引用类型，对象。又可分为狭义的对象，数组，函数，正则。指保存在堆内存中的对象">
@@ -300,9 +300,29 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 15:30:14" itemprop="dateModified" datetime="2019-09-18T15:30:14+08:00">2019-09-18</time>
+                <time title="修改时间：2019-09-20 14:33:17" itemprop="dateModified" datetime="2019-09-20T14:33:17+08:00">2019-09-20</time>
               </span>
             
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JS/JS基础/" itemprop="url" rel="index"><span itemprop="name">JS基础</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -363,6 +383,7 @@
 <li>封装数据</li>
 <li>暂存数据</li>
 </ol>
+<p>面试官想听的版本:<br><strong>什么是闭包?</strong><br>由于在JS中，变量的作用域属于函数作用域，在函数执行后作用域就会被清理、内存也随之回收，但是由于闭包是建立在一个函数内部的子函数，由于其可访问上级作用域的原因，即使上级函数执行完，作用域也不会随之销毁，这时的子函数——也就是闭包，便拥有了访问上级作用域中的变量的权限，即使上级函数执行完后作用域内的值也不会被销毁。<br><strong>闭包解决了什么问题?</strong><br>由于闭包可以缓存上级作用域，那么就使得函数外部打破了“函数作用域”的束缚，可以访问函数内部的变量。以平时使用的Ajax成功回调为例，这里其实就是个闭包，由于上述的特性，回调就拥有了整个上级作用域的访问和操作能力，提高了极大的便利。开发者不用去写钩子函数来操作上级函数作用域内部的变量了。<br><strong>闭包的应用?</strong><br>闭包随处可见，一个Ajax请求的成功回调，一个事件绑定的回调方法，一个setTimeout的延时回调，或者一个函数内部返回另一个匿名函数，这些都是闭包。简而言之，无论使用何种方式对函数类型的值进行传递，当函数在别处被调用时都有闭包的身影。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">car</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> speed = <span class="number">0</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    speed++</span><br><span class="line">    <span class="built_in">console</span>.log(speed)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> speedUp = car()</span><br><span class="line">speedUp()   <span class="comment">//1</span></span><br><span class="line">speedUp()   <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
 
 <p>如果没有这个闭包，函数执行后，里面speed变量就会被清理掉。但我们声明了fn这个函数，并把它返回出来赋值给新的变量speedup。因为speedup是全局变量，是一直存在的，故这个fn函数就一直存在，speed变量也不会被清理</p>
@@ -596,6 +617,15 @@
       
 
       <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i> javascript</a>
+            
+          </div>
+        
 
         
 
@@ -671,7 +701,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -712,7 +742,7 @@
         
           
         
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -729,7 +759,23 @@
         
           
         
-        <span class="site-state-item-count">1</span>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
