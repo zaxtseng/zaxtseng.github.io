@@ -320,7 +320,7 @@
 <p>什么是 XSS 攻击？如何防范 XSS 攻击？什么是 CSP？</p>
 </blockquote><a id="more"></a>
 <p>XSS 简单点来说，就是攻击者想尽一切办法将可以执行的代码注入到网页中。<br>XSS 可以分为多种类型，但是总体上我认为分为两类：持久型和非持久型。<br>持久型也就是攻击的代码被服务端写入进数据库中，这种攻击危害性很大，因为如果网站访问量很大的话，就会导 致大量正常访问页面的用户都受到攻击。<br>举个例子，对于评论功能来说，就得防范持久型 XSS 攻击，因为我可以在评论中输入以下内容<code>&lt;script&gt;alert(2)&lt;/script&gt;</code>.<br>这种情况如果前后端没有做好防御的话，这段评论就会被存储到数据库中，这样每个打开该页面的用户都会被攻击到。<br>非持久型相比于前者危害就小的多了，一般通过修改 URL 参数的方式加入攻击代码，诱导用户访问链接从而进行攻击。<br>举个例子，如果页面需要从 URL 中获取某些参数作为内容的话，不经过过滤就会导致攻击代码被执行.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- http:<span class="comment">//www.domain.com?name=&lt;script&gt;alert(1)&lt;/script&gt; --&gt; </span></span><br><span class="line">&lt;div&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- http:<span class="comment">//www.domain.com?name=&lt;script&gt;alert(1)&lt;/script&gt; --&gt; </span></span><br><span class="line">&lt;div&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>但是对于这种攻击方式来说，如果用户使用 Chrome 这类浏览器的话，浏览器就能自动帮助用户防御攻击。但是我 们不能因此就不防御此类攻击了，因为我不能确保用户都使用了该类浏览器.</p>
 <h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><p>对于 XSS 攻击来说，通常有两种方式可以用来防御。</p>
@@ -462,7 +462,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

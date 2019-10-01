@@ -352,7 +352,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.container&#123;</span><br><span class="line">  align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br><span class="line">分别是整体靠上,整体靠下,整体居中,整体垂直均匀排列,整体均匀分布且垂直两端保留间距一半空间,整体垂直拉伸占用剩余空间</span><br></pre></td></tr></table></figure>
 
 <h2 id="用在子元素上的属性"><a href="#用在子元素上的属性" class="headerlink" title="用在子元素上的属性"></a>用在子元素上的属性</h2><h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p>默认情况下flex order会按照书写顺序排列,可以通过order属性改变,数值小的在前面,也可以是负数.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  order: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;</span><br><span class="line">  order: <span class="xml"><span class="tag">&lt;<span class="name">integer</span>&gt;</span>;</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p><code>.item {flex-grow: 1}</code><br>按比例瓜分父元素剩余的空间,1即分一份.不写默认是0</p>
 <h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>基准宽度</p>
@@ -360,7 +360,7 @@
 <h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><blockquote>
 <p><code>flex-grow</code>,<code>flex-shrink</code>,<code>flex-basis</code>的缩写</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item&#123;</span><br><span class="line">  flex: none | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt; || &lt;''flex-basis'&gt;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item&#123;</span><br><span class="line">  flex: none | [ <span class="xml"><span class="tag">&lt;<span class="name">'flex-grow'</span>&gt;</span> <span class="tag">&lt;<span class="name">'flex-shrink'</span>&gt;</span> || <span class="tag">&lt;<span class="name">''flex-basis'</span>&gt;</span>]</span></span><br><span class="line"><span class="xml">&#125;</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="aglin-self"><a href="#aglin-self" class="headerlink" title="aglin-self"></a>aglin-self</h3><p>单独修改自身的属性</p>
 <h1 id="Grid布局"><a href="#Grid布局" class="headerlink" title="Grid布局"></a>Grid布局</h1><h3 id="父元素Grid-container的属性"><a href="#父元素Grid-container的属性" class="headerlink" title="父元素Grid container的属性"></a>父元素Grid container的属性</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><p>将元素定义为gird container,并为其建立新的网格格式化上下文</p>
@@ -485,7 +485,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
