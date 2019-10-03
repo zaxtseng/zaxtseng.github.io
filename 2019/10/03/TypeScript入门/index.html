@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="简介TypeScript具有类型系统，且是JavaScript的超集。 它可以编译成普通的JavaScript代码。 TypeScript支持任意浏览器，任意环境，任意系统并且是开源的。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-03T13:42:33.309Z">
+<meta property="og:updated_time" content="2019-10-03T13:46:43.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript入门">
 <meta name="twitter:description" content="简介TypeScript具有类型系统，且是JavaScript的超集。 它可以编译成普通的JavaScript代码。 TypeScript支持任意浏览器，任意环境，任意系统并且是开源的。">
@@ -289,7 +289,7 @@
                 
               
 
-              <time title="创建时间：2019-10-03 16:00:08 / 修改时间：21:42:33" itemprop="dateCreated datePublished" datetime="2019-10-03T16:00:08+08:00">2019-10-03</time>
+              <time title="创建时间：2019-10-03 16:00:08 / 修改时间：21:46:43" itemprop="dateCreated datePublished" datetime="2019-10-03T16:00:08+08:00">2019-10-03</time>
             </span>
           
             
@@ -351,8 +351,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>)</span><br><span class="line"></span><br><span class="line">request(<span class="string">'http://api.komavideo.com/news/list'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, response, body</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(error)&#123;</span><br><span class="line">        <span class="built_in">console</span>.error(error)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(body)</span><br><span class="line">        <span class="keyword">var</span> body = <span class="built_in">JSON</span>.parse(body)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; body.length; i++)&#123;</span><br><span class="line">            <span class="keyword">var</span> item = body[i]</span><br><span class="line">            <span class="built_in">console</span>.log(item.title)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//直接使用是会报错的</span></span><br></pre></td></tr></table></figure>
 
 <p>需要添加tsd文件</p>
-<h2 id="如何找tsd文件"><a href="#如何找tsd文件" class="headerlink" title="如何找tsd文件"></a>如何找tsd文件</h2><p>网站: <a href="http://microsoft.github.io/TypeSearch" target="_blank" rel="noopener">http://microsoft.github.io/TypeSearch</a><br>直接搜索</p>
-<h2 id="导入tsd文件"><a href="#导入tsd文件" class="headerlink" title="导入tsd文件"></a>导入tsd文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save @types/request</span><br></pre></td></tr></table></figure>
+<h2 id="如何找tsd文件"><a href="#如何找tsd文件" class="headerlink" title="如何找tsd文件"></a>如何找tsd文件</h2><p>网站: <code>http://microsoft.github.io/TypeSearch</code><br>直接搜索</p>
+<h2 id="导入tsd文件"><a href="#导入tsd文件" class="headerlink" title="导入tsd文件"></a>导入tsd文件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save @types/request</span><br></pre></td></tr></table></figure>
 
 <h1 id="函数的使用"><a href="#函数的使用" class="headerlink" title="函数的使用"></a>函数的使用</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//格式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fname</span>(<span class="params">param1:type, param2:type,...</span>) : <span class="title">return_type</span> </span>&#123;</span><br><span class="line">    <span class="comment">//函数内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
