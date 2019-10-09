@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="作用提高代码复用性组件使用方法全局注册123456789Vue.component(&apos;button-counter&apos;,&amp;#123;    data: function()&amp;#123;        return &amp;#123;            count: 0        &amp;#125;    &amp;#125;,    template: &apos;&amp;lt;button v-on:click=&quot;count">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-25T01:38:18.725Z">
+<meta property="og:updated_time" content="2019-10-09T11:31:29.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue组件">
 <meta name="twitter:description" content="作用提高代码复用性组件使用方法全局注册123456789Vue.component(&apos;button-counter&apos;,&amp;#123;    data: function()&amp;#123;        return &amp;#123;            count: 0        &amp;#125;    &amp;#125;,    template: &apos;&amp;lt;button v-on:click=&quot;count">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-25 09:38:18" itemprop="dateModified" datetime="2019-09-25T09:38:18+08:00">2019-09-25</time>
+                <time title="修改时间：2019-10-09 19:31:29" itemprop="dateModified" datetime="2019-10-09T19:31:29+08:00">2019-10-09</time>
               </span>
             
           
@@ -319,7 +319,7 @@
         <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>提高代码复用性</p><h1 id="组件使用方法"><a href="#组件使用方法" class="headerlink" title="组件使用方法"></a>组件使用方法</h1><h2 id="全局注册"><a href="#全局注册" class="headerlink" title="全局注册"></a>全局注册</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'button-counter'</span>,&#123;</span><br><span class="line">    data: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            count: <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">'&lt;button v-on:click="count++"&gt;You clicked me &#123;&#123; count &#125;&#125; times.&lt;/button&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><a id="more"></a>
 
 
-<p>优点：所有的nue实例都可以用<br>缺点：权限太大，容错率降低 </p>
+<p>优点：所有的vue实例都可以用<br>缺点：权限太大，容错率降低 </p>
 <h2 id="局部注册"><a href="#局部注册" class="headerlink" title="局部注册"></a>局部注册</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components: &#123;</span><br><span class="line">        <span class="string">'my-component'</span>: &#123;</span><br><span class="line">            template: <span class="string">'&lt;div&gt;我是组件的内容&lt;/div&gt;'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="组件的复用"><a href="#组件的复用" class="headerlink" title="组件的复用"></a>组件的复用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"components-demo"</span>&gt;</span><br><span class="line">  &lt;button-counter&gt;<span class="xml"><span class="tag">&lt;/<span class="name">button-counter</span>&gt;</span></span></span><br><span class="line">  &lt;button-counter&gt;<span class="xml"><span class="tag">&lt;/<span class="name">button-counter</span>&gt;</span></span></span><br><span class="line">  &lt;button-counter&gt;<span class="xml"><span class="tag">&lt;/<span class="name">button-counter</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
@@ -518,7 +518,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -604,7 +604,9 @@
         
           
         
-        <span class="site-state-item-count">13</span>
+          
+        
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>

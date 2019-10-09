@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="Vuex 介绍每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态(state)。Vuex 和单纯的全局对象有以下两点不同：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-24T03:24:35.846Z">
+<meta property="og:updated_time" content="2019-10-09T11:20:29.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vuex">
 <meta name="twitter:description" content="Vuex 介绍每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态(state)。Vuex 和单纯的全局对象有以下两点不同：">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-24 11:24:35" itemprop="dateModified" datetime="2019-09-24T11:24:35+08:00">2019-09-24</time>
+                <time title="修改时间：2019-10-09 19:20:29" itemprop="dateModified" datetime="2019-10-09T19:20:29+08:00">2019-10-09</time>
               </span>
             
           
@@ -340,7 +340,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getters: &#123;</span><br><span class="line">    getNum(state)&#123;</span><br><span class="line">        <span class="comment">//因为要处理state,自然传入state</span></span><br><span class="line">        <span class="keyword">return</span> state.num &gt; <span class="number">0</span> ? state.num : <span class="number">0</span></span><br><span class="line">        <span class="comment">//这里是防止一直减出现负数进行的处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>获取状态也就改为</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件中</span></span><br><span class="line">computed: &#123;</span><br><span class="line">    getCount()&#123;</span><br><span class="line">        <span class="comment">//return this.$store.state.num</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.getNu</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件中</span></span><br><span class="line">computed: &#123;</span><br><span class="line">    getCount()&#123;</span><br><span class="line">        <span class="comment">//return this.$store.state.num</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.getNum</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="Vuex-状态管理流程"><a href="#Vuex-状态管理流程" class="headerlink" title="Vuex 状态管理流程"></a>Vuex 状态管理流程</h1><p>view–&gt;actions–&gt;mutations–&gt;state–&gt;view</p>
 <h1 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h1><p>VueX 中<br><code>state</code>相当于<code>data</code><br><code>getter</code>相当于<code>computed</code><br><code>mutation</code>相当于<code>methods</code><br><code>action</code>是异步的<code>mutation</code><br><code>module</code>模块将上述进行封装分块</p>
@@ -452,7 +452,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -538,7 +538,9 @@
         
           
         
-        <span class="site-state-item-count">13</span>
+          
+        
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
