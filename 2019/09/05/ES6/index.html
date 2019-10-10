@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量在全局作用域下使用let和const声明变量，变量并不会挂载到window">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-25T01:34:13.753Z">
+<meta property="og:updated_time" content="2019-10-10T06:19:22.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6">
 <meta name="twitter:description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量在全局作用域下使用let和const声明变量，变量并不会挂载到window">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-25 09:34:13" itemprop="dateModified" datetime="2019-09-25T09:34:13+08:00">2019-09-25</time>
+                <time title="修改时间：2019-10-10 14:19:22" itemprop="dateModified" datetime="2019-10-10T14:19:22+08:00">2019-10-10</time>
               </span>
             
           
@@ -414,6 +414,10 @@
 <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><ol>
 <li>扩展运算符<code>...</code></li>
 </ol>
+<p>主要作用是将数组或对象进行展开</p>
+<blockquote>
+<p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
+</blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="built_in">console</span>.log(...a)  <span class="comment">// 1, 2,这三个点相当于脱壳,把数组的壳拿掉</span></span><br><span class="line"><span class="keyword">var</span> b = [...a, <span class="number">3</span>]</span><br><span class="line">b <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = b.concat([<span class="number">4</span>, <span class="number">5</span>]) <span class="comment">//b拼接[4,5]变成[1,2,3,4,5]</span></span><br><span class="line"><span class="keyword">var</span> d = [...b, <span class="number">4</span>, <span class="number">5</span>] <span class="comment">//直接把脱壳后的1,2,3放入数组中</span></span><br></pre></td></tr></table></figure>
 
 <ol start="2">
