@@ -64,7 +64,7 @@
 <meta property="og:description" content="模块化初探模块化系统的风格模块化的价值 最主要的目的：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/09/20/vY3hdHTJVUNgtjo.jpg">
-<meta property="og:updated_time" content="2019-09-25T01:32:40.051Z">
+<meta property="og:updated_time" content="2019-10-10T13:35:57.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端工程化">
 <meta name="twitter:description" content="模块化初探模块化系统的风格模块化的价值 最主要的目的：">
@@ -302,7 +302,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-25 09:32:40" itemprop="dateModified" datetime="2019-09-25T09:32:40+08:00">2019-09-25</time>
+                <time title="修改时间：2019-10-10 21:35:57" itemprop="dateModified" datetime="2019-10-10T21:35:57+08:00">2019-10-10</time>
               </span>
             
           
@@ -352,10 +352,11 @@
 <li>全局对象的冲突</li>
 <li>加载的顺序很重要</li>
 <li>开发者需要解决模块的依赖问题</li>
-<li>在大项目中模块非常多难以维护<h3 id="CommonJs-同步的require"><a href="#CommonJs-同步的require" class="headerlink" title="CommonJs: 同步的require"></a>CommonJs: 同步的require</h3>使用同步的<code>require</code>方法来加载依赖和返回暴露的接口.一个模块可以通过<code>exports</code>对象添加属性,或者设置<code>module.exports</code>的值来描述暴露对象.<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'moudle'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'../file.js'</span>)</span><br><span class="line">exports.doStuff = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">moudle.exports = someValue</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>在大项目中模块非常多难以维护<h3 id="CommonJs-同步的require"><a href="#CommonJs-同步的require" class="headerlink" title="CommonJs: 同步的require"></a>CommonJs: 同步的require</h3>CommonJs 是 Node 独有的规范，浏览器中使用就需要用到 Browserify 解析了。</li>
 </ol>
+<p>使用同步的<code>require</code>方法来加载依赖和返回暴露的接口.一个模块可以通过<code>exports</code>对象添加属性,或者设置<code>module.exports</code>的值来描述暴露对象.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">'moudle'</span>)</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'../file.js'</span>)</span><br><span class="line">exports.doStuff = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">moudle.exports = someValue</span><br></pre></td></tr></table></figure>
+
 <p>优点: </p>
 <ol>
 <li>服务端代码可以被复用.</li>
