@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="媒体查询media-query当媒体查询为true时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回false， 标签上带有媒体查询的样式表仍将被下载 （只不过不会被应用）。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-10T11:23:24.011Z">
+<meta property="og:updated_time" content="2019-10-22T10:19:38.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端适配">
 <meta name="twitter:description" content="媒体查询media-query当媒体查询为true时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回false， 标签上带有媒体查询的样式表仍将被下载 （只不过不会被应用）。">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-10 19:23:24" itemprop="dateModified" datetime="2019-10-10T19:23:24+08:00">2019-10-10</time>
+                <time title="修改时间：2019-10-22 18:19:38" itemprop="dateModified" datetime="2019-10-22T18:19:38+08:00">2019-10-22</time>
               </span>
             
           
@@ -327,7 +327,7 @@
 </ol>
 <h2 id="viewport-详解"><a href="#viewport-详解" class="headerlink" title="viewport 详解"></a>viewport 详解</h2><p>在移动端有三种类型的 viewport: layoutviewport、visualviewport、idealviewport。具体解释如下：</p>
 <p><code>layoutviewport</code>:  大于实际屏幕， 元素的宽度继承于 layoutviewport，用于保证网站的外观特性与桌面浏览器一样。layoutviewport 到底多宽，每个浏览器不同。iPhone 的 safari 为 980px，通过 document.documentElement.clientWidth 获取。<br><code>visualviewport</code>: 当前显示在屏幕上的页面，即浏览器可视区域的宽度。<br><code>idealviewport</code>: 为浏览器定义的可完美适配移动端的理想 viewport，固定不变，可以认为是设备视口宽度。比如 iphone 7 为 375px, iphone 7p 为 414px。</p>
-<h2 id="viewport设置"><a href="#viewport设置" class="headerlink" title="viewport设置"></a>viewport设置</h2><p><code>&lt;meta name=&#39;viewport&#39; content=&#39;width=device-width,initial-scale=1,user-scale=no&#39;/&gt;</code><br>通过对meta标签三个viewport的设置，最终使页面完美展示。</p>
+<h2 id="viewport设置"><a href="#viewport设置" class="headerlink" title="viewport设置"></a>viewport设置</h2><p><code>&lt;meta name=&#39;viewport&#39; content=&#39;width=device-width,initial-scale=1,user-scalable=no&#39;/&gt;</code><br>通过对meta标签三个viewport的设置，最终使页面完美展示。</p>
 <ol>
 <li>width 设置的是 layoutviewport 的宽度</li>
 <li>initial-scale 设置页面的初始缩放值，并且这个初始缩放值是相对于 idealviewport 缩放的，最终得到的结果不仅会决定 visualviewport，还会影响到 layoutviewport</li>

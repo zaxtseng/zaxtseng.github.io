@@ -679,7 +679,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-21 09:55:38" itemprop="dateModified" datetime="2019-10-21T09:55:38+08:00">2019-10-21</time>
+                <time title="修改时间：2019-10-22 18:22:20" itemprop="dateModified" datetime="2019-10-22T18:22:20+08:00">2019-10-22</time>
               </span>
             
           
@@ -695,7 +695,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="render函数"><a href="#render函数" class="headerlink" title="render函数"></a>render函数</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;template id=<span class="string">"hdom"</span>&gt;</span><br><span class="line"><span class="comment">//template下只允许有一个子节点,所以用div包裹三个标题</span></span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1 v-<span class="keyword">if</span>=<span class="string">"level==1"</span>&gt;</span><br><span class="line">			&lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">		&lt;h2 v-if="level==2"&gt;</span></span><br><span class="line"><span class="regexp">			&lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">		&lt;h3 v-if="level==3"&gt;</span></span><br><span class="line"><span class="regexp">			&lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">		&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt; </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"> Vue.component('child', &#123;</span></span><br><span class="line"><span class="regexp">     /</span><span class="regexp">/使用template命名的方法将大段代码写在html里</span></span><br><span class="line"><span class="regexp">     props: ['level'],</span></span><br><span class="line"><span class="regexp">     template: '#hdom'</span></span><br><span class="line"><span class="regexp"> &#125;) </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"> Vue.component('child', &#123;</span></span><br><span class="line"><span class="regexp">      /</span><span class="regexp">/使用render函数替代template,节省大量代码</span></span><br><span class="line"><span class="regexp">     render: function (createElement) &#123;</span></span><br><span class="line"><span class="regexp">         return createElement('h' + this.level, this.$slots.default);</span></span><br><span class="line"><span class="regexp">     &#125;,</span></span><br><span class="line"><span class="regexp">     props: ['level']</span></span><br><span class="line"><span class="regexp"> &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+          <h1 id="响应式原理"><a href="#响应式原理" class="headerlink" title="响应式原理"></a>响应式原理</h1><p><strong>官网解释</strong><br>当你把一个普通的 JavaScript 对象传入 Vue 实例作为 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。每个组件实例都对应一个 watcher 实例，它会在组件渲染的过程中把“接触”过的数据属性记录为依赖。之后当依赖项的 setter 触发时，会通知 watcher，从而使它关联的组件重新渲染。</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -867,7 +867,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-09 19:33:42" itemprop="dateModified" datetime="2019-10-09T19:33:42+08:00">2019-10-09</time>
+                <time title="修改时间：2019-10-22 18:57:58" itemprop="dateModified" datetime="2019-10-22T18:57:58+08:00">2019-10-22</time>
               </span>
             
           
