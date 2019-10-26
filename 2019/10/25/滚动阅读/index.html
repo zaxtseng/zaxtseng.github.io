@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="初步构思 定时任务启动 滑到面板桌面(从常规桌面上滑) 点击礼盒图标(右上角,测量位置) 点击完成相关任务(位置) 自动唤醒京东读书app 点击图书(位置) 自动翻页(swipe) 完成后返回打卡页面 点击完成打卡(位置)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-25T13:50:01.549Z">
+<meta property="og:updated_time" content="2019-10-26T12:06:45.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="滚动阅读">
 <meta name="twitter:description" content="初步构思 定时任务启动 滑到面板桌面(从常规桌面上滑) 点击礼盒图标(右上角,测量位置) 点击完成相关任务(位置) 自动唤醒京东读书app 点击图书(位置) 自动翻页(swipe) 完成后返回打卡页面 点击完成打卡(位置)">
@@ -289,11 +289,19 @@
                 
               
 
-              <time title="创建时间：2019-10-25 20:04:22 / 修改时间：21:50:01" itemprop="dateCreated datePublished" datetime="2019-10-25T20:04:22+08:00">2019-10-25</time>
+              <time title="创建时间：2019-10-25 20:04:22" itemprop="dateCreated datePublished" datetime="2019-10-25T20:04:22+08:00">2019-10-25</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-26 20:06:45" itemprop="dateModified" datetime="2019-10-26T20:06:45+08:00">2019-10-26</time>
+              </span>
             
           
 
@@ -330,6 +338,7 @@
 <li>点击翻页(touch),时间和位置都随机</li>
 <li>映射音量键翻页</li>
 </ol>
+<p>该机分辨率为1440*720</p>
 <p>规则:<br>30分钟阅读300页,则每分钟阅读10页,至少6秒阅读完一页.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6000</span> * (<span class="built_in">Math</span>.random() + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
@@ -341,14 +350,39 @@
 <p>脚本的开头使用device.wakeUp()来唤醒屏幕</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//# 启动app</span></span><br><span class="line">app.launchApp(<span class="string">"京东读书"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//暂停运行5秒</span></span><br><span class="line">sleep(<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
 
-<h1 id="气泡信息toast-message"><a href="#气泡信息toast-message" class="headerlink" title="气泡信息toast(message)"></a>气泡信息<code>toast(message)</code></h1><p>注意，信息的显示是”异步”执行的，并且，不会等待信息消失程序才继续执行。如果在循环中执行该命令，可能出现脚本停止运行后仍然有不断的气泡信息出现的情况<br>这里可以显示已经看了几页(估计得写个函数),看具体是怎么翻页了</p>
+<h1 id="气泡信息toast-message"><a href="#气泡信息toast-message" class="headerlink" title="气泡信息toast(message)"></a>气泡信息<code>toast(message)</code></h1><p>注意，信息的显示是”异步”执行的，并且，不会等待信息消失程序才继续执行。如果在循环中执行该命令，可能出现脚本停止运行后仍然有不断的气泡信息出现的情况</p>
+<p>官方貌似说了会实时显示进度,那么下面的统计就不需要了.<br>这里可以显示已经看了几页(估计得写个函数),看具体是怎么翻页了</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如果触发一次,就次数<span class="string">`total += 1`</span></span><br><span class="line"><span class="keyword">if</span>(total == <span class="number">300</span>)&#123;</span><br><span class="line">    <span class="comment">//toast('看完300页了,准备打卡去')</span></span><br><span class="line">    <span class="comment">//建议此时不停,不知道时间够不够,继续刷一会</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(total &gt;=<span class="number">300</span> &amp;&amp; totalTime &gt;= <span class="number">30</span>*<span class="number">6000</span>)&#123;</span><br><span class="line">    <span class="comment">//条件满足,停止刷页</span></span><br><span class="line">    stop()</span><br><span class="line">    <span class="comment">//跳转打卡页面</span></span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//继续刷页</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="立即停止exit"><a href="#立即停止exit" class="headerlink" title="立即停止exit()"></a>立即停止<code>exit()</code></h1><h1 id="console-show"><a href="#console-show" class="headerlink" title="console.show()"></a><code>console.show()</code></h1><p>显示控制台。这会显示一个控制台的悬浮窗(需要悬浮窗权限)。</p>
 <h2 id="print-text"><a href="#print-text" class="headerlink" title="print(text)"></a><code>print(text)</code></h2><p><code>text {string} | {Object}</code>要打印到控制台的信息,相当于log(text)。</p>
+<h1 id="基于坐标的触摸模拟"><a href="#基于坐标的触摸模拟" class="headerlink" title="基于坐标的触摸模拟"></a>基于坐标的触摸模拟</h1><p>要获取要点击的位置的坐标，可以在开发者选项中开启”指针位置”。</p>
+<h2 id="setScreenMetrics-width-height"><a href="#setScreenMetrics-width-height" class="headerlink" title="setScreenMetrics(width, height)"></a>setScreenMetrics(width, height)</h2><p>设置脚本坐标点击所适合的屏幕宽高.<br>如果脚本运行时，屏幕宽度不一致会自动放缩坐标.</p>
+<h1 id="安卓7-0以上的触摸和手势模拟"><a href="#安卓7-0以上的触摸和手势模拟" class="headerlink" title="安卓7.0以上的触摸和手势模拟"></a>安卓7.0以上的触摸和手势模拟</h1><h2 id="click-x-y"><a href="#click-x-y" class="headerlink" title="click(x, y)"></a>click(x, y)</h2><p>模拟点击坐标(x, y)，并返回是否点击成功。只有在点击执行完成后脚本才继续执行。<br>使用该函数模拟连续点击时可能有点击速度过慢的问题，这时可以用<code>press()</code>函数代替。</p>
+<h2 id="press-x-y-duration"><a href="#press-x-y-duration" class="headerlink" title="press(x, y, duration)"></a>press(x, y, duration)</h2><p><code>duration: {number}</code> 按住时长，单位毫秒<br>模拟按住坐标(x, y), 并返回是否成功。只有按住操作执行完成时脚本才会继续执行。<br>如果按住时间过短，那么会被系统认为是点击；如果时长超过500毫秒，则认为是长按。</p>
+<h2 id="swipe-x1-y1-x2-y2-duration"><a href="#swipe-x1-y1-x2-y2-duration" class="headerlink" title="swipe(x1, y1, x2, y2, duration)"></a>swipe(x1, y1, x2, y2, duration)</h2><p><code>x1</code> {number} 滑动的起始坐标的x值<br><code>y1</code> {number} 滑动的起始坐标的y值<br><code>x2</code> {number} 滑动的结束坐标的x值<br><code>y2</code> {number} 滑动的结束坐标的y值<br><code>duration</code> {number} 滑动时长，单位毫秒<br>模拟从坐标(x1, y1)滑动到坐标(x2, y2)，并返回是否成功。只有滑动操作执行完成时脚本才会继续执行。</p>
+<h1 id="device-wakeUp"><a href="#device-wakeUp" class="headerlink" title="device.wakeUp()"></a>device.wakeUp()</h1><p>唤醒设备。包括唤醒设备CPU、屏幕等。可以用来点亮屏幕。</p>
+<h2 id="device-wakeUpIfNeeded"><a href="#device-wakeUpIfNeeded" class="headerlink" title="device.wakeUpIfNeeded()"></a>device.wakeUpIfNeeded()</h2><p>如果屏幕没有点亮，则唤醒设备。</p>
+<h1 id="按键模拟"><a href="#按键模拟" class="headerlink" title="按键模拟"></a>按键模拟</h1><p>实体按键模拟依赖root权限,故放弃.</p>
+<h1 id="基于控件的操作"><a href="#基于控件的操作" class="headerlink" title="基于控件的操作"></a>基于控件的操作</h1><p>推荐使用<code>auto()</code>函数来确保无障碍服务已启用.</p>
+<h1 id="auto-mode"><a href="#auto-mode" class="headerlink" title="auto([mode])"></a>auto([mode])</h1><p>检查无障碍服务是否已经启用，如果没有启用则抛出异常并跳转到无障碍服务启用界面；同时设置无障碍模式为mode。<br>如果不加mode参数，则为正常模式。<br>建议使用<code>auto.waitFor()</code>和<code>auto.setMode()</code>代替该函数，因为<code>auto()</code>函数如果无障碍服务未启动会停止脚本；而<code>auto.waitFor()</code>则会在在无障碍服务启动后继续运行。</p>
+<h2 id="auto-waitFor"><a href="#auto-waitFor" class="headerlink" title="auto.waitFor()"></a>auto.waitFor()</h2><p>检查无障碍服务是否已经启用，如果没有启用则跳转到无障碍服务启用界面，并等待无障碍服务启动；当无障碍服务启动后脚本会继续运行。</p>
+<h1 id="点击文本click-text-i"><a href="#点击文本click-text-i" class="headerlink" title="点击文本click(text[, i])"></a>点击文本<code>click(text[, i])</code></h1><p><code>text</code> {string} 要点击的文本<br><code>i</code> {number} 如果相同的文本在屏幕中出现多次，则i表示要点击第几个文本, i从0开始计算<br>该函数可以点击大部分包含文字的按钮。例如微信主界面下方的”微信”, “联系人”, “发现”, “我”的按钮。<br>通常与while同时使用以便点击按钮直至成功。例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!click(<span class="string">"扫一扫"</span>));</span><br></pre></td></tr></table></figure>
+
+<h1 id="暂停sleep"><a href="#暂停sleep" class="headerlink" title="暂停sleep()"></a>暂停sleep()</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//暂停1秒</span></span><br><span class="line">sleep(<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="定时器Timers"><a href="#定时器Timers" class="headerlink" title="定时器Timers"></a>定时器Timers</h1><h2 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout()"></a>setTimeout()</h2><p>与web端用法一致.但是使用了一个不同的内部实现，它是基于 Android Looper-Handler消息循环机制构建的。其实现机制与Node.js比较相似.</p>
+<h2 id="setInterval-callback-delay-…args"><a href="#setInterval-callback-delay-…args" class="headerlink" title="setInterval(callback, delay[,…args])"></a>setInterval(callback, delay[,…args])</h2><p>callback {Function} 当定时器到点时要调用的函数。<br>delay {number} 调用 callback 之前要等待的毫秒数。<br>…args {any} 当调用 callback 时要传入的可选参数。</p>
+<p>因为定时器是异步执行,另外delay只能是number,那么不采用这种方案.</p>
 <h1 id="刷页函数"><a href="#刷页函数" class="headerlink" title="刷页函数"></a>刷页函数</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">turnPage</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="方案一-点击翻页"><a href="#方案一-点击翻页" class="headerlink" title="方案一: 点击翻页"></a>方案一: 点击翻页</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="方案二-滑动翻页"><a href="#方案二-滑动翻页" class="headerlink" title="方案二: 滑动翻页"></a>方案二: 滑动翻页</h1><pre><code class="js"></code></pre>
+
     </div>
 
     
@@ -568,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初步构思"><span class="nav-number">1.</span> <span class="nav-text">初步构思</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防检测"><span class="nav-number">2.</span> <span class="nav-text">防检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机时间"><span class="nav-number">3.</span> <span class="nav-text">随机时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定时运行脚本"><span class="nav-number">4.</span> <span class="nav-text">定时运行脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#气泡信息toast-message"><span class="nav-number">5.</span> <span class="nav-text">气泡信息toast(message)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#立即停止exit"><span class="nav-number">6.</span> <span class="nav-text">立即停止exit()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#console-show"><span class="nav-number">7.</span> <span class="nav-text">console.show()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#print-text"><span class="nav-number">7.1.</span> <span class="nav-text">print(text)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷页函数"><span class="nav-number">8.</span> <span class="nav-text">刷页函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初步构思"><span class="nav-number">1.</span> <span class="nav-text">初步构思</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#防检测"><span class="nav-number">2.</span> <span class="nav-text">防检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机时间"><span class="nav-number">3.</span> <span class="nav-text">随机时间</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定时运行脚本"><span class="nav-number">4.</span> <span class="nav-text">定时运行脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#气泡信息toast-message"><span class="nav-number">5.</span> <span class="nav-text">气泡信息toast(message)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#立即停止exit"><span class="nav-number">6.</span> <span class="nav-text">立即停止exit()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#console-show"><span class="nav-number">7.</span> <span class="nav-text">console.show()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#print-text"><span class="nav-number">7.1.</span> <span class="nav-text">print(text)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于坐标的触摸模拟"><span class="nav-number">8.</span> <span class="nav-text">基于坐标的触摸模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setScreenMetrics-width-height"><span class="nav-number">8.1.</span> <span class="nav-text">setScreenMetrics(width, height)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓7-0以上的触摸和手势模拟"><span class="nav-number">9.</span> <span class="nav-text">安卓7.0以上的触摸和手势模拟</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#click-x-y"><span class="nav-number">9.1.</span> <span class="nav-text">click(x, y)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#press-x-y-duration"><span class="nav-number">9.2.</span> <span class="nav-text">press(x, y, duration)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#swipe-x1-y1-x2-y2-duration"><span class="nav-number">9.3.</span> <span class="nav-text">swipe(x1, y1, x2, y2, duration)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#device-wakeUp"><span class="nav-number">10.</span> <span class="nav-text">device.wakeUp()</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#device-wakeUpIfNeeded"><span class="nav-number">10.1.</span> <span class="nav-text">device.wakeUpIfNeeded()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按键模拟"><span class="nav-number">11.</span> <span class="nav-text">按键模拟</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于控件的操作"><span class="nav-number">12.</span> <span class="nav-text">基于控件的操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#auto-mode"><span class="nav-number">13.</span> <span class="nav-text">auto([mode])</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#auto-waitFor"><span class="nav-number">13.1.</span> <span class="nav-text">auto.waitFor()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#点击文本click-text-i"><span class="nav-number">14.</span> <span class="nav-text">点击文本click(text[, i])</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#暂停sleep"><span class="nav-number">15.</span> <span class="nav-text">暂停sleep()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定时器Timers"><span class="nav-number">16.</span> <span class="nav-text">定时器Timers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setTimeout"><span class="nav-number">16.1.</span> <span class="nav-text">setTimeout()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setInterval-callback-delay-…args"><span class="nav-number">16.2.</span> <span class="nav-text">setInterval(callback, delay[,…args])</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷页函数"><span class="nav-number">17.</span> <span class="nav-text">刷页函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案一-点击翻页"><span class="nav-number">18.</span> <span class="nav-text">方案一: 点击翻页</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案二-滑动翻页"><span class="nav-number">19.</span> <span class="nav-text">方案二: 滑动翻页</span></a></li></ol></div>
             
 
           </div>
