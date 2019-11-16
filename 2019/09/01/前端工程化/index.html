@@ -345,7 +345,7 @@
 <li>提高代码可读性</li>
 <li>代码解耦,提高复用性</li>
 </ul>
-<h3 id="lt-script-gt-标签风格"><a href="#lt-script-gt-标签风格" class="headerlink" title="&lt;script&gt;标签风格"></a><code>&lt;script&gt;</code>标签风格</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"module1.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"module2.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=<span class="string">"module3.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="lt-script-gt-标签风格"><a href="#lt-script-gt-标签风格" class="headerlink" title="&lt;script&gt;标签风格"></a><code>&lt;script&gt;</code>标签风格</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"module1.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"module2.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"module3.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p>各个模块把接口暴露给全局对象,比如window.各个模块通过全局对象进行相互访问<br>出现的问题:</p>
 <ol>
@@ -662,7 +662,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">37</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -756,7 +756,9 @@
         
           
         
-        <span class="site-state-item-count">17</span>
+          
+        
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
