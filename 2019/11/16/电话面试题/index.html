@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Zax&apos;s BLOG">
+  <meta name="description" content="#CSS 重绘和回流(那些操作会引起重回和回流,如何减少回流) Css伪类有哪些? Position的几个属性,各个区别? Css3常用的属性 实现水平垂直居中的方法 Visible:none和display:none,hidden的区别 Css的预处理器,好处,优点作用. Css实现三角形. Css引入的方法与区别">
 <meta name="keywords" content="面试题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="电话面试题">
 <meta property="og:url" content="http://yoursite.com/2019/11/16/电话面试题/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="Zax&apos;s BLOG">
+<meta property="og:description" content="#CSS 重绘和回流(那些操作会引起重回和回流,如何减少回流) Css伪类有哪些? Position的几个属性,各个区别? Css3常用的属性 实现水平垂直居中的方法 Visible:none和display:none,hidden的区别 Css的预处理器,好处,优点作用. Css实现三角形. Css引入的方法与区别">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-16T08:33:04.184Z">
+<meta property="og:updated_time" content="2019-11-19T02:29:10.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="电话面试题">
-<meta name="twitter:description" content="Zax&apos;s BLOG">
+<meta name="twitter:description" content="#CSS 重绘和回流(那些操作会引起重回和回流,如何减少回流) Css伪类有哪些? Position的几个属性,各个区别? Css3常用的属性 实现水平垂直居中的方法 Visible:none和display:none,hidden的区别 Css的预处理器,好处,优点作用. Css实现三角形. Css引入的方法与区别">
   <link rel="canonical" href="http://yoursite.com/2019/11/16/电话面试题/">
 
 
@@ -289,11 +289,19 @@
                 
               
 
-              <time title="创建时间：2019-11-16 16:29:01 / 修改时间：16:33:04" itemprop="dateCreated datePublished" datetime="2019-11-16T16:29:01+08:00">2019-11-16</time>
+              <time title="创建时间：2019-11-16 16:29:01" itemprop="dateCreated datePublished" datetime="2019-11-16T16:29:01+08:00">2019-11-16</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-19 10:29:10" itemprop="dateModified" datetime="2019-11-19T10:29:10+08:00">2019-11-19</time>
+              </span>
             
           
 
@@ -308,7 +316,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <p>#CSS</p><ol>
+<li>重绘和回流(那些操作会引起重回和回流,如何减少回流)</li>
+<li>Css伪类有哪些?</li>
+<li>Position的几个属性,各个区别?</li>
+<li>Css3常用的属性</li>
+<li>实现水平垂直居中的方法</li>
+<li>Visible:none和display:none,hidden的区别</li>
+<li>Css的预处理器,好处,优点作用.</li>
+<li>Css实现三角形.</li>
+<li>Css引入的方法与区别</li>
+</ol><a id="more"></a>
+
+<h1 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h1><ol>
+<li>闭包的理解,作用,场景,缺点.</li>
+<li>类如何创建和继承</li>
+<li>深拷贝有哪些</li>
+<li>微任务和宏任务</li>
+<li>setInterval如何实现,用setTimeout实现.</li>
+<li>for循环里面有setTimeout,里面有console.log(i).不属于for循环最后面再有个console.log(i).17:40处.</li>
+<li>如果把var改为let,结果如何</li>
+<li>[] == ![]结果如何?为什么?</li>
+<li>Promise的理解</li>
+<li>Async/Await与Promise的区别和联系.<br>Await相对于Promise相当于Promise的什么?</li>
+<li>随机生成一个100-200之间的数</li>
+</ol>
+<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><ol>
+<li>虚拟DOM的理解</li>
+<li>Vue如何实现双向绑定,底层</li>
+<li>如何监听数组</li>
+<li>异步组件在哪用,优点</li>
+<li>计算属性和侦听器的区别(watch和computed)</li>
+<li>Slot插槽,用在哪里.<br>独立配置webpack?有过修改吗?</li>
+</ol>
+
     </div>
 
     
@@ -377,8 +418,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -524,6 +574,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JS"><span class="nav-number">1.</span> <span class="nav-text">JS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue"><span class="nav-number">2.</span> <span class="nav-text">Vue</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
         <div class="back-to-top motion-element">
           <i class="fa fa-arrow-up"></i>
           
