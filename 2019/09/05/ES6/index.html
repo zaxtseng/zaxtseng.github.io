@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量在全局作用域下使用let和const声明变量，变量并不会挂载到window">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-24T03:02:01.280Z">
+<meta property="og:updated_time" content="2019-11-26T05:00:49.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6">
 <meta name="twitter:description" content="ES6常见语法let和constlet定义局部变量var定义全局变量.用var定义的全部变量，有时候会污染整个js的作用域。const定义常量在全局作用域下使用let和const声明变量，变量并不会挂载到window">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-24 11:02:01" itemprop="dateModified" datetime="2019-11-24T11:02:01+08:00">2019-11-24</time>
+                <time title="修改时间：2019-11-26 13:00:49" itemprop="dateModified" datetime="2019-11-26T13:00:49+08:00">2019-11-26</time>
               </span>
             
           
@@ -339,13 +339,11 @@
         <p>ES6常见语法</p><h1 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h1><p><code>let</code>定义局部变量<br><code>var</code>定义全局变量.用<code>var</code>定义的全部变量，有时候会污染整个js的作用域。<br><code>const</code>定义常量<br>在全局作用域下使用<code>let</code>和<code>const</code>声明变量，变量并不会挂载到<code>window</code></p><a id="more"></a>
 
 <ol>
-<li>var可声明前置(变量提升)</li>
-</ol>
-<p>变量会提升，函数也会提升，并且函数优先于变量提升，函数提升会把整个函数提到作用域顶部，变量提升只会把声明提上去.</p>
+<li><p>var可声明前置(变量提升)<br>变量会提升，函数也会提升，并且函数优先于变量提升，函数提升会把整个函数提到作用域顶部，变量提升只会把声明提上去.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span></span><br><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>let不可声明前置</li>
+</li>
+<li><p>let不可声明前置</p>
+</li>
 </ol>
 <p>暂时性死区：不能在变量声明之前使用变量</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span> <span class="comment">//报错</span></span><br><span class="line"><span class="keyword">let</span> a</span><br></pre></td></tr></table></figure>
@@ -414,7 +412,7 @@
 <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><ol>
 <li>扩展运算符<code>...</code></li>
 </ol>
-<p>主要作用是将数组或对象进行展开</p>
+<p><strong>主要作用</strong>是将数组或对象进行展开.</p>
 <blockquote>
 <p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
 </blockquote>
@@ -453,6 +451,7 @@
 <ol start="3">
 <li>箭头函数里面的 this</li>
 </ol>
+<p>1.箭头函数会捕获其所在上下文的this值作为自己的this值,自己本身并没有this值.<br>2.箭头函数的this永远指向其上下文的this,任何方法都改变不了其指向,如call,bind,apply.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'id:'</span>, <span class="keyword">this</span>.id);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  等同于如下ES5</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'id:'</span>, _this.id);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'jirengu'</span></span><br><span class="line"><span class="keyword">var</span> age = <span class="number">3</span></span><br><span class="line"><span class="keyword">var</span> people = &#123;name, age&#125; <span class="comment">//&#123;name:'jirengu', age:3&#125;</span></span><br></pre></td></tr></table></figure>
