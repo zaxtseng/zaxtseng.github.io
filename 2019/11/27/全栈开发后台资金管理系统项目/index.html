@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="后端部分1. nodemon 使用当我们做服务器的时候，每次变更都要重启才能生效。如：我们创建了一个名为 server.js 的文件，作为服务器使用node ./server.js即可启动，但我们对其修改后，要看效果就要关闭之前的再启动。而 nodemon 帮我们解决这个问题。">
+<meta name="keywords" content="项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="全栈开发后台资金管理系统项目">
+<meta property="og:url" content="http://yoursite.com/2019/11/27/全栈开发后台资金管理系统项目/index.html">
+<meta property="og:site_name" content="Zax&#39;s BLOG">
+<meta property="og:description" content="后端部分1. nodemon 使用当我们做服务器的时候，每次变更都要重启才能生效。如：我们创建了一个名为 server.js 的文件，作为服务器使用node ./server.js即可启动，但我们对其修改后，要看效果就要关闭之前的再启动。而 nodemon 帮我们解决这个问题。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-11-27T08:02:50.257Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="全栈开发后台资金管理系统项目">
+<meta name="twitter:description" content="后端部分1. nodemon 使用当我们做服务器的时候，每次变更都要重启才能生效。如：我们创建了一个名为 server.js 的文件，作为服务器使用node ./server.js即可启动，但我们对其修改后，要看效果就要关闭之前的再启动。而 nodemon 帮我们解决这个问题。">
+  <link rel="canonical" href="http://yoursite.com/2019/11/27/全栈开发后台资金管理系统项目/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>全栈开发后台资金管理系统项目 | Zax's BLOG</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zax's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    
+
+</nav>
+  <div class="site-search">
+    
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  </div>
+</div>
+    </header>
+
+    
+
+  <a href="https://github.com/zaxtseng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/全栈开发后台资金管理系统项目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zax Tseng">
+      <meta itemprop="description" content="Zax's BLOG">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zax's BLOG">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">全栈开发后台资金管理系统项目
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-27 15:58:28 / 修改时间：16:02:50" itemprop="dateCreated datePublished" datetime="2019-11-27T15:58:28+08:00">2019-11-27</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="后端部分"><a href="#后端部分" class="headerlink" title="后端部分"></a>后端部分</h1><h4 id="1-nodemon-使用"><a href="#1-nodemon-使用" class="headerlink" title="1. nodemon 使用"></a>1. nodemon 使用</h4><p>当我们做服务器的时候，每次变更都要重启才能生效。<br>如：我们创建了一个名为 server.js 的文件，作为服务器<br>使用<code>node ./server.js</code>即可启动，但我们对其修改后，要看效果就要关闭之前的再启动。<br>而 nodemon 帮我们解决这个问题。</p><a id="more"></a>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install nodemon -g <span class="comment">//全局安装nodemon</span></span><br></pre></td></tr></table></figure>
+
+<p>然后就可以使用 nodemon 运行我们的服务器了</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nodemon ./<span class="keyword">server</span>.js</span><br></pre></td></tr></table></figure>
+
+<p>这时，修改文件，服务器会自动重启。<br>将命令设置到 package.json。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在package.json中修改</span></span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"node server.js"</span>,</span><br><span class="line">    <span class="string">"server"</span>: <span class="string">"nodemon server.js"</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>这样在就可以使用<code>npm run start</code>或<code>npm run server</code>来运行服务器</p>
+<h4 id="2-连接数据库"><a href="#2-连接数据库" class="headerlink" title="2.连接数据库"></a>2.连接数据库</h4><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//<span class="keyword">node</span><span class="title">-app</span>下执行</span><br><span class="line">npm install mongoose</span><br></pre></td></tr></table></figure>
+
+<p>为方便修改配置，新建文件 /config/keys.js, 内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mongoURI:</span><br><span class="line">    <span class="string">"mongodb://&lt;username&gt;:&lt;password&gt;@cluster0-shard-00-00-oqdfe.mongodb.net:27017,cluster0-shard-00-01-oqdfe.mongodb.net:27017,cluster0-shard-00-02-oqdfe.mongodb.net:27017/test?ssl=true&amp;replicaSet=Cluster0-shard-0&amp;authSource=admin&amp;retryWrites=true&amp;w=majority"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该链接需要到 mongoDB 官网注册账户，获取 500M 免费空间，创建一个 Preject 再创建 Clusters，之后点击”Connect”,选择”Connect your Application”进入下一步，域名选择默认确定即可.DRIVER 选择“node.js”, VERSION 选择”2.2.12 or later”,然后 copy 下面的链接即可，注意修改&lt;username&gt;:&lt;password&gt;为对应的用户名和密码。可以在”Database Access”中添加和修改用户。<br>在 server.js 中引用</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//DB config</span></span><br><span class="line"><span class="keyword">const</span> db = <span class="built_in">require</span>(<span class="string">"./config/keys"</span>).mongoURI;</span><br><span class="line"></span><br><span class="line"><span class="comment">//连接数据库</span></span><br><span class="line"><span class="comment">//Connect to mongodb</span></span><br><span class="line">mongoose.connect(db, &#123;</span><br><span class="line">    useNewUrlParser: <span class="literal">true</span>,<span class="comment">//防止弃用警告</span></span><br><span class="line">    useUnifiedTopology: <span class="literal">true</span>,<span class="comment">//防止弃用警告</span></span><br><span class="line">    useFindAndModify: <span class="literal">false</span> <span class="comment">//防止弃用警告</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">"mongoDB Connected"</span>)) <span class="comment">//成功</span></span><br><span class="line">  .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err)); <span class="comment">//失败</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-配置路由和接口"><a href="#3-配置路由和接口" class="headerlink" title="3.配置路由和接口"></a>3.配置路由和接口</h4><p>在 node-app 下创建 /route/api/users.js,内容:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入express</span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</span><br><span class="line"><span class="comment">//实例化路由</span></span><br><span class="line"><span class="keyword">const</span> router = express.Router;</span><br><span class="line"></span><br><span class="line"><span class="comment">//验证路由，访问/test，将返回`msg:"login works"`</span></span><br><span class="line">router.get(<span class="string">"/test"</span>, (req, res) =&gt; &#123;</span><br><span class="line">  res.json(&#123; <span class="attr">msg</span>: <span class="string">"login works"</span> &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//导出router</span></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+
+<p>在 server.js 中引用和使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入users.js</span></span><br><span class="line"><span class="keyword">const</span> users = <span class="built_in">require</span>(<span class="string">"./route/api/users"</span>);</span><br><span class="line">app.use(<span class="string">"/api/users"</span>, users);</span><br></pre></td></tr></table></figure>
+
+<p>这时 使用浏览器访问 <code>http://localhost:5000/api/users/test</code>即可看到返回的<code>msg:&quot;login works&quot;</code></p>
+<h4 id="4-创建模型"><a href="#4-创建模型" class="headerlink" title="4.创建模型"></a>4.创建模型</h4><p>新建 /models/User.js,</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"><span class="keyword">const</span> Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line"><span class="comment">//create Schema</span></span><br><span class="line"><span class="keyword">const</span> UserSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    type: <span class="built_in">String</span>,</span><br><span class="line">    required: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  email: &#123;</span><br><span class="line">    type: <span class="built_in">String</span>,</span><br><span class="line">    required: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  password: &#123;</span><br><span class="line">    type: <span class="built_in">String</span></span><br><span class="line">  &#125;,</span><br><span class="line">  avatar: &#123;</span><br><span class="line">    type: <span class="built_in">String</span>,</span><br><span class="line">    required: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  date: &#123;</span><br><span class="line">    type: <span class="built_in">Date</span>,</span><br><span class="line">    <span class="keyword">default</span>: <span class="built_in">Date</span>.now</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = User = mongoose.model(<span class="string">"users"</span>, UserSchema);</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-5-下载postman-安装"><a href="#4-5-下载postman-安装" class="headerlink" title="4.5 下载postman,安装"></a>4.5 下载postman,安装</h4><p>可以用来测试接口是否通.</p>
+<h4 id="4-6-创建register接口"><a href="#4-6-创建register接口" class="headerlink" title="4.6 创建register接口"></a>4.6 创建register接口</h4><p>首先需要安装body-parser.</p>
+<h4 id="5-配置注册"><a href="#5-配置注册" class="headerlink" title="5.配置注册"></a>5.配置注册</h4><p>安装 body-parser，方便发送 POST 请求</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> <span class="keyword">body</span>-parser</span><br></pre></td></tr></table></figure>
+
+<p>在 server.js 中引用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">"body-parser"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用body-parser中间件</span></span><br><span class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;));</span><br><span class="line">app.use(bodyParser.json());</span><br></pre></td></tr></table></figure>
+
+<p>在 users.js 中配置接口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$route POST api/uers/register</span></span><br><span class="line"><span class="comment">//@desc 返回请求的JSON数据</span></span><br><span class="line"><span class="comment">//@access public （公有接口）</span></span><br><span class="line">router.post(<span class="string">"/register"</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(req.body); <span class="comment">//用来测试是否连接</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>//此处如果连接不上mongoDB,可能是白名单失效.再添加一个白名单在mongoDB即可.</p>
+<p>功能</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.严重是否有邮箱</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line">router.post(<span class="string">"/register"</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="comment">//查询数据库中是否拥有邮箱</span></span><br><span class="line">  User.findOne(&#123; <span class="attr">email</span>: req.body.email &#125;).then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (user) &#123;</span><br><span class="line">      <span class="comment">//如果存在</span></span><br><span class="line">      <span class="keyword">return</span> res.status(<span class="number">400</span>).json(&#123; <span class="attr">email</span>: <span class="string">"邮箱已被注册！"</span> &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//否则不存在</span></span><br><span class="line">      <span class="keyword">const</span> newUser = <span class="keyword">new</span> User(&#123;</span><br><span class="line">        name: req.body.name,</span><br><span class="line">        email: req.body.email,</span><br><span class="line">        password: req.body.password</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h5 id="密码加密"><a href="#密码加密" class="headerlink" title="密码加密"></a>密码加密</h5><p>安装 bcrypt</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> bcrypt</span><br></pre></td></tr></table></figure>
+
+<p>在 users.js 中引入，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bcrypt = <span class="built_in">require</span>(<span class="string">"bcrypt"</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>官方详细说明<a href="https://www.npmjs.com/package/bcrypt" target="_blank" rel="noopener">链接</a></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">bcrypt.genSalt(<span class="number">10</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err, salt</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//10是加密的一种模式</span></span><br><span class="line">  bcrypt.hash(newUser.password, salt, (err, hash) =&gt; &#123;</span><br><span class="line">    <span class="comment">//newUser.password 是加密对象，salt是回调函数，最后是加密结果</span></span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">throw</span> err; <span class="comment">//如果存在错误，则抛出。 throw是js语法，抛出</span></span><br><span class="line">    <span class="comment">//没有错误，则</span></span><br><span class="line">    newUser.password = hash;</span><br><span class="line"></span><br><span class="line">    newUser</span><br><span class="line">      .save()</span><br><span class="line">      .then(<span class="function"><span class="params">user</span> =&gt;</span> res.json(user))</span><br><span class="line">      .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="头像-avatar"><a href="#头像-avatar" class="headerlink" title="头像 avatar"></a>头像 avatar</h4><p>gravatar 官方说明<a href="https://www.npmjs.com/package/gravatar" target="_blank" rel="noopener">链接</a><br>安装</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="selector-tag">i</span> gravatar</span><br></pre></td></tr></table></figure>
+
+<p>user.js 中引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> gravatar = <span class="built_in">require</span>(<span class="string">"gravatar"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在接口位置使用(user.js)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (user) &#123;</span><br><span class="line">  <span class="keyword">return</span> res.status(<span class="number">400</span>).json(&#123; <span class="attr">email</span>: <span class="string">"邮箱已被注册！"</span> &#125;);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> avatar = gravatar.url(req.body.email, &#123; <span class="attr">s</span>: <span class="string">"200"</span>, <span class="attr">r</span>: <span class="string">"pg"</span>, <span class="attr">d</span>: <span class="string">"mm"</span> &#125;); <span class="comment">//s是大小。r是头像格式。mm是灰色的头像</span></span><br><span class="line">  <span class="keyword">const</span> newUser = <span class="keyword">new</span> User(&#123;</span><br><span class="line">    name: req.body.name,</span><br><span class="line">    email: req.body.email,</span><br><span class="line">    avatar, <span class="comment">//引入头像</span></span><br><span class="line">    password: req.body.password</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如何得到头像？</p>
+<ol>
+<li>打开 <a href="https://cn.gravatar.com/" target="_blank" rel="noopener">gravatar 网址</a></li>
+<li>注册 gravatar，其注册实际是注册了 wordpress.com 网站的账户，然后登录 gravatar，任意格式的邮箱均可申请成功，但无法收到邮件，则无法验证并修改头像。因此要使用可以收到验证的邮箱。</li>
+<li>上传头像。上传图片时，最后会选择图片会有<code>Choose a rating for your Gravatar</code> ，有四个选项，G、PG、R、X,这里我们选择 pg，我们在使用时也是<code>r: &#39;pg&#39;</code>，需要保持一致。</li>
+</ol>
+<p>这时，我们使用 postman 向 <a href="http://localhost:5000/api/users/register" target="_blank" rel="noopener">http://localhost:5000/api/users/register</a> 发送 post 请求，使用(application/x-www-form-urlencoded)(key:email value:<a href="mailto:user@usertest.com" target="_blank" rel="noopener">user@usertest.com</a>) 就能得到设置的头像了。</p>
+<h4 id="7-登录接口"><a href="#7-登录接口" class="headerlink" title="7.登录接口"></a>7.登录接口</h4><p>users.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$route POST api/users/login</span></span><br><span class="line"><span class="comment">//@desc 返回taken jwt password</span></span><br><span class="line"><span class="comment">//@access public （公有接口）</span></span><br><span class="line">router.post(<span class="string">"/login"</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> email = req.body.email;</span><br><span class="line">  <span class="keyword">const</span> password = req.body.password;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//查询数据库</span></span><br><span class="line">  User.findOne(&#123; email &#125;).then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!user) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.status(<span class="number">404</span>).json(&#123; <span class="attr">email</span>: <span class="string">"用户不存在"</span> &#125;); <span class="comment">//如果用户不存在</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//密码匹配</span></span><br><span class="line">    <span class="comment">//第一个password是前端传入密码，user.password是系统内密码</span></span><br><span class="line">    bcrypt.compare(password, user.password).then(<span class="function"><span class="params">isMatch</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (isMatch) &#123;</span><br><span class="line">        res.json(&#123; <span class="attr">msg</span>: <span class="string">"success"</span> &#125;); <span class="comment">//如果密码对比正确</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> res.status(<span class="number">400</span>).json(&#123; <span class="attr">password</span>: <span class="string">"密码错误！"</span> &#125;); <span class="comment">//如果密码对比不正确</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="返回-token"><a href="#返回-token" class="headerlink" title="返回 token"></a>返回 token</h4><p>安装 jsonwebtoken (jwt)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> jsonwebtoken</span><br></pre></td></tr></table></figure>
+
+<p>在 users.js 引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">"jsonwebtoken"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在密码验证成功处插入</p>
+<blockquote>
+<p>我们在 config/keys.js 导出的对象中，加入了 secretOrKey:”secret” 属性和值，再引入到 users.js 以方便统一管理配置。<br>过期时间的 3600 单位为秒<br>token 前必须是 “Bearer ”(送信人的意思)，末尾空格也不可缺少。<br>如果 success 为 true，就应该得到 token 值</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//jwt.sign("规则","加密名字","过期时间","箭头函数")</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rule = &#123; <span class="attr">id</span>: user.id, <span class="attr">name</span>: user.name &#125;; <span class="comment">//可以更多</span></span><br><span class="line">jwt.sign(rule, keys.secretOrKey, &#123; <span class="attr">expiresIn</span>: <span class="number">3600</span> &#125;, (err, token) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    success: <span class="literal">true</span>,</span><br><span class="line">    token: <span class="string">"Bearer "</span> + token</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// res.json(&#123;msg:"success"&#125;);</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="验证-token"><a href="#验证-token" class="headerlink" title="验证 token"></a>验证 token</h4><p>users.js 加入接口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$route GET api/users/current</span></span><br><span class="line"><span class="comment">//@desc return current user</span></span><br><span class="line"><span class="comment">//@access Privates</span></span><br><span class="line"></span><br><span class="line">router.get(<span class="string">"/current"</span>, (req, res) =&gt; &#123;</span><br><span class="line">  res.json(&#123; <span class="attr">msg</span>: <span class="string">"success"</span> &#125;); <span class="comment">//测试使用，后期有修改</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>安装 passport-jwt 和 passport</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install </span>passport-<span class="keyword">jwt </span>passport</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://www.npmjs.com/package/passport" target="_blank" rel="noopener">passport 网址</a><br><a href="https://www.npmjs.com/package/passport-jwt" target="_blank" rel="noopener">passport-jwt 网址</a><br>在 server.js 中引入,并初始化</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">"passport"</span>);</span><br><span class="line"></span><br><span class="line">app.use(passport.initialize());</span><br></pre></td></tr></table></figure>
+
+<p>新建文件 /config/passport.js,内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> JwtStrategy = <span class="built_in">require</span>(<span class="string">"passport-jwt"</span>).Strategy,</span><br><span class="line">  ExtractJwt = <span class="built_in">require</span>(<span class="string">"passport-jwt"</span>).ExtractJwt;</span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"><span class="keyword">const</span> User = mongoose.model(<span class="string">"users"</span>);</span><br><span class="line"><span class="keyword">const</span> keys = <span class="built_in">require</span>(<span class="string">"../config/keys"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> opts = &#123;&#125;;</span><br><span class="line">opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();</span><br><span class="line">opts.secretOrKey = keys.secretOrKey;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="params">passport</span> =&gt;</span> &#123;</span><br><span class="line">  passport.use(</span><br><span class="line">    <span class="keyword">new</span> JwtStrategy(opts, (jwt_payload, done) =&gt; &#123;</span><br><span class="line">      <span class="comment">//console.log(jwt_payload);</span></span><br><span class="line">      <span class="comment">//通过id获取用户</span></span><br><span class="line">      User.findById(jwt_payload.id)</span><br><span class="line">        <span class="comment">//获取成功</span></span><br><span class="line">        .then(<span class="function"><span class="params">user</span> =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">//如果用户存在</span></span><br><span class="line">          <span class="keyword">if</span> (user) &#123;</span><br><span class="line">            <span class="keyword">return</span> done(<span class="literal">null</span>, user);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">//如果用户不存在</span></span><br><span class="line">          <span class="keyword">return</span> done(full, <span class="literal">false</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="comment">//获取失败</span></span><br><span class="line">        .catch(<span class="function"><span class="params">err</span> =&gt;</span> <span class="built_in">console</span>.log(err));</span><br><span class="line">    &#125;)</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在 server.js 中引入 passport.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.use(passport.initialize());</span><br><span class="line"><span class="built_in">require</span>(<span class="string">"./config/passport"</span>)(passport); <span class="comment">//这样代码就不需要在当前server.js中写了</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里使用了一个技巧，<code>require(&quot;xxx.js&quot;)（对象）</code> 将对象传入xxx.js,同时将该js引入当前文件中。这样就可以在<code>xxx.js</code>中编写代码，实现分离，而且在xxx.js可以使用传入的对象。</p>
+</blockquote>
+<p>在 users.js 中引入 passport，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">"passport"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//完成token验证，返回部分信息</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//$route GET api/users/current</span></span><br><span class="line"><span class="comment">//@desc return current user</span></span><br><span class="line"><span class="comment">//@access Privates</span></span><br><span class="line">router.get(</span><br><span class="line">  <span class="string">"/current"</span>,</span><br><span class="line">  passport.authenticate(<span class="string">"jwt"</span>, &#123; <span class="attr">session</span>: <span class="literal">false</span> &#125;),</span><br><span class="line">  (req, res) =&gt; &#123;</span><br><span class="line">    res.json(&#123;</span><br><span class="line">      id: req.user.id,</span><br><span class="line">      name: req.user.name,</span><br><span class="line">      email: req.user.email</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="这里调整了一些输出的内容，将输出对象改为了字符串，可能造成代码实际和上面有些出入。"><a href="#这里调整了一些输出的内容，将输出对象改为了字符串，可能造成代码实际和上面有些出入。" class="headerlink" title="这里调整了一些输出的内容，将输出对象改为了字符串，可能造成代码实际和上面有些出入。"></a>这里调整了一些输出的内容，将输出对象改为了字符串，可能造成代码实际和上面有些出入。</h4><p>——-=</p>
+<h4 id="添加身份"><a href="#添加身份" class="headerlink" title="添加身份"></a>添加身份</h4><p>如果想在 user 中添加其他信息(比如添加管理员)可参考此内容<br>在 models/User.js 的 UserSchema 中添加身份字段</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">identity:&#123;</span><br><span class="line">    type:<span class="built_in">String</span>,</span><br><span class="line">    required:<span class="literal">true</span></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>在 api/users.js 中加入信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// newUser中</span></span><br><span class="line"><span class="keyword">const</span> newUser = <span class="keyword">new</span> User(&#123;</span><br><span class="line">  name: req.body.name,</span><br><span class="line">  email: req.body.email,</span><br><span class="line">  avatar,</span><br><span class="line">  password: req.body.password,</span><br><span class="line">  identity: req.body.identity <span class="comment">//添加的信息</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//密码匹配规则中</span></span><br><span class="line"><span class="keyword">const</span> rule = &#123;</span><br><span class="line">  id: user.id,</span><br><span class="line">  name: user.name,</span><br><span class="line">  avatar: user.avatar,</span><br><span class="line">  identity: user.identity</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//验证token输出信息时</span></span><br><span class="line">router.get(<span class="string">"/current"</span>,passport.authenticate(<span class="string">"jwt"</span>,&#123;<span class="attr">session</span>:<span class="literal">false</span>&#125;), (req,res) =&gt; &#123;</span><br><span class="line">  res.json(&#123;</span><br><span class="line">    id:req.user.id,</span><br><span class="line">    name:req.user.name,</span><br><span class="line">    email:req.user.email,</span><br><span class="line">    identity:req.user.identity <span class="comment">//添加的内容</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置信息接口"><a href="#配置信息接口" class="headerlink" title="配置信息接口"></a>配置信息接口</h4><p>新建 models/Profile.js 建立ProfileSchema，内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</span><br><span class="line"><span class="keyword">const</span> Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line"><span class="comment">//create Schema</span></span><br><span class="line"><span class="keyword">const</span> ProfileSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  type:&#123;</span><br><span class="line">    type:<span class="built_in">String</span></span><br><span class="line">  &#125;,</span><br><span class="line">  describe:&#123;</span><br><span class="line">    type:<span class="built_in">String</span></span><br><span class="line">  &#125;,</span><br><span class="line">  income:&#123;</span><br><span class="line">    type:<span class="built_in">String</span>,</span><br><span class="line">    required:<span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  expend:&#123;</span><br><span class="line">    type:<span class="built_in">String</span>,</span><br><span class="line">    required:<span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  cash:&#123;</span><br><span class="line">    type:<span class="built_in">String</span>,</span><br><span class="line">    required:<span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  remark:&#123;</span><br><span class="line">    type:<span class="built_in">String</span></span><br><span class="line">  &#125;,</span><br><span class="line">  date:&#123;</span><br><span class="line">    type:<span class="built_in">Date</span>,</span><br><span class="line">    <span class="keyword">default</span>:<span class="built_in">Date</span>.now</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = Profile = mongoose.model(<span class="string">"profile"</span>,ProfileSchema);</span><br></pre></td></tr></table></figure>
+
+<p>新建 api/profiles.js 暂不写内容，将其在server.js中引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//server.js</span></span><br><span class="line"><span class="keyword">const</span> profiles = <span class="built_in">require</span>(<span class="string">"./route/api/profiles"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用route</span></span><br><span class="line">app.use(<span class="string">"/api/profiles"</span>, profiles);</span><br></pre></td></tr></table></figure>
+
+<p>在 api/profiles.js 配置信息进行测试</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@login &amp; register </span></span><br><span class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">"express"</span>);</span><br><span class="line"><span class="keyword">const</span> router = express.Router();</span><br><span class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">"passport"</span>);</span><br><span class="line"><span class="keyword">const</span> Profile = <span class="built_in">require</span>(<span class="string">"../../models/Profile"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//$route GET api/profile/test</span></span><br><span class="line"><span class="comment">//@desc 返回请求的JSON数据</span></span><br><span class="line"><span class="comment">//@access public （公有接口）</span></span><br><span class="line">router.get(<span class="string">"/test"</span>,(req,res)=&gt;&#123;</span><br><span class="line">  res.json(&#123;<span class="attr">msg</span>:<span class="string">"Profile works"</span>&#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = router;</span><br></pre></td></tr></table></figure>
+
+<p>postman 发送到 <a href="http://localhost:5000/api/profiles/test" target="_blank" rel="noopener">http://localhost:5000/api/profiles/test</a> 返回 Profile works 即链接成功。</p>
+<h4 id="更改数据库接口"><a href="#更改数据库接口" class="headerlink" title="更改数据库接口"></a>更改数据库接口</h4><p>如果要更改数据库接口，可以<code>/config/keys.js</code>中的<code>mongoURI</code>的值，该值的获取方法，参考上述创建时的内容。</p>
+<h4 id="创建添加信息的接口"><a href="#创建添加信息的接口" class="headerlink" title="创建添加信息的接口"></a>创建添加信息的接口</h4><p>profiles.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$route POST api/profile/add</span></span><br><span class="line"><span class="comment">//@desc 创建信息接口</span></span><br><span class="line"><span class="comment">//@access Private</span></span><br><span class="line">router.post(<span class="string">"/add"</span>,passport.authenticate(<span class="string">"jwt"</span>,&#123;<span class="attr">session</span>:<span class="literal">false</span>&#125;),(req,res)=&gt;&#123;</span><br><span class="line">  <span class="keyword">const</span> profileFields = &#123;&#125;;</span><br><span class="line">  <span class="keyword">if</span> (req.body.type) profileFields.type = req.body.type;</span><br><span class="line">  <span class="keyword">if</span> (req.body.describe) profileFields.describe = req.body.describe;</span><br><span class="line">  <span class="keyword">if</span> (req.body.income) profileFields.income = req.body.income;</span><br><span class="line">  <span class="keyword">if</span> (req.body.expend) profileFields.expend = req.body.expend;</span><br><span class="line">  <span class="keyword">if</span> (req.body.cash) profileFields.cash = req.body.cash;</span><br><span class="line">  <span class="keyword">if</span> (req.body.remark) profileFields.remark = req.body.remark;</span><br><span class="line"><span class="keyword">new</span> Profile(profileFields).save().then(<span class="function"><span class="params">profile</span> =&gt;</span> &#123;</span><br><span class="line">res.json(profile);</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取所有信息"><a href="#获取所有信息" class="headerlink" title="获取所有信息"></a>获取所有信息</h4><p>profiles.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$route GET api/profile</span></span><br><span class="line"><span class="comment">//@desc 获取所有信息</span></span><br><span class="line"><span class="comment">//@access Private</span></span><br><span class="line"></span><br><span class="line">router.get(</span><br><span class="line">  <span class="string">"/"</span>,</span><br><span class="line">  passport.authenticate(<span class="string">"jwt"</span>, &#123; <span class="attr">session</span>: <span class="literal">false</span> &#125;),</span><br><span class="line">  (req, res) =&gt; &#123;</span><br><span class="line">    Profile.find()</span><br><span class="line">      .then(<span class="function"><span class="params">profile</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!profile) &#123;</span><br><span class="line">          <span class="keyword">return</span> res.status(<span class="number">404</span>).json(<span class="string">"没有任何内容"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        res.json(profile);</span><br><span class="line">      &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> res.status(<span class="number">404</span>).json(<span class="string">"err"</span>));</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="获取单个信息"><a href="#获取单个信息" class="headerlink" title="获取单个信息"></a>获取单个信息</h4><p>  profiles.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$route GET api/profile/:id</span></span><br><span class="line"><span class="comment">//@desc 获取单个信息</span></span><br><span class="line"><span class="comment">//@access Private</span></span><br><span class="line"></span><br><span class="line">router.get(</span><br><span class="line">  <span class="string">"/:id"</span>,</span><br><span class="line">  passport.authenticate(<span class="string">"jwt"</span>, &#123;</span><br><span class="line">    session: <span class="literal">false</span></span><br><span class="line">  &#125;),</span><br><span class="line">  (req, res) =&gt; &#123;</span><br><span class="line">    Profile.findOne(&#123; <span class="attr">_id</span>: req.params.id &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">profile</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!profile) &#123;</span><br><span class="line">          <span class="keyword">return</span> res.status(<span class="number">404</span>).json(<span class="string">"没有任何内容"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        res.json(profile);</span><br><span class="line">      &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> res.status(<span class="number">404</span>).json(err));</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="编辑信息"><a href="#编辑信息" class="headerlink" title="编辑信息"></a>编辑信息</h4><p>profiles.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$route POST api/profile/edit</span></span><br><span class="line"><span class="comment">//@desc 编辑信息接口</span></span><br><span class="line"><span class="comment">//@access Private</span></span><br><span class="line">router.post(</span><br><span class="line">  <span class="string">"/edit/:id"</span>,</span><br><span class="line">  passport.authenticate(<span class="string">"jwt"</span>, &#123;</span><br><span class="line">    session: <span class="literal">false</span></span><br><span class="line">  &#125;),</span><br><span class="line">  (req, res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> profileFields = &#123;&#125;;</span><br><span class="line">    <span class="keyword">if</span> (req.body.type) profileFields.type = req.body.type;</span><br><span class="line">    <span class="keyword">if</span> (req.body.describe) profileFields.describe = req.body.describe;</span><br><span class="line">    <span class="keyword">if</span> (req.body.income) profileFields.income = req.body.income;</span><br><span class="line">    <span class="keyword">if</span> (req.body.expend) profileFields.expend = req.body.expend;</span><br><span class="line">    <span class="keyword">if</span> (req.body.cash) profileFields.cash = req.body.cash;</span><br><span class="line">    <span class="keyword">if</span> (req.body.remark) profileFields.remark = req.body.remark;</span><br><span class="line">    Profile.findOneAndUpdate(</span><br><span class="line">      &#123; <span class="attr">_id</span>: req.params.id &#125;,</span><br><span class="line">      &#123; <span class="attr">$set</span>: profileFields &#125;,</span><br><span class="line">      &#123; <span class="attr">new</span>: <span class="literal">true</span> &#125;</span><br><span class="line">    ).then(<span class="function"><span class="params">profile</span> =&gt;</span> res.json(profile))</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除信息"><a href="#删除信息" class="headerlink" title="删除信息"></a>删除信息</h4><p>profiles.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$route delete api/profile/delete/:id</span></span><br><span class="line"><span class="comment">//@desc 删除信息接口</span></span><br><span class="line"><span class="comment">//@access Private</span></span><br><span class="line">router.delete(</span><br><span class="line">  <span class="string">"/delete/:id"</span>,</span><br><span class="line">  passport.authenticate(<span class="string">"jwt"</span>, &#123;</span><br><span class="line">    session: <span class="literal">false</span></span><br><span class="line">  &#125;),</span><br><span class="line">  (req, res) =&gt; &#123;</span><br><span class="line">    Profile.findOneAndRemove(&#123; <span class="attr">_id</span>: req.params.id &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">profile</span> =&gt;</span> &#123;</span><br><span class="line">        profile.save().then(<span class="function"><span class="params">profile</span> =&gt;</span> res.json(profile));</span><br><span class="line">      &#125;</span><br><span class="line">      ).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> res.status(<span class="number">404</span>).json(<span class="string">"删除失败"</span>))</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>至此，信息的增删改查均已实现。要创建其他 schema 可以参考此方式</p>
+</blockquote>
+<h4 id="前后端连载"><a href="#前后端连载" class="headerlink" title="前后端连载"></a>前后端连载</h4><p>查看vue版本，是否在3.0.0以上，我们要求是在3.0.0以上。</p>
+<blockquote>
+<p>vue-cli的安装见 <a href="https://cn.vuejs.org/" target="_blank" rel="noopener">vue官网</a> ，这里就不说了</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//终端中执行</span></span><br><span class="line">vue -V <span class="comment">//查看vue-cli版本 本案例要求3.0.0以上</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建项目 client是自己起的名字，意为"客户端"</span></span><br><span class="line">vue create client</span><br><span class="line"></span><br><span class="line">接下来进入选择流程，后面 √ 为我们作出的选择项，-----表示回车到下一选项页</span><br><span class="line">? Please pick a preset: </span><br><span class="line">❯ <span class="keyword">default</span> (babel, eslint)   (默认配置)</span><br><span class="line">  Manually select features （手动选择) √</span><br><span class="line">-----</span><br><span class="line">按键盘a表示全选，i表示反选，空格键 表示切换选中，如果你需要什么就选什么就可以了，这里选择Babel、Router、Vuex。</span><br><span class="line">? Please pick a preset: Manually select features</span><br><span class="line">? Check the features needed <span class="keyword">for</span> your project: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line">❯◯ Babel    √</span><br><span class="line"> ◯ TypeScript</span><br><span class="line"> ◯ Progressive Web App (PWA) Support   </span><br><span class="line"> ◯ Router   √</span><br><span class="line"> ◯ Vuex     √ </span><br><span class="line"> ◯ CSS Pre-processors</span><br><span class="line"> ◯ Linter / Formatter</span><br><span class="line"> ◯ Unit Testing</span><br><span class="line"> ◯ E2E Testing</span><br><span class="line"> -----</span><br><span class="line"> 是否使用history ，我们输入y，回车，会继续显示其他问题。</span><br><span class="line"> ? Please pick a preset: Manually select features</span><br><span class="line">? Check the features needed <span class="keyword">for</span> your project: Babel, Router, Vuex</span><br><span class="line">? Use history mode <span class="keyword">for</span> router? (Requires proper server setup <span class="keyword">for</span> index fallback <span class="keyword">in</span> production) (Y/n) </span><br><span class="line"></span><br><span class="line">In dedicated config files </span><br><span class="line">In package.json    √ </span><br><span class="line"></span><br><span class="line"> Save <span class="keyword">this</span> <span class="keyword">as</span> a preset <span class="keyword">for</span> future projects? (y/N) (是否要保存你当前预制模板) N （第一次时可以保存一次方便之后用）</span><br><span class="line"> -----</span><br><span class="line"> 接下来就是等待安装成功。 会产生一个 client的文件夹</span><br><span class="line"></span><br><span class="line"> <span class="comment">//启动项目 </span></span><br><span class="line"> cd client</span><br><span class="line"> npm run serve  <span class="comment">//注意，是serve 不是server</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>此时使用 <code>http://localhost:8080/</code> 就可以打开前端了,再新建终端，执行 <code>nodemon</code>就打开了后台。<br>这需要两个终端打开，较为繁琐，因此采用前后端连载，借助concurrently将多个终端启动的项目绑在一起<br>安装 concurrently </p>
+</blockquote>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> concurrently</span><br></pre></td></tr></table></figure>
+
+<p>打开 /client/package.json</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">   "serve": "vue-cli-service serve",</span><br><span class="line">   "build": "vue-cli-service build",</span><br><span class="line">   "start": "npm run serve"</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>此时，我们在client中 使用 <code>npm run start</code>即可启动前端     </p>
+</blockquote>
+<p>在根目录的 package.json 中配置<code>client-stall</code>、<code>client</code>和<code>dev</code>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">"scripts": &#123;</span><br><span class="line">   "client-install":"npm install --prefix client",</span><br><span class="line">   "client":"npm start --prefix client",</span><br><span class="line">   "start": "node server.js",</span><br><span class="line">   "server": "nodemon server.js",</span><br><span class="line">   "dev":"concurrently \"npm run server\" \"npm run client\""</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>此时我们可以在根目录的终端下执行</code>npm run dev`即可同时启动 前端和后台 </p>
+</blockquote>
+<h1 id="前端部分"><a href="#前端部分" class="headerlink" title="前端部分"></a>前端部分</h1><p>接后端部分，此文档为 前端部分 内容。</p>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>为使内容整洁，我们将vue-cli创建项目时生成的我们不需要的文件进行整理<br>我们接下来更多的是在client这个文件夹下工作，非强调指明，则以client视为根目录。</p>
+<ul>
+<li><p>删除 /src/assets/logo.png  （vue的logo图片）</p>
+</li>
+<li><p>删除 /src/components/HelloWorld.vue</p>
+</li>
+<li><p>删除 /src/views/ 中的About.vue 和Home.vue </p>
+</li>
+<li><p>新建 /src/views/Index.vue,内容为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;index&quot;&gt;</span><br><span class="line">    初始化页面</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name:&quot;index&quot;,</span><br><span class="line">  components:&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 /src/router.js,重新整理为:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> Index <span class="keyword">from</span> <span class="string">'./views/Index.vue'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  mode: <span class="string">'history'</span>,</span><br><span class="line">  base: process.env.BASE_URL,</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/'</span>,</span><br><span class="line">      redirect:<span class="string">'/index'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/index'</span>,</span><br><span class="line">      name:<span class="string">'index'</span>,</span><br><span class="line">      component: Index</span><br><span class="line">    &#125;,</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 /src/App.vue,重新整理为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;router-view/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">html,</span><br><span class="line">body,</span><br><span class="line">#app &#123;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 100%;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建 /public/css/reset.css ,在 /public/index.html 中引入该css文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/reset.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>reset.css内容可以访问 <a href="http://meyerweb.com/eric/tools/css/reset/" target="_blank" rel="noopener">CSS reset</a>得到，也可在下面设置自己需要的初始样式<br>本案例中，我们在reset.css中追加了el中加载相关的样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-class">.el-loading</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">2000</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(255, 255, 255, .7);</span><br><span class="line">  <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">top</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">-webkit-transition</span>:opacity .<span class="number">3s</span>;</span><br><span class="line">  <span class="attribute">transition</span>: opacity .<span class="number">3s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.el-loading-spinner</span>&#123;</span><br><span class="line">  <span class="attribute">top</span>:<span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>:-<span class="number">21px</span>;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注册页和404"><a href="#注册页和404" class="headerlink" title="注册页和404"></a>注册页和404</h4><p>  安装elementUI<br>  <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//此时目录在client中</span></span><br><span class="line">npm <span class="selector-tag">i</span> element-ui -S</span><br></pre></td></tr></table></figure></p>
+<p>在/src/main.js中引入 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">'element-ui'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'element-ui/lib/theme-chalk/index.css'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(ElementUI);</span><br></pre></td></tr></table></figure>
+
+<p>将 图片文件 放在 /src/asset/ 文件夹下面<br>分别是404.gif,bg.jpg,logo.png,showcase.png</p>
+<p>初始注册，新建 /src/views/Register.vue,内容 (只是简单布局，还未设置表单内容)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;register&quot;&gt;</span><br><span class="line">    &lt;section class=&quot;form_container&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;manage_tip&quot;&gt;</span><br><span class="line">        &lt;span class=&quot;title&quot;&gt;米修在线后台管理系统&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/section&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name:&quot;register&quot;,</span><br><span class="line">  components:&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.register&#123;</span><br><span class="line">  position: relative;</span><br><span class="line">  width: 100%;</span><br><span class="line">  height: 100%;</span><br><span class="line">  background: url(../assets/bg.jpg) no-repeat center center;</span><br><span class="line">  background-size: 100% 100%;</span><br><span class="line">&#125;</span><br><span class="line">.form_container&#123;</span><br><span class="line">  width: 370px;</span><br><span class="line">  height: 210px;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top:10%;</span><br><span class="line">  left:34%;</span><br><span class="line">  padding:25px;</span><br><span class="line">  border-radius: 5px;</span><br><span class="line">  text-align: center;</span><br><span class="line">&#125;</span><br><span class="line">.form_container .manage_tip .title&#123;</span><br><span class="line">  font-family: &apos;Microsooft YaHei&apos;;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  font-size: 26px;</span><br><span class="line">  color: #fff;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在 router.js中设置路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入组件</span></span><br><span class="line"><span class="keyword">import</span> Register <span class="keyword">from</span> <span class="string">'./views/Register.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//添加路由</span></span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/register'</span>,</span><br><span class="line">      name:<span class="string">'register'</span>,</span><br><span class="line">      component: Register</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>设置 404 页面</p>
+<ol>
+<li>新建 /src/views/404.vue 组件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;notfound&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;../assets/404.png&quot; alt=&quot;页面没找到&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.notfound&#123;</span><br><span class="line">width: 100%;</span><br><span class="line">height:100%;</span><br><span class="line">overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">.notfound img&#123;</span><br><span class="line">width: 100%;</span><br><span class="line">height:100%;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>在 router.js中设置路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'*'</span>,</span><br><span class="line">  name:<span class="string">'/404'</span>,</span><br><span class="line">  component: NotFound</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注册表单"><a href="#注册表单" class="headerlink" title="注册表单"></a>注册表单</h4><p>此后大量使用 element 的代码，为避免过长，仅提一些重要的点，其他请结合原文件阅读笔记</p>
+<h4 id="密码规则与验证"><a href="#密码规则与验证" class="headerlink" title="密码规则与验证"></a>密码规则与验证</h4><h4 id="加载动画和消息提示"><a href="#加载动画和消息提示" class="headerlink" title="加载动画和消息提示"></a>加载动画和消息提示</h4><p>安装 axios</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//client目录下</span></span><br><span class="line">npm install axios</span><br></pre></td></tr></table></figure>
+
+<p>新建 /src/http.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Message,Loading &#125; <span class="keyword">from</span> <span class="string">'element-ui'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> loading;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startLoading</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  loading = Loading.service(&#123;</span><br><span class="line">    lock:<span class="literal">true</span>,</span><br><span class="line">    text:<span class="string">"拼命加载中..."</span>,</span><br><span class="line">    background:<span class="string">'rgba(0,0,0,0.7)'</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">endLoading</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  loading.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//请求拦截</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//加载动画</span></span><br><span class="line">  startLoading();</span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;,error =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//响应拦截</span></span><br><span class="line"></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//结束加载动画</span></span><br><span class="line">  endLoading();</span><br><span class="line">  <span class="keyword">return</span> response;</span><br><span class="line">&#125;,error =&gt; &#123;</span><br><span class="line">  <span class="comment">//错误提醒</span></span><br><span class="line">  endLoading();</span><br><span class="line">  Message.error(error.response.data);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> axios;</span><br></pre></td></tr></table></figure>
+
+<p>在main.js中引用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'./http'</span></span><br><span class="line"></span><br><span class="line">Vue.prototype.$axios = axios;</span><br></pre></td></tr></table></figure>
+
+<p>http.js内容(后会变动)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Message,Loading &#125; <span class="keyword">from</span> <span class="string">'element-ui'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> loading;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startLoading</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  loading = Loading.service(&#123;</span><br><span class="line">    lock:<span class="literal">true</span>,</span><br><span class="line">    text:<span class="string">"拼命加载中..."</span>,</span><br><span class="line">    background:<span class="string">'rgba(0,0,0,0.7)'</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">endLoading</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  loading.close();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//请求拦截</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//加载动画</span></span><br><span class="line">  startLoading();</span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;,error =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//响应拦截</span></span><br><span class="line"></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//结束加载动画</span></span><br><span class="line">  endLoading();</span><br><span class="line">  <span class="keyword">return</span> response;</span><br><span class="line">&#125;,error =&gt; &#123;</span><br><span class="line">  <span class="comment">//错误提醒</span></span><br><span class="line">  endLoading();</span><br><span class="line">  Message.error(error.response.data);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> axios;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置前端跨域请求-使用vue-cli项目"><a href="#配置前端跨域请求-使用vue-cli项目" class="headerlink" title="配置前端跨域请求(使用vue-cli项目)"></a>配置前端跨域请求(使用vue-cli项目)</h4><p>新建 vue.config.js ，在client目录下,内容</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> debug = process.env.NODE_ENV !== <span class="string">'production'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  baseUrl:<span class="string">'/'</span>, <span class="comment">//根域上下文目录</span></span><br><span class="line">  outputDir:<span class="string">'dist'</span>, <span class="comment">//构建输出目录</span></span><br><span class="line">  assetsDir: <span class="string">'assets'</span>, <span class="comment">//静态资源目录（js,css,img,fonts）</span></span><br><span class="line">  lintOnSave:<span class="literal">false</span>, <span class="comment">//是否开启eslint保存检测，有效值：true|false|'error'</span></span><br><span class="line">  runtimeCompiler:<span class="literal">true</span>, <span class="comment">//运行时版本是否需要编译</span></span><br><span class="line">  transpileDependencies:[], <span class="comment">//默认babel-loader忽略node_modules,这里可增加例外的依赖包名</span></span><br><span class="line">  productionSourceMap:<span class="literal">true</span>, <span class="comment">//是否在构建生产包时生产 sourceMap 文件，false将提高构建速度</span></span><br><span class="line">  configureWebpack:<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//webpack 配置，值为对象时会合并配置，为方法时会改写配置</span></span><br><span class="line">    <span class="keyword">if</span>(debug)&#123;</span><br><span class="line">      <span class="comment">//开发环境配置</span></span><br><span class="line">      config.devtool = <span class="string">'cheap-module-eval-source-map'</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="comment">//生产环境配置</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Object.assign(config,&#123; //开发生产共同配置</span></span><br><span class="line">    <span class="comment">//   resolve:&#123;</span></span><br><span class="line">    <span class="comment">//     alias:&#123;</span></span><br><span class="line">    <span class="comment">//       '@':path.resolve(__dirname,'./src'),</span></span><br><span class="line">    <span class="comment">//       '@c':path.resolve(__dirname,'./src/components'),</span></span><br><span class="line">    <span class="comment">//       'vue$':'vue/dist/vue.esm.js'</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">//   &#125;</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">  &#125;,</span><br><span class="line">  chainWebpack:<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//webpack链接API，用于生成和修改webpack配置，</span></span><br><span class="line">    <span class="comment">// https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md</span></span><br><span class="line">    <span class="keyword">if</span>(debug)&#123;</span><br><span class="line">      <span class="comment">//本地开发配置</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="comment">//生产开发配置</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  parallel:<span class="built_in">require</span>(<span class="string">'os'</span>).cpus().length &gt; <span class="number">1</span>, <span class="comment">//构建时开启多进程处理babel编译</span></span><br><span class="line">  pluginOptions:&#123;</span><br><span class="line">    <span class="comment">//第三方插件配置</span></span><br><span class="line">  &#125;,</span><br><span class="line">  pwa:&#123;</span><br><span class="line">    <span class="comment">//单页插件相关配置</span></span><br><span class="line">    <span class="comment">// https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa</span></span><br><span class="line">  &#125;,</span><br><span class="line">  devServer:&#123;</span><br><span class="line">    open:<span class="literal">true</span>,</span><br><span class="line">    host:<span class="string">'localhost'</span>,</span><br><span class="line">    port:<span class="number">8080</span>,</span><br><span class="line">    https:<span class="literal">false</span>,</span><br><span class="line">    hotOnly:<span class="literal">false</span>,</span><br><span class="line">    proxy:&#123;<span class="comment">//配置跨域</span></span><br><span class="line">      <span class="string">'/api'</span>:&#123;</span><br><span class="line">        target:<span class="string">'http://localhost:5000/api'</span>,</span><br><span class="line">        ws:<span class="literal">true</span>,</span><br><span class="line">        changOrigin:<span class="literal">true</span>,</span><br><span class="line">        pathRewrite:&#123;</span><br><span class="line">          <span class="string">'^/api'</span>:<span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    before:<span class="function"><span class="params">app</span> =&gt;</span> &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这样就可以访问我们的后台了</p>
+</blockquote>
+<p>在register.vue中配置跳转,这样就可以注册用户了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">submitForm(formName) &#123;</span><br><span class="line">      <span class="keyword">this</span>.$refs[formName].validate(<span class="function"><span class="params">valid</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (valid) &#123;</span><br><span class="line">            <span class="keyword">this</span>.$axios</span><br><span class="line">            .post(<span class="string">"/api/users/register"</span>, <span class="keyword">this</span>.registerUser)</span><br><span class="line">            .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">              <span class="comment">//注册成功</span></span><br><span class="line">              <span class="keyword">this</span>.$message(&#123;</span><br><span class="line">                message: <span class="string">"账号注册成功！"</span>,</span><br><span class="line">                type: <span class="string">"success"</span></span><br><span class="line">              &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">          <span class="keyword">this</span>.$router.push(<span class="string">"/login"</span>); </span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="登录逻辑"><a href="#登录逻辑" class="headerlink" title="登录逻辑"></a>登录逻辑</h4><p>新建组件和添加路由参考注册，这里讲下登录逻辑. Login.vue</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">submitForm(formName) &#123;</span><br><span class="line">      <span class="keyword">this</span>.$refs[formName].validate(<span class="function"><span class="params">valid</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (valid) &#123;</span><br><span class="line">          <span class="keyword">this</span>.$axios.post(<span class="string">"/api/users/login"</span>, <span class="keyword">this</span>.loginUser).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="comment">//token</span></span><br><span class="line">            <span class="keyword">const</span> &#123; token &#125; = res.data;</span><br><span class="line">            <span class="comment">// 存储到ls</span></span><br><span class="line">             localStorage.setItem(<span class="string">"eleToken"</span>,token);</span><br><span class="line">             <span class="keyword">this</span>.$router.push(<span class="string">'/index'</span>);</span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="keyword">this</span>.$router.push(<span class="string">"/login"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h4><p>router.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//路由守卫</span></span><br><span class="line">router.beforeEach(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> isLogin = localStorage.eleToken ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(to.path == <span class="string">"/login"</span> || to.path == <span class="string">"/register"</span>)&#123;</span><br><span class="line">    next();</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    isLogin ? next() : next(<span class="string">"login"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>http.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//请求拦截</span></span><br><span class="line">axios.interceptors.request.use(<span class="function"><span class="params">config</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//加载动画</span></span><br><span class="line">  startLoading();</span><br><span class="line"><span class="keyword">if</span>(localStorage.eleToken)&#123;</span><br><span class="line">  <span class="comment">//设置统一的请求header</span></span><br><span class="line">  config.headers.Authorization = localStorage.eleToken;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> config;</span><br><span class="line">&#125;,error =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//响应拦截</span></span><br><span class="line">axios.interceptors.response.use(<span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//结束加载动画</span></span><br><span class="line">  endLoading();</span><br><span class="line">  <span class="keyword">return</span> response;</span><br><span class="line">&#125;,error =&gt; &#123;</span><br><span class="line">  <span class="comment">//错误提醒</span></span><br><span class="line">  endLoading();</span><br><span class="line">  Message.error(error.response.data);</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//获取错误状态码</span></span><br><span class="line">  <span class="keyword">const</span> &#123; status &#125; = error.response;</span><br><span class="line">  <span class="keyword">if</span> (status == <span class="number">401</span>)&#123;</span><br><span class="line">    Message.error(<span class="string">'token失效，请重新登录！'</span>);</span><br><span class="line">    <span class="comment">//清除token</span></span><br><span class="line">    localStorage.removeItem(<span class="string">"eleToken"</span>);</span><br><span class="line">    <span class="comment">//跳转到登录页面</span></span><br><span class="line">    router.push(<span class="string">'/login'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Promise</span>.reject(error);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="token-过期"><a href="#token-过期" class="headerlink" title="token 过期"></a>token 过期</h4><p>解析token的模块</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install jwt-decode</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置Vuex"><a href="#设置Vuex" class="headerlink" title="设置Vuex"></a>设置Vuex</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Login.vue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//登录成功后将数据存储到Vuex中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//token存储到Vuex中</span></span><br><span class="line"><span class="keyword">this</span>,$store.dispatch(<span class="string">"setAuthenticated"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>方法: 判断是否为空</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">isEmpty(value)&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    value === <span class="literal">undefined</span> ||</span><br><span class="line">    value === <span class="literal">null</span> ||</span><br><span class="line">    (<span class="keyword">typeof</span> value === <span class="string">"object"</span> &amp;&amp; <span class="built_in">Object</span>.keys(value).length === <span class="number">0</span>) ||</span><br><span class="line">    (<span class="keyword">typeof</span> value === <span class="string">"string"</span> &amp;&amp; value.trim().length === <span class="number">0</span>)</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+
+<h4 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h4><p>新建/component/HeadNav.vue</p>
+<p>将HeadNav.vue引入到Index.vue,并注册,然后template中调用</p>
+<p>在HeadNav.vue中布局</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//看代码</span></span><br></pre></td></tr></table></figure>
+
+<p>写向下箭头的方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">  methods: &#123;</span><br><span class="line">    setDialogInfo(cmdItem) &#123;</span><br><span class="line">      <span class="keyword">switch</span> (cmdItem) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"info"</span>:</span><br><span class="line">          <span class="keyword">this</span>.showInfoList();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"logout"</span>:</span><br><span class="line">          <span class="keyword">this</span>.logout();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    showInfoList() &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"个人信息"</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    logout() &#123;</span><br><span class="line">      <span class="comment">//清除token</span></span><br><span class="line">      localStorage.removeItem(<span class="string">"eleToken"</span>);</span><br><span class="line">      <span class="comment">//设置Vuex store</span></span><br><span class="line">      <span class="keyword">this</span>.$store.dispatch(<span class="string">"clearCurrentState"</span>);</span><br><span class="line">      <span class="comment">//跳转到login</span></span><br><span class="line">      <span class="keyword">this</span>.$router.push(<span class="string">"/login"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//vuex中记得在actions中添加clearCurrentState</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="个人信息"><a href="#个人信息" class="headerlink" title="个人信息"></a>个人信息</h4><p>新建views/Home.vue</p>
+<p>在router.js中设置二级路由</p>
+<p>新建views/InfoShow.vue</p>
+<h4 id="侧面导航栏"><a href="#侧面导航栏" class="headerlink" title="侧面导航栏"></a>侧面导航栏</h4><p>新建assets/component/LeftMenu.vue</p>
+<p>编辑收支类型</p>
+<h4 id="创建资金列表"><a href="#创建资金列表" class="headerlink" title="创建资金列表"></a>创建资金列表</h4><p>新建views/FundList.vue</p>
+<p>添加各个按钮,事件<br>设置添加按钮,新增对话框component/Dialog.vue组件</p>
+<h4 id="编辑和添加"><a href="#编辑和添加" class="headerlink" title="编辑和添加"></a>编辑和添加</h4><p>编辑和添加功能雷同,把formData放到父级fundlist中,并用props传递<br>修改父级中dialog的属性,新增title,options,方便切换弹窗的标题和选项</p>
+<p>在handleEdit中修改dialog的title,当点击编辑时title就切换成’编辑’<br>编辑时已经拿到数据了.this.formData的值也就是传入值了<br>同样,添加的也可以新增this.formData.但是添加的数据默认是空的</p>
+<p>在onSubmit中判断提交的类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="keyword">this</span>.dialog.option == <span class="string">"add"</span> ? <span class="string">"add"</span> : <span class="string">`edit/<span class="subst">$&#123;<span class="keyword">this</span>.formData.id&#125;</span>`</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除按钮"><a href="#删除按钮" class="headerlink" title="删除按钮"></a>删除按钮</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$axios.delete(<span class="string">`/api/profiles/delete/<span class="subst">$&#123;row._id&#125;</span>`</span>)</span><br><span class="line"><span class="comment">//之后可以then调用$message弹出删除成功的提示</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h4><p>elementUI布局整行分为24列.<br>使用标准分页</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-pagination</span><br><span class="line">  @size-change=<span class="string">"handleSizeChange"</span></span><br><span class="line">  @current-change=<span class="string">"handleCurrentChange"</span></span><br><span class="line">  :current-page=<span class="string">"currentPage4"</span></span><br><span class="line">  :page-sizes=<span class="string">"[100, 200, 300, 400]"</span></span><br><span class="line">  :page-size=<span class="string">"100"</span></span><br><span class="line">  layout=<span class="string">"total, sizes, prev, pager, next, jumper"</span></span><br><span class="line">  :total=<span class="string">"400"</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/el-pagination&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>  //修改绑定数据</p>
+<p>  //设置全部数据容器(数组)<br>  allTableData: []</p>
+<p>  //在获取数据时就开始设置分页数据<br>  this.setPaginations()</p>
+<p>  在setPaginations中设置默认属性</p>
+<h4 id="筛选和权限"><a href="#筛选和权限" class="headerlink" title="筛选和权限"></a>筛选和权限</h4><p>定义筛选组件<el-form-item label="按照时间筛选"><br>复制elementUI的时间选择器.<br>添加筛选按钮,绑定筛选事件handleSearch()<br>绑定开始时间,结束时间.在data中定义开始时间startTime,结束时间endTime</el-form-item></p>
+<p>添加过滤容器filterTableData:{},在getProfile()时也存储一次.</p>
+<h5 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h5><p>使用计算属性computed获取此时用户的身份</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">    user()&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.user</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用v-if决定是否可以使用添加,编辑,删除操作.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v-<span class="keyword">if</span>=<span class="string">"user.indentity == 'manager'"</span></span><br><span class="line"><span class="comment">//将此判断加到添加事件之前和label='操作'后</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/项目/" rel="tag"><i class="fa fa-tag"></i> 项目</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/27/cNode社区项目/" rel="next" title="cNode社区项目">
+                  <i class="fa fa-chevron-left"></i> cNode社区项目
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Zax Tseng">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description motion-element" itemprop="description">Zax's BLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/zaxtseng" title="GitHub &rarr; https://github.com/zaxtseng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:lanfein9@hotmail.com" title="E-Mail &rarr; mailto:lanfein9@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#后端部分"><span class="nav-number">1.</span> <span class="nav-text">后端部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-nodemon-使用"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. nodemon 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-连接数据库"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2.连接数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-配置路由和接口"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3.配置路由和接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-创建模型"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4.创建模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-下载postman-安装"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">4.5 下载postman,安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-创建register接口"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">4.6 创建register接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-配置注册"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">5.配置注册</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#密码加密"><span class="nav-number">1.0.0.7.1.</span> <span class="nav-text">密码加密</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#头像-avatar"><span class="nav-number">1.0.0.8.</span> <span class="nav-text">头像 avatar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-登录接口"><span class="nav-number">1.0.0.9.</span> <span class="nav-text">7.登录接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回-token"><span class="nav-number">1.0.0.10.</span> <span class="nav-text">返回 token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证-token"><span class="nav-number">1.0.0.11.</span> <span class="nav-text">验证 token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这里调整了一些输出的内容，将输出对象改为了字符串，可能造成代码实际和上面有些出入。"><span class="nav-number">1.0.0.12.</span> <span class="nav-text">这里调整了一些输出的内容，将输出对象改为了字符串，可能造成代码实际和上面有些出入。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加身份"><span class="nav-number">1.0.0.13.</span> <span class="nav-text">添加身份</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置信息接口"><span class="nav-number">1.0.0.14.</span> <span class="nav-text">配置信息接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改数据库接口"><span class="nav-number">1.0.0.15.</span> <span class="nav-text">更改数据库接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建添加信息的接口"><span class="nav-number">1.0.0.16.</span> <span class="nav-text">创建添加信息的接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取所有信息"><span class="nav-number">1.0.0.17.</span> <span class="nav-text">获取所有信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取单个信息"><span class="nav-number">1.0.0.18.</span> <span class="nav-text">获取单个信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑信息"><span class="nav-number">1.0.0.19.</span> <span class="nav-text">编辑信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除信息"><span class="nav-number">1.0.0.20.</span> <span class="nav-text">删除信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前后端连载"><span class="nav-number">1.0.0.21.</span> <span class="nav-text">前后端连载</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#前端部分"><span class="nav-number">2.</span> <span class="nav-text">前端部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备工作"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册页和404"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">注册页和404</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册表单"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">注册表单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#密码规则与验证"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">密码规则与验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载动画和消息提示"><span class="nav-number">2.0.0.5.</span> <span class="nav-text">加载动画和消息提示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置前端跨域请求-使用vue-cli项目"><span class="nav-number">2.0.0.6.</span> <span class="nav-text">配置前端跨域请求(使用vue-cli项目)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#登录逻辑"><span class="nav-number">2.0.0.7.</span> <span class="nav-text">登录逻辑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路由守卫"><span class="nav-number">2.0.0.8.</span> <span class="nav-text">路由守卫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#token-过期"><span class="nav-number">2.0.0.9.</span> <span class="nav-text">token 过期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置Vuex"><span class="nav-number">2.0.0.10.</span> <span class="nav-text">设置Vuex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样式"><span class="nav-number">2.0.0.11.</span> <span class="nav-text">样式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#个人信息"><span class="nav-number">2.0.0.12.</span> <span class="nav-text">个人信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#侧面导航栏"><span class="nav-number">2.0.0.13.</span> <span class="nav-text">侧面导航栏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建资金列表"><span class="nav-number">2.0.0.14.</span> <span class="nav-text">创建资金列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编辑和添加"><span class="nav-number">2.0.0.15.</span> <span class="nav-text">编辑和添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除按钮"><span class="nav-number">2.0.0.16.</span> <span class="nav-text">删除按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页"><span class="nav-number">2.0.0.17.</span> <span class="nav-text">分页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#筛选和权限"><span class="nav-number">2.0.0.18.</span> <span class="nav-text">筛选和权限</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#权限"><span class="nav-number">2.0.0.18.1.</span> <span class="nav-text">权限</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.3' zIndex='-3' count='29' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
