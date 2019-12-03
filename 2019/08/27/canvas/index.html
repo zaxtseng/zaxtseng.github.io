@@ -1,289 +1,95 @@
 <!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
 
-
-
-
-
-<html class="theme-next muse use-motion" lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
-
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.3.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    save_scroll: false,
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
-
+  
+  <title>canvas画板 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="简介canvas本身没有绘图能力，只是定义了一个容器，都是由canvas内部的CanvasRenderingContext2D对象来做，需要我们用 JavaScript脚本完成绘制工作。 基础 html引入&amp;lt;canvas&amp;gt;标签  &amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  js获取&amp;lt;canvas&amp;gt;属性,使用2d绘">
 <meta name="keywords" content="html5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="canvas画板">
 <meta property="og:url" content="http://yoursite.com/2019/08/27/canvas/index.html">
-<meta property="og:site_name" content="Zax&#39;s BLOG">
+<meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="简介canvas本身没有绘图能力，只是定义了一个容器，都是由canvas内部的CanvasRenderingContext2D对象来做，需要我们用 JavaScript脚本完成绘制工作。 基础 html引入&amp;lt;canvas&amp;gt;标签  &amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  js获取&amp;lt;canvas&amp;gt;属性,使用2d绘">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2019-10-06T06:25:42.396Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="canvas画板">
 <meta name="twitter:description" content="简介canvas本身没有绘图能力，只是定义了一个容器，都是由canvas内部的CanvasRenderingContext2D对象来做，需要我们用 JavaScript脚本完成绘制工作。 基础 html引入&amp;lt;canvas&amp;gt;标签  &amp;lt;canvas id=&amp;quot;canvas&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt;  js获取&amp;lt;canvas&amp;gt;属性,使用2d绘">
-  <link rel="canonical" href="http://yoursite.com/2019/08/27/canvas/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>canvas画板 | Zax's BLOG</title>
   
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-left">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Zax's BLOG</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
     </div>
   </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-canvas" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/27/canvas/" class="article-date">
+  <time datetime="2019-08-27T05:39:26.000Z" itemprop="datePublished">2019-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/HTML5/">HTML5</a>►<a class="article-category-link" href="/categories/HTML5/canvas/">canvas</a>
   </div>
-</div>
 
-
-<nav class="site-nav">
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-  <ul id="menu" class="menu">
-      
-      
-      
-        
-        <li class="menu-item menu-item-home">
-      
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-archives">
-      
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-  </ul>
-
-    
-
-</nav>
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content page-post-detail">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <h1 class="article-title" itemprop="name">
+      canvas画板
+    </h1>
   
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/canvas/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zax Tseng">
-      <meta itemprop="description" content="Zax's BLOG">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zax's BLOG">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">canvas画板
-
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-08-27 13:39:26" itemprop="dateCreated datePublished" datetime="2019-08-27T13:39:26+08:00">2019-08-27</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-06 14:25:42" itemprop="dateModified" datetime="2019-10-06T14:25:42+08:00">2019-10-06</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/HTML5/" itemprop="url" rel="index"><span itemprop="name">HTML5</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/HTML5/canvas/" itemprop="url" rel="index"><span itemprop="name">canvas</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
       </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
         <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>canvas本身没有绘图能力，只是定义了一个容器，都是由canvas内部的CanvasRenderingContext2D对象来做，需要我们用 JavaScript脚本完成绘制工作。</p>
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><ol>
@@ -299,7 +105,7 @@
 <li>设置宽高</li>
 </ol>
 <p>使用<code>canvas.width</code>设置宽度.<br><code>canvas.height</code>设置高度.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;canvas id=<span class="string">"canvas"</span> sytle=<span class="string">"border: 1px solid #aaa;display: block;margin: 50px auto;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>)</span><br><span class="line">        canvas.width: <span class="number">1024</span>;</span><br><span class="line">        canvas.height: <span class="number">768</span>;</span><br><span class="line">        <span class="keyword">if</span>(canvas.getContext(<span class="string">"2d"</span>))&#123;</span><br><span class="line">            <span class="comment">//如果浏览器支持canvas,可以使用</span></span><br><span class="line">            <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            alert(<span class="string">'当前浏览器不支持,请使用谷歌浏览器'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;canvas id=<span class="string">"canvas"</span> sytle=<span class="string">"border: 1px solid #aaa;display: block;margin: 50px auto;"</span>&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>)</span><br><span class="line">        canvas.width: <span class="number">1024</span>;</span><br><span class="line">        canvas.height: <span class="number">768</span>;</span><br><span class="line">        <span class="keyword">if</span>(canvas.getContext(<span class="string">"2d"</span>))&#123;</span><br><span class="line">            <span class="comment">//如果浏览器支持canvas,可以使用</span></span><br><span class="line">            <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            alert(<span class="string">'当前浏览器不支持,请使用谷歌浏览器'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
 
 <p>设置全屏</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> pageWidth = <span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line"><span class="keyword">let</span> pageHeight = <span class="built_in">document</span>.documentElement.clientHeight;</span><br><span class="line"></span><br><span class="line">canvas.width = pageWidth;</span><br><span class="line">canvas.height = pageHeight;</span><br></pre></td></tr></table></figure>
@@ -380,329 +186,154 @@
 <ol start="3">
 <li>canvas画板代码实现</li>
 </ol>
-<h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">  &lt;title&gt;JS Bin&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;canvas id=<span class="string">"canvas"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line">    &lt;div id=<span class="string">"actions"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"actions x"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;svg id=<span class="string">"pen"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"icon"</span>&gt;</span><br><span class="line">            &lt;use xlink:href=<span class="string">"#icon-pencil"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span></span><br><span class="line">        &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">        &lt;svg id="eraser"class="icon"&gt;</span></span><br><span class="line"><span class="regexp">            &lt;use xlink:href="#icon-eraser"&gt;&lt;/u</span>se&gt;</span><br><span class="line">        &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        &lt;svg id="clear"class="icon"&gt;</span></span><br><span class="line"><span class="regexp">            &lt;use xlink:href="#icon-delete"&gt;&lt;/u</span>se&gt;</span><br><span class="line">        &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        &lt;svg id="download"class="icon"&gt;</span></span><br><span class="line"><span class="regexp">            &lt;use xlink:href="#icon-download"&gt;&lt;/u</span>se&gt;</span><br><span class="line">        &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;ul class='colorCir'&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li id="black"class="black"&gt;&lt;/</span>li&gt;</span><br><span class="line">        &lt;li id=<span class="string">"red"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"red"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        &lt;li id=<span class="string">"yellow"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"yellow"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">        &lt;li id=<span class="string">"blue"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"blue"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>      </span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;ul class='lineWidth'&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li id="thin" class="thin"&gt;&lt;/</span>li&gt;</span><br><span class="line">        &lt;li id=<span class="string">"thick"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"thick"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">  &lt;title&gt;JS Bin&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;canvas id=<span class="string">"canvas"</span>&gt;&lt;/canvas&gt;</span><br><span class="line">    &lt;div id=<span class="string">"actions"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"actions x"</span>&gt;</span><br><span class="line"></span><br><span class="line">        &lt;svg id=<span class="string">"pen"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"icon"</span>&gt;</span><br><span class="line">            &lt;use xlink:href=<span class="string">"#icon-pencil"</span>&gt;&lt;/use&gt;</span><br><span class="line">        &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp">    </span></span><br><span class="line"><span class="regexp">        &lt;svg id="eraser"class="icon"&gt;</span></span><br><span class="line"><span class="regexp">            &lt;use xlink:href="#icon-eraser"&gt;&lt;/u</span>se&gt;</span><br><span class="line">        &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        &lt;svg id="clear"class="icon"&gt;</span></span><br><span class="line"><span class="regexp">            &lt;use xlink:href="#icon-delete"&gt;&lt;/u</span>se&gt;</span><br><span class="line">        &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">        &lt;svg id="download"class="icon"&gt;</span></span><br><span class="line"><span class="regexp">            &lt;use xlink:href="#icon-download"&gt;&lt;/u</span>se&gt;</span><br><span class="line">        &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;ul class='colorCir'&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li id="black"class="black"&gt;&lt;/</span>li&gt;</span><br><span class="line">        &lt;li id=<span class="string">"red"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"red"</span>&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li id=<span class="string">"yellow"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"yellow"</span>&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li id=<span class="string">"blue"</span><span class="class"><span class="keyword">class</span></span>=<span class="string">"blue"</span>&gt;&lt;/li&gt;      </span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &lt;ul class='lineWidth'&gt;</span></span><br><span class="line"><span class="regexp">        &lt;li id="thin" class="thin"&gt;&lt;/</span>li&gt;</span><br><span class="line">        &lt;li id=<span class="string">"thick"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"thick"</span>&gt;&lt;/li&gt;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    margin:<span class="number">0</span>;</span><br><span class="line">    padding:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    background:#eee</span><br><span class="line">&#125;</span><br><span class="line">ul,ol&#123;</span><br><span class="line">    list-style: none; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.colorCir&#123;</span><br><span class="line">    top:<span class="number">60</span>px;</span><br><span class="line">    left:<span class="number">20</span>px;</span><br><span class="line">    position: fixed; </span><br><span class="line">&#125;</span><br><span class="line">.colorCir li&#123;</span><br><span class="line">    border: <span class="number">1</span>px solid grey;</span><br><span class="line">    height:<span class="number">20</span>px;</span><br><span class="line">    width: <span class="number">20</span>px;</span><br><span class="line">    border-radius: <span class="number">50</span>%;</span><br><span class="line">    margin-bottom:<span class="number">10</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.colorCir .red&#123;</span><br><span class="line">    background:red;</span><br><span class="line">&#125;     </span><br><span class="line">.colorCir .yellow&#123;</span><br><span class="line">    background:yellow;</span><br><span class="line">&#125;  </span><br><span class="line">.colorCir .blue&#123;</span><br><span class="line">    background:blue;</span><br><span class="line">&#125;  </span><br><span class="line">.colorCir .black&#123;</span><br><span class="line">    background:black;</span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line">.colorCir .red.active&#123;</span><br><span class="line">    transform: scale(<span class="number">1.2</span>);</span><br><span class="line">    transition: all <span class="number">0.3</span>s;</span><br><span class="line">&#125;</span><br><span class="line">.colorCir .yellow.active&#123;</span><br><span class="line">    transform: scale(<span class="number">1.2</span>);</span><br><span class="line">    transition: all <span class="number">0.3</span>s;</span><br><span class="line">&#125;</span><br><span class="line">.colorCir .blue.active&#123;</span><br><span class="line">    transform: scale(<span class="number">1.2</span>);</span><br><span class="line">    transition: all <span class="number">0.3</span>s;</span><br><span class="line">&#125;</span><br><span class="line">.colorCir .black.active&#123;</span><br><span class="line">    transform: scale(<span class="number">1.2</span>);</span><br><span class="line">    transition: all <span class="number">0.3</span>s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.icon &#123;</span><br><span class="line">    width: <span class="number">1</span>em; height: <span class="number">1</span>em;</span><br><span class="line">    vertical-align: <span class="number">-0.15</span>em;</span><br><span class="line">    fill: currentColor;</span><br><span class="line">    overflow: hidden;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">body&#123;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">&#125;</span><br><span class="line">#canvas&#123;</span><br><span class="line">    display: block;</span><br><span class="line">    position: fixed;</span><br><span class="line">    top:<span class="number">0</span>px;</span><br><span class="line">    left:<span class="number">0</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.actions&#123;</span><br><span class="line">    position: fixed;</span><br><span class="line">    top:<span class="number">0</span>px;</span><br><span class="line">    left:<span class="number">0</span>px;</span><br><span class="line">    padding-top:<span class="number">20</span>px;</span><br><span class="line">    padding-left:<span class="number">15</span>px;</span><br><span class="line">&#125;</span><br><span class="line">.actions svg&#123;</span><br><span class="line">    width:<span class="number">1.5</span>em;</span><br><span class="line">    height:<span class="number">1.5</span>em;</span><br><span class="line">    transition: all <span class="number">0.3</span>s;</span><br><span class="line">    margin:<span class="number">0</span> <span class="number">5</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.actions svg.active&#123;</span><br><span class="line">    fill:red; </span><br><span class="line">    transform: scale(<span class="number">1.2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.lineWidth&#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    left:<span class="number">-10</span>px;</span><br><span class="line">    top:<span class="number">140</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.lineWidth .thin&#123;</span><br><span class="line">    height:<span class="number">0</span>px;</span><br><span class="line">    width:<span class="number">40</span>px;</span><br><span class="line">    border-top:<span class="number">2</span>px solid black;</span><br><span class="line">    margin:<span class="number">15</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.lineWidth .thick&#123;</span><br><span class="line">    height:<span class="number">0</span>px;</span><br><span class="line">    width:<span class="number">40</span>px;</span><br><span class="line">    border-top:<span class="number">6</span>px solid black;</span><br><span class="line">    margin:<span class="number">15</span>px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.lineWidth .thin.active&#123;</span><br><span class="line">    transform: scale(<span class="number">1.2</span>); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.lineWidth .thick.active&#123;</span><br><span class="line">    transform: scale(<span class="number">1.2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas=<span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</span><br><span class="line"><span class="keyword">var</span> context=canvas.getContext(<span class="string">'2d'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> using=<span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> lastPoint=&#123;</span><br><span class="line">    x:<span class="literal">undefined</span>,</span><br><span class="line">    y:<span class="literal">undefined</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*画板逻辑 */</span></span><br><span class="line">autoSetSize(canvas);</span><br><span class="line"></span><br><span class="line">listenToUser(canvas);</span><br><span class="line"></span><br><span class="line"><span class="comment">/********/</span></span><br><span class="line"><span class="comment">//画笔、橡皮擦按钮替换</span></span><br><span class="line"><span class="keyword">var</span> eraserEnabled=<span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">pen.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    eraserEnabled=<span class="literal">false</span>;</span><br><span class="line">    pen.classList.add(<span class="string">'active'</span>);</span><br><span class="line">    eraser.classList.remove(<span class="string">'active'</span>);</span><br><span class="line"> &#125;</span><br><span class="line">eraser.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    eraserEnabled=<span class="literal">true</span>;</span><br><span class="line">    eraser.classList.add(<span class="string">'active'</span>);</span><br><span class="line">    pen.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//颜色替换并高亮</span></span><br><span class="line">red.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    context.fillStyle =<span class="string">"red"</span>;</span><br><span class="line">    context.strokeStyle=<span class="string">"red"</span>;</span><br><span class="line">    red.classList.add(<span class="string">'active'</span>);</span><br><span class="line">    yellow.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    blue.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    black.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">&#125;</span><br><span class="line">yellow.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    context.fillStyle =<span class="string">"yellow"</span>;</span><br><span class="line">    context.strokeStyle=<span class="string">"yellow"</span>;</span><br><span class="line">    yellow.classList.add(<span class="string">'active'</span>);</span><br><span class="line">    red.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    blue.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    black.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">&#125;</span><br><span class="line">blue.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    context.fillStyle =<span class="string">"blue"</span>;</span><br><span class="line">    context.strokeStyle=<span class="string">"blue"</span>;</span><br><span class="line">    blue.classList.add(<span class="string">'active'</span>);</span><br><span class="line">    yellow.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    red.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    black.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">&#125;</span><br><span class="line">black.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    context.fillStyle =<span class="string">"black"</span>;</span><br><span class="line">    context.strokeStyle=<span class="string">"black"</span>;</span><br><span class="line">    black.classList.add(<span class="string">'active'</span>);</span><br><span class="line">    yellow.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    blue.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    red.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/********/</span></span><br><span class="line"></span><br><span class="line">thin.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    thin.classList.add(<span class="string">'active'</span>);</span><br><span class="line">    thick.classList.remove(<span class="string">'active'</span>);    </span><br><span class="line">    context.lineWidth=<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">thick.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    thick.classList.add(<span class="string">'active'</span>);</span><br><span class="line">    thin.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">    context.lineWidth=<span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">clear.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    context.clearRect(<span class="number">0</span>,<span class="number">0</span>,canvas.clientWidth,canvas.clientHeight);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">download.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> url = canvas.toDataURL(<span class="string">'image/png'</span>);</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">    <span class="built_in">document</span>.body.appendChild(a);</span><br><span class="line">    a.href=url;</span><br><span class="line">    a.download=<span class="string">'my drawing'</span>;</span><br><span class="line">    a.click();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//drawLine</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawLine</span>(<span class="params">x1,y1,x2,y2</span>)</span>&#123;</span><br><span class="line">    context.beginPath();</span><br><span class="line">    context.moveTo(x1,y1);</span><br><span class="line">    context.lineTo(x2,y2);</span><br><span class="line">    context.stroke();</span><br><span class="line">    context.closePath();  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//drawCir</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawCir</span>(<span class="params">x,y</span>)</span>&#123;</span><br><span class="line">context.beginPath()</span><br><span class="line">context.arc(x,y,<span class="number">0.1</span>,<span class="number">0</span>,<span class="built_in">Math</span>.PI*<span class="number">2</span>);</span><br><span class="line">context.fill();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//重置canvas画板宽高</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCanvasSize</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> pageWidth=<span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line">    <span class="keyword">var</span> pageHeight=<span class="built_in">document</span>.documentElement.clientHeight;</span><br><span class="line">   </span><br><span class="line">    canvas.width = pageWidth;</span><br><span class="line">    canvas.height = pageHeight;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//自动设置canvas画板宽高</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">autoSetSize</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    setCanvasSize();    </span><br><span class="line">    <span class="built_in">window</span>.onresize =<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        setCanvasSize();</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">preventBehavior</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    e.preventDefault()</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"touchmove"</span>, preventBehavior, <span class="literal">false</span>)</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">listenToUser</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//特性检测</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">document</span>.body.ontouchstart!== <span class="literal">undefined</span> )&#123;                    </span><br><span class="line">        <span class="comment">//是触屏设备</span></span><br><span class="line">        canvas.ontouchstart =<span class="function"><span class="keyword">function</span>(<span class="params">aaa</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> x=aaa.touches[<span class="number">0</span>].clientX;</span><br><span class="line">            <span class="keyword">var</span> y=aaa.touches[<span class="number">0</span>].clientY;</span><br><span class="line">            using=<span class="literal">true</span>;</span><br><span class="line">            lastPoint=&#123;<span class="attr">x</span>:x,<span class="attr">y</span>:y&#125;;</span><br><span class="line">            <span class="keyword">if</span>(eraserEnabled)&#123;</span><br><span class="line">                context.clearRect(x<span class="number">-10</span>,y<span class="number">-10</span>,<span class="number">20</span>,<span class="number">20</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                drawCir(x,y);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">        canvas.ontouchmove = <span class="function"><span class="keyword">function</span>(<span class="params">aaa</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> x=aaa.touches[<span class="number">0</span>].clientX;</span><br><span class="line">            <span class="keyword">var</span> y=aaa.touches[<span class="number">0</span>].clientY;</span><br><span class="line">            <span class="keyword">var</span> newPoint=&#123;<span class="attr">x</span>:x,<span class="attr">y</span>:y&#125;</span><br><span class="line">            <span class="keyword">if</span>(using)&#123;</span><br><span class="line">                <span class="keyword">if</span>(eraserEnabled)&#123;</span><br><span class="line">                    context.clearRect(x<span class="number">-10</span>,y<span class="number">-10</span>,<span class="number">20</span>,<span class="number">20</span>);</span><br><span class="line">              &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    drawCir(x,y);</span><br><span class="line">                    drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)</span><br><span class="line">                    lastPoint=newPoint;      </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        canvas.ontouchend = <span class="function"><span class="keyword">function</span>(<span class="params">aaa</span>)</span>&#123;</span><br><span class="line">            using=<span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//不是触屏设备</span></span><br><span class="line">        canvas.onmousedown=<span class="function"><span class="keyword">function</span>(<span class="params">aaa</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> x=aaa.clientX;</span><br><span class="line">            <span class="keyword">var</span> y=aaa.clientY;</span><br><span class="line">            using=<span class="literal">true</span>;</span><br><span class="line">            lastPoint=&#123;<span class="attr">x</span>:x,<span class="attr">y</span>:y&#125;;</span><br><span class="line">            <span class="keyword">if</span>(eraserEnabled)&#123;</span><br><span class="line">                context.clearRect(x<span class="number">-10</span>,y<span class="number">-10</span>,<span class="number">20</span>,<span class="number">20</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                drawCir(x,y);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//鼠标移动监听</span></span><br><span class="line">        canvas.onmousemove=<span class="function"><span class="keyword">function</span>(<span class="params">aaa</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> x=aaa.clientX;</span><br><span class="line">            <span class="keyword">var</span> y=aaa.clientY;</span><br><span class="line">            <span class="keyword">var</span> newPoint=&#123;<span class="attr">x</span>:x,<span class="attr">y</span>:y&#125;</span><br><span class="line">            <span class="keyword">if</span>(using)&#123;</span><br><span class="line">                <span class="keyword">if</span>(eraserEnabled)&#123;</span><br><span class="line">                    context.clearRect(x<span class="number">-10</span>,y<span class="number">-10</span>,<span class="number">20</span>,<span class="number">20</span>);</span><br><span class="line">              &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    drawCir(x,y);</span><br><span class="line">                    drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)</span><br><span class="line">                    lastPoint=newPoint;      </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;       </span><br><span class="line">        <span class="comment">//鼠标松开监听</span></span><br><span class="line">        canvas.onmouseup=<span class="function"><span class="keyword">function</span>(<span class="params">aaa</span>)</span>&#123;</span><br><span class="line">            using=<span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
+      
     </div>
-
-    
-    
-    
-        
-      
-
-      <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/html5/" rel="tag"># html5</a>
-            
-          </div>
-        
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/08/23/CSS3布局/" rel="next" title="CSS布局">
-                  <i class="fa fa-chevron-left"></i> CSS布局
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/27/JS进阶/" rel="prev" title="JS进阶">
-                  JS进阶 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
-        
-      </footer>
-    
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
-
-
-          </div>
-          
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Zax Tseng</p>
-  <div class="site-description motion-element" itemprop="description">Zax's BLOG</div>
-</div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">43</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-    
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/27/canvas/" data-id="ck3pu18fb001m0shaarof31dn" class="article-share-link">Share</a>
       
       
-      <div class="site-state-item site-state-categories">
-        
-          
-            <a href="/categories/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">分类</span>
-        </a>
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-tags">
-        
-          
-            <a href="/tags/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">20</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
-      </div>
-    
-  </nav>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
 
-
-
-        </div>
-      </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制线段"><span class="nav-number">2.1.</span> <span class="nav-text">绘制线段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#html"><span class="nav-number">2.1.1.</span> <span class="nav-text">html</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css"><span class="nav-number">2.1.2.</span> <span class="nav-text">css</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js"><span class="nav-number">2.1.3.</span> <span class="nav-text">js</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
+  </div>
+  
     
+<nav id="article-nav">
+  
+    <a href="/2019/08/27/JS进阶/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JS进阶
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/23/CSS3布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS布局</div>
+    </a>
+  
+</nav>
 
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML基础/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP基础/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/">HTML5</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/canvas/">canvas</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS基础/">JS基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS进阶/">JS进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/前端工程化/">前端工程化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/css/css3/">css3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/Node-js/">Node.js</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP安全/">HTTP安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP进阶/">HTTP进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS深入/">JS深入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS进阶/">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js基础/">Vue.js基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js进阶/">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 16px;">HTML</a> <a href="/tags/HTTP安全/" style="font-size: 10px;">HTTP安全</a> <a href="/tags/HTTP进阶/" style="font-size: 10px;">HTTP进阶</a> <a href="/tags/JS/" style="font-size: 12px;">JS</a> <a href="/tags/JS深入/" style="font-size: 10px;">JS深入</a> <a href="/tags/JS进阶/" style="font-size: 10px;">JS进阶</a> <a href="/tags/Vue-SSR/" style="font-size: 14px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js基础/" style="font-size: 12px;">Vue.js基础</a> <a href="/tags/Vue-js进阶/" style="font-size: 18px;">Vue.js进阶</a> <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/html5/" style="font-size: 14px;">html5</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/后端/" style="font-size: 12px;">后端</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/面试题/" style="font-size: 16px;">面试题</a> <a href="/tags/项目/" style="font-size: 14px;">项目</a>
+    </div>
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-<script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
-
-
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
-
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
 
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/03/he/">he</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/28/虚拟dom/">虚拟dom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/全栈开发后台资金管理系统项目/">全栈开发后台资金管理系统项目</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/cNode社区项目/">cNode社区项目</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/多人博客项目/">多人博客项目</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
-
-
+</aside>
+        
+      </div>
+      <footer id="footer">
   
-  <script src="/js/scrollspy.js?v=7.3.0"></script>
-<script src="/js/post-details.js?v=7.3.0"></script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
 </body>
 </html>

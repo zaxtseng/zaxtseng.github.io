@@ -1,269 +1,91 @@
 <!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
 
-
-
-
-
-<html class="theme-next muse use-motion" lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
-
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.3.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    save_scroll: false,
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
-
+  
+  <title>vue可复用性&amp;组合 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="混入mixin一个混入对象可以包含任意组件选项.当组件使用混入对象时,所有混入对象的选项将被”混合”进组件本身的选项.例子: 123456789101112131415161718//定义一个混入对象var myMixin = &amp;#123;    created: function()&amp;#123;        this.hello()    &amp;#125;,    methods: &amp;#123;">
 <meta name="keywords" content="Vue.js,Vue.js进阶">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue可复用性&amp;组合">
 <meta property="og:url" content="http://yoursite.com/2019/10/14/vue可复用性/index.html">
-<meta property="og:site_name" content="Zax&#39;s BLOG">
+<meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="混入mixin一个混入对象可以包含任意组件选项.当组件使用混入对象时,所有混入对象的选项将被”混合”进组件本身的选项.例子: 123456789101112131415161718//定义一个混入对象var myMixin = &amp;#123;    created: function()&amp;#123;        this.hello()    &amp;#125;,    methods: &amp;#123;">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2019-10-26T08:12:13.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue可复用性&amp;组合">
 <meta name="twitter:description" content="混入mixin一个混入对象可以包含任意组件选项.当组件使用混入对象时,所有混入对象的选项将被”混合”进组件本身的选项.例子: 123456789101112131415161718//定义一个混入对象var myMixin = &amp;#123;    created: function()&amp;#123;        this.hello()    &amp;#125;,    methods: &amp;#123;">
-  <link rel="canonical" href="http://yoursite.com/2019/10/14/vue可复用性/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>vue可复用性&组合 | Zax's BLOG</title>
   
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-left">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Zax's BLOG</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
     </div>
   </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue可复用性" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/14/vue可复用性/" class="article-date">
+  <time datetime="2019-10-14T07:08:18.000Z" itemprop="datePublished">2019-10-14</time>
+</a>
+    
   </div>
-</div>
-
-
-<nav class="site-nav">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-  <ul id="menu" class="menu">
-      
-      
-      
-        
-        <li class="menu-item menu-item-home">
-      
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-archives">
-      
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-  </ul>
-
-    
-
-</nav>
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content page-post-detail">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <h1 class="article-title" itemprop="name">
+      vue可复用性&amp;组合
+    </h1>
   
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/14/vue可复用性/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zax Tseng">
-      <meta itemprop="description" content="Zax's BLOG">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zax's BLOG">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">vue可复用性&组合
-
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-14 15:08:18" itemprop="dateCreated datePublished" datetime="2019-10-14T15:08:18+08:00">2019-10-14</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-26 16:12:13" itemprop="dateModified" datetime="2019-10-26T16:12:13+08:00">2019-10-26</time>
-              </span>
-            
-          
-
-          
-
-        </div>
       </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
         <h1 id="混入mixin"><a href="#混入mixin" class="headerlink" title="混入mixin"></a>混入mixin</h1><p>一个混入对象可以包含任意组件选项.当组件使用混入对象时,所有混入对象的选项将被”混合”进组件本身的选项.<br>例子:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个混入对象</span></span><br><span class="line"><span class="keyword">var</span> myMixin = &#123;</span><br><span class="line">    created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.hello()</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        hello: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'hello from mixin")</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//定义一个使用混入对象的组件</span></span><br><span class="line"><span class="string">var Component = Vue.extend(&#123;</span></span><br><span class="line"><span class="string">    mixins: [myMixin]</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var component = new Component() //=&gt; '</span>hello <span class="keyword">from</span> mixin<span class="string">'</span></span><br></pre></td></tr></table></figure>
@@ -331,7 +153,7 @@
 <p>除了 <code>el</code> 之外，其它参数都应该是只读的，切勿进行修改。如果需要在钩子之间共享数据，建议通过元素的 <code>dataset</code> 来进行。</p>
 </blockquote>
 <p>范例:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"hook-arguments-example"</span> v-demo:foo.a.b=<span class="string">"message"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">Vue.directive(<span class="string">'demo'</span>, &#123;</span><br><span class="line">  bind: <span class="function"><span class="keyword">function</span> (<span class="params">el, binding, vnode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">JSON</span>.stringify</span><br><span class="line">    el.innerHTML =</span><br><span class="line">      <span class="string">'name: '</span>       + s(binding.name) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'value: '</span>      + s(binding.value) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'expression: '</span> + s(binding.expression) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'argument: '</span>   + s(binding.arg) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'modifiers: '</span>  + s(binding.modifiers) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'vnode keys: '</span> + <span class="built_in">Object</span>.keys(vnode).join(<span class="string">', '</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#hook-arguments-example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'hello!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"hook-arguments-example"</span> v-demo:foo.a.b=<span class="string">"message"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">Vue.directive(<span class="string">'demo'</span>, &#123;</span><br><span class="line">  bind: <span class="function"><span class="keyword">function</span> (<span class="params">el, binding, vnode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">JSON</span>.stringify</span><br><span class="line">    el.innerHTML =</span><br><span class="line">      <span class="string">'name: '</span>       + s(binding.name) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'value: '</span>      + s(binding.value) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'expression: '</span> + s(binding.expression) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'argument: '</span>   + s(binding.arg) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'modifiers: '</span>  + s(binding.modifiers) + <span class="string">'&lt;br&gt;'</span> +</span><br><span class="line">      <span class="string">'vnode keys: '</span> + <span class="built_in">Object</span>.keys(vnode).join(<span class="string">', '</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#hook-arguments-example'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    message: <span class="string">'hello!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h1 id="动态指令参数"><a href="#动态指令参数" class="headerlink" title="动态指令参数"></a>动态指令参数</h1><p>在 <code>v-mydirective:[argument]=&quot;value&quot;</code> 中，argument 参数可以根据组件实例数据进行更新！<br>例如创建一个自定义指令,通过固定布局将元素固定在页面上.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"baseexample"</span>&gt;</span><br><span class="line">    &lt;p&gt;Scroll down <span class="keyword">this</span> page&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p v-pin="200"&gt;Stick me 200px from the top of the page&lt;p&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
@@ -348,7 +170,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'color-swatch'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">el, binding</span>) </span>&#123;</span><br><span class="line">  el.style.backgroundColor = binding.value</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="对象字面量"><a href="#对象字面量" class="headerlink" title="对象字面量"></a>对象字面量</h2><p>如果指令需要多个值，可以传入一个 JavaScript 对象字面量。记住，指令函数能够接受所有合法的 JavaScript 表达式。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-demo=<span class="string">"&#123; color: 'white', text: 'hello!' &#125;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">Vue.directive(<span class="string">'demo'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">el, binding</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(binding.value.color) <span class="comment">// =&gt; "white"</span></span><br><span class="line">  <span class="built_in">console</span>.log(binding.value.text)  <span class="comment">// =&gt; "hello!"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-demo=<span class="string">"&#123; color: 'white', text: 'hello!' &#125;"</span>&gt;&lt;/div&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">Vue.directive(<span class="string">'demo'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">el, binding</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(binding.value.color) <span class="comment">// =&gt; "white"</span></span><br><span class="line">  <span class="built_in">console</span>.log(binding.value.text)  <span class="comment">// =&gt; "hello!"</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h1 id="渲染函数-amp-JSX"><a href="#渲染函数-amp-JSX" class="headerlink" title="渲染函数&amp;JSX"></a>渲染函数&amp;JSX</h1><p>渲染函数在Vue.js进阶里有讲到,JSX先不看了.</p>
 <h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>插件用来为Vue添加全局功能.<br>插件常用功能:</p>
@@ -368,7 +190,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">MyPlugin.install = <span class="function"><span class="keyword">function</span>(<span class="params">Vue, options</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//1. 添加全局方法或属性</span></span><br><span class="line">    Vue.myGlobalMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//逻辑..</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.添加全局资源</span></span><br><span class="line">    Vue.directive(<span class="string">'my-directive'</span>,&#123;</span><br><span class="line">        bind(el, binding, vnode, oldVnode)&#123;</span><br><span class="line">            <span class="comment">//逻辑</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 注入组件选项</span></span><br><span class="line">    Vue.mixin(&#123;</span><br><span class="line">        created: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">//逻辑...</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4. 添加实例方法</span></span><br><span class="line">    Vue.prototype.$myMethod = <span class="function"><span class="keyword">function</span>(<span class="params">methodOptions</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//逻辑...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><p>过滤器可以用在：双花括号插值和 v-bind 表达式</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 在双花括号中 --&gt;</span><br><span class="line">&#123;&#123; message | capitalize &#125;&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 在 <span class="string">`v-bind`</span> 中 --&gt;</span><br><span class="line">&lt;div v-bind:id=<span class="string">"rawId | formatId"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 在双花括号中 --&gt;</span><br><span class="line">&#123;&#123; message | capitalize &#125;&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 在 <span class="string">`v-bind`</span> 中 --&gt;</span><br><span class="line">&lt;div v-bind:id=<span class="string">"rawId | formatId"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
 <p>在组件的选项中定义本地的过滤器</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">filters: &#123;</span><br><span class="line">  capitalize: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!value) <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line">    value = value.toString()</span><br><span class="line">    <span class="keyword">return</span> value.charAt(<span class="number">0</span>).toUpperCase() + value.slice(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -387,324 +209,147 @@
 
 <p>这里，filterA 被定义为接收三个参数的过滤器函数。其中 message 的值作为第一个参数，普通字符串 ‘arg1’ 作为第二个参数，表达式 arg2 的值作为第三个参数。</p>
 
+      
     </div>
-
-    
-    
-    
-        
-      
-
-      <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/Vue-js/" rel="tag"># Vue.js</a>
-            
-              <a href="/tags/Vue-js进阶/" rel="tag"># Vue.js进阶</a>
-            
-          </div>
-        
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/10/14/vue过渡和动画/" rel="next" title="vue过渡和动画">
-                  <i class="fa fa-chevron-left"></i> vue过渡和动画
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/16/vue-hackernews-2-0-源码解读-适合入门/" rel="prev" title="vue-hackernews-2.0 源码解读(适合入门)(一)">
-                  vue-hackernews-2.0 源码解读(适合入门)(一) <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
-        
-      </footer>
-    
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
-
-
-          </div>
-          
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Zax Tseng</p>
-  <div class="site-description motion-element" itemprop="description">Zax's BLOG</div>
-</div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">43</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-    
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/14/vue可复用性/" data-id="ck3pu18go002c0shawlzt96rg" class="article-share-link">Share</a>
       
       
-      <div class="site-state-item site-state-categories">
-        
-          
-            <a href="/categories/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">分类</span>
-        </a>
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-tags">
-        
-          
-            <a href="/tags/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">20</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
-      </div>
-    
-  </nav>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js进阶/">Vue.js进阶</a></li></ul>
 
-
-
-        </div>
-      </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#混入mixin"><span class="nav-number">1.</span> <span class="nav-text">混入mixin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#选项合并"><span class="nav-number">1.1.</span> <span class="nav-text">选项合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局混入"><span class="nav-number">1.2.</span> <span class="nav-text">全局混入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义选项合并策略"><span class="nav-number">1.3.</span> <span class="nav-text">自定义选项合并策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义指令"><span class="nav-number">2.</span> <span class="nav-text">自定义指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钩子函数"><span class="nav-number">3.</span> <span class="nav-text">钩子函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#钩子函数的参数"><span class="nav-number">3.1.</span> <span class="nav-text">钩子函数的参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态指令参数"><span class="nav-number">4.</span> <span class="nav-text">动态指令参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数简写"><span class="nav-number">4.1.</span> <span class="nav-text">函数简写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象字面量"><span class="nav-number">4.2.</span> <span class="nav-text">对象字面量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#渲染函数-amp-JSX"><span class="nav-number">5.</span> <span class="nav-text">渲染函数&amp;JSX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件"><span class="nav-number">6.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用插件"><span class="nav-number">6.1.</span> <span class="nav-text">使用插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发插件"><span class="nav-number">6.2.</span> <span class="nav-text">开发插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤器"><span class="nav-number">7.</span> <span class="nav-text">过滤器</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
     </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
+  </div>
+  
     
+<nav id="article-nav">
+  
+    <a href="/2019/10/16/vue-hackernews-2-0-源码解读-适合入门/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue-hackernews-2.0 源码解读(适合入门)(一)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/14/vue过渡和动画/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue过渡和动画</div>
+    </a>
+  
+</nav>
 
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML基础/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP基础/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/">HTML5</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/canvas/">canvas</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS基础/">JS基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS进阶/">JS进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/前端工程化/">前端工程化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/css/css3/">css3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/后端/Node-js/">Node.js</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP安全/">HTTP安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP进阶/">HTTP进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS深入/">JS深入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS进阶/">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js基础/">Vue.js基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js进阶/">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动端/">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试题/">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 16px;">HTML</a> <a href="/tags/HTTP安全/" style="font-size: 10px;">HTTP安全</a> <a href="/tags/HTTP进阶/" style="font-size: 10px;">HTTP进阶</a> <a href="/tags/JS/" style="font-size: 12px;">JS</a> <a href="/tags/JS深入/" style="font-size: 10px;">JS深入</a> <a href="/tags/JS进阶/" style="font-size: 10px;">JS进阶</a> <a href="/tags/Vue-SSR/" style="font-size: 14px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js基础/" style="font-size: 12px;">Vue.js基础</a> <a href="/tags/Vue-js进阶/" style="font-size: 18px;">Vue.js进阶</a> <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/html5/" style="font-size: 14px;">html5</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/后端/" style="font-size: 12px;">后端</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/小程序/" style="font-size: 10px;">小程序</a> <a href="/tags/移动端/" style="font-size: 10px;">移动端</a> <a href="/tags/面试题/" style="font-size: 16px;">面试题</a> <a href="/tags/项目/" style="font-size: 14px;">项目</a>
+    </div>
   </div>
 
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-<script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
-
-
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
-
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
 
 
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/12/03/he/">he</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/28/虚拟dom/">虚拟dom</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/全栈开发后台资金管理系统项目/">全栈开发后台资金管理系统项目</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/cNode社区项目/">cNode社区项目</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/27/多人博客项目/">多人博客项目</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
   
-
-
+</aside>
+        
+      </div>
+      <footer id="footer">
   
-  <script src="/js/scrollspy.js?v=7.3.0"></script>
-<script src="/js/post-details.js?v=7.3.0"></script>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
 </body>
 </html>
