@@ -4,7 +4,7 @@
 
 
 
-<html class="theme-next mist use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="generator" content="Hexo 3.9.0">
@@ -26,11 +26,11 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Muse',
     version: '7.3.0',
     exturl: false,
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     save_scroll: false,
     copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
@@ -44,7 +44,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="书接上回我们看下entry-server.js主要做了什么">
+  <meta name="description" content="书接上回 我们看下entry-server.js主要做了什么 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374import &amp;#123; createApp &amp;#125;">
 <meta name="keywords" content="Vue.js,Vue-SSR">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-hackernews-2.0 源码解读(适合入门)(二)">
 <meta property="og:url" content="http://yoursite.com/2019/10/17/vue-hackernews-2-0-源码解读-适合入门-二/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="书接上回我们看下entry-server.js主要做了什么">
+<meta property="og:description" content="书接上回 我们看下entry-server.js主要做了什么 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374import &amp;#123; createApp &amp;#125;">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/10/17/KEZjTP.jpg">
 <meta property="og:updated_time" content="2019-10-17T11:39:55.730Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-hackernews-2.0 源码解读(适合入门)(二)">
-<meta name="twitter:description" content="书接上回我们看下entry-server.js主要做了什么">
+<meta name="twitter:description" content="书接上回 我们看下entry-server.js主要做了什么 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374import &amp;#123; createApp &amp;#125;">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/10/17/KEZjTP.jpg">
   <link rel="canonical" href="http://yoursite.com/2019/10/17/vue-hackernews-2-0-源码解读-适合入门-二/">
 
@@ -177,28 +177,6 @@
       
       
         
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
       
     
@@ -206,44 +184,15 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
   </ul>
 
     
 
 </nav>
-  <div class="site-search">
-    
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-  </div>
 </div>
     </header>
 
     
-
-  <a href="https://github.com/zaxtseng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
 
 
     <main id="main" class="main">
@@ -310,8 +259,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>书接上回</p><p>我们看下entry-server.js主要做了什么</p><a id="more"></a>
-
+        <p>书接上回</p>
+<p>我们看下entry-server.js主要做了什么</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isDev = process.env.NODE_ENV !== <span class="string">'production'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//此导出的函数将由`bundleRenderer`调用。</span></span><br><span class="line"><span class="comment">//这是我们执行数据预取以确定</span></span><br><span class="line"><span class="comment">//实际渲染应用程序之前的状态。</span></span><br><span class="line"><span class="comment">//由于数据获取是异步的，因此该函数有望</span></span><br><span class="line"><span class="comment">//返回解析为应用实例的Promise。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// This exported function will be called by `bundleRenderer`.</span></span><br><span class="line"><span class="comment">// This is where we perform data-prefetching to determine the</span></span><br><span class="line"><span class="comment">// state of our application before actually rendering it.</span></span><br><span class="line"><span class="comment">// Since data fetching is async, this function is expected to</span></span><br><span class="line"><span class="comment">// return a Promise that resolves to the app instance.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> context =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> s = isDev &amp;&amp; <span class="built_in">Date</span>.now()</span><br><span class="line">    <span class="keyword">const</span> &#123; app, router, store &#125; = createApp()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; url &#125; = context</span><br><span class="line">    <span class="keyword">const</span> &#123; fullPath &#125; = router.resolve(url).route</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fullPath !== url) &#123;</span><br><span class="line">      <span class="keyword">return</span> reject(&#123; <span class="attr">url</span>: fullPath &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置路由位置</span></span><br><span class="line">    <span class="comment">// set router's location</span></span><br><span class="line">    router.push(url)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//等待路由可能的异步钩子</span></span><br><span class="line">    <span class="comment">// wait until router has resolved possible async hooks</span></span><br><span class="line">    router.onReady(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> matchedComponents = router.getMatchedComponents()</span><br><span class="line">      <span class="comment">// no matched routes</span></span><br><span class="line">      <span class="keyword">if</span> (!matchedComponents.length) &#123;</span><br><span class="line">        <span class="keyword">return</span> reject(&#123; <span class="attr">code</span>: <span class="number">404</span> &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//路由上匹配的组件唤醒fetchData钩子</span></span><br><span class="line">      <span class="comment">//一个预置钩子匹配一个状态返回promise</span></span><br><span class="line">      <span class="comment">//当解析完成且状态更新</span></span><br><span class="line">      <span class="comment">// Call fetchData hooks on components matched by the route.</span></span><br><span class="line">      <span class="comment">// A preFetch hook dispatches a store action and returns a Promise,</span></span><br><span class="line">      <span class="comment">// which is resolved when the action is complete and store state has been</span></span><br><span class="line">      <span class="comment">// updated.</span></span><br><span class="line">      <span class="comment">// 使用Promise.all执行匹配到的Component的asyncData方法，即预取数据</span></span><br><span class="line">      <span class="built_in">Promise</span>.all(matchedComponents.map(<span class="function">(<span class="params">&#123; asyncData &#125;</span>) =&gt;</span> asyncData &amp;&amp; asyncData(&#123;</span><br><span class="line">        store,</span><br><span class="line">        route: router.currentRoute</span><br><span class="line">      &#125;))).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        isDev &amp;&amp; <span class="built_in">console</span>.log(<span class="string">`data pre-fetch: <span class="subst">$&#123;<span class="built_in">Date</span>.now() - s&#125;</span>ms`</span>)</span><br><span class="line">        <span class="comment">//解析了所有prefetch钩子后,渲染app所需要的state充满了store,</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//在渲染上下文中公开状态，并让请求处理程序</span></span><br><span class="line">        <span class="comment">//内联HTML响应中的状态。这允许客户端</span></span><br><span class="line">        <span class="comment">//存储以获取服务器端状态，而不必重复</span></span><br><span class="line">        <span class="comment">//在客户端上获取初始数据。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// After all preFetch hooks are resolved, our store is now</span></span><br><span class="line">        <span class="comment">// filled with the state needed to render the app.</span></span><br><span class="line">        <span class="comment">// Expose the state on the render context, and let the request handler</span></span><br><span class="line">        <span class="comment">// inline the state in the HTML response. This allows the client-side</span></span><br><span class="line">        <span class="comment">// store to pick-up the server-side state without having to duplicate</span></span><br><span class="line">        <span class="comment">// the initial data fetching on the client.</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">// 把vuex的state设置到传入的context.initialState上</span></span><br><span class="line">        context.state = store.state</span><br><span class="line">         <span class="comment">// 返回state, router已经设置好的Vue实例app</span></span><br><span class="line">        resolve(app)</span><br><span class="line">      &#125;).catch(reject)</span><br><span class="line">    &#125;, reject)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>entry-server.js的主要工作：<br>0.返回一个函数，该函数接受一个从服务端传递过来的 context 的参数，<br>将 vue 实例通过 Promise 返回。 context 一般包含 当前页面的url。<br>1.手动路由切换到请求的url，即’/‘<br>2.找到该路由对应要渲染的组件，并调用组件的asyncData方法来预取数据<br>3.同步vuex的state数据至传入的context.initialState上，<br>后面会把这些数据直接发送到浏览器端与客户端的vue 实例进行数据(状态)同步，<br>以避免客户端首屏重新加载数据（在客户端入口文件entry-client.js）</p>
@@ -356,9 +305,9 @@
           
           <div class="post-tags">
             
-              <a href="/tags/Vue-js/" rel="tag"><i class="fa fa-tag"></i> Vue.js</a>
+              <a href="/tags/Vue-js/" rel="tag"># Vue.js</a>
             
-              <a href="/tags/Vue-SSR/" rel="tag"><i class="fa fa-tag"></i> Vue-SSR</a>
+              <a href="/tags/Vue-SSR/" rel="tag"># Vue-SSR</a>
             
           </div>
         
@@ -426,9 +375,6 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.gif"
-      alt="Zax Tseng">
   <p class="site-author-name" itemprop="name">Zax Tseng</p>
   <div class="site-description motion-element" itemprop="description">Zax's BLOG</div>
 </div>
@@ -437,7 +383,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -543,30 +489,6 @@
       </div>
     
   </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/zaxtseng" title="GitHub &rarr; https://github.com/zaxtseng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:lanfein9@hotmail.com" title="E-Mail &rarr; mailto:lanfein9@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
 
 
 
@@ -589,11 +511,6 @@
         </div>
       <!--/noindex-->
       
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          
-        </div>
-      
 
     </div>
   </aside>
@@ -613,7 +530,7 @@
 </div>
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
 
         
 
@@ -627,15 +544,15 @@
         
       </div>
     </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
 
     
 
   </div>
 
   
-    
-  
-  <script color='0,0,255' opacity='0.3' zIndex='-3' count='29' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
@@ -645,7 +562,6 @@
 
 
   <script src="/js/schemes/muse.js?v=7.3.0"></script>
-
 
 
 <script src="/js/next-boot.js?v=7.3.0"></script>
@@ -668,8 +584,6 @@
 
 
 
-
-  <script src="/js/local-search.js?v=7.3.0"></script>
 
 
 
