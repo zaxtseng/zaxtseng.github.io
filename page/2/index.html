@@ -205,497 +205,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/上海公司面试题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zax Tseng">
-      <meta itemprop="description" content="Zax's BLOG">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zax's BLOG">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/11/16/上海公司面试题/" class="post-title-link" itemprop="url">上海公司面试题</a>
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-11-16 16:28:19" itemprop="dateCreated datePublished" datetime="2019-11-16T16:28:19+08:00">2019-11-16</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-24 12:02:34" itemprop="dateModified" datetime="2019-11-24T12:02:34+08:00">2019-11-24</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <h1 id="云印-以-vue-为主"><a href="#云印-以-vue-为主" class="headerlink" title="云印(以 vue 为主)"></a>云印(以 vue 为主)</h1><p>1.页面初始化一般放在哪个生命周期里,为什么?<br>2.vue 组件之间如何传递参数<br>3.同步组件和异步组件之间的区别,优缺点<br>4.vue-router 实现原理<br>5.微信小程序的跳转方式有哪几种</p>
-<ol start="6">
-<li>ajax 的同步和异步有什么区别</li>
-<li>css 那些属性是默认继承的?</li>
-<li>canvas和style怎么进行绑定?</li>
-<li>v-for中in和of的区别</li>
-<li>watch如何使用</li>
-<li>如何存储localstorage</li>
-<li>router如何传值,如何取值</li>
-<li>vuex如何存储值</li>
-<li>分页组件的实现</li>
-<li>如何监听物理返回键</li>
-</ol>
-<h1 id="报关-以-http-为主"><a href="#报关-以-http-为主" class="headerlink" title="报关(以 http 为主)"></a>报关(以 http 为主)</h1><ol>
-<li>http 请求原理</li>
-<li>http 请求的几种方式,有什么区别</li>
-<li>如何进行登录验证,token 失效如何处理</li>
-<li>如何调换数组中两个元素的位置.例如:[1,2,3,4,5]中调换3和4的位置,变成[1,2,4,3,5].</li>
-<li>向后端发送文件的格式?</li>
-</ol>
-<h1 id="外包公司-1"><a href="#外包公司-1" class="headerlink" title="外包公司 1"></a>外包公司 1</h1><ol>
-<li>js 中如何检测一个变量是 String 类型.请写出函数具体实现</li>
-<li>写出下面函数输出什么(tips:闭包)</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    count += <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(count);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s = add();</span><br><span class="line">s();</span><br><span class="line">s();</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察闭包</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>如何阻止事件冒泡和默认事件</li>
-<li>下面的问题打印什么</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"我是MT"</span>;</span><br><span class="line">test();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(str);</span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">"哈哈哈"</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(str);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(str);</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察变量声明和作用域</span></span><br><span class="line"><span class="literal">undefined</span> <span class="comment">//因为打印str时,首先从str所在的作用域找变量str,</span></span><br><span class="line"><span class="comment">//因为有声明前置,var str,但是未赋值,是undefined.所以不再从外部找str</span></span><br><span class="line">哈哈哈</span><br><span class="line">我是MT</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>什么是盒子模型</li>
-<li>sessionStorage,localStorage 和 cookie 的区别</li>
-<li>px 和 em 的区别</li>
-<li>列举不同的清除浮动的技巧</li>
-<li><code>display: none</code>和<code>visibility: hidden</code>的区别</li>
-<li>组件中<code>&lt;style scoped&gt;</code>的<code>scoped</code>的作用.</li>
-<li>v-show 和 v-if 的共同点和区别</li>
-<li>vue 注册组件使用什么关键字</li>
-<li>vue 如何实现父子组件通信</li>
-<li>vue 的双向数据绑定原理是什么?</li>
-</ol>
-<h1 id="外包公司-2"><a href="#外包公司-2" class="headerlink" title="外包公司 2"></a>外包公司 2</h1><ol>
-<li>使用 js 将数组: <code>[{ name: &quot;king&quot;, age: 18}, {name: &quot;bob&quot;, age: 22}]</code>变成[18,22],并且筛选出大于 20 的值.</li>
-<li>使用 js 获取页面一个 id 为 myP 的<code>&lt;p&gt;</code>标签,并为其增加点击事件,并说明一下 addEventLister 方法的第三个可选参数的冒泡和捕获.</li>
-<li>控制台运行一下代码:</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(i);</span><br></pre></td></tr></table></figure>
-
-<p>输出什么</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> <span class="comment">//先执行for循环,i=1,有异步代码,封存数据,console.log(i).</span></span><br><span class="line"><span class="comment">//i=2,console.log(i)</span></span><br><span class="line"><span class="comment">//i=3,console.log(i)</span></span><br><span class="line"><span class="comment">//此时i的最终形态是3,执行最后一行的console.log(i),是3</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>个<span class="number">3</span> <span class="comment">//同步代码执行完,看任务队列中排着3个console.log(i),i=3,连续输出3个3</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="大钱"><a href="#大钱" class="headerlink" title="大钱"></a>大钱</h1><ol>
-<li>写一个原生 ajax 请求</li>
-<li>写几个常用的数组,字符串,对象的方法</li>
-<li><code>npm install --save</code>和<code>npm install --save --dev</code>的区别</li>
-<li>IE 与火狐的事件机制有什么区别?如何阻止冒泡?</li>
-<li>什么是闭包? 闭包的用途</li>
-<li>css3 动画最后一帧如何恢复到原样?</li>
-<li>sessionStorage,localStorage 和 cookie 的区别?分别在什么时候用?</li>
-<li>HTML5 新特性?移除那些?如何处理 HTML5 新标签的浏览器兼容问题?做过的项目中,那些 CSS 样式需要单独写兼容样式?</li>
-<li>ES6 运算符…是用来做什么的?用 ES6 语法遍历一个数组.</li>
-<li>px,em,rem 的区别</li>
-<li>prototype 是什么?什么时候用</li>
-<li>js 添加,移除,替换,删除,创建,查找节点的方法是什么</li>
-<li>如何优化网站性能(js)</li>
-<li>编写一个方法,去掉以下数组的重复元素</li>
-<li>vue 如何监听一个对象的变化,写个例子</li>
-<li>setTimeout,promise,async/await 的区别</li>
-<li>intercepter用在什么地方</li>
-<li>路由拦截在什么地方</li>
-<li>切换用户如何处理</li>
-<li>用户不是提交验证进来而是输入url进来如何处理</li>
-<li>组件里name的作用</li>
-</ol>
-<h1 id="外包公司-3"><a href="#外包公司-3" class="headerlink" title="外包公司 3"></a>外包公司 3</h1><ol>
-<li>js 有哪些基本数据类型</li>
-<li>var let const 的区别</li>
-<li>数字计算: 在 js 中,0.1+0.2 的结果是?</li>
-<li>下面代码有什么问题?(tips:闭包)</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;test1&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &lt;li&gt;test2&lt;/</span>li&gt;</span><br><span class="line">    &lt;li&gt;test3&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">&lt;/u</span>l&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"> <span class="keyword">var</span> lis = <span class="built_in">document</span>.querySelectorAll(<span class="string">'ul li'</span>);</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;lis.length; i++)&#123;</span><br><span class="line">     lis[i].addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(i)</span><br><span class="line">     &#125;,<span class="literal">false</span>)</span><br><span class="line"> &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>无论点击哪个都会输出3<br>解决方法:<br>1.将var换成let</p>
-<ol start="2">
-<li><p>for循环改造</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;lis.length; i++)&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;lis[i].addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;,<span class="literal">false</span>)&#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>请写出下面输出结果,</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;,arr = [];</span><br><span class="line">(&#123; <span class="attr">foo</span>: obj.prop, <span class="attr">bar</span>: arr[<span class="number">0</span>] &#125; = &#123; <span class="attr">foo</span>: <span class="number">123</span>, <span class="attr">bar</span>: <span class="literal">true</span> &#125;));</span><br><span class="line"><span class="built_in">console</span>.log(obj, arr);</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  prop: <span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line">[<span class="literal">true</span>];</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>promise 有几种状态,什么时候会进入 catch?</li>
-<li>在 8*8 的国际象棋摆放八个皇后,使其不同相互攻击,即任意两个皇后不能处在同一行,同一列,同一对角线.总共有多少种摆法.</li>
-<li>git 命令有哪些?</li>
-</ol>
-<h1 id="外包公司-4-才匠"><a href="#外包公司-4-才匠" class="headerlink" title="外包公司 4 才匠"></a>外包公司 4 才匠</h1><ol>
-<li>下面代码的输出是什么?</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> shape = &#123;</span><br><span class="line">  radius: <span class="number">10</span>,</span><br><span class="line">  diameter() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.radius * <span class="number">2</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  perimeter: <span class="function"><span class="params">()</span> =&gt;</span> <span class="number">2</span> * <span class="built_in">Math</span>.PI * <span class="keyword">this</span>.radius</span><br><span class="line">&#125;;</span><br><span class="line">shape.diameter();</span><br><span class="line">shape.perimeter();</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">20</span></span><br><span class="line"><span class="literal">NaN</span> <span class="comment">//考察箭头函数的this</span></span><br></pre></td></tr></table></figure>
-
-<p>2.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> c = &#123; <span class="attr">greeting</span>: <span class="string">"hey"</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> d;</span><br><span class="line">d = c;</span><br><span class="line">c.greeting = <span class="string">"hello"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(d.greeting);</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello <span class="comment">//考察引用类型的指针,或者说堆内存</span></span><br></pre></td></tr></table></figure>
-
-<p>3.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chameleon</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> colorChange(newColor) &#123;</span><br><span class="line">    <span class="keyword">this</span>.newColor = newColor;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">constructor</span>(&#123; newColor = <span class="string">"green"</span> &#125; = &#123;&#125;) &#123;</span><br><span class="line">    <span class="keyword">this</span>.newColor = newColor;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> freddie = <span class="keyword">new</span> Chameleon(&#123; <span class="attr">newColor</span>: <span class="string">"purple"</span> &#125;);</span><br><span class="line">freddie.colorChange(<span class="string">"orange"</span>);</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察class中static的方法</span></span><br><span class="line"><span class="string">"freddie.colorChange is not a function"</span></span><br><span class="line"><span class="comment">//static不能在类的实例上调用</span></span><br></pre></td></tr></table></figure>
-
-<p>4.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">  <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> member = <span class="keyword">new</span> Person(<span class="string">"Lydia"</span>, <span class="string">"Hallie"</span>);</span><br><span class="line">Person.getFullName = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.firstName + <span class="keyword">this</span>.lastName;</span><br><span class="line"><span class="built_in">console</span>.log(member.getFullName());</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察ES6中的class</span></span><br><span class="line"><span class="string">"member.getFullName is not a function"</span></span><br><span class="line"><span class="comment">//getFullName并没有写到Person的原型上,member并不能调用该函数</span></span><br><span class="line">解决办法:</span><br><span class="line">ES6:</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(firstName, lastName)&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName</span><br><span class="line">  &#125;</span><br><span class="line">  getFullName = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.firstName + <span class="keyword">this</span>.lastName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> member = <span class="keyword">new</span> Person(<span class="string">"Lydia"</span>,<span class="string">"Hallie"</span>)</span><br><span class="line"><span class="built_in">console</span>.log(member.getFullName())</span><br><span class="line">ES5原型法:</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">  <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.getFullName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.firstName + <span class="keyword">this</span>.lastName;</span><br><span class="line">  &#125; <span class="comment">//这里不能用箭头函数,否则this指向window</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> member = <span class="keyword">new</span> Person(<span class="string">"Lydia"</span>, <span class="string">"Hallie"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(member.getFullName());</span><br></pre></td></tr></table></figure>
-
-<p>5.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkAge</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (data === &#123; <span class="attr">age</span>: <span class="number">18</span> &#125;) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"you are an adult!"</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"hh"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">checkAge(&#123; <span class="attr">age</span>: <span class="number">18</span> &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>输出</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察引用类型</span></span><br><span class="line">hh <span class="comment">//考点在&#123;age: 18&#125; === &#123;age: 18&#125;是否相等,</span></span><br><span class="line"><span class="comment">//两个不同的地址,所以不相等</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/16/头条面试题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zax Tseng">
-      <meta itemprop="description" content="Zax's BLOG">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zax's BLOG">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/11/16/头条面试题/" class="post-title-link" itemprop="url">头条面试题</a>
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-11-16 16:26:56 / 修改时间：16:32:40" itemprop="dateCreated datePublished" datetime="2019-11-16T16:26:56+08:00">2019-11-16</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <h1 id="第一套"><a href="#第一套" class="headerlink" title="第一套"></a>第一套</h1><ol>
-<li>替换元素与非替换元素,差异?</li>
-<li>offsetWidth,clientWidth,scrollwidth区别</li>
-<li>Dom标准事件模型是什么?是否所有的事件都支持冒泡?如果不是,举例说明.</li>
-<li>css选择器的优先级</li>
-<li>简述什么是IFC,作用</li>
-<li>用CSS实现自适应正方形</li>
-<li><code>Http://toutiao.com</code>往<code>http://mp.toutiao.com</code>发<code>ajax</code>请求,跨域了吗?<code>mp.toutiao.com</code>的服务器可以收到请求吗,是怎样的请求?</li>
-<li>XSS和CRSF分别是什么?有什么联系?如何防御?</li>
-<li>关于js Bridge<ol>
-<li>是什么?</li>
-<li>实现原理</li>
-<li>优化方案</li>
-</ol>
-</li>
-<li>TCP/UDP是什么?有什么区别?如何进行拥塞控制?</li>
-<li>请用算法实现.从给定的无序,不重复的数组A中,取出N个数,使其相加和为M.并给出算法的时间空间复杂度.<h1 id="第二套"><a href="#第二套" class="headerlink" title="第二套"></a>第二套</h1></li>
-<li>ES5和ES6的继承有什么区别?</li>
-<li>Web动画的几种常见方式</li>
-<li>POST提交数据的几种常见content-type</li>
-<li>如何定义一个方法,通过调用把视频的一帧生产预览图</li>
-<li>什么是重放攻击,列举几个防御手段.</li>
-</ol>
-<h2 id="编程题"><a href="#编程题" class="headerlink" title="编程题"></a>编程题</h2><ol>
-<li><p>实现一个函数sum,运算结果满足如下预期结果:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>	sum(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>).valueof(); <span class="comment">//6</span></span><br><span class="line"><span class="number">2.</span>	sum(<span class="number">2</span>,<span class="number">3</span>)(<span class="number">2</span>).valueof(); <span class="comment">//7</span></span><br><span class="line"><span class="number">3.</span>	sum(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>)(<span class="number">4</span>).valueof(); <span class="comment">//10</span></span><br><span class="line"><span class="number">4.</span>	sum(<span class="number">2</span>)(<span class="number">4</span>,<span class="number">1</span>)(<span class="number">2</span>).valueof(); <span class="comment">//9</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>实现一个优先队列,使得可以这样使用.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>	Const priorityQuene = <span class="keyword">new</span> PriorityQuene()</span><br><span class="line"><span class="number">2.</span>	priorityQuene.enquene(‘优先级<span class="number">2</span><span class="number">-1</span>’,<span class="number">2</span>)’</span><br><span class="line"><span class="number">3.</span>	priorityQuene.enquene(‘优先级<span class="number">1</span><span class="number">-1</span>’,<span class="number">1</span>)’</span><br><span class="line"><span class="number">4.</span>	priorityQuene.enquene(‘优先级<span class="number">1</span><span class="number">-2</span>’,<span class="number">1</span>)’</span><br><span class="line"><span class="number">5.</span>	priorityQuene.enquene(‘优先级<span class="number">3</span><span class="number">-1</span>’,<span class="number">3</span>)’</span><br><span class="line"><span class="number">6.</span>	priorityQuene.enquene(‘优先级<span class="number">2</span><span class="number">-2</span>’,<span class="number">2</span>)’</span><br><span class="line"><span class="number">7.</span>	priorityQuene.enquene(‘优先级<span class="number">1</span><span class="number">-3</span>’,<span class="number">1</span>)’</span><br><span class="line"><span class="number">8.</span>	priorityQuene..print(); <span class="comment">//按优先级顺序输出</span></span><br><span class="line"><span class="number">9.</span>	priorityQuene.dequene(); <span class="comment">//出队</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>硬币找零问题:<br>有面额为d1…dn的硬币,和要找零的钱数,找出所需最小硬币个数的方案,<br>例如,美国有以下面额的硬币: d1=1,d2=5,d3=10,d4=25.如果要找36美分.,所需最少硬币是[1,10,25],即满足如下输出:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> miniCoinChange = <span class="keyword">new</span> MinCoinChange(<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">25</span>));</span><br><span class="line"><span class="built_in">console</span>.log(minCoinChange.makeChange(<span class="number">36</span>)) <span class="comment">//[1,10,25]</span></span><br><span class="line"><span class="keyword">const</span> minCoinChange2 = <span class="keyword">new</span> MinCoinChange([<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="built_in">console</span>.log(minCoinChange2.makeChange(<span class="number">6</span>); <span class="comment">//[3,3]</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/photoshop切图/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zax Tseng">
-      <meta itemprop="description" content="Zax's BLOG">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zax's BLOG">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/10/27/photoshop切图/" class="post-title-link" itemprop="url">photoshop切图</a>
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-27 16:08:59" itemprop="dateCreated datePublished" datetime="2019-10-27T16:08:59+08:00">2019-10-27</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-03 18:01:49" itemprop="dateModified" datetime="2019-11-03T18:01:49+08:00">2019-11-03</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <h1 id="新建图层"><a href="#新建图层" class="headerlink" title="新建图层"></a>新建图层</h1><p>建议背景图层透明.<br>移动工具: 快捷键<code>V</code><br>按住<code>Ctrl</code>,自动选择图层.<br>放大缩小: <code>Alt+滚轮</code></p>
-<h1 id="界面设置"><a href="#界面设置" class="headerlink" title="界面设置"></a>界面设置</h1><p>视图设置:</p>
-<ol>
-<li>智能参考线</li>
-<li>标尺(<code>ctrl+R</code>)</li>
-</ol>
-<p>##窗口设置</p>
-<ol>
-<li>信息</li>
-<li>字符</li>
-<li>历史记录</li>
-</ol>
-<p>修改信息-面板选项<br>        |-鼠标坐标单位-像素<br>        |-第一颜色信息-RGB颜色<br>        |-第二颜色信息-RGB颜色<br>        |-状态信息-文档尺寸</p>
-<h2 id="编辑设置"><a href="#编辑设置" class="headerlink" title="编辑设置"></a>编辑设置</h2><p>首选项-单位与标尺-标尺,文字改为像素</p>
-<h2 id="格局"><a href="#格局" class="headerlink" title="格局"></a>格局</h2><ol>
-<li>图层和历史记录</li>
-<li>信息和字符</li>
-</ol>
-<h2 id="保存为web切图"><a href="#保存为web切图" class="headerlink" title="保存为web切图"></a>保存为web切图</h2><p>窗口-工作区-新建工作区-web切图</p>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="套索工具L"><a href="#套索工具L" class="headerlink" title="套索工具L"></a>套索工具<code>L</code></h2><p>放大<code>Ctrl+ +</code><br>缩小<code>Ctrl+ -</code><br>按住空格键拖动<br>按住<code>shift</code>键: 增加选区<br>按住<code>alt</code>键: 删除选区</p>
-<h3 id="磁性套索工具L"><a href="#磁性套索工具L" class="headerlink" title="磁性套索工具L"></a>磁性套索工具<code>L</code></h3><p>可以吸附到同颜色区域边界.<br>多余地方可以按住<code>shfit</code>或者<code>alt</code>进行增删</p>
-<h2 id="快速选择工具W"><a href="#快速选择工具W" class="headerlink" title="快速选择工具W"></a>快速选择工具<code>W</code></h2><p>可以快速选择相同颜色区块<br>画笔大小快捷键:<code>[]</code></p>
-<h2 id="魔棒工具W"><a href="#魔棒工具W" class="headerlink" title="魔棒工具W"></a>魔棒工具<code>W</code></h2><p>类似于快速选择工具</p>
-<h2 id="裁剪工具C"><a href="#裁剪工具C" class="headerlink" title="裁剪工具C"></a>裁剪工具<code>C</code></h2><p>使用魔棒工具或快速选择工具选取一块区域,直接按裁剪工具,然后回车,可快速裁剪出所选区域.<br>此时,按住Alt,点击当前图层的眼睛图标,可隐藏其他图层,只保留当前图层.即显影模式.<br>裁剪工具时,按住<code>Alt</code>,点击所选图案,可以让图案成为中心.</p>
-<h2 id="吸管工具I"><a href="#吸管工具I" class="headerlink" title="吸管工具I"></a>吸管工具I</h2><p>选取当前颜色,<br>前景色填充<code>Alt+Delete</code><br>背景色填充<code>Ctrl+Delete</code></p>
-<h1 id="污点修复画笔工具J"><a href="#污点修复画笔工具J" class="headerlink" title="污点修复画笔工具J"></a>污点修复画笔工具J</h1><p>选取周围的颜色覆盖选取区域的颜色.比如照片中黑点会被抹除.</p>
-<h2 id="修复画笔工具"><a href="#修复画笔工具" class="headerlink" title="修复画笔工具"></a>修复画笔工具</h2><p>按住<code>Alt</code>键单击左键选取要复制的区域,在其他区域就可以复制过去.</p>
-<h2 id="修补工具"><a href="#修补工具" class="headerlink" title="修补工具"></a>修补工具</h2><p>画出一个选取,将选取拖动到想要使用修补的地方进行替换修补.</p>
-<h1 id="仿制图章工具"><a href="#仿制图章工具" class="headerlink" title="仿制图章工具"></a>仿制图章工具</h1><p>类似于修复画笔工具,双击选取要复制的点,在其他地方可以复制出来.与 修复画笔工具区别是,修复画笔工具复制出来的有羽化效果.</p>
-<h2 id="图案图章工具"><a href="#图案图章工具" class="headerlink" title="图案图章工具"></a>图案图章工具</h2><p>有可选择的备用图案,作用类似于打马赛克.</p>
-<h1 id="历史记录画笔工具Y"><a href="#历史记录画笔工具Y" class="headerlink" title="历史记录画笔工具Y"></a>历史记录画笔工具Y</h1><p>作用类似于祛斑.先用高斯模糊将照片模糊到没有斑点.再将画笔圆记录到历史记录的高斯模糊这一步,再回到原图,使用该画笔圆进行处理.</p>
-<h1 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h1><p>渐变颜色方向是顺时针</p>
-<h1 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h1><p>双击空白区域,即可写字.按住Ctrl可以拖动区域大小,Alt也可以拖动.</p>
-<h1 id="抓手工具H"><a href="#抓手工具H" class="headerlink" title="抓手工具H"></a>抓手工具H</h1><p>按住<code>Alt</code>缩小,按住<code>shift</code>放大.</p>
-<h1 id="图层"><a href="#图层" class="headerlink" title="图层"></a>图层</h1><h2 id="奥运五环"><a href="#奥运五环" class="headerlink" title="奥运五环"></a>奥运五环</h2><ol>
-<li>新建文件,背景色为白色.</li>
-<li>右下角新建图层.</li>
-<li>使用椭圆选区工具<code>M</code>,按住<code>shift</code>(有的是<code>alt</code>),拉出一个标准圆.</li>
-<li>使用吸管工具<code>I</code>,点击拾色器,选择颜色,确定.使用快捷键<code>Alt+Delete</code>填充圆形选区的颜色.</li>
-<li>使用选区工具<code>M</code>,右键变化选区,按住<code>Alt</code>进行同心圆的缩小.右上角对号确定.按下<code>delete</code>删除内圆,得到圆环.</li>
-<li><code>Ctrl+ T</code>自由变换,进行调整.</li>
-<li>使用移动工具<code>V</code>,按住<code>Alt</code>进行拖动,即复制一张图层.</li>
-<li>在右下角图层菜单中,双击图层名,进行重命名.</li>
-<li>选取复制图层,按住<code>Ctrl</code>单击图层菜单中缩略图.选择颜色,<code>Alt+Delete</code>填充颜色.</li>
-<li>按<code>M</code>使用选区后,单击空白就结束选区了.</li>
-<li>删除覆盖在黄色上的蓝色,按住<code>Ctrl</code>,单击蓝色图层的缩略图,选中蓝色选区,</li>
-<li>使用选区工具<code>M</code>,点击黄色图层,按住<code>Alt</code>选取要排除的区块(因为此时要删掉黄色图层上的两小块区域,而选区是蓝色选区,排除掉保留的蓝色,剩下的就是要真正删除的蓝色小块了),按<code>Delete</code>删除,就出现交叉效果了.</li>
-</ol>
-<h1 id="参考线"><a href="#参考线" class="headerlink" title="参考线"></a>参考线</h1><ol>
-<li>视图-新建参考线(按住<code>Alt</code>,依次按<code>V+E</code>)</li>
-<li><code>Ctrl+R</code>调出标尺,切换到移动工具<code>V</code>,然后从标尺处拖出参考线.</li>
-</ol>
-<p>参考线切换: 拉动参考线,按住<code>Alt</code>.</p>
-<h2 id="参考线初始化"><a href="#参考线初始化" class="headerlink" title="参考线初始化"></a>参考线初始化</h2><p>通用页面像素一般是1920*1080,页面内容一般占1200,两侧留白共720px<br>起始左侧线可设置为360px,右侧线设置为1560px.</p>
-<h2 id="隐藏参考线"><a href="#隐藏参考线" class="headerlink" title="隐藏参考线"></a>隐藏参考线</h2><p>快捷键: <code>Ctrl+ ;</code></p>
-<h1 id="切图"><a href="#切图" class="headerlink" title="切图"></a>切图</h1><h2 id="传统切图"><a href="#传统切图" class="headerlink" title="传统切图"></a>传统切图</h2><p>裁剪工具<code>C</code>-切片工具</p>
-<h2 id="参考线辅助切图"><a href="#参考线辅助切图" class="headerlink" title="参考线辅助切图"></a>参考线辅助切图</h2><p>先设置参考线,再点击切片工具<code>C</code>,上面菜单基于参考线切片.<br>通过删除多余切片将零碎切片合并为一个切片.<br>文件-存储为web所用格式,一般格式为PNG-24.</p>
-<blockquote>
-<p>建议将大图裁剪成多份,然后使用参考线切片.</p>
-</blockquote>
-<h2 id="精准切图"><a href="#精准切图" class="headerlink" title="精准切图"></a>精准切图</h2><p>文件-脚本-将图层导出到文件-文件类型-PNG24-全部打√<br>文件-导出-将图层导出导出到文件-文件类型-PNG24-全部打√<br>(因为软件版本不同,可能命令不在上述中,上述是同一命令的两个位置)<br>选择导出目录,运行</p>
-<h1 id="扩展知识"><a href="#扩展知识" class="headerlink" title="扩展知识"></a>扩展知识</h1><p>将整个图层切成一个图<br>编辑-首选项-增效工具-启动生成器打√<br>文件-生成-图像资源</p>
-<h1 id="抠图"><a href="#抠图" class="headerlink" title="抠图"></a>抠图</h1><p>先打开图片,<br>图层-新建图层-新建图层背景<br>图像-画布大小<br><code>Ctrl+T</code>选中图片,<code>Alt</code>进行比例放大<br><code>Ctrl+ X</code>可以把选取内不需要的内容删掉<br>导出-快速导出PNG即可.</p>
-<h1 id="描白边"><a href="#描白边" class="headerlink" title="描白边"></a>描白边</h1><p>使用魔棒选取大部分边缘,使用选区工具进行修补.<br>编辑-描边-白色-5px左右,外部<br>使用魔棒点击外部区域,选择反向,就选中了包含白边的区域.<br>此时可以使用编辑-填充-黑色,就出现纯黑背景的白边图片了.</p>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/25/滚动阅读/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1705,6 +1214,439 @@
   </article>
 
     
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/06/Echarts/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zax Tseng">
+      <meta itemprop="description" content="Zax's BLOG">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zax's BLOG">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/10/06/Echarts/" class="post-title-link" itemprop="url">Echarts</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-06 14:24:07 / 修改时间：20:17:14" itemprop="dateCreated datePublished" datetime="2019-10-06T14:24:07+08:00">2019-10-06</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/HTML5/" itemprop="url" rel="index"><span itemprop="name">HTML5</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/HTML5/canvas/" itemprop="url" rel="index"><span itemprop="name">canvas</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="浏览器画图原理"><a href="#浏览器画图原理" class="headerlink" title="浏览器画图原理"></a>浏览器画图原理</h1><ul>
+<li><p>canvas<br>基于像素<br>单个 html,类似于画笔在画布上画画<br>Echarts 基于 canvas 画图</p>
+</li>
+<li><p>svg<br>基于对象模型<br>多个图形元素<br>高保真</p>
+</li>
+</ul>
+<h1 id="使用-canvas-画图"><a href="#使用-canvas-画图" class="headerlink" title="使用 canvas 画图"></a>使用 canvas 画图</h1><p>基础操作</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="comment">//获取canvas对象</span></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"myCanvas"</span>)</span><br><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">"2d"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//开始一个新的绘制路径</span></span><br><span class="line">ctx.beginPath()</span><br><span class="line"><span class="comment">//设置弧线颜色</span></span><br><span class="line">ctx.strokeStyle = <span class="string">"blue"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> circle = &#123;</span><br><span class="line">    x: <span class="number">100</span>,   <span class="comment">//圆心的x轴</span></span><br><span class="line">    y: <span class="number">100</span>,   <span class="comment">//圆心的y轴</span></span><br><span class="line">    r: <span class="number">50</span>     <span class="comment">//圆的半径</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//沿着坐标点(100,100)为圆心,半径为50px的圆顺时针方向绘制弧线</span></span><br><span class="line">ctx.arc(circle.x, circle.y, circle.r, <span class="number">0</span>, <span class="built_in">Math</span>.PI * <span class="number">2</span>, <span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//按照指定的路径绘制弧线</span></span><br><span class="line">ctr.stroke()</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="使用-svg-画图"><a href="#使用-svg-画图" class="headerlink" title="使用 svg 画图"></a>使用 svg 画图</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg</span><br><span class="line">  width=<span class="string">"100%"</span></span><br><span class="line">  height=<span class="string">"100%"</span></span><br><span class="line">  version=<span class="string">"1.1"</span></span><br><span class="line">  xmlns=<span class="string">"http://www.w3.org/2000/svg"</span></span><br><span class="line">&gt;</span><br><span class="line">  <span class="comment">// circle是圆形标签</span></span><br><span class="line">  &lt;circle cx=<span class="string">"70"</span> cy=<span class="string">"50"</span> r=<span class="string">"40"</span> stroke=<span class="string">"black"</span> stroke-width=<span class="string">"2"</span> fill=<span class="string">"red"</span> /&gt;</span><br><span class="line">  <span class="comment">//rect是长方形标签</span></span><br><span class="line">  &lt;rect</span><br><span class="line">    x=<span class="string">"120"</span></span><br><span class="line">    width=<span class="string">"100"</span></span><br><span class="line">    height=<span class="string">"100"</span></span><br><span class="line">    style=<span class="string">"fill:rgb(0,0,255);stroke-width:1; stroke:rgb(0,0,0)"</span></span><br><span class="line">  /&gt;</span><br><span class="line">&lt;<span class="regexp">/svg&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Echarts-条形图-直方图"><a href="#Echarts-条形图-直方图" class="headerlink" title="Echarts 条形图(直方图)"></a>Echarts 条形图(直方图)</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;!-- 引入 ECharts 文件 --&gt;</span><br><span class="line">    &lt;script src=<span class="string">"echarts.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">    &lt;!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --&gt;</span></span><br><span class="line"><span class="regexp">    &lt;div id="main" style="width: 600px;height:400px;"&gt;&lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/基于DOM,初始化Echarts实例</span></span><br><span class="line"><span class="regexp">var myChart = echarts.init(document.getElementById("main"))</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/指定图表的配置项和数据</span></span><br><span class="line"><span class="regexp">var option = &#123;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/标题组件</span></span><br><span class="line"><span class="regexp">    title: &#123;</span></span><br><span class="line"><span class="regexp">        text: "直方图(条形图)", /</span><span class="regexp">/主标题</span></span><br><span class="line"><span class="regexp">        subtext: "学习Echarts", /</span><span class="regexp">/副标题</span></span><br><span class="line"><span class="regexp">        left: 150, /</span><span class="regexp">/数字是像素值,距离左侧.也可以是left,center</span></span><br><span class="line"><span class="regexp">        borderColor: "red", /</span><span class="regexp">/边框颜色</span></span><br><span class="line"><span class="regexp">        borderWidth: 5 /</span><span class="regexp">/边框粗细</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/工具箱组件</span></span><br><span class="line"><span class="regexp">    toolbox: &#123;</span></span><br><span class="line"><span class="regexp">        show: true, /</span><span class="regexp">/是否显示toolbox</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/具体显示功能</span></span><br><span class="line"><span class="regexp">        feature: &#123;</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/保存图片</span></span><br><span class="line"><span class="regexp">            saveAsImage: &#123;</span></span><br><span class="line"><span class="regexp">                show: true</span></span><br><span class="line"><span class="regexp">            &#125;,</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/数据视图</span></span><br><span class="line"><span class="regexp">            dataView: &#123;</span></span><br><span class="line"><span class="regexp">                show: true</span></span><br><span class="line"><span class="regexp">            &#125;,</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/缩放视图</span></span><br><span class="line"><span class="regexp">            dataZoom: &#123;</span></span><br><span class="line"><span class="regexp">                show: true</span></span><br><span class="line"><span class="regexp">            &#125;,</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/还原</span></span><br><span class="line"><span class="regexp">            Restore: &#123;</span></span><br><span class="line"><span class="regexp">                show: true</span></span><br><span class="line"><span class="regexp">            &#125;,</span></span><br><span class="line"><span class="regexp">            /</span><span class="regexp">/动态类型切换</span></span><br><span class="line"><span class="regexp">            magicType: &#123;</span></span><br><span class="line"><span class="regexp">                type: ['line', 'bar']</span></span><br><span class="line"><span class="regexp">            &#125;</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/弹窗(当鼠标滑过图表显示)</span></span><br><span class="line"><span class="regexp">    tooltip: &#123;</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/触发方式</span></span><br><span class="line"><span class="regexp">        trigger: 'axis' /</span><span class="regexp">/x轴触发</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/图例</span></span><br><span class="line"><span class="regexp">    legend: &#123;</span></span><br><span class="line"><span class="regexp">        data: ['销量']</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/x轴</span></span><br><span class="line"><span class="regexp">    xAxis: &#123;</span></span><br><span class="line"><span class="regexp">        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    yAxis: &#123;&#125;,</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/数据</span></span><br><span class="line"><span class="regexp">    series: [&#123;</span></span><br><span class="line"><span class="regexp">        name: '销量',</span></span><br><span class="line"><span class="regexp">        type: 'bar', //bar表示条形图.line表示折线图</span></span><br><span class="line"><span class="regexp">        data: [5, 20, 36, 10, 10, 20],</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/标记点(数据点)</span></span><br><span class="line"><span class="regexp">        markPoint: &#123;</span></span><br><span class="line"><span class="regexp">            data: [</span></span><br><span class="line"><span class="regexp">                &#123;type: 'max', name: '最大值'&#125;, //最大值的点会默认方块显示</span></span><br><span class="line"><span class="regexp">                &#123;type: 'min', name: '最小值', symbol: 'arrow'&#125; //最小值的点会变成箭头</span></span><br><span class="line"><span class="regexp">            ]</span></span><br><span class="line"><span class="regexp">        &#125;,</span></span><br><span class="line"><span class="regexp">        /</span><span class="regexp">/标记线</span></span><br><span class="line"><span class="regexp">        markLine: &#123;</span></span><br><span class="line"><span class="regexp">            data: [</span></span><br><span class="line"><span class="regexp">                &#123;type: 'average', name: '平均值'&#125; //设置平均值线</span></span><br><span class="line"><span class="regexp">            ]</span></span><br><span class="line"><span class="regexp">        &#125;</span></span><br><span class="line"><span class="regexp">    &#125;]</span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/使用配置数据显示图表</span></span><br><span class="line"><span class="regexp">    myChart.setOption(option)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h1><p>特点:</p>
+<ul>
+<li>展示百分比</li>
+<li>type: pie</li>
+</ul>
+<p>center 圆心坐标<br>radius 半径<br>name 图例名字<br>selectedMode 是否支持多选</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=<span class="string">"main"</span> style=<span class="string">"width=900px;height=600px"</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">myChart = echarts.init(document.getElementById("main"))</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var option = &#123;</span></span><br><span class="line"><span class="regexp">    title: &#123;</span></span><br><span class="line"><span class="regexp">        text: "站点访问来源",</span></span><br><span class="line"><span class="regexp">        subtext: "副标题",</span></span><br><span class="line"><span class="regexp">        x: center</span></span><br><span class="line"><span class="regexp">    &#125;,</span></span><br><span class="line"><span class="regexp">    tooltip: &#123;</span></span><br><span class="line"><span class="regexp">        trigger: "item", </span></span><br><span class="line"><span class="regexp">        formatter: "&#123;a&#125; &lt;br/</span>&gt;&#123;b&#125; : &#123;c&#125; (&#123;d&#125;%)<span class="string">"</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    legend: &#123;</span></span><br><span class="line"><span class="string">        orient: "</span>vertical<span class="string">",</span></span><br><span class="line"><span class="string">        left: "</span>left<span class="string">",</span></span><br><span class="line"><span class="string">        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    series: [&#123;</span></span><br><span class="line"><span class="string">        name: '访问来源', //图例名字</span></span><br><span class="line"><span class="string">        type: 'pie',</span></span><br><span class="line"><span class="string">        radius: '55%', //半径</span></span><br><span class="line"><span class="string">        center: ['50%', '60%'], //圆心坐标</span></span><br><span class="line"><span class="string">        data: [</span></span><br><span class="line"><span class="string">            &#123;value: 335, name: '直接访问'&#125;,</span></span><br><span class="line"><span class="string">            &#123;value: 210, name: '邮件营销'&#125;,</span></span><br><span class="line"><span class="string">            &#123;value: 445, name: '联盟广告'&#125;,</span></span><br><span class="line"><span class="string">            &#123;value: 135, name: '视频广告'&#125;,</span></span><br><span class="line"><span class="string">            &#123;value: 2453, name: '搜索引擎'&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        ]</span></span><br><span class="line"><span class="string">    &#125;]</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="仪表盘"><a href="#仪表盘" class="headerlink" title="仪表盘"></a>仪表盘</h1><p><code>type: gauge</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;main&quot; style=&quot;width=900px;height=600px&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">myChart = echarts.init(document.getElementById(&quot;main&quot;))</span><br><span class="line"></span><br><span class="line">var option = &#123;</span><br><span class="line">    tooltip: &#123;</span><br><span class="line">        formatter: &quot;&#123;a&#125; &lt;br/&gt;&#123;b&#125; : &#123;c&#125;%&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    toolbox: &#123;</span><br><span class="line">        feature: &#123;</span><br><span class="line">            restore: &#123;&#125;,</span><br><span class="line">            saveAsImage: &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    series: [&#123;</span><br><span class="line">        name: &apos;业务指标&apos;, //图例名字</span><br><span class="line">        type: &apos;gauge&apos;,</span><br><span class="line">        detail: &#123;formatter: &apos;&#123;value&#125;%&apos;&#125;,</span><br><span class="line">        data: [</span><br><span class="line">            &#123;value: 33, name: &apos;完成率&apos;&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="地图"><a href="#地图" class="headerlink" title="地图"></a>地图</h1><p>需要配合地图坐标,可以下载china.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;ECharts&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">    &lt;!-- 引入 echarts.js --&gt;</span></span><br><span class="line"><span class="regexp">    &lt;script src="../</span>echarts.min.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;script src="</span>../china.js<span class="string">"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;!-- 为ECharts准备一个具备大小（宽高）的Dom --&gt;</span></span><br><span class="line"><span class="string">&lt;div id="</span>main<span class="string">" style="</span>width: <span class="number">900</span>px;height:<span class="number">600</span>px;<span class="string">"&gt;&lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;script type="</span>text/javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">        // 基于准备好的dom，初始化echarts实例</span></span><br><span class="line"><span class="string">var myChart = echarts.init(document.getElementById('main'));</span></span><br><span class="line"><span class="string">var geoCoordMap = &#123;</span></span><br><span class="line"><span class="string">    '上海': [121.4648,31.2891],</span></span><br><span class="line"><span class="string">    '东莞': [113.8953,22.901],</span></span><br><span class="line"><span class="string">    '东营': [118.7073,37.5513],</span></span><br><span class="line"><span class="string">    '中山': [113.4229,22.478],</span></span><br><span class="line"><span class="string">    '临汾': [111.4783,36.1615],</span></span><br><span class="line"><span class="string">    '临沂': [118.3118,35.2936],</span></span><br><span class="line"><span class="string">    '丹东': [124.541,40.4242],</span></span><br><span class="line"><span class="string">    '丽水': [119.5642,28.1854],</span></span><br><span class="line"><span class="string">    '乌鲁木齐': [87.9236,43.5883],</span></span><br><span class="line"><span class="string">    '佛山': [112.8955,23.1097],</span></span><br><span class="line"><span class="string">    '保定': [115.0488,39.0948],</span></span><br><span class="line"><span class="string">    '兰州': [103.5901,36.3043],</span></span><br><span class="line"><span class="string">    '包头': [110.3467,41.4899],</span></span><br><span class="line"><span class="string">    '北京': [116.4551,40.2539],</span></span><br><span class="line"><span class="string">    '北海': [109.314,21.6211],</span></span><br><span class="line"><span class="string">    '南京': [118.8062,31.9208],</span></span><br><span class="line"><span class="string">    '南宁': [108.479,23.1152],</span></span><br><span class="line"><span class="string">    '南昌': [116.0046,28.6633],</span></span><br><span class="line"><span class="string">    '南通': [121.1023,32.1625],</span></span><br><span class="line"><span class="string">    '厦门': [118.1689,24.6478],</span></span><br><span class="line"><span class="string">    '台州': [121.1353,28.6688],</span></span><br><span class="line"><span class="string">    '合肥': [117.29,32.0581],</span></span><br><span class="line"><span class="string">    '呼和浩特': [111.4124,40.4901],</span></span><br><span class="line"><span class="string">    '咸阳': [108.4131,34.8706],</span></span><br><span class="line"><span class="string">    '哈尔滨': [127.9688,45.368],</span></span><br><span class="line"><span class="string">    '唐山': [118.4766,39.6826],</span></span><br><span class="line"><span class="string">    '嘉兴': [120.9155,30.6354],</span></span><br><span class="line"><span class="string">    '大同': [113.7854,39.8035],</span></span><br><span class="line"><span class="string">    '大连': [122.2229,39.4409],</span></span><br><span class="line"><span class="string">    '天津': [117.4219,39.4189],</span></span><br><span class="line"><span class="string">    '太原': [112.3352,37.9413],</span></span><br><span class="line"><span class="string">    '威海': [121.9482,37.1393],</span></span><br><span class="line"><span class="string">    '宁波': [121.5967,29.6466],</span></span><br><span class="line"><span class="string">    '宝鸡': [107.1826,34.3433],</span></span><br><span class="line"><span class="string">    '宿迁': [118.5535,33.7775],</span></span><br><span class="line"><span class="string">    '常州': [119.4543,31.5582],</span></span><br><span class="line"><span class="string">    '广州': [113.5107,23.2196],</span></span><br><span class="line"><span class="string">    '廊坊': [116.521,39.0509],</span></span><br><span class="line"><span class="string">    '延安': [109.1052,36.4252],</span></span><br><span class="line"><span class="string">    '张家口': [115.1477,40.8527],</span></span><br><span class="line"><span class="string">    '徐州': [117.5208,34.3268],</span></span><br><span class="line"><span class="string">    '德州': [116.6858,37.2107],</span></span><br><span class="line"><span class="string">    '惠州': [114.6204,23.1647],</span></span><br><span class="line"><span class="string">    '成都': [103.9526,30.7617],</span></span><br><span class="line"><span class="string">    '扬州': [119.4653,32.8162],</span></span><br><span class="line"><span class="string">    '承德': [117.5757,41.4075],</span></span><br><span class="line"><span class="string">    '拉萨': [91.1865,30.1465],</span></span><br><span class="line"><span class="string">    '无锡': [120.3442,31.5527],</span></span><br><span class="line"><span class="string">    '日照': [119.2786,35.5023],</span></span><br><span class="line"><span class="string">    '昆明': [102.9199,25.4663],</span></span><br><span class="line"><span class="string">    '杭州': [119.5313,29.8773],</span></span><br><span class="line"><span class="string">    '枣庄': [117.323,34.8926],</span></span><br><span class="line"><span class="string">    '柳州': [109.3799,24.9774],</span></span><br><span class="line"><span class="string">    '株洲': [113.5327,27.0319],</span></span><br><span class="line"><span class="string">    '武汉': [114.3896,30.6628],</span></span><br><span class="line"><span class="string">    '汕头': [117.1692,23.3405],</span></span><br><span class="line"><span class="string">    '江门': [112.6318,22.1484],</span></span><br><span class="line"><span class="string">    '沈阳': [123.1238,42.1216],</span></span><br><span class="line"><span class="string">    '沧州': [116.8286,38.2104],</span></span><br><span class="line"><span class="string">    '河源': [114.917,23.9722],</span></span><br><span class="line"><span class="string">    '泉州': [118.3228,25.1147],</span></span><br><span class="line"><span class="string">    '泰安': [117.0264,36.0516],</span></span><br><span class="line"><span class="string">    '泰州': [120.0586,32.5525],</span></span><br><span class="line"><span class="string">    '济南': [117.1582,36.8701],</span></span><br><span class="line"><span class="string">    '济宁': [116.8286,35.3375],</span></span><br><span class="line"><span class="string">    '海口': [110.3893,19.8516],</span></span><br><span class="line"><span class="string">    '淄博': [118.0371,36.6064],</span></span><br><span class="line"><span class="string">    '淮安': [118.927,33.4039],</span></span><br><span class="line"><span class="string">    '深圳': [114.5435,22.5439],</span></span><br><span class="line"><span class="string">    '清远': [112.9175,24.3292],</span></span><br><span class="line"><span class="string">    '温州': [120.498,27.8119],</span></span><br><span class="line"><span class="string">    '渭南': [109.7864,35.0299],</span></span><br><span class="line"><span class="string">    '湖州': [119.8608,30.7782],</span></span><br><span class="line"><span class="string">    '湘潭': [112.5439,27.7075],</span></span><br><span class="line"><span class="string">    '滨州': [117.8174,37.4963],</span></span><br><span class="line"><span class="string">    '潍坊': [119.0918,36.524],</span></span><br><span class="line"><span class="string">    '烟台': [120.7397,37.5128],</span></span><br><span class="line"><span class="string">    '玉溪': [101.9312,23.8898],</span></span><br><span class="line"><span class="string">    '珠海': [113.7305,22.1155],</span></span><br><span class="line"><span class="string">    '盐城': [120.2234,33.5577],</span></span><br><span class="line"><span class="string">    '盘锦': [121.9482,41.0449],</span></span><br><span class="line"><span class="string">    '石家庄': [114.4995,38.1006],</span></span><br><span class="line"><span class="string">    '福州': [119.4543,25.9222],</span></span><br><span class="line"><span class="string">    '秦皇岛': [119.2126,40.0232],</span></span><br><span class="line"><span class="string">    '绍兴': [120.564,29.7565],</span></span><br><span class="line"><span class="string">    '聊城': [115.9167,36.4032],</span></span><br><span class="line"><span class="string">    '肇庆': [112.1265,23.5822],</span></span><br><span class="line"><span class="string">    '舟山': [122.2559,30.2234],</span></span><br><span class="line"><span class="string">    '苏州': [120.6519,31.3989],</span></span><br><span class="line"><span class="string">    '莱芜': [117.6526,36.2714],</span></span><br><span class="line"><span class="string">    '菏泽': [115.6201,35.2057],</span></span><br><span class="line"><span class="string">    '营口': [122.4316,40.4297],</span></span><br><span class="line"><span class="string">    '葫芦岛': [120.1575,40.578],</span></span><br><span class="line"><span class="string">    '衡水': [115.8838,37.7161],</span></span><br><span class="line"><span class="string">    '衢州': [118.6853,28.8666],</span></span><br><span class="line"><span class="string">    '西宁': [101.4038,36.8207],</span></span><br><span class="line"><span class="string">    '西安': [109.1162,34.2004],</span></span><br><span class="line"><span class="string">    '贵阳': [106.6992,26.7682],</span></span><br><span class="line"><span class="string">    '连云港': [119.1248,34.552],</span></span><br><span class="line"><span class="string">    '邢台': [114.8071,37.2821],</span></span><br><span class="line"><span class="string">    '邯郸': [114.4775,36.535],</span></span><br><span class="line"><span class="string">    '郑州': [113.4668,34.6234],</span></span><br><span class="line"><span class="string">    '鄂尔多斯': [108.9734,39.2487],</span></span><br><span class="line"><span class="string">    '重庆': [107.7539,30.1904],</span></span><br><span class="line"><span class="string">    '金华': [120.0037,29.1028],</span></span><br><span class="line"><span class="string">    '铜川': [109.0393,35.1947],</span></span><br><span class="line"><span class="string">    '银川': [106.3586,38.1775],</span></span><br><span class="line"><span class="string">    '镇江': [119.4763,31.9702],</span></span><br><span class="line"><span class="string">    '长春': [125.8154,44.2584],</span></span><br><span class="line"><span class="string">    '长沙': [113.0823,28.2568],</span></span><br><span class="line"><span class="string">    '长治': [112.8625,36.4746],</span></span><br><span class="line"><span class="string">    '阳泉': [113.4778,38.0951],</span></span><br><span class="line"><span class="string">    '青岛': [120.4651,36.3373],</span></span><br><span class="line"><span class="string">    '韶关': [113.7964,24.7028]</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var BJData = [</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'上海',value:95&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'广州',value:90&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'大连',value:80&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'南宁',value:70&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'南昌',value:60&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'拉萨',value:50&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'长春',value:40&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'包头',value:30&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'重庆',value:20&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'北京'&#125;, &#123;name:'常州',value:10&#125;]</span></span><br><span class="line"><span class="string">];</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var SHData = [</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'包头',value:95&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'昆明',value:90&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'广州',value:80&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'郑州',value:70&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'长春',value:60&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'重庆',value:50&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'长沙',value:40&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'北京',value:30&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'丹东',value:20&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'上海'&#125;,&#123;name:'大连',value:10&#125;]</span></span><br><span class="line"><span class="string">];</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var GZData = [</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'福州',value:95&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'太原',value:90&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'长春',value:80&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'重庆',value:70&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'西安',value:60&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'成都',value:50&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'常州',value:40&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'北京',value:30&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'北海',value:20&#125;],</span></span><br><span class="line"><span class="string">    [&#123;name:'广州'&#125;,&#123;name:'海口',value:10&#125;]</span></span><br><span class="line"><span class="string">];</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var convertData = function (data) &#123;</span></span><br><span class="line"><span class="string">    var res = [];</span></span><br><span class="line"><span class="string">    for (var i = 0; i &lt; data.length; i++) &#123;</span></span><br><span class="line"><span class="string">        var dataItem = data[i];</span></span><br><span class="line"><span class="string">        var fromCoord = geoCoordMap[dataItem[0].name];</span></span><br><span class="line"><span class="string">        var toCoord = geoCoordMap[dataItem[1].name];</span></span><br><span class="line"><span class="string">        if (fromCoord &amp;&amp; toCoord) &#123;</span></span><br><span class="line"><span class="string">            res.push([&#123;</span></span><br><span class="line"><span class="string">                name: dataItem[0].name,</span></span><br><span class="line"><span class="string">                coord: fromCoord</span></span><br><span class="line"><span class="string">            &#125;, &#123;</span></span><br><span class="line"><span class="string">                name: dataItem[1].name,</span></span><br><span class="line"><span class="string">                coord: toCoord</span></span><br><span class="line"><span class="string">            &#125;]);</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    return res;</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var color = ['#a6c84c', '#ffa022', '#46bee9'];</span></span><br><span class="line"><span class="string">var series = [];</span></span><br><span class="line"><span class="string">[['北京', BJData], ['上海', SHData], ['广州', GZData]].forEach(function (item, i) &#123;</span></span><br><span class="line"><span class="string">    series.push(&#123;</span></span><br><span class="line"><span class="string">        name: item[0] + ' Top10',</span></span><br><span class="line"><span class="string">        type: 'lines',</span></span><br><span class="line"><span class="string">        zlevel: 1,</span></span><br><span class="line"><span class="string">        effect: &#123;</span></span><br><span class="line"><span class="string">            show: true,</span></span><br><span class="line"><span class="string">            period: 6,</span></span><br><span class="line"><span class="string">            trailLength: 0.7,</span></span><br><span class="line"><span class="string">            color: '#fff',</span></span><br><span class="line"><span class="string">            symbolSize: 3</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        lineStyle: &#123;</span></span><br><span class="line"><span class="string">            normal: &#123;</span></span><br><span class="line"><span class="string">                color: color[i],</span></span><br><span class="line"><span class="string">                width: 0,</span></span><br><span class="line"><span class="string">                curveness: 0.2</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        data: convertData(item[1])</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">        name: item[0] + ' Top10',</span></span><br><span class="line"><span class="string">        type: 'lines',</span></span><br><span class="line"><span class="string">        zlevel: 2,</span></span><br><span class="line"><span class="string">        effect: &#123;</span></span><br><span class="line"><span class="string">            show: true,</span></span><br><span class="line"><span class="string">            period: 6,</span></span><br><span class="line"><span class="string">            trailLength: 0,</span></span><br><span class="line"><span class="string">            symbol: planePath,</span></span><br><span class="line"><span class="string">            symbolSize: 15</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        lineStyle: &#123;</span></span><br><span class="line"><span class="string">            normal: &#123;</span></span><br><span class="line"><span class="string">                color: color[i],</span></span><br><span class="line"><span class="string">                width: 1,</span></span><br><span class="line"><span class="string">                opacity: 0.4,</span></span><br><span class="line"><span class="string">                curveness: 0.2</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        data: convertData(item[1])</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">        name: item[0] + ' Top10',</span></span><br><span class="line"><span class="string">        type: 'effectScatter',</span></span><br><span class="line"><span class="string">        coordinateSystem: 'geo',</span></span><br><span class="line"><span class="string">        zlevel: 2,</span></span><br><span class="line"><span class="string">        rippleEffect: &#123;</span></span><br><span class="line"><span class="string">            brushType: 'stroke'</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        label: &#123;</span></span><br><span class="line"><span class="string">            normal: &#123;</span></span><br><span class="line"><span class="string">                show: true,</span></span><br><span class="line"><span class="string">                position: 'right',</span></span><br><span class="line"><span class="string">                formatter: '&#123;b&#125;'</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        symbolSize: function (val) &#123;</span></span><br><span class="line"><span class="string">            return val[2] / 8;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        itemStyle: &#123;</span></span><br><span class="line"><span class="string">            normal: &#123;</span></span><br><span class="line"><span class="string">                color: color[i]</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        data: item[1].map(function (dataItem) &#123;</span></span><br><span class="line"><span class="string">            return &#123;</span></span><br><span class="line"><span class="string">                name: dataItem[1].name,</span></span><br><span class="line"><span class="string">                value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])</span></span><br><span class="line"><span class="string">            &#125;;</span></span><br><span class="line"><span class="string">        &#125;)</span></span><br><span class="line"><span class="string">    &#125;);</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">option = &#123;</span></span><br><span class="line"><span class="string">    backgroundColor: '#404a59',</span></span><br><span class="line"><span class="string">    title : &#123;</span></span><br><span class="line"><span class="string">        text: '城市航线',</span></span><br><span class="line"><span class="string">        subtext: '数据纯属虚构',</span></span><br><span class="line"><span class="string">        left: 'center',</span></span><br><span class="line"><span class="string">        textStyle : &#123;</span></span><br><span class="line"><span class="string">            color: '#fff'</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    tooltip : &#123;</span></span><br><span class="line"><span class="string">        trigger: 'item'</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    legend: &#123;</span></span><br><span class="line"><span class="string">        orient: 'vertical',</span></span><br><span class="line"><span class="string">        top: 'bottom',</span></span><br><span class="line"><span class="string">        left: 'right',</span></span><br><span class="line"><span class="string">        data:['北京 Top10', '上海 Top10', '广州 Top10'],</span></span><br><span class="line"><span class="string">        textStyle: &#123;</span></span><br><span class="line"><span class="string">            color: '#fff'</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        selectedMode: 'single'</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    geo: &#123;</span></span><br><span class="line"><span class="string">        map: 'china',</span></span><br><span class="line"><span class="string">        label: &#123;</span></span><br><span class="line"><span class="string">            emphasis: &#123;</span></span><br><span class="line"><span class="string">                show: false</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        roam: true,</span></span><br><span class="line"><span class="string">        itemStyle: &#123;</span></span><br><span class="line"><span class="string">            normal: &#123;</span></span><br><span class="line"><span class="string">                areaColor: '#323c48',</span></span><br><span class="line"><span class="string">                borderColor: '#404a59'</span></span><br><span class="line"><span class="string">            &#125;,</span></span><br><span class="line"><span class="string">            emphasis: &#123;</span></span><br><span class="line"><span class="string">                areaColor: '#2a333d'</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;,</span></span><br><span class="line"><span class="string">    series: series</span></span><br><span class="line"><span class="string">&#125;;</span></span><br><span class="line"><span class="string">// 使用刚指定的配置项和数据显示图表。</span></span><br><span class="line"><span class="string">myChart.setOption(option);</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/TypeScript入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zax Tseng">
+      <meta itemprop="description" content="Zax's BLOG">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zax's BLOG">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/10/03/TypeScript入门/" class="post-title-link" itemprop="url">TypeScript入门</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-03 16:00:08" itemprop="dateCreated datePublished" datetime="2019-10-03T16:00:08+08:00">2019-10-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-06 09:39:53" itemprop="dateModified" datetime="2019-10-06T09:39:53+08:00">2019-10-06</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>TypeScript具有类型系统，且是JavaScript的超集。 它可以编译成普通的JavaScript代码。 TypeScript支持任意浏览器，任意环境，任意系统并且是开源的。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br><span class="line"><span class="comment">//查看版本号</span></span><br><span class="line">tsc -v</span><br><span class="line"><span class="comment">//查看安装目录</span></span><br><span class="line">npm bin -g</span><br><span class="line"></span><br><span class="line"><span class="comment">//代码编译</span></span><br><span class="line">tsc helloworld.ts</span><br><span class="line"><span class="comment">//会出现一个helloworld.js</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><p>输出文件夹</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将文件编译到dist文件夹下</span></span><br><span class="line">tsc --outDir dist helloworld.ts</span><br></pre></td></tr></table></figure>
+
+<h2 id="tsconfig-json"><a href="#tsconfig-json" class="headerlink" title="tsconfig.json"></a>tsconfig.json</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用代码初始化,生成tsconfig.json</span></span><br><span class="line">tsc --init</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改文件内属性</span></span><br><span class="line"><span class="comment">//设置输出文件夹dist</span></span><br><span class="line"><span class="string">"outDir"</span>: <span class="string">"./dist"</span></span><br><span class="line"><span class="comment">//设置源代码文件夹</span></span><br><span class="line"><span class="string">"rootDir"</span>: <span class="string">"./src"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="动态监视"><a href="#动态监视" class="headerlink" title="动态监视"></a>动态监视</h2><p>发现代码变动,自动编译</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc -w</span><br></pre></td></tr></table></figure>
+
+<h1 id="变量使用"><a href="#变量使用" class="headerlink" title="变量使用"></a>变量使用</h1><ol>
+<li>变量使用前要定义</li>
+<li>变量类型</li>
+<li>any类型</li>
+</ol>
+<h2 id="变量使用前要定义"><a href="#变量使用前要定义" class="headerlink" title="变量使用前要定义"></a>变量使用前要定义</h2><p>let/var 变量名:变量类型 = 默认值</p>
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>number,string,boolean,symbol,any,object</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name:string = <span class="string">"Tom"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"My name is"</span> + name)</span><br><span class="line">name = <span class="number">100</span> <span class="comment">//编译错误,类型不匹配</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="any类型"><a href="#any类型" class="headerlink" title="any类型"></a>any类型</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//any类型让编译器忽略检测</span></span><br><span class="line"><span class="keyword">let</span> name:any = <span class="string">"Tom"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"My name is"</span> + name)</span><br><span class="line">name = <span class="number">100</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"My name is"</span> + name)</span><br></pre></td></tr></table></figure>
+
+<h1 id="常量保存"><a href="#常量保存" class="headerlink" title="常量保存"></a>常量保存</h1><h2 id="常量定义方法"><a href="#常量定义方法" class="headerlink" title="常量定义方法"></a>常量定义方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常量的定义语法</span></span><br><span class="line"><span class="keyword">const</span> name:type = initial_value</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据库连接串</span></span><br><span class="line"><span class="keyword">const</span> dbstr:string = <span class="string">"ip=192.168.2.1;port=5433;uid=ayin;pwd=123123;"</span></span><br><span class="line"><span class="built_in">console</span>.log(dbstr)</span><br><span class="line"></span><br><span class="line"><span class="comment">//数组常量</span></span><br><span class="line"><span class="keyword">const</span> DATA:number[] = [<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>]</span><br><span class="line"><span class="built_in">console</span>.log(DATA)</span><br><span class="line"></span><br><span class="line"><span class="comment">// DATA = [10,20,30]; //编译错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组地址并未改变,值可以改变</span></span><br><span class="line"><span class="comment">//正常赋值</span></span><br><span class="line">DATA[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">DATA[<span class="number">1</span>] = <span class="number">20</span></span><br><span class="line">DATA[<span class="number">2</span>] = <span class="number">30</span></span><br><span class="line"><span class="built_in">console</span>.log(DATA) <span class="comment">//[10,20,30]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组元素增加</span></span><br><span class="line">DATA[<span class="number">3</span>] = <span class="number">40</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="数组的使用"><a href="#数组的使用" class="headerlink" title="数组的使用"></a>数组的使用</h1><h2 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h2><p><code>let name:type[] = initial</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义数组</span></span><br><span class="line"><span class="keyword">let</span> data:string[] = [<span class="string">'金'</span>,<span class="string">'木'</span>,<span class="string">'水'</span>,<span class="string">'火'</span>]</span><br><span class="line"><span class="built_in">console</span>.log(data) <span class="comment">//['金','木','水','火']</span></span><br><span class="line"><span class="built_in">console</span>.log(data[<span class="number">0</span>]) <span class="comment">//金</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//追加赋值</span></span><br><span class="line">data[<span class="number">4</span>] = <span class="string">'土'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//越界赋值</span></span><br><span class="line">data[<span class="number">10</span>] = <span class="string">'风'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="多维数组的定义"><a href="#多维数组的定义" class="headerlink" title="多维数组的定义"></a>多维数组的定义</h2><p><code>let name:type[][] = [[],[],[],...]</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义三行五列的数组</span></span><br><span class="line"><span class="keyword">let</span> data:number[][] = [</span><br><span class="line">    [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>],</span><br><span class="line">    [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>],</span><br><span class="line">    [<span class="number">100</span>,<span class="number">200</span>,<span class="number">300</span>,<span class="number">400</span>,<span class="number">500</span>]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印第一行数组</span></span><br><span class="line"><span class="built_in">console</span>.log(data[<span class="number">0</span>]) <span class="comment">// [1,2,3,4,5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//打印第一行第一个元素</span></span><br><span class="line"><span class="built_in">console</span>.log(data[<span class="number">0</span>][<span class="number">0</span>]) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><h2 id="定义方法-1"><a href="#定义方法-1" class="headerlink" title="定义方法"></a>定义方法</h2><p><code>enum name = {name1, name2, name3, ...}</code><br>注意定义的是常量,后期不会变化.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用枚举</span></span><br><span class="line">enum Sex &#123;</span><br><span class="line">    MALE,</span><br><span class="line">    FEMALE,</span><br><span class="line">    UNKNOWN</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> member_sex: Sex = Sex.FEMALE <span class="comment">//默认为FEMALE</span></span><br><span class="line"><span class="built_in">console</span>.log(member_sex) <span class="comment">//输出1</span></span><br><span class="line"><span class="built_in">console</span>.log(Sex[member_sex]) <span class="comment">//输出FEMALE</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断中枚举需要在传入对象前加字符+</span></span><br><span class="line"><span class="keyword">switch</span> (+member_sex)&#123;</span><br><span class="line">    <span class="keyword">case</span> Sex.MALE:</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"男"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> Sex.FEMALE:</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"女"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> Sex.UNKNOWN:</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"未知"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者将判断套入函数中</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkSex</span>(<span class="params">sex: Sex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result:string = <span class="string">''</span></span><br><span class="line">    <span class="keyword">switch</span> (sex)&#123;</span><br><span class="line">    <span class="keyword">case</span> Sex.MALE:</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"男"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> Sex.FEMALE:</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"女"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> Sex.UNKNOWN:</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"未知"</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h1><p>指包含多种类型的变量类型,在实际项目中不常用.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//联合类型的定义</span></span><br><span class="line"><span class="keyword">let</span> data: type1 | type2 | type3 | ...</span><br><span class="line"></span><br><span class="line"><span class="comment">//联合类型的使用</span></span><br><span class="line"><span class="keyword">let</span> mydata: string | boolean</span><br><span class="line"></span><br><span class="line">mydata = <span class="string">"hello TS"</span></span><br><span class="line"><span class="built_in">console</span>.log(mydata) <span class="comment">//hello TS</span></span><br><span class="line"></span><br><span class="line">mydata = <span class="literal">true</span></span><br><span class="line"><span class="built_in">console</span>.log(mydata) <span class="comment">//true,没有报错</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="null空检查"><a href="#null空检查" class="headerlink" title="null空检查"></a>null空检查</h1><p>空检查用于代码编译时对程序中的变量做null空值检查,避免业务级别的错误.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data1: string = <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">let</span> data2: string = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> data3: string = <span class="string">""</span></span><br><span class="line">data3 = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在tsconfig.json中开启</span></span><br><span class="line"><span class="string">"strickNullChecks"</span>: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输入tsc进行检查</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="第三方库的使用"><a href="#第三方库的使用" class="headerlink" title="第三方库的使用"></a>第三方库的使用</h1><p>node-request库</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>)</span><br><span class="line"></span><br><span class="line">request(<span class="string">'http://api.komavideo.com/news/list'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, response, body</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(error)&#123;</span><br><span class="line">        <span class="built_in">console</span>.error(error)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(body)</span><br><span class="line">        <span class="keyword">var</span> body = <span class="built_in">JSON</span>.parse(body)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; body.length; i++)&#123;</span><br><span class="line">            <span class="keyword">var</span> item = body[i]</span><br><span class="line">            <span class="built_in">console</span>.log(item.title)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//直接使用是会报错的</span></span><br></pre></td></tr></table></figure>
+
+<p>需要添加tsd文件</p>
+<h2 id="如何找tsd文件"><a href="#如何找tsd文件" class="headerlink" title="如何找tsd文件"></a>如何找tsd文件</h2><p>网站: <code>http://microsoft.github.io/TypeSearch</code><br>直接搜索</p>
+<h2 id="导入tsd文件"><a href="#导入tsd文件" class="headerlink" title="导入tsd文件"></a>导入tsd文件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save @types/request</span><br></pre></td></tr></table></figure>
+
+<h1 id="函数的使用"><a href="#函数的使用" class="headerlink" title="函数的使用"></a>函数的使用</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//格式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fname</span>(<span class="params">param1:type, param2:type,...</span>) : <span class="title">return_type</span> </span>&#123;</span><br><span class="line">    <span class="comment">//函数内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>范例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x:number, y:number</span>) : <span class="title">number</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">10</span>, <span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">//利用变量</span></span><br><span class="line"><span class="keyword">let</span> func_add = add</span><br><span class="line"><span class="built_in">console</span>.log(func_add(<span class="number">1</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>范例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">add(x:number, <span class="attr">y</span>:number) : <span class="function"><span class="params">number</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">10</span>, <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="可省略参数"><a href="#可省略参数" class="headerlink" title="可省略参数"></a>可省略参数</h2><p>定义符号: ?</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sayHello(name?: string): <span class="function"><span class="params">string</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(name == <span class="literal">undefined</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello ayin"</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Hello "</span> + name </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sayHello(<span class="string">"Tom"</span>)) <span class="comment">//Hello Tom</span></span><br><span class="line"><span class="built_in">console</span>.log(sayHello()) <span class="comment">//Hello ayin</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//默认值形式</span></span><br><span class="line">sayHello(name: string = <span class="string">"ayin"</span>): <span class="function"><span class="params">string</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Hello "</span> + name</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><p>定义符号: <code>...</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">add(...vals: number[]): <span class="function"><span class="params">number</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> val <span class="keyword">of</span> vals)&#123;</span><br><span class="line">        result += val</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h1><p>类似于ES6</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    name: sting</span><br><span class="line">    sex: number <span class="comment">//0:女,1:男</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(name: string, sex: number)&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name </span><br><span class="line">        <span class="keyword">this</span>.sex = sex</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sayHello()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>,你好<span class="subst">$&#123;<span class="keyword">this</span>.sex&#125;</span>`</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> qq = <span class="keyword">new</span> Person(<span class="string">'花藤'</span>,<span class="number">1</span>)</span><br><span class="line">qq.sayHello()</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(qq.name)</span><br><span class="line"><span class="built_in">console</span>.log(qq.sex)</span><br></pre></td></tr></table></figure>
+
+<h2 id="类的访问限制"><a href="#类的访问限制" class="headerlink" title="类的访问限制"></a>类的访问限制</h2><p>类的访问修饰符</p>
+<ul>
+<li>public: 共有访问</li>
+<li>protected: 本类和子类访问</li>
+<li>private: 本类访问</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Datebase</span></span>&#123;</span><br><span class="line">    dbname: string</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(bdname: string)&#123;</span><br><span class="line">        <span class="keyword">this</span>.dbname = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//外部调用</span></span><br><span class="line">public showDB()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`数据库:<span class="subst">$&#123;<span class="keyword">this</span>.dbname&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//本类和子类调用</span></span><br><span class="line">protected connect()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>,<span class="string">"连接中..."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//本类调用</span></span><br><span class="line">private disconnect()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>,<span class="string">"关闭"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> oracle = <span class="keyword">new</span> Database(<span class="string">"甲骨文"</span>)</span><br><span class="line">oracle.showDB()</span><br><span class="line"><span class="comment">//oracle.connect()</span></span><br><span class="line"><span class="comment">//oracle.disconnect()</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostgreSql</span> <span class="keyword">extends</span> <span class="title">Database</span></span>&#123;</span><br><span class="line">    public doIt()&#123;</span><br><span class="line">        <span class="keyword">super</span>.connect()</span><br><span class="line">        <span class="comment">//super.disconnect()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> postgres = <span class="keyword">new</span> PostregSql(<span class="string">"小象"</span>)</span><br><span class="line">postgres.showDB()</span><br><span class="line">postgres.doIt()</span><br></pre></td></tr></table></figure>
+
+<h2 id="getter和setter"><a href="#getter和setter" class="headerlink" title="getter和setter"></a>getter和setter</h2><p>书接上回,由于<code>private</code>属于私有,无法直接访问.可以使用get进行访问.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Datebase</span></span>&#123;</span><br><span class="line">    private dbname: string</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(bdname: string)&#123;</span><br><span class="line">        <span class="keyword">this</span>.dbname = name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">get</span> name(): string &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.dbname</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">set</span> name(val: string)&#123;</span><br><span class="line">        <span class="keyword">this</span>.dbname = val</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过name属性访问到</span></span><br><span class="line"><span class="keyword">let</span> db = <span class="keyword">new</span> Database(<span class="string">'oracle is good'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(db.name) </span><br><span class="line"></span><br><span class="line"><span class="comment">//修改name属性</span></span><br><span class="line">db.name = <span class="string">"mysql is better'</span></span><br><span class="line"><span class="string">console.log(db.name)</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/03/Chart-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zax Tseng">
+      <meta itemprop="description" content="Zax's BLOG">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zax's BLOG">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/10/03/Chart-js/" class="post-title-link" itemprop="url">Chart.js</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-03 11:30:37" itemprop="dateCreated datePublished" datetime="2019-10-03T11:30:37+08:00">2019-10-03</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-06 14:25:38" itemprop="dateModified" datetime="2019-10-06T14:25:38+08:00">2019-10-06</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/HTML5/" itemprop="url" rel="index"><span itemprop="name">HTML5</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/HTML5/canvas/" itemprop="url" rel="index"><span itemprop="name">canvas</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>而另一个版本 Chart.bundle.js 和 Chart.bundle.min.js 早就包含了 Moment.js 。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install chart.js --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="CDN-引入"><a href="#CDN-引入" class="headerlink" title="CDN 引入"></a>CDN 引入</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min.js"</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模块化引入"><a href="#模块化引入" class="headerlink" title="模块化引入"></a>模块化引入</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Chart <span class="keyword">from</span> <span class="string">'chart.js'</span>;</span><br><span class="line"><span class="keyword">var</span> myChart = <span class="keyword">new</span> Chart(ctx, &#123;...&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单上手"><a href="#简单上手" class="headerlink" title="简单上手"></a>简单上手</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;canvas id=<span class="string">"myChart"</span> width=<span class="string">"400"</span> height=<span class="string">"400"</span>&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 获取我们要选择的canvas元素的上下文</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var ctx = document.getElementById("myChart").getContext("2d");</span></span><br><span class="line"><span class="regexp">var myNewChart = new Chart(ctx, &#123;...&#125;);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 使用jQuery获取上下文-使用jQuery的.get（）方法。</span></span><br><span class="line"><span class="regexp">var ctx = $("#myChart").get(0).getContext("2d");</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 这将获取jQuery集合中第一个返回的节点。</span></span><br><span class="line"><span class="regexp">var myNewChart = new Chart(ctx);</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果您希望所有创建的图表都具有响应性，并在浏览器窗口打开时调整大小，则可以更改以下设置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chart.defaults.global.responsive = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h1><p>折线图是在一条线上绘制数据点的方法.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLineChart = <span class="keyword">new</span> Chart(ctx, &#123;</span><br><span class="line">  type: <span class="string">"line"</span>,</span><br><span class="line">  data: data,</span><br><span class="line">  options: options</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>数据结构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  <span class="comment">//横坐标显示的值</span></span><br><span class="line">  labels: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>, <span class="number">2019</span>],</span><br><span class="line">  datasets: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//第一条线表示优酷</span></span><br><span class="line">      label: <span class="string">"优酷"</span>,</span><br><span class="line">      <span class="comment">//设定data数值,表示每年用户总量</span></span><br><span class="line">      data: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//第二条线表示YouTube</span></span><br><span class="line">      label: <span class="string">"YouTube"</span>,</span><br><span class="line">      data: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置坐标轴"><a href="#设置坐标轴" class="headerlink" title="设置坐标轴"></a>设置坐标轴</h2><h3 id="Y-轴"><a href="#Y-轴" class="headerlink" title="Y 轴"></a>Y 轴</h3><p>options.yAxes</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="comment">//设置缩放</span></span><br><span class="line">  scales: &#123;</span><br><span class="line">    <span class="comment">//设置Y轴</span></span><br><span class="line">    yAxes: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">//刻度</span></span><br><span class="line">        ticks: &#123;</span><br><span class="line">          <span class="comment">//固定最大最小</span></span><br><span class="line">          min: <span class="number">0</span>,</span><br><span class="line">          max: <span class="number">2000</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//建议最大最小</span></span><br><span class="line">          suggestedMin: <span class="number">0</span>,</span><br><span class="line">          suggestedMax: <span class="number">2000</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//跨度</span></span><br><span class="line">          stepSize: <span class="number">400</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//用回调函数设置单位</span></span><br><span class="line">          callback: <span class="function"><span class="keyword">function</span>(<span class="params">value, index, values</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> value + <span class="string">"人"</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="标题和图例"><a href="#标题和图例" class="headerlink" title="标题和图例"></a>标题和图例</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    <span class="comment">//设置标题</span></span><br><span class="line">    title: &#123;</span><br><span class="line">        display: <span class="literal">true</span>,</span><br><span class="line">        text: <span class="string">'阿银'</span>,</span><br><span class="line">        fontColor: <span class="string">'black'</span>,</span><br><span class="line">        fontSize: <span class="string">'24'</span>,</span><br><span class="line">        position: <span class="string">'top'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    legend: &#123;</span><br><span class="line">        <span class="comment">//设置图例</span></span><br><span class="line">        position: <span class="string">'left'</span>,</span><br><span class="line">        display: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    animation: &#123;</span><br><span class="line">        <span class="comment">//动态效果,为0时禁用动画</span></span><br><span class="line">        duration: <span class="number">1000</span>,</span><br><span class="line">        easing: <span class="string">'easeOutQuart'</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="线型变换"><a href="#线型变换" class="headerlink" title="线型变换"></a>线型变换</h1><p><code>data.datasets</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    labels: [<span class="number">2014</span>,<span class="number">2015</span>,<span class="number">2016</span>,<span class="number">2017</span>,<span class="number">2018</span>,<span class="number">2019</span>],</span><br><span class="line">    datasets: [</span><br><span class="line">        &#123;</span><br><span class="line">            label:  <span class="string">'优酷'</span>,</span><br><span class="line">            data: [<span class="number">100</span>,<span class="number">200</span>,<span class="number">400</span>,<span class="number">800</span>,<span class="number">1600</span>],</span><br><span class="line">            <span class="comment">//线段颜色</span></span><br><span class="line">            borderColor: <span class="string">'red'</span>,</span><br><span class="line">            <span class="comment">//线宽</span></span><br><span class="line">            borderWidth: <span class="number">3</span>,</span><br><span class="line">            <span class="comment">//背景色是否填充</span></span><br><span class="line">            fill: <span class="literal">true</span>,</span><br><span class="line">            <span class="comment">//背景色</span></span><br><span class="line">            backgroundColor: <span class="string">'rgba(128,0,0,0.5),</span></span><br><span class="line"><span class="string">            //线段曲率,为0显示折线</span></span><br><span class="line"><span class="string">            lineTension: 0,</span></span><br><span class="line"><span class="string">            //折点的造型,默认是圆点.可选三角,方块,星星</span></span><br><span class="line"><span class="string">            pointStyle: '</span>rect<span class="string">'</span></span><br><span class="line"><span class="string">        &#125;,&#123;</span></span><br><span class="line"><span class="string">            label: '</span>YouTube<span class="string">',</span></span><br><span class="line"><span class="string">            data: [50,100,200,400,600]</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    ]</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="条形图-柱状图"><a href="#条形图-柱状图" class="headerlink" title="条形图(柱状图)"></a>条形图(柱状图)</h1><p>垂直条形图: <code>type: bar</code><br>水平条形图: <code>type: horizontalBar</code></p>
+<p>大部分属性类似于折线图</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  labels: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>],</span><br><span class="line">  datasets: [</span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">"优酷"</span>,</span><br><span class="line">      data: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>],</span><br><span class="line">      <span class="comment">//为每个条形单独设置颜色</span></span><br><span class="line">      backgroundColor: [<span class="string">"red"</span>, <span class="string">"orange"</span>, <span class="string">"yellow"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">"YouTube"</span>,</span><br><span class="line">      data: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>还可以设置条形重叠(覆盖)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">options: &#123;</span><br><span class="line">        scales: &#123;</span><br><span class="line">            xAxes: [&#123;</span><br><span class="line">                <span class="comment">//设置覆盖</span></span><br><span class="line">                stacked: <span class="literal">true</span></span><br><span class="line">            &#125;],</span><br><span class="line">            yAxes: [&#123;</span><br><span class="line">                <span class="comment">//设置覆盖</span></span><br><span class="line">                stacked: <span class="literal">true</span></span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="混合图"><a href="#混合图" class="headerlink" title="混合图"></a>混合图</h1><p>线形图和条形图的混合</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixedChart = <span class="keyword">new</span> Chart(ctx, &#123;</span><br><span class="line">  type: <span class="string">"bar"</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    datasets: [</span><br><span class="line">      &#123;</span><br><span class="line">        label: <span class="string">"优酷"</span>,</span><br><span class="line">        data: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        label: <span class="string">"YouTube"</span>,</span><br><span class="line">        data: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>],</span><br><span class="line">        <span class="comment">//再改成线图</span></span><br><span class="line">        type: <span class="string">"line"</span>,</span><br><span class="line">        <span class="comment">//防止填充遮盖到条形图</span></span><br><span class="line">        fill: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    labels: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>]</span><br><span class="line">  &#125;,</span><br><span class="line">  options: options</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="雷达图-六边形图"><a href="#雷达图-六边形图" class="headerlink" title="雷达图(六边形图)"></a>雷达图(六边形图)</h1><p><code>type = &#39;radar&#39;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">type = <span class="string">"radar"</span>;</span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  labels: [<span class="string">"力量"</span>, <span class="string">"速度"</span>, <span class="string">"经验"</span>, <span class="string">"防守"</span>, <span class="string">"技术"</span>, <span class="string">"发球"</span>],</span><br><span class="line">  datasets: [</span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">"帝国の破坏龙-马龙"</span>,</span><br><span class="line">      data: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">      backgroundColor: <span class="string">"rgba(247,247,9,0.2)"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      label: <span class="string">"帝国の绝凶虎-张继科"</span>,</span><br><span class="line">      data: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">      backgroundColor: <span class="string">"rgba(238,61,17,0.2)"</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  scale: &#123;</span><br><span class="line">    ticks: &#123;</span><br><span class="line">      suggestedMin: <span class="number">0</span>,</span><br><span class="line">      suggestedMax: <span class="number">5</span>,</span><br><span class="line">      stepSize: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  title: &#123;</span><br><span class="line">    display: <span class="literal">true</span>,</span><br><span class="line">    text: <span class="string">"桌球帝国战力值"</span>,</span><br><span class="line">    fontSize: <span class="string">"24"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="饼图和甜甜圈"><a href="#饼图和甜甜圈" class="headerlink" title="饼图和甜甜圈"></a>饼图和甜甜圈</h1><p>饼图: <code>type: &#39;pie&#39;</code><br>甜甜圈: <code>type: &#39;doughnut&#39;</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">  datasets: [</span><br><span class="line">    &#123;</span><br><span class="line">      data: [<span class="number">30</span>, <span class="number">20</span>, <span class="number">30</span>],</span><br><span class="line">      backgroundColor: [<span class="string">'green'</span>,<span class="string">'red'</span>,<span class="string">'yellow'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  labels: [<span class="string">"马龙"</span>, <span class="string">"张继科"</span>, <span class="string">"王浩"</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="comment">//50-用于甜甜圈，0-用于饼图</span></span><br><span class="line">  cutoutPercentage: <span class="number">80</span>,</span><br><span class="line">  title: &#123;</span><br><span class="line">    display: <span class="literal">true</span>,</span><br><span class="line">    text: <span class="string">"桌球帝国战力值"</span>,</span><br><span class="line">    fontSize: <span class="string">"24"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="极区图"><a href="#极区图" class="headerlink" title="极区图"></a>极区图</h1><p><code>type: &#39;polarArea&#39;</code><br>极区图类似于饼图，但是每个线段具有相同的角度-线段的半径根据值而不同。</p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
   </section>
 
   
@@ -1742,7 +1684,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
