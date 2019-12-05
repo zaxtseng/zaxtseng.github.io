@@ -68,7 +68,10 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QKvYCV.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QKvH8f.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMkSIg.png">
-<meta property="og:updated_time" content="2019-12-04T03:26:58.580Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/05/Q8eLHH.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/05/Q8mhqg.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/05/Q8uaHe.png">
+<meta property="og:updated_time" content="2019-12-05T06:49:14.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP、TCP&#x2F;IP协议的原理及应用">
 <meta name="twitter:description" content="访问网页时发生了什么当用户在浏览器地址栏输入地址，敲下回车键，直到看到网页界面，一般时间不过两三秒左右。然而在这瞬时间，计算机实际上已经完成了非常复杂的操作。这段过程中发生的事情，其实有很大一部分就与 HTTP TCP/IP 有关，我们可以简要的概括一下大概的流程。">
@@ -306,7 +309,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-04 11:26:58" itemprop="dateModified" datetime="2019-12-04T11:26:58+08:00">2019-12-04</time>
+                <time title="修改时间：2019-12-05 14:49:14" itemprop="dateModified" datetime="2019-12-05T14:49:14+08:00">2019-12-05</time>
               </span>
             
           
@@ -486,73 +489,156 @@
 </blockquote>
 </li>
 </ol>
+<blockquote>
 <p>这边需要注意的一点是，一个好的 HTTP 应用服务应该是有完善的 HTTP status code 的返回信息的，即访问者单从 HTTP status &gt; code 上就能得知当前 HTTP 请求的状态信息。<br>而目前我们大部分的开发模式下的 HTTP 返回码，只有 200 和 500。服务端的同学会先把 200 返回过来，然后再告诉你出了什么 “没登录” / “没认证” / “没权限” 这一类的问题。<br>业界也有一句戏言：又不是不能用，其实这种开发方式是不正确的，不管从代码的维护性还是个人自身发展角度，我们都需要&gt; 尽量避免这种问题。</p>
-<p>HTTP 头信息<br>HTTP 头信息，即 HTTP Header，首行换行后的信息都是 HTTP Header。HTTP header 里一般存放了客户端和服务端之间交互的非业务信息，例如：本次请求的数据类型、请求日期、字符集支持、自定义头部字段、一些通信凭证和缓存支持等。<br>HTTP Header 完整字段列表：传送门<br>主体<br>主体，即 HTTP body，HTTP Header 信息和主体信息间以一个空行 + 一个换行来区分。HTTP body 里一般会放置请求的一些具体业务信息</p>
+</blockquote>
+<h2 id="HTTP-头信息"><a href="#HTTP-头信息" class="headerlink" title="HTTP 头信息"></a>HTTP 头信息</h2><p>HTTP 头信息，即 HTTP Header，首行换行后的信息都是 HTTP Header。HTTP header 里一般存放了客户端和服务端之间交互的非业务信息，例如：本次请求的数据类型、请求日期、字符集支持、自定义头部字段、一些通信凭证和缓存支持等。<br>HTTP Header 完整字段列表：传送门</p>
+<h2 id="主体"><a href="#主体" class="headerlink" title="主体"></a>主体</h2><p>主体，即 HTTP body，HTTP Header 信息和主体信息间以一个空行 + 一个换行来区分。HTTP body 里一般会放置请求的一些具体业务信息</p>
 <h1 id="HTTP-数据协商"><a href="#HTTP-数据协商" class="headerlink" title="HTTP 数据协商"></a>HTTP 数据协商</h1><p>在 HTTP 协议中，数据协商是这样一种机制，客户端通过请求头告知服务端本次请求希望获取的数据格式、展现形式、以及数据的压缩方式等。常见的数据协商例如，文档使用的自然语言，图片的格式，或者内容编码形式。<br>服务端可以对请求头中携带的数据协商字段进行解析，然后在返回客户端数据的时候，也会用相对字段来通知客户端：本次返回的数据格式、压缩方式等信息。这样浏览器就可以使用特定的解析方式，来对这些资源进行解析、处理和渲染。<br>下面简单列举一些常用的数据协商字段，完整的数据协商信息传送门</p>
-<p>Accept 请求头字段，指定期望获得的数据类型<br>Accept-Encoding 请求头字段，指定期望获得的数据需要以什么样的编码方式进行传输，常用于限制服务端对数据的压缩方式，常见的 JS 文件包大小优化的 GZIP 压缩，就使用了这个方法<br>Accept-Language 请求头字段，指定期望获得的数据语言类型：中文、英语、还是其他语言，这个头信息字段，一般是浏览器自动加上的<br>User-Agent 请求头字段，指定本次请求的浏览器信息，服务端可根据此信息选择不同兼容性的页面返回给用户，或者是做用户使用浏览器信息、操作系统等数据的统计<br>Content-Type 响应头字段，请求头里的 Accept 字段可能会指定好几种可以接受的数据格式，服务端最终会返回一种数据格式给客户端<br>Content-Encoding 响应头字段，对应 Accept-Encoding<br>Content-Language 响应头字段，对应 Accept-Language</p>
-<p>HTTP 长连接<br>每一个 HTTP 请求都需要在 TCP 连接通道里才能完成发送和接受。在 HTTP 协议的早期版本里，每一条 HTTP 请求发送之前，都会创建一条新的 TCP 连接通道，在这个请求完成以后，该条 TCP 通道就会自动关闭。<br>这样带来的问题就是，单条 TCP 连接没有办法复用，造成很大的新能浪费。好在这一问题随着 HTTP 协议的逐步完善已经得到解决。<br>在 HTTP 1.0 中引入的 Connection 头字段，允许对其设置 Keep-Alive 或者是 Close 来决定是否需要复用 TCP 连接，还是说在一次请求完成之后直接关闭。而在 HTTP 1.1 中默认双端都会默认开启这个字段，即默认支持 HTTP 的长连接。</p>
+<ul>
+<li>Accept 请求头字段，指定期望获得的数据类型</li>
+<li>Accept-Encoding 请求头字段，指定期望获得的数据需要以什么样的编码方式进行传输，常用于限制服务端对数据的压缩方式，常见的 JS 文件包大小优化的 GZIP 压缩，就使用了这个方法</li>
+<li>Accept-Language 请求头字段，指定期望获得的数据语言类型：中文、英语、还是其他语言，这个头信息字段，一般是浏览器自动加上的</li>
+<li>User-Agent 请求头字段，指定本次请求的浏览器信息，服务端可根据此信息选择不同兼容性的页面返回给用户，或者是做用户使用浏览器信息、操作系统等数据的统计</li>
+<li>Content-Type 响应头字段，请求头里的 Accept 字段可能会指定好几种可以接受的数据格式，服务端最终会返回一种数据格式给客户端</li>
+<li>Content-Encoding 响应头字段，对应 Accept-Encoding</li>
+<li>Content-Language 响应头字段，对应 Accept-Language</li>
+</ul>
+<h1 id="HTTP-长连接"><a href="#HTTP-长连接" class="headerlink" title="HTTP 长连接"></a>HTTP 长连接</h1><p>每一个 HTTP 请求都需要在 TCP 连接通道里才能完成发送和接受。在 HTTP 协议的早期版本里，每一条 HTTP 请求发送之前，都会创建一条新的 TCP 连接通道，在这个请求完成以后，该条 TCP 通道就会自动关闭。<br>这样带来的问题就是，单条 TCP 连接没有办法复用，造成很大的新能浪费。好在这一问题随着 HTTP 协议的逐步完善已经得到解决。<br>在 HTTP 1.0 中引入的 Connection 头字段，允许对其设置 Keep-Alive 或者是 Close 来决定是否需要复用 TCP 连接，还是说在一次请求完成之后直接关闭。而在 HTTP 1.1 中默认双端都会默认开启这个字段，即默认支持 HTTP 的长连接。</p>
+<blockquote>
 <p>需要注意的是：Connection: Keep-Alive 需要双端同时开启才能启动 HTTP 长连接，如果任何一段手动设置 Connection 为 Close，长连接都无法位置，因为 TCP 连接的建立和持久保持是一个双端交互的过程。</p>
-<p>那么我们在本地如何看到 TCP 的连接 ID 呢，可以打开 Chrome 的调试工具来查看：</p>
+</blockquote>
+<p>那么我们在本地如何看到 TCP 的连接 ID 呢，可以打开 Chrome 的调试工具来查看：<br><img src="https://s2.ax1x.com/2019/12/05/Q8eLHH.png" alt="Q8eLHH.png"></p>
 <p>图上可以看到有不同的 Connection ID，这就代表着本次请求实际上是开启了一个新的 TCP 连接，最下面的请求的 Connection ID 都是相同的，代表着多个 HTTP 请求复用了同一个 TCP 连接。</p>
+<blockquote>
 <p>Chrome 浏览器所能够支持的最大并发 TCP 连接数是 6个，并且在 HTTP 2.0 以下的 HTTP 版本中，请求是阻塞的。也就是说，一旦六个连接开满，前面的请求未完成，那么后续请求就会被阻塞，直到前面的请求返回，后续才能继续发送。</p>
-<p>HTTP 缓存</p>
+</blockquote>
+<h1 id="HTTP-缓存"><a href="#HTTP-缓存" class="headerlink" title="HTTP 缓存"></a>HTTP 缓存</h1><blockquote>
 <p>虽然 HTTP 缓存不是必须的，但重用缓存的资源通常是必要的。然而常见的 HTTP 缓存只能存储 GET 响应，对于其他类型的响应则无能为力。缓存的关键主要包括 request method 和目标 URI（一般只有 GET 请求才会被缓存）。</p>
-<p>缓存读取策略<br>前端环境下的文件缓存，分为几个不同的位置。当我们打开 Chrome 控制台，查看 Network 下每条请求记录的 size 选项，会发现非常丰富的来源信息。</p>
-<p>对于前端浏览器环境来说，缓存读取位置是由先后顺序的，顺序分别是（由上到下寻找，找到即返回；找不到则继续）</p>
-<p>Service Worker<br>Memory Cache<br>Disk Cache<br>网络请求</p>
-<p>Service Worker</p>
+</blockquote>
+<h2 id="缓存读取策略"><a href="#缓存读取策略" class="headerlink" title="缓存读取策略"></a>缓存读取策略</h2><p>前端环境下的文件缓存，分为几个不同的位置。当我们打开 Chrome 控制台，查看 Network 下每条请求记录的 size 选项，会发现非常丰富的来源信息。<br><img src="https://s2.ax1x.com/2019/12/05/Q8mhqg.png" alt="Q8mhqg.png"><br>对于前端浏览器环境来说，缓存读取位置是由先后顺序的，顺序分别是（由上到下寻找，找到即返回；找不到则继续）</p>
+<ul>
+<li>Service Worker</li>
+<li>Memory Cache</li>
+<li>Disk Cache</li>
+<li>网络请求</li>
+</ul>
+<h2 id="Service-Worker"><a href="#Service-Worker" class="headerlink" title="Service Worker"></a>Service Worker</h2><blockquote>
 <p>Service Worker 的缓存与浏览器其他内建的缓存机制不同，它可以让我们自由控制缓存哪些文件、如何匹配缓存、如何读取缓存，并且缓存是持续性的。</p>
+</blockquote>
 <p>浏览器优先查找。<br>持久存储。<br>可以更加灵活地控制存储的内容，可以选择缓存哪些文件、定义缓存文件的路由匹配规则等。<br>可以从 Chrome 的 F12 中，Application -&gt; Cache Storage 查看。</p>
-<p>Memory Cache</p>
-<p>memory cache 是内存中的缓存存储。<br>读取速度快。<br>存储空间较小。<br>存储时间短，当浏览器的 tab 页被关闭，内存资源即被释放。<br>如果明确指定了 Cache-Control 为 no-store，浏览器则不会使用 memory-cache。</p>
-<p>Disk Cache</p>
-<p>Disk Cache 是硬盘中的缓存存储。<br>读取速度慢于 Memory Cache ，快于网络请求。<br>存储空间较大。<br>持久存储。<br>Disk Cache 严格依照 HTTP 头信息中的字段来判断资源是否可缓存、是否要认证等。<br>经常听到的“强制缓存”，“对比缓存”，以及 Cache-Control 等，归于此类。</p>
-<p>网络请求<br>如果一个请求的资源文件均未命中上述缓存策略，那么就会发起网络请求。浏览器拿到资源后，会把这个新资源加入缓存。<br>Cache-Control</p>
+<h2 id="Memory-Cache"><a href="#Memory-Cache" class="headerlink" title="Memory Cache"></a>Memory Cache</h2><p>memory cache 是内存中的缓存存储。<br>读取速度快。<br>存储空间较小。<br>存储时间短，当浏览器的 tab 页被关闭，内存资源即被释放。<br>如果明确指定了 Cache-Control 为 no-store，浏览器则不会使用 memory-cache。</p>
+<h2 id="Disk-Cache"><a href="#Disk-Cache" class="headerlink" title="Disk Cache"></a>Disk Cache</h2><p>Disk Cache 是硬盘中的缓存存储。<br>读取速度慢于 Memory Cache ，快于网络请求。<br>存储空间较大。<br>持久存储。<br>Disk Cache 严格依照 HTTP 头信息中的字段来判断资源是否可缓存、是否要认证等。<br>经常听到的“强制缓存”，“对比缓存”，以及 Cache-Control 等，归于此类。</p>
+<h2 id="网络请求"><a href="#网络请求" class="headerlink" title="网络请求"></a>网络请求</h2><p>如果一个请求的资源文件均未命中上述缓存策略，那么就会发起网络请求。浏览器拿到资源后，会把这个新资源加入缓存。</p>
+<h1 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h1><blockquote>
 <p>HTTP/1.1定义的 Cache-Control 头用来区分对缓存机制的支持情况， 请求头和响应头都支持这个属性。通过它提供的不同的值来定义缓存策略。需要注意的是，数据变化频率很快的场景并不适合开启 Cache-Control。</p>
-<p>指令<br>作用</p>
-<p>public<br>公共缓存：表示该响应可以被任何中间人（比如中间代理、CDN等）缓存。</p>
-<p>private<br>私有缓存：表示该响应是专用于某单个用户的，中间人不能缓存此响应，该响应只能应用于浏览器私有缓存中。</p>
-<p>max-age<br>（单位/秒）设置缓存的过期时间，过期需要重新请求，否则就读取本地缓存，并不实际发送请求</p>
-<p>s-maxage<br>（单位/秒）覆盖 max-age，作用一样，只在代理服务器中生效</p>
-<p>max-stale<br>（单位/秒）表示即使缓存过期，也使用这个过期缓存</p>
-<p>no-store<br>禁止进行缓存</p>
-<p>no-transform<br>不得对资源进行转换或压缩等操作，Content-Encoding、Content-Range、Content-Type 等 HTTP 头不能由代理修改（有时候资源比较大的情况下，代理服务器可能会自行做压缩处理，这个指令就是为了防止这种情况）。</p>
-<p>no-cache<br>强制确认缓存：即每次使用本地缓存之前，需要请求服务器，查看缓存是否失效，若未过期（注：实际就是返回304），则缓存才使用本地缓存副本。</p>
-<p>must-revalidate<br>缓存验证确认：意味着缓存在考虑使用一个陈旧的资源时，必须先验证它的状态，已过期的缓存将不被使用</p>
-<p>proxy-revalidate<br>与 must-revalidate 作用相同，但它仅适用于共享缓存（例如代理），并被私有缓存忽略。</p>
-<p>缓存校验</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public</td>
+<td>公共缓存：表示该响应可以被任何中间人（比如中间代理、CDN等）缓存。</td>
+</tr>
+<tr>
+<td>private</td>
+<td>私有缓存：表示该响应是专用于某单个用户的，中间人不能缓存此响应，该响应只能应用于浏览器私有缓存中。</td>
+</tr>
+<tr>
+<td>max-age</td>
+<td>（单位/秒）设置缓存的过期时间，过期需要重新请求，否则就读取本地缓存，并不实际发送请求</td>
+</tr>
+<tr>
+<td>s-maxage</td>
+<td>（单位/秒）覆盖 max-age，作用一样，只在代理服务器中生效</td>
+</tr>
+<tr>
+<td>max-stale</td>
+<td>（单位/秒）表示即使缓存过期，也使用这个过期缓存</td>
+</tr>
+<tr>
+<td>no-store</td>
+<td>禁止进行缓存</td>
+</tr>
+<tr>
+<td>no-transform</td>
+<td>不得对资源进行转换或压缩等操作，Content-Encoding、Content-Range、Content-Type 等 HTTP 头不能由代理修改（有时候资源比较大的情况下，代理服务器可能会自行做压缩处理，这个指令就是为了防止这种情况）。</td>
+</tr>
+<tr>
+<td>no-cache</td>
+<td>强制确认缓存：即每次使用本地缓存之前，需要请求服务器，查看缓存是否失效，若未过期（注：实际就是返回304），则缓存才使用本地缓存副本。</td>
+</tr>
+<tr>
+<td>must-revalidate</td>
+<td>缓存验证确认：意味着缓存在考虑使用一个陈旧的资源时，必须先验证它的状态，已过期的缓存将不被使用</td>
+</tr>
+<tr>
+<td>proxy-revalidate</td>
+<td>与 must-revalidate 作用相同，但它仅适用于共享缓存（例如代理），并被私有缓存忽略。</td>
+</tr>
+</tbody></table>
+<p><img src="https://s2.ax1x.com/2019/12/05/Q8uaHe.png" alt="Q8uaHe.png"></p>
+<h1 id="缓存校验"><a href="#缓存校验" class="headerlink" title="缓存校验"></a>缓存校验</h1><blockquote>
 <p>在浏览器使用缓存的过程中，为了配合 Cache-Control 中 no-cache ，我们还需要一个机制来验证缓存是否有效。比如服务器的资源更新了，客户端需要及时刷新缓存；又或者客户端的资源过了有效期，但服务器上的资源还是旧的，此时并不需要重新发送。<br>缓存校验就是用来解决这些问题的，在http 1.1 中，我们主要关注下 Last-Modified 和 ETag 这两个字段。</p>
-<p>Last-Modified<br>顾名思义，就是资源的最新一次修改时间。当客户端访问服务端的资源，服务端会将这个 Last-Modified 值返回给客户端，客户端收到之后，下次发送请求就会将服务端返回回来的 Last-Modified 值装在 If-Modified-Since 或者 If-Unmodified-Since 里，发送给服务端进行缓存校验。<br>这样服务器就可以通过读取 If-Modified-Since （较常用）或 If-UnModified-Since 的值，和本地的 Last-Modified 值做对比校验。如果校验发现这两个值是一样的，就代表本次请求的资源文件没有被修改过，那么服务器就会告诉浏览器，资源有效，可以继续使用，否则就需要使用最新的资源。<br>来看一下下面的两张图：<br>当请求服务端的 script.js 的脚本资源时，可以看到服务端返回了 Last-Modified，里面记录了该资源最后一次的修改时间</p>
+</blockquote>
+<h2 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h2><p>顾名思义，就是资源的最新一次修改时间。当客户端访问服务端的资源，服务端会将这个 Last-Modified 值返回给客户端，客户端收到之后，下次发送请求就会将服务端返回回来的 Last-Modified 值装在 If-Modified-Since 或者 If-Unmodified-Since 里，发送给服务端进行缓存校验。<br>这样服务器就可以通过读取 If-Modified-Since （较常用）或 If-UnModified-Since 的值，和本地的 Last-Modified 值做对比校验。如果校验发现这两个值是一样的，就代表本次请求的资源文件没有被修改过，那么服务器就会告诉浏览器，资源有效，可以继续使用，否则就需要使用最新的资源。<br>来看一下下面的两张图：<br>当请求服务端的 script.js 的脚本资源时，可以看到服务端返回了 Last-Modified，里面记录了该资源最后一次的修改时间</p>
 <p>当客户端下次再次发起请求，会携带上这个过期时间给服务端进行验证</p>
 <p>来看下服务端的部分代码：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">http.createServer(<span class="function">(<span class="params">request, response</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">const</span> ifModifiedSince = request.headers[<span class="string">'If-Modified-Since'</span>];</span><br><span class="line">   <span class="keyword">const</span> lastModified = <span class="string">'Web Aug 19 2019 19:01:15 GMT+0800 (China Standard Time)'</span>;</span><br><span class="line">    </span><br><span class="line">   <span class="keyword">if</span> (request.url === <span class="string">'/'</span>) &#123;</span><br><span class="line">       <span class="keyword">const</span> html = fs.readFileSync(<span class="string">'test.html'</span>, <span class="string">'utf-8'</span>);</span><br><span class="line">       </span><br><span class="line">       response.writeHead(<span class="number">200</span>, &#123;</span><br><span class="line">           <span class="string">'Content-Type'</span>: <span class="string">'text/html'</span></span><br><span class="line">       &#125;);</span><br><span class="line">       response.end(html);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">if</span> (request.url === <span class="string">'/script.js'</span>) &#123;</span><br><span class="line">       <span class="keyword">const</span> js = fs.readFileSync(<span class="string">'script.js'</span>, <span class="string">'utf-8'</span>);</span><br><span class="line">       <span class="keyword">let</span> status = <span class="number">200</span>;</span><br><span class="line">       <span class="comment">// 如果读取到的 If-Modified-Since 和 lastModified 相同，则设置头部 304 表示可使用缓存</span></span><br><span class="line">       <span class="keyword">if</span> (ifModifiedSince === lastModified) &#123;</span><br><span class="line">           status = <span class="number">304</span>;</span><br><span class="line">           response.end(<span class="string">''</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       response.writeHead(status, &#123;</span><br><span class="line">           <span class="string">'Content-Type'</span>: <span class="string">'text/javascript'</span>,</span><br><span class="line">           <span class="string">'Cache-Control'</span>: <span class="string">'no-cache,max-age=2000'</span>,</span><br><span class="line">           <span class="string">'Last-Modified'</span>: lastModified</span><br><span class="line">       &#125;);</span><br><span class="line">       response.end(js);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>复制代码ETag<br>Etag 的作用本质上和 Last-Modified 差别不大。相比于 Last-Modified 使用最后修改日期来比较资源是否失效的缓存校验策略，ETag 则是通过数据签名来做一个更加严格的缓存验证。<br>所谓数据签名，其实就是通过对资源内容进行一个唯一的签名标记，一旦资源内容改变，那么签名必将改变，服务端就以此签名作为暗号，来标记缓存的有效性。典型的做法是针对资源内容进行一个 hash 计算，类似于 webpack 打包线上资源所加的 hash 标识<br>和 Last-Modified 对应 If-Modified-Since 相同，ETag 也会对应 If-Match 或者 If-None-Match（If-None-Match 比较常用），如果前后的签名相同，则不需要返回新的资源内容。<br>缓存校验的合理使用</p>
+<h1 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h1><p>Etag 的作用本质上和 Last-Modified 差别不大。相比于 Last-Modified 使用最后修改日期来比较资源是否失效的缓存校验策略，ETag 则是通过数据签名来做一个更加严格的缓存验证。<br>所谓数据签名，其实就是通过对资源内容进行一个唯一的签名标记，一旦资源内容改变，那么签名必将改变，服务端就以此签名作为暗号，来标记缓存的有效性。典型的做法是针对资源内容进行一个 hash 计算，类似于 webpack 打包线上资源所加的 hash 标识<br>和 Last-Modified 对应 If-Modified-Since 相同，ETag 也会对应 If-Match 或者 If-None-Match（If-None-Match 比较常用），如果前后的签名相同，则不需要返回新的资源内容。</p>
+<h2 id="缓存校验的合理使用"><a href="#缓存校验的合理使用" class="headerlink" title="缓存校验的合理使用"></a>缓存校验的合理使用</h2><blockquote>
 <p>Last-Modified 和 ETag 只是给服务端提供了一个控制缓存有效期的手段，并没有任何强制缓存的作用，最终决定是否使用缓存、还是使用新的资源文件，还是需要靠服务端指定对应的 http code 来决定。<br>对于保存在服务器上的文件，都有最后修改日期的属性，当使用 Last-Modified 可以利用这个有效的属性进行数据缓存验证；或者在数据库存入一个 updatetime 字段来标识具体的修改日期，从而判断缓存是否有效。<br>具体如何构建一个能够合理使用缓存的服务器，就比较涉及后端知识了，这里不做具体描述。</p>
-<p>浏览器的同源策略</p>
+</blockquote>
+<h1 id="浏览器的同源策略"><a href="#浏览器的同源策略" class="headerlink" title="浏览器的同源策略"></a>浏览器的同源策略</h1><blockquote>
 <p>浏览器的同源限制：当浏览器访问 URL 地址的协议（schema）/ 端口（port）/ 域名（host），三者中有任何一个与当前的 URL 片段信息不匹配的时候，便存在跨域问题。</p>
-<p>当前地址<br>请求地址<br>请求是否成功</p>
-<p><a href="http://www.juejin.com:80" target="_blank" rel="noopener">www.juejin.com:80</a><br><a href="http://www.juejin.com:80" target="_blank" rel="noopener">www.juejin.com:80</a><br>跨域（协议不同）</p>
-<p><a href="http://www.juejin.com:80" target="_blank" rel="noopener">www.juejin.com:80</a><br><a href="http://www.juejin.cn:80" target="_blank" rel="noopener">www.juejin.cn:80</a><br>跨域（域名不同）</p>
-<p><a href="http://www.juejin.com:80" target="_blank" rel="noopener">www.juejin.com:80</a><br><a href="http://www.juejin.com:90" target="_blank" rel="noopener">www.juejin.com:90</a><br>跨域（端口不同）</p>
+</blockquote>
 <p>对于跨域的几点需要明确：</p>
-<p>跨域，是浏览器提供的一种保护手段，服务端是不存在跨域这一说的。这也就是为什么现在前后端分离的开发模式下，前端比较依赖 webpack-dev-server 启动代理服务来中转和代理后台接口的原因，因为两个服务器之间相互通信是没有跨域障碍的。<br>跨域，是对于 XMLHttpRequest 来说的，浏览器获取不同源服务器下的静态资源，是没有跨域限制的，这也是 JSONP 跨域请求得以实现的本质。<br>不同于 XMLHttpRequest 的是，通过 src 属性加载的脚本资源，浏览器限制了 Javascript 的权限，使其不能读写、返回内容。<br>对于浏览器来说，除了 DOM 、Cookie、XMLHttpRequest 会收到同源策略限制以外，一些常见的插件，比如 Flash、Java Applet 、Silverlight、Google Gears 等也都有自己的控制策略。</p>
+<ol>
+<li>跨域，是浏览器提供的一种保护手段，服务端是不存在跨域这一说的。这也就是为什么现在前后端分离的开发模式下，前端比较依赖 webpack-dev-server 启动代理服务来中转和代理后台接口的原因，因为两个服务器之间相互通信是没有跨域障碍的。</li>
+<li>跨域，是对于 XMLHttpRequest 来说的，浏览器获取不同源服务器下的静态资源，是没有跨域限制的，这也是 JSONP 跨域请求得以实现的本质。</li>
+<li>不同于 XMLHttpRequest 的是，通过 src 属性加载的脚本资源，浏览器限制了 Javascript 的权限，使其不能读写、返回内容。</li>
+<li>对于浏览器来说，除了 DOM 、Cookie、XMLHttpRequest 会收到同源策略限制以外，一些常见的插件，比如 Flash、Java Applet 、Silverlight、Google Gears 等也都有自己的控制策略。</li>
+</ol>
+<blockquote>
 <p>当浏览器向不同域的服务器发送请求时，请求是真能发出去，对方服务端也是真能接收到请求，并且真能给你的浏览器响应，浏览器也真能接收到有效数据。<br>但是，如果在跨域的情况下、服务端返回数据的响应头里的 Access-Control-Allow-Origin 字段，没有把当前域名列进白名单，那么浏览器会把服务端返回的数据给藏起来，不告诉你，然后给你抛个 Access-Control-Allow-Origin 的错误。</p>
+</blockquote>
+<blockquote>
 <p>至于为什么资源文件不受同源策略限制呢？可以试想一下，如果资源文件也被限制跨域，那么现在大量使用的 CDN 缓存策略基本就没办法用了。而且现在很多网站的资源文件，都会放到云服务器的 OSS 上，OSS 资源对应的 url 地址肯定是不同域的，那这些资源也不能使用了。</p>
-<p>Access-Control-Allow-Origin<br>Access-Control-Allow-Origin 标识了服务器允许的跨域白名单，它有以下几种设置方法：</p>
-<p>直接设置 * 通配符，简单粗暴，但是这么做等于把服务器的所有接口资源对外完全暴露，是不安全的。<br>设置制定域，比如 Access-Control-Allow-Origin: <a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a> ，这样只会允许指定域的请求进行跨域访问。<br>由后端动态设置。Access-Control-Allow-Origin 限制只能写一个白名单，但是当我们有多个域都需要跨域请求怎么呢？这个时候，这时可以由服务端自己维护一套白名单列表，在请求进来的时候对请求的源 host 进行白名单比对，如果在白名单中，就将这个 Access-Control-Allow-Origin 动态设置上去，然后返回响应。</p>
-<p>CORS 的预请求<br>如果我们像上面一样，只设置的 Access-Control-Allow-Origin 白名单，是否就可以完全畅通无阻地进行跨域了呢？并不是。<br>就算对端开启了域名白名单认证，然鹅有一些操作仍然是需要进一步认证的，这种进一步的认证操作，就是 CORS 预请求。<br>预请求触发过程<br>浏览器预请求的触发条件，是判断本次请求是否属于一个简单请求。<br>如果本次请求属于一个复杂请求，那么在发送正式的跨域请求之前，浏览器会先准备一个名为 OPTIONS 的 HTTP Method ，作为预请求发送。<br>在服务器通过预请求后，下面浏览器才会发生正式的数据请求。整个请求过程其实是发生了两次请求：一个预检请求，以及后续的实际数据请求。</p>
-<p>简单请求</p>
-<p>请求方式只能是 GET POST HEAD<br>请求头字段只允许：</p>
+</blockquote>
+<h1 id="Access-Control-Allow-Origin"><a href="#Access-Control-Allow-Origin" class="headerlink" title="Access-Control-Allow-Origin"></a>Access-Control-Allow-Origin</h1><p>Access-Control-Allow-Origin 标识了服务器允许的跨域白名单，它有以下几种设置方法：</p>
+<ol>
+<li>直接设置 * 通配符，简单粗暴，但是这么做等于把服务器的所有接口资源对外完全暴露，是不安全的。</li>
+<li>设置制定域，比如 Access-Control-Allow-Origin: <a href="https://www.baidu.com" target="_blank" rel="noopener">https://www.baidu.com</a> ，这样只会允许指定域的请求进行跨域访问。</li>
+<li>由后端动态设置。Access-Control-Allow-Origin 限制只能写一个白名单，但是当我们有多个域都需要跨域请求怎么呢？这个时候，这时可以由服务端自己维护一套白名单列表，在请求进来的时候对请求的源 host 进行白名单比对，如果在白名单中，就将这个 Access-Control-Allow-Origin 动态设置上去，然后返回响应。</li>
+</ol>
+<h2 id="CORS-的预请求"><a href="#CORS-的预请求" class="headerlink" title="CORS 的预请求"></a>CORS 的预请求</h2><p>如果我们像上面一样，只设置的 Access-Control-Allow-Origin 白名单，是否就可以完全畅通无阻地进行跨域了呢？并不是。<br>就算对端开启了域名白名单认证，然鹅有一些操作仍然是需要进一步认证的，这种进一步的认证操作，就是 CORS 预请求。</p>
+<h2 id="预请求触发过程"><a href="#预请求触发过程" class="headerlink" title="预请求触发过程"></a>预请求触发过程</h2><p>浏览器预请求的触发条件，是判断本次请求是否属于一个简单请求。<br>如果本次请求属于一个复杂请求，那么在发送正式的跨域请求之前，浏览器会先准备一个名为 OPTIONS 的 HTTP Method ，作为预请求发送。<br>在服务器通过预请求后，下面浏览器才会发生正式的数据请求。整个请求过程其实是发生了两次请求：一个预检请求，以及后续的实际数据请求。</p>
+<h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><ol>
+<li>请求方式只能是 GET POST HEAD</li>
+<li>请求头字段只允许：</li>
+</ol>
 <p>Accept<br>Accept-Language<br>Content-Language<br>Content-Type</p>
-<p>Content-Type 的值仅限于：</p>
+<ol start="3">
+<li>Content-Type 的值仅限于：</li>
+</ol>
 <p>text/plain<br>multipart/form-data<br>application/x-www-form-urlencoded</p>
-<p>XMLHttpRequestUpload 对象均没有注册任何事件监听器（了解就好）。<br>请求中没有使用 ReadableStream 对象（了解就好）。</p>
-<p>复杂请求<br>除了简单请求里定义的，都是复杂请求，统统需要预请求。<br>预请求的验证<br>那么怎样使预检请求成功认证呢？还是需要服务端继续帮忙设置请求头的白名单：</p>
-<p>Access-Control-Allow-Headers，设置允许的额外请求头字段。<br>Access-Control-Allow-Methods，设置允许的额外请求方法。<br>Access-Control-Max-Age （单位/秒），指定了预请求的结果能够被缓存多久，在这个时间范围内，再次发送跨域请求不会被预检。</p>
-<p>更多、更具体的跨域限制策略可以点击这里查看更多</p>
-<p>HTTP 性能优化方案</p>
-<p>合理使用 HTTP 的缓存策略，避免同一资源多次请求服务端而导致的额外性能开销<br>尽量使用 HTTP 长连接，避免每次重建 TCP 连接带来的时间损耗<br>尽量使用 HTTPS 来保证网络传输的安全性。<br>可以使用 HTTP2 来大幅提高数据传输的效率，使用 server push 开启 HTTP2 的服务端推送功能<br>客户端开启 Accept-Encoding 压缩方式的支持，服务端传输压缩后的文件，减少传输数据的大小</p>
+<ol start="4">
+<li>XMLHttpRequestUpload 对象均没有注册任何事件监听器（了解就好）。</li>
+<li>请求中没有使用 ReadableStream 对象（了解就好）。</li>
+</ol>
+<h2 id="复杂请求"><a href="#复杂请求" class="headerlink" title="复杂请求"></a>复杂请求</h2><p>除了简单请求里定义的，都是复杂请求，统统需要预请求。</p>
+<h2 id="预请求的验证"><a href="#预请求的验证" class="headerlink" title="预请求的验证"></a>预请求的验证</h2><p>那么怎样使预检请求成功认证呢？还是需要服务端继续帮忙设置请求头的白名单：</p>
+<ol>
+<li>ccess-Control-Allow-Headers，设置允许的额外请求头字段。</li>
+<li>Access-Control-Allow-Methods，设置允许的额外请求方法。</li>
+<li>Access-Control-Max-Age （单位/秒），指定了预请求的结果能够被缓存多久，在这个时间范围内，再次发送跨域请求不会被预检。</li>
+</ol>
+<h1 id="HTTP-性能优化方案"><a href="#HTTP-性能优化方案" class="headerlink" title="HTTP 性能优化方案"></a>HTTP 性能优化方案</h1><p>合理使用 HTTP 的缓存策略，避免同一资源多次请求服务端而导致的额外性能开销<br>尽量使用 HTTP 长连接，避免每次重建 TCP 连接带来的时间损耗<br>尽量使用 HTTPS 来保证网络传输的安全性。<br>可以使用 HTTP2 来大幅提高数据传输的效率，使用 server push 开启 HTTP2 的服务端推送功能<br>客户端开启 Accept-Encoding 压缩方式的支持，服务端传输压缩后的文件，减少传输数据的大小</p>
 
     </div>
 
@@ -587,6 +673,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/12/05/排序算法/" rel="prev" title="排序算法">
+                  排序算法 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -643,7 +733,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -788,7 +878,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#访问网页时发生了什么"><span class="nav-number">1.</span> <span class="nav-text">访问网页时发生了什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步，找服务器-IP"><span class="nav-number">1.1.</span> <span class="nav-text">第一步，找服务器 IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步，建立-TCP-IP-连接"><span class="nav-number">1.2.</span> <span class="nav-text">第二步，建立 TCP/IP 连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步，请求资源"><span class="nav-number">1.3.</span> <span class="nav-text">第三步，请求资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步，浏览器渲染"><span class="nav-number">1.4.</span> <span class="nav-text">第四步，浏览器渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五步，浏览器缓存"><span class="nav-number">1.5.</span> <span class="nav-text">第五步，浏览器缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典网络五层模型"><span class="nav-number">2.</span> <span class="nav-text">经典网络五层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层："><span class="nav-number">2.1.</span> <span class="nav-text">应用层：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传输层"><span class="nav-number">2.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">2.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层"><span class="nav-number">2.4.</span> <span class="nav-text">数据链路层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物理层"><span class="nav-number">2.5.</span> <span class="nav-text">物理层</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URI、URL-和-URN"><span class="nav-number">3.</span> <span class="nav-text">URI、URL 和 URN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URI"><span class="nav-number">3.1.</span> <span class="nav-text">URI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">3.2.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URN"><span class="nav-number">3.3.</span> <span class="nav-text">URN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP-协议族"><span class="nav-number">4.</span> <span class="nav-text">TCP/IP 协议族</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-协议"><span class="nav-number">4.1.</span> <span class="nav-text">IP 协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-协议"><span class="nav-number">4.2.</span> <span class="nav-text">TCP 协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP-协议"><span class="nav-number">4.3.</span> <span class="nav-text">UDP 协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-连接"><span class="nav-number">5.</span> <span class="nav-text">TCP 连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-的三次握手和四次挥手"><span class="nav-number">6.</span> <span class="nav-text">TCP 的三次握手和四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">6.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">6.2.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-定义"><span class="nav-number">7.</span> <span class="nav-text">HTTP 定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-发展历史"><span class="nav-number">8.</span> <span class="nav-text">HTTP 发展历史</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-0-9-版本"><span class="nav-number">8.1.</span> <span class="nav-text">HTTP 0.9 版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-1-0-版本"><span class="nav-number">8.2.</span> <span class="nav-text">HTTP 1.0 版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-1-1-（目前普遍使用）"><span class="nav-number">8.3.</span> <span class="nav-text">HTTP 1.1 （目前普遍使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-2-0"><span class="nav-number">8.4.</span> <span class="nav-text">HTTP 2.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">8.5.</span> <span class="nav-text">HTTPS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-的报文组成"><span class="nav-number">9.</span> <span class="nav-text">HTTP 的报文组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首行"><span class="nav-number">9.1.</span> <span class="nav-text">首行</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-数据协商"><span class="nav-number">10.</span> <span class="nav-text">HTTP 数据协商</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#访问网页时发生了什么"><span class="nav-number">1.</span> <span class="nav-text">访问网页时发生了什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步，找服务器-IP"><span class="nav-number">1.1.</span> <span class="nav-text">第一步，找服务器 IP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步，建立-TCP-IP-连接"><span class="nav-number">1.2.</span> <span class="nav-text">第二步，建立 TCP/IP 连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步，请求资源"><span class="nav-number">1.3.</span> <span class="nav-text">第三步，请求资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步，浏览器渲染"><span class="nav-number">1.4.</span> <span class="nav-text">第四步，浏览器渲染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五步，浏览器缓存"><span class="nav-number">1.5.</span> <span class="nav-text">第五步，浏览器缓存</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#经典网络五层模型"><span class="nav-number">2.</span> <span class="nav-text">经典网络五层模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层："><span class="nav-number">2.1.</span> <span class="nav-text">应用层：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传输层"><span class="nav-number">2.2.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络层"><span class="nav-number">2.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据链路层"><span class="nav-number">2.4.</span> <span class="nav-text">数据链路层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物理层"><span class="nav-number">2.5.</span> <span class="nav-text">物理层</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URI、URL-和-URN"><span class="nav-number">3.</span> <span class="nav-text">URI、URL 和 URN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#URI"><span class="nav-number">3.1.</span> <span class="nav-text">URI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URL"><span class="nav-number">3.2.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#URN"><span class="nav-number">3.3.</span> <span class="nav-text">URN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-IP-协议族"><span class="nav-number">4.</span> <span class="nav-text">TCP/IP 协议族</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-协议"><span class="nav-number">4.1.</span> <span class="nav-text">IP 协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-协议"><span class="nav-number">4.2.</span> <span class="nav-text">TCP 协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP-协议"><span class="nav-number">4.3.</span> <span class="nav-text">UDP 协议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-连接"><span class="nav-number">5.</span> <span class="nav-text">TCP 连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP-的三次握手和四次挥手"><span class="nav-number">6.</span> <span class="nav-text">TCP 的三次握手和四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">6.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">6.2.</span> <span class="nav-text">四次挥手</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-定义"><span class="nav-number">7.</span> <span class="nav-text">HTTP 定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-发展历史"><span class="nav-number">8.</span> <span class="nav-text">HTTP 发展历史</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-0-9-版本"><span class="nav-number">8.1.</span> <span class="nav-text">HTTP 0.9 版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-1-0-版本"><span class="nav-number">8.2.</span> <span class="nav-text">HTTP 1.0 版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-1-1-（目前普遍使用）"><span class="nav-number">8.3.</span> <span class="nav-text">HTTP 1.1 （目前普遍使用）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-2-0"><span class="nav-number">8.4.</span> <span class="nav-text">HTTP 2.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">8.5.</span> <span class="nav-text">HTTPS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-的报文组成"><span class="nav-number">9.</span> <span class="nav-text">HTTP 的报文组成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首行"><span class="nav-number">9.1.</span> <span class="nav-text">首行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-头信息"><span class="nav-number">9.2.</span> <span class="nav-text">HTTP 头信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主体"><span class="nav-number">9.3.</span> <span class="nav-text">主体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-数据协商"><span class="nav-number">10.</span> <span class="nav-text">HTTP 数据协商</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-长连接"><span class="nav-number">11.</span> <span class="nav-text">HTTP 长连接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-缓存"><span class="nav-number">12.</span> <span class="nav-text">HTTP 缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存读取策略"><span class="nav-number">12.1.</span> <span class="nav-text">缓存读取策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Service-Worker"><span class="nav-number">12.2.</span> <span class="nav-text">Service Worker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-Cache"><span class="nav-number">12.3.</span> <span class="nav-text">Memory Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Disk-Cache"><span class="nav-number">12.4.</span> <span class="nav-text">Disk Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络请求"><span class="nav-number">12.5.</span> <span class="nav-text">网络请求</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cache-Control"><span class="nav-number">13.</span> <span class="nav-text">Cache-Control</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓存校验"><span class="nav-number">14.</span> <span class="nav-text">缓存校验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Last-Modified"><span class="nav-number">14.1.</span> <span class="nav-text">Last-Modified</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ETag"><span class="nav-number">15.</span> <span class="nav-text">ETag</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存校验的合理使用"><span class="nav-number">15.1.</span> <span class="nav-text">缓存校验的合理使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器的同源策略"><span class="nav-number">16.</span> <span class="nav-text">浏览器的同源策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Access-Control-Allow-Origin"><span class="nav-number">17.</span> <span class="nav-text">Access-Control-Allow-Origin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CORS-的预请求"><span class="nav-number">17.1.</span> <span class="nav-text">CORS 的预请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预请求触发过程"><span class="nav-number">17.2.</span> <span class="nav-text">预请求触发过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单请求"><span class="nav-number">17.3.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂请求"><span class="nav-number">17.4.</span> <span class="nav-text">复杂请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预请求的验证"><span class="nav-number">17.5.</span> <span class="nav-text">预请求的验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP-性能优化方案"><span class="nav-number">18.</span> <span class="nav-text">HTTP 性能优化方案</span></a></li></ol></div>
             
 
           </div>
