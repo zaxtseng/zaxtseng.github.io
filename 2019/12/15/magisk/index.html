@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="magiskMagisk manager is a magic mask to alter system systemless-ly.">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="magisk">
+<meta property="og:url" content="http://yoursite.com/2019/12/15/magisk/index.html">
+<meta property="og:site_name" content="Zax&#39;s BLOG">
+<meta property="og:description" content="magiskMagisk manager is a magic mask to alter system systemless-ly.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-15T07:02:50.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="magisk">
+<meta name="twitter:description" content="magiskMagisk manager is a magic mask to alter system systemless-ly.">
+  <link rel="canonical" href="http://yoursite.com/2019/12/15/magisk/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>magisk | Zax's BLOG</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zax's BLOG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+    
+
+</nav>
+  <div class="site-search">
+    
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+  </div>
+</div>
+    </header>
+
+    
+
+  <a href="https://github.com/zaxtseng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/15/magisk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zax Tseng">
+      <meta itemprop="description" content="Zax's BLOG">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zax's BLOG">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">magisk
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-15 11:10:15 / 修改时间：15:02:50" itemprop="dateCreated datePublished" datetime="2019-12-15T11:10:15+08:00">2019-12-15</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>magisk</p><p>Magisk manager is a magic mask to alter system systemless-ly.</p><a id="more"></a>
+
+<p>Installing Magisk will give you ROOT, a super powerful Systemless Interface,<br>Magisk Modules support, and hide from tons of integrity tests like SafetyNet!</p>
+<h1 id="What-is-Magisk"><a href="#What-is-Magisk" class="headerlink" title="What is Magisk?"></a>What is Magisk?</h1><p>Magisk is a great open-source root solution for Android devices which is developed by topjohnwu[<a href="https://forum.xda-developers.com/member.php?u=4470081]" target="_blank" rel="noopener">https://forum.xda-developers.com/member.php?u=4470081]</a>, offering a “Systemless Interface”, allowing easy modification of your favourite device with peace of mind. Magisk is a module based application, so its configuration can be as individual as the member applying them. Many modules exist for Magisk, providing all sorts of modifications, such as cloaking your device from SafetyNet. </p>
+<h1 id="Highlights"><a href="#Highlights" class="headerlink" title="Highlights"></a>Highlights</h1><p>Open Source:<br>100% open source and easy to build on all Google supported platforms.<br>Magic Mount:<br>Modify system (vendor) without tampering the partitions.<br>MagiskSU:<br>Unleash your device’s root access.<br>MagiskHide:<br>Hide Magisk from detections: Google SafetyNet, enterprise / bank system integrity checks, game tamper checks.<br>Resetprop:<br>Modify or delete any system properties, including read-only props.<br>Magisk Modules:<br>Install Magisk Modules from the community driven Magisk Module Repo.Many custom modules for Magisk,like Fonts,Audio Mod,DNS.</p>
+<h1 id="What-is-Magisk-Manager"><a href="#What-is-Magisk-Manager" class="headerlink" title="What is Magisk Manager?"></a>What is Magisk Manager?</h1><p>Magisk Manager is the application same as SuperSU which is pre-installed on your device after you have rooted your Android device. If you want to use the magisk manager you can unroot your device and then root it with the help flashing Magisk-v20.zip or else you can install the magisk manager application and do the system less rooting on your device.</p>
+<p>There are many questions raised, and people has a query that is How to root with magisk? The rooting procedure is simple, and you need a custom recovery installed on your device. If you have the custom recovery, then you can root your Android device by flashing the Magisk-v20.zip file.</p>
+<h1 id="Magisk-and-superSu"><a href="#Magisk-and-superSu" class="headerlink" title="Magisk and superSu"></a>Magisk and superSu</h1><p>If you root your device with the help of magisk, then the magisk won’t do any changes in your system files. Magisk will modify the boot.img to magisk.img. Magisk won’t add any files in your system files.</p>
+<p>When SuperSU roots your device, it will do the changes in the System files and also adds some files in the system partition. If you install SuperSU, you won’t be getting any OTA updates or any financial application won’t work on your device.</p>
+<h1 id="guide"><a href="#guide" class="headerlink" title="guide"></a>guide</h1><p>Before Installing Magisk,you must Unlocking Bootloader.</p>
+<h1 id="Download-Magisk-Zip-and-Magisk-Manager-APK"><a href="#Download-Magisk-Zip-and-Magisk-Manager-APK" class="headerlink" title="Download Magisk Zip and Magisk Manager APK"></a>Download Magisk Zip and Magisk Manager APK</h1><p>You can usually download Magisk from the original development thread at XDA. But it only provides Magisk download link for the latest version. However, sometimes, the latest version isn’t the best version for you. For instance, a newer version of Magisk may not be able to hide from an app like Google Pay which is actually known to run into problems despite using MagiskHide.</p>
+<p>Using an older version of Magisk that you know works for you might be a temporary solution until it’s fixed. In that case, though, you’re out of luck. But not anymore. You can download all Magisk versions from below. The list below is comprehensive and contains all Magisk versions since it was released publicly.</p>
+<p>Below, you will find oldest to the latest version of Magisk zip for Android Nougat, Oreo, and Pie and download them directly from the Magisk Github repository. Just click the direct Magisk download links below. Moreover, we’ve also listed the compatible version of Magisk Manager and Magisk Uninstaller for each Magisk release. You can use Magisk Uninstaller zip file to remove Magisk from your Android device.</p>
+<h1 id="How-to-install-Magisk"><a href="#How-to-install-Magisk" class="headerlink" title="How to install Magisk?"></a>How to install Magisk?</h1><p>If you don’t have a Android device with a TWRP recovery,you can refer to Plan A.But I suggest you install it,it’s very userful.<br>If you have a Android device with a TWRP recovery,you can refer to Plan B.</p>
+<p>If you are using a Huawei device running EMUI 8 and higher, please check its section.<br>If you are using a Samsung device that is launched with Android 9.0 (new devices in 2019), please check its section.</p>
+<h1 id="Plan-A"><a href="#Plan-A" class="headerlink" title="Plan A"></a>Plan A</h1><ol>
+<li>Download Magisk Manager on your Android device.</li>
+<li>Install the application, and you might get an unknown source warning. You need to turn on Unknown Sources to turn it on, click on “Settings”.</li>
+<li>Now, try to repeat the installation process again. Try installing the application and open it.</li>
+<li>If you have already installed the Chainfire SuperSU on your device, then you need to grant the root permission.</li>
+<li>Now, click on the Install button to install the magisk on your device.</li>
+<li>If you will click on Install button you will see that it will ask you to select method.</li>
+<li>Just click on Direct Install if you want to directly install the file on your phone without using custom recovery on your phone, or you can click on Download Zip File Only.</li>
+<li>Now, if the download is the done. Magisk Manager will automatically install the file on your phone.</li>
+</ol>
+<h1 id="Plan-B"><a href="#Plan-B" class="headerlink" title="Plan B"></a>Plan B</h1><ol>
+<li>Download the Magisk zip file.</li>
+<li>Place the zip file in your internal storage. Make sure that you remember the proper location of the zip file.</li>
+<li>Reboot your phone into recovery ensure that you have a custom recovery such as TWRP is installed on your phone.</li>
+<li>Now, click on the Install button in the TWRP recovery.</li>
+<li>Navigate the Magisk-v20.zip on your internal storage or SD card.</li>
+<li>Now, install the zip file on your device and wait till it is getting installed on your device.</li>
+<li>You have successfully flashed the Magisk-v20.zip on your device.</li>
+<li>Reboot your phone and see if it works on your device.</li>
+<li>Download the magisk manager application from the link given above.</li>
+<li>Install the application by following the above procedure.</li>
+<li>Open it and then you will see magisk is installed on your Android device.</li>
+</ol>
+<h1 id="How-to-use-Magisk-Hide"><a href="#How-to-use-Magisk-Hide" class="headerlink" title="How to use Magisk Hide?"></a>How to use Magisk Hide?</h1><p>Magisk Hide is the feature which is available in the Magisk Manager application and if you want to hide the root permission for the particular banking application.</p>
+<p>You can turn the Magisk hide option from the settings of the magisk application then you can easily enjoy your favorite app without any issues.</p>
+<p>If you want to activate the Magisk Hide option, then you can follow the below tutorial, and you can hide the root permission on your device.</p>
+<ol>
+<li>First, check the application which is not working on your rooted Android device.</li>
+<li>Open Magisk on your device and click on the Menu button.</li>
+<li>Now, Click on the Settings to turn on the magisk hide option.</li>
+<li>Now, scroll down and enable the Magisk Hide option.</li>
+<li>Press the Menu key again and click on the “Magisk Hide” option.</li>
+<li>Now, you need to select the application from which you need to hide the root.</li>
+<li>Open your banking application and then that’s it. You can run the banking application on your device now.</li>
+</ol>
+<h1 id="Huawei"><a href="#Huawei" class="headerlink" title="Huawei"></a>Huawei</h1><p>Huawei devices using Kirin processors have a different partitioning method from most common devices. Magisk is usually installed to the boot partition of the device, however Huawei devices do not have this partition. Depending on what EMUI version your device is running, the instructions will be slightly different.</p>
+<p>Obtain Stock Images<br>Huawei does not release official factory images, however most firmware zips can be downloaded from the Huawei Firmware Database. To extract images from UPDATE.APP in the zip, you have to use Huawei Update Extractor (Windows only!)</p>
+<p>EMUI 8<br>For EMUI 8 devices, your device has a partition named ramdisk, which is where Magisk is going to be installed.</p>
+<p>If you plan to use custom recoveries, simply follow the instructions for custom recovery and you’re all set.<br>If you plan not to use custom recoveries, you will have to extract RAMDISK.img from your firmware. Follow the instructions for boot image patching above, but use the RAMDISK.img file instead of a boot image.<br>To flash the patched image to your device, here is the fastboot command:<br>fastboot flash ramdisk /path/to/magisk_patched.img<br>Be aware you are flashing to ramdisk, not boot!<br>EMUI 9 or Higher<br>For EMUI 9+ devices, the ramdisk partition no longer exists. As a workaround, Magisk will be installed to the recovery_ramdisk partition. Please read the Magisk in Recovery section before following the instructions below!</p>
+<p>Note: As I tested on my Honor View 10, Huawei’s kernel does not seem to be able to capture key button press events in early boot, so long pressing Volume Up does NOT boot to recovery on my device. Your experience may vary.</p>
+<p>If you plan to use custom recoveries, simply follow the instructions for custom recovery and you’re all set.<br>Warning: Magisk will overwrite the custom recovery.<br>If you plan not to use custom recoveries, you will have to extract RECOVERY_RAMDIS.img from your firmware. Follow the instructions for boot image patching above, but use the RECOVERY_RAMDIS.img file instead of a boot image.<br>To flash the patched image to your device, here is the fastboot command:<br>fastboot flash recovery_ramdisk /path/to/magisk_patched.img<br>Be aware you are flashing to recovery_ramdisk, not boot!</p>
+<h1 id="Samsung-System-as-root"><a href="#Samsung-System-as-root" class="headerlink" title="Samsung (System-as-root)"></a>Samsung (System-as-root)</h1><p>If your device is NOT launched with Android 9.0 or higher (released after 2019), you are reading the wrong section.</p>
+<p>Before Installing Magisk<br>Your device is non-A/B and uses system-as-root, so Magisk will be installed to the recovery partition of your device. Please read the Magisk in Recovery section!<br>Installing Magisk WILL trip KNOX<br>Installing Magisk for the first time REQUIRES a full data wipe, backup before continue<br>You have to have your bootloader unlocked before following the instructions<br>Unlocking Bootloader<br>Normally I wouldn’t provide instructions for this, but since things had changed drastically from previous Samsung devices, and there are some caveats, I figure this would be helpful.</p>
+<p>Allow bootloader unlocking in Developer options → OEM unlocking<br>Reboot your device to download mode. Either use adb reboot download, or use the key combo for your device.<br>Long press volume up to unlock the bootloader. This will wipe your data and automatically reboot.<br>Just when you think the bootloader is unlocked, it is actually not! Samsung introduced VaultKeeper, meaning the bootloader will reject any unofficial partitions before VaultKeeper explicitly allows it.</p>
+<p>Go through the initial setup. Skip through all the steps since data will be wiped again later when we are installing Magisk. Connect the device to internet in the setup!<br>Enable developer options, and confirm that the OEM unlocking option exists and grayed out! The VaultKeeper service will unleash the bootloader after it confirms that the user has the OEM unlocking option enabled.<br>Your bootloader now accepts unofficial images in download mode.<br>Instructions<br>Download the firmware for your device.<br>Unzip the firmware and copy the AP tar file to your device. It is normally named as AP_[device_model_sw_ver].tar.md5<br>Install the latest Magisk Manager<br>In Magisk Manager: Install → Install → Select and Patch a File and select the AP tar file.<br>Magisk Manager will patch the whole firmware file and store the output to [Internal Storage]/Download/magisk_patched.tar<br>Copy the patched file to your PC with adb pull /sdcard/Download/magisk_patched.tar. Do not use MTP as it is reported to corrupt files.<br>Reboot to download mode, and flash magisk_patched.tar as AP in Odin, together with the BL, CP and HOME_CSC files. Never flash only an AP file, as Odin can shrink your /data file-system if you do.<br>Important: Uncheck “Auto Reboot” in Options!<br>Magisk is now successfully flashed to your device! But there are still several steps before you can properly use the device.<br>We now want to boot into the stock recovery to factory reset our device.<br>Full data wipe is mandatory! Do not skip this step.<br>Press Power + Volume Down to exit download mode. As soon as the screen turns off, immediately press the combo key to boot to recovery (e.g. on the S10 it is Power + Bixby + Volume Up). Since we want to boot into stock recovery, continue pressing the volume up button until you see the stock recovery screen.<br>Use volume buttons to navigate through the stock recovery menu, and the power button to select an option. Choose Wipe data/factory reset to wipe the data of the device.<br>This time, we can finally boot to the system with Magisk. Select Reboot system now, and immediately press the combo key to recovery. After seeing the bootloader warning screen, release all buttons so it can boot to the system.<br>The device will automatically reboot for the first time it boots. This is completely normal and done by design.<br>After the device is booted up, do the usual initial setup. The following steps will need an internet connection.<br>You shall see Magisk Manager in your app drawer; if not, manually install the APK you downloaded in step 3 and continue to the next step. The app would be a stub and it shall automatically upgrade to the full Magisk Manager when you open it.<br>Magisk Manager will ask to do additional setups. Let it do its job and the app will automatically reboot your device.<br>Voila! Enjoy Magisk :)<br>Additional Info<br>Magisk actually patches 3 partitions on your device:<br>vbmeta: replace with empty vbmeta image to disable partition verification<br>boot: remove the signature of the image to prevent soft bricks<br>recovery: this is where Magisk is actually installed<br>Never, ever try to restore either of the 3 images mentioned back to stock! You can easily brick your device by doing so, and the only way out is to do full Odin restore following with factory reset. Just don’t do it.<br>If you want to upgrade your device, never flash the stock AP tar file with the reasons mentioned above. Always pre-patch the firmware before flashing in Odin.<br>If you don’t need to patch the full firmware, you can manually create a tar file with at least vbmeta.img, boot.img, and recovery.img to let Magisk Manager patch your images in the proper way.</p>
+<h1 id="Magisk-Modules"><a href="#Magisk-Modules" class="headerlink" title="Magisk Modules"></a>Magisk Modules</h1>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/android/" rel="tag"><i class="fa fa-tag"></i> android</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/12/05/排序算法/" rel="next" title="排序算法">
+                  <i class="fa fa-chevron-left"></i> 排序算法
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.gif"
+      alt="Zax Tseng">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description motion-element" itemprop="description">Zax's BLOG</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/zaxtseng" title="GitHub &rarr; https://github.com/zaxtseng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:lanfein9@hotmail.com" title="E-Mail &rarr; mailto:lanfein9@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-Magisk"><span class="nav-number">1.</span> <span class="nav-text">What is Magisk?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Highlights"><span class="nav-number">2.</span> <span class="nav-text">Highlights</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-is-Magisk-Manager"><span class="nav-number">3.</span> <span class="nav-text">What is Magisk Manager?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Magisk-and-superSu"><span class="nav-number">4.</span> <span class="nav-text">Magisk and superSu</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#guide"><span class="nav-number">5.</span> <span class="nav-text">guide</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Download-Magisk-Zip-and-Magisk-Manager-APK"><span class="nav-number">6.</span> <span class="nav-text">Download Magisk Zip and Magisk Manager APK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-install-Magisk"><span class="nav-number">7.</span> <span class="nav-text">How to install Magisk?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Plan-A"><span class="nav-number">8.</span> <span class="nav-text">Plan A</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Plan-B"><span class="nav-number">9.</span> <span class="nav-text">Plan B</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-use-Magisk-Hide"><span class="nav-number">10.</span> <span class="nav-text">How to use Magisk Hide?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Huawei"><span class="nav-number">11.</span> <span class="nav-text">Huawei</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Samsung-System-as-root"><span class="nav-number">12.</span> <span class="nav-text">Samsung (System-as-root)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Magisk-Modules"><span class="nav-number">13.</span> <span class="nav-text">Magisk Modules</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+    
+  
+  <script color='0,0,255' opacity='0.3' zIndex='-3' count='29' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
