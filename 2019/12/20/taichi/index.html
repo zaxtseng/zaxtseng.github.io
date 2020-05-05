@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="what is TaiChi?TaiChi is a framework that can use Xposed modules. Modules can change the behavior of systems and applications through it. TaiChi  App can run without needing to root, unlock the bootlo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-20T10:25:02.518Z">
+<meta property="og:updated_time" content="2020-01-17T13:34:22.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="taichi">
 <meta name="twitter:description" content="what is TaiChi?TaiChi is a framework that can use Xposed modules. Modules can change the behavior of systems and applications through it. TaiChi  App can run without needing to root, unlock the bootlo">
@@ -289,11 +289,19 @@
                 
               
 
-              <time title="创建时间：2019-12-20 16:14:28 / 修改时间：18:25:02" itemprop="dateCreated datePublished" datetime="2019-12-20T16:14:28+08:00">2019-12-20</time>
+              <time title="创建时间：2019-12-20 16:14:28" itemprop="dateCreated datePublished" datetime="2019-12-20T16:14:28+08:00">2019-12-20</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-17 21:34:22" itemprop="dateModified" datetime="2020-01-17T21:34:22+08:00">2020-01-17</time>
+              </span>
             
           
 
@@ -308,33 +316,49 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="what-is-TaiChi"><a href="#what-is-TaiChi" class="headerlink" title="what is TaiChi?"></a>what is TaiChi?</h1><p>TaiChi is a framework that can use Xposed modules. Modules can change the behavior of systems and applications through it. TaiChi  App can run without needing to root, unlock the bootloader; and it supports Android 5.0 ~ 10.</p><a id="more"></a>
+        <h1>what is TaiChi?</h1><p>TaiChi is a framework that can use Xposed modules. Modules can change the behavior of systems and applications through it. TaiChi  App can run without needing to root, unlock the bootloader; and it supports Android 5.0 ~ 10.</p><a id="more"></a>
+
+
 <p>In simple terms, TaiChi is an Xposed-like framework, which can load Xposed modules, modify the system and APP, intercept methods, and execute hook logic.</p>
-<h1 id="Relationship-with-Xposed"><a href="#Relationship-with-Xposed" class="headerlink" title="Relationship with Xposed"></a>Relationship with Xposed</h1><p>TaiChi is an Xposed-like framework, but it has nothing to do with Xposed itself. The only thing that might be related is that TaiChi is compatible with the Xposed modules. Besides, the two are completely different in design thinking, implementation mechanism, and operation logic.</p>
-<p>Here are some unique features of TaiChi:</p>
-<ol>
-<li>TaiChi can support Android 10.</li>
-<li>TaiChi can run in your device with no rooting, no flashing, no hassle.</li>
-<li>TaiChi does not affect the overall situation. You can enable the Xposed function only for a specific application, and it does not need to use the Xposed app to run as if the system does not have Xposed; this means that TaiChi can easily pass SafetyNet. </li>
-<li>detection and perfectly fit some financial / banking / exotic apps.</li>
-<li>In most cases, the modules in TaiChi will take effect immediately without restarting.</li>
-<li>TaiChi is more difficult to detect. The weakly invasive nature of TaiChi no longer modifies the ART runtime and leaves no trace in the global environment; therefore, if you want to do it, you can easily escape the detection of various code types. </li>
-</ol>
-<h1 id="How-to-use-TaiChi"><a href="#How-to-use-TaiChi" class="headerlink" title="How to use TaiChi?"></a>How to use TaiChi?</h1><p>TaiChi has two working modes: non-root mode and magisk mode. If you don’t want to unlock the bootloader/flash system images, the non-root mode is perfect for you, if you want more control over the system, you can try magisk mode.</p>
-<p>What is the difference between non-root mode and magisk mode?<br>The only different support is that the magisk mode can modify the system, so it can support more modules; such as Greenify / CorePatch, etc. However, Magisk mode requires unlocking the bootloader and installing Magisk, while non-root mode only requires installing a simple APP (TaiChi).</p>
-<h1 id="Non-Root-mode"><a href="#Non-Root-mode" class="headerlink" title="Non-Root mode"></a>Non-Root mode</h1><ol>
-<li>Click on the floating button in the bottom right corner of the TaiChi Homepage, and then click on the button Create App in the pop-up menu.</li>
-<li>Select the APP you want to apply Xposed modules in the app selection interface, such as SnapChat.</li>
-<li>Then click on the Create button and wait patiently for the creation.</li>
-<li>After the creation is completed, TaiChi will prompt you to uninstall the original APP; this is a necessary step in non-root mode (not required for Magisk mode), and you can uninstall it.</li>
-<li>Follow the TaiChi APP’s instructions to complete the rest of the operations, such as installation-optimization.</li>
-<li>Click on the floating button in the bottom right corner of the TaiChi homepage, and click Module Manager in the menu.</li>
-<li>Go to the module management page and Check the SnapFreedom module.</li>
-<li>Kill the process of SnapChat; then reopen it. At this time, the Xposed module should already work normally (no need to restart the system).</li>
-</ol>
-<h1 id="Magisk-mode"><a href="#Magisk-mode" class="headerlink" title="Magisk mode"></a>Magisk mode</h1><p>Although the Non-Root mode of TaiChi does not require unlocking the bootloader and is extremely convenient to use, it has some disadvantages, such as the inability to modify the system and the need to uninstall the original APP. Therefore,Magisk module of TaiChi, which can give TaiChi more powerful functions through Magisk; thus breaking through the limitations of the Non-Root mode.</p>
+
+<h1>Relationship with Xposed</h1>
+<p>TaiChi is an Xposed-like framework, but it has nothing to do with Xposed itself. The only thing that might be related is that TaiChi is compatible with the Xposed modules. Besides, the two are completely different in design thinking, implementation mechanism, and operation logic.</p>
+
+<h1>Here are some unique features of TaiChi:</h1>
+<ul>
+<ol>1. TaiChi can support Android 10.</ol>
+<ol>2. TaiChi can run in your device with no rooting, no flashing, no hassle.</ol>
+<ol>3. TaiChi does not affect the overall situation. You can enable the Xposed function only for a specific application, and it does not need to use the Xposed app to run as if the system does not have Xposed; this means that TaiChi can easily pass SafetyNet. </ol>
+<ol>4. detection and perfectly fit some financial / banking / exotic apps.</ol>
+<ol>5. In most cases, the modules in TaiChi will take effect immediately without restarting.</ol>
+<ol>6. TaiChi is more difficult to detect. The weakly invasive nature of TaiChi no longer modifies the ART runtime and leaves no trace in the global environment; therefore, if you want to do it, you can easily escape the detection of various code types. </ol>
+</ul>
+<h1>How to use TaiChi?</h1>
+<p>TaiChi has two working modes: non-root mode and magisk mode. If you don't want to unlock the bootloader/flash system images, the non-root mode is perfect for you, if you want more control over the system, you can try magisk mode.</p>
+
+<h1>What is the difference between non-root mode and magisk mode?</h1>
+<p>The only different support is that the magisk mode can modify the system, so it can support more modules; such as Greenify / CorePatch, etc. However, Magisk mode requires unlocking the bootloader and installing Magisk, while non-root mode only requires installing a simple APP (TaiChi).</p>
+
+<h2>Non-Root mode</h2>
+
+<ol>1. Click on the floating button in the bottom right corner of the TaiChi Homepage, and then click on the button Create App in the pop-up menu.</ol>
+<ol>2. Select the APP you want to apply Xposed modules in the app selection interface, such as SnapChat.</ol>
+<ol>3. Then click on the Create button and wait patiently for the creation.</ol>
+<ol>4. After the creation is completed, TaiChi will prompt you to uninstall the original APP; this is a necessary step in non-root mode (not required for Magisk mode), and you can uninstall it.</ol>
+<ol>5. Follow the TaiChi APP's instructions to complete the rest of the operations, such as installation-optimization.</ol>
+<ol>6. Click on the floating button in the bottom right corner of the TaiChi homepage, and click Module Manager in the menu.</ol>
+<ol>7. Go to the module management page and Check the SnapFreedom module.</ol>
+<ol>8. Kill the process of SnapChat; then reopen it. At this time, the Xposed module should already work normally (no need to restart the system).</ol>
+
+<h2>Magisk mode</h2>
+<p>Although the Non-Root mode of TaiChi does not require unlocking the bootloader and is extremely convenient to use, it has some disadvantages, such as the inability to modify the system and the need to uninstall the original APP. Therefore,Magisk module of TaiChi, which can give TaiChi more powerful functions through Magisk; thus breaking through the limitations of the Non-Root mode.</p>
+
 <p>After you flash in the Magisk Module provided by TaiChi, the TaiChi APP will automatically switch from Non-Root mode to Magisk mode: TaiChi APP + TaiChi Magisk Module = TaiChi Magisk. When Magisk Module of TaiChi is disabled or uninstalled, TaiChi will automatically return to Non-Root mode.</p>
+
 <p>If you want to use magisk mode, please download the latest Magisk Module.</p>
+
+
+
 <p>page2</p>
 <h1 id="TaiChi-module-download"><a href="#TaiChi-module-download" class="headerlink" title="TaiChi module download"></a>TaiChi module download</h1>
     </div>
@@ -370,6 +394,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/05/05/React入门/" rel="prev" title="React入门">
+                  React入门 <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -426,7 +454,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -528,7 +556,9 @@
         
           
         
-        <span class="site-state-item-count">21</span>
+          
+        
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -573,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#what-is-TaiChi"><span class="nav-number">1.</span> <span class="nav-text">what is TaiChi?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Relationship-with-Xposed"><span class="nav-number">2.</span> <span class="nav-text">Relationship with Xposed</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-use-TaiChi"><span class="nav-number">3.</span> <span class="nav-text">How to use TaiChi?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Non-Root-mode"><span class="nav-number">4.</span> <span class="nav-text">Non-Root mode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Magisk-mode"><span class="nav-number">5.</span> <span class="nav-text">Magisk mode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TaiChi-module-download"><span class="nav-number">6.</span> <span class="nav-text">TaiChi module download</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">what is TaiChi?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text">Relationship with Xposed</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">3.</span> <span class="nav-text">Here are some unique features of TaiChi:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">4.</span> <span class="nav-text">How to use TaiChi?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">5.</span> <span class="nav-text">What is the difference between non-root mode and magisk mode?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">5.1.</span> <span class="nav-text">Non-Root mode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">5.2.</span> <span class="nav-text">Magisk mode</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TaiChi-module-download"><span class="nav-number">6.</span> <span class="nav-text">TaiChi module download</span></a></li></ol></div>
             
 
           </div>
@@ -596,7 +626,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
