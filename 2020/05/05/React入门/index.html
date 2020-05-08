@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="React特点 声明式写法 组件化 可开发多种任务">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-07T03:49:59.777Z">
+<meta property="og:updated_time" content="2020-05-08T03:41:57.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React入门">
 <meta name="twitter:description" content="React特点 声明式写法 组件化 可开发多种任务">
@@ -300,7 +300,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-07 11:49:59" itemprop="dateModified" datetime="2020-05-07T11:49:59+08:00">2020-05-07</time>
+                <time title="修改时间：2020-05-08 11:41:57" itemprop="dateModified" datetime="2020-05-08T11:41:57+08:00">2020-05-08</time>
               </span>
             
           
@@ -357,42 +357,10 @@
 
 <h2 id="Forms表单"><a href="#Forms表单" class="headerlink" title="Forms表单"></a>Forms表单</h2><h3 id="受控组件和非受控组件"><a href="#受控组件和非受控组件" class="headerlink" title="受控组件和非受控组件"></a>受控组件和非受控组件</h3><p>受控组件: React控制输入的表单元素</p>
 <p>实例: 留言框</p>
-<pre><code class="js"><span class="comment">//CommentBox.js</span>
-<span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//CommentBox.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommentBox</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    constuctor(props)&#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.state = &#123;</span><br><span class="line">            value: <span class="string">''</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.handleChange = <span class="keyword">this</span>.handleChange.bind(<span class="keyword">this</span>)</span><br><span class="line">        <span class="keyword">this</span>.handleSubmit = <span class="keyword">this</span>.handleSubmit.bind(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    handleChange(event)&#123;</span><br><span class="line">        <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">            value: event.target.value</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    handleSubmit(event)&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.state.value)</span><br><span class="line">        event.preventDefault()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                    &lt;label&gt;留言内容&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;input</span></span><br><span class="line"><span class="regexp">                        type="text"</span></span><br><span class="line"><span class="regexp">                        placeholder="请输入内容"</span></span><br><span class="line"><span class="regexp">                        onChange = &#123; this.handlechange &#125;</span></span><br><span class="line"><span class="regexp">                        value = &#123; this.state.value&#125;</span></span><br><span class="line"><span class="regexp">                    /</span>&gt;</span><br><span class="line">                &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">                &lt;button type="submit"&gt;留言&lt;/</span>button&gt;</span><br><span class="line"></span><br><span class="line">            &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default CommonBox</span></span><br></pre></td></tr></table></figure>
 
-<span class="class"><span class="keyword">class</span> <span class="title">CommentBox</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
-    constuctor(props){
-        <span class="keyword">super</span>(props)
-        <span class="keyword">this</span>.state = {
-            value: <span class="string">''</span>
-        }
-        <span class="keyword">this</span>.handleChange = <span class="keyword">this</span>.handleChange.bind(<span class="keyword">this</span>)
-    }
-    handleChange(event){
-        <span class="keyword">this</span>.setState({
-            value: event.target.value
-        })
-    }
-
-    render(){
-        <span class="keyword">return</span> (
-            &lt;form&gt;
-                &lt;div&gt;
-                    &lt;label&gt;留言内容&lt;<span class="regexp">/label&gt;</span>
-<span class="regexp">                    &lt;input</span>
-<span class="regexp">                        type="text"</span>
-<span class="regexp">                        placeholder="请输入内容"</span>
-<span class="regexp">                        onChange = {this.handlechange }</span>
-<span class="regexp">                        value={this.state.value}</span>
-<span class="regexp">                    /</span>&gt;
-                &lt;<span class="regexp">/div&gt;</span>
-<span class="regexp">                &lt;button type="submit"&gt;留言&lt;/</span>button&gt;
-
-            &lt;<span class="regexp">/form&gt;</span>
-<span class="regexp">        )</span>
-<span class="regexp">    }</span>
-<span class="regexp">}</span></code></pre>
-
+<p>非受控组件写法<br>将真实数据保存在DOM中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//CommentBox.js</span></span><br><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CommentBox</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    constuctor(props)&#123;</span><br><span class="line">        <span class="keyword">super</span>(props)</span><br><span class="line">        <span class="keyword">this</span>.handleSubmit = <span class="keyword">this</span>.handleSubmit.bind(<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleSubmit(event)&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.textInput.value)</span><br><span class="line">        event.preventDefault()</span><br><span class="line">    &#125;</span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                    &lt;label&gt;留言内容&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;input</span></span><br><span class="line"><span class="regexp">                        type="text"</span></span><br><span class="line"><span class="regexp">                        placeholder="请输入内容"</span></span><br><span class="line"><span class="regexp">                        ref = &#123;(textInput) =&gt; &#123;this.textInput = textInput&#125;&#125;</span></span><br><span class="line"><span class="regexp">                        </span></span><br><span class="line"><span class="regexp">                    /</span>&gt;</span><br><span class="line">                &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">                &lt;button type="submit"&gt;留言&lt;/</span>button&gt;</span><br><span class="line">            &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">        )</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default CommonBox</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -426,6 +394,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2020/05/08/React-CommonBox/" rel="prev" title="React-CommentBox">
+                  React-CommentBox <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -482,7 +454,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
