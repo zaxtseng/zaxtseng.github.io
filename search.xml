@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[React进阶]]></title>
+    <url>%2F2020%2F05%2F09%2FReact%E8%BF%9B%E9%98%B6%2F</url>
+    <content type="text"><![CDATA[Context props 属性是由上到下单向传递的 Context提供了再组件中共享此类值的方法]]></content>
+      <tags>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[React-CommentBox]]></title>
     <url>%2F2020%2F05%2F08%2FReact-CommonBox%2F</url>
-    <content type="text"><![CDATA[综合实例-留言本]]></content>
+    <content type="text"><![CDATA[综合实例-留言本状态提升和单向数据流12345678910111213141516171819202122232425262728293031323334//App.js//将状态提升至App.jsimport React from "react";import CommentBox from "./components/CommentBox";import CommentList from "./components/Commentlist";class App extends Component &#123; constructor(props) &#123; super(props); this.state = &#123; commments: ["this id my first reply"] &#125;; this.addComment = this.addComment.bind(this); &#125; addComment(comment) &#123; this.setState(&#123; comments: [...this.state.comment, comment] &#125;); &#125; render() &#123; const &#123; comments &#125; = this.state; return ( &lt;div className="App"&gt; &lt;CommentList comments=&#123;comments&#125; /&gt; &lt;CommentBox commentsLength=&#123;comments.length&#125; onAddComment=&#123;this.addComment&#125; /&gt; &lt;/div&gt; ); &#125;&#125; 12345678910111213141516171819//CommentList.jsimport React from "react";const CommentList = (&#123; comments &#125;) =&gt; &#123; return ( &lt;div className="comment-list-component"&gt; &lt;label&gt;评论列表&lt;/label&gt; &lt;ul className="list-group"&gt; &#123;comments.map((comment, index) =&gt; ( &lt;li key=&#123;index&#125; className="list-group-item"&gt; &#123;comment&#125; &lt;/li&gt; ))&#125; &lt;/ul&gt; &lt;/div&gt; );&#125;;export default CommentList; 123456789101112131415161718192021222324252627282930313233//CommentBox.jsimport React from 'react'class CommentBox from React.Component &#123; constructor(props)&#123; super(props) this.handleSubmit = this.handleSubmit.bind(this) &#125; handleSubmit(event)&#123; alert(this.textInput.value) event.preventDefault() &#125; render()&#123; return ( &lt;form onSubmit=&#123;this.handleSumit&#125;&gt; &lt;div&gt; &lt;label&gt;留言内容&lt;/label&gt; &lt;input type="text" className="form-control" placeholder="请输入评论" ref=&#123;(textInput) =&gt; &#123;this.textInput = textInput&#125;&#125; /&gt; &lt;/div&gt; &lt;button type="submit"&gt; 留言 &lt;/button&gt; &lt;p&gt;已有&#123;this.props.commentLength = &#123;this&#125;&#125;条评论&lt;/p&gt; &lt;/form&gt; ) &#125;&#125; 总结React 开发思想以及和其他思想的异同 状态提升 自上而下的数据流 和双向绑定的区别]]></content>
       <tags>
         <tag>React</tag>
       </tags>
