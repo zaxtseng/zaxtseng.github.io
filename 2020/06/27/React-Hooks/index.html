@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="组件类的缺点 大型业务很难拆分或重构,也很难测试 业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑. 组件类引入了复杂的编程模式,比如render props和高阶组件.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-06T13:04:53.664Z">
+<meta property="og:updated_time" content="2020-07-07T03:20:16.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React-Hooks">
 <meta name="twitter:description" content="组件类的缺点 大型业务很难拆分或重构,也很难测试 业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑. 组件类引入了复杂的编程模式,比如render props和高阶组件.">
@@ -301,7 +301,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-06 21:04:53" itemprop="dateModified" datetime="2020-07-06T21:04:53+08:00">2020-07-06</time>
+                <time title="修改时间：2020-07-07 11:20:16" itemprop="dateModified" datetime="2020-07-07T11:20:16+08:00">2020-07-07</time>
               </span>
             
           
@@ -345,10 +345,10 @@
 
 <p>上面是<code>useReducer()</code>的基本用法,它接收Reducer函数和状态的初始值作为参数,返回一个数组.数组的第一个成员是状态的当前值,<br>第二个是发送action的<code>dispatch</code>函数.</p>
 <p>由于Hooks可以提供共享状态和Reducer函数,所以这些方面可以取代redux.但是无提供中间件和时间旅行.</p>
-<h2 id="useEffect-副作用钩子"><a href="#useEffect-副作用钩子" class="headerlink" title="useEffect(): 副作用钩子"></a>useEffect(): 副作用钩子</h2><p><code>useEffect()</code>用来引入具有副作用的操作,如向服务器发送请求数据.<br>之前放在<code>componentDidMount</code>之中的代码可以放在<code>useEffect()</code>中.<br>用法如下:</p>
+<h2 id="useEffect-副作用钩子"><a href="#useEffect-副作用钩子" class="headerlink" title="useEffect(): 副作用钩子"></a><code>useEffect()</code>: 副作用钩子</h2><p><code>useEffect()</code>用来引入具有副作用的操作,如向服务器发送请求数据.<br>之前放在<code>componentDidMount</code>之中的代码可以放在<code>useEffect()</code>中.<br>用法如下:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span>=&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//async action</span></span><br><span class="line">&#125;, [dependencies])</span><br></pre></td></tr></table></figure>
 
-<p><code>useEffect()</code>接收两个参数,第一个参数是一个函数,异步操作的代码放在里面.<br>第二个参数是一个数组,用于给Effect的依赖项,只要这个数组发生变化,<code>useEffect()</code>就会执行.<br>第二个参数可以省略,这样每次渲染,就会执行<code>useEffect()</code>.</p>
+<p><code>useEffect()</code>接收两个参数,第一个参数是一个函数,异步操作的代码放在里面.<br>第二个参数是一个数组,用于给<code>Effect</code>的依赖项,只要这个数组发生变化,<code>useEffect()</code>就会执行.<br>第二个参数可以省略,这样每次渲染,就会执行<code>useEffect()</code>.</p>
 <h2 id="自定义Hooks"><a href="#自定义Hooks" class="headerlink" title="自定义Hooks"></a>自定义Hooks</h2>
     </div>
 
