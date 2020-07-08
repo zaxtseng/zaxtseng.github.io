@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="Redux 状态管理Redux 是类似于 Vuex 的一个全局状态解决方案，它的功能主要是用来存储公有全局状态。来方便管理一些共有配置参数，解决业务体积大，结构复杂的项目提供好的状态管理。如果项目不是特别需要，尽量不去使用它。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-05T13:33:31.740Z">
+<meta property="og:updated_time" content="2020-07-08T01:24:08.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redux">
 <meta name="twitter:description" content="Redux 状态管理Redux 是类似于 Vuex 的一个全局状态解决方案，它的功能主要是用来存储公有全局状态。来方便管理一些共有配置参数，解决业务体积大，结构复杂的项目提供好的状态管理。如果项目不是特别需要，尽量不去使用它。">
@@ -301,7 +301,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-05 21:33:31" itemprop="dateModified" datetime="2020-07-05T21:33:31+08:00">2020-07-05</time>
+                <time title="修改时间：2020-07-08 09:24:08" itemprop="dateModified" datetime="2020-07-08T09:24:08+08:00">2020-07-08</time>
               </span>
             
           
@@ -489,7 +489,7 @@
 <p>一种方法是将<code>state</code>对象作为参数,传入容器组件.但是,这样做比较麻烦,尤其是容器组件在很深的层级.一级级将<code>state</code>传递下去就很麻烦.<br>React-Redux提供<code>Provider</code>组件,可以让容器组件拿到<code>state</code>.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Provider &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span></span><br><span class="line"><span class="keyword">import</span> &#123; createStore &#125; <span class="keyword">from</span> <span class="string">'redux'</span></span><br><span class="line"><span class="keyword">import</span> todoApp <span class="keyword">from</span> <span class="string">'./Reducer'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./components/App'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> store = createStore(todoApp)</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">  document.getElementById('root')</span></span><br><span class="line"><span class="regexp">)</span></span><br></pre></td></tr></table></figure>
 
-<p><code>Provider</code>在根组件外面报了一层,<code>App</code>的默认所有组件都拿到<code>state</code>.</p>
+<p><code>Provider</code>在根组件外面包了一层,<code>App</code>的默认所有组件都拿到<code>state</code>.</p>
 <blockquote>
 <p>原理是react的context属性.</p>
 </blockquote>

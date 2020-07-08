@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="组件类的缺点 大型业务很难拆分或重构,也很难测试 业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑. 组件类引入了复杂的编程模式,比如render props和高阶组件.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-07T03:20:16.860Z">
+<meta property="og:updated_time" content="2020-07-08T01:09:08.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React-Hooks">
 <meta name="twitter:description" content="组件类的缺点 大型业务很难拆分或重构,也很难测试 业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑. 组件类引入了复杂的编程模式,比如render props和高阶组件.">
@@ -301,7 +301,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-07 11:20:16" itemprop="dateModified" datetime="2020-07-07T11:20:16+08:00">2020-07-07</time>
+                <time title="修改时间：2020-07-08 09:09:08" itemprop="dateModified" datetime="2020-07-08T09:09:08+08:00">2020-07-08</time>
               </span>
             
           
@@ -329,17 +329,17 @@
 
 <p>用户点击后,文字自发生了变化,文字取决于用户是否点击,这就是状态.</p>
 <p>Button组件是一个函数,内部使用<code>useState()</code>引入状态.</p>
-<p><code>useState()</code>函数接收状态的初始值,作为参数,例子中的初始值为按钮的文字,该函数返回一个数组,数组的第一个成员是一个变量(buttonText).<br>指向状态的当前值.第二个成员是一个函数,用来更新状态.约定是<code>set</code>前缀加上变量名(setButtonText).</p>
+<p><code>useState()</code>函数接收状态的初始值,作为参数,例子中的初始值为按钮的文字,该函数返回一个数组,数组的第一个成员是一个变量(<code>buttonText</code>).<br>指向状态的当前值.第二个成员是一个函数,用来更新状态.约定是<code>set</code>前缀加上变量名(<code>setButtonText</code>).</p>
 <h2 id="useContext-共享状态钩子"><a href="#useContext-共享状态钩子" class="headerlink" title="useContext()共享状态钩子"></a><code>useContext()</code>共享状态钩子</h2><p>如果需要在组件之间共享状态,可以使用<code>useContext()</code>.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> AppContext = React.createContext(&#123;&#125;)</span><br><span class="line"></span><br><span class="line">&lt;AppContext.Provider value=&#123;&#123; <span class="attr">username</span>: <span class="string">"super"</span>&#125;&#125;&gt;</span><br><span class="line">&lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">    &lt;Navbar /&gt;</span><br><span class="line">    &lt;Message /&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>AppContext.Provider&gt;</span><br></pre></td></tr></table></figure>
 
 <p>其中,<code>AppContext.Provider</code>提供一个<code>Context</code>对象,这个对象可以被子组件共享.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Navbar.js</span></span><br><span class="line"><span class="keyword">const</span> Navbar = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; username &#125; = useContext(AppContext)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"navbar"</span>&gt;</span><br><span class="line">            &lt;p&gt;Awesome&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;p&gt;&#123;username&#125;&lt;/</span>p&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    ) </span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>其中,useContext()钩子函数用来引入Context对象,从中获取<code>username</code>属性.</p>
+<p>其中,<code>useContext()</code>钩子函数用来引入Context对象,从中获取<code>username</code>属性.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Message.js</span></span><br><span class="line"><span class="keyword">const</span> Message = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; username &#125; = useContext(AppContext)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;div className=<span class="string">"messages"</span>&gt;</span><br><span class="line">            &lt;p&gt;message <span class="keyword">for</span> &#123; username &#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">            &lt;p className="message"&gt;useContext&lt;/</span>p&gt;</span><br><span class="line">        &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="useReducer-action钩子"><a href="#useReducer-action钩子" class="headerlink" title="useReducer(): action钩子"></a>useReducer(): action钩子</h2><p>React本身不提供状态管理功能,通常使用外部库,如Redux.<br>Redux的核心概念,组件发出action与状态管理器通信.状态管理器收到action后,使用Reducer函数算出新的状态,<br>Reducer函数的形式是<code>(state, action)=&gt;newState</code>.</p>
+<h2 id="useReducer-action钩子"><a href="#useReducer-action钩子" class="headerlink" title="useReducer(): action钩子"></a><code>useReducer()</code>: action钩子</h2><p>React本身不提供状态管理功能,通常使用外部库,如Redux.<br>Redux的核心概念,组件发出action与状态管理器通信.状态管理器收到action后,使用Reducer函数算出新的状态,<br>Reducer函数的形式是<code>(state, action)=&gt;newState</code>.</p>
 <p><code>useReducers()</code>用来引入Reducer功能.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialState)</span><br></pre></td></tr></table></figure>
 
