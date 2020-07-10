@@ -64,7 +64,7 @@
 <meta property="og:site_name" content="Zax&#39;s BLOG">
 <meta property="og:description" content="原文地址：WTF is this - Understanding the this keyword, call, apply, and bind in JavaScript原文作者：Tyler McGinnis译文出自：掘金翻译计划本文永久链接：github.com/xitu/gold-m…译者：CoolRice校对者：周家未">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-09T07:30:54.540Z">
+<meta property="og:updated_time" content="2020-07-10T02:49:22.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="this他喵的到底是什么">
 <meta name="twitter:description" content="原文地址：WTF is this - Understanding the this keyword, call, apply, and bind in JavaScript原文作者：Tyler McGinnis译文出自：掘金翻译计划本文永久链接：github.com/xitu/gold-m…译者：CoolRice校对者：周家未">
@@ -290,11 +290,19 @@
                 
               
 
-              <time title="创建时间：2020-07-09 15:20:43 / 修改时间：15:30:54" itemprop="dateCreated datePublished" datetime="2020-07-09T15:20:43+08:00">2020-07-09</time>
+              <time title="创建时间：2020-07-09 15:20:43" itemprop="dateCreated datePublished" datetime="2020-07-09T15:20:43+08:00">2020-07-09</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-10 10:49:22" itemprop="dateModified" datetime="2020-07-10T10:49:22+08:00">2020-07-10</time>
+              </span>
             
           
 
@@ -397,6 +405,20 @@
 <li>是否在“严格模式”下？如果是，“this” 就是 undefined，如果不是，继续第 6 步。</li>
 <li>JavaScript 很奇怪，“this” 会指向 “window” 对象。</li>
 </ol>
+<h2 id="class中this的绑定"><a href="#class中this的绑定" class="headerlink" title="class中this的绑定"></a>class中this的绑定</h2><p>前景提要：当我们打印<code>typeof Cat</code>可知是函数类型，ES6中的class类其实只是个语法糖，皆可以用ES5来实现。由构造函数Cat创建的实例cat是一个对象。在初始化cat实例的时候，在constructor中就会把this上的属性挂载到实例对象上面。</p>
+<p>另外牢记，this的指向与作用域无关，与调用执行函数时的上下文相关。<br>示例一：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    run() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'run'</span>,<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> cat = <span class="keyword">new</span> Cat(<span class="string">'米粒'</span>, <span class="string">'5个月'</span>)</span><br><span class="line">cat.name <span class="comment">// '米粒'</span></span><br><span class="line">cat.run() <span class="comment">// run Cat &#123;name: "米粒"&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>当调用<code>cat.run()</code>的时候，当前上下文是cat,所以其this指向的是cat这个实例。</p>
+<p>示例二:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name</span><br><span class="line">        <span class="keyword">this</span>.jump = <span class="keyword">this</span>.jump.bind(<span class="keyword">this</span>)</span><br><span class="line">        <span class="keyword">this</span>.drink = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'drink'</span>,<span class="keyword">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    run() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'run'</span>,<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    jump() &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'jump'</span>,<span class="keyword">this</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> go() &#123; </span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'go'</span>,<span class="keyword">this</span>)</span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Cat.prototype.walk = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'walk'</span>,<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cat = <span class="keyword">new</span> Cat(<span class="string">'米粒'</span>, <span class="string">'5个月'</span>)</span><br><span class="line"><span class="keyword">let</span> run = cat.run</span><br><span class="line"><span class="keyword">let</span> jump = cat.jump</span><br><span class="line"><span class="keyword">let</span> go = Cat.go</span><br><span class="line"><span class="keyword">let</span> walk = cat.walk</span><br><span class="line"><span class="keyword">let</span> drink = cat.drink</span><br><span class="line"></span><br><span class="line">run() <span class="comment">// run undefined</span></span><br><span class="line">jump()  <span class="comment">// jump Cat &#123;name: "米粒", jump: ƒ&#125;</span></span><br><span class="line">Cat.go() <span class="comment">// go class Cat &#123;&#125;</span></span><br><span class="line">go() <span class="comment">// go undefined</span></span><br><span class="line">cat.walk() <span class="comment">// walk Window</span></span><br><span class="line">walk() <span class="comment">// walk Window</span></span><br><span class="line">cat.drink() <span class="comment">// drink Cat &#123;name: "米粒", jump: ƒ, drink: ƒ&#125;</span></span><br><span class="line">drink() <span class="comment">// drink Cat &#123;name: "米粒", jump: ƒ, drink: ƒ&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>先看run方法：当把实例中的方法赋值给一个变量，但是只是赋予了方法的引用，所以当变量在执行方法的时候，其实改变了方法的执行时的上下文。原来执行的上下文是实例cat，后来赋值之后再执行，上下文就变成了全局，this默认绑定。class中使用的是严格模式，在该模式下，全局的this默认绑定的是undefined，不是在严格模式下的时候，若在浏览器中执行，则this默认绑定window。</p>
+<p>jump方法：因为在构造函数执行的时候，显式绑定了jump执行的上下文——cat实例。由文章开头this绑定的优先级可知，显式绑定&gt;默认绑定。所以jump的执行上下文依然是cat实例</p>
+<p>go方法：go方法使用静态方法定义，无法共享个实例cat，只能在构造函数Cat上直接调用。</p>
+<p>walk与drink方法：这两个方法是用箭头函数定义的。箭头函数的this是在定义函数时绑定的，不是在执行过程中绑定的。简单的说，函数在定义时，this就继承了定义函数的对象。</p>
+<p>所以walk是在Cat.prototype.walk时定义的，此时的this指向是window。无论之后赋值给哪个变量，也只是函数的引用，所以其this还是window。</p>
+<p>同理，drink在定义的时候，this指向的是该构造函数。</p>
 
     </div>
 
@@ -627,7 +649,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式绑定"><span class="nav-number">1.</span> <span class="nav-text">隐式绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显式绑定"><span class="nav-number">2.</span> <span class="nav-text">显式绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-绑定"><span class="nav-number">2.1.</span> <span class="nav-text">new 绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-绑定"><span class="nav-number">3.</span> <span class="nav-text">window 绑定</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式绑定"><span class="nav-number">1.</span> <span class="nav-text">隐式绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显式绑定"><span class="nav-number">2.</span> <span class="nav-text">显式绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#new-绑定"><span class="nav-number">2.1.</span> <span class="nav-text">new 绑定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-绑定"><span class="nav-number">3.</span> <span class="nav-text">window 绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#class中this的绑定"><span class="nav-number">4.</span> <span class="nav-text">class中this的绑定</span></a></li></ol></div>
             
 
           </div>
