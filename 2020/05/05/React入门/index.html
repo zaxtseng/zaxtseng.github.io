@@ -65,7 +65,7 @@
 <meta property="og:description" content="React是一个MVC框架.React特点">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s1.ax1x.com/2020/06/28/NgZCwD.png">
-<meta property="og:updated_time" content="2020-07-10T05:51:08.487Z">
+<meta property="og:updated_time" content="2020-07-20T06:11:08.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React入门">
 <meta name="twitter:description" content="React是一个MVC框架.React特点">
@@ -303,7 +303,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-10 13:51:08" itemprop="dateModified" datetime="2020-07-10T13:51:08+08:00">2020-07-10</time>
+                <time title="修改时间：2020-07-20 14:11:08" itemprop="dateModified" datetime="2020-07-20T14:11:08+08:00">2020-07-20</time>
               </span>
             
           
@@ -349,6 +349,10 @@
 <li>V = f(props)</li>
 <li>props像纯函数一样,只读,不可变化</li>
 </ul>
+<blockquote>
+<p>props是组件对外的接口,<code>state</code>是组件对内的接口.</p>
+</blockquote>
+<p>子组件通过<code>this.props.xxx</code>得到父组件的值.</p>
 <p><code>props.children</code>可以拿到div下的首尾标签的子元素<br>示例:</p>
 <h2 id="class形式带状态组件"><a href="#class形式带状态组件" class="headerlink" title="class形式带状态组件"></a>class形式带状态组件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NameCard</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">    <span class="comment">//使用render()进行渲染</span></span><br><span class="line">    render()&#123;</span><br><span class="line">        <span class="keyword">const</span> &#123;name, number, isHuman, tags &#125; = <span class="keyword">this</span>.props</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h4&gt;&#123;name&#125;&lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">                &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;li&gt;电话: &#123;number&#125;&lt;/</span>li&gt;</span><br><span class="line">                    &lt;li&gt;&#123; isHuman ? <span class="string">'人类'</span> : <span class="string">'外星人'</span> &#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">                    &lt;hr/</span>&gt;</span><br><span class="line">                    &lt;p&gt;</span><br><span class="line">                        &#123; tags.map(<span class="function">(<span class="params">tag,index</span>) =&gt;</span> (</span><br><span class="line">                            &lt;span key=&#123;index&#125;&gt;&#123;tag&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">                        ))&#125;</span></span><br><span class="line"><span class="regexp">                    &lt;/</span>p&gt;</span><br><span class="line">                &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">            &lt;/</span>div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> NameCard</span><br></pre></td></tr></table></figure>
 
