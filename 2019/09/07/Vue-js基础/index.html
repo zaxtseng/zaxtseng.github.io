@@ -65,7 +65,7 @@
 <meta property="og:description" content="介绍Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。vue和react都不是mvvm框架，只是借鉴">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://cn.vuejs.org/images/lifecycle.png">
-<meta property="og:updated_time" content="2019-12-04T03:13:55.545Z">
+<meta property="og:updated_time" content="2020-08-24T01:09:45.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue.js基础">
 <meta name="twitter:description" content="介绍Vue是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。vue和react都不是mvvm框架，只是借鉴">
@@ -303,7 +303,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-04 11:13:55" itemprop="dateModified" datetime="2019-12-04T11:13:55+08:00">2019-12-04</time>
+                <time title="修改时间：2020-08-24 09:09:45" itemprop="dateModified" datetime="2020-08-24T09:09:45+08:00">2020-08-24</time>
               </span>
             
           
@@ -540,6 +540,7 @@
 <blockquote>
 <p>不要使用对象或数组之类的非基本类型值作为 <code>v-for</code> 的 key。请用字符串或数值类型的值。</p>
 </blockquote>
+<p><code>v-for=&quot;n in 3&quot;</code>中遍历出来是1,2,3.</p>
 <h3 id="Vue-中的-key"><a href="#Vue-中的-key" class="headerlink" title="Vue 中的 key"></a>Vue 中的 key</h3><blockquote>
 <p>当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用“就地复用”策略。如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。</p>
 </blockquote>
@@ -624,8 +625,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;Multiline message is:<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">&lt;p style=<span class="string">"white-space: pre-line;"</span>&gt;&#123;&#123; message &#125;&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">&lt;br&gt;</span></span><br><span class="line"><span class="regexp">&lt;textarea v-model="message" placeholder="add multiple lines"&gt;&lt;/</span>textarea&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="单选按钮"><a href="#单选按钮" class="headerlink" title="单选按钮"></a>单选按钮</h3><ol>
-<li>单个单选按钮，直接用v-­bind绑定一个布尔值，用v-­model是不可以的 </li>
-<li>如果是组合使用，就需要v-­model来配合value使用，绑定选中的单选框的value值.</li>
+<li>单个单选按钮，直接用<code>v-­bind</code>绑定一个布尔值，用<code>v-­model</code>是不可以的 </li>
+<li>如果是组合使用，就需要<code>v-­model</code>来配合value使用，绑定选中的单选框的value值.</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"example-4"</span>&gt;</span><br><span class="line">  &lt;input type=<span class="string">"radio"</span> id=<span class="string">"one"</span> value=<span class="string">"One"</span> v-model=<span class="string">"picked"</span>&gt;</span><br><span class="line">  &lt;label <span class="keyword">for</span>=<span class="string">"one"</span>&gt;One&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">  &lt;br&gt;</span></span><br><span class="line"><span class="regexp">  &lt;input type="radio" id="two" value="Two" v-model="picked"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;label for="two"&gt;Two&lt;/</span>label&gt;</span><br><span class="line">  &lt;br&gt;</span><br><span class="line">  &lt;span&gt;Picked: &#123;&#123; picked &#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example-4'</span>,</span><br><span class="line">  data: &#123;</span><br><span class="line">    picked: <span class="string">''</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 
