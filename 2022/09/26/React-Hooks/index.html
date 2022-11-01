@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>React-Hooks | ZAX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: React-Hooksdate: 2020-06-27 09:13:34tags: React class 组件类的缺点 大型业务很难拆分或重构,也很难测试 业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑. 组件类引入了复杂的编程模式,比如render props和高阶组件.  React Hook 的设计目的加强版函数组件,完全不使用类,就能写出一个全功能组件.  含义为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-Hooks">
+<meta property="og:url" content="http://example.com/2022/09/26/React-Hooks/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="title: React-Hooksdate: 2020-06-27 09:13:34tags: React class 组件类的缺点 大型业务很难拆分或重构,也很难测试 业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑. 组件类引入了复杂的编程模式,比如render props和高阶组件.  React Hook 的设计目的加强版函数组件,完全不使用类,就能写出一个全功能组件.  含义为">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-26T13:08:20.000Z">
+<meta property="article:modified_time" content="2022-11-01T09:55:42.377Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="ZAX" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZAX</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-React-Hooks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/09/26/React-Hooks/" class="article-date">
+  <time datetime="2022-09-26T13:08:20.000Z" itemprop="datePublished">2022-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      React-Hooks
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title-React-Hooksdate-2020-06-27-09-13-34"><a href="#title-React-Hooksdate-2020-06-27-09-13-34" class="headerlink" title="title: React-Hooksdate: 2020-06-27 09:13:34"></a>title: React-Hooksdate: 2020-06-27 09:13:34</h2><p>tags: React</p>
+<h3 id="class-组件类的缺点"><a href="#class-组件类的缺点" class="headerlink" title="class 组件类的缺点"></a>class 组件类的缺点</h3><ul>
+<li>大型业务很难拆分或重构,也很难测试</li>
+<li>业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑.</li>
+<li>组件类引入了复杂的编程模式,比如<code>render props</code>和高阶组件.</li>
+</ul>
+<h2 id="React-Hook-的设计目的"><a href="#React-Hook-的设计目的" class="headerlink" title="React Hook 的设计目的"></a>React Hook 的设计目的</h2><p>加强版函数组件,完全不使用类,就能写出一个全功能组件.</p>
+<blockquote>
+<p>含义为,组件尽量写成纯函数,如果需要外部功能或副作用,就用钩子函数把外部代码”钩”进来.</p>
+</blockquote>
+<p>React 规定,钩子一律使用<code>use</code>前缀命名,便于识别.</p>
+<p>常用钩子: <code>useState()</code>,<code>useContext()</code>,<code>useReducer()</code>,<code>useEffect()</code></p>
+<h2 id="useState-状态钩子"><a href="#useState-状态钩子" class="headerlink" title="useState()状态钩子"></a><code>useState()</code>状态钩子</h2><p>用于为函数组件引入状态(state),纯函数不能有状态,所以将状态放入钩子里.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Button</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> [buttonText, setButtonText] = <span class="title function_">useState</span>(<span class="string">&quot;Click!&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">handleCilck</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">setButtonText</span>(<span class="string">&quot;thank&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>&#123;buttonText&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用户点击后,文字自发生了变化,文字取决于用户是否点击,这就是状态.</p>
+<blockquote>
+<p>Button 组件是一个函数,内部使用<code>useState()</code>引入状态.</p>
+</blockquote>
+<p><code>useState()</code>函数接收状态的初始值,作为参数,例子中的初始值为按钮的文字,该函数返回一个数组,数组的第一个成员是一个变量(<code>buttonText</code>).</p>
+<p>指向状态的当前值.第二个成员是一个函数,用来更新状态.约定是<code>set</code>前缀加上变量名(<code>setButtonText</code>).</p>
+<h2 id="useContext-共享状态钩子"><a href="#useContext-共享状态钩子" class="headerlink" title="useContext()共享状态钩子"></a><code>useContext()</code>共享状态钩子</h2><p>如果需要在组件之间共享状态,可以使用<code>useContext()</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">AppContext</span> = <span class="title class_">React</span>.<span class="title function_">createContext</span>(&#123;&#125;)</span><br><span class="line"></span><br><span class="line">&lt;<span class="title class_">AppContext</span>.<span class="property">Provider</span> value=&#123;&#123; <span class="attr">username</span>: <span class="string">&quot;super&quot;</span>&#125;&#125;&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Navbar</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Message</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">AppContext</span>.<span class="property">Provider</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中,<code>AppContext.Provider</code>提供一个<code>Context</code>对象,这个对象可以被子组件共享.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Navbar.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Navbar</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(<span class="title class_">AppContext</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;navbar&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Awesome<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>其中,<code>useContext()</code>钩子函数用来引入 Context 对象,从中获取<code>username</code>属性.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Message.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Message</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(<span class="title class_">AppContext</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;messages&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>message for &#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;message&quot;</span>&gt;</span>useContext<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="useReducer-action-钩子"><a href="#useReducer-action-钩子" class="headerlink" title="useReducer(): action 钩子"></a><code>useReducer()</code>: action 钩子</h2><p>React 本身不提供状态管理功能,通常使用外部库,如 Redux.</p>
+<p>Redux 的核心概念,组件发出 action 与状态管理器通信.状态管理器收到 action 后,使用 Reducer 函数算出新的状态,</p>
+<p>Reducer 函数的形式是<code>(state, action)=&gt;newState</code>.</p>
+<p><code>useReducers()</code>用来引入 Reducer 功能.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialState);</span><br></pre></td></tr></table></figure>
+
+<p>上面是<code>useReducer()</code>的基本用法,它接收 Reducer 函数和状态的初始值作为参数,返回一个数组.数组的第一个成员是状态的当前值,</p>
+<p>第二个是发送 action 的<code>dispatch</code>函数.</p>
+<p>由于 Hooks 可以提供共享状态和 Reducer 函数,所以这些方面可以取代 redux.但是无提供<code>中间件</code>和时间旅行.</p>
+<h2 id="useEffect-副作用钩子"><a href="#useEffect-副作用钩子" class="headerlink" title="useEffect(): 副作用钩子"></a><code>useEffect()</code>: 副作用钩子</h2><p><code>useEffect()</code>用来引入具有副作用的操作,如向服务器发送请求数据.</p>
+<p>之前放在<code>componentDidMount</code>之中的代码可以放在<code>useEffect()</code>中.</p>
+<p>解决了没有生命周期的问题.</p>
+<p>用法如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//async action</span></span><br><span class="line">&#125;, [dependencies]);</span><br></pre></td></tr></table></figure>
+
+<p><code>useEffect()</code>接收两个参数,第一个参数是一个函数,异步操作的代码放在里面.</p>
+<p>第二个参数是一个数组,用于给<code>Effect</code>的依赖项,只要这个数组发生变化,<code>useEffect()</code>就会执行.</p>
+<p>第二个参数可以省略,这样每次渲染,就会执行<code>useEffect()</code>.</p>
+<p>第二个参数如果是一个空数组<code>[]</code>,就只会在加载时执行一次,数据更新时不执行.</p>
+<h2 id="自定义-Hooks"><a href="#自定义-Hooks" class="headerlink" title="自定义 Hooks"></a>自定义 Hooks</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/26/React-Hooks/" data-id="cl9y1bhhe001fdvop7unm6wro" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/26/HTTP%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HTTP基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/26/React%E8%B7%AF%E7%94%B1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">React路由</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">JS进阶</a> <a href="/tags/Vue-SSR/" style="font-size: 16.67px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 13.33px;">Vue.js进阶</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

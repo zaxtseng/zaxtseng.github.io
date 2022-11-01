@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>node处理excel输出json | ZAX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原理通过node-xlsx或者js-xlsx将数据表处理成 data 多维数组输出后自行处理. 安装1npm i node-xlsx  新增文件夹,将 xlsx 文件放到excel文件夹下. 文件预览 创建执行文件 index.js1234567891011121314151617181920212223242526272829303132333435363738394041424344const">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node处理excel输出json">
+<meta property="og:url" content="http://example.com/2021/11/03/node%E5%A4%84%E7%90%86excel%E8%BE%93%E5%87%BAjson/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="原理通过node-xlsx或者js-xlsx将数据表处理成 data 多维数组输出后自行处理. 安装1npm i node-xlsx  新增文件夹,将 xlsx 文件放到excel文件夹下. 文件预览 创建执行文件 index.js1234567891011121314151617181920212223242526272829303132333435363738394041424344const">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929012254-f166cfee-aae1-456e-b3e9-7d541515c42b.png#clientId=ucfce2243-d17c-4&from=ui&id=u7fc008c0&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.42.19.png&originHeight=192&originWidth=196&originalType=binary%E2%88%B6=1&size=13517&status=done&style=none&taskId=u5e063c68-5e01-4c83-b082-6fe82cc20ee">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929153310-b8b62fd5-eb81-45c8-a804-cb86a77ef7f2.png#clientId=ucfce2243-d17c-4&from=ui&id=ubb720b73&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.45.35.png&originHeight=122&originWidth=223&originalType=binary%E2%88%B6=1&size=14251&status=done&style=none&taskId=ue1d3a1b8-1069-4287-8c02-e52571ba84d">
+<meta property="article:published_time" content="2021-11-03T08:37:26.000Z">
+<meta property="article:modified_time" content="2022-11-01T09:55:49.229Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929012254-f166cfee-aae1-456e-b3e9-7d541515c42b.png#clientId=ucfce2243-d17c-4&from=ui&id=u7fc008c0&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.42.19.png&originHeight=192&originWidth=196&originalType=binary%E2%88%B6=1&size=13517&status=done&style=none&taskId=u5e063c68-5e01-4c83-b082-6fe82cc20ee">
+  
+    <link rel="alternate" href="/atom.xml" title="ZAX" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZAX</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-node处理excel输出json" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/11/03/node%E5%A4%84%E7%90%86excel%E8%BE%93%E5%87%BAjson/" class="article-date">
+  <time datetime="2021-11-03T08:37:26.000Z" itemprop="datePublished">2021-11-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      node处理excel输出json
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>通过<code>node-xlsx</code>或者<code>js-xlsx</code>将数据表处理成 data 多维数组输出后自行处理.</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i node-xlsx</span><br></pre></td></tr></table></figure>
+
+<p>新增文件夹,将 xlsx 文件放到<code>excel</code>文件夹下.<br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929012254-f166cfee-aae1-456e-b3e9-7d541515c42b.png#clientId=ucfce2243-d17c-4&from=ui&id=u7fc008c0&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.42.19.png&originHeight=192&originWidth=196&originalType=binary%E2%88%B6=1&size=13517&status=done&style=none&taskId=u5e063c68-5e01-4c83-b082-6fe82cc20ee" alt="iShot2021-11-03 16.42.19.png"></p>
+<h1 id="文件预览"><a href="#文件预览" class="headerlink" title="文件预览"></a>文件预览</h1><p><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929153310-b8b62fd5-eb81-45c8-a804-cb86a77ef7f2.png#clientId=ucfce2243-d17c-4&from=ui&id=ubb720b73&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.45.35.png&originHeight=122&originWidth=223&originalType=binary%E2%88%B6=1&size=14251&status=done&style=none&taskId=ue1d3a1b8-1069-4287-8c02-e52571ba84d" alt="iShot2021-11-03 16.45.35.png"></p>
+<h1 id="创建执行文件-index-js"><a href="#创建执行文件-index-js" class="headerlink" title="创建执行文件 index.js"></a>创建执行文件 index.js</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> xlsx = <span class="built_in">require</span>(<span class="string">&quot;node-xlsx&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//几列数据,返回name是表单几,data是数组数据</span></span><br><span class="line"><span class="keyword">const</span> excelData = xlsx.<span class="title function_">parse</span>(<span class="string">&quot;./excel/card.xlsx&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(excelData)</span></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="comment">// [</span></span><br><span class="line"><span class="comment">//   &#123;</span></span><br><span class="line"><span class="comment">//     name: &quot;Sheet1&quot;,</span></span><br><span class="line"><span class="comment">//     data: [</span></span><br><span class="line"><span class="comment">//       [&quot;goods&quot;, &quot;feifan&quot;, &quot;jiujiu&quot;],</span></span><br><span class="line"><span class="comment">//       [&quot;屈50&quot;, 43, 44],</span></span><br><span class="line"><span class="comment">//       [&quot;呷50&quot;, 36, 33],</span></span><br><span class="line"><span class="comment">//       [&quot;德30&quot;, 27, 32],</span></span><br><span class="line"><span class="comment">//       [&quot;奈30&quot;, 20, 31],</span></span><br><span class="line"><span class="comment">//       [&quot;本50&quot;, 43.5, 44.2],</span></span><br><span class="line"><span class="comment">//       [&quot;本50&quot;, 43.5, 44.2],</span></span><br><span class="line"><span class="comment">//     ],</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// ];</span></span><br><span class="line"><span class="comment">//现在要做的就是把这个data,组合成想要的json格式,如下</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// [</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         goods: &#x27;屈50&#x27;,</span></span><br><span class="line"><span class="comment">//         feifan: 43,</span></span><br><span class="line"><span class="comment">//         jiujiu: 44</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         goods: &#x27;呷50&#x27;,</span></span><br><span class="line"><span class="comment">//         feifan: 36,</span></span><br><span class="line"><span class="comment">//         jiujiu: 33</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         goods: &#x27;德30&#x27;,</span></span><br><span class="line"><span class="comment">//         feifan: 27,</span></span><br><span class="line"><span class="comment">//         jiujiu: 32</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//     ...</span></span><br><span class="line"><span class="comment">// ]</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="函数处理"><a href="#函数处理" class="headerlink" title="函数处理"></a>函数处理</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">handleExcel</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  excelData.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> xlsData = item.<span class="property">data</span>;</span><br><span class="line">    <span class="keyword">let</span> keyArr = xlsData[<span class="number">0</span>]; <span class="comment">//key的数组</span></span><br><span class="line">    <span class="keyword">let</span> dataArr = xlsData.<span class="title function_">slice</span>(<span class="number">1</span>); <span class="comment">//data的数组,除去第一行</span></span><br><span class="line"></span><br><span class="line">    dataArr.<span class="title function_">map</span>(<span class="function">(<span class="params">lineItem</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> arrItem = &#123;&#125;;</span><br><span class="line">      lineItem.<span class="title function_">map</span>(<span class="function">(<span class="params">i, index</span>) =&gt;</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">assign</span>(arrItem, &#123; [keyArr[index]]: i &#125;)</span><br><span class="line">      ); <span class="comment">//再加一层[]是因为keyArr[index]是字符串</span></span><br><span class="line">      arr.<span class="title function_">push</span>(arrItem);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//文件输出方法</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">generatJSON</span> = (<span class="params">fileName, data</span>) =&gt; &#123;</span><br><span class="line">  fs.<span class="title function_">writeFile</span>(fileName, data, <span class="string">&quot;UTF-8&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;success&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">handleExcel</span>();</span><br><span class="line"><span class="title function_">generatJSON</span>(<span class="string">&quot;./data/data.json&quot;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(arr, <span class="literal">null</span>, <span class="string">&quot;\t&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node inde.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+
+<p>查看 data 文件夹下的输出文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/11/03/node%E5%A4%84%E7%90%86excel%E8%BE%93%E5%87%BAjson/" data-id="cl9y1bhi5002mdvop5t1maq7j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/11/23/less%E8%A1%A5%E6%A1%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          less补档
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">安卓原生打包</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">JS进阶</a> <a href="/tags/Vue-SSR/" style="font-size: 16.67px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 13.33px;">Vue.js进阶</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

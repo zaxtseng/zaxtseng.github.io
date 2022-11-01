@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>TypeScript入门 | ZAX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: TypeScript 入门 date: 2019-10-03 16:00:08tags: 简介TypeScript 具有类型系统，且是 JavaScript 的超集。 它可以编译成普通的 JavaScript 代码。 TypeScript 支持任意浏览器，任意环境，任意系统并且是开源的。 安装123456789npm install -g typescript&#x2F;&#x2F;查看版本号tsc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript入门">
+<meta property="og:url" content="http://example.com/2022/09/26/TypeScript%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="title: TypeScript 入门 date: 2019-10-03 16:00:08tags: 简介TypeScript 具有类型系统，且是 JavaScript 的超集。 它可以编译成普通的 JavaScript 代码。 TypeScript 支持任意浏览器，任意环境，任意系统并且是开源的。 安装123456789npm install -g typescript&#x2F;&#x2F;查看版本号tsc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-26T13:04:15.000Z">
+<meta property="article:modified_time" content="2022-11-01T09:55:47.901Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="ZAX" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZAX</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-TypeScript入门" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/09/26/TypeScript%E5%85%A5%E9%97%A8/" class="article-date">
+  <time datetime="2022-09-26T13:04:15.000Z" itemprop="datePublished">2022-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      TypeScript入门
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="title-TypeScript-入门-date-2019-10-03-16-00-08"><a href="#title-TypeScript-入门-date-2019-10-03-16-00-08" class="headerlink" title="title: TypeScript 入门 date: 2019-10-03 16:00:08"></a>title: TypeScript 入门 date: 2019-10-03 16:00:08</h2><p>tags:</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>TypeScript 具有类型系统，且是 JavaScript 的超集。 它可以编译成普通的 JavaScript 代码。 TypeScript 支持任意浏览器，任意环境，任意系统并且是开源的。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br><span class="line">//查看版本号</span><br><span class="line">tsc -v</span><br><span class="line">//查看安装目录</span><br><span class="line">npm bin -g</span><br><span class="line"></span><br><span class="line">//代码编译</span><br><span class="line">tsc helloworld.ts</span><br><span class="line">//会出现一个helloworld.js</span><br></pre></td></tr></table></figure>
+
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><p>输出文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将文件编译到dist文件夹下</span></span><br><span class="line">tsc --outDir dist helloworld.<span class="property">ts</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="tsconfig-json"><a href="#tsconfig-json" class="headerlink" title="tsconfig.json"></a>tsconfig.json</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用代码初始化,生成tsconfig.json</span></span><br><span class="line">tsc --init</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改文件内属性</span></span><br><span class="line"><span class="comment">//设置输出文件夹dist</span></span><br><span class="line"><span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;./dist&quot;</span></span><br><span class="line"><span class="comment">//设置源代码文件夹</span></span><br><span class="line"><span class="string">&quot;rootDir&quot;</span>: <span class="string">&quot;./src&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="动态监视"><a href="#动态监视" class="headerlink" title="动态监视"></a>动态监视</h2><p>发现代码变动,自动编译</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc - w;</span><br></pre></td></tr></table></figure>
+
+<h1 id="变量使用"><a href="#变量使用" class="headerlink" title="变量使用"></a>变量使用</h1><ol>
+<li>变量使用前要定义</li>
+<li>变量类型</li>
+<li>any 类型</li>
+</ol>
+<h2 id="变量使用前要定义"><a href="#变量使用前要定义" class="headerlink" title="变量使用前要定义"></a>变量使用前要定义</h2><p>let&#x2F;var 变量名:变量类型 &#x3D; 默认值</p>
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><p>number,string,boolean,symbol,any,object</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">name</span>: string = <span class="string">&quot;Tom&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;My name is&quot;</span> + name);</span><br><span class="line">name = <span class="number">100</span>; <span class="comment">//编译错误,类型不匹配</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="any-类型"><a href="#any-类型" class="headerlink" title="any 类型"></a>any 类型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//any类型让编译器忽略检测</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">name</span>: any = <span class="string">&quot;Tom&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;My name is&quot;</span> + name);</span><br><span class="line">name = <span class="number">100</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;My name is&quot;</span> + name);</span><br></pre></td></tr></table></figure>
+
+<h1 id="常量保存"><a href="#常量保存" class="headerlink" title="常量保存"></a>常量保存</h1><h2 id="常量定义方法"><a href="#常量定义方法" class="headerlink" title="常量定义方法"></a>常量定义方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常量的定义语法</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">name</span>: type = initial_value;</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据库连接串</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">dbstr</span>: string = <span class="string">&quot;ip=192.168.2.1;port=5433;uid=ayin;pwd=123123;&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(dbstr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//数组常量</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">DATA</span>: number[] = [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">DATA</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// DATA = [10,20,30]; //编译错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组地址并未改变,值可以改变</span></span><br><span class="line"><span class="comment">//正常赋值</span></span><br><span class="line"><span class="variable constant_">DATA</span>[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line"><span class="variable constant_">DATA</span>[<span class="number">1</span>] = <span class="number">20</span>;</span><br><span class="line"><span class="variable constant_">DATA</span>[<span class="number">2</span>] = <span class="number">30</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">DATA</span>); <span class="comment">//[10,20,30]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组元素增加</span></span><br><span class="line"><span class="variable constant_">DATA</span>[<span class="number">3</span>] = <span class="number">40</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="数组的使用"><a href="#数组的使用" class="headerlink" title="数组的使用"></a>数组的使用</h1><h2 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h2><p><code>let name:type[] = initial</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义数组</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">data</span>: string[] = [<span class="string">&quot;金&quot;</span>, <span class="string">&quot;木&quot;</span>, <span class="string">&quot;水&quot;</span>, <span class="string">&quot;火&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data); <span class="comment">//[&#x27;金&#x27;,&#x27;木&#x27;,&#x27;水&#x27;,&#x27;火&#x27;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data[<span class="number">0</span>]); <span class="comment">//金</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//追加赋值</span></span><br><span class="line">data[<span class="number">4</span>] = <span class="string">&quot;土&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//越界赋值</span></span><br><span class="line">data[<span class="number">10</span>] = <span class="string">&quot;风&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多维数组的定义"><a href="#多维数组的定义" class="headerlink" title="多维数组的定义"></a>多维数组的定义</h2><p><code>let name:type[][] = [[],[],[],...]</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义三行五列的数组</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">data</span>: number[][] = [</span><br><span class="line">  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">  [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>],</span><br><span class="line">  [<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">400</span>, <span class="number">500</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印第一行数组</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data[<span class="number">0</span>]); <span class="comment">// [1,2,3,4,5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//打印第一行第一个元素</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data[<span class="number">0</span>][<span class="number">0</span>]); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><h2 id="定义方法-1"><a href="#定义方法-1" class="headerlink" title="定义方法"></a>定义方法</h2><p><code>enum name = &#123;name1, name2, name3, ...&#125;</code></p>
+<p>注意定义的是常量,后期不会变化.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用枚举</span></span><br><span class="line">enum <span class="title class_">Sex</span> &#123;</span><br><span class="line">    <span class="variable constant_">MALE</span>,</span><br><span class="line">    <span class="variable constant_">FEMALE</span>,</span><br><span class="line">    <span class="variable constant_">UNKNOWN</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">member_sex</span>: <span class="title class_">Sex</span> = <span class="title class_">Sex</span>.<span class="property">FEMALE</span> <span class="comment">//默认为FEMALE</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(member_sex) <span class="comment">//输出1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Sex</span>[member_sex]) <span class="comment">//输出FEMALE</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//判断中枚举需要在传入对象前加字符+</span></span><br><span class="line"><span class="keyword">switch</span> (+member_sex)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">Sex</span>.<span class="property">MALE</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;男&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">Sex</span>.<span class="property">FEMALE</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;女&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">Sex</span>.<span class="property">UNKNOWN</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;未知&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者将判断套入函数中</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkSex</span>(<span class="params">sex: Sex</span>)&#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="attr">result</span>:string = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">switch</span> (sex)&#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">Sex</span>.<span class="property">MALE</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;男&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">Sex</span>.<span class="property">FEMALE</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;女&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">case</span> <span class="title class_">Sex</span>.<span class="property">UNKNOWN</span>:</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;未知&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">&#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h1><p>指包含多种类型的变量类型,在实际项目中不常用.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//联合类型的定义</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">data</span>: type1 | type2 | type3 | ...</span><br><span class="line"></span><br><span class="line"><span class="comment">//联合类型的使用</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">mydata</span>: string | boolean</span><br><span class="line"></span><br><span class="line">mydata = <span class="string">&quot;hello TS&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mydata) <span class="comment">//hello TS</span></span><br><span class="line"></span><br><span class="line">mydata = <span class="literal">true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(mydata) <span class="comment">//true,没有报错</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="null-空检查"><a href="#null-空检查" class="headerlink" title="null 空检查"></a>null 空检查</h1><p>空检查用于代码编译时对程序中的变量做 null 空值检查,避免业务级别的错误.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">data1</span>: string = <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">data2</span>: string = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">data3</span>: string = <span class="string">&quot;&quot;</span></span><br><span class="line">data3 = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在tsconfig.json中开启</span></span><br><span class="line"><span class="string">&quot;strickNullChecks&quot;</span>: <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//输入tsc进行检查</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="第三方库的使用"><a href="#第三方库的使用" class="headerlink" title="第三方库的使用"></a>第三方库的使用</h1><p>node-request 库</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request = <span class="built_in">require</span>(<span class="string">&#x27;request&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="title function_">request</span>(<span class="string">&#x27;http://api.komavideo.com/news/list&#x27;</span>, <span class="keyword">function</span>(<span class="params">error, response, body</span>)&#123;</span><br><span class="line">    <span class="keyword">if</span>(error)&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">error</span>(error)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(body)</span><br><span class="line">        <span class="keyword">var</span> body = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(body)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; body.<span class="property">length</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">var</span> item = body[i]</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(item.<span class="property">title</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//直接使用是会报错的</span></span><br></pre></td></tr></table></figure>
+
+<p>需要添加 tsd 文件</p>
+<h2 id="如何找-tsd-文件"><a href="#如何找-tsd-文件" class="headerlink" title="如何找 tsd 文件"></a>如何找 tsd 文件</h2><p>网站: <code>http://microsoft.github.io/TypeSearch</code></p>
+<p>直接搜索</p>
+<h2 id="导入-tsd-文件"><a href="#导入-tsd-文件" class="headerlink" title="导入 tsd 文件"></a>导入 tsd 文件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save @types/request</span><br></pre></td></tr></table></figure>
+
+<h1 id="函数的使用"><a href="#函数的使用" class="headerlink" title="函数的使用"></a>函数的使用</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//格式</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fname</span>(<span class="params">param1:type, param2:type,...</span>) : return_type &#123;</span><br><span class="line">    <span class="comment">//函数内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>范例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">x: number, y: number</span>): number &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">10</span>, <span class="number">5</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//利用变量</span></span><br><span class="line"><span class="keyword">let</span> func_add = add;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">func_add</span>(<span class="number">1</span>, <span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>范例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">add</span>(<span class="attr">x</span>:number, <span class="attr">y</span>:number) : <span class="function"><span class="params">number</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">10</span>, <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+
+<h2 id="可省略参数"><a href="#可省略参数" class="headerlink" title="可省略参数"></a>可省略参数</h2><p>定义符号: ?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">sayHello</span>(name?: string): <span class="function"><span class="params">string</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(name == <span class="literal">undefined</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello ayin&quot;</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Hello &quot;</span> + name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sayHello</span>(<span class="string">&quot;Tom&quot;</span>)) <span class="comment">//Hello Tom</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sayHello</span>()) <span class="comment">//Hello ayin</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//默认值形式</span></span><br><span class="line"><span class="title function_">sayHello</span>(<span class="attr">name</span>: string = <span class="string">&quot;ayin&quot;</span>): <span class="function"><span class="params">string</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello &quot;</span> + name</span><br></pre></td></tr></table></figure>
+
+<h2 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h2><p>定义符号: <code>...</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">add</span>(...<span class="attr">vals</span>: number[]): <span class="function"><span class="params">number</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> result = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> val <span class="keyword">of</span> vals)&#123;</span><br><span class="line">        result += val</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)) <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h1><p>类似于 ES6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: sting;</span><br><span class="line">  <span class="attr">sex</span>: number; <span class="comment">//0:女,1:男</span></span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: string, sex: number</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">sex</span> = sex;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">sayHello</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>,你好<span class="subst">$&#123;<span class="variable language_">this</span>.sex&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> qq = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;花藤&quot;</span>, <span class="number">1</span>);</span><br><span class="line">qq.<span class="title function_">sayHello</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(qq.<span class="property">name</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(qq.<span class="property">sex</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="类的访问限制"><a href="#类的访问限制" class="headerlink" title="类的访问限制"></a>类的访问限制</h2><p>类的访问修饰符</p>
+<ul>
+<li>public: 共有访问</li>
+<li>protected: 本类和子类访问</li>
+<li>private: 本类访问</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Datebase</span>&#123;</span><br><span class="line">    <span class="attr">dbname</span>: string</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">bdname: string</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">dbname</span> = name</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//外部调用</span></span><br><span class="line">public <span class="title function_">showDB</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`数据库:<span class="subst">$&#123;<span class="variable language_">this</span>.dbname&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//本类和子类调用</span></span><br><span class="line">protected <span class="title function_">connect</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>,<span class="string">&quot;连接中...&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//本类调用</span></span><br><span class="line">private <span class="title function_">disconnect</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>,<span class="string">&quot;关闭&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> oracle = <span class="keyword">new</span> <span class="title class_">Database</span>(<span class="string">&quot;甲骨文&quot;</span>)</span><br><span class="line">oracle.<span class="title function_">showDB</span>()</span><br><span class="line"><span class="comment">//oracle.connect()</span></span><br><span class="line"><span class="comment">//oracle.disconnect()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PostgreSql</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Database</span>&#123;</span><br><span class="line">    public <span class="title function_">doIt</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">super</span>.<span class="title function_">connect</span>()</span><br><span class="line">        <span class="comment">//super.disconnect()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> postgres = <span class="keyword">new</span> <span class="title class_">PostregSql</span>(<span class="string">&quot;小象&quot;</span>)</span><br><span class="line">postgres.<span class="title function_">showDB</span>()</span><br><span class="line">postgres.<span class="title function_">doIt</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="getter-和-setter"><a href="#getter-和-setter" class="headerlink" title="getter 和 setter"></a>getter 和 setter</h2><p>书接上回,由于<code>private</code>属于私有,无法直接访问.可以使用 get 进行访问.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Datebase</span>&#123;</span><br><span class="line">    private <span class="attr">dbname</span>: string</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">bdname: string</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">dbname</span> = name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">name</span>(): string &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">dbname</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">val: string</span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">dbname</span> = val</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过name属性访问到</span></span><br><span class="line"><span class="keyword">let</span> db = <span class="keyword">new</span> <span class="title class_">Database</span>(<span class="string">&#x27;oracle is good&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(db.<span class="property">name</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改name属性</span></span><br><span class="line">db.<span class="property">name</span> = <span class="string">&quot;mysql is better&#x27;</span></span><br><span class="line"><span class="string">console.log(db.name)</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/26/TypeScript%E5%85%A5%E9%97%A8/" data-id="cl9y1bhhn001tdvop4oo00c8k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/26/Chart-js/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Chart-js
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/26/Git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git版本管理工具</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">JS进阶</a> <a href="/tags/Vue-SSR/" style="font-size: 16.67px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 13.33px;">Vue.js进阶</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

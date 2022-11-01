@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>HTTP补档 | ZAX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="cookie,session.token服务器验证是前提。cookie 保存在客户端，服务器不加密不保存；session 保存在客户端，服务器要加密并保存；token 保存在客户端，服务器要加密不保存。 强制缓存,协商缓存HTTP 缓存都是从第二次请求开始的：第一次请求资源时，服务器返回资源，并在 response header 中回传资源的缓存策略；第二次请求时，浏览器判断这些请求参数，击中强缓">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP补档">
+<meta property="og:url" content="http://example.com/2022/09/26/HTTP%E8%A1%A5%E6%A1%A3/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="cookie,session.token服务器验证是前提。cookie 保存在客户端，服务器不加密不保存；session 保存在客户端，服务器要加密并保存；token 保存在客户端，服务器要加密不保存。 强制缓存,协商缓存HTTP 缓存都是从第二次请求开始的：第一次请求资源时，服务器返回资源，并在 response header 中回传资源的缓存策略；第二次请求时，浏览器判断这些请求参数，击中强缓">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#clientId=u28f1947f-f233-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=214&id=u3198c11f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096">
+<meta property="article:published_time" content="2022-09-26T03:03:49.000Z">
+<meta property="article:modified_time" content="2022-11-01T09:55:48.237Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#clientId=u28f1947f-f233-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=214&id=u3198c11f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096">
+  
+    <link rel="alternate" href="/atom.xml" title="ZAX" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZAX</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-HTTP补档" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/09/26/HTTP%E8%A1%A5%E6%A1%A3/" class="article-date">
+  <time datetime="2022-09-26T03:03:49.000Z" itemprop="datePublished">2022-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HTTP补档
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="cookie-session-token"><a href="#cookie-session-token" class="headerlink" title="cookie,session.token"></a>cookie,session.token</h1><p>服务器验证是前提。cookie 保存在客户端，服务器不加密不保存；session 保存在客户端，服务器要加密并保存；token 保存在客户端，服务器要加密不保存。</p>
+<h1 id="强制缓存-协商缓存"><a href="#强制缓存-协商缓存" class="headerlink" title="强制缓存,协商缓存"></a>强制缓存,协商缓存</h1><p>HTTP 缓存都是从第二次请求开始的：<br>第一次请求资源时，服务器返回资源，并在 response header 中回传资源的缓存策略；<br>第二次请求时，浏览器判断这些请求参数，击中强缓存就直接 200，否则就把请求参数加到 request header 头中传给服务器，看是否击中协商缓存，击中则返回 304，否则服务器会返回新的资源。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#clientId=u28f1947f-f233-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=214&id=u3198c11f&margin=%5Bobject%20Object%5D&name=image.png&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096" alt="image.png"></p>
+<h2 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h2><p>在缓存未失效时,直接使用浏览器缓存数据,不再请求服务端.生效时,状态码是 200.<br>cache-control 优先级 &gt; expires 优先级。</p>
+<h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>第一次请求服务器,或者<code>cache-control</code>和<code>Expire</code>过期,第二次请求就会与服务器协商,与服务端对比资源是否修改更新.没有修改,则返回 304 状态码,继续使用缓存数据.如果更新,则返回 200 状态码,并将缓存信息一并返回.</p>
+<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><p>原因: 浏览器的同源策略(为了安全),即同端口,域名,协议.</p>
+<blockquote>
+<p>跨域并不是请求发不出去，请求能发出去，服务端能收到请求并正常返回结果，只是结果被浏览器拦截了。</p>
+</blockquote>
+<h2 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h2><p>限制的内容有:</p>
+<ul>
+<li>cookie, localstorage 等存储内容</li>
+<li>DOM 节点</li>
+<li>ajax 请求后浏览器返回的结果</li>
+</ul>
+<p>允许的内容:</p>
+<ul>
+<li><code>&lt;img src=&quot;xxx&quot;&gt;</code></li>
+<li><code>&lt;link href=&quot;xxx&quot;&gt;</code></li>
+<li><code>&lt;script src=&quot;xxx&quot;&gt;</code></li>
+</ul>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>解决方案有 jsonp、cors、postMessage、websocket、Node 中间件代理(两次跨域)、nginx 反向代理、window.name + iframe、location.hash + iframe、document.domain + iframe<br>日常工作中，用得比较多的跨域方案是 cors 和 nginx 反向代理</p>
+<h2 id="cors"><a href="#cors" class="headerlink" title="cors"></a>cors</h2><p>服务端设置<code>Access-Control-Allow-Origin</code>,可以设置哪些域名可以访问资源.</p>
+<h2 id="nginx-反向代理"><a href="#nginx-反向代理" class="headerlink" title="nginx 反向代理"></a>nginx 反向代理</h2><p>搭建一个中转 nginx 服务器，用于转发请求.<br>理解: 设置一个中转用的代理服务器,所有接口都访问这个服务器,在这个服务器内设置对应的目标服务器.选择目标服务器获取数据,发送给客户端.<br>实现思路：通过 nginx 配置一个代理服务器（域名与 domain1 相同，端口不同）做跳板机，反向代理访问 domain2 接口，并且可以顺便修改 cookie 中 domain 信息，方便当前域 cookie 写入，实现跨域登录。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>   <span class="number">80</span>; <span class="comment"># 监听的端口</span></span><br><span class="line">    <span class="attribute">server_name</span>   localhost; <span class="comment"># 用户访问 localhost，反向代理到 http://webcanteen.com</span></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://webcanteen.com <span class="comment"># 即需要代理访问的地址</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 也可以写其他的比如/api</span></span><br><span class="line">    location /api &#123;</span><br><span class="line">      <span class="attribute">proxy_pass</span> http://api.web.com <span class="comment"># 这就可以将请求/api的接口代理到这个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="保持前后端实时通信的方法"><a href="#保持前后端实时通信的方法" class="headerlink" title="保持前后端实时通信的方法"></a>保持前后端实时通信的方法</h1><ol>
+<li>websocket</li>
+<li>event-source</li>
+<li>ajax 轮询</li>
+<li>永久帧</li>
+</ol>
+<h2 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h2><p>优点: 它是在单个 tcp 连接上进行的全双工通讯协议,客户端和服务器只进行一次握手就可以进行持续双向的数据传输.节约资源和带宽.<br>缺点: 1.兼容性.2.不支持断线重连,需要手写心跳连接的逻辑.3.通信机制复杂</p>
+<h2 id="event-source"><a href="#event-source" class="headerlink" title="event-source"></a>event-source</h2><p>优点：（1）只需一次请求，便可以 stream 的方式多次传送数据，节约资源和带宽 （2）相对 WebSocket 来说简单易用 （3）内置断线重连功能(retry)<br>缺点： （1）是单向的，只支持服务端-&gt;客户端的数据传送，客户端到服务端的通信仍然依靠 AJAX，没有”一家人整整齐齐“的感觉（2）兼容性令人担忧，IE 浏览器完全不支持</p>
+<h2 id="AJAX-轮询"><a href="#AJAX-轮询" class="headerlink" title="AJAX 轮询"></a>AJAX 轮询</h2><p>优点：兼容性良好，对标低版本 IE<br>缺点：请求中有大半是无用的请求，浪费资源</p>
+<h1 id="HTTP1-和-HTTP2-的区别"><a href="#HTTP1-和-HTTP2-的区别" class="headerlink" title="HTTP1 和 HTTP2 的区别"></a>HTTP1 和 HTTP2 的区别</h1><ol>
+<li>http1 是明文传送,http2 是二进制传送</li>
+<li>http2 支持多路复用</li>
+<li>http2 支持头部压缩</li>
+<li>http2 支持服务器推送</li>
+</ol>
+<h1 id="HTTP-和-HTTPS-的区别"><a href="#HTTP-和-HTTPS-的区别" class="headerlink" title="HTTP 和 HTTPS 的区别"></a>HTTP 和 HTTPS 的区别</h1><ol>
+<li>http 是超文本传输协议,信息是明文传输,https 是具有安全性的 TLS 加密传输协议</li>
+<li>https 需要 ca 申请证书</li>
+<li>http 端口使用 80,https 使用 443</li>
+</ol>
+<h1 id="加密方式"><a href="#加密方式" class="headerlink" title="加密方式"></a>加密方式</h1><p>受 TLS 协议保护的通信过程：先对传输的数据进行了加密（使用对称加密算法）。并且对称加密的密钥是为每一个连接唯一生成的（基于 TLS 握手阶段协商的加密算法和共享密钥），然后发送的每条消息都会通过消息验证码（Message authentication code, MAC），来进行消息完整性检查，最后还可以使用公钥对通信双方进行身份验证</p>
+<h2 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/26/HTTP%E8%A1%A5%E6%A1%A3/" data-id="cl9y1bhgy000ldvop7x6fa7m3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/26/jQuery/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          jQuery
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/22/JS%E6%89%8B%E5%86%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS手写</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">JS进阶</a> <a href="/tags/Vue-SSR/" style="font-size: 16.67px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 13.33px;">Vue.js进阶</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

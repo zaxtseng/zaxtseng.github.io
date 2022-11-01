@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>css | ZAX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: CSS date: 2019-08-23 16:54:50 tags: css categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  css # 一级分类 css3 # 二级分类   介绍css,即层叠样式表,可以为网页添加样式. stylesheet 应用方式外部样式表 通过&lt;link&gt;引入  &lt;link rel&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css">
+<meta property="og:url" content="http://example.com/2022/09/26/css/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="title: CSS date: 2019-08-23 16:54:50 tags: css categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  css # 一级分类 css3 # 二级分类   介绍css,即层叠样式表,可以为网页添加样式. stylesheet 应用方式外部样式表 通过&lt;link&gt;引入  &lt;link rel&#x3D;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMPzOf.md.png#alt=QMPzOf.md.png">
+<meta property="article:published_time" content="2022-09-26T13:06:35.000Z">
+<meta property="article:modified_time" content="2022-11-01T09:55:45.969Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/03/QMPzOf.md.png#alt=QMPzOf.md.png">
+  
+    <link rel="alternate" href="/atom.xml" title="ZAX" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZAX</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/09/26/css/" class="article-date">
+  <time datetime="2022-09-26T13:06:35.000Z" itemprop="datePublished">2022-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: CSS</p>
+<p>date: 2019-08-23 16:54:50</p>
+<p>tags: css</p>
+<p>categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>css # 一级分类</li>
+<li>css3 # 二级分类</li>
+</ul>
+<hr>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>css,即层叠样式表,可以为网页添加样式.</p>
+<p>stylesheet</p>
+<h1 id="应用方式"><a href="#应用方式" class="headerlink" title="应用方式"></a>应用方式</h1><h2 id="外部样式表"><a href="#外部样式表" class="headerlink" title="外部样式表"></a>外部样式表</h2><ol>
+<li>通过<code>&lt;link&gt;</code>引入</li>
+</ol>
+<p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;index.css&quot;&gt;</code> 2. 通过<code>@import</code>引入,注意末尾加;号,CSS 语法,只能在 CSS 内使用.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;@<span class="keyword">import</span> <span class="title function_">url</span>(<span class="string">&quot;index.css&quot;</span>); @<span class="keyword">import</span> <span class="string">&quot;index.css&quot;</span>;&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>媒体查询(响应式)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">@media (min-<span class="attr">width</span>: 801px) &#123;</span><br><span class="line">  body &#123;</span><br><span class="line">    <span class="attr">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">    <span class="attr">width</span>: 800px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="内部样式表"><a href="#内部样式表" class="headerlink" title="内部样式表"></a>内部样式表</h2><p>将 css 放到<code>&lt;style&gt;</code>元素中,一般放到文档的<code>&lt;head&gt;</code>中.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span>CSS<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-tag">h1</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">    <span class="attribute">background</span>: red;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>AMD yes!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h2><p><code>&lt;p style=&quot;background: red; font-size: 20px;&quot;&gt;AMD yes!&lt;p&gt;</code></p>
+<h1 id="CSS-选择器"><a href="#CSS-选择器" class="headerlink" title="CSS 选择器"></a>CSS 选择器</h1><table>
+<thead>
+<tr>
+<th align="left">基本选择器</th>
+<th align="left">名称</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*</td>
+<td align="left">通用选择器</td>
+<td align="left">匹配任何元素</td>
+</tr>
+<tr>
+<td align="left">E</td>
+<td align="left">标签选择器</td>
+<td align="left">匹配所有使用 E 标签的元素</td>
+</tr>
+<tr>
+<td align="left">.info</td>
+<td align="left">class 选择器</td>
+<td align="left">匹配所有 class 属性中包含 info 的元素</td>
+</tr>
+<tr>
+<td align="left">#footer</td>
+<td align="left">id 选择器</td>
+<td align="left">匹配所有 id 属性等于 footer 的元素</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">组合选择器</th>
+<th align="left">名称</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">E,F</td>
+<td align="left">多元素选择器</td>
+<td align="left">同时匹配所有 E 元素或 F 元素</td>
+</tr>
+<tr>
+<td align="left">E F</td>
+<td align="left">后代选择器</td>
+<td align="left">匹配所有属于 E 元素后代的 F 元素</td>
+</tr>
+<tr>
+<td align="left">E&gt;F</td>
+<td align="left">子元素选择器</td>
+<td align="left">匹配所有 E 元素的直接子元素</td>
+</tr>
+<tr>
+<td align="left">E+F</td>
+<td align="left">直接相邻元素选择器</td>
+<td align="left">匹配 E 元素后的直接相邻元素</td>
+</tr>
+<tr>
+<td align="left">E~F</td>
+<td align="left">兄弟元素选择器</td>
+<td align="left">匹配 E 元素后的所有兄弟元素</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">属性选择器</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">E[attr]</td>
+<td align="left">匹配所有具有 attr 属性的 E 元素</td>
+</tr>
+<tr>
+<td align="left">E[attr&#x3D;val]</td>
+<td align="left">匹配所有 attr 属性等于 val 的 E 元素</td>
+</tr>
+<tr>
+<td align="left">E[attr~&#x3D;val]</td>
+<td align="left">匹配所有 attr 属性具有多个空格分隔的值,其中一个等于 val 的 E 元素</td>
+</tr>
+<tr>
+<td align="left">E[attr</td>
+<td align="left">&#x3D;val]</td>
+</tr>
+<tr>
+<td align="left">E[attr*&#x3D;val]</td>
+<td align="left">匹配所有 attr 属性中包含 val 的 E 元素</td>
+</tr>
+<tr>
+<td align="left">E[attr^&#x3D;val]</td>
+<td align="left">匹配所有 attr 属性中以 val 开头的 E 元素</td>
+</tr>
+<tr>
+<td align="left">E[attr$&#x3D;val]</td>
+<td align="left">匹配所有 attr 属性中以 val 结尾的 E 元素</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">伪类</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">E:first-child</td>
+<td align="left">匹配父元素的第一个子元素</td>
+</tr>
+<tr>
+<td align="left">E:link</td>
+<td align="left">匹配所有未被点击的链接</td>
+</tr>
+<tr>
+<td align="left">E:visited</td>
+<td align="left">匹配所有已被点击的链接</td>
+</tr>
+<tr>
+<td align="left">E:active</td>
+<td align="left">匹配鼠标已经按下没有释放的 E 元素</td>
+</tr>
+<tr>
+<td align="left">E:hover</td>
+<td align="left">匹配鼠标悬停其上的 E 元素</td>
+</tr>
+<tr>
+<td align="left">E:focus</td>
+<td align="left">匹配获得焦点的 E 元素</td>
+</tr>
+<tr>
+<td align="left"><strong>E:enabled</strong></td>
+<td align="left"><strong>匹配表单中激活的元素</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>E:disabled</strong></td>
+<td align="left"><strong>匹配表单中禁用的元素</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>E:checked</strong></td>
+<td align="left"><strong>匹配表单中被选中的 radio 或者 checkbox 元素</strong></td>
+</tr>
+<tr>
+<td align="left">E:root</td>
+<td align="left">匹配文档的根元素,对于 html 文档,就是 html 元素</td>
+</tr>
+<tr>
+<td align="left">E:nth-child(n)</td>
+<td align="left">匹配其父元素的第 n 个子元素,第一个编号为 1</td>
+</tr>
+<tr>
+<td align="left">E:nth-last-child(n)</td>
+<td align="left">匹配其父元素的倒数第 n 个子元素,第一个编号为 1</td>
+</tr>
+<tr>
+<td align="left">E:nth-of-type</td>
+<td align="left">与 nth-child 类似,但仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td align="left">E:nth-last-child</td>
+<td align="left">与 nth-last-child 类似,但仅匹配使用同种标签的元素</td>
+</tr>
+<tr>
+<td align="left">E:last-child</td>
+<td align="left">匹配父元素的最后一个元素</td>
+</tr>
+<tr>
+<td align="left">E:first-of-type</td>
+<td align="left">匹配父元素下使用同种标签的第一个子元素</td>
+</tr>
+<tr>
+<td align="left">E:last-of-type</td>
+<td align="left">匹配父元素下使用同种标签的最后一个子元素</td>
+</tr>
+<tr>
+<td align="left">E:only-child</td>
+<td align="left">匹配父元素下仅有的一个子元素，等同于:first-child:last-child 或 :nth-child(1):nth-last-child(1)</td>
+</tr>
+<tr>
+<td align="left">E:only-of-type</td>
+<td align="left">匹配父元素下使用同种标签的唯一一个子元素，等同于:first-of-type:last-of-type 或 :nth-of-type(1):nth-last-of-type(1)</td>
+</tr>
+<tr>
+<td align="left">E:empty</td>
+<td align="left">匹配一个不包含任何子元素的元素,注意,文本节点也被看做子元素</td>
+</tr>
+<tr>
+<td align="left">E:not(s)</td>
+<td align="left">匹配不符合当前选择器的任何元素</td>
+</tr>
+<tr>
+<td align="left">E:target</td>
+<td align="left">代表一个唯一的页面元素(目标元素)，其 id 与当前 URL 片段匹配</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">伪元素</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">E::first-line</td>
+<td align="left">匹配 E 元素的第一行</td>
+</tr>
+<tr>
+<td align="left">E::first-letter</td>
+<td align="left">匹配 E 元素的第一个字母</td>
+</tr>
+<tr>
+<td align="left">E::before</td>
+<td align="left">在 E 元素之前插入生成的内容</td>
+</tr>
+<tr>
+<td align="left">E::after</td>
+<td align="left">在 E 元素之后插入生成的内容</td>
+</tr>
+<tr>
+<td align="left">E::selection</td>
+<td align="left">匹配用户当前选中的元素</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>伪元素必须要有<code>content</code></p>
+</blockquote>
+<h3 id="伪元素和伪类的区别"><a href="#伪元素和伪类的区别" class="headerlink" title="伪元素和伪类的区别"></a>伪元素和伪类的区别</h3><ol>
+<li>伪元素使用两个冒号,伪类使用一个冒号</li>
+<li>伪元素添加了一个页面中没有的元素(只是从视觉效果上添加了,不是在文档树中添加),伪类是给页面中已经存在的的元素添加一个类.</li>
+</ol>
+<h2 id="CSS-选择器有哪些？哪些属性可以继承？"><a href="#CSS-选择器有哪些？哪些属性可以继承？" class="headerlink" title="CSS 选择器有哪些？哪些属性可以继承？"></a>CSS 选择器有哪些？哪些属性可以继承？</h2><p>1.id 选择器（ # myid）</p>
+<p>2.类选择器（.myclassname）</p>
+<p>3.标签选择器（div, h1, p）</p>
+<p>4.相邻选择器（h1 + p）</p>
+<p>5.子选择器（ul &gt; li）</p>
+<p>6.后代选择器（li a）</p>
+<p>7.通配符选择器（ * ）</p>
+<p>8.属性选择器（a[rel &#x3D; “external”]）</p>
+<p>9.伪类选择器（a:hover, li:nth-child）</p>
+<p>可继承的样式： <code>font-size</code> <code>font-family</code> <code>color</code>, <code>ul</code> <code>li</code> <code>dl</code> <code>dd</code> <code>dt</code>;</p>
+<p>不可继承的样式：<code>border</code> <code>padding</code> <code>margin</code> <code>width</code> <code>height</code>;</p>
+<h1 id="选择器优先级"><a href="#选择器优先级" class="headerlink" title="选择器优先级"></a>选择器优先级</h1><p><code>!important</code>优先级最高(由于 IE 不支持!important，所以也可以利用它区分不同的浏览器。)</p>
+<p>同权重: 内联样式表（标签内部）&gt; 嵌入样式表（当前文件中）&gt; 外部样式表（外部文件中）</p>
+<p>行内样式(写在 style 标签里的样式) &gt; id 样式 &gt; class 样式 &gt; 标签名样式</p>
+<h1 id="CSS-基本样式"><a href="#CSS-基本样式" class="headerlink" title="CSS 基本样式"></a>CSS 基本样式</h1><p>div（块级元素）：高度是由内部文档流元素高度的总和决定的。<strong>文档流</strong>：文档内元素的流动方向，<strong>内联元素</strong>是从左往右，<strong>块级元素</strong>是从上往下</p>
+<p>span（内联元素）：高度是由其中文字高度决定的，内联元素设置 width 和 height 是无效的，上下的 margin 和 padding 也无效，要将它们设为<code>display:inline-block</code>才有效。</p>
+<ul>
+<li>常见块级元素: <code>div h1~h6 p hr form ul ol li table td tr th dl dt dd pre</code></li>
+<li>常见内联元素: <code>em strong span a br img button input label select textarea code script</code></li>
+</ul>
+<blockquote>
+<p>尽量不写 height 和 width，这两个属性会引出很多 bug，要宽高的时候可以用 padding，但 img 最好先写 width，因为可以先占位，因为引用图片时浏览器不知道图片大小，所有等图片下载完成，它后面的元素又要重新排位置，若先写好 width，则不用重排，知道 height 也可以先写好 height。</p>
+</blockquote>
+<p>另外 span 元素设置 padding 的时候要将它设为 display:inline-block，因为内联元素不能设置宽高，inline-block 具有 inline 的同行特性，也具有 block 的高度特性。</p>
+<p>对于 display:inline(内联元素)的元素，设置 width&#x2F;height&#x2F;上下 margin 和 padding 都是无效的</p>
+<h2 id="inline-block"><a href="#inline-block" class="headerlink" title="inline-block"></a>inline-block</h2><ol>
+<li>inline-block 之间空隙</li>
+</ol>
+<ul>
+<li>inline-block 之间有空格、Tab、换行符。</li>
+<li>给父元素设置 font-size: 0，在 inline-block 元素上重新设置 font-size。</li>
+</ul>
+<ol start="2">
+<li>inline-block 导致父元素增高若干像素</li>
+</ol>
+<ul>
+<li>给 inline-block 元素设置 vertical-align: top</li>
+</ul>
+<p><strong>通用解决办法</strong> 不要设置 inline-block，使用 float 或 flex。</p>
+<h2 id="浏览器默认样式"><a href="#浏览器默认样式" class="headerlink" title="浏览器默认样式"></a>浏览器默认样式</h2><p>浏览器对某些元素设置有默认样式，如 h1, ul, li 等。</p>
+<h3 id="常见处理方式"><a href="#常见处理方式" class="headerlink" title="常见处理方式"></a>常见处理方式</h3><ol>
+<li>Normalize.css</li>
+<li>CSS Reset</li>
+<li>简单去除</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attr">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attr">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CSS-常见样式"><a href="#CSS-常见样式" class="headerlink" title="CSS 常见样式"></a>CSS 常见样式</h2><h3 id="边框-border"><a href="#边框-border" class="headerlink" title="边框 border"></a>边框 border</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">box</span> &#123;</span><br><span class="line">  border-<span class="attr">width</span>: 1px;</span><br><span class="line">  border-<span class="attr">color</span>: red;</span><br><span class="line">  border-<span class="attr">style</span>: solid;</span><br><span class="line">  border-<span class="attr">bottom</span>: none;<span class="comment">//下边框消失</span></span><br><span class="line">  border-<span class="attr">radius</span>: <span class="number">50</span>%;<span class="comment">//圆角</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//简写</span></span><br><span class="line">.<span class="property">box2</span> &#123;</span><br><span class="line">  <span class="attr">border</span>: 1px red solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现不使用-border-画出-1px-高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果。"><a href="#实现不使用-border-画出-1px-高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果。" class="headerlink" title="实现不使用 border 画出 1px 高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果。"></a>实现不使用 border 画出 1px 高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果。</h2><p><code>&lt;div style=&quot;height:1px;overflow:hidden;background:red&quot;&gt;&lt;/div&gt;</code></p>
+<h3 id="内边距-padding"><a href="#内边距-padding" class="headerlink" title="内边距 padding"></a>内边距 padding</h3><p><code>padding: 10px 20px 30px;//按照上右下左,即顺时针,缺哪个补哪个,缺左边,按20px补上.</code></p>
+<h3 id="外边距-margin"><a href="#外边距-margin" class="headerlink" title="外边距 margin"></a>外边距 margin</h3><p>margin 可以合写,可以分开.可以是数值,可以是百分比(相对于父元素).还可以是负值.有外边距合并问题</p>
+<h3 id="display"><a href="#display" class="headerlink" title="display"></a>display</h3><ul>
+<li>块级: block,list-item,table</li>
+<li>行内: inline,inline-table,inline-block</li>
+<li><code>inherit</code>: 规定应该从父元素继承 display 属性的值</li>
+</ul>
+<h2 id="display-inline-block-什么时候会显示间隙"><a href="#display-inline-block-什么时候会显示间隙" class="headerlink" title="display:inline-block 什么时候会显示间隙"></a>display:inline-block 什么时候会显示间隙</h2><p>移除空格、使用 margin 负值、使用 font-size:0、letter-spacing、word-spacing</p>
+<h3 id="font"><a href="#font" class="headerlink" title="font"></a>font</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">body&#123;</span><br><span class="line">  <span class="attr">font</span>: 12px/<span class="number">1.5</span> <span class="title class_">Arial</span>;</span><br><span class="line">&#125;</span><br><span class="line">p&#123;</span><br><span class="line">  line-<span class="attr">height</span>: <span class="number">1.5</span>;<span class="comment">//行高是字体的1.5倍</span></span><br><span class="line">  font-<span class="attr">size</span>: 14px;<span class="comment">//字体大小</span></span><br><span class="line">  font-<span class="attr">family</span>: <span class="title class_">Arial</span>;<span class="comment">//字体</span></span><br><span class="line">  font-<span class="attr">weight</span>: bold;<span class="comment">//文字粗度,粗体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Chrome 默认字体是 16px,最小字体是 12px.</p>
+</blockquote>
+<h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><ul>
+<li>text-aglin: 文本对齐方式,left,right,center,justify</li>
+<li>text-ident: 文案第一行缩进距离</li>
+<li>text-decoration: 划线,none,underline,line-through,overline</li>
+<li>text-transform: 改变文字大小写,none,uppercase,lowercase,captialize</li>
+<li>word-spacing: 可以改变字(单词)之间的标准间距</li>
+<li>letter-spacing: 字母之间的间隔</li>
+</ul>
+<h4 id="单行文本溢出加…"><a href="#单行文本溢出加…" class="headerlink" title="单行文本溢出加…"></a>单行文本溢出加…</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">box</span>&gt;h3 &#123;</span><br><span class="line">  white-<span class="attr">space</span>: nowrap;</span><br><span class="line">  <span class="attr">overflow</span>: hidden;</span><br><span class="line">  text-<span class="attr">overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><ul>
+<li>单词: red,blue,black,pink,yellow</li>
+<li>十六进制: #000000(黑),#fff(白),#eee(淡灰),#ccc(灰色),#666(深灰)</li>
+<li><code>rgb</code>:rgb(255,255,255)白色,rgba(0,0,0,0.5)透明度为 0.5 的黑色</li>
+</ul>
+<h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3><h4 id="px-rpx-em-rem的区别"><a href="#px-rpx-em-rem的区别" class="headerlink" title="px rpx em rem的区别"></a><code>px rpx em rem</code>的区别</h4><ol>
+<li><code>px</code>是像素 pixel，相对于屏幕分辨率的单位</li>
+<li><code>em</code>是相对单位，相对于当前对象内的文本尺寸。如果没有设置，则相对浏览器默认尺寸 16px，1em&#x3D;16px。</li>
+</ol>
+<p>为了简化，可以将 body 里 font-size&#x3D;62.5%，那么 em 就是 16px*62%&#x3D;10px。1em&#x3D;10px</p>
+<p><strong>em 特点</strong>：em 值不固定，会继承父元素字体大小 3. <code>rem</code>是 root em。只相对于 html 根元素 4. <code>rpx</code>是微信小程序的方案,是响应式像素,可以根据屏幕宽度进行自适应。规定屏幕为 750rpx.物理像素</p>
+<p>1px&#x3D;2rpx 5. <code>vh vw</code>: 相对单位,1vw 为屏幕宽度的 1%</p>
+<h3 id="background"><a href="#background" class="headerlink" title="background"></a>background</h3><ul>
+<li><code>background-color</code>: transparent 透明背景;颜色值;半透明浮层的背景颜色建议使用 rgba() 而不是 opacity 设置透明度。</li>
+<li><code>background-image</code>: url(..&#x2F;images&#x2F;bg.png);&#x2F;&#x2F; 属性用于给元素设置一张或多张背景图。</li>
+<li><code>background-repeat</code> 控制背景图片的重复方式。<code>no-repeat</code>不重复;<code>repeat-x</code>水平方向重复;<code>repeat-y</code> 垂直方向重复;</li>
+<li><code>background-position</code> 设置背景图的位置。<code>x y</code>;<code>x% y%</code>;<code>[top|center|bottom][left|center|right]</code></li>
+<li><code>background-size</code> 设定背景图片的大小。IE9 以下不支持;<code>cover</code>缩放背景图片以完全覆盖背景区，可能背景图片部分看不见;<code>contain</code>缩放背景图片以完全装入背景区，可能背景区部分空白。</li>
+<li><code>background-clip</code>: 设置元素背景区域覆盖的范围.border-box 覆盖至边框的最外围;padding-box 覆盖至内边距的最外围;content-box 仅覆盖元素内容区域</li>
+</ul>
+<p>缩写:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">avatar</span> &#123;</span><br><span class="line">  <span class="attr">background</span>: #fff <span class="title function_">url</span>(avatar.<span class="property">svg</span>) no-repeat left center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="隐藏-or-透明"><a href="#隐藏-or-透明" class="headerlink" title="隐藏 or 透明"></a>隐藏 or 透明</h3><ul>
+<li>opacity: 0;&#x2F;&#x2F;透明度为 0,整体</li>
+<li>visibility: hidden;&#x2F;&#x2F;和 opacity: 0;类似</li>
+<li>display: none;&#x2F;&#x2F;消失,不占用位置</li>
+<li>background-color: rgba(0,0,0,0.2);&#x2F;&#x2F;只是背景色透明</li>
+</ul>
+<h4 id="display-none-和-visibility-hidden-的区别"><a href="#display-none-和-visibility-hidden-的区别" class="headerlink" title="display:none 和 visibility:hidden 的区别"></a>display:none 和 visibility:hidden 的区别</h4><p><code>display:none</code>:</p>
+<p>不占据任何空间，在文档渲染时，该元素如同不存在（但依然存在文档对象模型树中）.会触发 reflow（回流）,进行渲染.不是继承属性，元素及其子元素都会消失</p>
+<p><code>visibility</code>:</p>
+<p>该元素空间依旧存在.只会触发 repaint（重绘），因为没有发现位置变化，不进行渲染.是继承属性，若子元素使用了 visibility:visible，则不继承，这个子孙元素又会显现出</p>
+<h3 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h3><p><code>box-shadow: -16px 0 16px 1px rgba(102,102,102,0.4);</code></p>
+<p>第一个值代表阴影左右偏移，正数往右，负数往左</p>
+<p>第二个值代表上下偏移，正往下，负往上</p>
+<p>第三个值越大，模糊面积越大越淡</p>
+<p>第四个值取正值时，阴影扩大，取负值时，阴影收缩</p>
+<h3 id="line-height"><a href="#line-height" class="headerlink" title="line-height"></a>line-height</h3><ul>
+<li>line-height: 2;&#x2F;&#x2F;本身字体高度的 2 倍</li>
+<li>line-height: 200%;&#x2F;&#x2F;父元素高度的 2 倍,父元素没写行高就是默认 16px*2&#x3D;32px</li>
+<li>height&#x3D;line-height;&#x2F;&#x2F;垂直居中单行文本</li>
+</ul>
+<h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><ul>
+<li>标准盒模型: border-box,即 padding,border 不在 width,height 范围内</li>
+<li>IE 盒模型: content-box,即 width&#x3D;content 尺寸+padding+border</li>
+</ul>
+<blockquote>
+<p>css3 可以设置<code>box-sizing: content-box;//标准盒模型</code></p>
+</blockquote>
+<h2 id="position"><a href="#position" class="headerlink" title="position"></a>position</h2><p>CSS position 属性用于指定一个元素在文档中的定位方式。</p>
+<p>语法: <code>static</code> | <code>relative</code> | <code>absolute</code> | <code>sticky</code> | <code>fixed</code></p>
+<ol>
+<li><code>static</code>: 该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 <code>top, right, bottom, left 和 z-index</code> 属性无效。</li>
+<li><code>relative:</code> 该关键字下，元素先放置在未添加定位时的位置，再在不改变页面布局的前提下调整元素位置（因此会在此元素未添加定位时所在位置留下空白）。<code>position:relative</code> 对 table 元素无效.</li>
+<li><code>absolute</code>: 不为元素预留空间，通过指定元素相对于最近的非 static 定位父元素的偏移，来确定元素位置。绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。</li>
+<li><code>fixed</code>: 不为元素预留空间，而是通过指定元素相对于屏幕视口（viewport）的位置来指定元素位置。元素的位置在屏幕滚动时不会改变。fixed 属性会创建新的层叠上下文。当元素祖先的 transform   属性非 none 时，容器由视口改为该祖先。</li>
+<li><code>sticky</code>: 盒位置根据正常流计算(这称为正常流动中的位置)，然后相对于该元素在流中的 flow root（BFC）和 containing block（最近的块级祖先元素）定位。在所有情况下（即便被定位元素为 table 时），该元素定位均不对后续元素造成影响。当元素 B 被粘性定位时，后续元素的位置仍按照 B 未定位时的位置来确定。</li>
+</ol>
+<h3 id="相对定位-relative"><a href="#相对定位-relative" class="headerlink" title="相对定位(relative)"></a>相对定位(relative)</h3><p>相对定位的元素是在文档中的正常位置偏移给定的值，但是不影响其他元素的偏移。</p>
+<h3 id="绝对定位-absolute-fixed"><a href="#绝对定位-absolute-fixed" class="headerlink" title="绝对定位(absolute,fixed)"></a>绝对定位(absolute,fixed)</h3><p>相对定位的元素并未脱离文档流，而绝对定位的元素则脱离了文档流。在布置文档流中其它元素时，绝对定位元素不占据空间。绝对定位元素相对于最近的非 static 祖先元素定位。当这样的祖先元素不存在时，则相对于 ICB（inital container block, 初始包含块）。</p>
+<h3 id="固定定位-fixed"><a href="#固定定位-fixed" class="headerlink" title="固定定位(fixed)"></a>固定定位(fixed)</h3><p>固定定位与绝对定位相似，但元素的包含块为 viewport 视口。该定位方式常用于创建在滚动屏幕时仍固定在相同位置的元素。</p>
+<h3 id="粘性定位-sticky"><a href="#粘性定位-sticky" class="headerlink" title="粘性定位(sticky)"></a>粘性定位(sticky)</h3><p>粘性定位可以被认为是相对定位和固定定位的混合。元素在跨越特定阈值前为相对定位，之后为固定定位。</p>
+<p><code>#one &#123; position: sticky; top: 10px; &#125;</code></p>
+<p>在 viewport 视口滚动到元素 top 距离小于 10px 之前，元素为相对定位。之后，元素将固定在与顶部距离 10px 的位置，直到 viewport 视口回滚到阈值以下。(理解为大于 10px 时,属于相对定位,可以在页面滚动时随之滚动,当距视口 10px 时,固定了,就像粘在那里了)</p>
+<h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><p><code>float: left;//向左浮动</code></p>
+<ul>
+<li>浮动元素并不是完全意义上的脱离文档流,至少普通元素里的文本可以发现,行内元素也可以发现</li>
+<li>设置浮动会让块级元素从左到右或从右到左排列.</li>
+<li>块级元素设置浮动呈现 inline-block 特性,不再撑开父元素,宽度也会收缩</li>
+<li>行内元素设置浮动呈现 inline-block 特性,可以设置宽高.</li>
+</ul>
+<h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><p>问题:</p>
+<ul>
+<li>对后续元素位置产生影响</li>
+<li>父容器高度计算出现问题</li>
+</ul>
+<p>清除浮动是为了清除使用浮动元素产生的影响。浮动的元素，高度会塌陷，而高度的塌陷使我们页面后面的布局不能正常显示。</p>
+<p><strong>通用解决方案</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">父元素加clearfix</span><br><span class="line">.<span class="property">clearfix</span>::after&#123;</span><br><span class="line">  <span class="attr">content</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attr">display</span>: block;</span><br><span class="line">  <span class="attr">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">clearfix</span>&#123;</span><br><span class="line">  *<span class="attr">zoom</span>: <span class="number">1</span></span><br><span class="line">  <span class="comment">//兼容IE6,7</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="BFC-块级格式化上下文"><a href="#BFC-块级格式化上下文" class="headerlink" title="BFC(块级格式化上下文)"></a>BFC(块级格式化上下文)</h2><p>决定了其子元素将如何定位,以及其他元素的关系和相互作用</p>
+<p>在正常流中的盒子要么属于块级格式化上下文,要么属于内联格式化上下文</p>
+<h3 id="BFC-的产生"><a href="#BFC-的产生" class="headerlink" title="BFC 的产生"></a>BFC 的产生</h3><ol>
+<li>根元素</li>
+<li>float 不为 none;</li>
+<li>position: absolute&#x2F;fixed;</li>
+<li>display: inline-block&#x2F;flex&#x2F;inline-flex&#x2F;table-cell;</li>
+<li>overflow 不为 visible;</li>
+</ol>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ol>
+<li>内部的 Box 会在垂直方向，一个接一个地放置。</li>
+<li>Box 垂直方向的距离由 margin 决定。属于同一个 BFC 的两个相邻 Box 的 margin 会发生重叠.每个元素的 margin box 的左边，与包含块 border box 的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。(如果有多个浮动盒,因为是浮动盒,所以后面的有新的 BFC,会挨着前面的从左到右排列)</li>
+<li>BFC 的区域不会与 float box 重叠。(不跟外面的浮动盒重叠,会把浮动盒挤到一边)</li>
+<li>BFC 就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li>
+<li>计算 BFC 的高度时，浮动元素也参与计算(包裹浮动元素).</li>
+</ol>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>阻止 margin 合并,因为 BFC 与外界隔离,自己的 margin 也就不再合并.</li>
+<li>contain float(包裹浮动元素).</li>
+</ol>
+<h2 id="边距合并"><a href="#边距合并" class="headerlink" title="边距合并"></a>边距合并</h2><h3 id="合并场景"><a href="#合并场景" class="headerlink" title="合并场景"></a>合并场景</h3><ol>
+<li>相邻元素合并,间距为二者中较大值</li>
+<li>父子合并</li>
+<li>自己合并</li>
+</ol>
+<h3 id="取消合并"><a href="#取消合并" class="headerlink" title="取消合并"></a>取消合并</h3><ol>
+<li>加 border,padding</li>
+<li>BFC</li>
+</ol>
+<h1 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h1><h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><ol>
+<li><strong>块级元素水平居中</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">margin-<span class="attr">left</span>:auto;</span><br><span class="line">margin-<span class="attr">right</span>:auto;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>内联元素水平居中，给它们的父元素加上</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-<span class="attr">align</span>:center;</span><br></pre></td></tr></table></figure>
+
+<p>若不是内联元素想让它居中，可加<code>display:inline-block</code>，加了之后一般还要加下面这句，不然可能会有 bug（下面可能会空出一行）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vertical-<span class="attr">align</span>: top;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>让导航栏横过来，并在同一行里均匀分布</strong></li>
+</ol>
+<p>给 ul 加 css</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ul&#123;</span><br><span class="line">  <span class="attr">display</span>:flex;</span><br><span class="line">  justyfy-<span class="attr">content</span>:space-between;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>去掉 li 的<code>float:left</code></p>
+<p>去掉 ul 的<code>clearfix</code></p>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><ol>
+<li><strong>若父元素没有写 height，则直接在父元素写</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">padding</span>: 10px <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>子元素就可以居中，所以尽量避免父亲高度确定</p>
+<h3 id="以下是宽高确定-注意写宽高"><a href="#以下是宽高确定-注意写宽高" class="headerlink" title="以下是宽高确定(注意写宽高)"></a>以下是宽高确定(注意写宽高)</h3><ol start="2">
+<li><strong>让一个元素在父级元素中绝对居中</strong></li>
+</ol>
+<p>方法一：</p>
+<p>给父级元素加:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">position</span>: relative; <span class="comment">//若父级元素是body可以不用加</span></span><br><span class="line"><span class="comment">//注意父元素需要宽高</span></span><br></pre></td></tr></table></figure>
+
+<p>再给自己加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  <span class="comment">//注意子元素也需要宽高</span></span><br><span class="line"> <span class="attr">position</span>: absolute;</span><br><span class="line"> <span class="attr">top</span>: <span class="number">0</span>;</span><br><span class="line"> <span class="attr">left</span>: <span class="number">0</span>;</span><br><span class="line"> <span class="attr">bottom</span>: <span class="number">0</span>;</span><br><span class="line"> <span class="attr">right</span>: <span class="number">0</span>;</span><br><span class="line"> <span class="attr">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：（若不兼容 IE，工作中只要用这一种方法即可，最简单，Chrome，移动端都可以用）</p>
+<p>给父元素加：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">display</span>: flex;               <span class="comment">//让它变成一个弹性盒</span></span><br><span class="line">justify-<span class="attr">content</span>: center;     <span class="comment">//水平居中</span></span><br><span class="line">align-<span class="attr">items</span>: center;         <span class="comment">//垂直居中</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>table 自带居中（兼容 IE）</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.parent</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">600px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.child</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> solid green;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">&quot;parent&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      文字</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>文字会居中</p>
+<ol start="4">
+<li><strong>用 div 假扮 table（兼容 IE）</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-tag">div</span><span class="selector-class">.table</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">display</span>: table;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">600px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-tag">div</span><span class="selector-class">.tr</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">display</span>: table-row;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> solid green;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-tag">div</span><span class="selector-class">.td</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">display</span>: table-cell;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> solid blue;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">vertical-align</span>: middle;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;table&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tr&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;td&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        文字</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><strong>用 100%高度的 before 和 after</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">parent</span>&#123;</span><br><span class="line">  <span class="attr">border</span>: 3px solid red;</span><br><span class="line">  <span class="attr">height</span>: 600px;</span><br><span class="line">  text-<span class="attr">align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">child</span>&#123;</span><br><span class="line">  <span class="attr">border</span>: 3px solid black;</span><br><span class="line">  <span class="attr">display</span>: inline-block;</span><br><span class="line">  <span class="attr">width</span>: 300px;</span><br><span class="line">  vertical-<span class="attr">align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">parent</span>:before&#123;</span><br><span class="line">  <span class="attr">content</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attr">display</span>: inline-block;</span><br><span class="line">  <span class="attr">height</span>: <span class="number">100</span>%;</span><br><span class="line">  vertical-<span class="attr">align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">parent</span>:after&#123;</span><br><span class="line">  <span class="attr">content</span>:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="attr">display</span>: inline-block;</span><br><span class="line">  <span class="attr">height</span>: <span class="number">100</span>%;</span><br><span class="line">  vertical-<span class="attr">align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><strong>绝对定位加上 margin-top: -自身 height 的 50%</strong></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.parent</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">600px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.child</span>&#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> solid green;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">width</span>: <span class="number">300px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">position</span>: absolute;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">top</span>: <span class="number">50%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">left</span>: <span class="number">50%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">margin-left</span>: -<span class="number">150px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">20px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">margin-top</span>: -<span class="number">10px</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">text-align</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;parent&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;child&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    文字</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>使用<strong>transform</strong></li>
+</ol>
+<p>子元素加<code>&#123;top:50%,transform:translate(-50%)&#125;</code></p>
+<h1 id="CSS3-有哪些新特性？"><a href="#CSS3-有哪些新特性？" class="headerlink" title="CSS3 有哪些新特性？"></a>CSS3 有哪些新特性？</h1><p>新增各种 CSS 选择器 （: not(.input)：所有 class 不是“input”的节点）</p>
+<p>圆角    （border-radius:8px）</p>
+<p>多列布局    （multi-column layout）</p>
+<p>阴影和反射 （box-shadow\reflect）</p>
+<p>文字特效 （text-shadow）</p>
+<p>文字渲染 （Text-decoration）</p>
+<p>线性渐变 （gradient）</p>
+<p>旋转 transform:rotate(90deg)</p>
+<p>缩放      transform:scale(0.85,0.90)</p>
+<p>位移      transform:translate(0px,-30px)</p>
+<p>倾斜      transform:skew(-9deg,0deg)</p>
+<p>动画      Animation</p>
+<h1 id="CSS-动画"><a href="#CSS-动画" class="headerlink" title="CSS 动画"></a>CSS 动画</h1><h2 id="transition-过渡"><a href="#transition-过渡" class="headerlink" title="transition(过渡)"></a>transition(过渡)</h2><p><code>transition</code>的作用在于指定状态变化所需要的时间.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div&#123;</span><br><span class="line">  <span class="attr">transition</span>: 1s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="指定属性"><a href="#指定属性" class="headerlink" title="指定属性"></a>指定属性</h3><p>可以指定<code>transition</code>使用的属性,比如只适用于 height</p>
+<p><code>transition: 1s height;</code></p>
+<h3 id="delay-延迟"><a href="#delay-延迟" class="headerlink" title="delay(延迟)"></a>delay(延迟)</h3><p><code>transition: 1s height,1s 1s width;</code></p>
+<p>width 在一秒之后在开始变化,也就是延迟一秒.delay 可以指定动画发生的顺序,使得不同 transition 可以连在一起,形成不同效果.</p>
+<h3 id="transition-timing-function-缓动函数"><a href="#transition-timing-function-缓动函数" class="headerlink" title="transition-timing-function(缓动函数)"></a>transition-timing-function(缓动函数)</h3><p>transition 的状态变化速度,默认不是匀速的,而是逐渐放慢的,这叫做 ease.</p>
+<p><code>transition: 1s ease;</code></p>
+<p>除了 ease,其他模式还有:</p>
+<ol>
+<li>linear: 匀速</li>
+<li>ease-in: 加速</li>
+<li>ease-out: 减速</li>
+<li>cubic-bezier: 自定义速度模式(可以在 cubic-bezier.com 里设置)</li>
+</ol>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>简写:</p>
+<p><code>transition: 1s 1s height ease;</code></p>
+<p>完整写法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transition-<span class="attr">property</span>: height;</span><br><span class="line">transition-<span class="attr">duration</span>: 1s;</span><br><span class="line">transition-<span class="attr">delay</span>: 1s;</span><br><span class="line">transition-timing-<span class="attr">function</span>: ease;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li>transition 需要明确知道，开始状态和结束状态的具体数值，才能计算出中间状态，什么 none 到 block 之类的是不行的</li>
+<li>transition 是一次性的，不能重复发生，除非一再触发</li>
+</ol>
+<h2 id="animation-动画"><a href="#animation-动画" class="headerlink" title="animation(动画)"></a>animation(动画)</h2><p>使用 animation 首先需要定义动画过程,即关键帧</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@keyframes rainbow &#123;</span><br><span class="line">  <span class="number">0</span>% &#123; <span class="attr">background</span>: #c00; &#125;</span><br><span class="line">  <span class="number">50</span>% &#123; <span class="attr">background</span>: orange; &#125;</span><br><span class="line">  <span class="number">100</span>% &#123; <span class="attr">background</span>: yellowgreen; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>写动画帧里的 css 记得加<code>;</code>号.</p>
+</blockquote>
+<p>定义关键帧后可以给 DOM 元素绑定动画,和事件比较像.加<code>infinite</code>代表无限次,改成数字就是循环多少次.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">div</span>:hover &#123;</span><br><span class="line">  <span class="attr">animation</span>: 1s rainbow infinite;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="animation-fill-mode"><a href="#animation-fill-mode" class="headerlink" title="animation-fill-mode"></a>animation-fill-mode</h3><p>动画结束后,会立即跳到结束状态,如果想让动画保持在结束状态,需要使用 animation-fill-mode 属性.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">div</span>:hover&#123;</span><br><span class="line">  <span class="attr">animation</span>: 1s rainbow forwards;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>animation-fill-mode 的属性:</p>
+<ol>
+<li>none: 默认值,回到动画未开始的状态.</li>
+<li>forwards: 让动画停留在结束状态</li>
+<li>backwards: 让动画回到第一帧的状态</li>
+<li>both: animation-direction 轮流应用 forwards 和 backwards 规则</li>
+</ol>
+<h3 id="animation-direction"><a href="#animation-direction" class="headerlink" title="animation-direction"></a>animation-direction</h3><p>动画循环播放时，每次都是从结束状态跳回到起始状态，再开始播放。animation-direction 属性，可以改变顺序</p>
+<p>默认情况是，animation-direction 等于 normal.此外，还可以等于取 alternate(先从前往后再从后往前)、reverse(从后往前)、alternate-reverse 等值.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">div</span>:hover &#123;</span><br><span class="line">  <span class="attr">animation</span>: 1s rainbow <span class="number">3</span> normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="animation-play-state"><a href="#animation-play-state" class="headerlink" title="animation-play-state"></a>animation-play-state</h3><p>有时，动画播放过程中，会突然停止。这时，默认行为是跳回到动画的开始状态，如果想让动画保持突然终止时的状态，就要使用 animation-play-state 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    <span class="attr">animation</span>: spin 1s linear infinite;</span><br><span class="line">    animation-play-<span class="attr">state</span>: paused;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">div</span>:hover &#123;</span><br><span class="line">  animation-play-<span class="attr">state</span>: running;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><p>简写:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">div</span>:hover &#123;</span><br><span class="line">  <span class="attr">animation</span>: 1s 1s rainbow linear <span class="number">3</span> forwards normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">div</span>:hover &#123;</span><br><span class="line">  animation-<span class="attr">name</span>: rainbow;</span><br><span class="line">  animation-<span class="attr">duration</span>: 1s;</span><br><span class="line">  animation-timing-<span class="attr">function</span>: linear;</span><br><span class="line">  animation-<span class="attr">delay</span>: 1s;</span><br><span class="line">  animation-fill-<span class="attr">mode</span>:forwards;</span><br><span class="line">  animation-<span class="attr">direction</span>: normal;</span><br><span class="line">  animation-iteration-<span class="attr">count</span>: <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>0%可以用 from 代表，100%可以用 to 代表，因此上面的代码等同于下面的形式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@keyframes rainbow &#123;</span><br><span class="line">  <span class="keyword">from</span> &#123; <span class="attr">background</span>: #c00 &#125;</span><br><span class="line">  <span class="number">50</span>% &#123; <span class="attr">background</span>: orange &#125;</span><br><span class="line">  to &#123; <span class="attr">background</span>: yellowgreen &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="steps-分步过渡"><a href="#steps-分步过渡" class="headerlink" title="steps(分步过渡)"></a>steps(分步过渡)</h3><p>浏览器从一个状态向另一个状态过渡，是平滑过渡。steps 函数可以实现分步过渡。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">div</span>:hover &#123;</span><br><span class="line">  <span class="attr">animation</span>: 1s rainbow infinite <span class="title function_">steps</span>(<span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="歌词效果"><a href="#歌词效果" class="headerlink" title="歌词效果"></a>歌词效果</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">@keyframes moving &#123;</span><br><span class="line">  <span class="keyword">from</span> &#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">line</span> &#123;</span><br><span class="line">  <span class="attr">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line">p &#123;</span><br><span class="line">  <span class="attr">width</span>: 600px;</span><br><span class="line">  font-<span class="attr">size</span>: 40px;</span><br><span class="line">  white-<span class="attr">space</span>: nowrap;</span><br><span class="line">  <span class="attr">overflow</span>: hidden;</span><br><span class="line">  <span class="attr">position</span>: absolute;</span><br><span class="line">  <span class="attr">top</span>: <span class="number">0</span>;</span><br><span class="line">  z-<span class="attr">index</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attr">p</span>:nth-<span class="title function_">child</span>(<span class="params"><span class="number">1</span></span>) &#123;</span><br><span class="line">  <span class="attr">color</span>: red;</span><br><span class="line">  <span class="attr">animation</span>: moving 20s</span><br><span class="line">&#125;</span><br><span class="line"><span class="attr">p</span>:nth-<span class="title function_">child</span>(<span class="params"><span class="number">2</span></span>) &#123;</span><br><span class="line">  z-<span class="attr">index</span>: -<span class="number">1</span>;</span><br><span class="line">  <span class="attr">color</span>: #<span class="number">666</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>To my days change my ways为生活我试着不断改变<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>This sudden end to my days这生命的终点突如其来<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="打字机效果"><a href="#打字机效果" class="headerlink" title="打字机效果"></a>打字机效果</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">@keyframes typing &#123;<span class="keyword">from</span> &#123; <span class="attr">width</span>: <span class="number">0</span> &#125; &#125;</span><br><span class="line">@keyframes blink-caret &#123; <span class="number">50</span>% &#123; border-<span class="attr">clolr</span>: transparent &#125; &#125;</span><br><span class="line">h1 &#123;</span><br><span class="line">  border-<span class="attr">right</span>: <span class="number">0.</span>1em solid;</span><br><span class="line">  <span class="attr">color</span>: #fff;</span><br><span class="line">  <span class="attr">width</span>: 352px;</span><br><span class="line">  <span class="attr">height</span>: 30px;</span><br><span class="line">  white-<span class="attr">space</span>: nowrap;</span><br><span class="line">  <span class="attr">overflow</span>: hidden;</span><br><span class="line">  <span class="attr">animation</span>: typing 5s <span class="title function_">steps</span>(<span class="number">11</span>, end),<span class="comment">//变11次变成最终状态</span></span><br><span class="line">  blink-caret .5s infinite alternate;</span><br><span class="line">&#125;</span><br><span class="line">body &#123;</span><br><span class="line">  <span class="attr">background</span>: #<span class="number">000</span>;</span><br><span class="line">  <span class="attr">height</span>: 100vh;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>躺在你的学校操场看星空<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h1 id="如果需要手动写动画，你认为最小时间间隔是多久，为什么"><a href="#如果需要手动写动画，你认为最小时间间隔是多久，为什么" class="headerlink" title="如果需要手动写动画，你认为最小时间间隔是多久，为什么"></a>如果需要手动写动画，你认为最小时间间隔是多久，为什么</h1><p>多数显示器默认频率是 60Hz，即 1 秒刷新 60 次，所以理论上最小间隔为 1&#x2F;60＊1000ms ＝ 16.7ms</p>
+<h1 id="transform-变形"><a href="#transform-变形" class="headerlink" title="transform(变形)"></a>transform(变形)</h1><p>transform 属性主要包括 rotate(旋转),skew(扭曲),scale(缩放),translate(移动),matrix(矩阵变形)</p>
+<p>transform ： none |  [  ]*</p>
+<p>transform 中使用多个属性时却需要有空格隔开，可用于内联(inline)元素和块级(block)元素</p>
+<h2 id="rotate-旋转"><a href="#rotate-旋转" class="headerlink" title="rotate(旋转)"></a>rotate(旋转)</h2><p>可以通过 rotate 使元素旋转一定的度数</p>
+<p><code>transform: rotate(30deg)//顺时针旋转30度</code></p>
+<ol>
+<li>旋转之后元素仍占据原来位置，实际上所有的 transform 都是这样，缩放、位移等都不会改变元素占据的位置</li>
+<li>元素旋转的的基点默认是中心，可以通过 transform-origin 属性改变</li>
+</ol>
+<p><code>transform:rotate(30deg); transform-origin: 0% 0%;</code></p>
+<p>transform-origin 的取值可以是:</p>
+<ol>
+<li>top, bottom, left, right, center</li>
+<li>百分数</li>
+</ol>
+<h2 id="translate-位移"><a href="#translate-位移" class="headerlink" title="translate(位移)"></a>translate(位移)</h2><p><code>transform: translateY(100px)//Y轴位移100px;</code></p>
+<h2 id="scale-缩放"><a href="#scale-缩放" class="headerlink" title="scale(缩放)"></a>scale(缩放)</h2><p>scale(x,y): 使元素水平方向和垂直方向同时缩放</p>
+<p><code>transform: translate(3)//相同的比例缩放两个方向</code></p>
+<h2 id="skew-扭曲"><a href="#skew-扭曲" class="headerlink" title="skew(扭曲)"></a>skew(扭曲)</h2><p>通过 skew 使元素扭曲一定的度数</p>
+<p><code>transform:skew(10deg, 20deg);//x轴扭曲10度,y轴扭曲20度</code></p>
+<h2 id="3D"><a href="#3D" class="headerlink" title="3D"></a>3D</h2><p>元素需要设置需要设置 perspective 来激活 3D 效果</p>
+<ol>
+<li><code>transform: perspective( 600px );</code></li>
+<li><code>perspective: 600px;</code></li>
+</ol>
+<p>perspective 属性的值决定了 3D 效果的强烈程度，可以认为是观察者到页面的距离。</p>
+<p>越大距离越远，视觉上的 3D 效果就会相应的减弱。</p>
+<h3 id="3D-变形方法"><a href="#3D-变形方法" class="headerlink" title="3D 变形方法"></a>3D 变形方法</h3><p>rotateX( angle )</p>
+<p>rotateY( angle )</p>
+<p>rotateZ( angle )</p>
+<p>translateZ( tz )</p>
+<p>scaleZ( sz )</p>
+<p>translateX()方法使元素延 X 轴移动，translateZ()使元素延 Z 轴（在 3D 空间中方向从前到后）移动。正值使元素离观察者更近，负值使元素变远。</p>
+<h1 id="渐进增强和优雅降级"><a href="#渐进增强和优雅降级" class="headerlink" title="渐进增强和优雅降级"></a>渐进增强和优雅降级</h1><p><strong>渐进增强</strong>（Progressive Enhancement）：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。</p>
+<p><strong>优雅降级</strong>（Graceful Degradation）：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览。</p>
+<p>其实渐进增强和优雅降级并非什么新概念，只是旧的概念换了一个新的说法。在传统软件开发中，经常会提到向上兼容和向下兼容的概念。渐进增强相当于向上兼容，而优雅降级相当于向下兼容。</p>
+<h2 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h2><p>优雅降级观点认为:</p>
+<p>应该针对那些最高级、最完善的浏览器来设计网站。而将那些被认为“过时”或有功能缺失的浏览器下的测试工作安排在开发周期的最后阶段，并把测试对象限定为主流浏览器（如 IE、Mozilla 等）的前一个版本。在这种设计范例下，旧版的浏览器被认为仅能提供“简陋却无妨 (poor, but passable)” 的浏览体验。你可以做一些小的调整来适应某个特定的浏览器。但由于它们并非我们所关注的焦点，因此除了修复较大的错误之外，其它的差异将被直接忽略。</p>
+<p>渐进增强观点则认为:</p>
+<p>应关注于内容本身。请注意其中的差别：我甚至连“浏览器”三个字都没提。内容是我们建立网站的诱因。有的网站展示它，有的则收集它，有的寻求，有的操作，还有的网站甚至会包含以上的种种，但相同点是它们全都涉及到内容。这使得渐进增强成为一种更为合理的设计范例。这也是它立即被 Yahoo! 所采纳并用以构建其“分级式浏览器支持 (Graded Browser Support)”策略的原因所在。</p>
+<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">transition</span> &#123; <span class="comment">/*渐进增强写法*/</span></span><br><span class="line">  -webkit-<span class="attr">transition</span>: all .5s;</span><br><span class="line">     -moz-<span class="attr">transition</span>: all .5s;</span><br><span class="line">       -o-<span class="attr">transition</span>: all .5s;</span><br><span class="line">          <span class="attr">transition</span>: all .5s;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">transition</span> &#123; <span class="comment">/*优雅降级写法*/</span></span><br><span class="line">          <span class="attr">transition</span>: all .5s;</span><br><span class="line">       -o-<span class="attr">transition</span>: all .5s;</span><br><span class="line">     -moz-<span class="attr">transition</span>: all .5s;</span><br><span class="line">  -webkit-<span class="attr">transition</span>: all .5s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>前缀 CSS3（<code>-webkit-* / -moz-* / -o-*</code>）和正常 CSS3 在浏览器中的支持情况是这样的：</p>
+<ol>
+<li>很久以前：浏览器前缀 CSS3 和正常 CSS3 都不支持；</li>
+<li>不久之前：浏览器只支持前缀 CSS3，不支持正常 CSS3；</li>
+<li>现在：浏览器既支持前缀 CSS3，又支持正常 CSS3；</li>
+<li>未来：浏览器不支持前缀 CSS3，仅支持正常 CSS3.</li>
+</ol>
+<p>渐进增强的写法，优先考虑老版本浏览器的可用性，最后才考虑新版本的可用性。在时期 3 前缀 CSS3 和正常 CSS3 都可用的情况下，正常 CSS3 会覆盖前缀 CSS3。优雅降级的写法，优先考虑新版本浏览器的可用性，最后才考虑老版本的可用性。在时期 3 前缀 CSS3 和正常 CSS3 都可用的情况下，前缀 CSS3 会覆盖正常的 CSS3。</p>
+<h1 id="重绘和回流"><a href="#重绘和回流" class="headerlink" title="重绘和回流"></a>重绘和回流</h1><h2 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h2><ol>
+<li>浏览器使用流式布局模型 (Flow Based Layout)。</li>
+<li>浏览器会把 HTML 解析成 DOM，把 CSS 解析成 CSSOM，DOM 和 CSSOM 合并就产生了 Render Tree。</li>
+<li>有了 RenderTree，我们就知道了所有节点的样式，然后计算他们在页面上的大小和位置，最后把节点绘制到页面上。</li>
+<li>由于浏览器使用流式布局，对 Render Tree 的计算通常只需要遍历一次就可以完成，但 table 及其内部元素除外，他们可能需要多次计算，通常要花 3 倍于同等元素的时间，这也是为什么要避免使用 table 布局的原因之一。</li>
+</ol>
+<blockquote>
+<p>回流必将引起重绘，重绘不一定会引起回流。</p>
+</blockquote>
+<h2 id="重绘"><a href="#重绘" class="headerlink" title="重绘"></a>重绘</h2><p>定义: 当页面中元素样式的改变并不影响它在文档流中的位置时（例如：color、background-color、visibility 等），浏览器会将新样式赋予给元素并重新绘制它，这个过程称为重绘。</p>
+<h2 id="回流"><a href="#回流" class="headerlink" title="回流"></a>回流</h2><p>定义: 当 Render Tree 中部分或全部元素的尺寸、结构、或某些属性发生改变时，浏览器重新渲染部分或全部文档的过程称为回流。</p>
+<h3 id="导致回流的操作"><a href="#导致回流的操作" class="headerlink" title="导致回流的操作"></a>导致回流的操作</h3><p>页面首次渲染</p>
+<p>浏览器窗口大小发生改变</p>
+<p>元素尺寸或位置发生改变</p>
+<p>元素内容变化（文字数量或图片大小等等）</p>
+<p>元素字体大小变化</p>
+<p>添加或者删除可见的 DOM 元素</p>
+<p>激活 CSS 伪类（例如：:hover）</p>
+<p>查询某些属性或调用某些方法</p>
+<h3 id="导致回流的属性"><a href="#导致回流的属性" class="headerlink" title="导致回流的属性"></a>导致回流的属性</h3><p>clientWidth、clientHeight、clientTop、clientLeft</p>
+<p>offsetWidth、offsetHeight、offsetTop、offsetLeft</p>
+<p>scrollWidth、scrollHeight、scrollTop、scrollLeft</p>
+<p>scrollIntoView()、scrollIntoViewIfNeeded()</p>
+<p>getComputedStyle()</p>
+<p>getBoundingClientRect()</p>
+<p>scrollTo()</p>
+<h2 id="性能影响"><a href="#性能影响" class="headerlink" title="性能影响"></a>性能影响</h2><p><strong>回流比重绘的代价要更高。</strong></p>
+<p>有时即使仅仅回流一个单一的元素，它的父元素以及任何跟随它的元素也会产生回流。</p>
+<p>现代浏览器会对频繁的回流或重绘操作进行优化：</p>
+<p>浏览器会维护一个队列，把所有引起回流和重绘的操作放入队列中，如果队列中的任务数量或者时间间隔达到一个阈值的，浏览器就会将队列清空，进行一次批处理，这样可以把多次回流和重绘变成一次。</p>
+<p>当你访问以下属性或方法时，浏览器会立刻清空队列：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">clientWidth、clientHeight、clientTop、clientLeft</span><br><span class="line">offsetWidth、offsetHeight、offsetTop、offsetLeft</span><br><span class="line">scrollWidth、scrollHeight、scrollTop、scrollLeft</span><br><span class="line">width、height</span><br><span class="line"><span class="title function_">getComputedStyle</span>()</span><br><span class="line"><span class="title function_">getBoundingClientRect</span>()</span><br></pre></td></tr></table></figure>
+
+<p>因为队列中可能会有影响到这些属性或方法返回值的操作，即使你希望获取的信息与队列中操作引发的改变无关，浏览器也会强行清空队列，确保你拿到的值是最精确的。</p>
+<h2 id="如何避免"><a href="#如何避免" class="headerlink" title="如何避免"></a>如何避免</h2><h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>避免使用 table 布局。</p>
+<p>尽可能在 DOM 树的最末端改变 class。</p>
+<p>避免设置多层内联样式。</p>
+<p>将动画效果应用到 position 属性为 absolute 或 fixed 的元素上。</p>
+<p>避免使用 CSS 表达式（例如：calc()）。</p>
+<h3 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h3><p>避免频繁操作样式，最好一次性重写 style 属性，或者将样式列表定义为 class 并一次性更改 class 属性。</p>
+<p>避免频繁操作 DOM，创建一个 documentFragment，在它上面应用所有 DOM 操作，最后再把它添加到文档中。</p>
+<p>也可以先为元素设置<code>display: none</code>，操作结束后再把它显示出来。因为在 display 属性为 none 的元素上进行的 DOM 操作不会引发回流和重绘。</p>
+<p>避免频繁读取会引发回流&#x2F;重绘的属性，如果确实需要多次使用，就用一个变量缓存起来。</p>
+<p>对具有复杂动画的元素使用绝对定位，使它脱离文档流，否则会引起父元素及后续元素频繁回流。</p>
+<h1 id="浏览器兼容性问题"><a href="#浏览器兼容性问题" class="headerlink" title="浏览器兼容性问题"></a>浏览器兼容性问题</h1><h2 id="样式兼容性（css）方面"><a href="#样式兼容性（css）方面" class="headerlink" title="样式兼容性（css）方面"></a>样式兼容性（css）方面</h2><p><a target="_blank" rel="noopener" href="https://imgse.com/i/QMPzOf"><img src="https://s2.ax1x.com/2019/12/03/QMPzOf.md.png#alt=QMPzOf.md.png"></a></p>
+<ol>
+<li>因为历史原因，不同的浏览器样式存在差异，可以通过 Normalize.css 抹平差异，也可以定制自己的 reset.css，例如通过通配符选择器，全局重置样式.</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attr">margin</span>: <span class="number">0</span>; <span class="attr">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在 CSS3 还没有成为真正的标准时，浏览器厂商就开始支持这些属性的使用了。CSS3 样式语法还存在波动时，浏览器厂商提供了针对浏览器的前缀，直到现在还是有部分的属性需要加上浏览器前缀。在开发过程中我们一般通过 IDE 开发插件、css 预处理器以及前端自动化构建工程帮我们处理。如 css-loader.</li>
+<li>在还原设计稿的时候我们常常会需要用到透明属性，所以解决 IE9 以下浏览器不能使用 opacit。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">opacity</span>: <span class="number">0.5</span>;</span><br><span class="line"><span class="attr">filter</span>: <span class="title function_">alpha</span>((opacity = <span class="number">50</span>)); <span class="comment">//IE6-IE8我们习惯使用filter滤镜属性来进行实现</span></span><br><span class="line"><span class="attr">filter</span>: <span class="attr">progid</span>: <span class="title class_">DXImageTransform</span>.<span class="property">Microsoft</span>.<span class="title class_">Alpha</span>((style = <span class="number">0</span>), (opacity = <span class="number">50</span>)); <span class="comment">//IE4-IE9都支持滤镜写法progid:DXImageTransform.Microsoft.Alpha(Opacity=xx)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="浏览器-hack"><a href="#浏览器-hack" class="headerlink" title="浏览器 hack"></a>浏览器 hack</h2><p>1.快速判断 IE 浏览器版本</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[<span class="keyword">if</span> <span class="variable constant_">IE</span> <span class="number">8</span>]&gt; ie8 &lt;![endif]--&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--[<span class="keyword">if</span> <span class="variable constant_">IE</span> <span class="number">9</span>]&gt; ie9 浏览器 &lt;![endif]--&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.判断是否是 Safari 浏览器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Safari */</span></span><br><span class="line"><span class="keyword">var</span> isSafari = <span class="regexp">/a/</span>.<span class="property">__proto__</span> == <span class="string">&quot;//&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3.判断是否是 Chrome 浏览器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Chrome */</span></span><br><span class="line"><span class="keyword">var</span> isChrome = <span class="title class_">Boolean</span>(<span class="variable language_">window</span>.<span class="property">chrome</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="js-兼容"><a href="#js-兼容" class="headerlink" title="js 兼容"></a>js 兼容</h2><p>1.事件兼容的问题，我们通常需要会封装一个适配器的方法，过滤事件句柄绑定、移除、冒泡阻止以及默认事件行为处理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> helper = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//绑定事件</span></span><br><span class="line">helper.<span class="property">on</span> = <span class="keyword">function</span> (<span class="params">target, type, handler</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (target.<span class="property">addEventListener</span>) &#123;</span><br><span class="line">    target.<span class="title function_">addEventListener</span>(type, handler, <span class="literal">false</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    target.<span class="title function_">attachEvent</span>(</span><br><span class="line">      <span class="string">&quot;on&quot;</span> + type,</span><br><span class="line">      <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> handler.<span class="title function_">call</span>(target, event);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="literal">false</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//取消事件监听</span></span><br><span class="line">helper.<span class="property">remove</span> = <span class="keyword">function</span> (<span class="params">target, type, handler</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (target.<span class="property">removeEventListener</span>) &#123;</span><br><span class="line">    target.<span class="title function_">removeEventListener</span>(type, handler);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    target.<span class="title function_">detachEvent</span>(</span><br><span class="line">      <span class="string">&quot;on&quot;</span> + type,</span><br><span class="line">      <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> handler.<span class="title function_">call</span>(target, event);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="literal">true</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>2.new Date()构造函数使用，’2018-07-05’是无法被各个浏览器中，使用 new Date(str)来正确生成日期对象的。 正确的用法是’2018&#x2F;07&#x2F;05’.</p>
+<p>3.获取 scrollTop 通过 document.documentElement.scrollTop 兼容非 chrome 浏览器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollTop = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">scrollTop</span> || <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">scrollTop</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/26/css/" data-id="cl9y1bhi1002ddvophlhr6nvn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/26/Vue-js%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Vue-js基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/26/cNode%E7%A4%BE%E5%8C%BA%E9%A1%B9%E7%9B%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">cNode社区项目</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">JS进阶</a> <a href="/tags/Vue-SSR/" style="font-size: 16.67px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 13.33px;">Vue.js进阶</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
