@@ -1,706 +1,268 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <meta charset="utf-8">
+  
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.3.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
-    save_scroll: false,
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: true,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
-
-  <meta name="description" content="书接上回我们看下entry-server.js主要做了什么">
-<meta name="keywords" content="Vue.js,Vue-SSR">
+  
+  <title>vue-hackernews-2.0 源码解读(适合入门)(二) | Zax&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="书接上回 我们看下entry-server.js主要做了什么 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374import &amp;#123; createApp &amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-hackernews-2.0 源码解读(适合入门)(二)">
-<meta property="og:url" content="http://yoursite.com/2019/10/17/vue-hackernews-2-0-源码解读-适合入门-二/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/10/17/vue-hackernews-2-0-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB-%E9%80%82%E5%90%88%E5%85%A5%E9%97%A8-%E4%BA%8C/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="书接上回我们看下entry-server.js主要做了什么">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="书接上回 我们看下entry-server.js主要做了什么 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374import &amp;#123; createApp &amp;#125;">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.ax1x.com/2019/10/17/KEZjTP.jpg">
-<meta property="og:updated_time" content="2019-10-17T11:39:55.730Z">
+<meta property="article:published_time" content="2019-10-17T11:07:51.000Z">
+<meta property="article:modified_time" content="2022-11-01T04:33:24.082Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="Vue.js">
+<meta property="article:tag" content="Vue-SSR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue-hackernews-2.0 源码解读(适合入门)(二)">
-<meta name="twitter:description" content="书接上回我们看下entry-server.js主要做了什么">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/10/17/KEZjTP.jpg">
-  <link rel="canonical" href="http://yoursite.com/2019/10/17/vue-hackernews-2-0-源码解读-适合入门-二/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>vue-hackernews-2.0 源码解读(适合入门)(二) | Zax's BLOG</title>
   
+    <link rel="alternate" href="/atom.xml" title="Zax&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-left">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Zax's BLOG</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Zax&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
     </div>
   </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue-hackernews-2-0-源码解读-适合入门-二" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/17/vue-hackernews-2-0-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB-%E9%80%82%E5%90%88%E5%85%A5%E9%97%A8-%E4%BA%8C/" class="article-date">
+  <time datetime="2019-10-17T11:07:51.000Z" itemprop="datePublished">2019-10-17</time>
+</a>
+    
   </div>
-</div>
-
-
-<nav class="site-nav">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-  <ul id="menu" class="menu">
-      
-      
-      
-        
-        <li class="menu-item menu-item-home">
-      
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-archives">
-      
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
-  </ul>
-
-    
-
-</nav>
-  <div class="site-search">
-    
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-  </div>
-</div>
-    </header>
-
-    
-
-  <a href="https://github.com/zaxtseng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content page-post-detail">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <h1 class="article-title" itemprop="name">
+      vue-hackernews-2.0 源码解读(适合入门)(二)
+    </h1>
   
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/17/vue-hackernews-2-0-源码解读-适合入门-二/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zax Tseng">
-      <meta itemprop="description" content="Zax's BLOG">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zax's BLOG">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">vue-hackernews-2.0 源码解读(适合入门)(二)
-
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-10-17 19:07:51 / 修改时间：19:39:55" itemprop="dateCreated datePublished" datetime="2019-10-17T19:07:51+08:00">2019-10-17</time>
-            </span>
-          
-            
-
-            
-          
-
-          
-
-        </div>
       </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
-        <p>书接上回</p><p>我们看下entry-server.js主要做了什么</p><a id="more"></a>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">'./app'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isDev = process.env.NODE_ENV !== <span class="string">'production'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//此导出的函数将由`bundleRenderer`调用。</span></span><br><span class="line"><span class="comment">//这是我们执行数据预取以确定</span></span><br><span class="line"><span class="comment">//实际渲染应用程序之前的状态。</span></span><br><span class="line"><span class="comment">//由于数据获取是异步的，因此该函数有望</span></span><br><span class="line"><span class="comment">//返回解析为应用实例的Promise。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// This exported function will be called by `bundleRenderer`.</span></span><br><span class="line"><span class="comment">// This is where we perform data-prefetching to determine the</span></span><br><span class="line"><span class="comment">// state of our application before actually rendering it.</span></span><br><span class="line"><span class="comment">// Since data fetching is async, this function is expected to</span></span><br><span class="line"><span class="comment">// return a Promise that resolves to the app instance.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> context =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> s = isDev &amp;&amp; <span class="built_in">Date</span>.now()</span><br><span class="line">    <span class="keyword">const</span> &#123; app, router, store &#125; = createApp()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; url &#125; = context</span><br><span class="line">    <span class="keyword">const</span> &#123; fullPath &#125; = router.resolve(url).route</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fullPath !== url) &#123;</span><br><span class="line">      <span class="keyword">return</span> reject(&#123; <span class="attr">url</span>: fullPath &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置路由位置</span></span><br><span class="line">    <span class="comment">// set router's location</span></span><br><span class="line">    router.push(url)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//等待路由可能的异步钩子</span></span><br><span class="line">    <span class="comment">// wait until router has resolved possible async hooks</span></span><br><span class="line">    router.onReady(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> matchedComponents = router.getMatchedComponents()</span><br><span class="line">      <span class="comment">// no matched routes</span></span><br><span class="line">      <span class="keyword">if</span> (!matchedComponents.length) &#123;</span><br><span class="line">        <span class="keyword">return</span> reject(&#123; <span class="attr">code</span>: <span class="number">404</span> &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//路由上匹配的组件唤醒fetchData钩子</span></span><br><span class="line">      <span class="comment">//一个预置钩子匹配一个状态返回promise</span></span><br><span class="line">      <span class="comment">//当解析完成且状态更新</span></span><br><span class="line">      <span class="comment">// Call fetchData hooks on components matched by the route.</span></span><br><span class="line">      <span class="comment">// A preFetch hook dispatches a store action and returns a Promise,</span></span><br><span class="line">      <span class="comment">// which is resolved when the action is complete and store state has been</span></span><br><span class="line">      <span class="comment">// updated.</span></span><br><span class="line">      <span class="comment">// 使用Promise.all执行匹配到的Component的asyncData方法，即预取数据</span></span><br><span class="line">      <span class="built_in">Promise</span>.all(matchedComponents.map(<span class="function">(<span class="params">&#123; asyncData &#125;</span>) =&gt;</span> asyncData &amp;&amp; asyncData(&#123;</span><br><span class="line">        store,</span><br><span class="line">        route: router.currentRoute</span><br><span class="line">      &#125;))).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        isDev &amp;&amp; <span class="built_in">console</span>.log(<span class="string">`data pre-fetch: <span class="subst">$&#123;<span class="built_in">Date</span>.now() - s&#125;</span>ms`</span>)</span><br><span class="line">        <span class="comment">//解析了所有prefetch钩子后,渲染app所需要的state充满了store,</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//在渲染上下文中公开状态，并让请求处理程序</span></span><br><span class="line">        <span class="comment">//内联HTML响应中的状态。这允许客户端</span></span><br><span class="line">        <span class="comment">//存储以获取服务器端状态，而不必重复</span></span><br><span class="line">        <span class="comment">//在客户端上获取初始数据。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// After all preFetch hooks are resolved, our store is now</span></span><br><span class="line">        <span class="comment">// filled with the state needed to render the app.</span></span><br><span class="line">        <span class="comment">// Expose the state on the render context, and let the request handler</span></span><br><span class="line">        <span class="comment">// inline the state in the HTML response. This allows the client-side</span></span><br><span class="line">        <span class="comment">// store to pick-up the server-side state without having to duplicate</span></span><br><span class="line">        <span class="comment">// the initial data fetching on the client.</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">// 把vuex的state设置到传入的context.initialState上</span></span><br><span class="line">        context.state = store.state</span><br><span class="line">         <span class="comment">// 返回state, router已经设置好的Vue实例app</span></span><br><span class="line">        resolve(app)</span><br><span class="line">      &#125;).catch(reject)</span><br><span class="line">    &#125;, reject)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>entry-server.js的主要工作：<br>0.返回一个函数，该函数接受一个从服务端传递过来的 context 的参数，<br>将 vue 实例通过 Promise 返回。 context 一般包含 当前页面的url。<br>1.手动路由切换到请求的url，即’/‘<br>2.找到该路由对应要渲染的组件，并调用组件的asyncData方法来预取数据<br>3.同步vuex的state数据至传入的context.initialState上，<br>后面会把这些数据直接发送到浏览器端与客户端的vue 实例进行数据(状态)同步，<br>以避免客户端首屏重新加载数据（在客户端入口文件entry-client.js）</p>
+        <p>书接上回</p>
+<p>我们看下entry-server.js主要做了什么</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createApp &#125; <span class="keyword">from</span> <span class="string">&#x27;./app&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isDev = process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&#x27;production&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//此导出的函数将由`bundleRenderer`调用。</span></span><br><span class="line"><span class="comment">//这是我们执行数据预取以确定</span></span><br><span class="line"><span class="comment">//实际渲染应用程序之前的状态。</span></span><br><span class="line"><span class="comment">//由于数据获取是异步的，因此该函数有望</span></span><br><span class="line"><span class="comment">//返回解析为应用实例的Promise。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// This exported function will be called by `bundleRenderer`.</span></span><br><span class="line"><span class="comment">// This is where we perform data-prefetching to determine the</span></span><br><span class="line"><span class="comment">// state of our application before actually rendering it.</span></span><br><span class="line"><span class="comment">// Since data fetching is async, this function is expected to</span></span><br><span class="line"><span class="comment">// return a Promise that resolves to the app instance.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> context =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> s = isDev &amp;&amp; <span class="title class_">Date</span>.<span class="title function_">now</span>()</span><br><span class="line">    <span class="keyword">const</span> &#123; app, router, store &#125; = <span class="title function_">createApp</span>()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; url &#125; = context</span><br><span class="line">    <span class="keyword">const</span> &#123; fullPath &#125; = router.<span class="title function_">resolve</span>(url).<span class="property">route</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fullPath !== url) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">reject</span>(&#123; <span class="attr">url</span>: fullPath &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置路由位置</span></span><br><span class="line">    <span class="comment">// set router&#x27;s location</span></span><br><span class="line">    router.<span class="title function_">push</span>(url)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//等待路由可能的异步钩子</span></span><br><span class="line">    <span class="comment">// wait until router has resolved possible async hooks</span></span><br><span class="line">    router.<span class="title function_">onReady</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> matchedComponents = router.<span class="title function_">getMatchedComponents</span>()</span><br><span class="line">      <span class="comment">// no matched routes</span></span><br><span class="line">      <span class="keyword">if</span> (!matchedComponents.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">reject</span>(&#123; <span class="attr">code</span>: <span class="number">404</span> &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//路由上匹配的组件唤醒fetchData钩子</span></span><br><span class="line">      <span class="comment">//一个预置钩子匹配一个状态返回promise</span></span><br><span class="line">      <span class="comment">//当解析完成且状态更新</span></span><br><span class="line">      <span class="comment">// Call fetchData hooks on components matched by the route.</span></span><br><span class="line">      <span class="comment">// A preFetch hook dispatches a store action and returns a Promise,</span></span><br><span class="line">      <span class="comment">// which is resolved when the action is complete and store state has been</span></span><br><span class="line">      <span class="comment">// updated.</span></span><br><span class="line">      <span class="comment">// 使用Promise.all执行匹配到的Component的asyncData方法，即预取数据</span></span><br><span class="line">      <span class="title class_">Promise</span>.<span class="title function_">all</span>(matchedComponents.<span class="title function_">map</span>(<span class="function">(<span class="params">&#123; asyncData &#125;</span>) =&gt;</span> asyncData &amp;&amp; <span class="title function_">asyncData</span>(&#123;</span><br><span class="line">        store,</span><br><span class="line">        <span class="attr">route</span>: router.<span class="property">currentRoute</span></span><br><span class="line">      &#125;))).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        isDev &amp;&amp; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`data pre-fetch: <span class="subst">$&#123;<span class="built_in">Date</span>.now() - s&#125;</span>ms`</span>)</span><br><span class="line">        <span class="comment">//解析了所有prefetch钩子后,渲染app所需要的state充满了store,</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//在渲染上下文中公开状态，并让请求处理程序</span></span><br><span class="line">        <span class="comment">//内联HTML响应中的状态。这允许客户端</span></span><br><span class="line">        <span class="comment">//存储以获取服务器端状态，而不必重复</span></span><br><span class="line">        <span class="comment">//在客户端上获取初始数据。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// After all preFetch hooks are resolved, our store is now</span></span><br><span class="line">        <span class="comment">// filled with the state needed to render the app.</span></span><br><span class="line">        <span class="comment">// Expose the state on the render context, and let the request handler</span></span><br><span class="line">        <span class="comment">// inline the state in the HTML response. This allows the client-side</span></span><br><span class="line">        <span class="comment">// store to pick-up the server-side state without having to duplicate</span></span><br><span class="line">        <span class="comment">// the initial data fetching on the client.</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">// 把vuex的state设置到传入的context.initialState上</span></span><br><span class="line">        context.<span class="property">state</span> = store.<span class="property">state</span></span><br><span class="line">         <span class="comment">// 返回state, router已经设置好的Vue实例app</span></span><br><span class="line">        <span class="title function_">resolve</span>(app)</span><br><span class="line">      &#125;).<span class="title function_">catch</span>(reject)</span><br><span class="line">    &#125;, reject)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>entry-server.js的主要工作：<br>0.返回一个函数，该函数接受一个从服务端传递过来的 context 的参数，<br>将 vue 实例通过 Promise 返回。 context 一般包含 当前页面的url。<br>1.手动路由切换到请求的url，即’&#x2F;‘<br>2.找到该路由对应要渲染的组件，并调用组件的asyncData方法来预取数据<br>3.同步vuex的state数据至传入的context.initialState上，<br>后面会把这些数据直接发送到浏览器端与客户端的vue 实例进行数据(状态)同步，<br>以避免客户端首屏重新加载数据（在客户端入口文件entry-client.js）</p>
 <p>还记得index.template.html被设置到template属性中吗？<br>此时Vue渲染器内部就会将Vue实例渲染进我们传入的这个html模板，那么Vue render内部是如何知道把Vue实例插入到模板的什么位置呢？</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!--vue-ssr-outlet--&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;!--vue-ssr-outlet--&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <p>就是这里，这个<code>&lt;!--vue-ssr-outlet--&gt;</code>Vue渲染器就是根据这个自动替换插入，所以这是个固定的placeholder。<br>如果改动，服务端渲染时会有错误提示：Error: Content placeholder not found in template.</p>
 <p>接下来，Vue渲染器会回调callback方法，我们回到server.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">	</span><br><span class="line">  ···</span><br><span class="line">  renderer.renderToString(context, (err, html) =&gt; &#123;</span><br><span class="line">    res.end(html)</span><br><span class="line">    ···</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">render</span> (req, res) &#123;</span><br><span class="line">	</span><br><span class="line">  ···</span><br><span class="line">  renderer.<span class="title function_">renderToString</span>(context, <span class="function">(<span class="params">err, html</span>) =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">end</span>(html)</span><br><span class="line">    ···</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>此时只需要将渲染好的html写入http响应体就结束了，浏览器客户端就可以看到页面了。</p>
 <p>接下来我们看看服务端数据预取的实现</p>
-<h1 id="服务端渲染时的数据预取流程"><a href="#服务端渲染时的数据预取流程" class="headerlink" title="服务端渲染时的数据预取流程"></a>服务端渲染时的数据预取流程</h1><p>上文提到，服务端渲染时，会手动将路由导航到请求地址即’/‘下，然后调用该路由组件的asyncData方法来预取数据</p>
+<h1 id="服务端渲染时的数据预取流程"><a href="#服务端渲染时的数据预取流程" class="headerlink" title="服务端渲染时的数据预取流程"></a>服务端渲染时的数据预取流程</h1><p>上文提到，服务端渲染时，会手动将路由导航到请求地址即’&#x2F;‘下，然后调用该路由组件的asyncData方法来预取数据</p>
 <p>那么我们看看路由配置</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /src/router/index.js</span></span><br><span class="line">Vue.use(Router)</span><br><span class="line"><span class="comment">// route-level code splitting</span></span><br><span class="line"><span class="keyword">const</span> createListView = <span class="function"><span class="params">id</span> =&gt;</span> <span class="function"><span class="params">()</span> =&gt;</span> System.import(<span class="string">'../views/CreateListView'</span>).then(<span class="function"><span class="params">m</span> =&gt;</span> m.default(id))</span><br><span class="line"><span class="keyword">const</span> ItemView = <span class="function"><span class="params">()</span> =&gt;</span> System.import(<span class="string">'../views/ItemView.vue'</span>)</span><br><span class="line"><span class="keyword">const</span> UserView = <span class="function"><span class="params">()</span> =&gt;</span> System.import(<span class="string">'../views/UserView.vue'</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createRouter</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">    mode: <span class="string">'history'</span>,</span><br><span class="line">    scrollBehavior: <span class="function"><span class="params">()</span> =&gt;</span> (&#123; <span class="attr">y</span>: <span class="number">0</span> &#125;),</span><br><span class="line">    routes: [</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">'/top/:page(\\d+)?'</span>, <span class="attr">component</span>: createListView(<span class="string">'top'</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">'/new/:page(\\d+)?'</span>, <span class="attr">component</span>: createListView(<span class="string">'new'</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">'/show/:page(\\d+)?'</span>, <span class="attr">component</span>: createListView(<span class="string">'show'</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">'/ask/:page(\\d+)?'</span>, <span class="attr">component</span>: createListView(<span class="string">'ask'</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">'/job/:page(\\d+)?'</span>, <span class="attr">component</span>: createListView(<span class="string">'job'</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">'/item/:id(\\d+)'</span>, <span class="attr">component</span>: ItemView &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">'/user/:id'</span>, <span class="attr">component</span>: UserView &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">'/'</span>, <span class="attr">redirect</span>: <span class="string">'/top'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>地址’/‘是做了redirect到’/top’,其实就是默认地址就是到top页面，在看第一条路由配置，’/top’路由对应的组件是createListView(‘top’)</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /src/views/CreateListView.js</span></span><br><span class="line"><span class="keyword">import</span> ItemList <span class="keyword">from</span> <span class="string">'./ItemList.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> camelize = <span class="function"><span class="params">str</span> =&gt;</span> str.charAt(<span class="number">0</span>).toUpperCase() + str.slice(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// This is a factory function for dynamically creating root-level list views,</span></span><br><span class="line"><span class="comment">// since they share most of the logic except for the type of items to display.</span></span><br><span class="line"><span class="comment">// They are essentially higher order components wrapping ItemList.vue.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">createListView</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    name: <span class="string">`<span class="subst">$&#123;type&#125;</span>-stories-view`</span>,</span><br><span class="line">    <span class="comment">//从store中取值</span></span><br><span class="line">    asyncData (&#123; store &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> store.dispatch(<span class="string">'FETCH_LIST_DATA'</span>, &#123; type &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    title: camelize(type),</span><br><span class="line">    <span class="comment">//创建itemlist的节点,渲染节点</span></span><br><span class="line">    render (h) &#123;</span><br><span class="line">      <span class="keyword">return</span> h(ItemList, &#123; <span class="attr">props</span>: &#123; type &#125;&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /src/router/index.js</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Router</span>)</span><br><span class="line"><span class="comment">// route-level code splitting</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">createListView</span> = id =&gt; <span class="function">() =&gt;</span> <span class="title class_">System</span>.<span class="title function_">import</span>(<span class="string">&#x27;../views/CreateListView&#x27;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">m</span> =&gt;</span> m.<span class="title function_">default</span>(id))</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">ItemView</span> = (<span class="params"></span>) =&gt; <span class="title class_">System</span>.<span class="title function_">import</span>(<span class="string">&#x27;../views/ItemView.vue&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">UserView</span> = (<span class="params"></span>) =&gt; <span class="title class_">System</span>.<span class="title function_">import</span>(<span class="string">&#x27;../views/UserView.vue&#x27;</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createRouter</span> () &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Router</span>(&#123;</span><br><span class="line">    <span class="attr">mode</span>: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">    <span class="attr">scrollBehavior</span>: <span class="function">() =&gt;</span> (&#123; <span class="attr">y</span>: <span class="number">0</span> &#125;),</span><br><span class="line">    <span class="attr">routes</span>: [</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">&#x27;/top/:page(\\d+)?&#x27;</span>, <span class="attr">component</span>: <span class="title function_">createListView</span>(<span class="string">&#x27;top&#x27;</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">&#x27;/new/:page(\\d+)?&#x27;</span>, <span class="attr">component</span>: <span class="title function_">createListView</span>(<span class="string">&#x27;new&#x27;</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">&#x27;/show/:page(\\d+)?&#x27;</span>, <span class="attr">component</span>: <span class="title function_">createListView</span>(<span class="string">&#x27;show&#x27;</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">&#x27;/ask/:page(\\d+)?&#x27;</span>, <span class="attr">component</span>: <span class="title function_">createListView</span>(<span class="string">&#x27;ask&#x27;</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">&#x27;/job/:page(\\d+)?&#x27;</span>, <span class="attr">component</span>: <span class="title function_">createListView</span>(<span class="string">&#x27;job&#x27;</span>) &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">&#x27;/item/:id(\\d+)&#x27;</span>, <span class="attr">component</span>: <span class="title class_">ItemView</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">&#x27;/user/:id&#x27;</span>, <span class="attr">component</span>: <span class="title class_">UserView</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">path</span>: <span class="string">&#x27;/&#x27;</span>, <span class="attr">redirect</span>: <span class="string">&#x27;/top&#x27;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>地址’&#x2F;‘是做了redirect到’&#x2F;top’,其实就是默认地址就是到top页面，在看第一条路由配置，’&#x2F;top’路由对应的组件是createListView(‘top’)</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /src/views/CreateListView.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ItemList</span> <span class="keyword">from</span> <span class="string">&#x27;./ItemList.vue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">camelize</span> = str =&gt; str.<span class="title function_">charAt</span>(<span class="number">0</span>).<span class="title function_">toUpperCase</span>() + str.<span class="title function_">slice</span>(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// This is a factory function for dynamically creating root-level list views,</span></span><br><span class="line"><span class="comment">// since they share most of the logic except for the type of items to display.</span></span><br><span class="line"><span class="comment">// They are essentially higher order components wrapping ItemList.vue.</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">createListView</span> (type) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">`<span class="subst">$&#123;type&#125;</span>-stories-view`</span>,</span><br><span class="line">    <span class="comment">//从store中取值</span></span><br><span class="line">    asyncData (&#123; store &#125;) &#123;</span><br><span class="line">      <span class="keyword">return</span> store.<span class="title function_">dispatch</span>(<span class="string">&#x27;FETCH_LIST_DATA&#x27;</span>, &#123; type &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="attr">title</span>: <span class="title function_">camelize</span>(type),</span><br><span class="line">    <span class="comment">//创建itemlist的节点,渲染节点</span></span><br><span class="line">    render (h) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">h</span>(<span class="title class_">ItemList</span>, &#123; <span class="attr">props</span>: &#123; type &#125;&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="Vuex-state状态变更流程"><a href="#Vuex-state状态变更流程" class="headerlink" title="Vuex state状态变更流程"></a>Vuex state状态变更流程</h1><p><img src="https://s2.ax1x.com/2019/10/17/KEZjTP.jpg" alt="KEZjTP.jpg"><br>asyncData方法被调用，通过store.dispatch分发了一个数据预取的事件，接下来我们可以看到通过FireBase的API获取到Top分类的数据，然后又做了一系列的内部事件分发，保存数据状态到Vuex store，获取Top页面的List子项数据，最后处理并保存数据到store.</p>
 <p>最后数据就都保存在store这里了。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> actions <span class="keyword">from</span> <span class="string">'./actions'</span></span><br><span class="line"><span class="keyword">import</span> mutations <span class="keyword">from</span> <span class="string">'./mutations'</span></span><br><span class="line"><span class="keyword">import</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createStore</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">    state: &#123;</span><br><span class="line">      activeType: <span class="literal">null</span>,</span><br><span class="line">      itemsPerPage: <span class="number">20</span>,</span><br><span class="line">      items: &#123;<span class="comment">/* [id: number]: Item */</span>&#125;,</span><br><span class="line">      users: &#123;<span class="comment">/* [id: string]: User */</span>&#125;,</span><br><span class="line">      lists: &#123;</span><br><span class="line">        top: [<span class="comment">/* number */</span>],</span><br><span class="line">        <span class="keyword">new</span>: [],</span><br><span class="line">        show: [],</span><br><span class="line">        ask: [],</span><br><span class="line">        job: []</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions,</span><br><span class="line">    mutations,</span><br><span class="line">    getters</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Vuex</span> <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="keyword">import</span> actions <span class="keyword">from</span> <span class="string">&#x27;./actions&#x27;</span></span><br><span class="line"><span class="keyword">import</span> mutations <span class="keyword">from</span> <span class="string">&#x27;./mutations&#x27;</span></span><br><span class="line"><span class="keyword">import</span> getters <span class="keyword">from</span> <span class="string">&#x27;./getters&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Vuex</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">createStore</span> () &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    <span class="attr">state</span>: &#123;</span><br><span class="line">      <span class="attr">activeType</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="attr">itemsPerPage</span>: <span class="number">20</span>,</span><br><span class="line">      <span class="attr">items</span>: &#123;<span class="comment">/* [id: number]: Item */</span>&#125;,</span><br><span class="line">      <span class="attr">users</span>: &#123;<span class="comment">/* [id: string]: User */</span>&#125;,</span><br><span class="line">      <span class="attr">lists</span>: &#123;</span><br><span class="line">        <span class="attr">top</span>: [<span class="comment">/* number */</span>],</span><br><span class="line">        <span class="attr">new</span>: [],</span><br><span class="line">        <span class="attr">show</span>: [],</span><br><span class="line">        <span class="attr">ask</span>: [],</span><br><span class="line">        <span class="attr">job</span>: []</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    actions,</span><br><span class="line">    mutations,</span><br><span class="line">    getters</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>然后将开始通过Render 函数创建HTML</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /src/views/CreateListView.js</span></span><br><span class="line">render (h) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`createListView render`</span>)</span><br><span class="line">      <span class="keyword">return</span> h(ItemList, &#123; <span class="attr">props</span>: &#123; type &#125;&#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /src/views/ItemList.vue</span></span><br><span class="line">···</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"news-view"</span>&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"news-list-nav"</span>&gt;</span><br><span class="line">      &lt;router-link v-<span class="keyword">if</span>=<span class="string">"page &gt; 1"</span> :to=<span class="string">"'/' + type + '/' + (page - 1)"</span>&gt;&amp;lt; prev&lt;<span class="regexp">/router-link&gt;</span></span><br><span class="line"><span class="regexp">      &lt;a v-else class="disabled"&gt;&amp;lt; prev&lt;/</span>a&gt;</span><br><span class="line">      &lt;span&gt;&#123;&#123; page &#125;&#125;/&#123;&#123; maxPage &#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">      &lt;router-link v-if="hasMore" :to="'/</span><span class="string">' + type + '</span>/<span class="string">' + (page + 1)"&gt;more &amp;gt;&lt;/router-link&gt;</span></span><br><span class="line"><span class="string">      &lt;a v-else class="disabled"&gt;more &amp;gt;&lt;/a&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;transition :name="transition"&gt;</span></span><br><span class="line"><span class="string">      &lt;div class="news-list" :key="displayedPage" v-if="displayedPage &gt; 0"&gt;</span></span><br><span class="line"><span class="string">        &lt;transition-group tag="ul" name="item"&gt;</span></span><br><span class="line"><span class="string">          &lt;item v-for="item in displayedItems" :key="item.id" :item="item"&gt;</span></span><br><span class="line"><span class="string">          &lt;/item&gt;</span></span><br><span class="line"><span class="string">        &lt;/transition-group&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/transition&gt;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/template&gt;</span></span><br><span class="line"><span class="string">···</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /src/views/CreateListView.js</span></span><br><span class="line">render (h) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`createListView render`</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">h</span>(<span class="title class_">ItemList</span>, &#123; <span class="attr">props</span>: &#123; type &#125;&#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /src/views/ItemList.vue</span></span><br><span class="line">···</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;news-view&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;news-list-nav&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">v-if</span>=<span class="string">&quot;page &gt; 1&quot;</span> <span class="attr">:to</span>=<span class="string">&quot;&#x27;/&#x27; + type + &#x27;/&#x27; + (page - 1)&quot;</span>&gt;</span><span class="symbol">&amp;lt;</span> prev<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-else</span> <span class="attr">class</span>=<span class="string">&quot;disabled&quot;</span>&gt;</span><span class="symbol">&amp;lt;</span> prev<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; page &#125;&#125;/&#123;&#123; maxPage &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">v-if</span>=<span class="string">&quot;hasMore&quot;</span> <span class="attr">:to</span>=<span class="string">&quot;&#x27;/&#x27; + type + &#x27;/&#x27; + (page + 1)&quot;</span>&gt;</span>more <span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">v-else</span> <span class="attr">class</span>=<span class="string">&quot;disabled&quot;</span>&gt;</span>more <span class="symbol">&amp;gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">transition</span> <span class="attr">:name</span>=<span class="string">&quot;transition&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;news-list&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;displayedPage&quot;</span> <span class="attr">v-if</span>=<span class="string">&quot;displayedPage &gt; 0&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">transition-group</span> <span class="attr">tag</span>=<span class="string">&quot;ul&quot;</span> <span class="attr">name</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">item</span> <span class="attr">v-for</span>=<span class="string">&quot;item in displayedItems&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;item.id&quot;</span> <span class="attr">:item</span>=<span class="string">&quot;item&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">transition-group</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
 <p>这样创建完HTML Body部分，前面提到的Vue渲染器会自动把这部分内容插入index.template.html中，替换对应的<!--vue-ssr-outlet-->,然后就又回到前面的流程了，server.js将整个html写入http响应体，浏览器就得到了整个html页面，整个首次访问过程完成。<br>暂时先这样</p>
 
+      
     </div>
-
-    
-    
-    
-        
-      
-
-      <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/Vue-js/" rel="tag"><i class="fa fa-tag"></i> Vue.js</a>
-            
-              <a href="/tags/Vue-SSR/" rel="tag"><i class="fa fa-tag"></i> Vue-SSR</a>
-            
-          </div>
-        
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/10/16/vue-hackernews-2-0-源码解读-适合入门/" rel="next" title="vue-hackernews-2.0 源码解读(适合入门)(一)">
-                  <i class="fa fa-chevron-left"></i> vue-hackernews-2.0 源码解读(适合入门)(一)
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/10/25/滚动阅读/" rel="prev" title="滚动阅读">
-                  滚动阅读 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
-        
-      </footer>
-    
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
-
-
-          </div>
-          
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.gif"
-      alt="Zax Tseng">
-  <p class="site-author-name" itemprop="name">Zax Tseng</p>
-  <div class="site-description motion-element" itemprop="description">Zax's BLOG</div>
-</div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-    
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/17/vue-hackernews-2-0-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB-%E9%80%82%E5%90%88%E5%85%A5%E9%97%A8-%E4%BA%8C/" data-id="cl9xpujrj0039dmopfzr8gblh" class="article-share-link">Share</a>
       
       
-      <div class="site-state-item site-state-categories">
-        
-          
-            <a href="/categories/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">分类</span>
-        </a>
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-tags">
-        
-          
-            <a href="/tags/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
-      </div>
-    
-  </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/zaxtseng" title="GitHub &rarr; https://github.com/zaxtseng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:lanfein9@hotmail.com" title="E-Mail &rarr; mailto:lanfein9@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li></ul>
 
-
-
-        </div>
-      </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#服务端渲染时的数据预取流程"><span class="nav-number">1.</span> <span class="nav-text">服务端渲染时的数据预取流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex-state状态变更流程"><span class="nav-number">2.</span> <span class="nav-text">Vuex state状态变更流程</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
     </footer>
-
+  </div>
+  
     
+<nav id="article-nav">
+  
+    <a href="/2019/10/25/%E6%BB%9A%E5%8A%A8%E9%98%85%E8%AF%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          滚动阅读
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/10/17/yuque/vue-hackernews-2-0-%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB-%E9%80%82%E5%90%88%E5%85%A5%E9%97%A8-%E4%BA%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue-hackernews-2.0 源码解读(适合入门)(二)</div>
+    </a>
+  
+</nav>
 
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/">HTML5</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/canvas/">canvas</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E5%9F%BA%E7%A1%80/">JS基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/css/css3/">css3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/Node-js/">Node.js</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%AE%89%E5%85%A8/" rel="tag">HTTP安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E8%BF%9B%E9%98%B6/" rel="tag">HTTP进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%B7%B1%E5%85%A5/" rel="tag">JS深入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" rel="tag">Vue.js基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 18.57px;">HTML</a> <a href="/tags/HTTP%E5%AE%89%E5%85%A8/" style="font-size: 10px;">HTTP安全</a> <a href="/tags/HTTP%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">HTTP进阶</a> <a href="/tags/JS/" style="font-size: 12.86px;">JS</a> <a href="/tags/JS%E6%B7%B1%E5%85%A5/" style="font-size: 10px;">JS深入</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 11.43px;">JS进阶</a> <a href="/tags/React/" style="font-size: 17.14px;">React</a> <a href="/tags/Vue-SSR/" style="font-size: 15.71px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">Vue.js基础</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 17.14px;">Vue.js进阶</a> <a href="/tags/android/" style="font-size: 11.43px;">android</a> <a href="/tags/css/" style="font-size: 14.29px;">css</a> <a href="/tags/css3/" style="font-size: 11.43px;">css3</a> <a href="/tags/html5/" style="font-size: 12.86px;">html5</a> <a href="/tags/javascript/" style="font-size: 15.71px;">javascript</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 11.43px;">后端</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 11.43px;">小程序</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 14.29px;">面试题</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 12.86px;">项目</a>
+    </div>
   </div>
 
   
     
-  
-  <script color='0,0,255' opacity='0.3' zIndex='-3' count='29' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-<script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
-
-
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
-
-
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
 
 
   
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/yuque/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/yuque/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
   
-
-  
-
-
-  
-  <script src="/js/scrollspy.js?v=7.3.0"></script>
-<script src="/js/post-details.js?v=7.3.0"></script>
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
 </body>
 </html>

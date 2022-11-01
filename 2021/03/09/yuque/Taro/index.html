@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Taro | Zax&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="老项目更新依赖老项目在新 taro 框架,需要更新 1taro update project  Taro3 和老版本引入有差别 引入123456&#x2F;&#x2F;老版本import Taro, &amp;#123; Component &amp;#125; from &quot;@tarojs&#x2F;taro&quot;;&#x2F;&#x2F;Taro3新版本import Taro from &quot;@tarojs&#x2F;taro&quot;;impo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Taro">
+<meta property="og:url" content="http://yoursite.com/2021/03/09/yuque/Taro/index.html">
+<meta property="og:site_name" content="Zax&#39;s BLOG">
+<meta property="og:description" content="老项目更新依赖老项目在新 taro 框架,需要更新 1taro update project  Taro3 和老版本引入有差别 引入123456&#x2F;&#x2F;老版本import Taro, &amp;#123; Component &amp;#125; from &quot;@tarojs&#x2F;taro&quot;;&#x2F;&#x2F;Taro3新版本import Taro from &quot;@tarojs&#x2F;taro&quot;;impo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-09T06:12:04.000Z">
+<meta property="article:modified_time" content="2022-11-01T04:34:44.519Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zax&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Zax&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-yuque/Taro" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/09/yuque/Taro/" class="article-date">
+  <time datetime="2021-03-09T06:12:04.000Z" itemprop="datePublished">2021-03-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Taro
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="老项目更新依赖"><a href="#老项目更新依赖" class="headerlink" title="老项目更新依赖"></a>老项目更新依赖</h2><p>老项目在新 taro 框架,需要更新</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taro update project</span><br></pre></td></tr></table></figure>
+
+<p>Taro3 和老版本引入有差别</p>
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//老版本</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Taro</span>, &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@tarojs/taro&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Taro3新版本</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Taro</span> <span class="keyword">from</span> <span class="string">&quot;@tarojs/taro&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="挂载-App-js"><a href="#挂载-App-js" class="headerlink" title="挂载 App.js"></a>挂载 App.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//老版本app.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Taro</span>, &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@tarojs/taro&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Index</span> <span class="keyword">from</span> <span class="string">&quot;./pages/index&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./app.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  <span class="comment">//config写到app的类里.</span></span><br><span class="line">  <span class="comment">//新版写到单独的app.config.js文件里</span></span><br><span class="line">  config = &#123;</span><br><span class="line">    <span class="attr">pages</span>: [</span><br><span class="line">      <span class="string">&quot;pages/index/index&quot;</span>,</span><br><span class="line">      <span class="string">&quot;pages/nodes/nodes&quot;</span>,</span><br><span class="line">      <span class="string">&quot;pages/hot/hot&quot;</span>,</span><br><span class="line">      <span class="string">&quot;pages/node_detail/node_detail&quot;</span>,</span><br><span class="line">      <span class="string">&quot;pages/thread_detail/thread_detail&quot;</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">tabBar</span>: &#123;</span><br><span class="line">      <span class="attr">list</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">iconPath</span>: <span class="string">&quot;resource/latest.png&quot;</span>,</span><br><span class="line">          <span class="attr">selectedIconPath</span>: <span class="string">&quot;resource/lastest_on.png&quot;</span>,</span><br><span class="line">          <span class="attr">pagePath</span>: <span class="string">&quot;pages/index/index&quot;</span>,</span><br><span class="line">          <span class="attr">text</span>: <span class="string">&quot;最新&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">iconPath</span>: <span class="string">&quot;resource/hotest.png&quot;</span>,</span><br><span class="line">          <span class="attr">selectedIconPath</span>: <span class="string">&quot;resource/hotest_on.png&quot;</span>,</span><br><span class="line">          <span class="attr">pagePath</span>: <span class="string">&quot;pages/hot/hot&quot;</span>,</span><br><span class="line">          <span class="attr">text</span>: <span class="string">&quot;热门&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">iconPath</span>: <span class="string">&quot;resource/node.png&quot;</span>,</span><br><span class="line">          <span class="attr">selectedIconPath</span>: <span class="string">&quot;resource/node_on.png&quot;</span>,</span><br><span class="line">          <span class="attr">pagePath</span>: <span class="string">&quot;pages/nodes/nodes&quot;</span>,</span><br><span class="line">          <span class="attr">text</span>: <span class="string">&quot;节点&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">color</span>: <span class="string">&quot;#000&quot;</span>,</span><br><span class="line">      <span class="attr">selectedColor</span>: <span class="string">&quot;#56abe4&quot;</span>,</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&quot;#fff&quot;</span>,</span><br><span class="line">      <span class="attr">borderStyle</span>: <span class="string">&quot;white&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">window</span>: &#123;</span><br><span class="line">      <span class="attr">backgroundTextStyle</span>: <span class="string">&quot;light&quot;</span>,</span><br><span class="line">      <span class="attr">navigationBarBackgroundColor</span>: <span class="string">&quot;#fff&quot;</span>,</span><br><span class="line">      <span class="attr">navigationBarTitleText</span>: <span class="string">&quot;V2EX&quot;</span>,</span><br><span class="line">      <span class="attr">navigationBarTextStyle</span>: <span class="string">&quot;black&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">//return的是首页.</span></span><br><span class="line">  <span class="comment">//新版本return的是this.prop.children</span></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">Index</span> /&gt;</span></span></span><br><span class="line">      <span class="comment">//  return this.props.children</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//老版本使用Taro.render挂载到app节点上</span></span><br><span class="line"><span class="comment">//新版本直接export default App</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Taro</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br><span class="line"><span class="comment">//export default App</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="按需引入"><a href="#按需引入" class="headerlink" title="按需引入"></a>按需引入</h3><p><code>taro-UI</code>  的样式可以按需引入.</p>
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><h2 id="路由声明"><a href="#路由声明" class="headerlink" title="路由声明"></a>路由声明</h2><p>路由在 <code>@tarojs/taro</code>  中的 <code>getCurrentInstance().router 中获取.</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; getCurrentInstance &#125; <span class="keyword">from</span> <span class="string">&quot;@tarojs/taro&quot;</span>;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  current = <span class="title function_">getCurrentInstance</span>();</span><br><span class="line"></span><br><span class="line">  <span class="title function_">componentWillMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// getCurrentInstance().router 和 this.$router 和属性一样</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">current</span>.<span class="property">router</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数式组件</span></span><br><span class="line"><span class="keyword">import</span> &#123; getCurrentInstance &#125; <span class="keyword">from</span> <span class="string">&quot;@tarojs/taro&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">C</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; router &#125; = <span class="title function_">getCurrentInstance</span>();</span><br><span class="line">  <span class="comment">// getCurrentInstance().router 和 useRouter 返回的内容也一样</span></span><br><span class="line">  <span class="comment">// const router = useRouter()</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由参数获取"><a href="#路由参数获取" class="headerlink" title="路由参数获取"></a>路由参数获取</h2><p>原生小程序路由一般在 <code>onLoad</code>  中获取传过来的参数.<br><code>Taro</code>  推荐在 <code>ComponentDidShow</code>  中获取.(也可以在 <code>onLoad</code>  中)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js 项目入口文件</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  componentDidShow (options <span class="comment">/* 这里有你想要的路由信息 */</span>) &#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render () &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p>小程序 &#x3D;&gt; class 类 &#x3D;&gt; 函数式 hook<br>onLoad &#x3D;&gt; onLoad<br>onReady &#x3D;&gt; onReady &#x3D;&gt; useReady<br>onLanch &#x3D;&gt; onLanch<br>onShow &#x3D;&gt; conponentDidShow &#x3D;&gt; useDidShow<br>onHide &#x3D;&gt;componentDidHide &#x3D;&gt; useDidHide</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h4 id="onPullDownRefresh"><a href="#onPullDownRefresh" class="headerlink" title="onPullDownRefresh()"></a>onPullDownRefresh()</h4><p>监听用户下拉动作。</p>
+<p>需要在全局配置的  window  选项中或页面配置中设置  enablePullDownRefresh: true。<br>可以通过  Taro.startPullDownRefresh  触发下拉刷新，调用后触发下拉刷新动画，效果与用户手动下拉刷新一致。<br>当处理完数据刷新后，Taro.stopPullDownRefresh  可以停止当前页面的下拉刷新.</p>
+<h4 id="onReachBottom"><a href="#onReachBottom" class="headerlink" title="onReachBottom()"></a>onReachBottom()</h4><p>监听用户上拉触底事件。</p>
+<p>可以在全局配置的  window  选项中或页面配置中设置触发距离  onReachBottomDistance。<br>在触发距离内滑动期间，本事件只会被触发一次</p>
+<blockquote>
+<p>H5  暂时没有同步实现，可以通过给  window  绑定  scroll  事件来进行模拟</p>
+</blockquote>
+<h4 id="onPageScroll"><a href="#onPageScroll" class="headerlink" title="onPageScroll()"></a>onPageScroll()</h4><p>监听用户滑动页面事件.</p>
+<blockquote>
+<p>H5  暂时没有同步实现，可以通过给  window  绑定  scroll  事件来进行模拟</p>
+</blockquote>
+<h3 id="基本事件"><a href="#基本事件" class="headerlink" title="基本事件"></a>基本事件</h3><p>在  Taro  中事件遵从小驼峰式（camelCase）命名规范，所有内置事件名以  on  开头。</p>
+<p>在事件回调函数中，第一个参数是事件本身，回调中调用  stopPropagation  可以阻止冒泡。</p>
+<blockquote>
+<p>只有小程序的  bindtap  对应  Taro  的  onClick<br>其余小程序事件名把  bind  换成  on  即是  Taro  事件名</p>
+</blockquote>
+<h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><p>安装 redux 及其中间件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add redux react-redux redux-thunk redux-logger</span><br><span class="line"><span class="comment"># 或者使用 npm</span></span><br><span class="line">$ npm install --save redux react-redux redux-thunk redux-logger</span><br></pre></td></tr></table></figure>
+
+<p>随后可以在项目  src  目录下新增一个  store  目录，在目录下增加  index.js  文件用来配置  store，按自己喜好设置  redux  的中间件，例如下面例子中使用  redux-thunk  和  redux-logger  这两个中间件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; createStore, applyMiddleware, compose &#125; <span class="keyword">from</span> <span class="string">&quot;redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> thunkMiddleware <span class="keyword">from</span> <span class="string">&quot;redux-thunk&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> rootReducer <span class="keyword">from</span> <span class="string">&quot;../reducers&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> composeEnhancers =</span><br><span class="line">  <span class="keyword">typeof</span> <span class="variable language_">window</span> === <span class="string">&quot;object&quot;</span> &amp;&amp; <span class="variable language_">window</span>.<span class="property">__REDUX_DEVTOOLS_EXTENSION_COMPOSE__</span></span><br><span class="line">    ? <span class="variable language_">window</span>.<span class="title function_">__REDUX_DEVTOOLS_EXTENSION_COMPOSE__</span>(&#123;</span><br><span class="line">        <span class="comment">// Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...</span></span><br><span class="line">      &#125;)</span><br><span class="line">    : compose;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> middlewares = [thunkMiddleware];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (</span><br><span class="line">  process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&quot;development&quot;</span> &amp;&amp;</span><br><span class="line">  process.<span class="property">env</span>.<span class="property">TARO_ENV</span> !== <span class="string">&quot;quickapp&quot;</span></span><br><span class="line">) &#123;</span><br><span class="line">  middlewares.<span class="title function_">push</span>(<span class="built_in">require</span>(<span class="string">&quot;redux-logger&quot;</span>).<span class="title function_">createLogger</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> enhancer = <span class="title function_">composeEnhancers</span>(</span><br><span class="line">  <span class="title function_">applyMiddleware</span>(...middlewares)</span><br><span class="line">  <span class="comment">// other store enhancers if any</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">configStore</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> store = <span class="title function_">createStore</span>(rootReducer, enhancer);</span><br><span class="line">  <span class="keyword">return</span> store;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来在项目入口文件  app.js  中使用  redux  中提供的  Provider  组件将前面写好的  store  接入应用中.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设我们要使用 Redux</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Provider</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> configStore <span class="keyword">from</span> <span class="string">&quot;./store&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./app.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">configStore</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">  <span class="comment">// 可以使用所有的 React 组件方法</span></span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 对应 onLaunch</span></span><br><span class="line">  <span class="title function_">onLaunch</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 对应 onShow</span></span><br><span class="line">  <span class="title function_">componentDidShow</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 对应 onHide</span></span><br><span class="line">  <span class="title function_">componentDidHide</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 在入口组件不会渲染任何内容，但我们可以在这里做类似于状态管理的事情</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">Provider</span> <span class="attr">store</span>=<span class="string">&#123;store&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        /* this.props.children 是将要被渲染的页面 */</span></span><br><span class="line"><span class="language-xml">        &#123;this.props.children&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Provider</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以开始使用了。如  redux  推荐的那样，可以增加</p>
+<ul>
+<li>constants  目录，用来放置所有的  action type  常量</li>
+<li>actions  目录，用来放置所有的  actions</li>
+<li>reducers  目录，用来放置所有的  reducers</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2021/03/09/yuque/Taro/" data-id="cl9xpujtc007ddmopglnfahb6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/10/yuque/React/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          React
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/28/yuque/Koa2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Koa2</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/">HTML5</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/canvas/">canvas</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E5%9F%BA%E7%A1%80/">JS基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/css/css3/">css3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/Node-js/">Node.js</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%AE%89%E5%85%A8/" rel="tag">HTTP安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E8%BF%9B%E9%98%B6/" rel="tag">HTTP进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%B7%B1%E5%85%A5/" rel="tag">JS深入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" rel="tag">Vue.js基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 18.57px;">HTML</a> <a href="/tags/HTTP%E5%AE%89%E5%85%A8/" style="font-size: 10px;">HTTP安全</a> <a href="/tags/HTTP%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">HTTP进阶</a> <a href="/tags/JS/" style="font-size: 12.86px;">JS</a> <a href="/tags/JS%E6%B7%B1%E5%85%A5/" style="font-size: 10px;">JS深入</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 11.43px;">JS进阶</a> <a href="/tags/React/" style="font-size: 17.14px;">React</a> <a href="/tags/Vue-SSR/" style="font-size: 15.71px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">Vue.js基础</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 17.14px;">Vue.js进阶</a> <a href="/tags/android/" style="font-size: 11.43px;">android</a> <a href="/tags/css/" style="font-size: 14.29px;">css</a> <a href="/tags/css3/" style="font-size: 11.43px;">css3</a> <a href="/tags/html5/" style="font-size: 12.86px;">html5</a> <a href="/tags/javascript/" style="font-size: 15.71px;">javascript</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 11.43px;">后端</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 11.43px;">小程序</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 14.29px;">面试题</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 12.86px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/yuque/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/yuque/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

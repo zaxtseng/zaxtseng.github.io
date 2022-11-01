@@ -1,325 +1,98 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next mist use-motion" lang="zh-CN">
+<html>
 <head>
-  <meta charset="UTF-8">
-<meta name="generator" content="Hexo 3.9.0">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <meta charset="utf-8">
+  
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.3.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":true,"scrollpercent":false},
-    save_scroll: false,
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: true,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    }
-  };
-</script>
-
-  <meta name="description" content="介绍 Vue.js是构建客户端应用程序的框架。默认情况下，可以在浏览器中输出Vue组件，进行生成DOM和操作DOM。然而，也可以将同一个组件渲染为服务器端的HTML字符串，将它们直接发送到浏览器，最后将这些静态标记”激活”为客户端上完全可交互的应用程序。">
-<meta name="keywords" content="Vue.js,Vue-SSR">
+  
+  <title>Vue服务端渲染 | Zax&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="介绍 Vue.js是构建客户端应用程序的框架。默认情况下，可以在浏览器中输出Vue组件，进行生成DOM和操作DOM。然而，也可以将同一个组件渲染为服务器端的HTML字符串，将它们直接发送到浏览器，最后将这些静态标记”激活”为客户端上完全可交互的应用程序。  服务器渲染的Vue.js应用程序也可以被认为是”同构”或”通用”，因为应用程序的大部分代码都可以在服务器和客户端上运行。 优缺点优点:   更">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue服务端渲染">
-<meta property="og:url" content="http://yoursite.com/2019/09/15/Vue服务端渲染/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/09/15/Vue%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/index.html">
 <meta property="og:site_name" content="Zax&#39;s BLOG">
-<meta property="og:description" content="介绍 Vue.js是构建客户端应用程序的框架。默认情况下，可以在浏览器中输出Vue组件，进行生成DOM和操作DOM。然而，也可以将同一个组件渲染为服务器端的HTML字符串，将它们直接发送到浏览器，最后将这些静态标记”激活”为客户端上完全可交互的应用程序。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-16T03:18:23.762Z">
+<meta property="og:description" content="介绍 Vue.js是构建客户端应用程序的框架。默认情况下，可以在浏览器中输出Vue组件，进行生成DOM和操作DOM。然而，也可以将同一个组件渲染为服务器端的HTML字符串，将它们直接发送到浏览器，最后将这些静态标记”激活”为客户端上完全可交互的应用程序。  服务器渲染的Vue.js应用程序也可以被认为是”同构”或”通用”，因为应用程序的大部分代码都可以在服务器和客户端上运行。 优缺点优点:   更">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-15T08:22:12.000Z">
+<meta property="article:modified_time" content="2022-11-01T04:33:24.082Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="Vue.js">
+<meta property="article:tag" content="Vue-SSR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue服务端渲染">
-<meta name="twitter:description" content="介绍 Vue.js是构建客户端应用程序的框架。默认情况下，可以在浏览器中输出Vue组件，进行生成DOM和操作DOM。然而，也可以将同一个组件渲染为服务器端的HTML字符串，将它们直接发送到浏览器，最后将这些静态标记”激活”为客户端上完全可交互的应用程序。">
-  <link rel="canonical" href="http://yoursite.com/2019/09/15/Vue服务端渲染/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>Vue服务端渲染 | Zax's BLOG</title>
   
+    <link rel="alternate" href="/atom.xml" title="Zax&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  <div class="container sidebar-position-left">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Zax's BLOG</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Zax&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
     </div>
   </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Vue服务端渲染" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/15/Vue%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/" class="article-date">
+  <time datetime="2019-09-15T08:22:12.000Z" itemprop="datePublished">2019-09-15</time>
+</a>
+    
   </div>
-</div>
-
-
-<nav class="site-nav">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-  <ul id="menu" class="menu">
-      
-      
-      
-        
-        <li class="menu-item menu-item-home">
-      
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-archives">
-      
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
-  </ul>
-
-    
-
-</nav>
-  <div class="site-search">
-    
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-  </div>
-</div>
-    </header>
-
-    
-
-  <a href="https://github.com/zaxtseng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content page-post-detail">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <h1 class="article-title" itemprop="name">
+      Vue服务端渲染
+    </h1>
   
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/Vue服务端渲染/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zax Tseng">
-      <meta itemprop="description" content="Zax's BLOG">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zax's BLOG">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">Vue服务端渲染
-
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              
-                
-              
-
-              <time title="创建时间：2019-09-15 16:22:12" itemprop="dateCreated datePublished" datetime="2019-09-15T16:22:12+08:00">2019-09-15</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-16 11:18:23" itemprop="dateModified" datetime="2019-10-16T11:18:23+08:00">2019-10-16</time>
-              </span>
-            
-          
-
-          
-
-        </div>
       </header>
-
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+    <div class="article-entry" itemprop="articleBody">
       
         <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><blockquote>
 <p>Vue.js是构建客户端应用程序的框架。默认情况下，可以在浏览器中输出Vue组件，进行生成DOM和操作DOM。然而，也可以将同一个组件渲染为服务器端的HTML字符串，将它们直接发送到浏览器，最后将这些静态标记”激活”为客户端上完全可交互的应用程序。</p>
-</blockquote><a id="more"></a>
+</blockquote>
 <p>服务器渲染的Vue.js应用程序也可以被认为是”同构”或”通用”，因为应用程序的大部分代码都可以在服务器和客户端上运行。</p>
 <h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><p>优点: </p>
 <ol>
@@ -333,374 +106,159 @@
 <li>更多的服务器端负载。</li>
 </ol>
 <h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>npm install vue vue-server-renderer --save</code></p>
-<h2 id="渲染实例"><a href="#渲染实例" class="headerlink" title="渲染实例"></a>渲染实例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第 1 步：创建一个 Vue 实例</span></span><br><span class="line"><span class="keyword">const</span> Vue = <span class="built_in">require</span>(<span class="string">'vue'</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  template: <span class="string">`&lt;div&gt;Hello World&lt;/div&gt;`</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第 2 步：创建一个 renderer</span></span><br><span class="line"><span class="keyword">const</span> renderer = <span class="built_in">require</span>(<span class="string">'vue-server-renderer'</span>).createRenderer()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第 3 步：将 Vue 实例渲染为 HTML</span></span><br><span class="line">renderer.renderToString(app, (err, html) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">  <span class="built_in">console</span>.log(html)</span><br><span class="line">  <span class="comment">// =&gt; &lt;div data-server-rendered="true"&gt;Hello World&lt;/div&gt;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 2.5.0+，如果没有传入回调函数，则会返回 Promise：</span></span><br><span class="line">renderer.renderToString(app).then(<span class="function"><span class="params">html</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(html)</span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="与服务端集成"><a href="#与服务端集成" class="headerlink" title="与服务端集成"></a>与服务端集成</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安装</span></span><br><span class="line">npm install express --save</span><br><span class="line"><span class="comment">//操作express</span></span><br><span class="line"><span class="keyword">const</span> Vue = <span class="built_in">require</span>(<span class="string">'vue'</span>)</span><br><span class="line"><span class="keyword">const</span> server = <span class="built_in">require</span>(<span class="string">'express'</span>)()</span><br><span class="line"><span class="keyword">const</span> renderer = <span class="built_in">require</span>(<span class="string">'vue-server-renderer'</span>).createRenderer()</span><br><span class="line"></span><br><span class="line">server.get(<span class="string">'*'</span>, (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">      url: req.url</span><br><span class="line">    &#125;,</span><br><span class="line">    template: <span class="string">`&lt;div&gt;访问的 URL 是： &#123;&#123; url &#125;&#125;&lt;/div&gt;`</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  renderer.renderToString(app, (err, html) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      res.status(<span class="number">500</span>).end(<span class="string">'Internal Server Error'</span>)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    res.end(<span class="string">`</span></span><br><span class="line"><span class="string">      &lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">      &lt;html lang="en"&gt;</span></span><br><span class="line"><span class="string">        &lt;head&gt;&lt;title&gt;Hello&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">        &lt;body&gt;<span class="subst">$&#123;html&#125;</span>&lt;/body&gt;</span></span><br><span class="line"><span class="string">      &lt;/html&gt;</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用页面模板"><a href="#使用页面模板" class="headerlink" title="使用页面模板"></a>使用页面模板</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.template.html</span></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">  &lt;head&gt;<span class="xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;!--vue-ssr-outlet--&gt;</span><br><span class="line">    &lt;!--这里将是应用程序 HTML 标记注入的地方--&gt;</span><br><span class="line">  &lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
-
+<h2 id="渲染实例"><a href="#渲染实例" class="headerlink" title="渲染实例"></a>渲染实例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第 1 步：创建一个 Vue 实例</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Vue</span> = <span class="built_in">require</span>(<span class="string">&#x27;vue&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`&lt;div&gt;Hello World&lt;/div&gt;`</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第 2 步：创建一个 renderer</span></span><br><span class="line"><span class="keyword">const</span> renderer = <span class="built_in">require</span>(<span class="string">&#x27;vue-server-renderer&#x27;</span>).<span class="title function_">createRenderer</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第 3 步：将 Vue 实例渲染为 HTML</span></span><br><span class="line">renderer.<span class="title function_">renderToString</span>(app, <span class="function">(<span class="params">err, html</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">throw</span> err</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(html)</span><br><span class="line">  <span class="comment">// =&gt; &lt;div data-server-rendered=&quot;true&quot;&gt;Hello World&lt;/div&gt;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 2.5.0+，如果没有传入回调函数，则会返回 Promise：</span></span><br><span class="line">renderer.<span class="title function_">renderToString</span>(app).<span class="title function_">then</span>(<span class="function"><span class="params">html</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(html)</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">error</span>(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="与服务端集成"><a href="#与服务端集成" class="headerlink" title="与服务端集成"></a>与服务端集成</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安装</span></span><br><span class="line">npm install express --save</span><br><span class="line"><span class="comment">//操作express</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Vue</span> = <span class="built_in">require</span>(<span class="string">&#x27;vue&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> server = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>)()</span><br><span class="line"><span class="keyword">const</span> renderer = <span class="built_in">require</span>(<span class="string">&#x27;vue-server-renderer&#x27;</span>).<span class="title function_">createRenderer</span>()</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">get</span>(<span class="string">&#x27;*&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">      <span class="attr">url</span>: req.<span class="property">url</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">template</span>: <span class="string">`&lt;div&gt;访问的 URL 是： &#123;&#123; url &#125;&#125;&lt;/div&gt;`</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  renderer.<span class="title function_">renderToString</span>(app, <span class="function">(<span class="params">err, html</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      res.<span class="title function_">status</span>(<span class="number">500</span>).<span class="title function_">end</span>(<span class="string">&#x27;Internal Server Error&#x27;</span>)</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    res.<span class="title function_">end</span>(<span class="string">`</span></span><br><span class="line"><span class="string">      &lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">      &lt;html lang=&quot;en&quot;&gt;</span></span><br><span class="line"><span class="string">        &lt;head&gt;&lt;title&gt;Hello&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">        &lt;body&gt;<span class="subst">$&#123;html&#125;</span>&lt;/body&gt;</span></span><br><span class="line"><span class="string">      &lt;/html&gt;</span></span><br><span class="line"><span class="string">    `</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="使用页面模板"><a href="#使用页面模板" class="headerlink" title="使用页面模板"></a>使用页面模板</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.template.html</span></span><br><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="comment">&lt;!--vue-ssr-outlet--&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="comment">&lt;!--这里将是应用程序 HTML 标记注入的地方--&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <p>读取和传输文件到 Vue renderer 中：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> renderer = createRenderer(&#123;</span><br><span class="line">  template: <span class="built_in">require</span>(<span class="string">'fs'</span>).readFileSync(<span class="string">'./index.template.html'</span>, <span class="string">'utf-8'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">renderer.renderToString(app, (err, html) =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(html) <span class="comment">// html 将是注入应用程序内容的完整页面</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> renderer = <span class="title function_">createRenderer</span>(&#123;</span><br><span class="line">  <span class="attr">template</span>: <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>).<span class="title function_">readFileSync</span>(<span class="string">&#x27;./index.template.html&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">renderer.<span class="title function_">renderToString</span>(app, <span class="function">(<span class="params">err, html</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(html) <span class="comment">// html 将是注入应用程序内容的完整页面</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h1 id="vue-srr范例详解"><a href="#vue-srr范例详解" class="headerlink" title="vue-srr范例详解"></a>vue-srr范例详解</h1>
+      
     </div>
-
-    
-    
-    
-        
-      
-
-      <footer class="post-footer">
-          
-            
-          
-          <div class="post-tags">
-            
-              <a href="/tags/Vue-js/" rel="tag"><i class="fa fa-tag"></i> Vue.js</a>
-            
-              <a href="/tags/Vue-SSR/" rel="tag"><i class="fa fa-tag"></i> Vue-SSR</a>
-            
-          </div>
-        
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/09/14/VueX/" rel="next" title="Vuex">
-                  <i class="fa fa-chevron-left"></i> Vuex
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/20/前端安全防范/" rel="prev" title="前端安全防范">
-                  前端安全防范 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
-        
-      </footer>
-    
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
-
-
-          </div>
-          
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.gif"
-      alt="Zax Tseng">
-  <p class="site-author-name" itemprop="name">Zax Tseng</p>
-  <div class="site-description motion-element" itemprop="description">Zax's BLOG</div>
-</div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">58</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-    
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/09/15/Vue%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/" data-id="cl9xpujr40026dmop5aotfyv9" class="article-share-link">Share</a>
       
       
-      <div class="site-state-item site-state-categories">
-        
-          
-            <a href="/categories/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">15</span>
-        <span class="site-state-item-name">分类</span>
-        </a>
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-tags">
-        
-          
-            <a href="/tags/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">22</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
-      </div>
-    
-  </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/zaxtseng" title="GitHub &rarr; https://github.com/zaxtseng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:lanfein9@hotmail.com" title="E-Mail &rarr; mailto:lanfein9@hotmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li></ul>
 
-
-
-        </div>
-      </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优缺点"><span class="nav-number">2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本用法"><span class="nav-number">3.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渲染实例"><span class="nav-number">3.2.</span> <span class="nav-text">渲染实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与服务端集成"><span class="nav-number">3.3.</span> <span class="nav-text">与服务端集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用页面模板"><span class="nav-number">3.4.</span> <span class="nav-text">使用页面模板</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-srr范例详解"><span class="nav-number">4.</span> <span class="nav-text">vue-srr范例详解</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          
-        </div>
-      
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
     </footer>
-
+  </div>
+  
     
+<nav id="article-nav">
+  
+    <a href="/2019/09/20/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8%E9%98%B2%E8%8C%83/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          前端安全防范
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/15/yuque/Vue%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vue服务端渲染</div>
+    </a>
+  
+</nav>
 
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/">HTML5</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/canvas/">canvas</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E5%9F%BA%E7%A1%80/">JS基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/css/css3/">css3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/Node-js/">Node.js</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%AE%89%E5%85%A8/" rel="tag">HTTP安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E8%BF%9B%E9%98%B6/" rel="tag">HTTP进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%B7%B1%E5%85%A5/" rel="tag">JS深入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" rel="tag">Vue.js基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 18.57px;">HTML</a> <a href="/tags/HTTP%E5%AE%89%E5%85%A8/" style="font-size: 10px;">HTTP安全</a> <a href="/tags/HTTP%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">HTTP进阶</a> <a href="/tags/JS/" style="font-size: 12.86px;">JS</a> <a href="/tags/JS%E6%B7%B1%E5%85%A5/" style="font-size: 10px;">JS深入</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 11.43px;">JS进阶</a> <a href="/tags/React/" style="font-size: 17.14px;">React</a> <a href="/tags/Vue-SSR/" style="font-size: 15.71px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">Vue.js基础</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 17.14px;">Vue.js进阶</a> <a href="/tags/android/" style="font-size: 11.43px;">android</a> <a href="/tags/css/" style="font-size: 14.29px;">css</a> <a href="/tags/css3/" style="font-size: 11.43px;">css3</a> <a href="/tags/html5/" style="font-size: 12.86px;">html5</a> <a href="/tags/javascript/" style="font-size: 15.71px;">javascript</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 11.43px;">后端</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 11.43px;">小程序</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 14.29px;">面试题</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 12.86px;">项目</a>
+    </div>
   </div>
 
   
     
-  
-  <script color='0,0,255' opacity='0.3' zIndex='-3' count='29' src="/lib/canvas-nest/canvas-nest-nomobile.min.js"></script>
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-<script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
-
-
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
-
-
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
 
 
   
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/yuque/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/yuque/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
   
-
-  
-
-
-  
-  <script src="/js/scrollspy.js?v=7.3.0"></script>
-<script src="/js/post-details.js?v=7.3.0"></script>
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
 </body>
 </html>

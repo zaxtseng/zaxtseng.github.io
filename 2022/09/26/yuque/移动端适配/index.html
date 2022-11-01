@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>移动端适配 | Zax&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: 移动端适配 date: 2019-10-09 21:30:02 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  css # 一级分类 移动端 # 二级分类   媒体查询 media-query当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端适配">
+<meta property="og:url" content="http://yoursite.com/2022/09/26/yuque/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/index.html">
+<meta property="og:site_name" content="Zax&#39;s BLOG">
+<meta property="og:description" content="title: 移动端适配 date: 2019-10-09 21:30:02 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  css # 一级分类 移动端 # 二级分类   媒体查询 media-query当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-26T13:04:55.000Z">
+<meta property="article:modified_time" content="2022-11-01T04:34:41.399Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zax&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Zax&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-yuque/移动端适配" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/09/26/yuque/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" class="article-date">
+  <time datetime="2022-09-26T13:04:55.000Z" itemprop="datePublished">2022-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动端适配
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 移动端适配</p>
+<p>date: 2019-10-09 21:30:02</p>
+<p>tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>css # 一级分类</li>
+<li>移动端 # 二级分类</li>
+</ul>
+<hr>
+<h1 id="媒体查询-media-query"><a href="#媒体查询-media-query" class="headerlink" title="媒体查询 media-query"></a>媒体查询 media-query</h1><p>当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只不过不会被应用）。</p>
+<p>包含了一个媒体类型和至少一个使用宽度、高度和颜色等媒体属性来限制样式表范围的表达式。CSS3 加入的媒体查询使得无需修改内容便可以使样式应用于某些特定的设备范围。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">@media (min-<span class="attr">width</span>: 700px) and (<span class="attr">orientation</span>: landscape)&#123;</span><br><span class="line">    .<span class="property">sidebar</span> &#123;</span><br><span class="line">        <span class="attr">display</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="视口-iewport"><a href="#视口-iewport" class="headerlink" title="视口 iewport"></a>视口 iewport</h1><p>为什么要设置 viewport</p>
+<p>viewport 的设置不会对 PC 页面产生影响，但对于移动页面却很重要。下面我们举例来说明：</p>
+<ol>
+<li>媒体查询 @media 响应式布局中，会根据媒体查询功能来适配多端布局，必须对 viewport 进行设置，否则根据查询到的尺寸无法正确匹配视觉宽度而导致布局混乱。如不设置 viewport 参数，多说移动端媒体查询的结果将是 980px 这个节点布局的参数，而非我们通常设置的 768px 范围内的这个布局参数</li>
+<li>由于目前多数手机的 dpr 都不再是 1，为了产出高保真页面，我们一般会给出 750px 的设计稿，那么就需要通过设置 viewport 的参数来进行整体换算，而不是在每次设置尺寸时进行长度的换算。</li>
+</ol>
+<h2 id="viewport-详解"><a href="#viewport-详解" class="headerlink" title="viewport 详解"></a>viewport 详解</h2><p>在移动端有三种类型的 viewport: layoutviewport、visualviewport、idealviewport。具体解释如下：</p>
+<p><code>layoutviewport</code>:   大于实际屏幕， 元素的宽度继承于 layoutviewport，用于保证网站的外观特性与桌面浏览器一样。layoutviewport 到底多宽，每个浏览器不同。iPhone 的 safari 为 980px，通过 document.documentElement.clientWidth 获取。</p>
+<p><code>visualviewport</code>: 当前显示在屏幕上的页面，即浏览器可视区域的宽度。</p>
+<p><code>idealviewport</code>: 为浏览器定义的可完美适配移动端的理想 viewport，固定不变，可以认为是设备视口宽度。比如 iphone 7 为 375px, iphone 7p 为 414px。</p>
+<h2 id="viewport-设置"><a href="#viewport-设置" class="headerlink" title="viewport 设置"></a>viewport 设置</h2><p><code>&lt;meta name=&#39;viewport&#39; content=&#39;width=device-width,initial-scale=1,user-scalable=no&#39;/&gt;</code></p>
+<p>通过对 meta 标签三个 viewport 的设置，最终使页面完美展示。</p>
+<ol>
+<li>width 设置的是 layoutviewport 的宽度</li>
+<li>initial-scale 设置页面的初始缩放值，并且这个初始缩放值是相对于 idealviewport 缩放的，最终得到的结果不仅会决定 visualviewport，还会影响到 layoutviewport</li>
+<li>user-scalable 是否允许用户进行缩放的设置</li>
+</ol>
+<blockquote>
+<p>只要 layoutviewport &#x3D;&#x3D;&#x3D; visualviewport，页面下面不会出现滚动条，默认只是把页面放大或缩小。</p>
+</blockquote>
+<h2 id="设备像素比-dpr-与-1px-物理像素"><a href="#设备像素比-dpr-与-1px-物理像素" class="headerlink" title="设备像素比 dpr 与 1px 物理像素"></a>设备像素比 dpr 与 1px 物理像素</h2><h4 id="物理像素（physical-pixel）"><a href="#物理像素（physical-pixel）" class="headerlink" title="物理像素（physical pixel）"></a>物理像素（physical pixel）</h4><p>手机屏幕上显示的最小单元，该最小单元具有颜色及亮度的属性可供设置，iphone6、7、8 为：750 _ 1334，iphone6+、7+、8+ 为 1242 _ 2208</p>
+<h4 id="设备独立像素（density-indenpendent-pixel）"><a href="#设备独立像素（density-indenpendent-pixel）" class="headerlink" title="设备独立像素（density-indenpendent pixel）"></a>设备独立像素（density-indenpendent pixel）</h4><p>此为逻辑像素，计算机设备中的一个点，css 中设置的像素指的就是该像素。老早在没有 retina 屏之前，设备独立像素与物理像素是相等的。</p>
+<h4 id="设备像素比（device-pixel-ratio）"><a href="#设备像素比（device-pixel-ratio）" class="headerlink" title="设备像素比（device pixel ratio）"></a>设备像素比（device pixel ratio）</h4><p>设备像素比(dpr) &#x3D; 物理像素&#x2F;设备独立像素。如 iphone 6、7、8 的 dpr 为 2，那么一个设备独立像素便为 4 个物理像素，因此在 css 上设置的 1px 在其屏幕上占据的是 2 个物理像素，0.5px 对应的才是其所能展示的最小单位。这就是 1px 在 retina 屏上变粗的原因，目前有很多办法来解决这一问题。</p>
+<h4 id="1px-的物理像素的解决方案"><a href="#1px-的物理像素的解决方案" class="headerlink" title="1px 的物理像素的解决方案"></a>1px 的物理像素的解决方案</h4><p>从第一部分的讨论可知 viewport 的 initial-scale 具有缩放页面的效果。对于 dpr&#x3D;2 的屏幕，1px 压缩一半便可与 1px 的设备像素比匹配，这就可以通过将缩放比 initial-scale 设置为 0.5&#x3D;1&#x2F;2 而实现。以此类推 dpr&#x3D;3 的屏幕可以将 initial-scale 设置为 0.33&#x3D;1&#x2F;3 来实现。</p>
+<h1 id="设备像素比-dpr-与-rem-的适配方案"><a href="#设备像素比-dpr-与-rem-的适配方案" class="headerlink" title="设备像素比 dpr 与 rem 的适配方案"></a>设备像素比 dpr 与 rem 的适配方案</h1><p>rem 是相对于根元素 html 的 font-size 来做计算。通常在页面初始化时加载时通过对 document.documentElement.style.fontSize 设置来实现。</p>
+<h4 id="rem-适配规则"><a href="#rem-适配规则" class="headerlink" title="rem 适配规则"></a>rem 适配规则</h4><p>通过对 initial-scale &#x3D; 1&#x2F;dpr 的设置，已将对屏幕的描述从物理像素转化到了物理像素上了，这将是后续推导的基础，且设计稿为 750px。</p>
+<p>物理像素为 750 &#x3D; 375 * 2，若屏幕等分为 10 份，那么 1rem &#x3D; 75px，10rem &#x3D; 750px;</p>
+<p>物理像素为 1125 &#x3D; 375 * 3，若屏幕等分为 10 份，那么 1rem &#x3D; 112.5px, 10rem &#x3D; 1125px;</p>
+<p>物理像素为 1242 &#x3D; 414 * 3, 若屏幕等分为 10 份，那么 1rem &#x3D; 124.2px, 10rem &#x3D; 1242px;</p>
+<p>同时为了书写方便可以直接通过 px 布局，然后在打包时利用 pxtorem 库转化为基于 rem 的布局。</p>
+<h1 id="视口单位-vw-vh-适配方案"><a href="#视口单位-vw-vh-适配方案" class="headerlink" title="视口单位(vw,vh)适配方案"></a>视口单位(vw,vh)适配方案</h1><p>将视口宽度 window.innerWidth 和视口高度 window.innerHeight 等分为 100 份，且将这里的视口理解成 idealviewport 更为贴切，并不会随着 viewport 的不同设置而改变。</p>
+<p>vw : 1vw 为视口宽度的 1%</p>
+<p>vh : 1vh 为视口高度的 1%</p>
+<p>vmin :  vw 和 vh 中的较小值</p>
+<p>vmax : 选取 vw 和 vh 中的较大值</p>
+<p>如果设计稿为 750px，那么 1vw &#x3D; 7.5px，100vw &#x3D; 750px。其实设计稿按照设么都没多大关系，最终转化过来的都是相对单位，上面讲的 rem 也是对它的模拟。这里的比例关系也推荐不要自己换算，使用 pxtoviewport 的库就可以帮我们转换。当然每种方案都会有其弊端，这里就不展开讨论。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2022/09/26/yuque/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" data-id="cl9xpujui009ldmop56g03prw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/26/yuque/vue%E8%BF%87%E6%B8%A1%E5%92%8C%E5%8A%A8%E7%94%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          vue过渡和动画
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/26/yuque/canvas/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">canvas</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/">HTML5</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/canvas/">canvas</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E5%9F%BA%E7%A1%80/">JS基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/css/css3/">css3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/Node-js/">Node.js</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%AE%89%E5%85%A8/" rel="tag">HTTP安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E8%BF%9B%E9%98%B6/" rel="tag">HTTP进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%B7%B1%E5%85%A5/" rel="tag">JS深入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" rel="tag">Vue.js基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 18.57px;">HTML</a> <a href="/tags/HTTP%E5%AE%89%E5%85%A8/" style="font-size: 10px;">HTTP安全</a> <a href="/tags/HTTP%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">HTTP进阶</a> <a href="/tags/JS/" style="font-size: 12.86px;">JS</a> <a href="/tags/JS%E6%B7%B1%E5%85%A5/" style="font-size: 10px;">JS深入</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 11.43px;">JS进阶</a> <a href="/tags/React/" style="font-size: 17.14px;">React</a> <a href="/tags/Vue-SSR/" style="font-size: 15.71px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">Vue.js基础</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 17.14px;">Vue.js进阶</a> <a href="/tags/android/" style="font-size: 11.43px;">android</a> <a href="/tags/css/" style="font-size: 14.29px;">css</a> <a href="/tags/css3/" style="font-size: 11.43px;">css3</a> <a href="/tags/html5/" style="font-size: 12.86px;">html5</a> <a href="/tags/javascript/" style="font-size: 15.71px;">javascript</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 11.43px;">后端</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 11.43px;">小程序</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 14.29px;">面试题</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 12.86px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/yuque/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/yuque/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

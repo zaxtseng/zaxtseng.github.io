@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Node-js | Zax&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: Node.js date: 2019-09-01 14:27:58 tags: 后端 categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  后端 # 一级分类 Node.js # 二级分类   node.js基础简易版 node-server12345678910111213&#x2F;&#x2F;index.js文件中引入http模块var http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node-js">
+<meta property="og:url" content="http://yoursite.com/2022/09/26/yuque/Node-js/index.html">
+<meta property="og:site_name" content="Zax&#39;s BLOG">
+<meta property="og:description" content="title: Node.js date: 2019-09-01 14:27:58 tags: 后端 categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  后端 # 一级分类 Node.js # 二级分类   node.js基础简易版 node-server12345678910111213&#x2F;&#x2F;index.js文件中引入http模块var http">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-09-26T13:06:11.000Z">
+<meta property="article:modified_time" content="2022-11-01T04:34:40.047Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zax&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Zax&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-yuque/Node-js" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/09/26/yuque/Node-js/" class="article-date">
+  <time datetime="2022-09-26T13:06:11.000Z" itemprop="datePublished">2022-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Node-js
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: Node.js</p>
+<p>date: 2019-09-01 14:27:58</p>
+<p>tags: 后端</p>
+<p>categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>后端 # 一级分类</li>
+<li>Node.js # 二级分类</li>
+</ul>
+<hr>
+<h1 id="node-js"><a href="#node-js" class="headerlink" title="node.js"></a>node.js</h1><h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><h2 id="简易版-node-server"><a href="#简易版-node-server" class="headerlink" title="简易版 node-server"></a>简易版 node-server</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js文件中引入http模块</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>); <span class="comment">//引入http模块</span></span><br><span class="line"><span class="keyword">var</span> server = http.<span class="title function_">createServer</span>(<span class="keyword">function</span> (<span class="params">request, response</span>) &#123;</span><br><span class="line">  response.<span class="title function_">setHeader</span>(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;text/plain; chartset=gbk&quot;</span>); <span class="comment">//内容渲染形式:字符串.解码方式gbk</span></span><br><span class="line">  <span class="comment">//设置响应头</span></span><br><span class="line">  response.<span class="title function_">writeHead</span>(<span class="number">200</span>, <span class="string">&quot;ok&quot;</span>); <span class="comment">//设置状态码</span></span><br><span class="line">  response.<span class="title function_">write</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">  response.<span class="title function_">end</span>(); <span class="comment">//结束</span></span><br><span class="line">&#125;); <span class="comment">//创建服务器</span></span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">9000</span>); <span class="comment">//启动服务器，监听9000端口</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;open http://localhost:9000&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在终端中输入<code>node index.js</code>就启动服务器.</p>
+<h2 id="简单版服务器"><a href="#简单版服务器" class="headerlink" title="简单版服务器"></a>简单版服务器</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="comment">//http模块</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="comment">//fs模块读写文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建服务器</span></span><br><span class="line"><span class="keyword">var</span> server = http.<span class="title function_">createServer</span>(<span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(__dirname + <span class="string">&quot;/static&quot;</span> + req.<span class="property">url</span>);</span><br><span class="line">  <span class="comment">//fs同步读取,路径由文件绝对路径+static+请求url拼接.使用二进制格式</span></span><br><span class="line">  <span class="keyword">var</span> fileContent = fs.<span class="title function_">readFileSync</span>(__dirname + <span class="string">&quot;/static&quot;</span> + req.<span class="property">url</span>, <span class="string">&quot;binary&quot;</span>);</span><br><span class="line">  res.<span class="title function_">write</span>(fileContent, <span class="string">&quot;binary&quot;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//监听8080端口</span></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">8080</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;visit localhost:8080&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>静态服务器.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>) <span class="comment">//引入http模块</span></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>) <span class="comment">//自动处理路径问题</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>) <span class="comment">//读写文件</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">&quot;url&quot;</span>) <span class="comment">//解析url</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">staticRoot</span>(<span class="params">staticPath, req, res</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> pathObj = url.<span class="title function_">parse</span>(req.<span class="property">url</span>, <span class="literal">true</span>)</span><br><span class="line">  <span class="comment">//url.parse是node.js方法，将一个URL字符串转换成对象并返回</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(pathObj)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span>(pathObj.<span class="property">pathname</span> === <span class="string">&quot;/&quot;</span>)&#123;</span><br><span class="line">    pathObj.<span class="property">pathname</span> += <span class="string">&quot;index.html&quot;</span></span><br><span class="line"> &#125; <span class="comment">//不加后缀可以默认加后缀</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//请求文件的具体路径</span></span><br><span class="line"><span class="keyword">var</span> filePath = path.<span class="title function_">join</span>(staticPath, pathObj.<span class="property">pathname</span>)</span><br><span class="line"><span class="comment">//拼接文件地址</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//同步读取文件</span></span><br><span class="line"><span class="comment">// var fileContent = fs.readFlieSync(filePath,&#x27;binary&#x27;)</span></span><br><span class="line"><span class="comment">// res.write(fileContent, &#x27;binary&#x27;)</span></span><br><span class="line"><span class="comment">// res.end()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//异步读取文件</span></span><br><span class="line">fs.<span class="title function_">readFile</span>(filePath, <span class="string">&quot;binary&quot;</span>, <span class="keyword">function</span>(<span class="params">err, fileContent</span>)&#123;</span><br><span class="line">  <span class="comment">//&#x27;binary&#x27;表示二进制格式</span></span><br><span class="line">  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">     res.<span class="title function_">writeHead</span>(<span class="number">404</span>, <span class="string">&quot;not found&quot;</span>)</span><br><span class="line">     res.<span class="title function_">end</span>(<span class="string">&quot;&lt;h1&gt;404 Not Found&lt;/h1&gt;&quot;</span>)</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    res.<span class="title function_">writeHead</span>(<span class="number">200</span>, <span class="string">&quot;ok&quot;</span>)</span><br><span class="line">    res.<span class="title function_">write</span>(fileContent, <span class="string">&quot;binary&quot;</span>)</span><br><span class="line">    res.<span class="title function_">end</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;path.join(_dirname, &quot;</span><span class="keyword">static</span><span class="string">&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var server = http.createServer(function(res,req)&#123;</span></span><br><span class="line"><span class="string">   staticRoot(path.join(__dirname, &quot;</span><span class="keyword">static</span><span class="string">&quot;), req, res)</span></span><br><span class="line"><span class="string">   //__dirname代表当前文件路径,join拼接上static路径</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">server.listen(8080)</span></span><br><span class="line"><span class="string">console.log(&quot;</span>visit <span class="attr">http</span>:<span class="comment">//localhost:8080&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="mock-数据"><a href="#mock-数据" class="headerlink" title="mock 数据"></a>mock 数据</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//服务器配置</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">&quot;url&quot;</span>);</span><br><span class="line"></span><br><span class="line">http</span><br><span class="line">  .<span class="title function_">createServer</span>(<span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    <span class="comment">//解析请求url</span></span><br><span class="line">    <span class="keyword">var</span> pathObj = url.<span class="title function_">parse</span>(req.<span class="property">url</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (pathObj.<span class="property">pathname</span>) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&quot;/getWeather&quot;</span>:</span><br><span class="line">        res.<span class="title function_">end</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&quot;user/123&quot;</span>:</span><br><span class="line">        res.<span class="title function_">end</span>(fs.<span class="title function_">readFileSync</span>(__dirname + <span class="string">&quot;/static/user.tpl&quot;</span>));</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="attr">default</span>:</span><br><span class="line">        res.<span class="title function_">end</span>(fs.<span class="title function_">readFileSync</span>(__dirname + <span class="string">&quot;static&quot;</span> + req.<span class="property">url</span>));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">listen</span>(<span class="number">8080</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol>
+<li><code>__dirname</code>是什么</li>
+</ol>
+<p><code>__dirname</code>总是指向被执行文件的绝对路径.</p>
+<p>如<code>/d1/d2/my.js</code>中的<code>__dirname</code>,他的值就是<code>/d1/d2</code>.</p>
+<h1 id="常用-API"><a href="#常用-API" class="headerlink" title="常用 API"></a>常用 API</h1><h2 id="fs-readFile-path-options-callback-x2F-fs-writeFile-file-data-options-callback"><a href="#fs-readFile-path-options-callback-x2F-fs-writeFile-file-data-options-callback" class="headerlink" title="fs.readFile(path[,options],callback)&#x2F;fs.writeFile(file,data[,options],callback)"></a>fs.readFile(path[,options],callback)&#x2F;fs.writeFile(file,data[,options],callback)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>); <span class="comment">//引入fs模块</span></span><br><span class="line"></span><br><span class="line">fs.<span class="title function_">readFile</span>(<span class="string">&quot;flie.txt&quot;</span>, <span class="string">&quot;utf-8&quot;</span>, <span class="keyword">function</span> (<span class="params">err, str</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;error&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">    <span class="comment">//要去掉字符串里的数字空格</span></span><br><span class="line">    <span class="keyword">const</span> strAfter = str.<span class="title function_">replace</span>(<span class="regexp">/\d/gm</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(strAfter);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//去掉数字后把strAfter写出来</span></span><br><span class="line">    fs.<span class="title function_">writeFile</span>(<span class="string">&quot;fileAfter.txt&quot;</span>, strAfter, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">throw</span> err; <span class="comment">//如果报错直接使用throw抛出</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;the file has been save!&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>将上面的去数字的方法封装成函数,单独写一个文件,并调用</p>
+<p>创建<code>stringApi.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">replaceDigit</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> str.<span class="title function_">replace</span>(<span class="regexp">/\d/gm</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>.<span class="property">replaceDigit</span> = replaceDigit;</span><br><span class="line"><span class="comment">//把这个封装好的函数暴露出来可以使用了</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//封装好后在上面的代码里就可以使用了</span></span><br><span class="line"><span class="comment">//先引入</span></span><br><span class="line"><span class="keyword">let</span> strApi = <span class="built_in">require</span>(<span class="string">&quot;./stringApi&quot;</span>); <span class="comment">//如果在同级目录下,直接使用相对路径引入</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//然后将上面的代码const strAfter = str.replace(/\d/gm, &#x27;&#x27;)替换成</span></span><br><span class="line"><span class="keyword">const</span> strAfter = strApi.<span class="title function_">replaceDigit</span>(str);</span><br></pre></td></tr></table></figure>
+
+<h1 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h1><p>如果需要一些功能,node.js 自带的没有,可以去 npm 官网上找一些其他人发布的 npm 包.</p>
+<p>找到之后,首先进行安装</p>
+<h2 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h2><p>记录保存模块依赖,当没有依赖时,比如下载其他人的项目里没有依赖,可以使用<code>npm.init</code>初始化,将 package.json 中记录的模块依赖全都下载下来,方便.</p>
+<h2 id="npm-切换源工具"><a href="#npm-切换源工具" class="headerlink" title="npm 切换源工具"></a>npm 切换源工具</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm <span class="comment">//安装nrm工具</span></span><br><span class="line">nrm ls <span class="comment">//查看nrm支持的源的列表</span></span><br><span class="line">nrm use taobao <span class="comment">//使用淘宝的源</span></span><br><span class="line">nrm use npm <span class="comment">//切换回npm源</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="NPM-Script"><a href="#NPM-Script" class="headerlink" title="NPM Script"></a>NPM Script</h2><p>在 package.json 文件里有一个 scripts 对象,写入里面的命令可以比较方便快捷的执行.直接<code>npm xxx</code>就可以执行.而且会自动搜索路径,不用写相对路径.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;css:autoprefixer&quot;</span>: <span class="string">&quot;postcss -u autoprefixer -r dist/css/*&quot;</span>,</span><br><span class="line">    <span class="string">&quot;css:compress&quot;</span>: <span class="string">&quot;csso in.css --output out.css&quot;</span>,</span><br><span class="line">    <span class="string">&quot;js:lint&quot;</span>: <span class="string">&quot;eslint src/js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;js:uglify&quot;</span>: <span class="string">&quot;mkdir -p dist/js &amp;&amp; uglifyjs src/js/*.js -m -o dist/js/app.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;image:imagemin&quot;</span>: <span class="string">&quot;app=imagemin-cli npm run check; imagemin src/images dist/images -p&quot;</span>,</span><br><span class="line">    <span class="string">&quot;server&quot;</span>: <span class="string">&quot;browser-sync start --server --files &#x27;dist/css/*.css, dist/js/*.js&#x27;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;watch&quot;</span>: <span class="string">&quot;onchange &#x27;src/js/*.js&#x27; -- npm run css:compress&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;npm run server&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run <span class="attr">css</span>:autoprefixer</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2022/09/26/yuque/Node-js/" data-id="cl9xpujsu006cdmop4lwacpyx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/09/26/yuque/Express/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Express
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/09/26/yuque/Vuejs%E8%BF%9B%E9%98%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Vuejs进阶</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/">HTML5</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML5/canvas/">canvas</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/ES6/">ES6</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E5%9F%BA%E7%A1%80/">JS基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/jQuery/">jQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">前端工程化</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/css/css3/">css3</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/Node-js/">Node.js</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E5%AE%89%E5%85%A8/" rel="tag">HTTP安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP%E8%BF%9B%E9%98%B6/" rel="tag">HTTP进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E6%B7%B1%E5%85%A5/" rel="tag">JS深入</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" rel="tag">Vue.js基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html5/" rel="tag">html5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" rel="tag">移动端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag">面试题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/HTML/" style="font-size: 18.57px;">HTML</a> <a href="/tags/HTTP%E5%AE%89%E5%85%A8/" style="font-size: 10px;">HTTP安全</a> <a href="/tags/HTTP%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">HTTP进阶</a> <a href="/tags/JS/" style="font-size: 12.86px;">JS</a> <a href="/tags/JS%E6%B7%B1%E5%85%A5/" style="font-size: 10px;">JS深入</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 11.43px;">JS进阶</a> <a href="/tags/React/" style="font-size: 17.14px;">React</a> <a href="/tags/Vue-SSR/" style="font-size: 15.71px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">Vue.js基础</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 17.14px;">Vue.js进阶</a> <a href="/tags/android/" style="font-size: 11.43px;">android</a> <a href="/tags/css/" style="font-size: 14.29px;">css</a> <a href="/tags/css3/" style="font-size: 11.43px;">css3</a> <a href="/tags/html5/" style="font-size: 12.86px;">html5</a> <a href="/tags/javascript/" style="font-size: 15.71px;">javascript</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 11.43px;">后端</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 11.43px;">小程序</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/" style="font-size: 10px;">移动端</a> <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 14.29px;">面试题</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 12.86px;">项目</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">九月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/25/yuque/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/24/yuque/React%20Query/">React Query</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/19/yuque/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 Zax Tseng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
