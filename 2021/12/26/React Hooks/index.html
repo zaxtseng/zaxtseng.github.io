@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
 
-  
-  <title>React Hooks | ZAX</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类组件转化为函数组件 创建一个与重构页面类组件同名的函数。 return 进类组件中的页面结构。 类中定义的变量，可以使用一个状态变量去表示，使用 useState 钩子我们将把组件重写为一个函数。用 useState 钩子，来处理类中多状态值。 在函数组件中我们可以使用 useEffect 钩子去处理类组件中的生命周期方法 注意类组件转为函数组件以后功能的变化。  举例1234567891011">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="类组件转化为函数组件 创建一个与重构页面类组件同名的函数。 return 进类组件中的页面结构。 类中定义的变量，可以使用一个状态变量去表示，使用 useState 钩子我们将把组件重写为一个函数。用 useState 钩子，来处理类中多状态值。 在函数组件中我们可以使用 useEffect 钩子去处理类组件中的生命周期方法 注意类组件转为函数组件以后功能的变化。  举例1234567891011">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Hooks">
 <meta property="og:url" content="http://example.com/2021/12/26/React%20Hooks/index.html">
@@ -15,80 +27,198 @@
 <meta property="og:description" content="类组件转化为函数组件 创建一个与重构页面类组件同名的函数。 return 进类组件中的页面结构。 类中定义的变量，可以使用一个状态变量去表示，使用 useState 钩子我们将把组件重写为一个函数。用 useState 钩子，来处理类中多状态值。 在函数组件中我们可以使用 useEffect 钩子去处理类组件中的生命周期方法 注意类组件转为函数组件以后功能的变化。  举例1234567891011">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-26T06:15:52.000Z">
-<meta property="article:modified_time" content="2022-11-01T09:55:49.177Z">
+<meta property="article:modified_time" content="2022-11-01T10:08:54.183Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="ZAX" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">ZAX</a>
-      </h1>
-      
+<link rel="canonical" href="http://example.com/2021/12/26/React%20Hooks/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/12/26/React%20Hooks/","path":"2021/12/26/React Hooks/","title":"React Hooks"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>React Hooks | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
         
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E7%BB%84%E4%BB%B6%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%87%BD%E6%95%B0%E7%BB%84%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">类组件转化为函数组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.1.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-hook"><span class="nav-number">2.</span> <span class="nav-text">自定义 hook</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useState"><span class="nav-number">3.</span> <span class="nav-text">useState</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useEffect"><span class="nav-number">4.</span> <span class="nav-text">useEffect</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useEffect-%E7%BB%93%E5%90%88%E5%BC%82%E6%AD%A5%E5%87%BD%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">useEffect 结合异步函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useEffect-%E5%89%AF%E4%BD%9C%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">useEffect 副作用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%AF%E5%87%BD%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">纯函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%AF%E4%BD%9C%E7%94%A8"><span class="nav-number">6.2.</span> <span class="nav-text">副作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#useEffect-%E5%AE%9A%E6%97%B6%E5%99%A8%E9%97%AE%E9%A2%98"><span class="nav-number">6.3.</span> <span class="nav-text">useEffect 定时器问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useHook-%E4%B8%8E%E9%97%AD%E5%8C%85"><span class="nav-number">7.</span> <span class="nav-text">useHook 与闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%9B%B4%E8%AF%AF%E8%A7%A3%E7%9A%84%E9%97%AD%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">7.1.</span> <span class="nav-text">一直误解的闭包问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hook-%E8%A7%84%E5%88%99"><span class="nav-number">8.</span> <span class="nav-text">Hook 规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useMemo"><span class="nav-number">9.</span> <span class="nav-text">useMemo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#memo-%E6%96%B9%E6%B3%95"><span class="nav-number">10.</span> <span class="nav-text">memo 方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useCallback"><span class="nav-number">11.</span> <span class="nav-text">useCallback</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useReducer"><span class="nav-number">12.</span> <span class="nav-text">useReducer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useContext"><span class="nav-number">13.</span> <span class="nav-text">useContext</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E4%BD%BF%E7%94%A8"><span class="nav-number">13.1.</span> <span class="nav-text">全局使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-context"><span class="nav-number">13.1.1.</span> <span class="nav-text">创建 context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA-Provider-%E5%8F%8A%E5%85%B6%E9%99%84%E5%B1%9E%E6%96%B9%E6%B3%95"><span class="nav-number">13.1.2.</span> <span class="nav-text">创建 Provider 及其附属方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF-Context-%E5%9C%A8%E5%85%A8%E5%B1%80%E7%94%9F%E6%95%88"><span class="nav-number">13.1.3.</span> <span class="nav-text">使 Context 在全局生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E7%94%A8-context"><span class="nav-number">13.1.4.</span> <span class="nav-text">调用 context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B5%E9%9D%A2%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="nav-number">13.1.5.</span> <span class="nav-text">页面中使用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useRef"><span class="nav-number">14.</span> <span class="nav-text">useRef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#forwardRef"><span class="nav-number">15.</span> <span class="nav-text">forwardRef</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#useImperativeHandle"><span class="nav-number">16.</span> <span class="nav-text">useImperativeHandle</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
       </div>
     </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-React Hooks" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/12/26/React%20Hooks/" class="article-date">
-  <time datetime="2021-12-26T06:15:52.000Z" itemprop="datePublished">2021-12-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      React Hooks
-    </h1>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
   
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/26/React%20Hooks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="React Hooks | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React Hooks
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-12-26 14:15:52" itemprop="dateCreated datePublished" datetime="2021-12-26T14:15:52+08:00">2021-12-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-01 18:08:54" itemprop="dateModified" datetime="2022-11-01T18:08:54+08:00">2022-11-01</time>
+    </span>
+
+  
+</div>
+
+        </div>
       </header>
+
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    
+    
+    <div class="post-body" itemprop="articleBody">
         <h1 id="类组件转化为函数组件"><a href="#类组件转化为函数组件" class="headerlink" title="类组件转化为函数组件"></a>类组件转化为函数组件</h1><ol>
 <li>创建一个与重构页面类组件同名的函数。</li>
 <li>return 进类组件中的页面结构。</li>
@@ -206,151 +336,73 @@
 </ul>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>,&#123;useState,useEffect,createRef,useRef,forwardRef,useImperativeHandle&#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Child</span>(<span class="params">props,parentRef</span>)&#123;</span><br><span class="line">    <span class="comment">// 子组件内部自己创建 ref</span></span><br><span class="line">    <span class="keyword">let</span> focusRef = <span class="title function_">useRef</span>();</span><br><span class="line">    <span class="keyword">let</span> inputRef = <span class="title function_">useRef</span>();</span><br><span class="line">    <span class="title function_">useImperativeHandle</span>(parentRef,<span class="function">()=&gt;</span>(</span><br><span class="line">      <span class="comment">// 这个函数会返回一个对象</span></span><br><span class="line">      <span class="comment">// 该对象会作为父组件 current 属性的值</span></span><br><span class="line">      <span class="comment">// 通过这种方式，父组件可以使用操作子组件中的多个 ref</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            focusRef,</span><br><span class="line">            inputRef,</span><br><span class="line">            <span class="attr">name</span>:<span class="string">&#x27;计数器&#x27;</span>,</span><br><span class="line">            <span class="title function_">focus</span>(<span class="params"></span>)&#123;</span><br><span class="line">                focusRef.<span class="property">current</span>.<span class="title function_">focus</span>();</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="title function_">changeText</span>(<span class="params">text</span>)&#123;</span><br><span class="line">                inputRef.<span class="property">current</span>.<span class="property">value</span> = text;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;focusRef&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Child</span> = <span class="title function_">forwardRef</span>(<span class="title class_">Child</span>);</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Parent</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> parentRef = <span class="title function_">useRef</span>();<span class="comment">//&#123;current:&#x27;&#x27;&#125;</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">getFocus</span>(<span class="params"></span>)&#123;</span><br><span class="line">    parentRef.<span class="property">current</span>.<span class="title function_">focus</span>();</span><br><span class="line">    <span class="comment">// 因为子组件中没有定义这个属性，实现了保护，所以这里的代码无效</span></span><br><span class="line">    parentRef.<span class="property">current</span>.<span class="title function_">addNumber</span>(<span class="number">666</span>);</span><br><span class="line">    parentRef.<span class="property">current</span>.<span class="title function_">changeText</span>(<span class="string">&#x27;&lt;script&gt;alert(1)&lt;/script&gt;&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(parentRef.<span class="property">current</span>.<span class="property">name</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ForwardChild</span> <span class="attr">ref</span>=<span class="string">&#123;parentRef&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;getFocus&#125;</span>&gt;</span>获得焦点<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/12/26/React%20Hooks/" data-id="cl9y1bhha0018dvopa0bn3ua3" class="article-share-link">Share</a>
-      
-      
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/12/13/Echarts/" rel="prev" title="Echarts">
+                  <i class="fa fa-chevron-left"></i> Echarts
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/12/29/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%8E%A8%E9%80%811/" rel="next" title="企业微信推送1">
+                  企业微信推送1 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2021/12/29/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%8E%A8%E9%80%811/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          企业微信推送1
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2021/12/13/Echarts/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Echarts</div>
-    </a>
-  
-</nav>
 
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTML%E5%9F%BA%E7%A1%80/">HTML基础</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/HTTP%E5%9F%BA%E7%A1%80/">HTTP基础</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/">JS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/JS/JS%E8%BF%9B%E9%98%B6/">JS进阶</a></li></ul></li></ul>
     </div>
-  </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
 
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/" rel="tag">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS%E8%BF%9B%E9%98%B6/" rel="tag">JS进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-SSR/" rel="tag">Vue-SSR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag">Vue.js进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css3/" rel="tag">css3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/HTML/" style="font-size: 13.33px;">HTML</a> <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/JS%E8%BF%9B%E9%98%B6/" style="font-size: 10px;">JS进阶</a> <a href="/tags/Vue-SSR/" style="font-size: 16.67px;">Vue-SSR</a> <a href="/tags/Vue-js/" style="font-size: 20px;">Vue.js</a> <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" style="font-size: 13.33px;">Vue.js进阶</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 10px;">css3</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">基础</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">小程序</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">January 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/10/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">自动化构建工具</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/">脚手架</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/24/React%20Query/">React Query</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">常用组件</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">单元测试</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2022 Zax Tseng<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
-<script src="/js/script.js"></script>
 
-
-
-
-  </div>
 </body>
 </html>
