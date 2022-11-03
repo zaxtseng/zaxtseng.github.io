@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="图片的相对路径图片的前缀不再使用固定的 url,可以加&#x2F;给图片地址.就会自动在前面拼接上 url 的 origin 地址前缀. 12345&#x2F;&#x2F;例如const baseURL &#x3D; &quot;&#x2F;&quot;;return baseURL + item.downloadPath;&#x2F;&#x2F;例如&quot;&#x2F;Rest&#x2F;pc&#x2F;file&#x2F;download?&quot; + item.url;  如果存在网关,则需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML补档">
+<meta property="og:url" content="http://example.com/2021/09/24/HTML%E8%A1%A5%E6%A1%A3/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="图片的相对路径图片的前缀不再使用固定的 url,可以加&#x2F;给图片地址.就会自动在前面拼接上 url 的 origin 地址前缀. 12345&#x2F;&#x2F;例如const baseURL &#x3D; &quot;&#x2F;&quot;;return baseURL + item.downloadPath;&#x2F;&#x2F;例如&quot;&#x2F;Rest&#x2F;pc&#x2F;file&#x2F;download?&quot; + item.url;  如果存在网关,则需">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-24T12:15:29.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:19.705Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/09/24/HTML%E8%A1%A5%E6%A1%A3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/09/24/HTML%E8%A1%A5%E6%A1%A3/","path":"2021/09/24/HTML补档/","title":"HTML补档"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTML补档 | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E7%9A%84%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="nav-number">1.</span> <span class="nav-text">图片的相对路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export-%E5%92%8C-export-default-%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">export 和 export default 区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#defer-%E5%92%8C-async-%E5%8C%BA%E5%88%AB"><span class="nav-number"></span> <span class="nav-text">defer 和 async 区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#link-%E5%92%8C-import-%E5%8C%BA%E5%88%AB"><span class="nav-number"></span> <span class="nav-text">link 和 @import 区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-link-%E7%94%A8-href-%E8%8E%B7%E5%8F%96%E8%B5%84%E6%BA%90-%E8%80%8C-script-%E5%92%8C-img-%E7%94%A8-src"><span class="nav-number"></span> <span class="nav-text">为什么 link 用 href 获取资源,而 script 和 img 用 src?</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/24/HTML%E8%A1%A5%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTML补档 | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML补档
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-24 20:15:29" itemprop="dateCreated datePublished" datetime="2021-09-24T20:15:29+08:00">2021-09-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:19" itemprop="dateModified" datetime="2022-11-03T15:07:19+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="图片的相对路径"><a href="#图片的相对路径" class="headerlink" title="图片的相对路径"></a>图片的相对路径</h2><p>图片的前缀不再使用固定的 url,可以加<code>/</code>给图片地址.就会自动在前面拼接上 url 的 origin 地址前缀.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如</span></span><br><span class="line"><span class="keyword">const</span> baseURL = <span class="string">&quot;/&quot;</span>;</span><br><span class="line"><span class="keyword">return</span> baseURL + item.<span class="property">downloadPath</span>;</span><br><span class="line"><span class="comment">//例如</span></span><br><span class="line"><span class="string">&quot;/Rest/pc/file/download?&quot;</span> + item.<span class="property">url</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果存在网关,则需要加上网关.</p>
+<h2 id="export-和-export-default-区别"><a href="#export-和-export-default-区别" class="headerlink" title="export 和 export default 区别"></a>export 和 export default 区别</h2><ul>
+<li>在一个文件或模块中，export、import 可以有多个，export default 仅有一个</li>
+<li>通过 export 方式导出，在导入时要加{ }，export default 则不需要</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"><span class="keyword">let</span> sex = <span class="string">&quot;boy&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sex（sex不能加大括号）</span><br><span class="line"><span class="comment">//原本直接export sex外部是无法识别的，加上default就可以了.</span></span><br><span class="line"><span class="comment">//但是一个文件内最多只能有一个export default。</span></span><br><span class="line"><span class="comment">//其实此处相当于为sex变量值&quot;boy&quot;起了一个系统默认的变量名default，</span></span><br><span class="line"><span class="comment">//自然default只能有一个值，所以一个文件内不能有多个export default。</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b.js</span></span><br><span class="line">本质上，a.<span class="property">js</span>文件的<span class="keyword">export</span> <span class="keyword">default</span>输出一个叫做<span class="keyword">default</span>的变量，</span><br><span class="line"><span class="comment">//然后系统允许你为它取任意名字。所以可以为import的模块起任何变量名，且不需要用大括号包含</span></span><br><span class="line"><span class="keyword">import</span> any <span class="keyword">from</span> <span class="string">&quot;./a.js&quot;</span></span><br><span class="line"><span class="keyword">import</span> any12 <span class="keyword">from</span> <span class="string">&quot;./a.js&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(any,any12)   <span class="comment">// boy,boy</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="defer-和-async-区别"><a href="#defer-和-async-区别" class="headerlink" title="defer 和 async 区别"></a>defer 和 async 区别</h1><p>区别主要在于一个执行时间,script 的执行时机.<br>两个网络请求都是异步的,不会阻塞浏览器解析 HTML.加载是都会加载,执行就有区别了.</p>
+<p><code>defer</code>会在 dom 解析完之后执行,并且多个<code>defer</code>会按照顺序执行,<br><code>async</code>则是在 js 加载好之后就会执行脚本,并且多个<code>async</code>,哪个加载好就执行哪个</p>
+<p>解析：<br>在没有 defer 或者 async 的情况下：会立即执行脚本,所以通常建议把 script 放在 body 最后<br><code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code><br>async：有 async 的话,加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。<br>但是多个 js 文件的加载顺序不会按照书写顺序进行<br><code>&lt;script async src=&quot;script.js&quot;&gt;&lt;/script&gt;</code><br>defer：有 defer 的话,加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成,并且多个 defer 会按照顺序进行加载。<br><code>&lt;script defer src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></p>
+<h1 id="link-和-import-区别"><a href="#link-和-import-区别" class="headerlink" title="link 和 @import 区别"></a>link 和 @import 区别</h1><p>作用: 样式的导入方式</p>
+<ol>
+<li>引入内容不同.<code>link</code>除了引入样式还可以引入图片等文件,<code>@import</code>只能引入 css.</li>
+<li>加载顺序不同.<code>link</code>在页面加载时同时加载,<code>@import</code>需要等页面加载完.</li>
+<li>兼容性不同.<code>link</code>是<code>XHTML</code>标签,无兼容性问题.<code>@import</code>低版本浏览器有可能不支持.</li>
+<li>对 JS 支持不同.<code>link</code>支持用 js 控制 DOM 去改变样式.<code>@import</code>不支持.</li>
+</ol>
+<h1 id="为什么-link-用-href-获取资源-而-script-和-img-用-src"><a href="#为什么-link-用-href-获取资源-而-script-和-img-用-src" class="headerlink" title="为什么 link 用 href 获取资源,而 script 和 img 用 src?"></a>为什么 link 用 href 获取资源,而 script 和 img 用 src?</h1><p>link 用于在当前文档和引用资源建立联系,<br>src 用于替换当前元素.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=<span class="string">&quot;common.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在文档中添加 link 标签，浏览器会识别该文档为 css 文件，就会并行下载资源并且不会停止对当前文档的处理。这也是为什么建议使用 link 方式来加载 css，而不是使用@import 方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;a.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执行完毕，图片和框架 等元素也如此，类似于将所指向资源嵌入当前标签内。这也是为什么将 js 脚本放在底部而不是头部</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/16/uniapp/" rel="prev" title="uniapp">
+                  <i class="fa fa-chevron-left"></i> uniapp
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/" rel="next" title="安卓原生打包">
+                  安卓原生打包 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

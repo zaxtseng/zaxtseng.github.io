@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="原理通过node-xlsx或者js-xlsx将数据表处理成 data 多维数组输出后自行处理. 安装1npm i node-xlsx  新增文件夹,将 xlsx 文件放到excel文件夹下. 文件预览 创建执行文件 index.js1234567891011121314151617181920212223242526272829303132333435363738394041424344const">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node处理excel输出json">
+<meta property="og:url" content="http://example.com/2021/11/03/node%E5%A4%84%E7%90%86excel%E8%BE%93%E5%87%BAjson/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="原理通过node-xlsx或者js-xlsx将数据表处理成 data 多维数组输出后自行处理. 安装1npm i node-xlsx  新增文件夹,将 xlsx 文件放到excel文件夹下. 文件预览 创建执行文件 index.js1234567891011121314151617181920212223242526272829303132333435363738394041424344const">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929012254-f166cfee-aae1-456e-b3e9-7d541515c42b.png#clientId=ucfce2243-d17c-4&from=ui&id=u7fc008c0&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.42.19.png&originHeight=192&originWidth=196&originalType=binary%E2%88%B6=1&size=13517&status=done&style=none&taskId=u5e063c68-5e01-4c83-b082-6fe82cc20ee">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929153310-b8b62fd5-eb81-45c8-a804-cb86a77ef7f2.png#clientId=ucfce2243-d17c-4&from=ui&id=ubb720b73&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.45.35.png&originHeight=122&originWidth=223&originalType=binary%E2%88%B6=1&size=14251&status=done&style=none&taskId=ue1d3a1b8-1069-4287-8c02-e52571ba84d">
+<meta property="article:published_time" content="2021-11-03T08:37:26.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:19.657Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929012254-f166cfee-aae1-456e-b3e9-7d541515c42b.png#clientId=ucfce2243-d17c-4&from=ui&id=u7fc008c0&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.42.19.png&originHeight=192&originWidth=196&originalType=binary%E2%88%B6=1&size=13517&status=done&style=none&taskId=u5e063c68-5e01-4c83-b082-6fe82cc20ee">
+
+
+<link rel="canonical" href="http://example.com/2021/11/03/node%E5%A4%84%E7%90%86excel%E8%BE%93%E5%87%BAjson/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/11/03/node%E5%A4%84%E7%90%86excel%E8%BE%93%E5%87%BAjson/","path":"2021/11/03/node处理excel输出json/","title":"node处理excel输出json"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>node处理excel输出json | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E9%A2%84%E8%A7%88"><span class="nav-number">3.</span> <span class="nav-text">文件预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6-index-js"><span class="nav-number">4.</span> <span class="nav-text">创建执行文件 index.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%A4%84%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">函数处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C"><span class="nav-number">5.1.</span> <span class="nav-text">执行</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/node%E5%A4%84%E7%90%86excel%E8%BE%93%E5%87%BAjson/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="node处理excel输出json | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          node处理excel输出json
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-11-03 16:37:26" itemprop="dateCreated datePublished" datetime="2021-11-03T16:37:26+08:00">2021-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:19" itemprop="dateModified" datetime="2022-11-03T15:07:19+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>通过<code>node-xlsx</code>或者<code>js-xlsx</code>将数据表处理成 data 多维数组输出后自行处理.</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i node-xlsx</span><br></pre></td></tr></table></figure>
+
+<p>新增文件夹,将 xlsx 文件放到<code>excel</code>文件夹下.<br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929012254-f166cfee-aae1-456e-b3e9-7d541515c42b.png#clientId=ucfce2243-d17c-4&from=ui&id=u7fc008c0&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.42.19.png&originHeight=192&originWidth=196&originalType=binary%E2%88%B6=1&size=13517&status=done&style=none&taskId=u5e063c68-5e01-4c83-b082-6fe82cc20ee" alt="iShot2021-11-03 16.42.19.png"></p>
+<h1 id="文件预览"><a href="#文件预览" class="headerlink" title="文件预览"></a>文件预览</h1><p><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1635929153310-b8b62fd5-eb81-45c8-a804-cb86a77ef7f2.png#clientId=ucfce2243-d17c-4&from=ui&id=ubb720b73&margin=%5Bobject%20Object%5D&name=iShot2021-11-03%2016.45.35.png&originHeight=122&originWidth=223&originalType=binary%E2%88%B6=1&size=14251&status=done&style=none&taskId=ue1d3a1b8-1069-4287-8c02-e52571ba84d" alt="iShot2021-11-03 16.45.35.png"></p>
+<h1 id="创建执行文件-index-js"><a href="#创建执行文件-index-js" class="headerlink" title="创建执行文件 index.js"></a>创建执行文件 index.js</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> xlsx = <span class="built_in">require</span>(<span class="string">&quot;node-xlsx&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//几列数据,返回name是表单几,data是数组数据</span></span><br><span class="line"><span class="keyword">const</span> excelData = xlsx.<span class="title function_">parse</span>(<span class="string">&quot;./excel/card.xlsx&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">// console.log(excelData)</span></span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="comment">// [</span></span><br><span class="line"><span class="comment">//   &#123;</span></span><br><span class="line"><span class="comment">//     name: &quot;Sheet1&quot;,</span></span><br><span class="line"><span class="comment">//     data: [</span></span><br><span class="line"><span class="comment">//       [&quot;goods&quot;, &quot;feifan&quot;, &quot;jiujiu&quot;],</span></span><br><span class="line"><span class="comment">//       [&quot;屈50&quot;, 43, 44],</span></span><br><span class="line"><span class="comment">//       [&quot;呷50&quot;, 36, 33],</span></span><br><span class="line"><span class="comment">//       [&quot;德30&quot;, 27, 32],</span></span><br><span class="line"><span class="comment">//       [&quot;奈30&quot;, 20, 31],</span></span><br><span class="line"><span class="comment">//       [&quot;本50&quot;, 43.5, 44.2],</span></span><br><span class="line"><span class="comment">//       [&quot;本50&quot;, 43.5, 44.2],</span></span><br><span class="line"><span class="comment">//     ],</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// ];</span></span><br><span class="line"><span class="comment">//现在要做的就是把这个data,组合成想要的json格式,如下</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// [</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         goods: &#x27;屈50&#x27;,</span></span><br><span class="line"><span class="comment">//         feifan: 43,</span></span><br><span class="line"><span class="comment">//         jiujiu: 44</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         goods: &#x27;呷50&#x27;,</span></span><br><span class="line"><span class="comment">//         feifan: 36,</span></span><br><span class="line"><span class="comment">//         jiujiu: 33</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         goods: &#x27;德30&#x27;,</span></span><br><span class="line"><span class="comment">//         feifan: 27,</span></span><br><span class="line"><span class="comment">//         jiujiu: 32</span></span><br><span class="line"><span class="comment">//     &#125;,</span></span><br><span class="line"><span class="comment">//     ...</span></span><br><span class="line"><span class="comment">// ]</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="函数处理"><a href="#函数处理" class="headerlink" title="函数处理"></a>函数处理</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">handleExcel</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  excelData.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> xlsData = item.<span class="property">data</span>;</span><br><span class="line">    <span class="keyword">let</span> keyArr = xlsData[<span class="number">0</span>]; <span class="comment">//key的数组</span></span><br><span class="line">    <span class="keyword">let</span> dataArr = xlsData.<span class="title function_">slice</span>(<span class="number">1</span>); <span class="comment">//data的数组,除去第一行</span></span><br><span class="line"></span><br><span class="line">    dataArr.<span class="title function_">map</span>(<span class="function">(<span class="params">lineItem</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">let</span> arrItem = &#123;&#125;;</span><br><span class="line">      lineItem.<span class="title function_">map</span>(<span class="function">(<span class="params">i, index</span>) =&gt;</span></span><br><span class="line">        <span class="title class_">Object</span>.<span class="title function_">assign</span>(arrItem, &#123; [keyArr[index]]: i &#125;)</span><br><span class="line">      ); <span class="comment">//再加一层[]是因为keyArr[index]是字符串</span></span><br><span class="line">      arr.<span class="title function_">push</span>(arrItem);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//文件输出方法</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">generatJSON</span> = (<span class="params">fileName, data</span>) =&gt; &#123;</span><br><span class="line">  fs.<span class="title function_">writeFile</span>(fileName, data, <span class="string">&quot;UTF-8&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;success&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">handleExcel</span>();</span><br><span class="line"><span class="title function_">generatJSON</span>(<span class="string">&quot;./data/data.json&quot;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(arr, <span class="literal">null</span>, <span class="string">&quot;\t&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node inde.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+
+<p>查看 data 文件夹下的输出文件</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/" rel="prev" title="安卓原生打包">
+                  <i class="fa fa-chevron-left"></i> 安卓原生打包
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/23/less%E8%A1%A5%E6%A1%A3/" rel="next" title="less补档">
+                  less补档 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

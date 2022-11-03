@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Rollup 概述 Rollup 更小巧，仅仅是一款 ESM 打包器 Rollup 中并不支持类似 HMR 这种高级特性 提供一个充分利用 ESM 各项特性的高效打包器  Rollup 快速上手 安装 yarn add rollup --dev 打包 yarn rollup .&#x2F;src&#x2F;index.js --format iife --file dist&#x2F;bundle.js 入口文件 index.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rolllup">
+<meta property="og:url" content="http://example.com/2022/10/24/rolllup/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="Rollup 概述 Rollup 更小巧，仅仅是一款 ESM 打包器 Rollup 中并不支持类似 HMR 这种高级特性 提供一个充分利用 ESM 各项特性的高效打包器  Rollup 快速上手 安装 yarn add rollup --dev 打包 yarn rollup .&#x2F;src&#x2F;index.js --format iife --file dist&#x2F;bundle.js 入口文件 index.">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-24T14:20:58.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:11.341Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/10/24/rolllup/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/10/24/rolllup/","path":"2022/10/24/rolllup/","title":"rolllup"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>rolllup | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">Rollup 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="nav-number">2.</span> <span class="nav-text">Rollup 快速上手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">Rollup 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">Rollup 使用插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E5%8A%A0%E8%BD%BD-NPM-%E6%A8%A1%E5%9D%97"><span class="nav-number">5.</span> <span class="nav-text">Rollup 加载 NPM 模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E5%8A%A0%E8%BD%BD-CommonJS-%E6%A8%A1%E5%9D%97"><span class="nav-number">6.</span> <span class="nav-text">Rollup 加载 CommonJS 模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E4%BB%A3%E7%A0%81%E6%8B%86%E5%88%86"><span class="nav-number">7.</span> <span class="nav-text">Rollup 代码拆分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E5%A4%9A%E5%85%A5%E5%8F%A3%E6%89%93%E5%8C%85"><span class="nav-number">8.</span> <span class="nav-text">Rollup 多入口打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rollup-%E9%80%89%E7%94%A8%E5%8E%9F%E5%88%99"><span class="nav-number">9.</span> <span class="nav-text">Rollup 选用原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parcel-%E6%89%93%E5%8C%85%E5%99%A8"><span class="nav-number">10.</span> <span class="nav-text">Parcel 打包器</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/24/rolllup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="rolllup | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          rolllup
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-24 22:20:58" itemprop="dateCreated datePublished" datetime="2022-10-24T22:20:58+08:00">2022-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:11" itemprop="dateModified" datetime="2022-11-03T15:07:11+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Rollup-概述"><a href="#Rollup-概述" class="headerlink" title="Rollup 概述"></a>Rollup 概述</h2><ul>
+<li>Rollup 更小巧，仅仅是一款 ESM 打包器</li>
+<li>Rollup 中并不支持类似 HMR 这种高级特性</li>
+<li>提供一个充分利用 ESM 各项特性的高效打包器</li>
+</ul>
+<h2 id="Rollup-快速上手"><a href="#Rollup-快速上手" class="headerlink" title="Rollup 快速上手"></a>Rollup 快速上手</h2><ul>
+<li>安装 <code>yarn add rollup --dev</code></li>
+<li>打包 <code>yarn rollup ./src/index.js --format iife --file dist/bundle.js</code></li>
+<li>入口文件 index.js，指定输出格式：–format，格式：iife（自执行函数），–file：输出到目录</li>
+<li>没使用的不会打包，自动开启 Tree Shaking</li>
+</ul>
+<h2 id="Rollup-配置文件"><a href="#Rollup-配置文件" class="headerlink" title="Rollup 配置文件"></a>Rollup 配置文件</h2><ul>
+<li>rollup 运行在 node 环境中</li>
+<li>根目录新建 rollup.config.js 配置文件</li>
+<li>rollup 会额外处理这个配置文件，所有可以使用 ESM</li>
+<li>配置文件导出一个对象</li>
+<li>通过 input 属性指定打包入口</li>
+<li>通过 output 属性指定输出，该属性值是一个对象，通过 file 指定输出的文件名，format 属性指定输出格式</li>
+<li>打包 <code>yarn rollup --config rollup.config.js</code> 通过–config 告诉 rollup 使用配置文件，可以根据开发、生产指定对应的配置文件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-使用插件"><a href="#Rollup-使用插件" class="headerlink" title="Rollup 使用插件"></a>Rollup 使用插件</h2><ul>
+<li>插件是 rollup 唯一的扩展途径</li>
+<li>安装插件 <code>yarn add rollup-plugin-json --dev</code> 一个可以在代码导入 json 文件的插件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-json&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="comment">// package.json 的属性会作为成员导出</span></span><br><span class="line"><span class="keyword">import</span> &#123; name, version &#125; <span class="keyword">from</span> <span class="string">&quot;../package&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, version);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-加载-NPM-模块"><a href="#Rollup-加载-NPM-模块" class="headerlink" title="Rollup 加载 NPM 模块"></a>Rollup 加载 NPM 模块</h2><ul>
+<li>安装插件 <code>yarn add rollup-plugin-node-resolve --dev</code></li>
+<li>安装 lodash 的 es 版本 <code>yarn add lodash-es</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-json&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> resolve <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-node-resolve&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>(), <span class="title function_">resolve</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">&quot;lodash-es&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(_.<span class="title function_">camelCase</span>(<span class="string">&quot;hello world&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-加载-CommonJS-模块"><a href="#Rollup-加载-CommonJS-模块" class="headerlink" title="Rollup 加载 CommonJS 模块"></a>Rollup 加载 CommonJS 模块</h2><ul>
+<li>安装插件 <code>yarn add rollup-plugin-commonjs --dev</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-json&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> resolve <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-node-resolve&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> commonjs <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-commonjs&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>(), <span class="title function_">resolve</span>(), <span class="title function_">commonjs</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// cjs-module.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; <span class="attr">foo</span>: <span class="string">&quot;bar&quot;</span> &#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> cjs <span class="keyword">from</span> <span class="string">&quot;./cjs-module.js&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cjs);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-代码拆分"><a href="#Rollup-代码拆分" class="headerlink" title="Rollup 代码拆分"></a>Rollup 代码拆分</h2><ul>
+<li>可以 ESM 的动态导入方式（import()）实现模块的按需加载</li>
+<li>rollup 内部会自动处理代码拆分</li>
+<li>代码拆分的方式打包 formats 不可以使用 iife（自执行函数）</li>
+<li>自执行函数会把所有模块放到同一个函数中，可以使用 AMD 或者 Commonjs 标准，浏览器使用 AMD</li>
+<li>需要输出多个文件 output 中就不能使用 file 属性，而是使用 dis 属性 值是输出目录</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">dir</span>: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;amd&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="title function_">import</span>(<span class="string">&quot;./logger&quot;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; log &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">log</span>(<span class="string">&quot;code splitting~&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-多入口打包"><a href="#Rollup-多入口打包" class="headerlink" title="Rollup 多入口打包"></a>Rollup 多入口打包</h2><ul>
+<li>会把不同入口公共代码自动提取到单个文件中作为独立的 bundle</li>
+<li>把配置文件的 input 属性值修改为一个数组，或者使用对象的方式</li>
+<li>rollup 内部会自动拆分 format 要使用 AMD</li>
+<li>AMD 文件不能直接引入，要使用特定的库去加载</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// input: [&#x27;src/index.js&#x27;, &#x27;src/album.js&#x27;]</span></span><br><span class="line">  <span class="attr">input</span>: &#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">    <span class="attr">bar</span>: <span class="string">&quot;src/album.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">dir</span>: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;amd&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;ie=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- AMD 标准格式的输出 bundle 不能直接引用 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;script src=&quot;foo.js&quot;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 需要 Require.js 这样的库 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--data-main：指定require入口路径--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span></span></span><br><span class="line"><span class="tag">      <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/requirejs@2.3.6/require.js&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">data-main</span>=<span class="string">&quot;foo.js&quot;</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-选用原则"><a href="#Rollup-选用原则" class="headerlink" title="Rollup 选用原则"></a>Rollup 选用原则</h2><ul>
+<li>优势<ul>
+<li>输出结果更加扁平</li>
+<li>自动移除未引用的代码</li>
+<li>打包结果依然完全可读</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>加载非 ESM 的第三方模块比较复杂</li>
+<li>模块最终都被打包到一个函数中，无法实现 HMR</li>
+<li>浏览器环境中，代码拆分功能依赖 AMD 库</li>
+</ul>
+</li>
+<li>应用开发建议使用 webpack</li>
+<li>库、框架开发建议使用 Rollup</li>
+</ul>
+<h2 id="Parcel-打包器"><a href="#Parcel-打包器" class="headerlink" title="Parcel 打包器"></a>Parcel 打包器</h2><ul>
+<li>零配置的前端应用打包器</li>
+<li>安装 <code>yarn add parcel-bundler --dev</code></li>
+<li>官方建议使用 html 文件作为打包入口</li>
+<li>打包 <code>yarn parcel src/index.html</code> parcel 会根据导入的模块查找 从而完成整个项目的打包，会自动开启一个服务</li>
+<li>模块热更新</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable language_">module</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hmr&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>会自动安装模块依赖，如文件中导入 JQ，保存文件后，会自动安装模块</li>
+<li>支持导入其他类型文件，而且是零配置的 <code>import &#39;./style.css</code> 保存就生效了</li>
+<li>可以动态导入模块 import()</li>
+<li>生成环境打包 <code>yarn parcel build src/index.html</code></li>
+<li>内部使用多进程同时工作，构建速度快</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/24/webpack/" rel="prev" title="webpack">
+                  <i class="fa fa-chevron-left"></i> webpack
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/" rel="next" title="脚手架">
+                  脚手架 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

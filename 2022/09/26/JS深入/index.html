@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="title: JS深入 date: 2019-09-20 19:52:59 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  JS # 一级分类 JS深入 # 二级分类   JavaScript 自动垃圾收集机制垃圾回收又称为 GC(Garbage Collecation)。编写 JavaScript 程序时，开发者不需要手工跟踪内存的使用情况，只要按照标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS深入">
+<meta property="og:url" content="http://example.com/2022/09/26/JS%E6%B7%B1%E5%85%A5/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="title: JS深入 date: 2019-09-20 19:52:59 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  JS # 一级分类 JS深入 # 二级分类   JavaScript 自动垃圾收集机制垃圾回收又称为 GC(Garbage Collecation)。编写 JavaScript 程序时，开发者不需要手工跟踪内存的使用情况，只要按照标">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-26T13:05:30.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:17.561Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/09/26/JS%E6%B7%B1%E5%85%A5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/26/JS%E6%B7%B1%E5%85%A5/","path":"2022/09/26/JS深入/","title":"JS深入"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>JS深入 | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-%E8%87%AA%E5%8A%A8%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E6%9C%BA%E5%88%B6"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 自动垃圾收集机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E7%9A%84%E6%AD%A3%E5%B8%B8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">1.1.</span> <span class="nav-text">局部变量的正常生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript-%E4%B8%AD%E7%9A%84%E6%A0%88%E5%86%85%E5%AD%98%E4%B8%8E%E5%A0%86%E5%86%85%E5%AD%98"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript 中的栈内存与堆内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4"><span class="nav-number">1.3.</span> <span class="nav-text">标记清除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">引用计数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.</span> <span class="nav-text">垃圾回收的性能问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E4%BB%A3%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">1.6.</span> <span class="nav-text">分代回收机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scavenge-%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.1.</span> <span class="nav-text">Scavenge 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E8%83%BD%E8%A2%AB%E5%BF%BD%E8%A7%86%E7%9A%84%E5%86%99%E5%B1%8F%E9%9A%9C-Write-barriers"><span class="nav-number">1.6.2.</span> <span class="nav-text">不能被忽视的写屏障 Write barriers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95-%E4%B8%8E-%E6%A0%87%E8%AE%B0-%E7%B4%A7%E7%BC%A9%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.3.</span> <span class="nav-text">标记-清除算法 与 标记-紧缩算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E8%AE%B0%E9%98%B6%E6%AE%B5"><span class="nav-number">1.7.</span> <span class="nav-text">标记阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E9%99%A4-%E6%88%96-%E7%B4%A7%E7%BC%A9-%E7%AE%97%E6%B3%95"><span class="nav-number">1.8.</span> <span class="nav-text">清除 或 紧缩 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E6%A0%87%E8%AE%B0-%E4%B8%8E-%E6%83%B0%E6%80%A7%E6%B8%85%E9%99%A4"><span class="nav-number">1.9.</span> <span class="nav-text">增量标记 与 惰性清除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Event-Loop"><span class="nav-number">2.</span> <span class="nav-text">Event Loop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%AE%8F%E4%BB%BB%E5%8A%A1"><span class="nav-number">2.1.</span> <span class="nav-text">微任务和宏任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E4%BB%A5%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%B8%80%E6%AC%A1-Event-loop-%E9%A1%BA%E5%BA%8F%E6%98%AF%E8%BF%99%E6%A0%B7%E7%9A%84"><span class="nav-number">2.2.</span> <span class="nav-text">所以正确的一次 Event loop 顺序是这样的</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/JS%E6%B7%B1%E5%85%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="JS深入 | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JS深入
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:05:30" itemprop="dateCreated datePublished" datetime="2022-09-26T21:05:30+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:17" itemprop="dateModified" datetime="2022-11-03T15:07:17+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <hr>
+<p>title: JS深入</p>
+<p>date: 2019-09-20 19:52:59</p>
+<p>tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>JS # 一级分类</li>
+<li>JS深入 # 二级分类</li>
+</ul>
+<hr>
+<h1 id="JavaScript-自动垃圾收集机制"><a href="#JavaScript-自动垃圾收集机制" class="headerlink" title="JavaScript 自动垃圾收集机制"></a>JavaScript 自动垃圾收集机制</h1><p>垃圾回收又称为 GC(Garbage Collecation)。编写 JavaScript 程序时，开发者不需要手工跟踪内存的使用情况，只要按照标准写 JavaScript 代码，JavaScript 程序运行所需内存的分配以及无用内存的回收完全是自动管理。JavaScript 中自动垃圾回收机制的原理为：</p>
+<blockquote>
+<p>找出那些不再使用的变量，然后释放其占用的内存。垃圾收集器会按照固定的时间间隔(或预定的收集时间)周期性地执行此操作。</p>
+</blockquote>
+<h2 id="局部变量的正常生命周期"><a href="#局部变量的正常生命周期" class="headerlink" title="局部变量的正常生命周期"></a>局部变量的正常生命周期</h2><p>局部变量只在函数执行的过程中存在。</p>
+<p>在函数执行过程中，会为局部变量在栈内存(或 堆内存)上分配相应的空间来存储它们的值。在函数中使用这些变量，直至函数执行结束，此时可以释放局部变量的内存供将来需要时使用。</p>
+<p>以上情况下，较容易判断变量是否有存在的必要，更复杂的情况需要更精细的变量追踪策略。</p>
+<p>JavaScript 中的垃圾收集器必须跟踪每个变量是否有用，需要为不再有用的变量打上标记，用于将来回收其占用的内存。标识无用变量的策略通常有两个：<strong>标记清除</strong> 和 <strong>引用计数</strong> 。</p>
+<h2 id="JavaScript-中的栈内存与堆内存"><a href="#JavaScript-中的栈内存与堆内存" class="headerlink" title="JavaScript 中的栈内存与堆内存"></a>JavaScript 中的栈内存与堆内存</h2><p>上述过程中，JavaScript 中变量分为 基本类型值 和 引用类型值：</p>
+<ul>
+<li>基本类型值 在内存中占固定大小的空间，因此被保存在 <strong>栈内存</strong> 中；</li>
+<li>引用类型值 是对象，保存在 <strong>堆内存</strong> 中。包含引用类型值的变量实际包含并非对象本身，而是指向该对象的指针。一个变量从另一个变量复制引用类型的值时，复制的也是指向该对象的指针。</li>
+</ul>
+<h2 id="标记清除"><a href="#标记清除" class="headerlink" title="标记清除"></a>标记清除</h2><p>标记清除(mark-and-sweep) 是 JavaScript 中最常用的垃圾回收方式。其执行机制如下：</p>
+<ul>
+<li>当变量进入环境时，就将其标记为“进入环境”</li>
+<li>当变量离开环境时将其标记为“离开环境”</li>
+</ul>
+<p>逻辑上，永远不能释放进入环境的变量所占用的内存，因为执行流进入相应的环境时，可能会用到它们。</p>
+<p>标记变量的方式有很多种，可以使用标记位的形式记录变量进入环境，也可单独为“进入环境”和“离开环境”添加变量列表来记录变化。</p>
+<p>标记清除采用的收集策略为：</p>
+<ol>
+<li>JavaScript 中的垃圾收集器运行时会给<strong>存储在内存中的所有变量</strong>都加上标记；</li>
+<li>然后去掉环境中的变量以及被环境中的变量引用的变量的标记；</li>
+<li>此后，再被加上标记的变量被视为准备删除的变量；</li>
+<li>最后，垃圾收集器完成内存清除，销毁那些带标记的值并回收其占用的内存空间。</li>
+</ol>
+<p>2008 年之前，IE、Firefox、Opera、Chrome 和 Safari 的 JavaScript 实现使用的均为 标记清除式的垃圾回收策略，区别可能在垃圾收集的时间间隔。</p>
+<h2 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h2><p>引用计数(reference counting) 是另一种垃圾收集策略。引用计数的本质是 <strong>跟踪记录每个值被引用的次数</strong>。其执行机制如下：</p>
+<ol>
+<li>当声明一个变量并将一个引用类型值赋值给该变量时，这个值的引用次数为 1；</li>
+<li>若同一个值(变量)又被赋值给另一个变量，则该值的引用次数加 1；</li>
+<li>但是如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减 1；</li>
+<li>当这个值的引用次数为 0 时，则无法再访问这个值，就可回收其占用的内存空间。</li>
+</ol>
+<p>垃圾收集器下次运行时，会释放那些引用次数为零的值所占用的内存。</p>
+<p>引用计数存在一个致命的问题： <strong>循环引用</strong>。循环引用是指，对象 A 中包含一个指向对象 B 的指针，而对象 B 中也包含一个指向对象 A 的引用。下面的代码就是标准的循环引用的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">cycleRefernce</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> objectA = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">  <span class="keyword">var</span> objectB = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"></span><br><span class="line">  objectA.<span class="property">someOtherObject</span> = objectB;</span><br><span class="line">  objectB.<span class="property">anotherObject</span> = objectA;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述例子中 objectA 和 objectB 通过各自属性相互引用。按照引用计数的策略，两个对象的引用次数均为 2。若采用标记清除策略，函数执行完毕，对象离开作用域就不存在相互引用。但采用引用计数后，函数执行完，两个对象的引用次数永不为 0，会一直存尊内存中，若多次调用，导致大量内存得不到回收。</p>
+<p>IE8 浏览器 之前中有一部分对象并不是原生的 JavaScript 对象，可能是使用 C++ 以 COM 对象的形式实现的(BOM, DOM)。而 COM 对象的垃圾收集机制采用的是 引用计数策略。即使 IE 的 JavaScript 引擎是使用标记清除策略实现的，但 JavaScript 访问 COM 对象仍然是基于 引用计数策略的。在这种情况下，只要在 IE 中涉及 COM 对象，就可能存在循环引用的问题。</p>
+<p>为避免出现循环引用，最好在不使用这些对象时，手动断开 原生 JavaScript 对象 与 DOM 元素之间的连接。IE 中的循环引用与手动断开的操作如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;some_element&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> myObject = <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line">myObject.<span class="property">element</span> = element;</span><br><span class="line">element.<span class="property">someObject</span> = myObject;</span><br><span class="line"><span class="comment">// 以上 存在循环引用</span></span><br><span class="line"><span class="comment">// ......</span></span><br><span class="line"><span class="comment">// 以下 手工断开连接</span></span><br><span class="line">myObject.<span class="property">element</span> = <span class="literal">null</span>;</span><br><span class="line">element.<span class="property">someObject</span> = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>将变量设置成 null 即可切断变量与它之前引用的值之间的连接。下次垃圾收集器运行时，会删除这些值并回收它们占用的内存。</p>
+<p>为解决上述问题，IE9 及以上版本把 BOM 和 DOM 对象都转换成了真正的 JavaScript 对象，避免了两种垃圾回收算法并存引起的问题。</p>
+<h2 id="垃圾回收的性能问题"><a href="#垃圾回收的性能问题" class="headerlink" title="垃圾回收的性能问题"></a>垃圾回收的性能问题</h2><p>垃圾收集器是周期运行的，确定<strong>垃圾收集的时间间隔</strong>是个重要的问题。</p>
+<p>IE7 之前的垃圾收集器是根据内存分配量运行的，即 256 个变量、4096 个对象(数组)字面量或 64 KB 的字符串。达到这些临界值的任何一个，垃圾收集器就会运行。所以就导致如果一个脚本含有很多变量，在整个生命周期中一直保有前面临界值大小的变量，就会频繁触发垃圾回收，会存在严重的性能问题。</p>
+<p>IE7 重写了垃圾收集例程。新的工作方式为：触发垃圾收集的变量分配、字面量和数组元素的临界值被调整为 <strong>动态修正</strong>。初始值与之前版本相同，但如果垃圾收集例程回收的内存低于 15%，则临界值加倍。若回收内存分配量超过 85%，则临界值重置回默认值。</p>
+<p>JavaScript V8 引擎的垃圾回收机制</p>
+<p>在 JavaScript 脚本中，绝大多数对象的生存期很短，只有部分对象的生存期较长。所以，V8 中的垃圾回收主要使用的是 分代回收 (Generational collection)机制。</p>
+<h2 id="分代回收机制"><a href="#分代回收机制" class="headerlink" title="分代回收机制"></a>分代回收机制</h2><p>V8 引擎将保存对象的 <strong>堆</strong> (heap) 进行了分代:</p>
+<ol>
+<li>对象最初会被分在 <strong>新生区</strong>(New Space) (1~8M)，新生区的内存分配只需要保有一个指向内存区的指针，不断根据内存大小进行递增，当指针达到新生区的末尾，会有一次垃圾回收清理(小周期)，清理掉新生区中不再活跃的死对象。</li>
+<li>对于超过 2 个小周期的对象，则需要将其移动至 <strong>老生区</strong>(Old Space)。老生区在 标记-清除 或 标记-紧缩 的过程(大周期) 中进行回收。</li>
+</ol>
+<p>大周期进行的并不频繁。一次大周期通常是在移动足够多的对象至老生区后才会发生。</p>
+<h3 id="Scavenge-算法"><a href="#Scavenge-算法" class="headerlink" title="Scavenge 算法"></a>Scavenge 算法</h3><p>由于垃圾清理发生的比较频繁，清理的过程必须很快。V8 中的清理过程使用的是 Scavenge 算法，按照 经典的 Cheney 算法 实现的。Scavenge 算法的主要过程是：</p>
+<ul>
+<li>新生区被分为两个等大小的子区(semi-spaces)：to-space 和 from-space；</li>
+<li>大多数的内存分配都是在 to-space 发生 (某些特定对象是在老生区)；</li>
+<li>当 to-space 耗尽时，交换 to-space 和 from-space, 此时所有的对象都在 from-space；</li>
+<li>然后将 from-space 中活跃的对象复制到 to-space 或者老生区中;</li>
+<li>这些对象被直接压到 to-space，提升了 Cache 的内存局部性，可使内存分配简洁快速。</li>
+</ul>
+<p>算法的伪代码描述如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">def <span class="title function_">scavenge</span>():</span><br><span class="line">  <span class="title function_">swap</span>(fromSpace, toSpace)</span><br><span class="line">  allocationPtr = toSpace.<span class="property">bottom</span></span><br><span class="line">  scanPtr = toSpace.<span class="property">bottom</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i = <span class="number">0.</span>.<span class="title function_">len</span>(roots):</span><br><span class="line">    root = roots[i]</span><br><span class="line">    <span class="keyword">if</span> <span class="title function_">inFromSpace</span>(root):</span><br><span class="line">      rootCopy = <span class="title function_">copyObject</span>(&amp;allocationPtr, root)</span><br><span class="line">      <span class="title function_">setForwardingAddress</span>(root, rootCopy)</span><br><span class="line">      roots[i] = rootCopy</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> scanPtr &lt; <span class="attr">allocationPtr</span>:</span><br><span class="line">    obj = object at scanPtr</span><br><span class="line">    scanPtr += <span class="title function_">size</span>(obj)</span><br><span class="line">    n = <span class="title function_">sizeInWords</span>(obj)</span><br><span class="line">    <span class="keyword">for</span> i = <span class="number">0.</span>.<span class="property">n</span>:</span><br><span class="line">      <span class="keyword">if</span> <span class="title function_">isPointer</span>(obj[i]) and not <span class="title function_">inOldSpace</span>(obj[i]):</span><br><span class="line">        fromNeighbor = obj[i]</span><br><span class="line">        <span class="keyword">if</span> <span class="title function_">hasForwardingAddress</span>(fromNeighbor):</span><br><span class="line">          toNeighbor = <span class="title function_">getForwardingAddress</span>(fromNeighbor)</span><br><span class="line">        <span class="attr">else</span>:</span><br><span class="line">          toNeighbor = <span class="title function_">copyObject</span>(&amp;allocationPtr, fromNeighbor)</span><br><span class="line">          <span class="title function_">setForwardingAddress</span>(fromNeighbor, toNeighbor)</span><br><span class="line">        obj[i] = toNeighbor</span><br><span class="line"></span><br><span class="line">def <span class="title function_">copyObject</span>(*allocationPtr, object):</span><br><span class="line">  copy = *allocationPtr</span><br><span class="line">  *allocationPtr += <span class="title function_">size</span>(object)</span><br><span class="line">  <span class="title function_">memcpy</span>(copy, object, <span class="title function_">size</span>(object))</span><br><span class="line">  <span class="keyword">return</span> copy</span><br></pre></td></tr></table></figure>
+
+<h3 id="不能被忽视的写屏障-Write-barriers"><a href="#不能被忽视的写屏障-Write-barriers" class="headerlink" title="不能被忽视的写屏障 Write barriers"></a>不能被忽视的写屏障 Write barriers</h3><p>如果新生区有某个对象，只有一个指向它的指针，恰好该指针在老生区的对象中，在垃圾回收之前我们如何得知新生区的该对象是活跃的呢？</p>
+<p>为解决此问题，V8 在写缓冲区有一个列表，其中记录了所有老生区对象指向新生区的情况。新生区对象诞生时不会有指向它的指针，当老生区的对象出现指向新生区对象的指针时，便记录跨区指向，记录行为总是发生在写操作中。</p>
+<h3 id="标记-清除算法-与-标记-紧缩算法"><a href="#标记-清除算法-与-标记-紧缩算法" class="headerlink" title="标记-清除算法 与 标记-紧缩算法"></a>标记-清除算法 与 标记-紧缩算法</h3><p>因为新生区的内存一般都不大，所以使用 Scavenge 算法进行垃圾回收效果比较好。老生区一般占用内存较大，因此采用的是 标记-清除(Mark-Sweep)算法 与 标记-紧缩(Mark-Compact)算法。</p>
+<p>两种算法都包括两个阶段：标记阶段，清除或紧缩阶段。</p>
+<h2 id="标记阶段"><a href="#标记阶段" class="headerlink" title="标记阶段"></a>标记阶段</h2><p>在标记阶段，堆上所有的活跃对象都会被发现并且标记。</p>
+<p>每一页都包含用来标记的位图</p>
+<p>位图都要占据空间 (3.1% on 32-bit, 1.6% on 64-bit systems)</p>
+<p>使用两位二进制标记对象的状态</p>
+<p>状态为白(white), 它尚未被垃圾回收器发现</p>
+<p>状态为灰(gray), 它已被垃圾回收器发现，但它的邻接对象仍未全部处理完毕</p>
+<p>状态为黑(black), 它不仅被垃圾回收器发现，而且其所有邻接对象也都处理完毕</p>
+<p>标记算法的核心是 <strong>深度优先搜索</strong>，具体过程为：</p>
+<ol>
+<li>在标记的初期，位图是空的，所有对象也都是白的。</li>
+<li>从根可达的对象会被染色为灰色，并被放入标记用的一个单独分配的双端队列。</li>
+<li>标记阶段的每次循环，GC 会将一个对象从双端队列中取出，染色为黑，然后将它的邻接对象染色为灰，并把邻接对象放入双端队列。</li>
+<li>这一过程在双端队列为空且所有对象都变黑时结束。</li>
+<li>特别大的对象，如长数组，可能会在处理时分片，以防溢出双端队列。如果双端队列溢出了，则对象仍然会被染为灰色，但不会再被放入队列（这样他们的邻接对象就没有机会再染色了）。</li>
+<li>因此当双端队列为空时，GC 仍然需要扫描一次，确保所有的灰对象都成为了黑对象。对于未被染黑的灰对象，GC 会将其再次放入队列，再度处理。</li>
+</ol>
+<p>标记算法结束后，所有的活跃对象都被染成黑色，所有的死对象仍是白的。下一步就可以清除或者紧缩了。</p>
+<h2 id="清除-或-紧缩-算法"><a href="#清除-或-紧缩-算法" class="headerlink" title="清除 或 紧缩 算法"></a>清除 或 紧缩 算法</h2><p>标记算法执行后，可以选择清除 或是紧缩，这两个算法都可以收回内存，而且两者都作用于页级(V8 中的内存页是 1MB 的连续内存块)</p>
+<p>清除算法扫描连续存放的死对象，将其变为空闲空间，并将其添加到空闲内存链表中。清除算法只需要遍历页的位图，搜索连续的白对象。[每一页都包含数个空闲内存链表，其分别代表小内存区（&lt;256 字）、中内存区（&lt;2048 字）、大内存区（&lt;16384 字）和超大内存区（其它更大的内存）]</p>
+<p>紧缩算法会尝试将对象从碎片页(包含大量小空闲内存的页)中迁移整合在一起，来释放内存。这些对象会被迁移到另外的页上，因此也可能会新分配一些页。而迁出后的碎片页就返还给操作系统。</p>
+<p>对目标碎片页中的每个活跃对象，在空闲内存链表中分配一块其它页的区域，将该对象复制至新页，并在碎片页中的该对象上写上转发地址。</p>
+<p>迁出过程中，对象中的旧地址会被记录下来，这样在迁出结束后 V8 会遍历它所记录的地址，将其更新为新的地址。由于标记过程中也记录了不同页之间的指针，此时也会更新这些指针的指向。</p>
+<h2 id="增量标记-与-惰性清除"><a href="#增量标记-与-惰性清除" class="headerlink" title="增量标记 与 惰性清除"></a>增量标记 与 惰性清除</h2><p>对于一个堆很大，活跃对象有很多的脚本时，标记-清除 与 标记-紧缩 的效率可能会很慢，为减少垃圾回收引起的停顿，引入了 增量标记(Incremental marking) 和 惰性清理(lazy sweeping)。</p>
+<p>增量标记允许堆的标记(前面的标记阶段)发生在几次 5-10 毫秒的小停顿中。增量标记在堆的大小达到一定的阈值时启用，启用之后每当一定量的内存分配后，脚本的执行就会停顿并进行一次增量标记。就像普通的标记一样，增量标记也是一个深度优先搜索，并同样采用白灰黑机制来分类对象。</p>
+<p>增量标记与普通标记的区别是，添加了从黑对象到白对象的指针，为此需要再次启用写屏障中，在记录 老-&gt;新 的同时，记录 黑-&gt;白。在进行清除时，一旦在写屏障中发现这样的指针，黑对象会被重新染色为灰对象，重新放回到双端队列中。</p>
+<p>惰性清理是指在标记完成后，并不急着释放空间，无需一次清理所有的页，垃圾回收器会视情况逐一清理，直到所有页都清理完成。</p>
+<p>余下的涉及垃圾回收原理的部分留着后面继续整理。(平行标记 与 并发标记)</p>
+<h1 id="Event-Loop"><a href="#Event-Loop" class="headerlink" title="Event Loop"></a>Event Loop</h1><p>众所周知 JS 是门非阻塞单线程语言，因为在最初 JS 就是为了和浏览器交互而诞生的。如果 JS 是门多线程的语言话，我们在多个线程中处理 DOM 就可能会发生问题（一个线程中新加节点，另一个线程中删除节点），当然可以引入读写锁解决这个问题。</p>
+<p>JS 在执行的过程中会产生执行环境，这些执行环境会被顺序的加入到执行栈中。如果遇到异步的代码，会被挂起并加入到 Task（有多种 task） 队列中。一旦执行栈为空，Event Loop 就会从 Task 队列中拿出需要执行的代码并放入执行栈中执行，所以本质上来说 JS 中的异步还是同步行为。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;script start&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setTimeout&quot;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;script end&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>以上代码虽然 setTimeout 延时为 0，其实还是异步。这是因为 HTML5 标准规定这个函数第二个参数不得小于 4 毫秒，不足会自动增加。所以 setTimeout 还是会在 script end 之后打印。</p>
+<h2 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h2><p>不同的任务源会被分配到不同的 Task 队列中，任务源可以分为 <strong>微任务（microtask）</strong> 和 <strong>宏任务（macrotask）</strong>。在 ES6 规范中，microtask 称为 jobs，macrotask 称为 task。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;script start&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setTimeout&quot;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Promise&quot;</span>);</span><br><span class="line">  <span class="title function_">resolve</span>();</span><br><span class="line">&#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;promise1&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;promise2&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;script end&quot;</span>);</span><br><span class="line"><span class="comment">// script start =&gt; Promise =&gt; script end =&gt; promise1 =&gt; promise2 =&gt; setTimeout</span></span><br></pre></td></tr></table></figure>
+
+<p>以上代码虽然 setTimeout 写在 Promise 之前，但是因为 <code>Promise</code> 属于微任务而 setTimeout 属于宏任务，所以会有以上的打印。</p>
+<p><strong>微任务</strong>包括 <code>process.nextTick</code> ，<code>promise</code> ，<code>Object.observe</code> ，<code>MutationObserver</code></p>
+<p><strong>宏任务</strong>包括 <code>script</code> ， <code>setTimeout</code> ，<code>setInterval</code> ，<code>setImmediate</code> ，<code>I/O</code> ，<code>UI rendering</code></p>
+<p>很多人有个误区，认为微任务快于宏任务，其实是错误的。因为宏任务中包括了<code>script</code>，浏览器会先执行一个宏任务，接下来有异步代码的话就先执行微任务。</p>
+<h2 id="所以正确的一次-Event-loop-顺序是这样的"><a href="#所以正确的一次-Event-loop-顺序是这样的" class="headerlink" title="所以正确的一次 Event loop 顺序是这样的"></a>所以正确的一次 Event loop 顺序是这样的</h2><ol>
+<li>执行同步代码，这属于宏任务</li>
+<li>执行栈为空，查询是否有微任务需要执行</li>
+<li>执行所有微任务</li>
+<li>必要的话渲染 UI</li>
+<li>然后开始下一轮 Event loop，执行宏任务中的异步代码</li>
+</ol>
+<p>通过上述的 Event loop 顺序可知，如果宏任务中的异步代码有大量的计算并且需要操作 DOM 的话，为了更快的 界面响应，我们可以把操作 DOM 放入微任务中。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/26/%E5%A4%B4%E6%9D%A1%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="prev" title="头条面试题">
+                  <i class="fa fa-chevron-left"></i> 头条面试题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/26/%E4%B8%8A%E6%B5%B7%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="next" title="上海公司面试题">
+                  上海公司面试题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="title: vue可复用性&amp;组合 date: 2019-10-14 15:08:18 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  Vue.js # 一级分类 Vue.js进阶 # 二级分类   混入 mixin一个混入对象可以包含任意组件选项.当组件使用混入对象时,所有混入对象的选项将被”混合”进组件本身的选项. 例子: 123456789">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue可复用性">
+<meta property="og:url" content="http://example.com/2022/09/26/vue%E5%8F%AF%E5%A4%8D%E7%94%A8%E6%80%A7/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="title: vue可复用性&amp;组合 date: 2019-10-14 15:08:18 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  Vue.js # 一级分类 Vue.js进阶 # 二级分类   混入 mixin一个混入对象可以包含任意组件选项.当组件使用混入对象时,所有混入对象的选项将被”混合”进组件本身的选项. 例子: 123456789">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-26T13:05:10.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:17.829Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/09/26/vue%E5%8F%AF%E5%A4%8D%E7%94%A8%E6%80%A7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/26/vue%E5%8F%AF%E5%A4%8D%E7%94%A8%E6%80%A7/","path":"2022/09/26/vue可复用性/","title":"vue可复用性"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>vue可复用性 | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B7%E5%85%A5-mixin"><span class="nav-number">1.</span> <span class="nav-text">混入 mixin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E9%A1%B9%E5%90%88%E5%B9%B6"><span class="nav-number">1.1.</span> <span class="nav-text">选项合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E6%B7%B7%E5%85%A5"><span class="nav-number">1.2.</span> <span class="nav-text">全局混入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%80%89%E9%A1%B9%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5"><span class="nav-number">1.3.</span> <span class="nav-text">自定义选项合并策略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">自定义指令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="nav-number">3.</span> <span class="nav-text">钩子函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="nav-number">3.1.</span> <span class="nav-text">钩子函数的参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E6%8C%87%E4%BB%A4%E5%8F%82%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">动态指令参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%AE%80%E5%86%99"><span class="nav-number">4.1.</span> <span class="nav-text">函数简写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">4.2.</span> <span class="nav-text">对象字面量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E5%87%BD%E6%95%B0-amp-JSX"><span class="nav-number">5.</span> <span class="nav-text">渲染函数&amp;JSX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">6.1.</span> <span class="nav-text">使用插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6"><span class="nav-number">6.2.</span> <span class="nav-text">开发插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">7.</span> <span class="nav-text">过滤器</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/vue%E5%8F%AF%E5%A4%8D%E7%94%A8%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="vue可复用性 | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue可复用性
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:05:10" itemprop="dateCreated datePublished" datetime="2022-09-26T21:05:10+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:17" itemprop="dateModified" datetime="2022-11-03T15:07:17+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <hr>
+<p>title: vue可复用性&amp;组合</p>
+<p>date: 2019-10-14 15:08:18</p>
+<p>tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>Vue.js # 一级分类</li>
+<li>Vue.js进阶 # 二级分类</li>
+</ul>
+<hr>
+<h1 id="混入-mixin"><a href="#混入-mixin" class="headerlink" title="混入 mixin"></a>混入 mixin</h1><p>一个混入对象可以包含任意组件选项.当组件使用混入对象时,所有混入对象的选项将被”混合”进组件本身的选项.</p>
+<p>例子:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个混入对象</span></span><br><span class="line"><span class="keyword">var</span> myMixin = &#123;</span><br><span class="line">    <span class="attr">created</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">hello</span>()</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="attr">hello</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;hello from mixin&quot;)</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//定义一个使用混入对象的组件</span></span><br><span class="line"><span class="string">var Component = Vue.extend(&#123;</span></span><br><span class="line"><span class="string">    mixins: [myMixin]</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">var component = new Component() //=&gt; &#x27;</span>hello <span class="keyword">from</span> mixin<span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="选项合并"><a href="#选项合并" class="headerlink" title="选项合并"></a>选项合并</h2><p>当组件和混入对象含有同名选项时,这些选项将以恰当的方式进行”合并”.</p>
+<p>比如,数据对象在内部会进行递归合并,并在发生冲突时以组件数据优先.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixin = &#123;</span><br><span class="line">  <span class="attr">data</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&quot;hello&quot;</span>,</span><br><span class="line">      <span class="attr">foo</span>: <span class="string">&quot;abc&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">mixins</span>: [mixin],</span><br><span class="line">  <span class="attr">data</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&quot;goodbye&quot;</span>,</span><br><span class="line">      <span class="attr">bar</span>: <span class="string">&quot;def&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">$data</span>);</span><br><span class="line">    <span class="comment">// =&gt; &#123; message: &#x27;goodbye&#x27;, foo:&#x27;abc&#x27;, bar: &#x27;def&#x27;&#125;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>同名钩子函数将合并成一个数组,因此都将被调用.另外,混入对象的钩子将在组件自身钩子之前调用.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixin = &#123;</span><br><span class="line">  <span class="attr">created</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;混入对象钩子被调用&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">mixins</span>: [mixin],</span><br><span class="line">  <span class="attr">created</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;组件钩子被调用&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//=&gt; &#x27;混入对象钩子被调用&#x27;</span></span><br><span class="line"><span class="comment">//=&gt; &#x27;组件钩子被调用&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>值为对象的选项，例如 methods、components 和 directives，将被合并为同一个对象。两个对象键名冲突时，取组件对象的键值对。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixin = &#123;</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;foo&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">conficting</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;from mixin&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">mixins</span>: [mixin],</span><br><span class="line">  <span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="attr">bar</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;bar&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">conficting</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;from self&quot;</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">vm.<span class="title function_">foo</span>(); <span class="comment">// =&gt; &quot;foo&quot;</span></span><br><span class="line">vm.<span class="title function_">bar</span>(); <span class="comment">// =&gt; &quot;bar&quot;</span></span><br><span class="line">vm.<span class="title function_">conflicting</span>(); <span class="comment">// =&gt; &quot;from self&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：<code>Vue.extend()</code> 也使用同样的策略进行合并。</p>
+</blockquote>
+<h2 id="全局混入"><a href="#全局混入" class="headerlink" title="全局混入"></a>全局混入</h2><p>混入也可以进行全局注册,使用时需要小心.一但使用全局混入,他将影响每一个之后创建的 Vue 实例.</p>
+<p>使用恰当时还可以用来为自定义选项注入处理逻辑.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为自定义的选项 &#x27;myOption&#x27; 注入一个处理器。</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">mixin</span>(&#123;</span><br><span class="line">  <span class="attr">created</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> myOption = <span class="variable language_">this</span>.<span class="property">$options</span>.<span class="property">myOption</span>;</span><br><span class="line">    <span class="keyword">if</span> (myOption) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(myOption);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">myOption</span>: <span class="string">&quot;hello!&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// =&gt; &quot;hello!&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>请谨慎使用全局混入，因为它会影响每个单独创建的 Vue 实例 (包括第三方组件)。大多数情况下，只应当应用于自定义选项，就像上面示例一样。推荐将其作为插件发布，以避免重复应用混入。</p>
+</blockquote>
+<h2 id="自定义选项合并策略"><a href="#自定义选项合并策略" class="headerlink" title="自定义选项合并策略"></a>自定义选项合并策略</h2><p>自定义选项将使用默认策略，即简单地覆盖已有值。如果想让自定义选项以自定义逻辑合并，可以向 Vue.config.optionMergeStrategies 添加一个函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">optionMergeStrategies</span>.<span class="property">myOption</span> = <span class="keyword">function</span> (<span class="params">toVal, fromVal</span>) &#123;</span><br><span class="line">  <span class="comment">// 返回合并后的值</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>对于多数值为对象的选项，可以使用与 methods 相同的合并策略：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> strategies = <span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">optionMergeStrategies</span>;</span><br><span class="line">strategies.<span class="property">myOption</span> = strategies.<span class="property">methods</span>;</span><br></pre></td></tr></table></figure>
+
+<p>可以在 Vuex 1.x 的混入策略里找到一个更高级的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> merge = <span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">optionMergeStrategies</span>.<span class="property">computed</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property">config</span>.<span class="property">optionMergeStrategies</span>.<span class="property">vuex</span> = <span class="keyword">function</span> (<span class="params">toVal, fromVal</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!toVal) <span class="keyword">return</span> fromVal;</span><br><span class="line">  <span class="keyword">if</span> (!fromVal) <span class="keyword">return</span> toVal;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">getters</span>: <span class="title function_">merge</span>(toVal.<span class="property">getters</span>, fromVal.<span class="property">getters</span>),</span><br><span class="line">    <span class="attr">state</span>: <span class="title function_">merge</span>(toVal.<span class="property">state</span>, fromVal.<span class="property">state</span>),</span><br><span class="line">    <span class="attr">actions</span>: <span class="title function_">merge</span>(toVal.<span class="property">actions</span>, fromVal.<span class="property">actions</span>),</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h1><p>输入框聚焦</p>
+<p>当页面加载时，该元素将获得焦点 (注意：autofocus 在移动版 Safari 上不工作)。事实上，只要你在打开这个页面后还没点击过任何内容，这个输入框就应当还是处于聚焦状态。现在让我们用指令来实现这个功能：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注册一个全局自定义指令v-focus</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&quot;focus&quot;</span>, &#123;</span><br><span class="line">  <span class="comment">//当被绑定的元素插入到DOM中时...</span></span><br><span class="line">  <span class="attr">inserted</span>: <span class="keyword">function</span> (<span class="params">el</span>) &#123;</span><br><span class="line">    <span class="comment">//聚焦元素</span></span><br><span class="line">    el.<span class="title function_">focus</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>局部指令注册,组件中接受<code>directive</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">directives</span>: &#123;</span><br><span class="line">    <span class="attr">focus</span>: &#123;</span><br><span class="line">        <span class="comment">//指令的定义</span></span><br><span class="line">        <span class="attr">inserted</span>: <span class="keyword">function</span>(<span class="params">el</span>)&#123;</span><br><span class="line">            el.<span class="title function_">focus</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后在模板中任何元素上使用<code>v-focus</code>属性,例如:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input v-focus&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="钩子函数"><a href="#钩子函数" class="headerlink" title="钩子函数"></a>钩子函数</h1><p>一个指令对象可以提供以下几个钩子函数:</p>
+<ol>
+<li><code>bind</code>: 只调用一次,指令第一次绑定到元素时调用.在这里进行一次性的初始化设置.</li>
+<li><code>inserted</code>: 被绑定元素插入到父节点时调用.</li>
+<li><code>update</code>: 所在组件的 VNode 更新时调用,但是可能发生在其子 VNode 更新之前.指令的值可能发生改变,也可能没有.</li>
+<li><code>componentUpdated</code>: 指令所在组件的 VNode 及其子 VNode 全部更新后调用.</li>
+<li><code>unbind</code>: 只调用一次,指令与元素解绑时调用.</li>
+</ol>
+<h2 id="钩子函数的参数"><a href="#钩子函数的参数" class="headerlink" title="钩子函数的参数"></a>钩子函数的参数</h2><p>指令钩子会被传入以下参数:</p>
+<ul>
+<li><p><code>el</code>: 指令所绑定的元素,可以直接操作 DOM.</p>
+</li>
+<li><p><code>binding</code>: 一个对象,包含以下属性:</p>
+<ul>
+<li><code>name</code>: 指令名,不包括<code>v-</code>前缀.</li>
+<li><code>value</code>: 指令的绑定值.例如：<code>v-my-directive=&quot;1 + 1&quot;</code>中，绑定值为 2。</li>
+<li><code>oldValue</code>: 指令绑定的上一个值.仅在 update 和 componentUpdated 钩子中可用.无论值是否改变都可用.</li>
+<li><code>expression</code>: 字符串形式的指令表达式.例如 <code>v-my-directive=&quot;1 + 1&quot;</code>中，表达式为 <code>&quot;1 + 1&quot;</code>。</li>
+<li><code>arg</code>: 传给指令的参数.可选.例如 <code>v-my-directive:foo</code> 中，参数为 “foo”。</li>
+<li><code>modifiers</code>: 一个包含修饰符的对象.例如：<code>v-my-directive.foo.bar</code> 中，修饰符对象为 <code>&#123; foo: true, bar: true &#125;</code>。</li>
+</ul>
+</li>
+<li><p><code>vnode</code>: Vue 编译生成的虚拟节点.</p>
+</li>
+<li><p><code>oldVNode</code>: 上一个虚拟节点.</p>
+</li>
+</ul>
+<blockquote>
+<p>除了 <code>el</code> 之外，其它参数都应该是只读的，切勿进行修改。如果需要在钩子之间共享数据，建议通过元素的 <code>dataset</code> 来进行。</p>
+</blockquote>
+<p>范例:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">&quot;hook-arguments-example&quot;</span> v-<span class="attr">demo</span>:foo.<span class="property">a</span>.<span class="property">b</span>=<span class="string">&quot;message&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;demo&#x27;</span>, &#123;</span><br><span class="line">  <span class="attr">bind</span>: <span class="keyword">function</span> (<span class="params">el, binding, vnode</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> s = <span class="title class_">JSON</span>.<span class="property">stringify</span></span><br><span class="line">    el.<span class="property">innerHTML</span> =</span><br><span class="line">      <span class="string">&#x27;name: &#x27;</span>       + <span class="title function_">s</span>(binding.<span class="property">name</span>) + <span class="string">&#x27;&lt;br&gt;&#x27;</span> +</span><br><span class="line">      <span class="string">&#x27;value: &#x27;</span>      + <span class="title function_">s</span>(binding.<span class="property">value</span>) + <span class="string">&#x27;&lt;br&gt;&#x27;</span> +</span><br><span class="line">      <span class="string">&#x27;expression: &#x27;</span> + <span class="title function_">s</span>(binding.<span class="property">expression</span>) + <span class="string">&#x27;&lt;br&gt;&#x27;</span> +</span><br><span class="line">      <span class="string">&#x27;argument: &#x27;</span>   + <span class="title function_">s</span>(binding.<span class="property">arg</span>) + <span class="string">&#x27;&lt;br&gt;&#x27;</span> +</span><br><span class="line">      <span class="string">&#x27;modifiers: &#x27;</span>  + <span class="title function_">s</span>(binding.<span class="property">modifiers</span>) + <span class="string">&#x27;&lt;br&gt;&#x27;</span> +</span><br><span class="line">      <span class="string">&#x27;vnode keys: &#x27;</span> + <span class="title class_">Object</span>.<span class="title function_">keys</span>(vnode).<span class="title function_">join</span>(<span class="string">&#x27;, &#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&#x27;#hook-arguments-example&#x27;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">&#x27;hello!&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="动态指令参数"><a href="#动态指令参数" class="headerlink" title="动态指令参数"></a>动态指令参数</h1><p>在 <code>v-mydirective:[argument]=&quot;value&quot;</code> 中，argument 参数可以根据组件实例数据进行更新！</p>
+<p>例如创建一个自定义指令,通过固定布局将元素固定在页面上.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;baseexample&quot;</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Scroll down this page<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-pin</span>=<span class="string">&quot;200&quot;</span>&gt;</span>Stick me 200px from the top of the page<span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>自定义事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;pin&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">bind</span>: <span class="keyword">function</span>(<span class="params">el, bingding, vnode</span>)&#123;</span><br><span class="line">        el.<span class="property">style</span>.<span class="property">position</span> = <span class="string">&#x27;fixed&#x27;</span></span><br><span class="line">        el.<span class="property">style</span>.<span class="property">top</span> = binding.<span class="property">value</span> + <span class="string">&#x27;px&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">    <span class="attr">el</span>: <span class="string">&#x27;#baseexample&quot;</span></span><br><span class="line"><span class="string">&#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p>这会把元素固定在距离页面顶部 200px 的位置.</p>
+<p>如果需要将元素固定在左侧呢?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;dynamicexample&quot;</span>&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Scroll down this page<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-pin:</span>[<span class="attr">direction</span>]=<span class="string">&quot;200&quot;</span>&gt;</span>I am pinned onto the page at 200px to the left.<span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&quot;pin&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">bind</span>: <span class="keyword">function</span> (<span class="params">el, binding, vnode</span>) &#123;</span><br><span class="line">    el.<span class="property">style</span>.<span class="property">position</span> = <span class="string">&quot;fixed&quot;</span>;</span><br><span class="line">    <span class="keyword">var</span> s = binding.<span class="property">arg</span> == <span class="string">&quot;left&quot;</span> ? <span class="string">&quot;left&quot;</span> : <span class="string">&quot;top&quot;</span>;</span><br><span class="line">    el.<span class="property">style</span>[s] = binding.<span class="property">value</span> + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&quot;#dynamicexample&quot;</span>,</span><br><span class="line">  <span class="attr">data</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">direction</span>: <span class="string">&quot;left&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数简写"><a href="#函数简写" class="headerlink" title="函数简写"></a>函数简写</h2><p>在很多时候，你可能想在 bind 和 update 时触发相同行为，而不关心其它的钩子。比如这样写:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&quot;color-swatch&quot;</span>, <span class="keyword">function</span> (<span class="params">el, binding</span>) &#123;</span><br><span class="line">  el.<span class="property">style</span>.<span class="property">backgroundColor</span> = binding.<span class="property">value</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="对象字面量"><a href="#对象字面量" class="headerlink" title="对象字面量"></a>对象字面量</h2><p>如果指令需要多个值，可以传入一个 JavaScript 对象字面量。记住，指令函数能够接受所有合法的 JavaScript 表达式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-demo=<span class="string">&quot;&#123; color: &#x27;white&#x27;, text: &#x27;hello!&#x27; &#125;&quot;</span>&gt;&lt;/div&gt;;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&quot;demo&quot;</span>, <span class="keyword">function</span> (<span class="params">el, binding</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(binding.<span class="property">value</span>.<span class="property">color</span>); <span class="comment">// =&gt; &quot;white&quot;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(binding.<span class="property">value</span>.<span class="property">text</span>); <span class="comment">// =&gt; &quot;hello!&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="渲染函数-amp-JSX"><a href="#渲染函数-amp-JSX" class="headerlink" title="渲染函数&amp;JSX"></a>渲染函数&amp;JSX</h1><p>渲染函数在 Vue.js 进阶里有讲到,JSX 先不看了.</p>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>插件用来为 Vue 添加全局功能.</p>
+<p>插件常用功能:</p>
+<ol>
+<li>添加全局方法或属性.</li>
+<li>添加全局资源: 指令,过滤器,过渡</li>
+<li>通过全局混入来添加一些组件选项.</li>
+<li>添加 Vue 实例方法,通过把他们添加到 Vue.prototype 上实现.</li>
+<li>一个库,提供自己的 API,同时提供上面提到的一个或多个功能.如 Vue-router</li>
+</ol>
+<h2 id="使用插件"><a href="#使用插件" class="headerlink" title="使用插件"></a>使用插件</h2><p>通过全局方法<code>Vue.use()</code>使用插件.需要在<code>new Vue()</code>之前调用.</p>
+<p>也可以传入一个可选的对象.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">MyPlugin</span>, &#123; <span class="attr">someOption</span>: <span class="literal">true</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Vue.use 会自动阻止多次注册相同插件，届时即使多次调用也只会注册一次该插件。</p>
+<p>Vue.js 官方提供的一些插件 (例如 vue-router) 在检测到 Vue 是可访问的全局变量时会自动调用 <code>Vue.use()</code>。然而在像 CommonJS 这样的模块环境中，你应该始终显式地调用 <code>Vue.use()</code></p>
+<h2 id="开发插件"><a href="#开发插件" class="headerlink" title="开发插件"></a>开发插件</h2><p>Vue.js 的插件暴露一个 install 的方法.这个方法的第一个参数是 Vue 构造器,第二个参数是可选的选项对象:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">MyPlugin</span>.<span class="property">install</span> = <span class="keyword">function</span> (<span class="params">Vue, options</span>) &#123;</span><br><span class="line">  <span class="comment">//1. 添加全局方法或属性</span></span><br><span class="line">  <span class="title class_">Vue</span>.<span class="property">myGlobalMethod</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//逻辑..</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//2.添加全局资源</span></span><br><span class="line">  <span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&quot;my-directive&quot;</span>, &#123;</span><br><span class="line">    <span class="title function_">bind</span>(<span class="params">el, binding, vnode, oldVnode</span>) &#123;</span><br><span class="line">      <span class="comment">//逻辑</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//3. 注入组件选项</span></span><br><span class="line">  <span class="title class_">Vue</span>.<span class="title function_">mixin</span>(&#123;</span><br><span class="line">    <span class="attr">created</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">//逻辑...</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//4. 添加实例方法</span></span><br><span class="line">  <span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$myMethod</span> = <span class="keyword">function</span> (<span class="params">methodOptions</span>) &#123;</span><br><span class="line">    <span class="comment">//逻辑...</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h1><p>过滤器可以用在：双花括号插值和 v-bind 表达式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 在双花括号中 --&gt;</span><br><span class="line">&#123;&#123; message | capitalize &#125;&#125;</span><br><span class="line"></span><br><span class="line">&lt;!-- 在 <span class="string">`v-bind`</span> 中 --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-bind:id</span>=<span class="string">&quot;rawId | formatId&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>在组件的选项中定义本地的过滤器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">filters</span>: &#123;</span><br><span class="line">  <span class="attr">capitalize</span>: <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!value) <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    value = value.<span class="title function_">toString</span>()</span><br><span class="line">    <span class="keyword">return</span> value.<span class="title function_">charAt</span>(<span class="number">0</span>).<span class="title function_">toUpperCase</span>() + value.<span class="title function_">slice</span>(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者在创建 Vue 实例之前全局定义过滤器:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">filter</span>(<span class="string">&quot;capitalize&quot;</span>, <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!value) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">  value = value.<span class="title function_">toString</span>();</span><br><span class="line">  <span class="keyword">return</span> value.<span class="title function_">charAt</span>(<span class="number">0</span>).<span class="title function_">toUpperCase</span>() + value.<span class="title function_">slice</span>(<span class="number">1</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当全局过滤器和局部过滤器重名时，会采用局部过滤器。</p>
+</blockquote>
+<p>过滤器可以串联</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &#123;</span><br><span class="line">    message | filterA | filterB;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，filterA 被定义为接收单个参数的过滤器函数，表达式 message 的值将作为参数传入到函数中。然后继续调用同样被定义为接收单个参数的过滤器函数 filterB，将 filterA 的结果传递到 filterB 中。</p>
+<p>过滤器可以接收参数:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &#123;</span><br><span class="line">    message | <span class="title function_">filterA</span>(<span class="string">&quot;arg1&quot;</span>, arg2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里，filterA 被定义为接收三个参数的过滤器函数。其中 message 的值作为第一个参数，普通字符串 ‘arg1’ 作为第二个参数，表达式 arg2 的值作为第三个参数。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/26/vue%E8%BF%87%E6%B8%A1%E5%92%8C%E5%8A%A8%E7%94%BB/" rel="prev" title="vue过渡和动画">
+                  <i class="fa fa-chevron-left"></i> vue过渡和动画
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/26/%E6%BB%9A%E5%8A%A8%E9%98%85%E8%AF%BB/" rel="next" title="滚动阅读">
+                  滚动阅读 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

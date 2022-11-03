@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Vuex 介绍每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的**状态(state)**。Vuex 和单纯的全局对象有以下两点不同：  Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。 不能直接改变 store 中的状态。改变">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vuex">
+<meta property="og:url" content="http://example.com/2019/09/14/VueX/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="Vuex 介绍每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的**状态(state)**。Vuex 和单纯的全局对象有以下两点不同：  Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。 不能直接改变 store 中的状态。改变">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-09-14T13:38:29.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:18.129Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="Vue.js">
+<meta property="article:tag" content="Vue.js进阶">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2019/09/14/VueX/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2019/09/14/VueX/","path":"2019/09/14/VueX/","title":"Vuex"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Vuex | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Vuex 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex-%E4%B9%8B-store"><span class="nav-number">1.1.</span> <span class="nav-text">Vuex 之 store</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getters"><span class="nav-number">1.2.</span> <span class="nav-text">getters</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vuex-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">Vuex 状态管理流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E"><span class="nav-number">3.</span> <span class="nav-text">新增</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mapState-%E5%92%8C-mapGetters"><span class="nav-number">3.1.</span> <span class="nav-text">mapState 和 mapGetters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E8%BD%BD%E8%8D%B7%EF%BC%88payload%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">提交载荷（payload）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#moudle-%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">moudle(模块化)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/14/VueX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Vuex | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vuex
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-09-14 21:38:29" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:29+08:00">2019-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:18" itemprop="dateModified" datetime="2022-11-03T15:07:18+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Vuex-介绍"><a href="#Vuex-介绍" class="headerlink" title="Vuex 介绍"></a>Vuex 介绍</h1><p>每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的**状态(state)**。Vuex 和单纯的全局对象有以下两点不同：</p>
+<ol>
+<li>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
+<li>不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交**(commit)mutation**。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
+</ol>
+<p>我的理解: Vuex 相当于一个扩展板的<code>bus</code>中介.起步虽相似,但功能更丰富.</p>
+<h2 id="Vuex-之-store"><a href="#Vuex-之-store" class="headerlink" title="Vuex 之 store"></a>Vuex 之 store</h2><p>起步: 安装,引入,<code>use</code>,创建状态仓库.在 Vue 实例中注入(把 store 写进去).一条龙服务.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建仓库格式</span></span><br><span class="line"><span class="keyword">var</span> store = <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    <span class="attr">state</span>: &#123;</span><br><span class="line">        <span class="comment">//定义你的状态</span></span><br><span class="line">        <span class="attr">XXX</span>: xxx</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">mutations</span>: &#123;</span><br><span class="line">        <span class="comment">//在此处定义状态改变的方法</span></span><br><span class="line">        <span class="title function_">increase</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">num</span> ++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">decrease</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">num</span> --</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">actions</span>: &#123;</span><br><span class="line">        <span class="comment">//actions中传递的不再是state,而是context</span></span><br><span class="line">        <span class="title function_">increaseAction</span>(<span class="params">context</span>)&#123;</span><br><span class="line">            <span class="comment">//actions中只能对mutations中的方法进行操作</span></span><br><span class="line">            context.<span class="title function_">commit</span>(<span class="string">&#x27;increase&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>mutations 改变状态:</p>
+</blockquote>
+<p>直接通过<code>this.$store.state.XXX</code>拿到状态</p>
+<p>在 methods 中.定义一个函数通过<code>this.$store.commit(&#39;xxx&#39;)</code>方法触发状态变更</p>
+<blockquote>
+<p>actions 改变状态:</p>
+</blockquote>
+<p>通过<code>this.$store.dispatch(xxx)</code>调用</p>
+<p>二者区别:</p>
+<ol>
+<li>传入参数不同,mutations 传入<code>state</code>.actions 传入<code>context</code></li>
+<li>调用方式不同,前者<code>this.$store.commit(&#39;xxx&#39;)</code>.后者<code>this.$store.dispatch(xxx)</code></li>
+<li>函数要求不同.mutations 中只能有同步操作,actions 中可以有异步操作.</li>
+</ol>
+<h2 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h2><p>有时需要对 mutations 处理后的 state 进行处理.</p>
+<p>可以当做 vuex 的计算属性(computed).</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">getters</span>: &#123;</span><br><span class="line">    <span class="title function_">getNum</span>(<span class="params">state</span>)&#123;</span><br><span class="line">        <span class="comment">//因为要处理state,自然传入state</span></span><br><span class="line">        <span class="keyword">return</span> state.<span class="property">num</span> &gt; <span class="number">0</span> ? state.<span class="property">num</span> : <span class="number">0</span></span><br><span class="line">        <span class="comment">//这里是防止一直减出现负数进行的处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取状态也就改为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件中</span></span><br><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="title function_">getCount</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="comment">//return this.$store.state.num</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">getters</span>.<span class="property">getNum</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Vuex-状态管理流程"><a href="#Vuex-状态管理流程" class="headerlink" title="Vuex 状态管理流程"></a>Vuex 状态管理流程</h1><p>view–&gt;actions–&gt;mutations–&gt;state–&gt;view</p>
+<h1 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h1><p>VueX 中</p>
+<p><code>state</code>相当于<code>data</code></p>
+<p><code>getter</code>相当于<code>computed</code></p>
+<p><code>mutation</code>相当于<code>methods</code></p>
+<p><code>action</code>是异步的<code>mutation</code></p>
+<p><code>module</code>模块将上述进行封装分块</p>
+<h2 id="mapState-和-mapGetters"><a href="#mapState-和-mapGetters" class="headerlink" title="mapState 和 mapGetters"></a>mapState 和 mapGetters</h2><p><code>mapState</code>辅助函数仅仅是将 store 中的<code>getter</code>映射到局部计算属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...<span class="title class_">Vuex</span>.<span class="title function_">mapState</span>([<span class="string">&#x27;firstName&#x27;</span>, <span class="string">&#x27;lastName&#x27;</span>])</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="title function_">firstName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">state</span>.<span class="property">firstName</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">lastName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">state</span>.<span class="property">lastName</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">..<span class="property">Vuex</span>.<span class="title function_">mapGetters</span>([<span class="string">&#x27;fullName&#x27;</span>])</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="title function_">fullName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">getters</span>.<span class="property">fullName</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>store.commit(&#39;xxFirstName&#39;, &#39;jirengu&#39;)</code></p>
+<p>提交 mutation 中 xxFirstName 的方法。</p>
+<p>第一个参数是 state 中有的，后添加的 jirengu 是载荷<code>payload</code>。</p>
+<h2 id="提交载荷（payload）"><a href="#提交载荷（payload）" class="headerlink" title="提交载荷（payload）"></a>提交载荷（payload）</h2><p>向<code>store.commit</code>传入额外参数，即<code>mutation</code>的载荷</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mutations</span>:&#123;</span><br><span class="line">increment (state, payload)&#123;</span><br><span class="line">state.<span class="property">count</span> += payload.<span class="property">amount</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">store.<span class="title function_">commit</span>(<span class="string">&#x27;increment&#x27;</span>, &#123;</span><br><span class="line"><span class="attr">amount</span>: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>actions 中传入第一个参数是<code>context</code>，第二个是<code>payload</code></p>
+<p>触发 action</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.<span class="title function_">dispatch</span>(<span class="string">&quot;increment&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="moudle-模块化"><a href="#moudle-模块化" class="headerlink" title="moudle(模块化)"></a>moudle(模块化)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line">  <span class="attr">state</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">getters</span>: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> moduleB = &#123;</span><br><span class="line">  <span class="attr">state</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    <span class="attr">a</span>: moduleA,</span><br><span class="line">    <span class="attr">b</span>: moduleB</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">store.<span class="property">state</span>.<span class="property">a</span> <span class="comment">// -&gt; moduleA 的状态</span></span><br><span class="line">store.<span class="property">state</span>.<span class="property">b</span> <span class="comment">// -&gt; moduleB 的状态</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue-js/" rel="tag"># Vue.js</a>
+              <a href="/tags/Vue-js%E8%BF%9B%E9%98%B6/" rel="tag"># Vue.js进阶</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/09/14/VueRouter/" rel="prev" title="VueRouter">
+                  <i class="fa fa-chevron-left"></i> VueRouter
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/09/15/Vue%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93/" rel="next" title="Vue服务端渲染">
+                  Vue服务端渲染 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

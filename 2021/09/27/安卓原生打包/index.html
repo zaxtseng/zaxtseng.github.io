@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="初始化下载 android Studio(4.1.1), JDK8,安装完成后,导入 demo 项目(300M,).开始初始化下载,有可能下载较慢,科学网即可.完成后,项目同步有可能报错(Sync Project with Gradle Files).需要下载对应 SDK 版本.sdk 报错解决方法 打包build &#x3D;&gt; Genenate Signed Budle&#x2F;APK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓原生打包">
+<meta property="og:url" content="http://example.com/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="初始化下载 android Studio(4.1.1), JDK8,安装完成后,导入 demo 项目(300M,).开始初始化下载,有可能下载较慢,科学网即可.完成后,项目同步有可能报错(Sync Project with Gradle Files).需要下载对应 SDK 版本.sdk 报错解决方法 打包build &#x3D;&gt; Genenate Signed Budle&#x2F;APK">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735936926-3dd60957-ad25-4d9a-9303-8e5b199f6380.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u20e70d58&margin=%5Bobject%20Object%5D&name=WechatIMG1989.png&originHeight=880&originWidth=968&originalType=binary%E2%88%B6=1&size=250436&status=done&style=none&taskId=u8ed96517-9597-40a9-8247-84129788312">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735946757-cc0004a6-c424-4775-aec7-50f9a85a4c71.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u2dcf9ae4&margin=%5Bobject%20Object%5D&name=WechatIMG1990.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=100589&status=done&style=none&taskId=u66285518-2892-4c6c-9eb5-7b5c223ae1b">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735954103-388521a6-e849-496f-9407-2afa711a02af.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u5b2395a1&margin=%5Bobject%20Object%5D&name=WechatIMG1992.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=109109&status=done&style=none&taskId=u09ede0fe-b2d8-46af-b120-dac402aaeb1">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735962717-da7f5dba-9e9f-48d2-b942-b682143448ef.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u6418437e&margin=%5Bobject%20Object%5D&name=WechatIMG1994.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=85326&status=done&style=none&taskId=u350019ce-f319-4b5a-bd77-e451ce50e97">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1632736037814-1f6860cb-c78f-446f-a76b-acb7db15fbc7.png#clientId=ud8eed2ce-b12c-4&from=ui&id=ubffb4464&margin=%5Bobject%20Object%5D&name=WechatIMG2057.png&originHeight=217&originWidth=958&originalType=binary%E2%88%B6=1&size=82281&status=done&style=none&taskId=u14022146-90d8-45ac-9ee1-fe59104822b">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1634366875716-11f4a6ce-0a6d-40e5-8047-a6832f53b99a.png#clientId=u8592e4fc-d636-4&from=ui&id=u2ea16012&margin=%5Bobject%20Object%5D&name=1.png&originHeight=1002&originWidth=1192&originalType=binary%E2%88%B6=1&size=321944&status=done&style=none&taskId=u6fe97e4f-af03-448d-9601-b329b052a52">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1632736814316-37430acc-faa8-4583-83d7-754e6c8e7ff6.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u0c2d8502&margin=%5Bobject%20Object%5D&name=WechatIMG2086.png&originHeight=516&originWidth=446&originalType=binary%E2%88%B6=1&size=63110&status=done&style=none&taskId=u4da2e966-bed8-47d5-8282-e2c9d2859f6">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1632737000983-0205cf9a-915c-4156-85b3-794b5ad884c4.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u251b0c54&margin=%5Bobject%20Object%5D&name=WechatIMG2093.png&originHeight=648&originWidth=788&originalType=binary%E2%88%B6=1&size=70873&status=done&style=none&taskId=u315c94c1-36c8-420a-8514-13e1e931a4e">
+<meta property="article:published_time" content="2021-09-27T09:17:00.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:19.669Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735936926-3dd60957-ad25-4d9a-9303-8e5b199f6380.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u20e70d58&margin=%5Bobject%20Object%5D&name=WechatIMG1989.png&originHeight=880&originWidth=968&originalType=binary%E2%88%B6=1&size=250436&status=done&style=none&taskId=u8ed96517-9597-40a9-8247-84129788312">
+
+
+<link rel="canonical" href="http://example.com/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/","path":"2021/09/27/安卓原生打包/","title":"安卓原生打包"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>安卓原生打包 | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8C%85"><span class="nav-number">2.</span> <span class="nav-text">打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%AE%8C%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">打包完成</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#H5-%E7%AB%AF-webview"><span class="nav-number"></span> <span class="nav-text">H5 端 webview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%9B%BA%E5%AE%9A-url"><span class="nav-number">0.1.</span> <span class="nav-text">修改浏览器的固定 url</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E6%88%90-wgt-%E5%8C%85"><span class="nav-number">1.</span> <span class="nav-text">打包成 wgt 包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logo-%E5%8F%8A%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%88%B6%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">logo 及启动图制作</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="安卓原生打包 | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          安卓原生打包
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-27 17:17:00" itemprop="dateCreated datePublished" datetime="2021-09-27T17:17:00+08:00">2021-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:19" itemprop="dateModified" datetime="2022-11-03T15:07:19+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>下载 android Studio(4.1.1), JDK8,<br>安装完成后,导入 demo 项目(300M,).<br>开始初始化下载,有可能下载较慢,科学网即可.<br>完成后,项目同步有可能报错(Sync Project with Gradle Files).需要下载对应 SDK 版本.<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yezip/article/details/108998454">sdk 报错解决方法</a></p>
+<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>build &#x3D;&gt; Genenate Signed Budle&#x2F;APK<br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735936926-3dd60957-ad25-4d9a-9303-8e5b199f6380.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u20e70d58&margin=%5Bobject%20Object%5D&name=WechatIMG1989.png&originHeight=880&originWidth=968&originalType=binary%E2%88%B6=1&size=250436&status=done&style=none&taskId=u8ed96517-9597-40a9-8247-84129788312" alt="WechatIMG1989.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735946757-cc0004a6-c424-4775-aec7-50f9a85a4c71.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u2dcf9ae4&margin=%5Bobject%20Object%5D&name=WechatIMG1990.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=100589&status=done&style=none&taskId=u66285518-2892-4c6c-9eb5-7b5c223ae1b" alt="WechatIMG1990.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735954103-388521a6-e849-496f-9407-2afa711a02af.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u5b2395a1&margin=%5Bobject%20Object%5D&name=WechatIMG1992.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=109109&status=done&style=none&taskId=u09ede0fe-b2d8-46af-b120-dac402aaeb1" alt="WechatIMG1992.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735962717-da7f5dba-9e9f-48d2-b942-b682143448ef.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u6418437e&margin=%5Bobject%20Object%5D&name=WechatIMG1994.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=85326&status=done&style=none&taskId=u350019ce-f319-4b5a-bd77-e451ce50e97" alt="WechatIMG1994.png"></p>
+<h2 id="打包完成"><a href="#打包完成" class="headerlink" title="打包完成"></a>打包完成</h2><p><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632736037814-1f6860cb-c78f-446f-a76b-acb7db15fbc7.png#clientId=ud8eed2ce-b12c-4&from=ui&id=ubffb4464&margin=%5Bobject%20Object%5D&name=WechatIMG2057.png&originHeight=217&originWidth=958&originalType=binary%E2%88%B6=1&size=82281&status=done&style=none&taskId=u14022146-90d8-45ac-9ee1-fe59104822b" alt="WechatIMG2057.png"></p>
+<h1 id="H5-端-webview"><a href="#H5-端-webview" class="headerlink" title="H5 端 webview"></a>H5 端 webview</h1><h3 id="修改浏览器的固定-url"><a href="#修改浏览器的固定-url" class="headerlink" title="修改浏览器的固定 url"></a>修改浏览器的固定 url</h3><p>将 webview 用 HBuilderX 打开,修改<code>pages/index/webview.vue</code>中的 url 地址.</p>
+<h2 id="打包成-wgt-包"><a href="#打包成-wgt-包" class="headerlink" title="打包成 wgt 包"></a>打包成 wgt 包</h2><p>将<code>webview.zip</code>解压.用 HBuilderX 修改后发行为原生 app,制作应用 wgt 包.生产包后修改后缀为 zip 解压.<br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1634366875716-11f4a6ce-0a6d-40e5-8047-a6832f53b99a.png#clientId=u8592e4fc-d636-4&from=ui&id=u2ea16012&margin=%5Bobject%20Object%5D&name=1.png&originHeight=1002&originWidth=1192&originalType=binary%E2%88%B6=1&size=321944&status=done&style=none&taskId=u6fe97e4f-af03-448d-9601-b329b052a52" alt="1.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632736814316-37430acc-faa8-4583-83d7-754e6c8e7ff6.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u0c2d8502&margin=%5Bobject%20Object%5D&name=WechatIMG2086.png&originHeight=516&originWidth=446&originalType=binary%E2%88%B6=1&size=63110&status=done&style=none&taskId=u4da2e966-bed8-47d5-8282-e2c9d2859f6" alt="WechatIMG2086.png"><br>将解压后文件复制到<code>simpleDemo/src/main/assets/apps/__UNI__0DD8DA0/www</code><br>重新打包.</p>
+<h2 id="logo-及启动图制作"><a href="#logo-及启动图制作" class="headerlink" title="logo 及启动图制作"></a>logo 及启动图制作</h2><p><a target="_blank" rel="noopener" href="https://console.eeui.app/tools/icons">logo 生成</a><br><a target="_blank" rel="noopener" href="https://console.eeui.app/tools/launchimage">启动图生成</a><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632737000983-0205cf9a-915c-4156-85b3-794b5ad884c4.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u251b0c54&margin=%5Bobject%20Object%5D&name=WechatIMG2093.png&originHeight=648&originWidth=788&originalType=binary%E2%88%B6=1&size=70873&status=done&style=none&taskId=u315c94c1-36c8-420a-8514-13e1e931a4e" alt="WechatIMG2093.png"><br>生成后复制到<code>/simpleDemo/src/main/res/drawable</code>.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/24/HTML%E8%A1%A5%E6%A1%A3/" rel="prev" title="HTML补档">
+                  <i class="fa fa-chevron-left"></i> HTML补档
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/03/node%E5%A4%84%E7%90%86excel%E8%BE%93%E5%87%BAjson/" rel="next" title="node处理excel输出json">
+                  node处理excel输出json <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

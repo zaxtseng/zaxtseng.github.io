@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="title: 上海公司面试题 date: 2019-11-16 16:28:19tags: 面试题 云印(以 vue 为主)1.页面初始化一般放在哪个生命周期里,为什么? 2.vue 组件之间如何传递参数 3.同步组件和异步组件之间的区别,优缺点 4.vue-router 实现原理 5.微信小程序的跳转方式有哪几种  ajax 的同步和异步有什么区别  7.css 那些属性是默认继承的?  ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="上海公司面试题">
+<meta property="og:url" content="http://example.com/2022/09/26/%E4%B8%8A%E6%B5%B7%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="title: 上海公司面试题 date: 2019-11-16 16:28:19tags: 面试题 云印(以 vue 为主)1.页面初始化一般放在哪个生命周期里,为什么? 2.vue 组件之间如何传递参数 3.同步组件和异步组件之间的区别,优缺点 4.vue-router 实现原理 5.微信小程序的跳转方式有哪几种  ajax 的同步和异步有什么区别  7.css 那些属性是默认继承的?  ca">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-26T13:05:35.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:17.429Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/09/26/%E4%B8%8A%E6%B5%B7%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/26/%E4%B8%8A%E6%B5%B7%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E9%A2%98/","path":"2022/09/26/上海公司面试题/","title":"上海公司面试题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>上海公司面试题 | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-%E4%B8%8A%E6%B5%B7%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E9%A2%98-date-2019-11-16-16-28-19"><span class="nav-number">1.</span> <span class="nav-text">title: 上海公司面试题 date: 2019-11-16 16:28:19</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%91%E5%8D%B0-%E4%BB%A5-vue-%E4%B8%BA%E4%B8%BB"><span class="nav-number"></span> <span class="nav-text">云印(以 vue 为主)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%A5%E5%85%B3-%E4%BB%A5-http-%E4%B8%BA%E4%B8%BB"><span class="nav-number"></span> <span class="nav-text">报关(以 http 为主)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E5%8C%85%E5%85%AC%E5%8F%B8-1"><span class="nav-number"></span> <span class="nav-text">外包公司 1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E5%8C%85%E5%85%AC%E5%8F%B8-2"><span class="nav-number"></span> <span class="nav-text">外包公司 2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%A7%E9%92%B1"><span class="nav-number"></span> <span class="nav-text">大钱</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E5%8C%85%E5%85%AC%E5%8F%B8-3"><span class="nav-number"></span> <span class="nav-text">外包公司 3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E5%8C%85%E5%85%AC%E5%8F%B8-4-%E6%89%8D%E5%8C%A0"><span class="nav-number"></span> <span class="nav-text">外包公司 4 才匠</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E4%B8%8A%E6%B5%B7%E5%85%AC%E5%8F%B8%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="上海公司面试题 | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          上海公司面试题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:05:35" itemprop="dateCreated datePublished" datetime="2022-09-26T21:05:35+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:17" itemprop="dateModified" datetime="2022-11-03T15:07:17+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <hr>
+<h2 id="title-上海公司面试题-date-2019-11-16-16-28-19"><a href="#title-上海公司面试题-date-2019-11-16-16-28-19" class="headerlink" title="title: 上海公司面试题 date: 2019-11-16 16:28:19"></a>title: 上海公司面试题 date: 2019-11-16 16:28:19</h2><p>tags: 面试题</p>
+<h1 id="云印-以-vue-为主"><a href="#云印-以-vue-为主" class="headerlink" title="云印(以 vue 为主)"></a>云印(以 vue 为主)</h1><p>1.页面初始化一般放在哪个生命周期里,为什么?</p>
+<p>2.vue 组件之间如何传递参数</p>
+<p>3.同步组件和异步组件之间的区别,优缺点</p>
+<p>4.vue-router 实现原理</p>
+<p>5.微信小程序的跳转方式有哪几种</p>
+<ol start="6">
+<li>ajax 的同步和异步有什么区别</li>
+</ol>
+<p>7.css 那些属性是默认继承的?</p>
+<ol start="8">
+<li><p>canvas 和 style 怎么进行绑定?</p>
+</li>
+<li><p>v-for 中 in 和 of 的区别</p>
+</li>
+<li><p>watch 如何使用</p>
+</li>
+<li><p>如何存储 localstorage</p>
+</li>
+<li><p>router 如何传值,如何取值</p>
+</li>
+<li><p>vuex 如何存储值</p>
+</li>
+<li><p>分页组件的实现</p>
+</li>
+<li><p>如何监听物理返回键</p>
+</li>
+</ol>
+<h1 id="报关-以-http-为主"><a href="#报关-以-http-为主" class="headerlink" title="报关(以 http 为主)"></a>报关(以 http 为主)</h1><ol>
+<li>http 请求原理</li>
+<li>http 请求的几种方式,有什么区别</li>
+<li>如何进行登录验证,token 失效如何处理</li>
+<li>如何调换数组中两个元素的位置.例如:[1,2,3,4,5]中调换 3 和 4 的位置,变成[1,2,4,3,5].</li>
+<li>向后端发送文件的格式?</li>
+</ol>
+<h1 id="外包公司-1"><a href="#外包公司-1" class="headerlink" title="外包公司 1"></a>外包公司 1</h1><ol>
+<li>js 中如何检测一个变量是 String 类型.请写出函数具体实现</li>
+<li>写出下面函数输出什么(tips:闭包)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    count += <span class="number">1</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(count);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s = <span class="title function_">add</span>();</span><br><span class="line"><span class="title function_">s</span>();</span><br><span class="line"><span class="title function_">s</span>();</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察闭包</span></span><br><span class="line"><span class="number">1</span>;</span><br><span class="line"><span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>如何阻止事件冒泡和默认事件</li>
+<li>下面的问题打印什么</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;我是MT&quot;</span>;</span><br><span class="line"><span class="title function_">test</span>();</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">  <span class="keyword">var</span> str = <span class="string">&quot;哈哈哈&quot;</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察变量声明和作用域</span></span><br><span class="line"><span class="literal">undefined</span>; <span class="comment">//因为打印str时,首先从str所在的作用域找变量str,</span></span><br><span class="line"><span class="comment">//因为有声明前置,var str,但是未赋值,是undefined.所以不再从外部找str</span></span><br><span class="line">哈哈哈;</span><br><span class="line">我是<span class="variable constant_">MT</span>;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>什么是盒子模型</li>
+<li>sessionStorage,localStorage 和 cookie 的区别</li>
+<li>px 和 em 的区别</li>
+<li>列举不同的清除浮动的技巧</li>
+<li><code>display: none</code>和<code>visibility: hidden</code>的区别</li>
+<li>组件中<code>&lt;style scoped&gt;</code>的<code>scoped</code>的作用.</li>
+<li>v-show 和 v-if 的共同点和区别</li>
+<li>vue 注册组件使用什么关键字</li>
+<li>vue 如何实现父子组件通信</li>
+<li>vue 的双向数据绑定原理是什么?</li>
+</ol>
+<h1 id="外包公司-2"><a href="#外包公司-2" class="headerlink" title="外包公司 2"></a>外包公司 2</h1><ol>
+<li>使用 js 将数组: <code>[&#123; name: &quot;king&quot;, age: 18&#125;, &#123;name: &quot;bob&quot;, age: 22&#125;]</code>变成[18,22],并且筛选出大于 20 的值.</li>
+<li>使用 js 获取页面一个 id 为 myP 的<code>&lt;p&gt;</code>标签,并为其增加点击事件,并说明一下 addEventLister 方法的第三个可选参数的冒泡和捕获.</li>
+<li>控制台运行一下代码:</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br></pre></td></tr></table></figure>
+
+<p>输出什么</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3</span> <span class="comment">//先执行for循环,i=1,有异步代码,封存数据,console.log(i).</span></span><br><span class="line"><span class="comment">//i=2,console.log(i)</span></span><br><span class="line"><span class="comment">//i=3,console.log(i)</span></span><br><span class="line"><span class="comment">//此时i的最终形态是3,执行最后一行的console.log(i),是3</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>个<span class="number">3</span> <span class="comment">//同步代码执行完,看任务队列中排着3个console.log(i),i=3,连续输出3个3</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="大钱"><a href="#大钱" class="headerlink" title="大钱"></a>大钱</h1><ol>
+<li>写一个原生 ajax 请求</li>
+<li>写几个常用的数组,字符串,对象的方法</li>
+<li><code>npm install --save</code>和<code>npm install --save --dev</code>的区别</li>
+<li>IE 与火狐的事件机制有什么区别?如何阻止冒泡?</li>
+<li>什么是闭包? 闭包的用途</li>
+<li>css3 动画最后一帧如何恢复到原样?</li>
+<li>sessionStorage,localStorage 和 cookie 的区别?分别在什么时候用?</li>
+<li>HTML5 新特性?移除那些?如何处理 HTML5 新标签的浏览器兼容问题?做过的项目中,那些 CSS 样式需要单独写兼容样式?</li>
+<li>ES6 运算符…是用来做什么的?用 ES6 语法遍历一个数组.</li>
+<li>px,em,rem 的区别</li>
+<li>prototype 是什么?什么时候用</li>
+<li>js 添加,移除,替换,删除,创建,查找节点的方法是什么</li>
+<li>如何优化网站性能(js)</li>
+<li>编写一个方法,去掉以下数组的重复元素</li>
+<li>vue 如何监听一个对象的变化,写个例子</li>
+<li>setTimeout,promise,async&#x2F;await 的区别</li>
+<li>intercepter 用在什么地方</li>
+<li>路由拦截在什么地方</li>
+<li>切换用户如何处理</li>
+<li>用户不是提交验证进来而是输入 url 进来如何处理</li>
+<li>组件里 name 的作用</li>
+</ol>
+<h1 id="外包公司-3"><a href="#外包公司-3" class="headerlink" title="外包公司 3"></a>外包公司 3</h1><ol>
+<li>js 有哪些基本数据类型</li>
+<li>var let const 的区别</li>
+<li>数字计算: 在 js 中,0.1+0.2 的结果是?</li>
+<li>下面代码有什么问题?(tips:闭包)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>test1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>test2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>test3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> <span class="keyword">var</span> lis = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;ul li&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt;lis.<span class="property">length</span>; i++)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     lis[i].<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         <span class="variable language_">console</span>.<span class="title function_">log</span>(i)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">     &#125;,<span class="literal">false</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>无论点击哪个都会输出 3</p>
+<p>解决方法:</p>
+<p>1.将 var 换成 let</p>
+<ol start="2">
+<li>for 循环改造</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; lis.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  (<span class="keyword">function</span> (<span class="params">i</span>) &#123;</span><br><span class="line">    lis[i].<span class="title function_">addEventListener</span>(</span><br><span class="line">      <span class="string">&quot;click&quot;</span>,</span><br><span class="line">      <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(i);</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="literal">false</span></span><br><span class="line">    );</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>请写出下面输出结果,</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;,arr = [];</span><br><span class="line">(&#123; <span class="attr">foo</span>: obj.<span class="property">prop</span>, <span class="attr">bar</span>: arr[<span class="number">0</span>] &#125; = &#123; <span class="attr">foo</span>: <span class="number">123</span>, <span class="attr">bar</span>: <span class="literal">true</span> &#125;));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj, arr);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">prop</span>: <span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line">[<span class="literal">true</span>];</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>promise 有几种状态,什么时候会进入 catch?</li>
+<li>在 8*8 的国际象棋摆放八个皇后,使其不同相互攻击,即任意两个皇后不能处在同一行,同一列,同一对角线.总共有多少种摆法.</li>
+<li>git 命令有哪些?</li>
+</ol>
+<h1 id="外包公司-4-才匠"><a href="#外包公司-4-才匠" class="headerlink" title="外包公司 4 才匠"></a>外包公司 4 才匠</h1><ol>
+<li>下面代码的输出是什么?</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> shape = &#123;</span><br><span class="line">  <span class="attr">radius</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="title function_">diameter</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">radius</span> * <span class="number">2</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">perimeter</span>: <span class="function">() =&gt;</span> <span class="number">2</span> * <span class="title class_">Math</span>.<span class="property">PI</span> * <span class="variable language_">this</span>.<span class="property">radius</span>,</span><br><span class="line">&#125;;</span><br><span class="line">shape.<span class="title function_">diameter</span>();</span><br><span class="line">shape.<span class="title function_">perimeter</span>();</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">20</span>;</span><br><span class="line"><span class="title class_">NaN</span>; <span class="comment">//考察箭头函数的this</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> c = &#123; <span class="attr">greeting</span>: <span class="string">&quot;hey&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> d;</span><br><span class="line">d = c;</span><br><span class="line">c.<span class="property">greeting</span> = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(d.<span class="property">greeting</span>);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello; <span class="comment">//考察引用类型的指针,或者说堆内存</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Chameleon</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">colorChange</span>(<span class="params">newColor</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">newColor</span> = newColor;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">&#123; newColor = <span class="string">&quot;green&quot;</span> &#125; = &#123;&#125;</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">newColor</span> = newColor;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> freddie = <span class="keyword">new</span> <span class="title class_">Chameleon</span>(&#123; <span class="attr">newColor</span>: <span class="string">&quot;purple&quot;</span> &#125;);</span><br><span class="line">freddie.<span class="title function_">colorChange</span>(<span class="string">&quot;orange&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察class中static的方法</span></span><br><span class="line"><span class="string">&quot;freddie.colorChange is not a function&quot;</span>;</span><br><span class="line"><span class="comment">//static不能在类的实例上调用</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">firstName, lastName</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">firstName</span> = firstName;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">lastName</span> = lastName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> member = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Lydia&quot;</span>, <span class="string">&quot;Hallie&quot;</span>);</span><br><span class="line"><span class="title class_">Person</span>.<span class="property">getFullName</span> = <span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="property">firstName</span> + <span class="variable language_">this</span>.<span class="property">lastName</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(member.<span class="title function_">getFullName</span>());</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察ES6中的class</span></span><br><span class="line"><span class="string">&quot;member.getFullName is not a function&quot;</span></span><br><span class="line"><span class="comment">//getFullName并没有写到Person的原型上,member并不能调用该函数</span></span><br><span class="line">解决办法:</span><br><span class="line"><span class="title class_">ES6</span>:</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>&#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">firstName, lastName</span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">firstName</span> = firstName</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">lastName</span> = lastName</span><br><span class="line">  &#125;</span><br><span class="line">  getFullName = <span class="function">() =&gt;</span> <span class="variable language_">this</span>.<span class="property">firstName</span> + <span class="variable language_">this</span>.<span class="property">lastName</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> member = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Lydia&quot;</span>,<span class="string">&quot;Hallie&quot;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(member.<span class="title function_">getFullName</span>())</span><br><span class="line"><span class="title class_">ES5</span>原型法:</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">firstName, lastName</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">firstName</span> = firstName;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">lastName</span> = lastName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getFullName</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">firstName</span> + <span class="variable language_">this</span>.<span class="property">lastName</span>;</span><br><span class="line">  &#125; <span class="comment">//这里不能用箭头函数,否则this指向window</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> member = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Lydia&quot;</span>, <span class="string">&quot;Hallie&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(member.<span class="title function_">getFullName</span>());</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">checkAge</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (data === &#123; <span class="attr">age</span>: <span class="number">18</span> &#125;) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;you are an adult!&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hh&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">checkAge</span>(&#123; <span class="attr">age</span>: <span class="number">18</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>输出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//考察引用类型</span></span><br><span class="line">hh; <span class="comment">//考点在&#123;age: 18&#125; === &#123;age: 18&#125;是否相等,</span></span><br><span class="line"><span class="comment">//两个不同的地址,所以不相等</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/26/JS%E6%B7%B1%E5%85%A5/" rel="prev" title="JS深入">
+                  <i class="fa fa-chevron-left"></i> JS深入
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/09/26/%E5%85%B6%E4%BB%96%E4%BA%BA%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="next" title="其他人面试题">
+                  其他人面试题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

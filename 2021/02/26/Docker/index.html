@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="拉取镜像docker pull image 根据镜像创建使用该镜像的容器docker run -di --name mycentos centos:7 Docker 常用命令当前运行的容器docker ps Dockerfliedocker image build  会读取 dockerfile,并将应用容器化.Dockerfile  由一行行命令语句组成，并支持以  #  开头的注释行. 123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker">
+<meta property="og:url" content="http://example.com/2021/02/26/Docker/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="拉取镜像docker pull image 根据镜像创建使用该镜像的容器docker run -di --name mycentos centos:7 Docker 常用命令当前运行的容器docker ps Dockerfliedocker image build  会读取 dockerfile,并将应用容器化.Dockerfile  由一行行命令语句组成，并支持以  #  开头的注释行. 123">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-26T03:26:53.000Z">
+<meta property="article:modified_time" content="2022-11-03T07:07:21.037Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/02/26/Docker/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/02/26/Docker/","path":"2021/02/26/Docker/","title":"Docker"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Docker | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Docker 常用命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dockerflie"><span class="nav-number">2.</span> <span class="nav-text">Dockerflie</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Docker | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Docker
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-26 11:26:53" itemprop="dateCreated datePublished" datetime="2021-02-26T11:26:53+08:00">2021-02-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-03 15:07:21" itemprop="dateModified" datetime="2022-11-03T15:07:21+08:00">2022-11-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>拉取镜像<br><code>docker pull image</code> <br>根据镜像创建使用该镜像的容器<br><code>docker run -di --name mycentos centos:7</code></p>
+<h2 id="Docker-常用命令"><a href="#Docker-常用命令" class="headerlink" title="Docker 常用命令"></a>Docker 常用命令</h2><p>当前运行的容器<br><code>docker ps</code></p>
+<h2 id="Dockerflie"><a href="#Dockerflie" class="headerlink" title="Dockerflie"></a>Dockerflie</h2><p><code>docker image build</code>  会读取 dockerfile,并将应用容器化.<br>Dockerfile  由一行行命令语句组成，并支持以  #  开头的注释行.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># <span class="title class_">Test</span> web-app to use <span class="keyword">with</span> <span class="title class_">Pluralsight</span> courses and <span class="title class_">Docker</span> <span class="title class_">Deep</span> <span class="title class_">Dive</span> book</span><br><span class="line"># <span class="title class_">Linux</span> x64</span><br><span class="line"><span class="variable constant_">FROM</span> alpine</span><br><span class="line"></span><br><span class="line"><span class="variable constant_">LABEL</span> maintainer=<span class="string">&quot;nigelpoulton@hotmail.com&quot;</span></span><br><span class="line"></span><br><span class="line"># <span class="title class_">Install</span> <span class="title class_">Node</span> and <span class="variable constant_">NPM</span></span><br><span class="line"><span class="variable constant_">RUN</span> apk add --update nodejs nodejs-npm</span><br><span class="line"></span><br><span class="line"># <span class="title class_">Copy</span> app to /src</span><br><span class="line"><span class="variable constant_">COPY</span> . /src</span><br><span class="line"></span><br><span class="line"><span class="variable constant_">WORKDIR</span> /src</span><br><span class="line"></span><br><span class="line"># <span class="title class_">Install</span> dependencies</span><br><span class="line"><span class="variable constant_">RUN</span>  npm install</span><br><span class="line"></span><br><span class="line"><span class="variable constant_">EXPOSE</span> <span class="number">8080</span></span><br><span class="line"></span><br><span class="line"><span class="variable constant_">ENTRYPOINT</span> [<span class="string">&quot;node&quot;</span>, <span class="string">&quot;./app.js&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>使用  -t  参数为镜像打标签，使用  -f  参数指定  Dockerfile  的路径和名称，使用  -f  参数可以指定位于任意路径下的任意名称的  Dockerfile。</p>
+<p>构建上下文是指应用文件存放的位置，可能是本地  Docker  主机上的一个目录或一个远程的  Git  库。</p>
+<p>Dockerfile  中的  FROM  指令用于指定要构建的镜像的基础镜像。它通常是  Dockerfile  中的第一条指令。</p>
+<p>Dockerfile  中的  RUN  指令用于在镜像中执行命令，这会创建新的镜像层。每个  RUN  指令创建一个新的镜像层。</p>
+<p>Dockerfile  中的  COPY  指令用于将文件作为一个新的层添加到镜像中。通常使用  COPY  指令将应用代码赋值到镜像中。</p>
+<p>Dockerfile  中的  EXPOSE  指令用于记录应用所使用的网络端口。</p>
+<p>Dockerfile  中的  ENTRYPOINT  指令用于指定镜像以容器方式启动后默认运行的程序。</p>
+<p>其他的  Dockerfile  指令还有  LABEL、ENV、ONBUILD、HEALTHCHECK、CMD  等。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/02/23/TypeScript/" rel="prev" title="TypeScript">
+                  <i class="fa fa-chevron-left"></i> TypeScript
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/02/28/Koa2/" rel="next" title="Koa2">
+                  Koa2 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
