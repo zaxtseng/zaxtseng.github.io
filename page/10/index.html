@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,144 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/22/node%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/02/22/node%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">node爬虫入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-02-22 09:04:31" itemprop="dateCreated datePublished" datetime="2021-02-22T09:04:31+08:00">2021-02-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-04 10:16:28" itemprop="dateModified" datetime="2022-11-04T10:16:28+08:00">2022-11-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="node-基础"><a href="#node-基础" class="headerlink" title="node 基础"></a>node 基础</h3><p>require 模块结束时,需要用<code>;</code>结尾.否则报错.</p>
+<h1 id="常用模块"><a href="#常用模块" class="headerlink" title="常用模块"></a>常用模块</h1><h2 id="请求模块"><a href="#请求模块" class="headerlink" title="请求模块"></a>请求模块</h2><h3 id="request"><a href="#request" class="headerlink" title="request"></a>request</h3><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/request">npm 地址</a><br>虽然 request 模块是几乎学习 node 接触的第一个模块,但是目前已经被弃用了.所以推荐使用 superagent.</p>
+<h3 id="superagent"><a href="#superagent" class="headerlink" title="superagent"></a>superagent</h3><p><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/superagent">npm 地址</a><br>简单的调用,简单的写法,配套的插件.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> superagent = <span class="built_in">require</span>(<span class="string">&quot;superagent&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// callback</span></span><br><span class="line">superagent</span><br><span class="line">  .<span class="title function_">post</span>(<span class="string">&quot;/api/pet&quot;</span>)</span><br><span class="line">  .<span class="title function_">send</span>(&#123; <span class="attr">name</span>: <span class="string">&quot;Manny&quot;</span>, <span class="attr">species</span>: <span class="string">&quot;cat&quot;</span> &#125;) <span class="comment">// sends a JSON post body</span></span><br><span class="line">  .<span class="title function_">set</span>(<span class="string">&quot;X-API-Key&quot;</span>, <span class="string">&quot;foobar&quot;</span>)</span><br><span class="line">  .<span class="title function_">set</span>(<span class="string">&quot;accept&quot;</span>, <span class="string">&quot;json&quot;</span>)</span><br><span class="line">  .<span class="title function_">end</span>(<span class="function">(<span class="params">err, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Calling the end function will send the request</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// promise with then/catch</span></span><br><span class="line">superagent.<span class="title function_">post</span>(<span class="string">&quot;/api/pet&quot;</span>).<span class="title function_">then</span>(<span class="variable language_">console</span>.<span class="property">log</span>).<span class="title function_">catch</span>(<span class="variable language_">console</span>.<span class="property">error</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// promise with async/await</span></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> superagent.<span class="title function_">post</span>(<span class="string">&quot;/api/pet&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<h2 id="解析模块"><a href="#解析模块" class="headerlink" title="解析模块"></a>解析模块</h2><h3 id="cheerio"><a href="#cheerio" class="headerlink" title="cheerio"></a>cheerio</h3><p>cheerio 是 node 中的 jQuery,可方便的控制 dom 节点.获取相应参数.<br>语法使用 jquery 语法.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> $ = cheerio.<span class="title function_">load</span>(body);</span><br><span class="line">$(<span class="string">&quot;div&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h3><p>Puppeteer 俗称无头浏览器,实际是一个没有显示界面的 Chrome 浏览器.故能在浏览器上操作的也可以通过 Puppeteer 操作.<br>缺点是比常规爬虫慢.</p>
+<h4 id="cheerio-和-Puppeteer-的区别"><a href="#cheerio-和-Puppeteer-的区别" class="headerlink" title="cheerio 和 Puppeteer 的区别"></a>cheerio 和 Puppeteer 的区别</h4><p>cherrico 本质上只是一个使用类似 jquery 的语法操作 HTML 文档的库，使用 cherrico 爬取数据，只是请求到静态的 HTML 文档，如果网页内部的数据是通过 ajax 动态获取的，那么便爬取不到的相应的数据。<br>而 Puppeteer 能够模拟一个浏览器的运行环境，能够请求网站信息，并运行网站内部的逻辑。然后再通过 WS 协议动态的获取页面内部的数据，并能够进行任何模拟的操作(点击、滑动、hover 等),并且支持跳转页面，多页面管理。<br>甚至能注入 node 上的脚本到浏览器内部环境运行，总之，你能对一个网页做的操作它都能做，你不能做的它也能做。</p>
+<h2 id="其他模块"><a href="#其他模块" class="headerlink" title="其他模块"></a>其他模块</h2><h3 id="iconv-lite"><a href="#iconv-lite" class="headerlink" title="iconv-lite"></a>iconv-lite</h3><p>转码模块,如果中文乱码.可使用该模块进行转码，中文显示正常后开始解析源码，获取需要的 URL.</p>
+<h3 id="superagent-charset"><a href="#superagent-charset" class="headerlink" title="superagent-charset"></a>superagent-charset</h3><p>如果不想那么麻烦,直接使用,省的再安装模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="built_in">require</span>(<span class="string">&quot;superagent&quot;</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;superagent-charset&quot;</span>)(request);</span><br><span class="line"></span><br><span class="line">request</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;http://www.xxx.com/&quot;</span>)</span><br><span class="line">  .<span class="title function_">charset</span>(<span class="string">&quot;gbk&quot;</span>)</span><br><span class="line">  .<span class="title function_">end</span>(<span class="function">(<span class="params">err, res</span>) =&gt;</span> &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Tesseract"><a href="#Tesseract" class="headerlink" title="Tesseract"></a>Tesseract</h3><p>OCR 识别模块,可用于识别验证码图片.</p>
+<h3 id="gm"><a href="#gm" class="headerlink" title="gm"></a>gm</h3><p>gm 是 Node.js 对 GraphicsMagick 和 ImageMagick 封装。GraphicsMagick 和 ImageMagick 是老牌的图片处理工具.用于对验证码图片的噪点处理.</p>
+<h2 id="配合"><a href="#配合" class="headerlink" title="配合"></a>配合</h2><p>Puppeteer 用于抓取网页中的图片，Tesseract 做图像识别，gm 实现图片去噪点，三个工具各司其职，分工明确。</p>
+<h2 id="node-爬虫框架"><a href="#node-爬虫框架" class="headerlink" title="node 爬虫框架"></a>node 爬虫框架</h2><h3 id="ppspider"><a href="#ppspider" class="headerlink" title="ppspider"></a>ppspider</h3><p><a target="_blank" rel="noopener" href="https://github.com/xiyuan-fengyu/ppspider.git">github 地址</a></p>
+<h2 id="操作思想"><a href="#操作思想" class="headerlink" title="操作思想"></a>操作思想</h2><p>爬虫主要在于两个字,’爬’和’取’.<br>‘爬’在于发起请求,获取数据.<br>‘取’在于解析数据.</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>node 多会进行 IO 操作,所以需要经常使用错误处理.<br>常用的比如:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">superagent.<span class="title function_">get</span>(url).<span class="title function_">end</span>(<span class="keyword">function</span> (<span class="params">err, res</span>) &#123;</span><br><span class="line">  <span class="comment">// 抛错拦截</span></span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">throw</span> <span class="title class_">Error</span>(err);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 等待 code</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>try&#x2F;catch 操作注意异步处理.</p>
+<blockquote>
+<p>《深入浅出 Nodejs》书中描述” 尝试对异步方法进行 try&#x2F;catch 操作只能捕获当次事件循环内的异常，对 callback 执行时抛出的异常将无能为力 “。<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903742966349832">可参考此文</a></p>
+</blockquote>
+<h1 id="反爬虫"><a href="#反爬虫" class="headerlink" title="反爬虫"></a>反爬虫</h1><ol>
+<li>通过 UA 机制识别爬虫。</li>
+</ol>
+<p>UA 的全称是 UserAgent，它是请求浏览器的身份标志，许多网站使用它来作为鉴别爬虫的标志，假如访问请求的头部中没有带 UA 那么就会被判定为爬虫，但由于这种要针对这种反爬虫机制非常容易，即随机 UA，因此这种反爬机制使用的很少。</p>
+<ol start="2">
+<li>通过访问频率鉴别爬虫。</li>
+</ol>
+<p>爬虫为了更好地保证效率，通常会在很短的时间内多次访问目标网站，因此能够通过单个 IP 访问的频率来判断是否为爬虫。并且，这种反爬方式比较难以被反反爬机制反制，只能通过更换代理 IP 来保证效率。</p>
+<ol start="3">
+<li>通过 Cookie 和验证码识别爬虫。</li>
+</ol>
+<p>Cookie 是指会员制的账号密码登陆验证，这就可以通过限制单账号抓取频率来限制爬虫抓取，而验证码完全是随机的，爬虫脚本无法正确鉴别，同样能够限制爬虫程序。</p>
+<h2 id="反反爬虫"><a href="#反反爬虫" class="headerlink" title="反反爬虫"></a>反反爬虫</h2><p>爬虫过于频繁就会触发封 ip,弹验证码等反爬虫的行为.那么就要有一些反反爬虫的策略.<br>常用操作有使用代理,降低操作频率.<br>添加多个 user-agent 用于随机调换.</p>
+<h3 id="动态-userAgent"><a href="#动态-userAgent" class="headerlink" title="动态 userAgent"></a>动态 userAgent</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//userAgent</span></span><br><span class="line"><span class="keyword">const</span> userAgents = [</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.12) Gecko/20070731 Ubuntu/dapper-security Firefox/1.5.0.12&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Acoo Browser; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; .NET CLR 3.0.04506)&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/535.20 (KHTML, like Gecko) Chrome/19.0.1036.7 Safari/535.20&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko Fedora/1.9.0.8-1.fc10 Kazehakase/0.5.6&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.71 Safari/537.1 LBBROWSER&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 2.0.50727; Media Center PC 6.0) ,Lynx/2.8.5rel.1 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/1.2.9&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; QQBrowser/7.0.3698.400)&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; QQDownload 732; .NET4.0C; .NET4.0E)&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:2.0b13pre) Gecko/20110307 Firefox/4.0b13pre&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; fr) Presto/2.9.168 Version/11.52&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.0.12) Gecko/20070731 Ubuntu/dapper-security Firefox/1.5.0.12&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; LBBROWSER)&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko Fedora/1.9.0.8-1.fc10 Kazehakase/0.5.6&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (X11; U; Linux; en-US) AppleWebKit/527+ (KHTML, like Gecko, Safari/419.3) Arora/0.6&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; QQBrowser/7.0.3698.400)&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Opera/9.25 (Windows NT 5.1; U; en), Lynx/2.8.5rel.1 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/1.2.9&quot;</span>,</span><br><span class="line">  <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36&quot;</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = userAgents;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//app.js</span></span><br><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&quot;superagent&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> userAgents <span class="keyword">from</span> <span class="string">&quot;../src/userAgent&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">doRequest</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> userAgent = userAgents[<span class="built_in">parseInt</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * userAgents.<span class="property">length</span>)];</span><br><span class="line">  request</span><br><span class="line">    .<span class="title function_">get</span>(<span class="string">&quot;http://www.xxx.com&quot;</span>)</span><br><span class="line">    .<span class="title function_">set</span>(&#123; <span class="string">&quot;User-Agent&quot;</span>: userAgent &#125;) <span class="comment">//随机调用UA</span></span><br><span class="line">    .<span class="title function_">timeout</span>(&#123; <span class="attr">response</span>: <span class="number">5000</span>, <span class="attr">deadline</span>: <span class="number">60000</span> &#125;)</span><br><span class="line">    .<span class="title function_">end</span>(<span class="keyword">async</span> (err, res) =&gt; &#123;</span><br><span class="line">      <span class="comment">// 处理数据</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="superagent-cache-plugin"><a href="#superagent-cache-plugin" class="headerlink" title="superagent-cache-plugin"></a>superagent-cache-plugin</h3><p>有的需要 cookie 才可正常访问的接口.使用此插件.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install superagent-cache-plugin --save</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cacheModule = <span class="built_in">require</span>(<span class="string">&quot;cache-service-cache-module&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> cache = <span class="keyword">new</span> <span class="title function_">cacheModule</span>(&#123; <span class="attr">storage</span>: <span class="string">&quot;session&quot;</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Require superagent-cache-plugin and pass your cache module</span></span><br><span class="line"><span class="keyword">var</span> superagentCache = <span class="built_in">require</span>(<span class="string">&quot;superagent-cache-plugin&quot;</span>)(cache);</span><br><span class="line"></span><br><span class="line">superagent</span><br><span class="line">  .<span class="title function_">get</span>(uri)</span><br><span class="line">  .<span class="title function_">use</span>(superagentCache)</span><br><span class="line">  .<span class="title function_">end</span>(<span class="keyword">function</span> (<span class="params">err, response</span>) &#123;</span><br><span class="line">    <span class="comment">// response is now cached!</span></span><br><span class="line">    <span class="comment">// subsequent calls to this superagent request will now fetch the cached response</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="节流模块-superagent-throttle"><a href="#节流模块-superagent-throttle" class="headerlink" title="节流模块 superagent-throttle"></a>节流模块 superagent-throttle</h3><p>设置限时,节流.<br><a target="_blank" rel="noopener" href="https://github.com/leviwheatcroft/superagent-throttle">github 地址</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request     = <span class="built_in">require</span>(<span class="string">&#x27;superagent&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Throttle</span>    = <span class="built_in">require</span>(<span class="string">&#x27;superagent-throttle&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> throttle = <span class="keyword">new</span> <span class="title class_">Throttle</span>(&#123;</span><br><span class="line">  <span class="attr">active</span>: <span class="literal">true</span>,     <span class="comment">// 插件开关</span></span><br><span class="line">  <span class="attr">rate</span>: <span class="number">5</span>,          <span class="comment">// how many requests can be sent every `ratePer`</span></span><br><span class="line">  <span class="attr">ratePer</span>: <span class="number">10000</span>,   <span class="comment">// number of ms in which `rate` requests may be sent</span></span><br><span class="line">  <span class="attr">concurrent</span>: <span class="number">2</span>     <span class="comment">// 并发数</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">request</span><br><span class="line">.<span class="title function_">get</span>(<span class="string">&#x27;http://placekitten.com/100/100&#x27;</span>)</span><br><span class="line">.<span class="title function_">use</span>(throttle.<span class="title function_">plugin</span>())</span><br><span class="line">.<span class="title function_">end</span>(<span class="function">(<span class="params">err, res</span>) =&gt;</span> &#123; ... &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="限流模块-async"><a href="#限流模块-async" class="headerlink" title="限流模块 async"></a>限流模块 async</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fetchContents</span>(<span class="params">urls</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> results = [];</span><br><span class="line">    <span class="keyword">async</span>.<span class="title function_">eachLimit</span>(</span><br><span class="line">      urls,</span><br><span class="line">      <span class="number">3</span>,</span><br><span class="line">      <span class="function">(<span class="params">url, callback</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">spider</span>(</span><br><span class="line">          &#123; <span class="attr">url</span>: url, <span class="attr">decoding</span>: <span class="string">&quot;gb2312&quot;</span> &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">url</span>: &#123;</span><br><span class="line">              <span class="attr">selector</span>: <span class="string">&quot;#Zoom table td a!text&quot;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">title</span>: &#123;</span><br><span class="line">              <span class="attr">selector</span>: <span class="string">&quot;.title_all h1!text&quot;</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">          &#125;</span><br><span class="line">        ).<span class="title function_">then</span>(</span><br><span class="line">          <span class="function">(<span class="params">d</span>) =&gt;</span> &#123;</span><br><span class="line">            results.<span class="title function_">push</span>(d);</span><br><span class="line">            <span class="title function_">callback</span>();</span><br><span class="line">          &#125;,</span><br><span class="line">          <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">callback</span>();</span><br><span class="line">          &#125;</span><br><span class="line">        );</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">resolve</span>(results);</span><br><span class="line">      &#125;</span><br><span class="line">    );</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="动态-ip"><a href="#动态-ip" class="headerlink" title="动态 ip"></a>动态 ip</h3><h3 id="构建个人代理池"><a href="#构建个人代理池" class="headerlink" title="构建个人代理池"></a>构建个人代理池</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install ip-proxy-pool</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://nothlu.com/detail?id=26">转载文章</a></p>
+<h3 id="避免重复抓取"><a href="#避免重复抓取" class="headerlink" title="避免重复抓取"></a>避免重复抓取</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs-extra&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> uniqueArray = [];</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">UNIQUE_ARRAY_URL</span> = <span class="string">&quot;./_fetchedList.json&quot;</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  uniqueArray = <span class="built_in">require</span>(<span class="variable constant_">UNIQUE_ARRAY_URL</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">dealListData</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> urls = request.<span class="title function_">get</span>(data, <span class="string">&quot;items&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (urls) &#123;</span><br><span class="line">      urls = urls</span><br><span class="line">        .<span class="title function_">map</span>(<span class="function">(<span class="params">url</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="string">&quot;http://www.dytt8.net&quot;</span> + url;</span><br><span class="line">        &#125;)</span><br><span class="line">        .<span class="title function_">filter</span>(<span class="function">(<span class="params">url</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> uniqueArray.<span class="title function_">indexOf</span>(url) === -<span class="number">1</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">      <span class="comment">// 如果为空就reject</span></span><br><span class="line">      urls.<span class="property">length</span> ? <span class="title function_">resolve</span>(urls) : <span class="title function_">reject</span>(<span class="string">&quot;empty urls&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="title function_">reject</span>(urls);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addUniqueArray</span>(<span class="params">url</span>) &#123;</span><br><span class="line">  uniqueArray.<span class="title function_">push</span>(url);</span><br><span class="line">  <span class="keyword">if</span> (uniqueArray.<span class="property">length</span> &gt; <span class="number">300</span>) &#123;</span><br><span class="line">    <span class="comment">// 超长就删掉多余的</span></span><br><span class="line">    uniqueArray.<span class="title function_">shift</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetchList</span>()</span><br><span class="line">  .<span class="title function_">then</span>(dealListData)</span><br><span class="line">  .<span class="title function_">then</span>(fetchContents)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">d</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(d, d.<span class="property">length</span>);</span><br><span class="line">    <span class="comment">// json落地</span></span><br><span class="line">    fs.<span class="title function_">writeJson</span>(path.<span class="title function_">join</span>(__dirname, <span class="variable constant_">UNIQUE_ARRAY_URL</span>), uniqueArray);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="文件写入"><a href="#文件写入" class="headerlink" title="文件写入"></a>文件写入</h2><p>node 中文件读取写入有两种方法.<code>fs.readFile/writeFile</code> 和 <code>fs.createReadStream/writeStream</code>.</p>
+<h3 id="二者区别"><a href="#二者区别" class="headerlink" title="二者区别"></a>二者区别</h3><p><code>fs.writeFile</code>把文件内容全部读入内存，然后再写入文件，对于小型的文本文件，这没有多大问题，比如 grunt-file-copy 就是这样实现的。但是对于体积较大的二进制文件，比如音频、视频文件，动辄几个 GB 大小，如果使用这种方法，很容易使内存“爆仓”。理想的方法应该是读一部分，写一部分，不管文件有多大，只要时间允许，总会处理完成，这里就需要用到流的概念</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;/path/to/source&quot;</span>).<span class="title function_">pipe</span>(</span><br><span class="line">  fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;/path/to/dest&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>以上都是我瞎编的</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/03/HTTP%E3%80%81TCP-IP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E5%BA%94%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +346,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:15" itemprop="dateModified" datetime="2022-11-03T15:07:15+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:21" itemprop="dateModified" datetime="2022-11-04T10:16:21+08:00">2022-11-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -685,7 +823,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:16" itemprop="dateModified" datetime="2022-11-03T15:07:16+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:23" itemprop="dateModified" datetime="2022-11-04T10:16:23+08:00">2022-11-04</time>
     </span>
 
   
@@ -950,7 +1088,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:18" itemprop="dateModified" datetime="2022-11-03T15:07:18+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:24" itemprop="dateModified" datetime="2022-11-04T10:16:24+08:00">2022-11-04</time>
     </span>
 
   
@@ -1067,7 +1205,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:18" itemprop="dateModified" datetime="2022-11-03T15:07:18+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:24" itemprop="dateModified" datetime="2022-11-04T10:16:24+08:00">2022-11-04</time>
     </span>
 
   
@@ -1194,7 +1332,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:14" itemprop="dateModified" datetime="2022-11-03T15:07:14+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:21" itemprop="dateModified" datetime="2022-11-04T10:16:21+08:00">2022-11-04</time>
     </span>
 
   
@@ -1466,7 +1604,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:18" itemprop="dateModified" datetime="2022-11-03T15:07:18+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:24" itemprop="dateModified" datetime="2022-11-04T10:16:24+08:00">2022-11-04</time>
     </span>
 
   
@@ -1566,7 +1704,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:18" itemprop="dateModified" datetime="2022-11-03T15:07:18+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:24" itemprop="dateModified" datetime="2022-11-04T10:16:24+08:00">2022-11-04</time>
     </span>
 
   
@@ -1693,7 +1831,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:17" itemprop="dateModified" datetime="2022-11-03T15:07:17+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:23" itemprop="dateModified" datetime="2022-11-04T10:16:23+08:00">2022-11-04</time>
     </span>
 
   
@@ -1895,7 +2033,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:13" itemprop="dateModified" datetime="2022-11-03T15:07:13+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:19" itemprop="dateModified" datetime="2022-11-04T10:16:19+08:00">2022-11-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2123,161 +2261,6 @@
 
 <p>简单案例:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">timeout</span>(<span class="params">ms</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(resolve, ms);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">asyncPrint</span>(<span class="params">value, ms</span>) &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">timeout</span>(ms);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">asyncPrint</span>(<span class="string">&quot;hello world&quot;</span>, <span class="number">50</span>);</span><br><span class="line"><span class="comment">// 上面代码指定50毫秒以后，输出&quot;hello world&quot;。</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/23/CSS3%E5%B8%83%E5%B1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/08/23/CSS3%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">CSS布局</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2019-08-23 17:54:50" itemprop="dateCreated datePublished" datetime="2019-08-23T17:54:50+08:00">2019-08-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:17" itemprop="dateModified" datetime="2022-11-03T15:07:17+08:00">2022-11-03</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="单栏布局"><a href="#单栏布局" class="headerlink" title="单栏布局"></a>单栏布局</h2><p>方式: 定宽+水平居中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.<span class="property">layout</span>&#123;</span><br><span class="line">max-<span class="attr">width</span>: 100px;</span><br><span class="line"><span class="attr">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<p>通栏的话再加一层 div,单独给 div 设置背景色即可</p>
-<h2 id="双列布局"><a href="#双列布局" class="headerlink" title="双列布局"></a>双列布局</h2><p>固定 margin+浮动元素</p>
-<p>先设置浮动,再设置普通元素,最后清除浮动</p>
-<h1 id="flex-布局-弹性盒子"><a href="#flex-布局-弹性盒子" class="headerlink" title="flex 布局(弹性盒子)"></a>flex 布局(弹性盒子)</h1><h3 id="display-flex"><a href="#display-flex" class="headerlink" title="display:flex"></a>display:flex</h3><p>一个容器 设置了<code>display:flex</code>属性,就定义了一个 flex 容器.它的直接子元素会接受这个 flex 环境.</p>
-<p>常规布局是基于块和内联流方向，而 Flex 布局是基于<code>flex-flow</code>流可以很方便的用来做居中，能对不同屏幕大小自适应。</p>
-<p>在布局上有了比以前更加灵活的空间。</p>
-<p><img src="https://s2.ax1x.com/2019/09/25/uZC1ud.jpg#alt=%E4%B8%80%E5%BC%A0%E5%9B%BE%E4%BA%86%E8%A7%A3flex"></p>
-<p>这个是 ms 图床</p>
-<p><img src="https://s2.ax1x.com/2019/09/25/uZC1ud.jpg#alt=uZC1ud.jpg"></p>
-<p>这个是路过图床</p>
-<h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">    flex-<span class="attr">direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>设置子元素在父容器中的位置</p>
-<ol>
-<li>row 默认值,水平从左到右</li>
-<li>row-reverse,从右到左</li>
-<li>column,垂直从上到下</li>
-<li>column-reverse,垂直从下到上</li>
-</ol>
-<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p>设置换行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  flex-<span class="attr">wrap</span>: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br><span class="line">依次为:不换行,换行,换行且颠倒顺序</span><br></pre></td></tr></table></figure>
-
-<h3 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h3><p><code>flex-direction</code>和<code>flex-wrap</code>的缩写,默认值<code>row nowrap</code></p>
-<p><code>flex-flow: &lt;&#39;flex-direction&#39;&gt; || &lt;&#39;flex-wrap&#39;&gt;</code></p>
-<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p>设置子元素在水平方向上的对齐方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  justify-<span class="attr">content</span>: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br><span class="line">分别是水平靠左,水平靠右,水平居中,均匀分布,均匀分布且两端保留子元素间距一半(空间包裹)</span><br></pre></td></tr></table></figure>
-
-<h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p>设置子元素在垂直方向上的对齐方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  align-<span class="attr">items</span>: flex-start |  flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br><span class="line">分别是垂直靠上,垂直靠下,垂直居中,垂直基线对齐,垂直方向拉伸</span><br></pre></td></tr></table></figure>
-
-<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p>设置子元素整体内容的在垂直方向上的对齐方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  align-<span class="attr">content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br><span class="line">分别是整体靠上,整体靠下,整体居中,整体垂直均匀排列,整体均匀分布且垂直两端保留间距一半空间,整体垂直拉伸占用剩余空间</span><br></pre></td></tr></table></figure>
-
-<h2 id="用在子元素上的属性"><a href="#用在子元素上的属性" class="headerlink" title="用在子元素上的属性"></a>用在子元素上的属性</h2><h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p>默认情况下 flex order 会按照书写顺序排列,可以通过 order 属性改变,数值小的在前面,也可以是负数.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">item</span> &#123;</span><br><span class="line">  <span class="attr">order</span>: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p><code>.item &#123;flex-grow: 1&#125;</code></p>
-<p>按比例瓜分父元素剩余的空间,1 即分一份.不写默认是 0</p>
-<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>基准宽度</p>
-<h3 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h3><p>按比例吸收超出的空间.不写默认是 1</p>
-<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><blockquote>
-<p><code>flex-grow</code>,<code>flex-shrink</code>,<code>flex-basis</code>的缩写</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">item</span>&#123;</span><br><span class="line">  <span class="attr">flex</span>: none | [ &lt;<span class="string">&#x27;flex-grow&#x27;</span>&gt; &lt;<span class="string">&#x27;flex-shrink&#x27;</span>&gt; || &lt;<span class="string">&#x27;&#x27;</span>flex-basis<span class="string">&#x27;&gt;]</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="aglin-self"><a href="#aglin-self" class="headerlink" title="aglin-self"></a>aglin-self</h3><p>单独修改自身的属性</p>
-<h1 id="Grid-布局"><a href="#Grid-布局" class="headerlink" title="Grid 布局"></a>Grid 布局</h1><h3 id="父元素-Grid-container-的属性"><a href="#父元素-Grid-container-的属性" class="headerlink" title="父元素 Grid container 的属性"></a>父元素 Grid container 的属性</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><p>将元素定义为 gird container,并为其建立新的网格格式化上下文</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  <span class="attr">display</span>: grid | inline-grid |   subgrid;</span><br><span class="line">&#125;</span><br><span class="line">分别是生成一个块级网格;一行网格;如果本身是gird-item,可从父元素获取行列大小</span><br></pre></td></tr></table></figure>
-
-<h3 id="gird-template-columns-和-gird-template-rows"><a href="#gird-template-columns-和-gird-template-rows" class="headerlink" title="gird-template-columns 和 gird-template-rows"></a>gird-template-columns 和 gird-template-rows</h3><p>设置网格的列和行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  gird-template-<span class="attr">columns</span>: 40px 50px auto 50px 40px;</span><br><span class="line">  grid-template-<span class="attr">rows</span>: <span class="number">25</span>% 100px auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>简化写法:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line"> gird-template-<span class="attr">columns</span>: <span class="title function_">repeat</span>(<span class="number">3</span>, 20px [col-start]) <span class="number">5</span>%;</span><br><span class="line">&#125;</span><br><span class="line">等价于</span><br><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  gird-template-<span class="attr">columns</span>: 20px [col-start] 20px [col-start] 20px [col-start] <span class="number">5</span>%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>“fr”单位允许将轨道大小设置为网格容器自由空间的一部分.</p>
-<p>如下代码会将每个 gird item 设置为 gird container 宽度的三分之一</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  .<span class="property">grid</span>-template-<span class="attr">columns</span>: 1fr 1fr 1fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="gird-template-areas"><a href="#gird-template-areas" class="headerlink" title="gird-template-areas"></a>gird-template-areas</h3><ol>
-<li>— 使用 gird-area 属性设置的网络区域的名称</li>
-<li>.  — 点号代表一个空网格单元</li>
-<li>none — 没有定义网格单元</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">item</span>-a &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: header;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">item</span>-b &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: main;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">item</span>-c &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: sidebar;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">item</span>-d &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: footer;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">container</span> &#123;</span><br><span class="line">  grid-template-<span class="attr">columns</span>: 50px 50px 50px 50px;</span><br><span class="line">  grid-template-<span class="attr">rows</span>: auto;</span><br><span class="line">  grid-template-<span class="attr">areas</span>:</span><br><span class="line">    <span class="string">&quot;header header header header&quot;</span></span><br><span class="line">    <span class="string">&quot;main main . sidebar&quot;</span></span><br><span class="line">    <span class="string">&quot;footer footer footer footer&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这将创建一个四列宽三行高的网格。 整个第一行将由 header 区域组成。 中间一行将由两个 main 区域、一个空单元格和一个 sidebar 区域组成。 最后一行是 footer 区域组成。</p>
-<h1 id="媒体查询-响应式"><a href="#媒体查询-响应式" class="headerlink" title="媒体查询(响应式)"></a>媒体查询(响应式)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  <span class="comment">/* 屏幕宽度为300px-325px时的css样式  */</span></span><br><span class="line">  @<span class="title function_">media</span>(min-<span class="attr">width</span>: 300px) and (max-<span class="attr">width</span>: 325px)&#123;</span><br><span class="line">    body&#123;</span><br><span class="line">     <span class="attr">background</span>: red;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 屏幕宽度小于450px时的css样式  */</span></span><br><span class="line">  @<span class="title function_">media</span>(<span class="params">max-width: 450px</span>)&#123;</span><br><span class="line">    body&#123;</span><br><span class="line">     <span class="attr">background</span>: black;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* 这样前面那个就没用了，被覆盖了  */</span></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>一般不用第一个方法，直接引用一个手机版的 css 即可</p>
-</blockquote>
-<p><code>&lt;link rel=&quot;stylesheet&quot; media=&quot;(max-width:768px)&quot; href=&quot;mobile.css&quot;&gt;</code></p>
-<p>在屏幕宽度小于 768px 时，就会渲染这个 css，要把这个引用写在 main.css 之后，把 main.css 覆盖。</p>
-<p>并加上 meta:vp</p>
-<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
-<p>让视口等于理想视口,禁止用户缩放.</p>
 
       
     </div>

@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">101</span>
+          <span class="site-state-item-count">102</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -200,9 +200,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-11-03 13:56:47 / Modified: 15:07:10" itemprop="dateCreated datePublished" datetime="2022-11-03T13:56:47+08:00">2022-11-03</time>
+      <time title="Created: 2022-11-03 13:56:47" itemprop="dateCreated datePublished" datetime="2022-11-03T13:56:47+08:00">2022-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-04 10:16:16" itemprop="dateModified" datetime="2022-11-04T10:16:16+08:00">2022-11-04</time>
     </span>
 
   
@@ -237,6 +243,9 @@
 <blockquote>
 <p>注意：在任意一个命令行窗口进行切换之后，其他的窗口或其他命令行工具窗口 需要关掉工具，重启才能生效。（例如 VSCode 内或外部命令切换之后，需要重启 VSCode，才能正常生效，否则或处于 临时生效状态，也就是在 VSCode 中重新打开一个命令行查看版本还会是旧版本，所以必须要重启。）<br>这里的 重启 不是简单的关掉窗口重启，没有退出后台进程，而是完全退出杀死工具进程，重新启动。</p>
 </blockquote>
+<blockquote>
+<p>本来用 nvm use &lt;版本号&gt; 切换到需要的版本号上，然后用 npm install -g taro 安装是没问题的，但切换了其它命令行后，发现 taro 提示 command not found 。后来细查之后才发现，nvm use &lt;版本号&gt; 只是在当前命令行环境下切换，并不是全局切换。如果想要全局切换，要用 nvm alias default &lt;版本号&gt;</p>
+</blockquote>
 <h1 id="pnpm"><a href="#pnpm" class="headerlink" title="pnpm"></a>pnpm</h1><h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pnpm</span><br><span class="line">// brew</span><br><span class="line">brew install pnpm</span><br></pre></td></tr></table></figure>
 
 <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果要全局安装其他,比如 typescript,还是用 npm,不然和上面 nvm 有冲突.</p>
@@ -268,10 +277,163 @@
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#x73;&#x61;&#120;&#64;&#x33;&#x2e;&#48;&#46;&#48;">&#x73;&#x61;&#120;&#64;&#x33;&#x2e;&#48;&#46;&#48;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#97;&#x78;&#64;&#x33;&#46;&#x30;&#x2e;&#x30;">&#115;&#97;&#x78;&#64;&#x33;&#46;&#x30;&#x2e;&#x30;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/" class="post-title-link" itemprop="url">代码规范化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-02 22:25:08" itemprop="dateCreated datePublished" datetime="2022-11-02T22:25:08+08:00">2022-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-04 10:16:16" itemprop="dateModified" datetime="2022-11-04T10:16:16+08:00">2022-11-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Eslint-安装"><a href="#Eslint-安装" class="headerlink" title="Eslint 安装"></a>Eslint 安装</h3><ul>
+<li>安装 <code>npm install eslint --save-dev</code></li>
+<li>使用 <code>npx eslint --init</code> 初始化一个配置文件</li>
+<li>执行 <code>npm eslint test.js --fix</code> –fix 会自动修正代码风格问题，而一些问题代码就需要手动修正</li>
+<li>当代码有语法问题时 Eslint 无法检查问题代码和代码风格，所有要先手动解决语法问题</li>
+</ul>
+<h3 id="ESLint-配置文件解析"><a href="#ESLint-配置文件解析" class="headerlink" title="ESLint 配置文件解析"></a>ESLint 配置文件解析</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">    <span class="comment">// 标记代码运行环境</span></span><br><span class="line">    <span class="attr">browser</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">es2020</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// 继承共享配置</span></span><br><span class="line">    <span class="string">&quot;standard&quot;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">parser</span>: <span class="string">&quot;@typescript-eslint/parser&quot;</span>, <span class="comment">// 语法解析器</span></span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="comment">// 设置语法解析器，检查语法，而不是代表某个成员是否可以，成员通过环境定义</span></span><br><span class="line">    <span class="attr">ecmaVersion</span>: <span class="number">11</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="comment">// 校验规则的开启、关闭 off：关闭 warning：结果 error：警告</span></span><br><span class="line">    <span class="string">&quot;no-alert&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">globals</span>: &#123;</span><br><span class="line">    <span class="comment">// 额外声明代码中可以使用的全局成员</span></span><br><span class="line">    <span class="attr">jQuery</span>: <span class="string">&quot;readonly&quot;</span>, <span class="comment">// 代码中可以使用jQuery而且不会报错</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ESLint-配置注释"><a href="#ESLint-配置注释" class="headerlink" title="ESLint 配置注释"></a>ESLint 配置注释</h3><ul>
+<li>在编码时有时需要违反 eslint 规则，eslint-disable-line 可以通过注释临时禁用校验规则</li>
+<li>当一行有多个问题时可以跟上具体禁用哪个规则</li>
+<li><a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/configuring#configuring-rules">具体配置注释介绍文档</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// eslint-disable-line no-template-curly-in-string</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;$&#123;name&#125; is a coder&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ESLint-结合自动化工具"><a href="#ESLint-结合自动化工具" class="headerlink" title="ESLint 结合自动化工具"></a>ESLint 结合自动化工具</h3><ul>
+<li>gulp<ul>
+<li>安装 gulp-eslint</li>
+<li>创建 eslint 配置文件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// plugins 自动加载插件模块</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">script</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="title function_">src</span>(<span class="string">&quot;src/assets/script/*.js&quot;</span>, &#123; <span class="attr">base</span>: <span class="string">&quot;src&quot;</span> &#125;)</span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="title function_">eslint</span>()) <span class="comment">// 默认只会检查代码的问题，并不会根据检查结果做出反馈</span></span><br><span class="line">      <span class="comment">// 控制台打印错误信息</span></span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="property">eslint</span>.<span class="title function_">format</span>())</span><br><span class="line">      <span class="comment">// eslint检查错误后终止任务</span></span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="property">eslint</span>.<span class="title function_">failAfterError</span>())</span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="title function_">babel</span>(&#123; <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>] &#125;))</span><br><span class="line">      .<span class="title function_">pipe</span>(<span class="title function_">dest</span>(<span class="string">&quot;temp&quot;</span>))</span><br><span class="line">      .<span class="title function_">pipe</span>(bs.<span class="title function_">reload</span>(&#123; <span class="attr">stream</span>: <span class="literal">true</span> &#125;))</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ESLint-结合-Webpack"><a href="#ESLint-结合-Webpack" class="headerlink" title="ESLint 结合 Webpack"></a>ESLint 结合 Webpack</h3><ul>
+<li>通过 loader 机制完成校验</li>
+<li>安装 eslint-loader</li>
+<li>初始化配置文件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;production&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/main.js&quot;</span>,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="comment">// &#x27;eslint-loader&#x27;</span></span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="attr">use</span>: <span class="string">&quot;eslint-loader&quot;</span>,</span><br><span class="line">        <span class="attr">enfore</span>: <span class="string">&quot;pre&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;style-loader&quot;</span>, <span class="string">&quot;css-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;src/index.html&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 react 项目中会报 React 未使用的问题，和 App is defined but never used no-unused-vars，可以使用插件</li>
+<li>安装插件 <code>npm install eslint-plugin-react</code></li>
+<li>在配置文件的 plugins 属性配置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">modul.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;react/jsx-uses-react&quot;</span>: <span class="number">2</span>, <span class="comment">// 开启报错，2 代替 error</span></span><br><span class="line">    <span class="string">&quot;react/jsx-uses-vars&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// &#x27;plugin:react/recommended&#x27; // 方法二</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="string">&quot;react&quot;</span>, <span class="comment">// 模块名会去除eslint-plugin</span></span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Stylelint-认识"><a href="#Stylelint-认识" class="headerlink" title="Stylelint 认识"></a>Stylelint 认识</h3><ul>
+<li>安装 <code>npm install stylelint -D</code></li>
+<li>添加配置文件 .stylelintrc.js</li>
+<li>共享配置名称要完整的模块名称</li>
+<li>stylelint 内部没有提供任何可用的共享配置，可以自定义安装</li>
+<li><code>npm install stylelint-config-standard -D</code> 对 css 代码检查</li>
+<li><code>npm install stylelint-config-sass-guidelines -D</code> 对 sass 代码检查</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 共享配置</span></span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;stylelint-config-standard&quot;</span>, <span class="string">&quot;stylelint-config-sass-guidelines&quot;</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Prettier-的使用—代码格式化工具"><a href="#Prettier-的使用—代码格式化工具" class="headerlink" title="Prettier 的使用—代码格式化工具"></a>Prettier 的使用—代码格式化工具</h3><ul>
+<li>安装 <code>npm install prettier -D</code></li>
+<li><code>npm prettier style.css --write</code> 自动格式化文件，–write 把格式化的代码覆盖源代码</li>
+</ul>
+<h3 id="ESLint-结合-Git-Hooks"><a href="#ESLint-结合-Git-Hooks" class="headerlink" title="ESLint 结合 Git Hooks"></a>ESLint 结合 Git Hooks</h3><ul>
+<li>安装依赖 <code>npm install husky -D</code></li>
+<li>在 package.json 文件添加一个 husky 字段，在 husky 添加一个 hooks 属性，在 hooks 属性添加一个 pre-commit 钩子属性，值为 npm run xxxx，在提交 commit 前就会先执行 scripts 下的对应命令，比如执行 eslint，如果不符合规范就不能直接提交到代码仓库中</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint ./index.js&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run link&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装 <code>npm install lint-staged -D</code> 在 commit 前执行 eslint 后，再进行其他操作，如格式化代码</li>
+<li>安装代码格式化工具 <code>npm install prettier -D</code></li>
+<li>在 package.json 中添加一个 lint-staged 字段</li>
+<li>一般 husky 和 lint-staged 配合使用</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint ./index.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;precommit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lint-staged&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run precommit&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lint-staged&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;*.js&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;prettier --write&quot;</span><span class="punctuation">,</span> <span class="string">&quot;eslint --fix&quot;</span><span class="punctuation">,</span> <span class="string">&quot;git add&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Git-提交规范—commitlint"><a href="#Git-提交规范—commitlint" class="headerlink" title="Git 提交规范—commitlint"></a>Git 提交规范—commitlint</h3><ul>
+<li>文档：<a target="_blank" rel="noopener" href="https://commitlint.js.org/#/">https://commitlint.js.org/#/</a></li>
+<li>安装插件 <code>yarn add husky @commitlint/cli @commitlint/config-conventional --dev</code></li>
+<li>husky 是一个 Git Hook 工具</li>
+<li>项目根目录创建配置文件 commitlint.config.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;@commitlint/config-conventional&quot;</span>],</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;subject-case&quot;</span>: [<span class="number">0</span>, <span class="string">&quot;never&quot;</span>],</span><br><span class="line">    <span class="string">&quot;type-enum&quot;</span>: [</span><br><span class="line">      <span class="number">2</span>, <span class="comment">// 代表必须输入</span></span><br><span class="line">      <span class="string">&quot;always&quot;</span>,</span><br><span class="line">      [</span><br><span class="line">        <span class="string">&quot;docs&quot;</span>, <span class="comment">// Adds or alters documentation. 仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等</span></span><br><span class="line">        <span class="string">&quot;chore&quot;</span>, <span class="comment">// Other changes that don&#x27;t modify src or test files. 改变构建流程、或者增加依赖库、工具等</span></span><br><span class="line">        <span class="string">&quot;feat&quot;</span>, <span class="comment">// Adds a new feature. 新增feature</span></span><br><span class="line">        <span class="string">&quot;fix&quot;</span>, <span class="comment">// Solves a bug. 修复bug</span></span><br><span class="line">        <span class="string">&quot;merge&quot;</span>, <span class="comment">// Merge branch ? of ?.</span></span><br><span class="line">        <span class="string">&quot;perf&quot;</span>, <span class="comment">// Improves performance. 优化相关，比如提升性能、体验</span></span><br><span class="line">        <span class="string">&quot;refactor&quot;</span>, <span class="comment">// Rewrites code without feature, performance or bug changes. 代码重构，没有加新功能或者修复bug</span></span><br><span class="line">        <span class="string">&quot;revert&quot;</span>, <span class="comment">// Reverts a previous commit. 回滚到上一个版本</span></span><br><span class="line">        <span class="string">&quot;style&quot;</span>, <span class="comment">// Improves formatting, white-space. 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑</span></span><br><span class="line">        <span class="string">&quot;test&quot;</span>, <span class="comment">// Adds or modifies tests. 测试用例，包括单元测试、集成测试等</span></span><br><span class="line">      ],</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置 package.json 文件，添加一下内容，在执行 <code>git commit -m &quot;commit message&quot;</code> 命令的时候，将会对 commit message 校验，是否符合 rules</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;husky&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;hooks&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;commit-msg&quot;</span>: <span class="string">&quot;commitlint -E HUSKY_GIT_PARAMS&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -334,7 +496,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:11" itemprop="dateModified" datetime="2022-11-03T15:07:11+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:17" itemprop="dateModified" datetime="2022-11-04T10:16:17+08:00">2022-11-04</time>
     </span>
 
   
@@ -671,7 +833,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:11" itemprop="dateModified" datetime="2022-11-03T15:07:11+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:17" itemprop="dateModified" datetime="2022-11-04T10:16:17+08:00">2022-11-04</time>
     </span>
 
   
@@ -841,7 +1003,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:11" itemprop="dateModified" datetime="2022-11-03T15:07:11+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:17" itemprop="dateModified" datetime="2022-11-04T10:16:17+08:00">2022-11-04</time>
     </span>
 
   
@@ -867,31 +1029,31 @@
 </ul>
 <h2 id="Rollup-配置文件"><a href="#Rollup-配置文件" class="headerlink" title="Rollup 配置文件"></a>Rollup 配置文件</h2><ul>
 <li>rollup 运行在 node 环境中</li>
-<li>根目录新建 rollup.config.js 配置文件</li>
-<li>rollup 会额外处理这个配置文件，所有可以使用 ESM</li>
+<li>根目录新建 <code>rollup.config.mjs</code> 配置文件</li>
+<li>rollup 会额外处理这个配置文件，所有可以使用 ESM,注意使用 esm 需要将后缀改为<code>.mjs</code></li>
 <li>配置文件导出一个对象</li>
 <li>通过 input 属性指定打包入口</li>
 <li>通过 output 属性指定输出，该属性值是一个对象，通过 file 指定输出的文件名，format 属性指定输出格式</li>
-<li>打包 <code>yarn rollup --config rollup.config.js</code> 通过–config 告诉 rollup 使用配置文件，可以根据开发、生产指定对应的配置文件</li>
+<li>打包 <code>pnpm rollup --config rollup.config.mjs</code> 通过–config 告诉 rollup 使用配置文件，可以根据开发、生产指定对应的配置文件</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Rollup-使用插件"><a href="#Rollup-使用插件" class="headerlink" title="Rollup 使用插件"></a>Rollup 使用插件</h2><ul>
 <li>插件是 rollup 唯一的扩展途径</li>
-<li>安装插件 <code>yarn add rollup-plugin-json --dev</code> 一个可以在代码导入 json 文件的插件</li>
+<li>安装插件 <code>pnpm add @rollup/plugin-json -D</code> 一个可以在代码导入 json 文件的插件</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-json&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="comment">// package.json 的属性会作为成员导出</span></span><br><span class="line"><span class="keyword">import</span> &#123; name, version &#125; <span class="keyword">from</span> <span class="string">&quot;../package&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, version);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-json&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="comment">// package.json 的属性会作为成员导出</span></span><br><span class="line"><span class="keyword">import</span> &#123; name, version &#125; <span class="keyword">from</span> <span class="string">&quot;../package&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, version);</span><br></pre></td></tr></table></figure>
 
 <h2 id="Rollup-加载-NPM-模块"><a href="#Rollup-加载-NPM-模块" class="headerlink" title="Rollup 加载 NPM 模块"></a>Rollup 加载 NPM 模块</h2><ul>
-<li>安装插件 <code>yarn add rollup-plugin-node-resolve --dev</code></li>
-<li>安装 lodash 的 es 版本 <code>yarn add lodash-es</code></li>
+<li>安装插件 <code>pnpm add @rollup/plugin-node-resolve -D</code></li>
+<li>安装 lodash 的 es 版本 <code>pnpm add lodash-es</code></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-json&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> resolve <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-node-resolve&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>(), <span class="title function_">resolve</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">&quot;lodash-es&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(_.<span class="title function_">camelCase</span>(<span class="string">&quot;hello world&quot;</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-json&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; nodeResolve &#125; <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-node-resolve&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>(), <span class="title function_">nodeResolve</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">&quot;lodash-es&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(_.<span class="title function_">camelCase</span>(<span class="string">&quot;hello world&quot;</span>));</span><br></pre></td></tr></table></figure>
 
 <h2 id="Rollup-加载-CommonJS-模块"><a href="#Rollup-加载-CommonJS-模块" class="headerlink" title="Rollup 加载 CommonJS 模块"></a>Rollup 加载 CommonJS 模块</h2><ul>
-<li>安装插件 <code>yarn add rollup-plugin-commonjs --dev</code></li>
+<li>安装插件 <code>yarn add @rollup/plugin-commonjs --dev</code></li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-json&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> resolve <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-node-resolve&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> commonjs <span class="keyword">from</span> <span class="string">&quot;rollup-plugin-commonjs&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>(), <span class="title function_">resolve</span>(), <span class="title function_">commonjs</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// cjs-module.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; <span class="attr">foo</span>: <span class="string">&quot;bar&quot;</span> &#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> cjs <span class="keyword">from</span> <span class="string">&quot;./cjs-module.js&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cjs);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-json&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; nodeResolve &#125; <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-node-resolve&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> commonjs <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-commonjs&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>(), <span class="title function_">nodeResolve</span>(), <span class="title function_">commonjs</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// cjs-module.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; <span class="attr">foo</span>: <span class="string">&quot;bar&quot;</span> &#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> cjs <span class="keyword">from</span> <span class="string">&quot;./cjs-module.js&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cjs);</span><br></pre></td></tr></table></figure>
 
 <h2 id="Rollup-代码拆分"><a href="#Rollup-代码拆分" class="headerlink" title="Rollup 代码拆分"></a>Rollup 代码拆分</h2><ul>
 <li>可以 ESM 的动态导入方式（import()）实现模块的按需加载</li>
@@ -1006,7 +1168,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:11" itemprop="dateModified" datetime="2022-11-03T15:07:11+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:18" itemprop="dateModified" datetime="2022-11-04T10:16:18+08:00">2022-11-04</time>
     </span>
 
   
@@ -1466,7 +1628,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:11" itemprop="dateModified" datetime="2022-11-03T15:07:11+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:18" itemprop="dateModified" datetime="2022-11-04T10:16:18+08:00">2022-11-04</time>
     </span>
 
   
@@ -1633,7 +1795,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:11" itemprop="dateModified" datetime="2022-11-03T15:07:11+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:18" itemprop="dateModified" datetime="2022-11-04T10:16:18+08:00">2022-11-04</time>
     </span>
 
   
@@ -1709,7 +1871,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:12" itemprop="dateModified" datetime="2022-11-03T15:07:12+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:18" itemprop="dateModified" datetime="2022-11-04T10:16:18+08:00">2022-11-04</time>
     </span>
 
   
@@ -1796,7 +1958,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:12" itemprop="dateModified" datetime="2022-11-03T15:07:12+08:00">2022-11-03</time>
+      <time title="Modified: 2022-11-04 10:16:19" itemprop="dateModified" datetime="2022-11-04T10:16:19+08:00">2022-11-04</time>
     </span>
 
   
@@ -2284,131 +2446,6 @@
 
 <h3 id="WebSocket-onclose"><a href="#WebSocket-onclose" class="headerlink" title="WebSocket.onclose"></a>WebSocket.onclose</h3><p>实例对象的<code>onclose</code>属性，用于指定连接关闭后的回调函数。</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/React-Hooks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/React-Hooks/" class="post-title-link" itemprop="url">React-Hooks</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:08:20" itemprop="dateCreated datePublished" datetime="2022-09-26T21:08:20+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-03 15:07:12" itemprop="dateModified" datetime="2022-11-03T15:07:12+08:00">2022-11-03</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="title-React-Hooksdate-2020-06-27-09-13-34"><a href="#title-React-Hooksdate-2020-06-27-09-13-34" class="headerlink" title="title: React-Hooksdate: 2020-06-27 09:13:34"></a>title: React-Hooksdate: 2020-06-27 09:13:34</h2><p>tags: React</p>
-<h3 id="class-组件类的缺点"><a href="#class-组件类的缺点" class="headerlink" title="class 组件类的缺点"></a>class 组件类的缺点</h3><ul>
-<li>大型业务很难拆分或重构,也很难测试</li>
-<li>业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑.</li>
-<li>组件类引入了复杂的编程模式,比如<code>render props</code>和高阶组件.</li>
-</ul>
-<h2 id="React-Hook-的设计目的"><a href="#React-Hook-的设计目的" class="headerlink" title="React Hook 的设计目的"></a>React Hook 的设计目的</h2><p>加强版函数组件,完全不使用类,就能写出一个全功能组件.</p>
-<blockquote>
-<p>含义为,组件尽量写成纯函数,如果需要外部功能或副作用,就用钩子函数把外部代码”钩”进来.</p>
-</blockquote>
-<p>React 规定,钩子一律使用<code>use</code>前缀命名,便于识别.</p>
-<p>常用钩子: <code>useState()</code>,<code>useContext()</code>,<code>useReducer()</code>,<code>useEffect()</code></p>
-<h2 id="useState-状态钩子"><a href="#useState-状态钩子" class="headerlink" title="useState()状态钩子"></a><code>useState()</code>状态钩子</h2><p>用于为函数组件引入状态(state),纯函数不能有状态,所以将状态放入钩子里.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Button</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> [buttonText, setButtonText] = <span class="title function_">useState</span>(<span class="string">&quot;Click!&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">handleCilck</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">setButtonText</span>(<span class="string">&quot;thank&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>&#123;buttonText&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>用户点击后,文字自发生了变化,文字取决于用户是否点击,这就是状态.</p>
-<blockquote>
-<p>Button 组件是一个函数,内部使用<code>useState()</code>引入状态.</p>
-</blockquote>
-<p><code>useState()</code>函数接收状态的初始值,作为参数,例子中的初始值为按钮的文字,该函数返回一个数组,数组的第一个成员是一个变量(<code>buttonText</code>).</p>
-<p>指向状态的当前值.第二个成员是一个函数,用来更新状态.约定是<code>set</code>前缀加上变量名(<code>setButtonText</code>).</p>
-<h2 id="useContext-共享状态钩子"><a href="#useContext-共享状态钩子" class="headerlink" title="useContext()共享状态钩子"></a><code>useContext()</code>共享状态钩子</h2><p>如果需要在组件之间共享状态,可以使用<code>useContext()</code>.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">AppContext</span> = <span class="title class_">React</span>.<span class="title function_">createContext</span>(&#123;&#125;)</span><br><span class="line"></span><br><span class="line">&lt;<span class="title class_">AppContext</span>.<span class="property">Provider</span> value=&#123;&#123; <span class="attr">username</span>: <span class="string">&quot;super&quot;</span>&#125;&#125;&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Navbar</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Message</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">AppContext</span>.<span class="property">Provider</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>其中,<code>AppContext.Provider</code>提供一个<code>Context</code>对象,这个对象可以被子组件共享.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Navbar.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Navbar</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(<span class="title class_">AppContext</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;navbar&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Awesome<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>其中,<code>useContext()</code>钩子函数用来引入 Context 对象,从中获取<code>username</code>属性.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Message.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Message</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(<span class="title class_">AppContext</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;messages&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>message for &#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;message&quot;</span>&gt;</span>useContext<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="useReducer-action-钩子"><a href="#useReducer-action-钩子" class="headerlink" title="useReducer(): action 钩子"></a><code>useReducer()</code>: action 钩子</h2><p>React 本身不提供状态管理功能,通常使用外部库,如 Redux.</p>
-<p>Redux 的核心概念,组件发出 action 与状态管理器通信.状态管理器收到 action 后,使用 Reducer 函数算出新的状态,</p>
-<p>Reducer 函数的形式是<code>(state, action)=&gt;newState</code>.</p>
-<p><code>useReducers()</code>用来引入 Reducer 功能.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialState);</span><br></pre></td></tr></table></figure>
-
-<p>上面是<code>useReducer()</code>的基本用法,它接收 Reducer 函数和状态的初始值作为参数,返回一个数组.数组的第一个成员是状态的当前值,</p>
-<p>第二个是发送 action 的<code>dispatch</code>函数.</p>
-<p>由于 Hooks 可以提供共享状态和 Reducer 函数,所以这些方面可以取代 redux.但是无提供<code>中间件</code>和时间旅行.</p>
-<h2 id="useEffect-副作用钩子"><a href="#useEffect-副作用钩子" class="headerlink" title="useEffect(): 副作用钩子"></a><code>useEffect()</code>: 副作用钩子</h2><p><code>useEffect()</code>用来引入具有副作用的操作,如向服务器发送请求数据.</p>
-<p>之前放在<code>componentDidMount</code>之中的代码可以放在<code>useEffect()</code>中.</p>
-<p>解决了没有生命周期的问题.</p>
-<p>用法如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//async action</span></span><br><span class="line">&#125;, [dependencies]);</span><br></pre></td></tr></table></figure>
-
-<p><code>useEffect()</code>接收两个参数,第一个参数是一个函数,异步操作的代码放在里面.</p>
-<p>第二个参数是一个数组,用于给<code>Effect</code>的依赖项,只要这个数组发生变化,<code>useEffect()</code>就会执行.</p>
-<p>第二个参数可以省略,这样每次渲染,就会执行<code>useEffect()</code>.</p>
-<p>第二个参数如果是一个空数组<code>[]</code>,就只会在加载时执行一次,数据更新时不执行.</p>
-<h2 id="自定义-Hooks"><a href="#自定义-Hooks" class="headerlink" title="自定义 Hooks"></a>自定义 Hooks</h2>
       
     </div>
 
