@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,322 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/05/Node/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/05/Node/" class="post-title-link" itemprop="url">Node</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-05 15:08:16" itemprop="dateCreated datePublished" datetime="2022-11-05T15:08:16+08:00">2022-11-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-07 10:57:34" itemprop="dateModified" datetime="2022-11-07T10:57:34+08:00">2022-11-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>根据 Node.js 官网的定义：Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。 Node.js 使用了一个事件驱动、非阻塞式 I&#x2F;O 的模型，使其轻量又高效。</p>
+<p>Node.js 是基于 Chrome V8 引擎构建的.由事件循环分发 I&#x2F;O 任务,最终工作线程将任务丢进线程池中去执行,而事件循环只要等待执行结果就可以了.</p>
+<h1 id="异步-IO"><a href="#异步-IO" class="headerlink" title="异步 IO"></a>异步 IO</h1><p>重复调用 IO 操作,判断是否完成,称为轮询.包括<code>read</code>,<code>select</code>,<code>poll</code>,<code>kqueue</code>,<code>event ports</code>.<br>期望实现无须主动判断的非阻塞 I&#x2F;O.</p>
+<h2 id="异步-IO-优点"><a href="#异步-IO-优点" class="headerlink" title="异步 IO 优点"></a>异步 IO 优点</h2><ul>
+<li>前端通过异步 IO 可以消除阻塞。</li>
+<li>请求耗时少，假如有两个请求 A 和 B，那么异步 IO 用时为：Max（A+B）。同步则为 A+B，请求越多差距越大。</li>
+<li>IO 是昂贵的，分布式 IO 是更昂贵的。</li>
+<li>Node.js 适用于 IO 密集型，而不适用于 CPU 密集型。</li>
+<li>并不是所有都用异步任务好，遵循一个公式： s&#x3D; (Ws+Wp)&#x2F;(Ws+Wp&#x2F;p) Ws 表示同步任务，Wp 表示异步任务，p 表示处理器的数量。</li>
+</ul>
+<h2 id="异步-IO-实现"><a href="#异步-IO-实现" class="headerlink" title="异步 IO 实现"></a>异步 IO 实现</h2><ul>
+<li>应用程序先将 JS 代码经 V8 转换为机器码。</li>
+<li>通过 Node.js Bindings 层，向操作系统 Libuv 的事件队列中添加一个任务。</li>
+<li>Libuv 将事件推送到线程池中执行。</li>
+<li>线程池执行完事件，返回数据给 Libuv。</li>
+<li>Libuv 将返回结果通过 Node.js Bindings 返回给 V8。</li>
+<li>V8 再将结果返回给应用程序。</li>
+</ul>
+<h2 id="libuv"><a href="#libuv" class="headerlink" title="libuv"></a>libuv</h2><p>多种异步 IO 实现的抽象封装层.<br>libuv 实现了 Node.js 中 Eventloop,主要分为以下几个阶段:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">   ┌───────────────────────────┐</span><br><span class="line">┌─&gt;│           timers          │</span><br><span class="line">│  └─────────────┬─────────────┘</span><br><span class="line">│  ┌─────────────┴─────────────┐</span><br><span class="line">│  │     pending callbacks     │</span><br><span class="line">│  └─────────────┬─────────────┘</span><br><span class="line">│  ┌─────────────┴─────────────┐</span><br><span class="line">│  │       idle, prepare       │</span><br><span class="line">│  └─────────────┬─────────────┘      ┌───────────────┐</span><br><span class="line">│  ┌─────────────┴─────────────┐      │   <span class="attr">incoming</span>:   │</span><br><span class="line">│  │           poll            │&lt;─────┤  connections, │</span><br><span class="line">│  └─────────────┬─────────────┘      │   data, etc.  │</span><br><span class="line">│  ┌─────────────┴─────────────┐      └───────────────┘</span><br><span class="line">│  │           check           │</span><br><span class="line">│  └─────────────┬─────────────┘</span><br><span class="line">│  ┌─────────────┴─────────────┐</span><br><span class="line">└──┤      close callbacks      │</span><br><span class="line">   └───────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p>上图中每一个阶段都有一个先进先出的回调队列，只有当队列内的事件执行完成之后，才会进入下一个阶段。</p>
+<ul>
+<li>timers：执行 <code>setTimeout</code> 和 <code>setInterval</code> 中到期的 callback。</li>
+<li>pending callbacks：上一轮循环中有少数的 I&#x2F;O callback 会被延迟到这一轮的这一阶段执行。<ul>
+<li>执行一些系统操作的回调，例如 tcp 连接发生错误。</li>
+</ul>
+</li>
+<li>idle, prepare：仅内部使用。</li>
+<li>poll：最为重要的阶段，执行 I&#x2F;O callback(node 异步 api 的回调，事件订阅回调等)，在适当的条件下会阻塞在这个阶段。<ul>
+<li>如果 poll 队列不为空，直接执行队列内的事件，直到队列清空。</li>
+<li>如果 poll 队列为空。<ul>
+<li>如果有设置 <code>setImmediate</code>，则直接进入 check 阶段。</li>
+<li>如果没有设置 <code>setImmediate</code>，则会检查是否有 timers 事件到期。<ul>
+<li>如果有 timers 事件到期，则执行 timers 阶段。</li>
+<li>如果没有 timers 事件到期，则会阻塞在当前阶段，等待事件加入。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>check：执行 <code>setImmediate</code> 的 callback。</li>
+<li>close callbacks：执行 close 事件的 callback，例如 <code>socket.on(&quot;close&quot;,func)</code>。</li>
+</ul>
+<p><strong>除此之外，Node.js 提供了 process.nextTick(微任务，promise 也一样) 方法，在以上的任意阶段开始执行的时候都会触发。</strong></p>
+<blockquote>
+<ul>
+<li>Event Loop 是一个很重要的概念，指的是计算机系统的一种运行机制。</li>
+<li>Libuv 在 Linux 下基于 Custom Threadpool 实现。</li>
+<li>Libuv 在 Windows 下基于 IOCP 实现。</li>
+</ul>
+</blockquote>
+<h2 id="常见的异步-IO-使用方式"><a href="#常见的异步-IO-使用方式" class="headerlink" title="常见的异步 IO 使用方式"></a>常见的异步 IO 使用方式</h2><ul>
+<li>使用 step，q，async 等异步控制库。</li>
+<li>使用 Promise 处理异步。</li>
+<li>使用 EventEmitter，实现“发布&#x2F;订阅”模式处理异步。</li>
+<li>Node.js 暂不支持协程，可使用 Generator 代替。</li>
+<li>终极解决方案：async、await。</li>
+</ul>
+<h1 id="事件驱动架构"><a href="#事件驱动架构" class="headerlink" title="事件驱动架构"></a>事件驱动架构</h1><h1 id="commonjs-模块"><a href="#commonjs-模块" class="headerlink" title="commonjs 模块"></a>commonjs 模块</h1><h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><ul>
+<li>引入模块：require(“.&#x2F;index.js”)</li>
+<li>导出模块：module.exports&#x3D;{…} 或者 exports.key&#x3D;{}<ul>
+<li>注意：exports 为 module.exports 的引用，不可使用 exports 直接赋值，模块无法导出，eg：exports&#x3D;{}</li>
+</ul>
+</li>
+<li>缓存：require 值会缓存，通过 require 引用文件时，会将文件执行一遍后，将结果通过浅克隆的方式，写入全局内存，后续 require 该路径，直接从内存获取，无需重新执行文件</li>
+<li>值拷贝：模块输出是值的拷贝，一但输出，模块内部变化后，无法影响之前的引用，而 ESModule 是引用拷贝。commonJS 运行时加载，ESModule 编译阶段引用<ul>
+<li>CommonJS 在引入时是加载整个模块，生成一个对象，然后再从这个生成的对象上读取方法和属性</li>
+<li>ESModule 不是对象，而是通过 export 暴露出要输出的代码块，在 import 时使用静态命令的方法引用制定的输出代码块，并在 import 语句处执行这个要输出的代码，而不是直接加载整个模块<blockquote>
+<p>面试题：为何直接使用 exports 导出 commonjs 模块，eg：exports &#x3D; “hello”<br>解析：commonjs 模块是通过 module.exports 导出模块，exports 为 module.exports 的引用，使用 exports 直接赋值导出模块，只会改变 exports 的引用不会导出 commonjs 模块。</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// cjs正确导出用法</span></span><br><span class="line"><span class="built_in">exports</span>.<span class="property">key</span> = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="string">&quot;hello world&quot;</span>;</span><br><span class="line"><span class="comment">//错误导出</span></span><br><span class="line"><span class="built_in">exports</span> = <span class="string">&quot;hello world&quot;</span>; <span class="comment">//无法输出</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//解析：</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">key</span>: &#123;&#125;,</span><br><span class="line">&#125;;</span><br><span class="line">obj.<span class="property">key</span> = <span class="string">&quot;hello world&quot;</span>; <span class="comment">//可改变obj</span></span><br><span class="line"><span class="keyword">const</span> key = obj.<span class="property">key</span>;</span><br><span class="line">key.<span class="property">key1</span> = <span class="string">&quot;hello world&quot;</span>; <span class="comment">//可改变obj</span></span><br><span class="line">key = <span class="string">&quot;hello world&quot;</span>; <span class="comment">//无法改变obj，改变了key的引用</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="原理实现"><a href="#原理实现" class="headerlink" title="原理实现"></a>原理实现</h2><p>使用 fs、vm、path 内置模块，以及函数包裹形式实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vm = <span class="built_in">require</span>(<span class="string">&quot;vm&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * commonjs的require函数：引入module</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; filename module的名称</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">customRequire</span>(<span class="params">filename</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> pathToFile = path.<span class="title function_">resolve</span>(__dirname, filename);</span><br><span class="line">  <span class="keyword">const</span> content = fs.<span class="title function_">readFileSync</span>(pathToFile, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">  <span class="comment">//使用函数包裹模块，执行函数</span></span><br><span class="line">  <span class="comment">//注入形参：require、module、exports、__dirname、__filename</span></span><br><span class="line">  <span class="keyword">const</span> wrapper = [</span><br><span class="line">    <span class="string">&quot;(function(require, module, exports, __dirname, __filename)&#123;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;&#125;)&quot;</span>,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">const</span> wrappedContent = wrapper[<span class="number">0</span>] + content + wrapper[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">const</span> script = <span class="keyword">new</span> vm.<span class="title class_">Script</span>(wrappedContent, &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">const</span> <span class="variable language_">module</span> = &#123;</span><br><span class="line">    <span class="attr">exports</span>: &#123;&#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">//转换为函数，类似eval，(funcion(require, module, exports)&#123; xxx &#125;)</span></span><br><span class="line">  <span class="keyword">const</span> result = script.<span class="title function_">runInThisContext</span>();</span><br><span class="line">  <span class="comment">//函数执行，引入模块，若内部有require继续递归</span></span><br><span class="line">  <span class="comment">//exports为module.exports的引用</span></span><br><span class="line">  <span class="title function_">result</span>(customRequire, <span class="variable language_">module</span>, <span class="variable language_">module</span>.<span class="property">exports</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">module</span>.<span class="property">exports</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">global</span>.<span class="property">customRequire</span> = customRequire;</span><br></pre></td></tr></table></figure>
+
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><ul>
+<li>源码路径：&#x2F;lib&#x2F;internal&#x2F;modules&#x2F;cjs&#x2F;</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//loader.js</span></span><br><span class="line"><span class="comment">//require函数定义</span></span><br><span class="line"><span class="number">1</span>、<span class="title class_">Module</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">require</span>：调用__load函数</span><br><span class="line"><span class="number">2</span>、<span class="title class_">Module</span>.<span class="property">__load</span>：_cache处理，调用load函数</span><br><span class="line"><span class="number">3</span>、<span class="title class_">Module</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">load</span>函数：调用<span class="title class_">Module</span>.<span class="property">_extensions</span>[extension](<span class="variable language_">this</span>, filename);</span><br><span class="line"><span class="comment">//不同的后缀通过定义不同的函数指定解析规则：以Module._extensions[&#x27;.js&#x27;]为例</span></span><br><span class="line"><span class="number">4</span>、<span class="title class_">Module</span>.<span class="property">_extensions</span>[<span class="string">&#x27;.js&#x27;</span>] = <span class="keyword">function</span>(<span class="params"><span class="variable language_">module</span>, filename</span>) &#123;</span><br><span class="line">  <span class="comment">//读取缓存或者通过readFileSync读取内容</span></span><br><span class="line">  <span class="keyword">if</span> (cached?.<span class="property">source</span>) &#123;</span><br><span class="line">    content = cached.<span class="property">source</span>;</span><br><span class="line">    cached.<span class="property">source</span> = <span class="literal">undefined</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    content = fs.<span class="title function_">readFileSync</span>(filename, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  <span class="comment">//调用compile解析</span></span><br><span class="line">  <span class="variable language_">module</span>.<span class="title function_">_compile</span>(content, filename);</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">5</span>、<span class="title class_">Module</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">_compile</span> = <span class="keyword">function</span>(<span class="params">content, filename</span>)&#123;</span><br><span class="line">  <span class="comment">//生成包裹函数：warpSafe获取函数字符串并使用vm执行生成执行函数</span></span><br><span class="line">  <span class="keyword">const</span> compiledWrapper = <span class="title function_">wrapSafe</span>(filename, content, <span class="variable language_">this</span>);</span><br><span class="line">  <span class="comment">//执行函数</span></span><br><span class="line">  <span class="keyword">const</span> <span class="built_in">exports</span> = <span class="variable language_">this</span>.<span class="property">exports</span>;</span><br><span class="line">  <span class="keyword">const</span> thisValue = <span class="built_in">exports</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="variable language_">module</span> = <span class="variable language_">this</span>;</span><br><span class="line">  <span class="keyword">if</span> (inspectorWrapper) &#123;</span><br><span class="line">    result = <span class="title function_">inspectorWrapper</span>(compiledWrapper, thisValue, <span class="built_in">exports</span>,</span><br><span class="line">                              <span class="built_in">require</span>, <span class="variable language_">module</span>, filename, dirname);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//静态方法Reflect.apply(target, thisArgument, argumentsList)</span></span><br><span class="line">    <span class="comment">//通过指定的参数列表发起对目标(target)函数的调用</span></span><br><span class="line">    result = <span class="title class_">ReflectApply</span>(compiledWrapper, thisValue,</span><br><span class="line">                          [<span class="built_in">exports</span>, <span class="built_in">require</span>, <span class="variable language_">module</span>, filename, dirname]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="number">6</span>、<span class="keyword">function</span> <span class="title function_">wrapSafe</span>(<span class="params">filename, content, cjsModuleInstance</span>) &#123;</span><br><span class="line">    <span class="comment">/* 生成包裹函数字符：</span></span><br><span class="line"><span class="comment">    let wrap = function(script) &#123;</span></span><br><span class="line"><span class="comment">       return Module.wrapper[0] + script + Module.wrapper[1];</span></span><br><span class="line"><span class="comment">    &#125;;</span></span><br><span class="line"><span class="comment">    const wrapper = [</span></span><br><span class="line"><span class="comment">      &#x27;(function (exports, require, module, __filename, __dirname) &#123; &#x27;,</span></span><br><span class="line"><span class="comment">      &#x27;\n&#125;);&#x27;,</span></span><br><span class="line"><span class="comment">    ]；*/</span></span><br><span class="line">  	<span class="keyword">const</span> wrapper = <span class="title class_">Module</span>.<span class="title function_">wrap</span>(content);</span><br><span class="line">    <span class="comment">//获取包裹函数</span></span><br><span class="line">    <span class="keyword">return</span> vm.<span class="title function_">runInThisContext</span>(wrapper, &#123;</span><br><span class="line">      filename,</span><br><span class="line">      <span class="attr">lineOffset</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">displayErrors</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">importModuleDynamically</span>: <span class="keyword">async</span> (specifier) =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> loader = asyncESM.<span class="property">ESMLoader</span>;</span><br><span class="line">        <span class="keyword">return</span> loader.<span class="title function_">import</span>(specifier, <span class="title function_">normalizeReferrerURL</span>(filename));</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Module</span> = <span class="built_in">require</span>(<span class="string">&quot;module&quot;</span>);</span><br><span class="line"><span class="comment">//后缀解析扩展：.test后缀同.js后缀</span></span><br><span class="line"><span class="title class_">Module</span>.<span class="property">_extensions</span>[<span class="string">&quot;.test&quot;</span>] = <span class="title class_">Module</span>.<span class="property">_extensions</span>[<span class="string">&quot;.js&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//切面编程：解析js模块前做打印处理</span></span><br><span class="line"><span class="keyword">const</span> prevFunc = <span class="title class_">Module</span>.<span class="property">_extensions</span>[<span class="string">&quot;.js&quot;</span>];</span><br><span class="line"><span class="title class_">Module</span>.<span class="property">_extensions</span>[<span class="string">&quot;.js&quot;</span>] = <span class="keyword">function</span> (<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;load script&quot;</span>);</span><br><span class="line">  prevFunc.<span class="title function_">apply</span>(prevFunc, args);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h1><ul>
+<li>同步代码</li>
+<li>process.nextTick 和 promise.then() ，之后进入事件循环</li>
+<li>timers 阶段：这个阶段执行 timer（setTimeout、setInterval）的回调</li>
+<li>I&#x2F;O callbacks 阶段 ：处理一些上一轮循环中的少数未执行的 I&#x2F;O 回调</li>
+<li>idle, prepare 阶段 ：仅 node 内部使用</li>
+<li>poll 阶段 ：获取新的 I&#x2F;O 事件, 适当的条件下 node 将阻塞在这里</li>
+<li>check 阶段 ：执行 setImmediate() 的回调</li>
+<li>close callbacks 阶段：执行 socket 的 close 事件回调</li>
+</ul>
+<p>习题解析：</p>
+<ul>
+<li>new Promise(()&#x3D;&gt;{&#x2F;&#x2F;同步执行}).then(()&#x3D;&gt;{&#x2F;&#x2F;异步执行})</li>
+<li>async function test(){console.log() &#x2F;&#x2F;同步 -&gt; await test(0) &#x2F;&#x2F;同步 -&gt; console.log()&#x2F;&#x2F;异步}</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//习题1:</span></span><br><span class="line"><span class="comment">// 顺序不确定，只有两个语句，执行环境有差异</span></span><br><span class="line"><span class="comment">// 场景1: setTimeout 0 最少1ms，未推入timers队列中，执行结果为：setImmediate、setTimeout</span></span><br><span class="line"><span class="comment">// 场景2: setTimeout 0 已推入timers队列中，执行结果为：setTimeout、setImmediate</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setTimeout&quot;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="title function_">setImmediate</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setImmediate&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//习题2: 都在回调函数中，内容确定</span></span><br><span class="line"><span class="comment">//首轮事件循环setTimeout1的timers清空，执行至check阶段，先输出setImmediate</span></span><br><span class="line"><span class="comment">//第二轮事件循环setTimeout2</span></span><br><span class="line"><span class="comment">//最终输出：setTimeout1、setImmediate、setTimeout2</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setTimeout2&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">  <span class="title function_">setImmediate</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setImmediate&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;setTimeout1&quot;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//习题3: 混合题</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;timeout&quot;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="title function_">setImmediate</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;immediate&quot;</span>);</span><br><span class="line">  <span class="title function_">setImmediate</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;immediate1&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">77</span>);</span><br><span class="line">    <span class="title function_">resolve</span>();</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">88</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  process.<span class="title function_">nextTick</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;nextTick1&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">7</span>);</span><br><span class="line">  <span class="title function_">resolve</span>();</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">8</span>);</span><br><span class="line">&#125;);</span><br><span class="line">process.<span class="title function_">nextTick</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;nextTick2&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;start&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一轮：7 start -  timeout | immediate 77 | 8 ｜ nextTick2</span></span><br><span class="line"><span class="comment">// 第二轮：7 start nextTick2  8 timeout immediate 77 - immediate1 ｜ 88 ｜ nextTick1</span></span><br><span class="line"><span class="comment">// 第三轮：7 start nextTick2  8 timeout immediate 77 nextTick1 88 immediate1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><h2 id="全局对象"><a href="#全局对象" class="headerlink" title="全局对象"></a>全局对象</h2><p>Node 中全局对象是<code>global</code>,如果直接在模块中获取 this 指向的是<code>&#123;&#125;</code>.<br>而模块最终会封装进自执行函数中,指向的是<code>global</code>.</p>
+<ul>
+<li>全局对象：global，下挂如下对象和函数，使用时无需模块引入<ul>
+<li>global</li>
+<li>Buffer、process、console、queueMicrotask</li>
+<li>setTimeout、clearTimeout、setInterval、setImmediate、clearInterval</li>
+</ul>
+</li>
+<li>模块中使用注入变量：<ul>
+<li><code>__filename</code>：当前文件名称带路径，eg：&#x2F;Users&#x2F;jian&#x2F;workspace&#x2F;cjs&#x2F;index.js</li>
+<li><code>__dirname</code>：当前文件夹路径，eg：&#x2F;Users&#x2F;jian&#x2F;workspace&#x2F;cjs&#x2F;</li>
+<li><code>cjs</code>：require, module, exports</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局this指向global</span></span><br><span class="line"><span class="comment">//模块文件中this指向：module.exports的对象</span></span><br><span class="line"><span class="comment">/* 模块中才可以使用的变量：commonjs模块注入，非模块中使用报错</span></span><br><span class="line"><span class="comment">__dirname、__filename、exports、module、require */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//node命令行中</span></span><br><span class="line">&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(__dirname)</span><br><span class="line"><span class="comment">// Uncaught ReferenceError: __dirname is not defined</span></span><br><span class="line">&gt; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)</span><br><span class="line"><span class="comment">/* &lt;ref *1&gt; Object [global] &#123;</span></span><br><span class="line"><span class="comment">  global: [Circular *1],</span></span><br><span class="line"><span class="comment">  clearInterval: [Function: clearInterval],</span></span><br><span class="line"><span class="comment">  clearTimeout: [Function: clearTimeout],</span></span><br><span class="line"><span class="comment">  setInterval: [Function: setInterval],</span></span><br><span class="line"><span class="comment">  setTimeout: [Function: setTimeout] &#123;</span></span><br><span class="line"><span class="comment">    [Symbol(nodejs.util.promisify.custom)]: [Getter]</span></span><br><span class="line"><span class="comment">  &#125;,</span></span><br><span class="line"><span class="comment">  queueMicrotask: [Function: queueMicrotask],</span></span><br><span class="line"><span class="comment">  clearImmediate: [Function: clearImmediate],</span></span><br><span class="line"><span class="comment">  setImmediate: [Function: setImmediate] &#123;</span></span><br><span class="line"><span class="comment">    [Symbol(nodejs.util.promisify.custom)]: [Getter]</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//node模块中执行</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(__filename)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(__dirname)</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;&#125;</span></span><br><span class="line"><span class="comment">/Users/jian/workspace/cjs/index.js</span></span><br><span class="line"><span class="comment">/Users/jian/workspace/cjs</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="process"><a href="#process" class="headerlink" title="process"></a>process</h3><ul>
+<li>argv：返回一个数组，由命令行执行脚本时的各个参数组成。它的第一个成员总是 node，第二个成员是脚本文件名，其余成员是脚本文件的参数</li>
+<li>env：返回一个对象，成员为当前 shell 的环境变量</li>
+<li>stdin：标准输入流</li>
+<li>stdout：标准输出流</li>
+<li>cwd()：返回当前进程的工作目录</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="property">argv</span>);</span><br><span class="line"><span class="comment">//[ &#x27;/usr/local/bin/node&#x27;, &#x27;/Users/jian/workspace/cjs/index.js&#x27; ]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(process.<span class="title function_">cwd</span>()); <span class="comment">////Users/jian/workspace/cjs</span></span><br><span class="line">process.<span class="property">stdout</span>.<span class="title function_">write</span>(<span class="string">&quot;Hello World!&quot;</span>); <span class="comment">//Hello World!</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="底层依赖模块"><a href="#底层依赖模块" class="headerlink" title="底层依赖模块"></a>底层依赖模块</h2><ul>
+<li>V8 引擎：主要是 JS 语法的解析，有了它才能识别 JS 语法</li>
+<li>libuv：C 语⾔实现的⼀个⾼性能异步⾮阻塞 IO 库，⽤来实现 node.js 的事件循环</li>
+<li>http-parser&#x2F;llhttp：底层处理 http 请求，处理报⽂，解析请求包等内容</li>
+<li>openssl：处理加密算法，各种框架运⽤⼴泛，底层依赖，无需 js 实现</li>
+<li>zlib：处理压缩等内容</li>
+</ul>
+<h1 id="常用模块"><a href="#常用模块" class="headerlink" title="常用模块"></a>常用模块</h1><ul>
+<li>fs：⽂件系统，能够读取写⼊当前安装系统环境中硬盘的数据</li>
+<li>path：路径系统，能够处理路径之间的问题</li>
+<li>crypto：加密相关模块，能够以标准的加密⽅式对我们的内容进⾏加解密</li>
+<li>dns：处理 dns 相关内容，例如我们可以设置 dns 服务器等等</li>
+<li>http: 设置⼀个 http 服务器，发送 http 请求，监听响应等等</li>
+<li>readline: 读取 stdin 的⼀⾏内容，可以读取、增加、删除我们命令⾏中的内容</li>
+<li>os：操作系统层⾯的⼀些 api，例如告诉你当前系统类型及⼀些参数</li>
+<li>vm: ⼀个专⻔处理沙箱的虚拟机模块，底层主要来调⽤ v8 相关 api 进⾏代码解析</li>
+</ul>
+<h2 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h2><ul>
+<li>文件常识<ul>
+<li>权限位 mode：文件所有者&#x2F;文件所属组&#x2F;其他用户的 rwx，eg：默认 0o666，对应十进制 438</li>
+<li>标志位 flag：文件的操作方式，r、w、s 同步、+增加相反操作、x 排他方式</li>
+<li>文件描述符 fd：识别和追踪文件</li>
+</ul>
+</li>
+<li>完整性读写文件操作<ul>
+<li>fs.readFile(filename,[encoding],[callback(error,data)]</li>
+<li>fs.writeFile(filename,data,[options],callback)<ul>
+<li>options：可选，为对象，{encoding, mode, flag}</li>
+<li>默认编码为 utf8，模式为 0666（可读可写可操作），flag 为 ‘w’</li>
+</ul>
+</li>
+<li>fs.unlink(filename, callback)</li>
+</ul>
+</li>
+<li>指定位置读写文件操作(高级文件操作)<ul>
+<li>fs.open(path,flags,[mode],callback)</li>
+<li>fs.read(fd, buffer, offset, length, position, callback);</li>
+<li>fs.write(fd, buffer, offset, length, position, callback);</li>
+<li>fs.close(fd,callback)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//nodejs中最好使用绝对路径</span></span><br><span class="line"><span class="keyword">const</span> pathToFile = path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;./text&quot;</span>);</span><br><span class="line"><span class="comment">//err first, 异步</span></span><br><span class="line">fs.<span class="title function_">readFile</span>(pathTofile, <span class="string">&quot;utf-8&quot;</span>, <span class="keyword">function</span> (<span class="params">err, result</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;e&quot;</span>, e);</span><br><span class="line">    <span class="keyword">return</span> err;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result&quot;</span>, result);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//同步文件</span></span><br><span class="line">fs.<span class="title function_">readFileSync</span>(pathToFile, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//耦合promise封装</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">read</span>(<span class="params">path</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span> (<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">    fs.<span class="title function_">readFile</span>(path, &#123; <span class="attr">flag</span>: <span class="string">&quot;r&quot;</span>, <span class="attr">encoding</span>: <span class="string">&quot;utf-8&quot;</span> &#125;, <span class="keyword">function</span> (<span class="params">err, data</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="comment">// 失败执行的内容</span></span><br><span class="line">        <span class="title function_">reject</span>(err);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 成功执行的内容</span></span><br><span class="line">        <span class="title function_">resolve</span>(data);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通用promise封装，高版本已内置该库</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">promisify</span>(<span class="params">func</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      args.<span class="title function_">push</span>(<span class="keyword">function</span> (<span class="params">err, result</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="title function_">reject</span>(err);</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">resolve</span>(result);</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span> func.<span class="title function_">apply</span>(func, args);</span><br><span class="line">      <span class="comment">/* 等价于</span></span><br><span class="line"><span class="comment">      fs.readFile(path, &#123; flag: &#x27;r&#x27;, encoding: &#x27;utf-8&#x27; &#125;, function (err, data) &#123;</span></span><br><span class="line"><span class="comment">      	if (err) &#123;</span></span><br><span class="line"><span class="comment">        	// 失败执行的内容</span></span><br><span class="line"><span class="comment">        	reject(err)</span></span><br><span class="line"><span class="comment">      	&#125; else &#123;</span></span><br><span class="line"><span class="comment">        	// 成功执行的内容</span></span><br><span class="line"><span class="comment">        	resolve(data)</span></span><br><span class="line"><span class="comment">      	&#125;</span></span><br><span class="line"><span class="comment">    	&#125;) */</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> creadFileAsync = <span class="title function_">promisify</span>(fs.<span class="property">readFile</span>);</span><br><span class="line"><span class="title function_">creadFileAsync</span>(pathToFile, <span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">content</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(content);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;e&quot;</span>, e);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="path"><a href="#path" class="headerlink" title="path"></a>path</h2><ul>
+<li>path.join([path1][, path2][, …])：连接路径，主要用途在于，会正确使用当前系统的路径分隔符</li>
+<li>path.resolve([from …], to)：用于返回绝对路径，类似于多次 cd 处理</li>
+<li>path.dirname(p)：返回文件夹</li>
+<li>path.extname(p)：返回后缀名</li>
+<li>path.basename(p)：返回路径中的最后一部分,也就是名称</li>
+<li>path.parse(): 解析路径,返回数组</li>
+<li>path.format(): 序列化路径,将上面的数组重组成路径.</li>
+<li>path.normalize(): 规范化路径</li>
+<li>path.isAbsolute(): 判断传入路径是否是绝对路径</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接路径：/test/test1/2slashes/1slash</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;join path : &#x27;</span> + path.<span class="title function_">join</span>(<span class="string">&#x27;/test&#x27;</span>, <span class="string">&#x27;test1&#x27;</span>, <span class="string">&#x27;2slashes/1slash&#x27;</span>, <span class="string">&#x27;tab&#x27;</span>, <span class="string">&#x27;..&#x27;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转换为绝对路径：/Users/jian/workspace/cjs/main.js</span></span><br><span class="line"><span class="keyword">const</span> mainPath = path.<span class="title function_">resolve</span>(<span class="string">&#x27;main.js&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;resolve : &#x27;</span> + mainPath);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(path.<span class="title function_">resolve</span>()) <span class="comment">// 什么都不传,返回绝对路径,不包含文件名.</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>)) <span class="comment">//返回绝对路径拼接/a/b</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(path.<span class="title function_">resolve</span>(<span class="string">&#x27;a&#x27;</span>,<span class="regexp">/b&#x27;)) /</span><span class="regexp">/ 返回`/</span>b<span class="string">`</span></span><br><span class="line"><span class="string">// resolve接收两部分参数,如果to的部分有路径(包含/),就返回&#x27;/xxx&#x27;,</span></span><br><span class="line"><span class="string">// 如果不含路径,就将当前目录的绝对路径拼接上</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 路径中文件的后缀名：.js</span></span><br><span class="line"><span class="string">console.log(&#x27;ext name : &#x27; + path.extname(mainPath));</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// 路径最后名字：main.js</span></span><br><span class="line"><span class="string">console.log(&#x27;ext name : &#x27; + path.basename(mainPath));</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="http"><a href="#http" class="headerlink" title="http"></a>http</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">&quot;url&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建服务器</span></span><br><span class="line">http</span><br><span class="line">  .<span class="title function_">createServer</span>(<span class="keyword">function</span> (<span class="params">request, response</span>) &#123;</span><br><span class="line">    <span class="comment">// 解析请求，包括文件名</span></span><br><span class="line">    <span class="keyword">var</span> pathname = url.<span class="title function_">parse</span>(request.<span class="property">url</span>).<span class="property">pathname</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出请求的文件名</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Request for &quot;</span> + pathname + <span class="string">&quot; received.&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 从文件系统中读取请求的文件内容</span></span><br><span class="line">    fs.<span class="title function_">readFile</span>(pathname.<span class="title function_">substr</span>(<span class="number">1</span>), <span class="keyword">function</span> (<span class="params">err, data</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">        <span class="comment">// HTTP 状态码: 404 : NOT FOUND</span></span><br><span class="line">        <span class="comment">// Content Type: text/html</span></span><br><span class="line">        response.<span class="title function_">writeHead</span>(<span class="number">404</span>, &#123; <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/html&quot;</span> &#125;);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// HTTP 状态码: 200 : OK</span></span><br><span class="line">        <span class="comment">// Content Type: text/html</span></span><br><span class="line">        response.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123; <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;text/html&quot;</span> &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 响应文件内容</span></span><br><span class="line">        response.<span class="title function_">write</span>(data.<span class="title function_">toString</span>());</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//  发送响应数据</span></span><br><span class="line">      response.<span class="title function_">end</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">listen</span>(<span class="number">8080</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 控制台会输出以下信息</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Server running at http://127.0.0.1:8080/&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h2><p>Buffer 用于读取或操作二进制数据流，做为 Node.js API 的一部分使用时无需 require，用于操作网络协议、数据库、图片和文件 I&#x2F;O 等一些需要大量二进制数据的场景。Buffer 在创建时大小已经被确定且是无法调整的.<br>Buffer 是单独创建的,不占用 V8 的内存空间.</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个长度为 10、且用零填充的 Buffer。</span></span><br><span class="line"><span class="keyword">const</span> buf1 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">10</span>); <span class="comment">// &lt;Buffer 00 00 00 00 00 00 00 00 00 00&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个长度为 10、且用 0x1 填充的 Buffer。</span></span><br><span class="line"><span class="keyword">const</span> buf2 = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="number">10</span>, <span class="number">1</span>); <span class="comment">// &lt;Buffer 01 01 01 01 01 01 01 01 01 01&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个长度为 10、且未初始化的 Buffer。</span></span><br><span class="line"><span class="comment">// 这个方法比调用 Buffer.alloc() 更快，</span></span><br><span class="line"><span class="comment">// 但返回的 Buffer 实例可能包含旧数据，</span></span><br><span class="line"><span class="comment">// 因此需要使用 fill() 或 write() 重写。</span></span><br><span class="line"><span class="keyword">const</span> buf3 = <span class="title class_">Buffer</span>.<span class="title function_">allocUnsafe</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个包含 [0x1, 0x2, 0x3] 的 Buffer。</span></span><br><span class="line"><span class="keyword">const</span> buf4 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// &lt;Buffer 01 02 03&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个包含 UTF-8 字节 [0x74, 0xc3, 0xa9, 0x73, 0x74] 的 Buffer。</span></span><br><span class="line"><span class="keyword">const</span> buf5 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;tést&quot;</span>); <span class="comment">// &lt;Buffer 74 c3 a9 73 74&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个包含 Latin-1 字节 [0x74, 0xe9, 0x73, 0x74] 的 Buffer。</span></span><br><span class="line"><span class="keyword">const</span> buf6 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;tést&quot;</span>, <span class="string">&quot;latin1&quot;</span>); <span class="comment">// &lt;Buffer 74 e9 73 74&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h3><ul>
+<li>buf.length:返回内存中分配给 buf 的字节数。 不一定反映 buf 中可用数据的字节量。</li>
+<li>buf.toString:根据 encoding 指定的字符编码将 buf 解码成字符串</li>
+<li>buf.fill:用指定的 value 填充 buf。 如果没有指定 offset 与 end，则填充整个 buf</li>
+<li>buf.equals:如果 buf 与参数具有完全相同的字节，则返回 true，否则返回 false</li>
+<li>buf.indexOf:是否包含参数，包含则返回所在下标，不包含返回-1</li>
+</ul>
+<h3 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h3><h4 id="Buffer-byteLength"><a href="#Buffer-byteLength" class="headerlink" title="Buffer.byteLength"></a>Buffer.byteLength</h4><p>这个表示整个 buffer 实际所占的字节数，因为不同的语言可能有不同的问题，比如英文字母在表达的时候一个字母就是一个字节，而中文用三个字节来表达汉字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">byteLength</span>(<span class="string">&quot;test&quot;</span>)); <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">byteLength</span>(<span class="string">&quot;测试&quot;</span>)); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;test&quot;</span>).<span class="property">length</span>); <span class="comment">// 4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;测试&quot;</span>).<span class="property">length</span>); <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Buffer-isBuffer"><a href="#Buffer-isBuffer" class="headerlink" title="Buffer.isBuffer"></a>Buffer.isBuffer</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">isBuffer</span>(&#123;&#125;)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">isBuffer</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;test&quot;</span>))); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">isBuffer</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]))); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Buffer-concat"><a href="#Buffer-concat" class="headerlink" title="Buffer.concat"></a>Buffer.concat</h4><p>拼接 Buffer，注意的是里面不是传入多个 Buffer 对象，而是一个 Buffer 的数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> buf1 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;This &quot;</span>);</span><br><span class="line"><span class="keyword">const</span> buf2 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;is &quot;</span>);</span><br><span class="line"><span class="keyword">const</span> buf3 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;buffer &quot;</span>);</span><br><span class="line"><span class="keyword">const</span> buf4 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;test &quot;</span>);</span><br><span class="line"><span class="keyword">const</span> buf5 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;demo &quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> bufConcat = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>([buf1, buf2, buf3, buf4, buf5]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(bufConcat.<span class="title function_">toString</span>()); <span class="comment">// This is buffer test demo</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="乱码问题"><a href="#乱码问题" class="headerlink" title="乱码问题"></a>乱码问题</h3><p>乱码的出现因为是汉字是三个字节的，现在 11 个字节不是三个倍数，没有办法正确按照每 3 个字节解析汉字，我们的解决方法是：使用内置的 string_decoder（字符串解码器）来解析 Buffer</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">StringDecoder</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;string_decoder&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> decoder = <span class="keyword">new</span> <span class="title class_">StringDecoder</span>(<span class="string">&quot;utf8&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> buf1 = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;我正在学习&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(buf1); <span class="comment">// &lt;Buffer e6 88 91 e6 ad a3 e5 9c a8 e5 ad a6 e4 b9 a0&gt;</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; buf1.<span class="property">length</span>; i += <span class="number">5</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> buf2 = <span class="title class_">Buffer</span>.<span class="title function_">allocUnsafe</span>(<span class="number">5</span>);</span><br><span class="line">  buf1.<span class="title function_">copy</span>(buf2, <span class="number">0</span>, i);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(decoder.<span class="title function_">write</span>(buf2));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// &lt;Buffer e6 88 91 e6 ad a3 e5 9c a8 e5 ad a6 e4 b9 a0&gt;</span></span><br><span class="line"><span class="comment">//我</span></span><br><span class="line"><span class="comment">//正在</span></span><br><span class="line"><span class="comment">//学习</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="I-x2F-O-操作"><a href="#I-x2F-O-操作" class="headerlink" title="I&#x2F;O 操作"></a>I&#x2F;O 操作</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> inputStream = fs.<span class="title function_">createReadStream</span>(<span class="string">&quot;input.txt&quot;</span>); <span class="comment">// 创建可读流</span></span><br><span class="line"><span class="keyword">const</span> outputStream = fs.<span class="title function_">createWriteStream</span>(<span class="string">&quot;output.txt&quot;</span>); <span class="comment">// 创建可写流</span></span><br><span class="line"></span><br><span class="line">inputStream.<span class="title function_">pipe</span>(outputStream); <span class="comment">// 管道读写</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Stream 中我们是不需要手动去创建自己的缓冲区，在 Node.js 的流中将会自动创建。</p>
+<h4 id="加密解密"><a href="#加密解密" class="headerlink" title="加密解密"></a>加密解密</h4><p>在一些加解密算法中会遇到使用 Buffer，例如 crypto.createCipheriv 的第二个参数 key 为 String 或 Buffer 类型，如果是 Buffer 类型，就用到了本篇我们讲解的内容，以下做了一个简单的加密示例，重点使用了 Buffer.alloc()初始化一个实例（这个上面有介绍），之后使用了 fill 方法做了填充，这里重点在看下这个方法的使用。 <strong>buf.fill(value[, offset[, end]][, encoding])</strong></p>
+<ul>
+<li>value: 第一个参数为要填充的内容</li>
+<li>offset: 偏移量，填充的起始位置</li>
+<li>end: 结束填充 buf 的偏移量</li>
+<li>encoding: 编码集</li>
+</ul>
+<h3 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h3><p><strong>Buffer 和 Cache 的区别</strong></p>
+<ul>
+<li>缓冲（Buffer）是用于处理二进制流数据，将数据缓冲起来，它是临时性的，对于流式数据，会采用缓冲区将数据临时存储起来，等缓冲到一定的大小之后在存入硬盘中。视频播放器就是一个经典的例子，有时你会看到一个缓冲的图标，这意味着此时这一组缓冲区并未填满，当数据到达填满缓冲区并且被处理之后，此时缓冲图标消失，你可以看到一些图像数据。</li>
+<li>缓存（Cache）我们可以看作是一个中间层，它可以是永久性的将热点数据进行缓存，使得访问速度更快，例如我们通过 Memory、Redis 等将数据从硬盘或其它第三方接口中请求过来进行缓存，目的就是将数据存于内存的缓存区中，这样对同一个资源进行访问，速度会更快，也是性能优化一个重要的点。</li>
+</ul>
+<p><strong>Buffer 与 String 比较</strong><br>在 HTTP 传输中传输的是二进制数据，那么如果使用 Buffer 和 String 情况如下：</p>
+<ul>
+<li>接口如果直接返回的字符串，这时候 HTTP 在传输之前会先将字符串转换为 Buffer 类型，以二进制数据传输，通过流（Stream）的方式一点点返回到客户端。</li>
+<li>但是直接返回 Buffer 类型，则少了每次的转换操作，对于性能也是有提升的。</li>
+</ul>
+<p>所以在一些 Web 应用中，对于静态数据可以预先转为 Buffer 进行传输，可以有效减少 CPU 的重复使用（重复的字符串转 Buffer 操作）</p>
+<h2 id="stream"><a href="#stream" class="headerlink" title="stream"></a>stream</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>在 node 当中 stream 是一种处理流数据的抽象接口，stream 模块提供了一系列实现流的 API,在 node 当中提供了很多关于流的对象，比如 http 服务器的请求和 process.stdout 标准输出都是流的实例，流是可读的，可写的，同时也可以是可读写的，所有的流都是 EventEmitter 的实例。</p>
+<blockquote>
+<p>之所以用 stream ，是因为一次性读取、操作大文件，内存和网络是“吃不消”的，因此要让数据流动起来，一点一点的进行操作,这其实也符合算法中一个很重要的思想 —— 分而治之</p>
+</blockquote>
+<h3 id="流转和应用"><a href="#流转和应用" class="headerlink" title="流转和应用"></a>流转和应用</h3><ul>
+<li>data 事件: 用来监听 stream 数据的流入</li>
+<li>end 事件：用来监听 stream 数据输入的完成</li>
+<li>pipe 方法: 用来做数据流转</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/03/npm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +524,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:23" itemprop="dateModified" datetime="2022-11-05T11:32:23+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:34" itemprop="dateModified" datetime="2022-11-07T10:57:34+08:00">2022-11-07</time>
     </span>
 
   
@@ -277,7 +593,7 @@
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#115;&#x61;&#120;&#64;&#51;&#x2e;&#48;&#46;&#48;">&#115;&#x61;&#120;&#64;&#51;&#x2e;&#48;&#46;&#48;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#97;&#x78;&#x40;&#51;&#x2e;&#48;&#x2e;&#x30;">&#115;&#97;&#x78;&#x40;&#51;&#x2e;&#48;&#x2e;&#x30;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
@@ -343,7 +659,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:23" itemprop="dateModified" datetime="2022-11-05T11:32:23+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:34" itemprop="dateModified" datetime="2022-11-07T10:57:34+08:00">2022-11-07</time>
     </span>
 
   
@@ -496,7 +812,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:24" itemprop="dateModified" datetime="2022-11-05T11:32:24+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:34" itemprop="dateModified" datetime="2022-11-07T10:57:34+08:00">2022-11-07</time>
     </span>
 
   
@@ -830,7 +1146,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:24" itemprop="dateModified" datetime="2022-11-05T11:32:24+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:35" itemprop="dateModified" datetime="2022-11-07T10:57:35+08:00">2022-11-07</time>
     </span>
 
   
@@ -1000,7 +1316,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:24" itemprop="dateModified" datetime="2022-11-05T11:32:24+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:35" itemprop="dateModified" datetime="2022-11-07T10:57:35+08:00">2022-11-07</time>
     </span>
 
   
@@ -1165,7 +1481,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:24" itemprop="dateModified" datetime="2022-11-05T11:32:24+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:35" itemprop="dateModified" datetime="2022-11-07T10:57:35+08:00">2022-11-07</time>
     </span>
 
   
@@ -1624,7 +1940,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:25" itemprop="dateModified" datetime="2022-11-05T11:32:25+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:35" itemprop="dateModified" datetime="2022-11-07T10:57:35+08:00">2022-11-07</time>
     </span>
 
   
@@ -1791,7 +2107,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:25" itemprop="dateModified" datetime="2022-11-05T11:32:25+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:35" itemprop="dateModified" datetime="2022-11-07T10:57:35+08:00">2022-11-07</time>
     </span>
 
   
@@ -1867,7 +2183,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:25" itemprop="dateModified" datetime="2022-11-05T11:32:25+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:36" itemprop="dateModified" datetime="2022-11-07T10:57:36+08:00">2022-11-07</time>
     </span>
 
   
@@ -1892,555 +2208,6 @@
 
 <h2 id="测试组件"><a href="#测试组件" class="headerlink" title="测试组件"></a>测试组件</h2><p>新建<code>__tests__/mark.tsx</code>用于测试高亮组件.</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; renderHook &#125; <span class="keyword">from</span> <span class="string">&quot;@testing-library/react-hooks&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; screen &#125; <span class="keyword">from</span> <span class="string">&quot;@testing-library/react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Mark</span> &#125; <span class="keyword">from</span> <span class="string">&quot;../components/mark&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&quot;Mark组件正确高亮关键词&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> name = <span class="string">&quot;物料管理&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> keyword = <span class="string">&quot;管理&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">renderHook</span>(<span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Mark</span> <span class="attr">name</span>=<span class="string">&#123;name&#125;</span> <span class="attr">keyword</span>=<span class="string">&#123;keyword&#125;</span> /&gt;</span></span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 期望keyword存在document中</span></span><br><span class="line">  <span class="title function_">expect</span>(screen.<span class="title function_">getByText</span>(keyword)).<span class="title function_">toBeInTheDocument</span>();</span><br><span class="line">  <span class="title function_">expect</span>(screen.<span class="title function_">getByText</span>(keyword)).<span class="title function_">toHaveStyle</span>(<span class="string">&quot;color: #257AFD&quot;</span>);</span><br><span class="line">  <span class="comment">// 期望其他字没有高亮颜色</span></span><br><span class="line">  <span class="title function_">expect</span>(screen.<span class="title function_">getByText</span>(<span class="string">&quot;物料&quot;</span>)).<span class="property">not</span>.<span class="title function_">toHaveStyle</span>(<span class="string">&quot;color: #257AFD&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/HTTP%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/HTTP%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">HTTP基础</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:08:25" itemprop="dateCreated datePublished" datetime="2022-09-26T21:08:25+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:25" itemprop="dateModified" datetime="2022-11-05T11:32:25+08:00">2022-11-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>title: HTTP基础</p>
-<p>date: 2019-08-21 14:53:32</p>
-<p>tags: HTML</p>
-<p>categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
-<ul>
-<li>HTML # 一级分类</li>
-<li>HTTP基础 # 二级分类</li>
-</ul>
-<hr>
-<h1 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h1><p>ajax 是一种技术方案，核心依赖浏览器提供的 XMLHttpRequest 对象，是这个对象使得浏览器可以发出 http 请求与接受响应。</p>
-<h2 id="如何与后端交互"><a href="#如何与后端交互" class="headerlink" title="如何与后端交互"></a>如何与后端交互</h2><ol>
-<li>form 表单提交.缺点会跳转，无后台反馈</li>
-<li>ajax</li>
-<li>websocket</li>
-</ol>
-<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><ol>
-<li>XMLHttpRequest 对象(该对象支持同步和异步请求)</li>
-<li>fetch</li>
-</ol>
-<h3 id="范例"><a href="#范例" class="headerlink" title="范例"></a>范例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequst</span>()</span><br><span class="line"><span class="comment">//true默认是异步的方式,false是同步的方式</span></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&quot;get&quot;</span>, <span class="string">&quot;/xxx.com&quot;</span>, <span class="literal">true</span>)</span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> ((xhr.<span class="property">status</span> &gt;= <span class="number">200</span> &amp;&amp; xhr.<span class="property">status</span> &lt; <span class="number">300</span>) || xhr.<span class="property">status</span> === <span class="number">304</span>) &#123;</span><br><span class="line">            <span class="comment">//成功</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(xhr.<span class="property">responseText</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;服务器异常&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//发送请求</span></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br></pre></td></tr></table></figure>
-
-<h3 id="Fetch"><a href="#Fetch" class="headerlink" title="Fetch"></a>Fetch</h3><p>fetch 基于 promise</p>
-<p>当接受到错误状态码时,conf<code>fetch()</code>返回的 promise 不会标记为 reject</p>
-<p>默认情况下,fetch 不会从服务端发送或接收任何 cookies.</p>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="keyword">let</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line"><span class="number">2.</span> xhr.<span class="title function_">open</span>(<span class="string">&#x27;GET&#x27;</span>,<span class="string">&#x27;/xxx&#x27;</span>)  <span class="comment">//初始化xhr</span></span><br><span class="line"><span class="number">3.</span> xhr.<span class="title function_">send</span>()  <span class="comment">//发送请求</span></span><br><span class="line"><span class="number">4.</span> xhr.<span class="property">onreadystatechange</span>  <span class="comment">//监听请求状态的变化&lt;readystatechange&gt;是一个事件</span></span><br><span class="line"><span class="number">5.</span> xhr.<span class="property">readyState</span> === <span class="number">1</span>  <span class="comment">//xhr.open()已经完成</span></span><br><span class="line"><span class="number">6.</span> xhr.<span class="property">readyState</span> === <span class="number">2</span>  <span class="comment">//xhr.send()已经完成</span></span><br><span class="line"><span class="number">7.</span> xhr.<span class="property">readyState</span> === <span class="number">3</span>  <span class="comment">//xhr.responseText正在下载</span></span><br><span class="line"><span class="number">5.</span> xhr.<span class="property">readyState</span> === <span class="number">4</span>  <span class="comment">//响应完成</span></span><br><span class="line"><span class="number">6.</span> xhr.<span class="property">status</span>  <span class="comment">//HTTP状态码</span></span><br><span class="line"><span class="number">7.</span> <span class="keyword">var</span> string = xhr.<span class="property">responseText</span>  <span class="comment">//响应的内容</span></span><br><span class="line"><span class="number">8.</span> <span class="keyword">var</span> value = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>)  <span class="comment">//把符合JSON语法的字符串转换成JS，解析响应返回的内容</span></span><br><span class="line"><span class="number">9.</span> value.<span class="property">node</span>   <span class="comment">//若value是对象，这就是对象里内容</span></span><br><span class="line"><span class="number">10.</span> value.<span class="property">node</span>.<span class="property">name</span>  <span class="comment">//对象里的name的值</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>post</strong>形式需要将数据放入到 send 中</p>
-<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><h3 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h3><p>同协议，域名，端口</p>
-<h1 id="实现跨域的方法"><a href="#实现跨域的方法" class="headerlink" title="实现跨域的方法"></a>实现跨域的方法</h1><h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><p>JSON with padding</p>
-<blockquote>
-<p>通过 script 标签加载数据的方式获取数据当做 js 代码来执行。jsonp 需要对应接口的后端配合才可以实现。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">addScriptTag</span>(<span class="params">src</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">  script.<span class="title function_">setAttribute</span>(<span class="string">&quot;type&quot;</span>, <span class="string">&quot;text/javascript&quot;</span>);</span><br><span class="line">  script.<span class="property">src</span> = src;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(script);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">addScriptTag</span>(<span class="string">&quot;http://example.com/ip?callback=foo&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Your public IP address is: &quot;</span> + data.<span class="property">ip</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>上面代码通过动态添加<code>&lt;script&gt;</code>元素，向服务器 example.com 发出请求。注意，该请求的查询字符串有一个 callback 参数，用来指定回调函数的名字，这对于 JSONP 是必需的。</p>
-</blockquote>
-<p>服务器收到这个请求以后，会将数据放在回调函数的参数位置返回。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">foo</span>(&#123;</span><br><span class="line">  <span class="attr">ip</span>: <span class="string">&quot;8.8.8.8&quot;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>由于<code>&lt;script&gt;</code>元素请求的脚本，直接作为代码运行。这时，只要浏览器定义了 foo 函数，该函数就会立即调用。作为参数的 JSON 数据被视为 JavaScript 对象，而不是字符串，因此避免了使用<code>JSON.parse</code>的步骤。</p>
-</blockquote>
-<h3 id="必考面试题：JSONP-为什么不支持-POST-请求"><a href="#必考面试题：JSONP-为什么不支持-POST-请求" class="headerlink" title="必考面试题：JSONP 为什么不支持 POST 请求"></a>必考面试题：JSONP 为什么不支持 POST 请求</h3><p>答：因为 JSONP 是通过动态创建 script 的方法进行的，而 script 只能发送 get 请求不能发送 post 请求。</p>
-<h3 id="jquery-的写法"><a href="#jquery-的写法" class="headerlink" title="jquery 的写法"></a>jquery 的写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.<span class="title function_">ajax</span>(&#123;</span><br><span class="line">        <span class="attr">url</span>:<span class="string">&quot;http://jack.com:8002/pay&quot;</span>,</span><br><span class="line">        <span class="attr">dataType</span>: <span class="string">&quot;jsonp&quot;</span>,</span><br><span class="line">        <span class="attr">success</span>:<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(response)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="axios-写法"><a href="#axios-写法" class="headerlink" title="axios 写法"></a>axios 写法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$http</span> = axios;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$http</span></span><br><span class="line">  .<span class="title function_">jsonp</span>(<span class="string">&quot;http://www.domain2.com:8080/login&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">params</span>: &#123;&#125;,</span><br><span class="line">    <span class="attr">jsonp</span>: <span class="string">&quot;handleCallback&quot;</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>跨域资源共享，是一种 ajax 跨域请求资源的方式。</p>
-<p>写法就是普通的 ajax 写法.不过在浏览器请求上加点处理.而且是浏览器自动处理的.</p>
-<p>当使用 XMLHttpRequest 发送请求时，浏览器发现该请求不符合同源策略，会给请求加一个请求头:<code>Origin</code>。</p>
-<p>后台进行处理，如果确定接受请求，则在返回结果中加响应头：<code>Access-Control-Allow-Origin</code>。</p>
-<p>浏览器判断该响应头中是否包含<code>Origin</code>的值，如果有，浏览器会处理响应，就可以拿到响应数据。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>(); <span class="comment">// IE8/9需用window.XDomainRequest兼容</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 前端设置是否带cookie</span></span><br><span class="line">xhr.<span class="property">withCredentials</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&quot;post&quot;</span>, <span class="string">&quot;http://www.domain2.com:8080/login&quot;</span>, <span class="literal">true</span>);</span><br><span class="line">xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&quot;Content-Type&quot;</span>, <span class="string">&quot;application/x-www-form-urlencoded&quot;</span>);</span><br><span class="line">xhr.<span class="title function_">send</span>(<span class="string">&quot;user=admin&quot;</span>);</span><br><span class="line"></span><br><span class="line">xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.<span class="property">readyState</span> == <span class="number">4</span> &amp;&amp; xhr.<span class="property">status</span> == <span class="number">200</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(xhr.<span class="property">responseText</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="postMessage"><a href="#postMessage" class="headerlink" title="postMessage"></a>postMessage</h2><ol>
-<li><strong>A 页面</strong></li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;message&#x27;</span>, <span class="variable language_">this</span>.<span class="property">receiveMessage</span>, <span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">const</span> iframeImg = <span class="variable language_">this</span>.<span class="property">iframe</span>.<span class="property">contentWindow</span></span><br><span class="line">    iframeImg.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        iframeImg.<span class="title function_">postMessage</span>(<span class="string">&#x27;message&#x27;</span>, <span class="string">&#x27;http://www.blogoog.com:8088&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">receiveMessage = <span class="function">(<span class="params">event</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">const</span> origin = event.<span class="property">origin</span> || event.<span class="property">originalEvent</span>.<span class="property">origin</span></span><br><span class="line">        <span class="keyword">const</span> thisData = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(event.<span class="property">data</span>)</span><br><span class="line">        <span class="keyword">const</span> imgUrl = <span class="title class_">Object</span>.<span class="title function_">values</span>(thisData)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123; imgUrl &#125;)</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">closeIframe</span>();</span><br><span class="line">            message.<span class="title function_">success</span>(<span class="string">&#x27;上传成功&#x27;</span>)</span><br><span class="line">        &#125;,<span class="number">1000</span>)</span><br><span class="line">        <span class="keyword">if</span> (origin !== <span class="string">&#x27;http://www.blogoog.com:80881) &#123;</span></span><br><span class="line"><span class="string">          window.location.hash = &#x27;</span>#/exception/<span class="number">404</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe</span><br><span class="line">  className=&#123;styles.<span class="property">iframeWrap</span>&#125;</span><br><span class="line">  src=<span class="string">&quot;http://www.blogoog.com:8088&quot;</span></span><br><span class="line">  name=<span class="string">&quot;imgIframe&quot;</span></span><br><span class="line">  frameBorder=<span class="string">&quot;0&quot;</span></span><br><span class="line">  scrolling=<span class="string">&quot;auto&quot;</span></span><br><span class="line">  ref=&#123;<span class="function">(<span class="params">dom</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">iframe</span> = dom;</span><br><span class="line">  &#125;&#125;</span><br><span class="line">&gt;</span><br><span class="line">  您的浏览器不支持iframe</span><br><span class="line">&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>A 页面使用的语法</li>
-</ol>
-<p><strong>window.postMessage()</strong></p>
-<p><code>otherWindow.postMessage(message, targetOrigin, [transfer])</code></p>
-<ul>
-<li>otherWindow：其他窗口的一个引用（在这里我使用了 iframe 的 contentWindow 属性）</li>
-<li>message：将要发送到其他 window 的数据（可以不受限制的将数据对象安全的传送给目标窗口而无需自己序列化，原因是因为采用了结构化克隆算法）</li>
-<li>targetOrigin：接收信息的 URL（在这里我当然填的 B 页面的 URL）</li>
-<li>transfer：可选参数</li>
-</ul>
-<p><strong>window.addEventListener(‘message’, receiveMessage, false)</strong></p>
-<p><code>target.addEventListener(type, listener, options)</code></p>
-<ul>
-<li>type：表示监听事件类型的字符串</li>
-<li>listener：当所监听的事件类型触发时，会通知的一个对象或者一个函数</li>
-<li>potions：可选参数（在此我用 false，表示在 listener 被调用之后不会自动移除）</li>
-</ul>
-<p><strong>receiveMessage &#x3D; (event) &#x3D;&gt; {}</strong></p>
-<ul>
-<li>event.data：从另一个 window 传递过来的对象（包含传递过来的所有信息）</li>
-<li>event.origin||event.originalEvent.origin：window.postMessage()发送消息的目标 URL</li>
-<li>event.source：对发送消息的窗口对象的引用</li>
-</ul>
-<h3 id="注意点！！！"><a href="#注意点！！！" class="headerlink" title="注意点！！！"></a>注意点！！！</h3><ul>
-<li>在页面内嵌入 iframe 页面的情况下，需要等到页面内的 iframe 页面，也就是 B 页面加载完成之后，才能进行 postMessage 跨域通信</li>
-<li>event.origin 中的 origin 不能保证是该窗口的当前 origin 或者未来 origin，因为 postMessage 被调用后，可能会被导航到不同的位置，所以需要做个异常情况判断处理<code>origin !== &#39;http://www.blogoog.com:8088&#39;</code></li>
-</ul>
-<ol start="2">
-<li><strong>B 页面</strong></li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">created</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">addEventListener</span>&#123;<span class="string">&quot;message&quot;</span>, <span class="variable language_">this</span>.<span class="property">receiveMessage</span>, <span class="literal">false</span>)</span><br><span class="line">    &#125;,</span><br><span class="line"><span class="title function_">receiveMessage</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e origin === <span class="string">&#x27;http://www.blogoog.com:8080&#x27;</span> || e.<span class="property">origin</span> === <span class="string">&#x27;http://www.blogoog.com:8088&#x27;</span>) &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">sendBtnShow</span> = <span class="literal">true</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">originSource</span> = e.<span class="property">origin</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">magicBuildData</span> = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(e.<span class="property">data</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">sendMsg</span>(<span class="params"></span>) &#123;</span><br><span class="line">        top.<span class="title function_">postMessage</span>(<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data), <span class="string">&#x27;http://www.blogoog.com:8000&#x27;</span>)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>B 页面使用到的语法</li>
-</ol>
-<p><code>top.postMessage(&#39;data&#39;, &#39;http://www.blogoog.com:8000&#39;)</code></p>
-<p>参考上面 A 页面的语法</p>
-<p>为什么用 top 而不用 window 下面再讲</p>
-<p><code>window.addEventListener(&#39;message&#39;, receiveMessage, false)</code></p>
-<p>参考上面 A 页面的语法</p>
-<p><code>receiveMessage = (event) =&gt; &#123;&#125;</code></p>
-<p>参考上面 A 页面的语法</p>
-<h4 id="window-postMessage-中的-window-到底是啥？"><a href="#window-postMessage-中的-window-到底是啥？" class="headerlink" title="window.postMessage()中的 window 到底是啥？"></a>window.postMessage()中的 window 到底是啥？</h4><p>始终是你需要通信的目标窗口</p>
-<ul>
-<li>A 页面中：A 页面向 B 页面发送跨域信息，window 就是在 A 页面中嵌入的 iframe 指向的 B 页面的 window，即：iframe.contentWindow</li>
-<li>B 页面中：B 页面想 A 页面发送跨域信息，window 就是 A 页面的 window，在这里因为 B 页面时嵌入到 A 页面中的，对于 B 页面来讲，window 就是 top 或者 parent</li>
-</ul>
-<h3 id="需要特别注意的坑"><a href="#需要特别注意的坑" class="headerlink" title="需要特别注意的坑"></a>需要特别注意的坑</h3><ol>
-<li>一定要等 A 页面嵌入的 B 页面加载完成之后，再进行 postMessage 跨域通信</li>
-<li>一定要对 origin 做判断，去掉不是来自我们目标窗口的 origin，防止来自其他 origin 的攻击</li>
-<li>着重注意 window.postMessage()中 window 的用法，明确目标窗口的 window</li>
-</ol>
-<h1 id="websocket-协议跨域"><a href="#websocket-协议跨域" class="headerlink" title="websocket 协议跨域"></a>websocket 协议跨域</h1><p>WebSocket protocol 是 HTML5 一种新的协议。它实现了浏览器与服务器全双工通信，同时允许跨域通讯，是 server push 技术的一种很好的实现。</p>
-<p>原生 WebSocket API 使用起来不太方便，我们使用 Socket.io，它很好地封装了 webSocket 接口，提供了更简单、灵活的接口，也对不支持 webSocket 的浏览器提供了向下兼容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;user input：&lt;input type=<span class="string">&quot;text&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.bootcss.com/socket.io/2.2.0/socket.io.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> socket = <span class="title function_">io</span>(<span class="string">&#x27;http://www.domain2.com:8080&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 连接成功处理</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">socket.<span class="title function_">on</span>(<span class="string">&#x27;connect&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 监听服务端消息</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    socket.<span class="title function_">on</span>(<span class="string">&#x27;message&#x27;</span>, <span class="keyword">function</span>(<span class="params">msg</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;data from server: ---&gt; &#x27;</span> + msg);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 监听服务端关闭</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    socket.<span class="title function_">on</span>(<span class="string">&#x27;disconnect&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Server socket has closed.&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;input&#x27;</span>)[<span class="number">0</span>].<span class="property">onblur</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    socket.<span class="title function_">send</span>(<span class="variable language_">this</span>.<span class="property">value</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<p>后端 node</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> socket = <span class="built_in">require</span>(<span class="string">&quot;socket.io&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启http服务</span></span><br><span class="line"><span class="keyword">var</span> server = http.<span class="title function_">createServer</span>(<span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">writeHead</span>(<span class="number">200</span>, &#123;</span><br><span class="line">    <span class="string">&quot;Content-type&quot;</span>: <span class="string">&quot;text/html&quot;</span>,</span><br><span class="line">  &#125;);</span><br><span class="line">  res.<span class="title function_">end</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="string">&quot;8080&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Server is running at port 8080...&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听socket连接</span></span><br><span class="line">socket.<span class="title function_">listen</span>(server).<span class="title function_">on</span>(<span class="string">&quot;connection&quot;</span>, <span class="keyword">function</span> (<span class="params">client</span>) &#123;</span><br><span class="line">  <span class="comment">// 接收信息</span></span><br><span class="line">  client.<span class="title function_">on</span>(<span class="string">&quot;message&quot;</span>, <span class="keyword">function</span> (<span class="params">msg</span>) &#123;</span><br><span class="line">    client.<span class="title function_">send</span>(<span class="string">&quot;hello：&quot;</span> + msg);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;data from client: ---&gt; &quot;</span> + msg);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 断开处理</span></span><br><span class="line">  client.<span class="title function_">on</span>(<span class="string">&quot;disconnect&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Client socket has closed.&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><h2 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h2><p>HTML 内联框架元素<code>&lt;iframe&gt;</code> 表示嵌套的 browsing context。它能够将另一个 HTML 页面嵌入到当前页面中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;iframe</span><br><span class="line">  src=<span class="string">&quot;https://mdn-samples.mozilla.org/snippets/html/iframe-simple-contents.html&quot;</span></span><br><span class="line">  title=<span class="string">&quot;iframe example 1&quot;</span></span><br><span class="line">  width=<span class="string">&quot;400&quot;</span></span><br><span class="line">  height=<span class="string">&quot;300&quot;</span></span><br><span class="line">&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Your browser does not support iframes.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&lt;/iframe&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h2><p>标签定义图形，比如图表和其他图像。该标签基于 JavaScript 的绘图 API</p>
-<h2 id="source"><a href="#source" class="headerlink" title="source"></a>source</h2><p>定义多媒体资源 <code>&lt;video&gt;</code> 和<code>&lt;audio&gt;</code></p>
-<h2 id="command"><a href="#command" class="headerlink" title="command"></a>command</h2><p>定义命令按钮，比如单选按钮、复选框或按钮</p>
-<h2 id="figure"><a href="#figure" class="headerlink" title="figure"></a>figure</h2><p>规定独立的流内容（图像、图表、照片、代码等等）</p>
-<h2 id="nav"><a href="#nav" class="headerlink" title="nav"></a>nav</h2><p>导航</p>
-<h2 id="section"><a href="#section" class="headerlink" title="section"></a>section</h2><p>定义文档中的节（section、区段）</p>
-<h1 id="HTTP-报文"><a href="#HTTP-报文" class="headerlink" title="HTTP 报文"></a>HTTP 报文</h1><p>HTTP 报文是在 HTTP 应用程序之间发送的数据块。这些数据块以一些文本形式的元信息开头，描述报文的内容及含义，后面跟着可选的数据部分</p>
-<h2 id="URI-和-URL"><a href="#URI-和-URL" class="headerlink" title="URI 和 URL"></a>URI 和 URL</h2><p>URI：统一资源标识符</p>
-<p>URL：统一资源定位符</p>
-<h2 id="报文组成"><a href="#报文组成" class="headerlink" title="报文组成"></a>报文组成</h2><ol>
-<li>对报文进行描述的起始行 —— start line</li>
-<li>包含属性的首部块 —— header</li>
-<li>可选的包含数据的主体部分 —— body</li>
-</ol>
-<h2 id="报文语法"><a href="#报文语法" class="headerlink" title="报文语法"></a>报文语法</h2><ol>
-<li>请求报文：</li>
-</ol>
-<p>向 web 服务器请求一个动作</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;method&gt;&lt;request-<span class="variable constant_">URL</span>&gt;&lt;version&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line"></span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>响应报文</li>
-</ol>
-<p>把请求结果返回给客户端</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;version&gt;&lt;status&gt;&lt;reason-phrase&gt;</span><br><span class="line">&lt;headers&gt;</span><br><span class="line"></span><br><span class="line">&lt;entity-body&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p>服务器和浏览器之间的约定</p>
-<h3 id="分类"><a href="#分类" class="headerlink" title="分类:"></a>分类:</h3><p>100-199 用于指定客户端应相应的某些动作。</p>
-<p>200-299 用于表示请求成功。</p>
-<p>300-399 用于已经移动的文件并且常被包含在定位头信息中指定新的地址信息。</p>
-<p>400-499 用于指出客户端的错误。</p>
-<p>500-599 用于支持服务器错误。</p>
-<table>
-<thead>
-<tr>
-<th align="left">状态码</th>
-<th align="left">状态信息</th>
-<th align="left">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">100</td>
-<td align="left">Continue</td>
-<td align="left">初始请求已接受,继续发送</td>
-</tr>
-<tr>
-<td align="left">101</td>
-<td align="left">switching Protocols</td>
-<td align="left">服务器遵从客户请求转换到另一种协议</td>
-</tr>
-<tr>
-<td align="left"><strong>200</strong></td>
-<td align="left"><strong>OK</strong></td>
-<td align="left"><strong>请求成功</strong></td>
-</tr>
-<tr>
-<td align="left">201</td>
-<td align="left">Created</td>
-<td align="left">服务器已经创建了文档,Location 头给出了他的 URL</td>
-</tr>
-<tr>
-<td align="left">202</td>
-<td align="left">Accepted</td>
-<td align="left">已接受请求,但处理尚未完成</td>
-</tr>
-<tr>
-<td align="left">203</td>
-<td align="left">Non-Authoritative Information</td>
-<td align="left">文档已正常返回但一些应答头可能不正确,因为使用的是文档的拷贝</td>
-</tr>
-<tr>
-<td align="left"><strong>204</strong></td>
-<td align="left"><strong>No Content</strong></td>
-<td align="left"><strong>服务器接到请求已经处理完毕,但浏览器页面不会刷新</strong></td>
-</tr>
-<tr>
-<td align="left">205</td>
-<td align="left">Reset Content</td>
-<td align="left">没有新内容,但浏览器应该重置它所显示的内容,用来强制浏览器清除表单输入内容.</td>
-</tr>
-<tr>
-<td align="left">206</td>
-<td align="left">Partial Content</td>
-<td align="left">客户发送了一个带有 Range 头的 GET 请求,服务器完成了它</td>
-</tr>
-<tr>
-<td align="left">300</td>
-<td align="left">Multiple Choices</td>
-<td align="left">客户请求的文档可以在多个位置找到,这些位置已经在返回的文档中列出.如果服务器要提出优先选择,则应该在 Location 应答头指明</td>
-</tr>
-<tr>
-<td align="left"><strong>301</strong></td>
-<td align="left"><strong>Moved Permanently</strong></td>
-<td align="left"><strong>永久重定向,请求的网页已经永久移动到新位置</strong></td>
-</tr>
-<tr>
-<td align="left"><strong>302</strong></td>
-<td align="left"><strong>Found</strong></td>
-<td align="left"><strong>临时重定向,POST 方法的重定向在未询问用户的情况下就会变成 GET</strong></td>
-</tr>
-<tr>
-<td align="left"><strong>303</strong></td>
-<td align="left"><strong>See Other</strong></td>
-<td align="left"><strong>类似 301&#x2F;302,不同之处在于,原来的请求是 POST,现在是 GET</strong></td>
-</tr>
-<tr>
-<td align="left"><strong>304</strong></td>
-<td align="left"><strong>Not Modified</strong></td>
-<td align="left"><strong>自从上次请求后,网页未被修改过</strong></td>
-</tr>
-<tr>
-<td align="left">305</td>
-<td align="left">Use Proxy</td>
-<td align="left">使用代理服务器</td>
-</tr>
-<tr>
-<td align="left"><strong>307</strong></td>
-<td align="left"><strong>Temporary Redirect</strong></td>
-<td align="left"><strong>临时重定向，不同之处,把 POST 转为 GET</strong></td>
-</tr>
-<tr>
-<td align="left"><strong>400</strong></td>
-<td align="left"><strong>Bad Request</strong></td>
-<td align="left"><strong>请求出现语法错误</strong></td>
-</tr>
-<tr>
-<td align="left"><strong>401</strong></td>
-<td align="left"><strong>Unauthorized</strong></td>
-<td align="left"><strong>用户未授权,需要用户验证</strong></td>
-</tr>
-<tr>
-<td align="left"><strong>403</strong></td>
-<td align="left"><strong>Forbidden</strong></td>
-<td align="left"><strong>服务器已经理解请求,但是拒绝执行</strong></td>
-</tr>
-<tr>
-<td align="left"><strong>404</strong></td>
-<td align="left"><strong>Not Found</strong></td>
-<td align="left"><strong>服务器找不到请求的网页</strong></td>
-</tr>
-<tr>
-<td align="left">405</td>
-<td align="left">Method Not Allowed</td>
-<td align="left">请求方法（GET、POST、HEAD、DELETE、PUT、TRACE 等）对指定的资源不适用。</td>
-</tr>
-<tr>
-<td align="left">406</td>
-<td align="left">Not Acceptable</td>
-<td align="left">指定的资源已经找到，但它的 MIME 类型和客户在 Accpet 头中所指定的不兼容</td>
-</tr>
-<tr>
-<td align="left">407</td>
-<td align="left">Proxy Authentication Required</td>
-<td align="left">类似于 401，表示客户必须先经过代理服务器的授权</td>
-</tr>
-<tr>
-<td align="left">408</td>
-<td align="left">Request Timeout</td>
-<td align="left">请求超时</td>
-</tr>
-<tr>
-<td align="left"><strong>500</strong></td>
-<td align="left"><strong>Internal Server Error</strong></td>
-<td align="left"><strong>服务器遇到错误,无法完成请求</strong></td>
-</tr>
-<tr>
-<td align="left"><strong>503</strong></td>
-<td align="left"><strong>Service Unavailable</strong></td>
-<td align="left"><strong>由于临时的服务器维护或过载,暂时无法处理请求</strong></td>
-</tr>
-<tr>
-<td align="left">504</td>
-<td align="left">Gateway Timeout</td>
-<td align="left">由作为代理或网关的服务器使用，表示不能及时地从远程服务器获得应答</td>
-</tr>
-<tr>
-<td align="left">505</td>
-<td align="left">HTTP Version Not Supported</td>
-<td align="left">服务器不支持请求中所指明的 HTTP 版本。</td>
-</tr>
-</tbody></table>
-<h2 id="HTTP-请求方法"><a href="#HTTP-请求方法" class="headerlink" title="HTTP 请求方法"></a>HTTP 请求方法</h2><ol>
-<li><strong>GET</strong></li>
-</ol>
-<p>请求服务器发送某个资源</p>
-<ol start="2">
-<li><strong>HEAD</strong></li>
-</ol>
-<p>与 GET 方法类似,但是在服务器的响应中没有资源的内容,只有资源的一些基本信息,主要用于</p>
-<ul>
-<li>在不获取资源的情况下获取信息(类型,大小等)</li>
-<li>通过状态码看资源是否存在</li>
-<li>通过查看首部,测试资源是否被修改</li>
-</ul>
-<ol start="3">
-<li><strong>PUT</strong></li>
-</ol>
-<p>和 GET 从服务器获取资源相反,PUT 用于向服务器写入资源.PUT 的语义就是让服务器用请求的主体部分创建一个请求 URL 命名的文档.如果存在就替换</p>
-<ol start="4">
-<li><strong>POST</strong></li>
-</ol>
-<p>POST 用于向服务器发送数据,通常用来支持 HTML 的表单(input,select,textarea),表单中的数据会被发送到服务器</p>
-<ol start="5">
-<li><strong>TRACE</strong></li>
-</ol>
-<p>客户端发送一个请求,这个请求可能会穿过防火墙,代理,网关,和一些其他应用程序,每个中间节点都可以修改 HTTP 请求,TRACE 方法允许客户端在最终请求发往服务器的时候,看看他变成了什么样子</p>
-<p>TRACE 请求会在目的服务器端发送一个”闭环”诊断,行程最后一站服务器会弹回一条 TRACE 响应,并在响应主题中携带他收到的原始请求报文</p>
-<ol start="5">
-<li><strong>DELETE</strong></li>
-</ol>
-<p>用于要求服务器删除请求的 URL,和 PUT 一样,服务器可能不支持</p>
-<ol start="6">
-<li><strong>OPTIONS</strong></li>
-</ol>
-<p>用于请求服务器告知其支持的各种功能</p>
-<h1 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h1><p>缓存是一种保存资源副本并在下次请求时直接使用该副本的技术.</p>
-<p>HTTP 缓存有多种规则，根据是否需要重新向服务器发起请求来分类，分为两大类(<strong>强制缓存，协商缓存</strong>)</p>
-<p>http 缓存机制主要在 http 响应头中设定，响应头中相关字段为<strong>Expires、Cache-Control、Last-Modified、Etag</strong>。</p>
-<h3 id="cache-control"><a href="#cache-control" class="headerlink" title="cache-control"></a>cache-control</h3><p>cache-control 通常用于优化网页性能,适当使用可减少重复读取相同内容</p>
-<p>可以在服务端 setHeader 设置 cache-control</p>
-<p>可以设置让该字段存于缓存中,浏览器下次访问时不发起请求,直接从缓存中读取该资源</p>
-<h3 id="ETag"><a href="#ETag" class="headerlink" title="ETag"></a>ETag</h3><p>ETag 通常用于优化网页性能,适当使用可减少重复读取相同内容</p>
-<p>可通过服务端 setHeader 设置 etag 为相应的字段的 md5 值</p>
-<p>浏览器访问时,request.headers 会带有 if-none-match 属性(为上述 MD5),若不等于则说明服务器上的</p>
-<p>该资源与本地存储的该资源不相同,需要重新从服务器加载;若相等则说明两者资源相同,则直接从本地</p>
-<p>缓存获取.后端应设置 statusCode&#x3D;304.与 cache-control 不同的是:etag 始终都要发请求和收响应,而</p>
-<p>cache-control 不发请求.</p>
-<h1 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h1><p>存储信息到浏览器，可以用 js 设置，也可以在服务器端通过 set-cookie 让浏览器种下 cookie，存在于响应头里。</p>
-<p>每次请求都会带上 cookie，最大容量 4k</p>
-<p>用途：记录用户名</p>
-<p>设置 cookie 时的参数：</p>
-<ol>
-<li><code>path</code>: cookie 影响到的路径，匹配该路径才发送 cookie</li>
-<li><code>expires</code>和<code>maxAge</code>:告诉浏览器 cookie 多久过期</li>
-</ol>
-<p>不设置就会产生 session cookie，当关闭浏览器，cookie 就被清除 3. <code>secure</code>: 为 true 时，在 http 无效，在 https 生效 4. <code>httpOnly</code>: 浏览器不允许通过 js 修改 cookie</p>
-<h1 id="session"><a href="#session" class="headerlink" title="session"></a>session</h1><p>用来保存状态。当用户输入用户名密码提交给服务器后，服务器验证通过后创建 session 用于记录用户信息，session 可保存在服务器，也可以保存在数据库</p>
-<ol>
-<li>创建 session 后，会把关联的 session_id 通过是 set-cookie 添加到响应头</li>
-<li>浏览器加载页面发现有 set-cookie 字段，就把这个 cookie 种到指定域名下</li>
-<li>下次刷新页面，发送的请求带上 cookie，服务器接受后根据 session_id 来识别用户</li>
-</ol>
-<blockquote>
-<p>cookie 和 session 的区别:</p>
-</blockquote>
-<p>cookie 是存储在浏览器中的一小段数据,session 是让服务器识别某个用户的机制 session.在实现过程中需要使用 cookie.二者不是同一维度的东西.</p>
-<h1 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h1><ol>
-<li>本地存储，永不过期，除非手动 js 删除。5M 大小。</li>
-<li>不参与网络传输</li>
-<li>一般用于性能优化</li>
-</ol>
-<h2 id="localStorage-的存储-获取-删除"><a href="#localStorage-的存储-获取-删除" class="headerlink" title="localStorage 的存储,获取,删除"></a>localStorage 的存储,获取,删除</h2><p>只支持字符串存储.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//存储</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;myCat&quot;</span>, <span class="string">&quot;Tom&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//读取</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;Tom&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//移除</span></span><br><span class="line">localstorage.<span class="title function_">removeItem</span>(<span class="string">&quot;myCat&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//移除所有</span></span><br><span class="line">localstorage.<span class="title function_">clear</span>();</span><br></pre></td></tr></table></figure>
-
-<h1 id="sessionstorage"><a href="#sessionstorage" class="headerlink" title="sessionstorage"></a>sessionstorage</h1><p>与 localstorage 类似,属于本地存储与上面的 session 无关.但是关闭浏览器失效.</p>
-<h2 id="浏览器缓存机制通俗语言版-自我理解"><a href="#浏览器缓存机制通俗语言版-自我理解" class="headerlink" title="浏览器缓存机制通俗语言版(自我理解)"></a>浏览器缓存机制通俗语言版(自我理解)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=300；</span><br><span class="line">ETag:W/&quot;e-cbxLFQW5zapn79tQwb/g6Q&quot;</span><br></pre></td></tr></table></figure>
-
-<p>浏览器第一次请求 a.jpg 这张图片,服务器发回一张图片,并且附送一个<code>ETag</code>(相当于一个用于验证的文件).浏览器把这张图片和 ETag 缓存到本地.如果在 300 秒内,浏览器又请求这张图片,那么直接从缓存中读取这张图.如果超过 300 秒,浏览器发现已经过了时间了,就重新向服务器发请求,并且附带之前给的 ETag.服务器拿着当前文件计算后的<code>ETag</code>和浏览器发回的<code>ETag</code>比较,如果一样,说明图片没换,发回一个响应头(不包含图片,304,表示文件没修改,还能用).如果不一样,就把新的文件和新的<code>ETag</code>发回去.</p>
-<p>另外还有<code>Last-Modified/If-Modified-Since</code>.和<code>ETag</code>功能类似.因为服务器可能不止一个,文件存储在不同的服务器,那就给请求文件上附带上<code>Last-Modified</code>声明,请求时带上<code>If-Modified-Since</code>,表明服务器上一次修改这个文件的时间,拿来和服务器上记录的最后修改时间对比.如果修改时间比较新,说明被动过,发回一个新文件.如果时间比较旧,说明不用换,发回 304,使用缓存即可.</p>
-<h2 id="严谨说法"><a href="#严谨说法" class="headerlink" title="严谨说法"></a>严谨说法</h2><p>浏览器缓存控制分为<strong>强缓存</strong>和<strong>协商缓存</strong>，<strong>协商缓存</strong>必须配合<strong>强缓存</strong>使用。</p>
-<p>首先浏览器第一次跟服务器请求一个资源，服务器在返回这个资源和 response header 的同时，会根据开发者要求或者浏览器默认，在 response 的 header 加上相关字段的 http response header。</p>
-<p>一、当浏览器对某个资源的请求命中了<strong>强缓存</strong>时，利用[Expires]或者[Cache-Control]这两个 http response header 实现</p>
-<p>。</p>
-<ol>
-<li><p>[Expires]：描述的是一个绝对时间，根据的是客户端时间。用 GMT 格式的字符串表示，如：Expires:Thu, 31 Dec 2037 23:55:55 GMT 下次浏览器再次请求同一资源时。先从客户端缓存中寻找，找到这个资源后，拿出它的[Expires]跟当前的请求时间比较。如果请求时间在[Expires]指定的失效时间之前，就能命中缓存，这样就不用再次到服务器上去缓存一遍，节省了资源。但是正因为是绝对时间，如果客户端时间被随意更改下，这个机制就失效了。所以我们需要[Cache-Control]。</p>
-</li>
-<li><p>[Cache-Control]：描述的是一个相对时间，在进行缓存命中时，都是利用浏览器时间判断。</p>
-</li>
-</ol>
-<p>这两个 header 可以只启用一个，也可以同时启用，当 response header 中，[Expires]和[Cache-Control]同时存在时，[Cache-Control]优先级高于[Expires]。</p>
-<p>二、当浏览器对某个资源的请求没有命中<strong>强缓存</strong>，就会发一个请求到服务器，验证<strong>协商缓存</strong>是否命中。</p>
-<p>如果命中，则还是从客户端缓存中加载。<strong>协商缓存</strong>利用的是[Last-Modified，If-Modified-Since]和[ETag、If-None-Match]这两对 Header 来管理的。</p>
-<ol>
-<li><p>[Last-Modified]：原理和上面的[expires]相同，区别是它是根据服务器时间返回的 header 来判断缓存是否存在。但是有时候也会服务器上资源其实有变化，但是最后修改时间却没有变化的情况（这种问题也不容易被定位），这时候我们需要[ETag、If-None-Match]。</p>
-</li>
-<li><p>[ETag、If-None-Match]：原理与上相同，区别是浏览器跟服务器请求一个资源，服务器在返回这个资源的同时，在 respone 的 header 加上 ETag 的 header，这个 header 是服务器根据当前请求的资源生成的一个唯一标识，这个唯一标识是一个字符串，只要资源有变化这个串就不同。</p>
-</li>
-<li><p>[ETag、If-None-Match]这么厉害我们为什么还需要[Last-Modified、If-Modified-Since]呢？有一个例子就是分布式系统尽量关闭掉 ETag(每台机器生成的 ETag 都会不一样）</p>
-</li>
-</ol>
-<p>[Last-Modified，If-Modified-Since]和[ETag、If-None-Match]一般都是同时启用。</p>
-<h1 id="HTTPS-原理"><a href="#HTTPS-原理" class="headerlink" title="HTTPS 原理"></a>HTTPS 原理</h1><p>HTTP+SSL&#x2F;TLS， 即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL，用于安全的 HTTP 数据传输。</p>
-<h2 id="加密算法："><a href="#加密算法：" class="headerlink" title="加密算法："></a>加密算法：</h2><ol>
-<li>对称加密</li>
-</ol>
-<p>有流式、分组两种，加密和解密都是使用的同一个密钥。 2. 非对称加密</p>
-<p>加密使用的密钥和解密使用的密钥是不相同的，分别称为：公钥、私钥，公钥和算法都是公开的，私钥是保密的。非对称加密算法性能较低，但是安全性超强，由于其加密特性，非对称加密算法能加密的数据长度也是有限的 3. 哈希算法</p>
-<p>将任意长度的信息转换为较短的固定长度的值，通常其长度要比信息小得多，且算法不可逆。 4. 数字签名</p>
-<p>签名就是在信息的后面再加上一段内容（信息经过 hash 后的值），可以证明信息没有被修改过。hash 值一般都会加密后（也就是签名）再和信息一起发送，以保证这个 hash 值不被修改。</p>
-<h1 id="简单通信流程"><a href="#简单通信流程" class="headerlink" title="简单通信流程"></a>简单通信流程</h1><p>概括来说，整个简化的加密通信的流程就是：</p>
-<ol>
-<li>小明访问网站，网站将自己的证书给到小明（其实是给到浏览器，小明不会有感知）</li>
-<li>浏览器从证书中拿到网站的公钥 A</li>
-<li>浏览器生成一个只有自己知道的对称密钥 B，用公钥 A 加密，并传给网站（其实是有协商的过程，这里为了便于理解先简化）</li>
-<li>网站通过私钥解密，拿到对称密钥 B</li>
-<li>浏览器、网站 之后的数据通信，都用密钥 B 进行加密</li>
-</ol>
-<h1 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h1><h2 id="证书可能存在的问题"><a href="#证书可能存在的问题" class="headerlink" title="证书可能存在的问题"></a>证书可能存在的问题</h2><p>证书是伪造的：压根不是 CA 颁发的</p>
-<p>证书被篡改过：比如将 XX 网站的公钥给替换了</p>
-<p>解决方法: <strong>数字签名和摘要</strong></p>
-<p>“摘要”就是对传输的内容，通过 hash 算法计算出一段固定长度的串。然后，在通过 CA 的私钥对这段摘要进行加密，加密后得到的结果就是“数字签名.这段数字签名只有 CA 的公钥才能够解密。</p>
-<h1 id="一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）"><a href="#一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）" class="headerlink" title="一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）"></a>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）</h1><h2 id="详细版："><a href="#详细版：" class="headerlink" title="详细版："></a>详细版：</h2><p>1、浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;</p>
-<p>2、调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;</p>
-<p>3、通过 DNS 解析获取网址的 IP 地址，设置 UA 等信息发出第二个 GET 请求;</p>
-<p>4、进行 HTTP 协议会话，客户端发送报头(请求报头);</p>
-<p>5、进入到 web 服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;</p>
-<p>6、进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;</p>
-<p>7、处理结束回馈报头，此处如果浏览器访问过，缓存上有对应资源，会与服务器最后修改时间对比，一致则返回 304;</p>
-<p>8、浏览器开始下载 html 文档(响应报头，状态码 200)，同时使用缓存;</p>
-<p>9、文档树建立，根据标记请求所需指定 MIME 类型的文件（比如 css、js）,同时设置了 cookie;</p>
-<p>10、页面开始渲染 DOM，JS 根据 DOM API 操作 DOM,执行事件绑定等，页面显示完成。</p>
-<h2 id="简洁版："><a href="#简洁版：" class="headerlink" title="简洁版："></a>简洁版：</h2><p>浏览器根据请求的 URL 交给 DNS 域名解析，找到真实 IP，向服务器发起请求；</p>
-<p>服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；</p>
-<p>浏览器对加载到的资源（HTML、JS、CSS 等）进行语法解析，建立相应的内部数据结构（如 HTML 的 DOM）；</p>
-<p>载入解析到的资源文件，渲染页面，完成。</p>
-<h1 id="WebSocket-协议"><a href="#WebSocket-协议" class="headerlink" title="WebSocket 协议"></a>WebSocket 协议</h1><h2 id="1-为什么需要-WebSocket"><a href="#1-为什么需要-WebSocket" class="headerlink" title="1.为什么需要 WebSocket"></a>1.为什么需要 WebSocket</h2><p>HTTP 协议只能由客户端发起,WebSocket 可以实现双向对话,服务端和客户端都可以发送信息.</p>
-<h2 id="2-WebSocket-特点"><a href="#2-WebSocket-特点" class="headerlink" title="2.WebSocket 特点"></a>2.WebSocket 特点</h2><ol>
-<li>建立在 TCP 协议之上,服务端实现容易.</li>
-<li>与 HTTP 协议有着良好的兼容性,并且握手阶段采用 HTTP 协议,因此握手阶段不容易屏蔽,可通过 HTTP 代理服务器.</li>
-<li>数据格式轻量,性能开销小,通信高效.</li>
-<li>可以发送文本和二进制数据.</li>
-<li>没有同源限制.</li>
-<li>协议标识符是 ws(加密是 wss),服务器网址是 URL.</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ws</span>:<span class="comment">//example.com:80/some/path</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="客户端示例"><a href="#客户端示例" class="headerlink" title="客户端示例"></a>客户端示例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> <span class="title class_">WebSocket</span>(<span class="string">&quot;wss://echo.websocket.org&quot;</span>);</span><br><span class="line"></span><br><span class="line">ws.<span class="property">onopen</span> = <span class="keyword">function</span> (<span class="params">evt</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Connection open ...&quot;</span>);</span><br><span class="line">  ws.<span class="title function_">send</span>(<span class="string">&quot;Hello WebSockets!&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">evt</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Received Message: &quot;</span> + evt.<span class="property">data</span>);</span><br><span class="line">  ws.<span class="title function_">close</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ws.<span class="property">onclose</span> = <span class="keyword">function</span> (<span class="params">evt</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Connection closed.&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="WebSocket-客户端-API"><a href="#WebSocket-客户端-API" class="headerlink" title="WebSocket 客户端 API"></a>WebSocket 客户端 API</h2><h3 id="WebSocket-构造函数"><a href="#WebSocket-构造函数" class="headerlink" title="WebSocket 构造函数"></a>WebSocket 构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ws = <span class="keyword">new</span> <span class="title class_">WebSocket</span>(<span class="string">&quot;ws://localhost:8080&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>执行上面语句之后，客户端就会与服务器进行连接。</p>
-<h3 id="WebSocket-readyState"><a href="#WebSocket-readyState" class="headerlink" title="WebSocket.readyState"></a>WebSocket.readyState</h3><p>readyState 属性返回实例对象的当前状态,共用四种.</p>
-<ul>
-<li>CONNECTING: 值为 0,表示正在连接.</li>
-<li>OPEN: 值为 1,表示连接成功,可以通信.</li>
-<li>CLOSEING: 值为 2,表示正在关闭.</li>
-<li>CLOSED: 值为 3,表示连接已经关闭,或者打开失败.</li>
-</ul>
-<p>示例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (ws.<span class="property">readyState</span>) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="title class_">WebSocket</span>.<span class="property">CONNECTING</span>:</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="title class_">WebSocket</span>.<span class="property">OPEN</span>:</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="title class_">WebSocket</span>.<span class="property">CLOSING</span>:</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="title class_">WebSocket</span>.<span class="property">CLOSED</span>:</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="attr">default</span>:</span><br><span class="line">    <span class="comment">// this never happens</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="WebSocket-onopen"><a href="#WebSocket-onopen" class="headerlink" title="WebSocket.onopen"></a>WebSocket.onopen</h3><p>实例对象的<code>onopen</code>属性,用于指定连接成功后的回调函数.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.<span class="property">onopen</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  ws.<span class="title function_">send</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>如果指定多个函数,可以使用<code>addEventListener</code>方法.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ws.<span class="title function_">addEventListener</span>(<span class="string">&quot;open&quot;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  ws.<span class="title function_">send</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="WebSocket-onclose"><a href="#WebSocket-onclose" class="headerlink" title="WebSocket.onclose"></a>WebSocket.onclose</h3><p>实例对象的<code>onclose</code>属性，用于指定连接关闭后的回调函数。</p>
 
       
     </div>

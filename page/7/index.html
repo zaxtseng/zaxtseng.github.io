@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,86 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/03/React%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E4%B9%8B%E6%9D%83%E9%99%90%E9%AA%8C%E8%AF%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/02/03/React%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E4%B9%8B%E6%9D%83%E9%99%90%E9%AA%8C%E8%AF%81/" class="post-title-link" itemprop="url">React后台管理之权限验证</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-02-03 15:26:46" itemprop="dateCreated datePublished" datetime="2022-02-03T15:26:46+08:00">2022-02-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-07 10:57:43" itemprop="dateModified" datetime="2022-11-07T10:57:43+08:00">2022-11-07</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>目前从网上大概看到两种方法用于权限验证.</p>
+<h1 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h1><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6888676709105664013">掘金文章介绍</a><br>这个参考了 umi 的路由方法,将路由包裹起来<br><a target="_blank" rel="noopener" href="https://juejin.cn/post/6955113168523919397">路由包裹掘金介绍</a><br><a target="_blank" rel="noopener" href="https://github.com/wowhoonet/vite-react-mobx-admin/blob/main/src/view/App/index.tsx">GitHub 源码展示</a></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">IRoute</span>, routes &#125; <span class="keyword">from</span> <span class="string">&quot;@/route&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Suspense</span>, useMemo &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Redirect</span>, <span class="title class_">Route</span>, <span class="title class_">Switch</span>, <span class="title class_">HashRouter</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">&quot;./index.module.less&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>): <span class="title class_">React</span>.<span class="property">ReactElement</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">getChildrenComponent</span> = (<span class="params"></span></span><br><span class="line"><span class="params">    route: IRoute,</span></span><br><span class="line"><span class="params">    key: number,</span></span><br><span class="line"><span class="params">    pPath: string = <span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="params">  </span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> path = pPath + route.<span class="property">path</span>;</span><br><span class="line">    <span class="keyword">return</span> route.<span class="property">redirect</span> ? (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">Redirect</span> <span class="attr">key</span>=<span class="string">&#123;key&#125;</span> <span class="attr">to</span>=<span class="string">&#123;route.redirect&#125;</span> <span class="attr">from</span>=<span class="string">&#123;route.path&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Redirect</span>&gt;</span></span></span><br><span class="line">    ) : (</span><br><span class="line">      (route.<span class="property">component</span> || route.<span class="property">routes</span>?.<span class="property">length</span> &gt; <span class="number">0</span>) &amp;&amp; (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">Route</span> <span class="attr">key</span>=<span class="string">&#123;key&#125;</span> <span class="attr">path</span>=<span class="string">&#123;path&#125;</span> <span class="attr">exact</span>=<span class="string">&#123;route.exact&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;route.wrappers?.length &gt; 0</span></span><br><span class="line"><span class="language-xml">            ? route.wrappers.reduceRight(</span></span><br><span class="line"><span class="language-xml">                (element: any, wrapper: any) =&gt;</span></span><br><span class="line"><span class="language-xml">                  React.createElement(wrapper, &#123;&#125;, element),</span></span><br><span class="line"><span class="language-xml">                React.createElement(</span></span><br><span class="line"><span class="language-xml">                  route.component || React.Fragment,</span></span><br><span class="line"><span class="language-xml">                  &#123;&#125;,</span></span><br><span class="line"><span class="language-xml">                  <span class="tag">&lt;<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    &#123;route?.routes?.map((croute, rindex) =&gt;</span></span><br><span class="line"><span class="language-xml">                      getChildrenComponent(croute, rindex, path)</span></span><br><span class="line"><span class="language-xml">                    )&#125;</span></span><br><span class="line"><span class="language-xml">                  <span class="tag">&lt;/<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                )</span></span><br><span class="line"><span class="language-xml">              )</span></span><br><span class="line"><span class="language-xml">            : React.createElement(</span></span><br><span class="line"><span class="language-xml">                route.component || React.Fragment,</span></span><br><span class="line"><span class="language-xml">                &#123;&#125;,</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                  &#123;route?.routes?.map((croute, rindex) =&gt;</span></span><br><span class="line"><span class="language-xml">                    getChildrenComponent(croute, rindex, path)</span></span><br><span class="line"><span class="language-xml">                  )&#125;</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              )&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title class_">Routes</span> = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> _Routes = routes.<span class="title function_">map</span>(<span class="function">(<span class="params">route, rindex</span>) =&gt;</span></span><br><span class="line">      <span class="title function_">getChildrenComponent</span>(route, rindex)</span><br><span class="line">    );</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(_Routes, <span class="string">&quot;_Routes&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> _Routes;</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span>&lt;<span class="attr">div</span>&gt;</span>加载中<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;&gt;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">HashRouter</span> <span class="attr">basename</span>=<span class="string">&quot;/&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Switch</span>&gt;</span>&#123;Routes&#125;<span class="tag">&lt;/<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">HashRouter</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="promise-封装法"><a href="#promise-封装法" class="headerlink" title="promise 封装法"></a>promise 封装法</h1><p><a target="_blank" rel="noopener" href="https://github.com/whylisa/vite-react-template-typescript/tree/master/src/components/Authorized">GitHub 代码展示</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/28/Golang/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +288,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:33" itemprop="dateModified" datetime="2022-11-05T11:32:33+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -432,7 +512,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:33" itemprop="dateModified" datetime="2022-11-05T11:32:33+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -602,7 +682,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:33" itemprop="dateModified" datetime="2022-11-05T11:32:33+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -731,7 +811,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:33" itemprop="dateModified" datetime="2022-11-05T11:32:33+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -807,7 +887,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:33" itemprop="dateModified" datetime="2022-11-05T11:32:33+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -897,7 +977,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:33" itemprop="dateModified" datetime="2022-11-05T11:32:33+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -1088,7 +1168,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:33" itemprop="dateModified" datetime="2022-11-05T11:32:33+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -1167,7 +1247,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:33" itemprop="dateModified" datetime="2022-11-05T11:32:33+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -1257,7 +1337,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:34" itemprop="dateModified" datetime="2022-11-05T11:32:34+08:00">2022-11-05</time>
+      <time title="Modified: 2022-11-07 10:57:44" itemprop="dateModified" datetime="2022-11-07T10:57:44+08:00">2022-11-07</time>
     </span>
 
   
@@ -1282,87 +1362,6 @@
 <h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node inde.<span class="property">js</span></span><br></pre></td></tr></table></figure>
 
 <p>查看 data 文件夹下的输出文件</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/27/%E5%AE%89%E5%8D%93%E5%8E%9F%E7%94%9F%E6%89%93%E5%8C%85/" class="post-title-link" itemprop="url">安卓原生打包</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-27 17:17:00" itemprop="dateCreated datePublished" datetime="2021-09-27T17:17:00+08:00">2021-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-05 11:32:34" itemprop="dateModified" datetime="2022-11-05T11:32:34+08:00">2022-11-05</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>下载 android Studio(4.1.1), JDK8,<br>安装完成后,导入 demo 项目(300M,).<br>开始初始化下载,有可能下载较慢,科学网即可.<br>完成后,项目同步有可能报错(Sync Project with Gradle Files).需要下载对应 SDK 版本.<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yezip/article/details/108998454">sdk 报错解决方法</a></p>
-<h2 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h2><p>build &#x3D;&gt; Genenate Signed Budle&#x2F;APK<br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735936926-3dd60957-ad25-4d9a-9303-8e5b199f6380.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u20e70d58&margin=%5Bobject%20Object%5D&name=WechatIMG1989.png&originHeight=880&originWidth=968&originalType=binary%E2%88%B6=1&size=250436&status=done&style=none&taskId=u8ed96517-9597-40a9-8247-84129788312" alt="WechatIMG1989.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735946757-cc0004a6-c424-4775-aec7-50f9a85a4c71.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u2dcf9ae4&margin=%5Bobject%20Object%5D&name=WechatIMG1990.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=100589&status=done&style=none&taskId=u66285518-2892-4c6c-9eb5-7b5c223ae1b" alt="WechatIMG1990.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735954103-388521a6-e849-496f-9407-2afa711a02af.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u5b2395a1&margin=%5Bobject%20Object%5D&name=WechatIMG1992.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=109109&status=done&style=none&taskId=u09ede0fe-b2d8-46af-b120-dac402aaeb1" alt="WechatIMG1992.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632735962717-da7f5dba-9e9f-48d2-b942-b682143448ef.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u6418437e&margin=%5Bobject%20Object%5D&name=WechatIMG1994.png&originHeight=826&originWidth=1188&originalType=binary%E2%88%B6=1&size=85326&status=done&style=none&taskId=u350019ce-f319-4b5a-bd77-e451ce50e97" alt="WechatIMG1994.png"></p>
-<h2 id="打包完成"><a href="#打包完成" class="headerlink" title="打包完成"></a>打包完成</h2><p><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632736037814-1f6860cb-c78f-446f-a76b-acb7db15fbc7.png#clientId=ud8eed2ce-b12c-4&from=ui&id=ubffb4464&margin=%5Bobject%20Object%5D&name=WechatIMG2057.png&originHeight=217&originWidth=958&originalType=binary%E2%88%B6=1&size=82281&status=done&style=none&taskId=u14022146-90d8-45ac-9ee1-fe59104822b" alt="WechatIMG2057.png"></p>
-<h1 id="H5-端-webview"><a href="#H5-端-webview" class="headerlink" title="H5 端 webview"></a>H5 端 webview</h1><h3 id="修改浏览器的固定-url"><a href="#修改浏览器的固定-url" class="headerlink" title="修改浏览器的固定 url"></a>修改浏览器的固定 url</h3><p>将 webview 用 HBuilderX 打开,修改<code>pages/index/webview.vue</code>中的 url 地址.</p>
-<h2 id="打包成-wgt-包"><a href="#打包成-wgt-包" class="headerlink" title="打包成 wgt 包"></a>打包成 wgt 包</h2><p>将<code>webview.zip</code>解压.用 HBuilderX 修改后发行为原生 app,制作应用 wgt 包.生产包后修改后缀为 zip 解压.<br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1634366875716-11f4a6ce-0a6d-40e5-8047-a6832f53b99a.png#clientId=u8592e4fc-d636-4&from=ui&id=u2ea16012&margin=%5Bobject%20Object%5D&name=1.png&originHeight=1002&originWidth=1192&originalType=binary%E2%88%B6=1&size=321944&status=done&style=none&taskId=u6fe97e4f-af03-448d-9601-b329b052a52" alt="1.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632736814316-37430acc-faa8-4583-83d7-754e6c8e7ff6.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u0c2d8502&margin=%5Bobject%20Object%5D&name=WechatIMG2086.png&originHeight=516&originWidth=446&originalType=binary%E2%88%B6=1&size=63110&status=done&style=none&taskId=u4da2e966-bed8-47d5-8282-e2c9d2859f6" alt="WechatIMG2086.png"><br>将解压后文件复制到<code>simpleDemo/src/main/assets/apps/__UNI__0DD8DA0/www</code><br>重新打包.</p>
-<h2 id="logo-及启动图制作"><a href="#logo-及启动图制作" class="headerlink" title="logo 及启动图制作"></a>logo 及启动图制作</h2><p><a target="_blank" rel="noopener" href="https://console.eeui.app/tools/icons">logo 生成</a><br><a target="_blank" rel="noopener" href="https://console.eeui.app/tools/launchimage">启动图生成</a><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632737000983-0205cf9a-915c-4156-85b3-794b5ad884c4.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u251b0c54&margin=%5Bobject%20Object%5D&name=WechatIMG2093.png&originHeight=648&originWidth=788&originalType=binary%E2%88%B6=1&size=70873&status=done&style=none&taskId=u315c94c1-36c8-420a-8514-13e1e931a4e" alt="WechatIMG2093.png"><br>生成后复制到<code>/simpleDemo/src/main/res/drawable</code>.</p>
 
       
     </div>
