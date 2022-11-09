@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,283 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/mangoDB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/08/mangoDB/" class="post-title-link" itemprop="url">mangoDB</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-08 17:07:43" itemprop="dateCreated datePublished" datetime="2022-11-08T17:07:43+08:00">2022-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-09 14:32:18" itemprop="dateModified" datetime="2022-11-09T14:32:18+08:00">2022-11-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h1><p>不仅仅是 SQL,即非关系型数据库.</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
+<li>键值数据库(Redis,Flare)</li>
+</ol>
+<p>拥有极高的读写性能,用于处理大量数据的高访问负载,例如日志系统.</p>
+<ol start="2">
+<li>文档型数据库(mangoDB,CouchDB)</li>
+</ol>
+<p>满足海量的访问和存储,同时对字段要求不严格,可以随意增删改,适用于网络应用.</p>
+<ol start="3">
+<li>列存储型数据库(Cassandra,Hbase)</li>
+</ol>
+<p>查找快,扩展性强,适合用作分布式文件存储系统.(大数据)</p>
+<ol start="4">
+<li>图存储型数据库(InfoGrid,Heo4J)</li>
+</ol>
+<p>利用图结构的相关算法来存储实体之间的关系信息,适用于构建社交网络和推荐系统的关系图谱.</p>
+<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>既然 NoSQL 数据库有这么多的优势，那它是否可以直接取代天系型数据库？<br>NoSQL 并不能完全取代关系型数据库，NoSQL 主要被用来处理大量且多元数据的存储及运算问题。在这样的特性差异下，我们该如何选择合适的数据库以解决数据存储与处理问题呢？这里提供以下几点作为判断依据。</p>
+<ol>
+<li>数据模型的关联性要求</li>
+</ol>
+<p>NoSQL 适合模型关联性比较低的应用。因此：<br>·如果需要多表关联，则更适合用 RDB<br>·如果对象实体关联少，则更适合用 NoSQL 数据库.<br>其中 MongoDB 可以支持复杂度相对高的数据结构，能够将相关联的数据以文档的方式嵌入，从而减少数据之间的关联操作</p>
+<ol start="2">
+<li>数据库的性能要求</li>
+</ol>
+<p>如果数据量多切访问速度至关重要，那么使用 NoSQL 数据库可能是比较合适的。NoSQL 数据库能通过数据的分布存储大幅地提供存储性能。</p>
+<ol start="3">
+<li>数据的一致性要求</li>
+</ol>
+<p>NoSQL 数据库有一个缺点：其在事务处理与一致性方面无法与 RDB 相提并论。<br>因此，NoSQL 数据库很难同时满足强一致性与高并发性。如果应用对性能有高要求，则 NoSQL 数据库只能做到数据最终一致。</p>
+<ol start="4">
+<li>数据的可用性要求</li>
+</ol>
+<p>考虑到数据不可用可能会造成风险，NoSQL 数据库提供了强大的数据可用性（在一些需要快速反馈信息给使用者的应用中，响应延迟也算某种程度的高可用）。<br><strong>一个项目并非只选择一种数据库，可以将其拆开设计，将需要 RDB 特性的放到 RDB 中管理，而其它数据放到 NoSQL 中管理。</strong></p>
+<h1 id="安装-MongoDB"><a href="#安装-MongoDB" class="headerlink" title="安装 MongoDB"></a>安装 MongoDB</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew install mongodb-community@4.4</span><br></pre></td></tr></table></figure>
+
+<p>然后按照提示修改环境变量,使用<code>source</code>命令重启.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>英特尔处理器</th>
+<th>苹果 M1 处理器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://link.juejin.cn/?target=https://docs.mongodb.com/v4.4/reference/configuration-options/">配置文件</a></td>
+<td>&#x2F;usr&#x2F;local&#x2F;etc&#x2F;mongod.conf</td>
+<td>&#x2F;opt&#x2F;homebrew&#x2F;etc&#x2F;mongod.conf</td>
+</tr>
+<tr>
+<td><a href="https://link.juejin.cn/?target=https://docs.mongodb.com/v4.4/reference/configuration-options/%23mongodb-setting-systemLog.path">log directory</a>(log 目录)</td>
+<td>&#x2F;usr&#x2F;local&#x2F;var&#x2F;log&#x2F;mongodb</td>
+<td>&#x2F;opt&#x2F;homebrew&#x2F;var&#x2F;log&#x2F;mongodb</td>
+</tr>
+<tr>
+<td><a href="https://link.juejin.cn/?target=https://docs.mongodb.com/v4.4/reference/configuration-options/%23mongodb-setting-storage.dbPath">data directory</a>(data 目录)</td>
+<td>&#x2F;usr&#x2F;local&#x2F;var&#x2F;mongodb</td>
+<td>&#x2F;opt&#x2F;homebrew&#x2F;var&#x2F;mongodb</td>
+</tr>
+</tbody></table>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb-community@4.4</span><br><span class="line">// 停止</span><br><span class="line">brew services stop mongodb-community@4.4</span><br><span class="line">// 查看后台服务列表</span><br><span class="line">brew services list</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/08/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">网络通信基本原理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-08 12:24:42" itemprop="dateCreated datePublished" datetime="2022-11-08T12:24:42+08:00">2022-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-09 14:32:18" itemprop="dateModified" datetime="2022-11-09T14:32:18+08:00">2022-11-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="网络通信方式"><a href="#网络通信方式" class="headerlink" title="网络通信方式"></a>网络通信方式</h1><ul>
+<li>交换机</li>
+<li>路由器</li>
+</ul>
+<h1 id="网络层次模型"><a href="#网络层次模型" class="headerlink" title="网络层次模型"></a>网络层次模型</h1><h2 id="OSI-七层模型"><a href="#OSI-七层模型" class="headerlink" title="OSI 七层模型"></a>OSI 七层模型</h2><ul>
+<li>应用层: 用户与网络的接口</li>
+<li>表示层: 数据加密,转换,压缩</li>
+<li>会话层: 控制网络连接建立与中止</li>
+<li>传输层: 控制数据传输可靠性</li>
+<li>网络层: 确定目标网络</li>
+<li>数据链路层: 确定目标主机</li>
+<li>物理层: 各种网络屋里设备</li>
+</ul>
+<h2 id="TCP-四层模型"><a href="#TCP-四层模型" class="headerlink" title="TCP 四层模型"></a>TCP 四层模型</h2><h1 id="数据封装与解封装"><a href="#数据封装与解封装" class="headerlink" title="数据封装与解封装"></a>数据封装与解封装</h1><h1 id="TCP-三次握手与四次挥手"><a href="#TCP-三次握手与四次挥手" class="headerlink" title="TCP 三次握手与四次挥手"></a>TCP 三次握手与四次挥手</h1><h2 id="TCP-协议"><a href="#TCP-协议" class="headerlink" title="TCP 协议"></a>TCP 协议</h2><ul>
+<li>TCP 属于传输层协议</li>
+<li>TCP 是面向连接的协议</li>
+<li>TCP 用于处理实时通信</li>
+</ul>
+<p>本质上请求连接或请求断开都是四次连接,但是请求断开中服务端请求不能合并成一条.</p>
+<h2 id="常见控制字段"><a href="#常见控制字段" class="headerlink" title="常见控制字段"></a>常见控制字段</h2><ul>
+<li>SYN&#x3D;1: 请求建立连接</li>
+<li>FIN&#x3D;1: 请求断开连接</li>
+<li>ACK&#x3D;1: 数据信息的确认</li>
+</ul>
+<p>本来应该是两次一来一回,共四次,但是服务端这里可以将请求和确认合并发送,就是三次握手连接.<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1667888331598-3e677377-8421-492c-8c03-64bf00f877b1.png#averageHue=%233b3c4a&clientId=ua85c5b97-f94c-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=326&id=uaa64939c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=375&originWidth=640&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=72198&status=done&style=none&taskId=u3dcd730a-8cdd-47ea-9161-615e10d6bd6&title=&width=556" alt="image.png"><br>断开连接:<br>变成四次是因为确保服务端已经将数据全部传输完毕,所以不能进行合并.</p>
+<h1 id="创建-TCP-通信"><a href="#创建-TCP-通信" class="headerlink" title="创建 TCP 通信"></a>创建 TCP 通信</h1><h2 id="通信过程"><a href="#通信过程" class="headerlink" title="通信过程"></a>通信过程</h2><ul>
+<li>创建服务端: 接收和诙谐客户端数据</li>
+<li>创建客户端: 发送接收服务端数据</li>
+<li>数据传输: 内置服务事件和方法读写数据</li>
+</ul>
+<h2 id="通信事件"><a href="#通信事件" class="headerlink" title="通信事件"></a>通信事件</h2><ul>
+<li>listening 事件: 调用 server.listen 方法后触发</li>
+<li>connection 事件: 新的连接建立时触发</li>
+<li>close 事件: 当 server 关闭时触发</li>
+<li>error 事件: 当错误出现时触发</li>
+</ul>
+<h2 id="通信事件-amp-方法"><a href="#通信事件-amp-方法" class="headerlink" title="通信事件&amp;方法"></a>通信事件&amp;方法</h2><ul>
+<li>data 事件: 当接收到数据时触发</li>
+<li>write 方法: 在 socket 上发送数据,默认 UTF-8</li>
+<li>end 操作: 当 socket 的一端发送 FIN 包时触发,结束可读端</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// server.js</span></span><br><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">&quot;net&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建服务端实例</span></span><br><span class="line"><span class="keyword">const</span> server = net.<span class="title function_">createServer</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PORT</span> = <span class="number">1234</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">HOST</span> = <span class="string">&quot;localhost&quot;</span>;</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="variable constant_">PORT</span>, <span class="variable constant_">HOST</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用listen后触发listening事件</span></span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&quot;listening&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`服务端已开启在 <span class="subst">$&#123;HOST&#125;</span>: <span class="subst">$&#123;PORT&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收消息 回写消息</span></span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&quot;connection&quot;</span>, <span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">  socket.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> msg = chunk.<span class="title function_">toString</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(msg);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//回数据</span></span><br><span class="line">    socket.<span class="title function_">write</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="string">&quot;您好&quot;</span> + msg));</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&quot;close&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;服务端关闭&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (err.<span class="property">code</span> === <span class="string">&quot;EADDRINUSE&quot;</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;地址占用&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// client.js</span></span><br><span class="line"><span class="keyword">const</span> net = <span class="built_in">require</span>(<span class="string">&quot;net&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = net.<span class="title function_">createConnection</span>(&#123;</span><br><span class="line">  <span class="attr">port</span>: <span class="number">1234</span>,</span><br><span class="line">  <span class="attr">host</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&quot;connect&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  client.<span class="title function_">write</span>(<span class="string">&quot;edu&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(chunk.<span class="title function_">toString</span>());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&quot;close&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;客户端断开连接&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">client.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="TCP-数据粘包"><a href="#TCP-数据粘包" class="headerlink" title="TCP 数据粘包"></a>TCP 数据粘包</h1><p>发送端和接收端都是等待缓冲数据之后再消费.<br>出现问题的原因: 发送间隔太短导致数据堆积.</p>
+<h2 id="数据的封包和拆包"><a href="#数据的封包和拆包" class="headerlink" title="数据的封包和拆包"></a>数据的封包和拆包</h2><p>将消息头拆分为序列号和消息长度</p>
+<h2 id="数据传输过程"><a href="#数据传输过程" class="headerlink" title="数据传输过程"></a>数据传输过程</h2><ul>
+<li>进行数据编码,获取二进制数据包</li>
+<li>按规则拆解数据,获取指定长度数据</li>
+</ul>
+<h2 id="Buffer-数据读写"><a href="#Buffer-数据读写" class="headerlink" title="Buffer 数据读写"></a>Buffer 数据读写</h2><ul>
+<li>writeInt16BE: 将 value 从指定位置写入</li>
+<li>readInt16BE: 从指定位置开始读取数据</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编码解码</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">myTransform</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 固定header总长度4字节</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">packageHeaderLen</span> = <span class="number">4</span>;</span><br><span class="line">    <span class="comment">// 当前包的编号</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">serialNum</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">serialLen</span> = <span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 编码</span></span><br><span class="line">  <span class="title function_">encode</span>(<span class="params">data, serialNum</span>) &#123;</span><br><span class="line">    <span class="comment">//把传入数据变为二进制</span></span><br><span class="line">    <span class="keyword">const</span> body = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(data);</span><br><span class="line">    <span class="comment">// 01 先按照指定长度申请内存空间作为header使用</span></span><br><span class="line">    <span class="keyword">const</span> headerBuf = <span class="title class_">Buffer</span>.<span class="title function_">alloc</span>(<span class="variable language_">this</span>.<span class="property">packageHeaderLen</span>);</span><br><span class="line">    <span class="comment">// 02 写操作</span></span><br><span class="line">    headerBuf.<span class="title function_">writeInt16BE</span>(serialNum || <span class="variable language_">this</span>.<span class="property">serialNum</span>);</span><br><span class="line">    <span class="comment">// 数据的长度作为消息体的总长度写入另一空间</span></span><br><span class="line">    headerBuf.<span class="title function_">writeInt16BE</span>(body.<span class="property">length</span>, <span class="variable language_">this</span>.<span class="property">serialLen</span>); <span class="comment">// 跳过前面占用的位置</span></span><br><span class="line">    <span class="comment">// 设置编号</span></span><br><span class="line">    <span class="keyword">if</span> (serialNum === <span class="literal">undefined</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">serialNum</span>++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Buffer</span>.<span class="title function_">concat</span>(headerBuf, body);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 解码</span></span><br><span class="line">  <span class="title function_">decode</span>(<span class="params">buffer</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> headerBuf = buffer.<span class="title function_">slice</span>(<span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">packageHeaderLen</span>);</span><br><span class="line">    <span class="keyword">const</span> bodyBuf = buffer.<span class="title function_">slice</span>(<span class="variable language_">this</span>.<span class="property">packageHeaderLen</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">serialNum</span>: headerBuf.<span class="title function_">readInt16BE</span>(),</span><br><span class="line">      <span class="attr">bodyLength</span>: headerBuf.<span class="title function_">readInt16BE</span>(<span class="variable language_">this</span>.<span class="property">serialLen</span>),</span><br><span class="line">      <span class="attr">body</span>: bodyBuf.<span class="title function_">toString</span>(),</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取数据包长度,用于判断是否还有数据</span></span><br><span class="line">  <span class="title function_">getPackageLen</span>(<span class="params">buffer</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (buffer.<span class="property">length</span> &lt; <span class="variable language_">this</span>.<span class="property">packageHeaderLen</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">packageHeaderLen</span> + buffer.<span class="title function_">readInt16BE</span>(<span class="variable language_">this</span>.<span class="property">serialLen</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = myTransform;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数据粘包解决"><a href="#数据粘包解决" class="headerlink" title="数据粘包解决"></a>数据粘包解决</h2><p>利用上面的编解码工具类</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// server.js</span></span><br><span class="line"><span class="keyword">const</span> myTransform = <span class="built_in">require</span>(<span class="string">&quot;./myTransform.js&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> overageBuffer = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">let</span> ts = <span class="keyword">new</span> <span class="title function_">myTransform</span>();</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="comment">// 接收消息 回写消息</span></span><br><span class="line">server.<span class="title function_">on</span>(<span class="string">&quot;connection&quot;</span>, <span class="function">(<span class="params">socket</span>) =&gt;</span> &#123;</span><br><span class="line">  socket.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 如果有未使用完的buffer</span></span><br><span class="line">    <span class="keyword">if</span> (overageBuffer) &#123;</span><br><span class="line">      <span class="comment">//将数据拼接</span></span><br><span class="line">      chunk = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>([overageBuffer, chunk]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> packageLen = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 如果数据为0,则说明不足以读取,否则就是可读取</span></span><br><span class="line">    <span class="keyword">while</span> ((packageLen = ts.<span class="title function_">getPackageLen</span>(chunk))) &#123;</span><br><span class="line">      <span class="comment">// 把包的内容截取出来</span></span><br><span class="line">      <span class="keyword">const</span> packageCon = chunk.<span class="title function_">slice</span>(<span class="number">0</span>, packageLen);</span><br><span class="line">      <span class="comment">// 更新chunk,将已读取的截掉</span></span><br><span class="line">      chunk = chunk.<span class="title function_">slice</span>(packageLen);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> ret = ts.<span class="title function_">decode</span>(packageCon);</span><br><span class="line">      <span class="comment">//回数据</span></span><br><span class="line">      socket.<span class="title function_">write</span>(ret.<span class="property">body</span>, ret.<span class="property">serialNum</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 将剩余的chunk交给overageBuffer下一次处理</span></span><br><span class="line">    overageBuffer = chunk;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Http-协议"><a href="#Http-协议" class="headerlink" title="Http 协议"></a>Http 协议</h1><h2 id="获取-http-请求信息"><a href="#获取-http-请求信息" class="headerlink" title="获取 http 请求信息"></a>获取 http 请求信息</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">&quot;url&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; pathname, query &#125; = url.<span class="title function_">parse</span>(req.<span class="property">url</span>, <span class="literal">true</span>);</span><br><span class="line">  <span class="comment">// 请求方式</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">method</span>);</span><br><span class="line">  <span class="comment">// http版本号</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">httpVersion</span>);</span><br><span class="line">  <span class="comment">// 请求头</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(req.<span class="property">headers</span>);</span><br><span class="line">  <span class="comment">// 请求体数据获取</span></span><br><span class="line">  <span class="keyword">let</span> arr = [];</span><br><span class="line">  <span class="comment">// req是个可读流</span></span><br><span class="line">  req.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    arr.<span class="title function_">push</span>(data);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  req.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Buffer</span>.<span class="title function_">concat</span>(arr).<span class="title function_">toString</span>());</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">1234</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server start ...&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置-http-响应"><a href="#设置-http-响应" class="headerlink" title="设置 http 响应"></a>设置 http 响应</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">&quot;http&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">&quot;url&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = http.<span class="title function_">createServer</span>(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// res就是可写流</span></span><br><span class="line">  <span class="comment">// res.write(&#x27;ok&#x27;)</span></span><br><span class="line">  <span class="comment">// 使用end结束写入操作,或者直接在里面写入</span></span><br><span class="line">  <span class="comment">// res.end()</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置响应头</span></span><br><span class="line">  res.<span class="property">statusCode</span> = <span class="number">200</span>;</span><br><span class="line">  res.<span class="title function_">setHeader</span>(<span class="string">&quot;Content-type&quot;</span>, <span class="string">&quot;text/html;charset=utf-8&quot;</span>);</span><br><span class="line">  res.<span class="title function_">end</span>(<span class="string">&quot;你好&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">1234</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;server start ...&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="客户端代理"><a href="#客户端代理" class="headerlink" title="客户端代理"></a>客户端代理</h2><p>相当于服务端,客户端与不同端口域名协议的服务端通信有跨域,那就采用客户端代理,它与服务端就不存在跨域.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/05/Node/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +485,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:26" itemprop="dateModified" datetime="2022-11-08T11:18:26+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:18" itemprop="dateModified" datetime="2022-11-09T14:32:18+08:00">2022-11-09</time>
     </span>
 
   
@@ -700,7 +977,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:26" itemprop="dateModified" datetime="2022-11-08T11:18:26+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:19" itemprop="dateModified" datetime="2022-11-09T14:32:19+08:00">2022-11-09</time>
     </span>
 
   
@@ -769,7 +1046,7 @@
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#115;&#97;&#x78;&#64;&#x33;&#46;&#48;&#46;&#x30;">&#115;&#97;&#x78;&#64;&#x33;&#46;&#48;&#46;&#x30;</a></td>
+<td>pnpm add <a href="mailto:&#x73;&#x61;&#x78;&#64;&#x33;&#x2e;&#48;&#x2e;&#48;">&#x73;&#x61;&#x78;&#64;&#x33;&#x2e;&#48;&#x2e;&#48;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
@@ -835,7 +1112,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:26" itemprop="dateModified" datetime="2022-11-08T11:18:26+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:19" itemprop="dateModified" datetime="2022-11-09T14:32:19+08:00">2022-11-09</time>
     </span>
 
   
@@ -988,7 +1265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:26" itemprop="dateModified" datetime="2022-11-08T11:18:26+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:19" itemprop="dateModified" datetime="2022-11-09T14:32:19+08:00">2022-11-09</time>
     </span>
 
   
@@ -1322,7 +1599,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:26" itemprop="dateModified" datetime="2022-11-08T11:18:26+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:19" itemprop="dateModified" datetime="2022-11-09T14:32:19+08:00">2022-11-09</time>
     </span>
 
   
@@ -1492,7 +1769,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:27" itemprop="dateModified" datetime="2022-11-08T11:18:27+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:19" itemprop="dateModified" datetime="2022-11-09T14:32:19+08:00">2022-11-09</time>
     </span>
 
   
@@ -1657,7 +1934,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:27" itemprop="dateModified" datetime="2022-11-08T11:18:27+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:20" itemprop="dateModified" datetime="2022-11-09T14:32:20+08:00">2022-11-09</time>
     </span>
 
   
@@ -2116,7 +2393,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:27" itemprop="dateModified" datetime="2022-11-08T11:18:27+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:20" itemprop="dateModified" datetime="2022-11-09T14:32:20+08:00">2022-11-09</time>
     </span>
 
   
@@ -2221,169 +2498,6 @@
 <li>当重新获取数据失败后，你可以像上面的例子一样即显示缓存数据，又显示报错</li>
 <li>也可以判断 isError 字段为 true 时，只显示报错信息，隐藏缓存数据。</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" class="post-title-link" itemprop="url">常用组件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-19 16:23:33" itemprop="dateCreated datePublished" datetime="2022-10-19T16:23:33+08:00">2022-10-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:27" itemprop="dateModified" datetime="2022-11-08T11:18:27+08:00">2022-11-08</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="树形选项点击主项子项默认全选"><a href="#树形选项点击主项子项默认全选" class="headerlink" title="树形选项点击主项子项默认全选"></a>树形选项点击主项子项默认全选</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">carSelectedChange</span>(<span class="params">val, row</span>) &#123;</span><br><span class="line">  <span class="comment">//先重置</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">car</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (val.<span class="title function_">find</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x.<span class="property">accCarSeq</span> == car.<span class="property">accCarSeq</span>)) &#123;</span><br><span class="line">      car.<span class="property">checked</span> = <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      car.<span class="property">checked</span> = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (car.<span class="property">children</span>) &#123;</span><br><span class="line">      car.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (val.<span class="title function_">find</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x.<span class="property">accCarSeq</span> == p.<span class="property">accCarSeq</span>)) &#123;</span><br><span class="line">          p.<span class="property">checked</span> = <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          p.<span class="property">checked</span> = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (row) &#123;</span><br><span class="line">    <span class="comment">//单独操作行</span></span><br><span class="line">    <span class="keyword">let</span> action = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断是否是新增</span></span><br><span class="line">    <span class="keyword">if</span> (val.<span class="title function_">find</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x.<span class="property">accCarSeq</span> == row.<span class="property">accCarSeq</span>)) &#123;</span><br><span class="line">      <span class="comment">//新增</span></span><br><span class="line">      action = <span class="string">&quot;add&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//移除</span></span><br><span class="line">      action = <span class="string">&quot;remove&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> carIndex = <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>.<span class="title function_">findIndex</span>(</span><br><span class="line">      <span class="function">(<span class="params">car</span>) =&gt;</span> car.<span class="property">accCarSeq</span> == row.<span class="property">accCarSeq</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (carIndex &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>[carIndex].<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">        p.<span class="property">checked</span> = action == <span class="string">&quot;add&quot;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">carTable</span>.<span class="title function_">toggleRowSelection</span>(p, action == <span class="string">&quot;add&quot;</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">car</span>) =&gt;</span> &#123;</span><br><span class="line">        car.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (p.<span class="property">accCarSeq</span> == row.<span class="property">accCarSeq</span> &amp;&amp; action == <span class="string">&quot;add&quot;</span>) &#123;</span><br><span class="line">            car.<span class="property">checked</span> = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">carTable</span>.<span class="title function_">toggleRowSelection</span>(car, <span class="literal">true</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//全选</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">car</span>) =&gt;</span> &#123;</span><br><span class="line">      car.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">        p.<span class="property">checked</span> = car.<span class="property">checked</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">carTable</span>.<span class="title function_">toggleRowSelection</span>(p, p.<span class="property">checked</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/12/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">单元测试</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-12 17:29:11" itemprop="dateCreated datePublished" datetime="2022-10-12T17:29:11+08:00">2022-10-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:27" itemprop="dateModified" datetime="2022-11-08T11:18:27+08:00">2022-11-08</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>常用测试工具 Jest,用于测试 js 相关.<br>测试 react 使用<code>@testing-library/react</code><br>测试 react-hook 使用<code>@testing-library/react-hooks</code></p>
-<h1 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @testing-library/react-hooks msw -D</span><br></pre></td></tr></table></figure>
-
-<p>新建<code>__tests__</code>文件夹,约定<code>__</code>为测试使用文件夹.</p>
-<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>在<code>__tests__/http</code>中测试<code>http</code>模块.<br>下面模块用于模拟异步请求.</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; setupServer &#125; <span class="keyword">from</span> <span class="string">&quot;msw/node&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> server = <span class="title function_">setupServer</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// beforeAll是Jest测试库中一个方法,表示执行所有测试之前先执行</span></span><br><span class="line"><span class="title function_">beforeAll</span>(<span class="function">() =&gt;</span> server.<span class="title function_">listen</span>());</span><br><span class="line"><span class="comment">//每次测试完毕都重置mock路由</span></span><br><span class="line"><span class="title function_">afterEach</span>(<span class="function">() =&gt;</span> server.<span class="title function_">resetHandlers</span>());</span><br><span class="line"><span class="comment">//所有测试完毕后,关闭mock路由</span></span><br><span class="line"><span class="title function_">afterAll</span>(<span class="function">() =&gt;</span> server.<span class="title function_">close</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 开始测试,第二个参数是回调函数就是测试内容</span></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&quot;http异步发送请求&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> endpoint = <span class="string">&quot;test-endpoint&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> mockResult = &#123; <span class="attr">mockValue</span>: <span class="string">&quot;mock&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用msw模拟mock</span></span><br><span class="line">  server.<span class="title function_">use</span>(</span><br><span class="line">    <span class="comment">// rest是msw中用于restful接口的方法</span></span><br><span class="line">    rest.<span class="title function_">get</span>(<span class="string">`<span class="subst">$&#123;apiUrl&#125;</span>/<span class="subst">$&#123;endpoint&#125;</span>`</span>, <span class="function">(<span class="params">req, res, ctx</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">res</span>(ctx.<span class="title function_">json</span>(mockResult));</span><br><span class="line">    &#125;)</span><br><span class="line">  );</span><br><span class="line">  <span class="comment">// 使用http模块返回mock值</span></span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="title function_">http</span>(endpoint);</span><br><span class="line">  <span class="comment">// 期望http的返回值和mock数据相等(注意不是完全相等,完全是toBe)</span></span><br><span class="line">  <span class="title function_">expect</span>(result).<span class="title function_">toEqual</span>(mockResult);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&quot;http请求时携带token&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> token = <span class="string">&quot;FAKE_TOKEN&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> endpoint = <span class="string">&quot;test-endpoint&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> mockResult = &#123; <span class="attr">mockValue</span>: <span class="string">&quot;mock&quot;</span> &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> <span class="attr">request</span>: <span class="built_in">any</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用msw模拟mock</span></span><br><span class="line">  server.<span class="title function_">use</span>(</span><br><span class="line">    <span class="comment">// rest是msw中用于restful接口的方法</span></span><br><span class="line">    rest.<span class="title function_">get</span>(<span class="string">`<span class="subst">$&#123;apiUrl&#125;</span>/<span class="subst">$&#123;endpoint&#125;</span>`</span>, <span class="function">(<span class="params">req, res, ctx</span>) =&gt;</span> &#123;</span><br><span class="line">      request = req;</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">res</span>(ctx.<span class="title function_">json</span>(mockResult));</span><br><span class="line">    &#125;)</span><br><span class="line">  );</span><br><span class="line">  <span class="comment">// 使用http模块返回mock值</span></span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">http</span>(endpoint, &#123; token &#125;);</span><br><span class="line">  <span class="comment">// 期望http的返回值和mock数据相等(注意不是完全相等,完全是toBe)</span></span><br><span class="line">  <span class="title function_">expect</span>(request.<span class="property">headers</span>.<span class="title function_">get</span>(<span class="string">&quot;Authorization&quot;</span>)).<span class="title function_">toBe</span>(<span class="string">`Bearer <span class="subst">$&#123;token&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试-Hook"><a href="#测试-Hook" class="headerlink" title="测试 Hook"></a>测试 Hook</h2><p>新建<code>__test__/use-async</code>文件.</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; act, renderHook &#125; <span class="keyword">from</span> <span class="string">&quot;@testing-library/react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useAsync &#125; <span class="keyword">from</span> <span class="string">&quot;utils/use-async&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">defaultState</span>: <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> useAsync&gt; = &#123;</span><br><span class="line">  <span class="attr">stat</span>: <span class="string">&quot;idle&quot;</span>,</span><br><span class="line">  <span class="attr">error</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">data</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">isIdle</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">isLoading</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">isError</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">isSuccess</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">run</span>: expect.<span class="title function_">any</span>(<span class="title class_">Function</span>),</span><br><span class="line">  <span class="attr">setData</span>: expect.<span class="title function_">any</span>(<span class="title class_">Function</span>),</span><br><span class="line">  <span class="attr">setError</span>: expect.<span class="title function_">any</span>(<span class="title class_">Function</span>),</span><br><span class="line">  <span class="attr">retry</span>: expect.<span class="title function_">any</span>(<span class="title class_">Function</span>),</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">loadingState</span>: <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> useAsync&gt; = &#123;</span><br><span class="line">  ...defaultState,</span><br><span class="line">  <span class="attr">stat</span>: <span class="string">&quot;loading&quot;</span>,</span><br><span class="line">  <span class="attr">isLoading</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">isIdle</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">successState</span>: <span class="title class_">ReturnType</span>&lt;<span class="keyword">typeof</span> useAsync&gt; = &#123;</span><br><span class="line">  ...defaultState,</span><br><span class="line">  <span class="attr">stat</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">  <span class="attr">isSuccess</span>: <span class="literal">true</span>,</span><br><span class="line">  <span class="attr">isIdle</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试脚本</span></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&quot;useAsync可以异步处理&quot;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">resolve</span>: <span class="built_in">any</span>, reject;</span><br><span class="line">  <span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">res, rej</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve = res;</span><br><span class="line">    reject = rej;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> &#123; result &#125; = <span class="title function_">renderHook</span>(<span class="function">() =&gt;</span> <span class="title function_">useAsync</span>());</span><br><span class="line">  <span class="comment">// 期望Hook的默认返回值与test的默认值一致</span></span><br><span class="line">  <span class="title function_">expect</span>(result.<span class="property">current</span>).<span class="title function_">toEqual</span>(defaultState);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> <span class="attr">p</span>: <span class="title class_">Promise</span>&lt;<span class="built_in">any</span>&gt;;</span><br><span class="line">  <span class="comment">// 如果操作包含改变setState,需要使用act包裹</span></span><br><span class="line">  <span class="title function_">act</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    p = result.<span class="property">current</span>.<span class="title function_">run</span>(promise);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 期望刚创建的promise中是loading状态</span></span><br><span class="line">  <span class="title function_">expect</span>(result.<span class="property">current</span>).<span class="title function_">toEqual</span>(loadingState);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 期望promise执行完毕后,返回的值是success状态的值</span></span><br><span class="line">  <span class="keyword">const</span> resolvedValue = &#123; <span class="attr">mockValue</span>: <span class="string">&quot;resolved&quot;</span> &#125;;</span><br><span class="line">  <span class="title function_">act</span>(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 执行resolve,之后promise就是fulfilled</span></span><br><span class="line">    <span class="title function_">resolve</span>(resolvedValue);</span><br><span class="line">    <span class="keyword">await</span> p;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="title function_">expect</span>(result.<span class="property">current</span>).<span class="title function_">toEqual</span>(&#123;</span><br><span class="line">    ...successState,</span><br><span class="line">    <span class="attr">data</span>: resolvedValue,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试组件"><a href="#测试组件" class="headerlink" title="测试组件"></a>测试组件</h2><p>新建<code>__tests__/mark.tsx</code>用于测试高亮组件.</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; renderHook &#125; <span class="keyword">from</span> <span class="string">&quot;@testing-library/react-hooks&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; screen &#125; <span class="keyword">from</span> <span class="string">&quot;@testing-library/react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Mark</span> &#125; <span class="keyword">from</span> <span class="string">&quot;../components/mark&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">test</span>(<span class="string">&quot;Mark组件正确高亮关键词&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> name = <span class="string">&quot;物料管理&quot;</span>;</span><br><span class="line">  <span class="keyword">const</span> keyword = <span class="string">&quot;管理&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">renderHook</span>(<span class="function">() =&gt;</span> <span class="language-xml"><span class="tag">&lt;<span class="name">Mark</span> <span class="attr">name</span>=<span class="string">&#123;name&#125;</span> <span class="attr">keyword</span>=<span class="string">&#123;keyword&#125;</span> /&gt;</span></span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 期望keyword存在document中</span></span><br><span class="line">  <span class="title function_">expect</span>(screen.<span class="title function_">getByText</span>(keyword)).<span class="title function_">toBeInTheDocument</span>();</span><br><span class="line">  <span class="title function_">expect</span>(screen.<span class="title function_">getByText</span>(keyword)).<span class="title function_">toHaveStyle</span>(<span class="string">&quot;color: #257AFD&quot;</span>);</span><br><span class="line">  <span class="comment">// 期望其他字没有高亮颜色</span></span><br><span class="line">  <span class="title function_">expect</span>(screen.<span class="title function_">getByText</span>(<span class="string">&quot;物料&quot;</span>)).<span class="property">not</span>.<span class="title function_">toHaveStyle</span>(<span class="string">&quot;color: #257AFD&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>

@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">105</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,335 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/14/VueX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/09/14/VueX/" class="post-title-link" itemprop="url">Vuex</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-09-14 21:38:29" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:29+08:00">2019-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-09 14:32:26" itemprop="dateModified" datetime="2022-11-09T14:32:26+08:00">2022-11-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Vuex-介绍"><a href="#Vuex-介绍" class="headerlink" title="Vuex 介绍"></a>Vuex 介绍</h1><p>每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的**状态(state)**。Vuex 和单纯的全局对象有以下两点不同：</p>
+<ol>
+<li>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
+<li>不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交**(commit)mutation**。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
+</ol>
+<p>我的理解: Vuex 相当于一个扩展板的<code>bus</code>中介.起步虽相似,但功能更丰富.</p>
+<h2 id="Vuex-之-store"><a href="#Vuex-之-store" class="headerlink" title="Vuex 之 store"></a>Vuex 之 store</h2><p>起步: 安装,引入,<code>use</code>,创建状态仓库.在 Vue 实例中注入(把 store 写进去).一条龙服务.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建仓库格式</span></span><br><span class="line"><span class="keyword">var</span> store = <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    <span class="attr">state</span>: &#123;</span><br><span class="line">        <span class="comment">//定义你的状态</span></span><br><span class="line">        <span class="attr">XXX</span>: xxx</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">mutations</span>: &#123;</span><br><span class="line">        <span class="comment">//在此处定义状态改变的方法</span></span><br><span class="line">        <span class="title function_">increase</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">num</span> ++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">decrease</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">num</span> --</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">actions</span>: &#123;</span><br><span class="line">        <span class="comment">//actions中传递的不再是state,而是context</span></span><br><span class="line">        <span class="title function_">increaseAction</span>(<span class="params">context</span>)&#123;</span><br><span class="line">            <span class="comment">//actions中只能对mutations中的方法进行操作</span></span><br><span class="line">            context.<span class="title function_">commit</span>(<span class="string">&#x27;increase&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>mutations 改变状态:</p>
+</blockquote>
+<p>直接通过<code>this.$store.state.XXX</code>拿到状态</p>
+<p>在 methods 中.定义一个函数通过<code>this.$store.commit(&#39;xxx&#39;)</code>方法触发状态变更</p>
+<blockquote>
+<p>actions 改变状态:</p>
+</blockquote>
+<p>通过<code>this.$store.dispatch(xxx)</code>调用</p>
+<p>二者区别:</p>
+<ol>
+<li>传入参数不同,mutations 传入<code>state</code>.actions 传入<code>context</code></li>
+<li>调用方式不同,前者<code>this.$store.commit(&#39;xxx&#39;)</code>.后者<code>this.$store.dispatch(xxx)</code></li>
+<li>函数要求不同.mutations 中只能有同步操作,actions 中可以有异步操作.</li>
+</ol>
+<h2 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h2><p>有时需要对 mutations 处理后的 state 进行处理.</p>
+<p>可以当做 vuex 的计算属性(computed).</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">getters</span>: &#123;</span><br><span class="line">    <span class="title function_">getNum</span>(<span class="params">state</span>)&#123;</span><br><span class="line">        <span class="comment">//因为要处理state,自然传入state</span></span><br><span class="line">        <span class="keyword">return</span> state.<span class="property">num</span> &gt; <span class="number">0</span> ? state.<span class="property">num</span> : <span class="number">0</span></span><br><span class="line">        <span class="comment">//这里是防止一直减出现负数进行的处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取状态也就改为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件中</span></span><br><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="title function_">getCount</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="comment">//return this.$store.state.num</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">getters</span>.<span class="property">getNum</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Vuex-状态管理流程"><a href="#Vuex-状态管理流程" class="headerlink" title="Vuex 状态管理流程"></a>Vuex 状态管理流程</h1><p>view–&gt;actions–&gt;mutations–&gt;state–&gt;view</p>
+<h1 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h1><p>VueX 中</p>
+<p><code>state</code>相当于<code>data</code></p>
+<p><code>getter</code>相当于<code>computed</code></p>
+<p><code>mutation</code>相当于<code>methods</code></p>
+<p><code>action</code>是异步的<code>mutation</code></p>
+<p><code>module</code>模块将上述进行封装分块</p>
+<h2 id="mapState-和-mapGetters"><a href="#mapState-和-mapGetters" class="headerlink" title="mapState 和 mapGetters"></a>mapState 和 mapGetters</h2><p><code>mapState</code>辅助函数仅仅是将 store 中的<code>getter</code>映射到局部计算属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...<span class="title class_">Vuex</span>.<span class="title function_">mapState</span>([<span class="string">&#x27;firstName&#x27;</span>, <span class="string">&#x27;lastName&#x27;</span>])</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="title function_">firstName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">state</span>.<span class="property">firstName</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">lastName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">state</span>.<span class="property">lastName</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">..<span class="property">Vuex</span>.<span class="title function_">mapGetters</span>([<span class="string">&#x27;fullName&#x27;</span>])</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="title function_">fullName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">getters</span>.<span class="property">fullName</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>store.commit(&#39;xxFirstName&#39;, &#39;jirengu&#39;)</code></p>
+<p>提交 mutation 中 xxFirstName 的方法。</p>
+<p>第一个参数是 state 中有的，后添加的 jirengu 是载荷<code>payload</code>。</p>
+<h2 id="提交载荷（payload）"><a href="#提交载荷（payload）" class="headerlink" title="提交载荷（payload）"></a>提交载荷（payload）</h2><p>向<code>store.commit</code>传入额外参数，即<code>mutation</code>的载荷</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mutations</span>:&#123;</span><br><span class="line">increment (state, payload)&#123;</span><br><span class="line">state.<span class="property">count</span> += payload.<span class="property">amount</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">store.<span class="title function_">commit</span>(<span class="string">&#x27;increment&#x27;</span>, &#123;</span><br><span class="line"><span class="attr">amount</span>: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>actions 中传入第一个参数是<code>context</code>，第二个是<code>payload</code></p>
+<p>触发 action</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.<span class="title function_">dispatch</span>(<span class="string">&quot;increment&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="moudle-模块化"><a href="#moudle-模块化" class="headerlink" title="moudle(模块化)"></a>moudle(模块化)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line">  <span class="attr">state</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">getters</span>: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> moduleB = &#123;</span><br><span class="line">  <span class="attr">state</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    <span class="attr">a</span>: moduleA,</span><br><span class="line">    <span class="attr">b</span>: moduleB</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">store.<span class="property">state</span>.<span class="property">a</span> <span class="comment">// -&gt; moduleA 的状态</span></span><br><span class="line">store.<span class="property">state</span>.<span class="property">b</span> <span class="comment">// -&gt; moduleB 的状态</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/14/VueRouter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/09/14/VueRouter/" class="post-title-link" itemprop="url">VueRouter</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-09-14 21:38:12" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:12+08:00">2019-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-09 14:32:25" itemprop="dateModified" datetime="2022-11-09T14:32:25+08:00">2022-11-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="前端路由原理"><a href="#前端路由原理" class="headerlink" title="前端路由原理"></a>前端路由原理</h1><p>监听 url 的变化，然后匹配路由规则，显示相应页面，无需刷新。</p>
+<p>目前前端路由只有两种实现方式</p>
+<ol>
+<li>hash 模式</li>
+</ol>
+<p>监听 hash 值变化(url 后的,从#号开始)</p>
+<p><code>window.addEventListener(&#39;hashchange&#39;,()=&gt;&#123;&#125;)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//监听hash变化</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">onhashchange</span> = <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(event.<span class="property">oldURL</span>, event.<span class="property">newURL</span>);</span><br><span class="line">  <span class="keyword">let</span> hash = loaction.<span class="property">hash</span>; <span class="comment">//通过location对象来获取hash地址</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(hash); <span class="comment">// &quot;#/notebooks/260827/list&quot;  从#号开始</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>因为 hash 发生变化的 url 都会被浏览器记录下来，从而你会发现浏览器的前进后退都可以用.</p>
+<p>特点: hash 虽然出现在 URL 中，但不会被包括在 HTTP 请求中，对后端完全没有影响，因此改变 hash 不会重新加载页面。</p>
+<ol start="2">
+<li>history 模式</li>
+</ol>
+<p>通过此模式改变 url 同样不会引起页面刷新，只会更新浏览器的历史记录’</p>
+<p>修改为 history 模式:在 router 中添加<code>mode: &#39;history&#39;</code>.</p>
+<p><code>history.pushState</code></p>
+<p>替换当前历史记录</p>
+<p><code>history.replaceState</code></p>
+<p>点击后退触发 popState 事件</p>
+<p><code>window.addEventListener(&#39;popState&#39;,e=&gt;&#123;&#125;)</code></p>
+<h3 id="切换历史状态"><a href="#切换历史状态" class="headerlink" title="切换历史状态"></a>切换历史状态</h3><p>包括 back,forward,go 三个方法，对应浏览器的前进，后退，跳转操作.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">history.<span class="title function_">go</span>(-<span class="number">2</span>); <span class="comment">//后退两次</span></span><br><span class="line">history.<span class="title function_">go</span>(<span class="number">2</span>); <span class="comment">//前进两次</span></span><br><span class="line">history.<span class="title function_">back</span>(); <span class="comment">//后退</span></span><br><span class="line">hsitory.<span class="title function_">forward</span>(); <span class="comment">//前进</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="修改历史状态"><a href="#修改历史状态" class="headerlink" title="修改历史状态"></a>修改历史状态</h3><p>包括了 pushState,replaceState 两个方法,这两个方法接收三个参数:<code>stateObj,title,url</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">history.<span class="title function_">pushState</span>(&#123;<span class="attr">color</span>:<span class="string">&#x27;red&#x27;</span>&#125;, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;red&#x27;</span>&#125;)</span><br><span class="line">history.<span class="title function_">back</span>();</span><br><span class="line">history.<span class="title function_">forward</span>();</span><br></pre></td></tr></table></figure>
+
+<p>通过 pushstate 把页面的状态保存在 state 对象中，当页面的 url 再变回这个 url 时，可以通过 event.state 取到这个 state 对象.</p>
+<h3 id="history-模式缺点"><a href="#history-模式缺点" class="headerlink" title="history 模式缺点"></a>history 模式缺点</h3><p>通过 history api，我们丢掉了丑陋的#，但是它也有个毛病：</p>
+<p>不怕前进，不怕后退，就怕刷新，f5（如果后端没有准备的话）,因为刷新是实实在在地去请求服务器的,不玩虚的。</p>
+<p>在 hash 模式下，前端路由修改的是#中的信息，而浏览器请求时是不带它玩的，所以没有问题.但是在 history 下，你可以自由的修改 path，当刷新时，如果服务器中没有相应的响应或者资源，会请求失败.</p>
+<p>所以，如果你想在 github.io 上搭一个单页博客，就应该选择 hash 模式</p>
+<h1 id="vue-router-路由"><a href="#vue-router-路由" class="headerlink" title="vue-router 路由"></a>vue-router 路由</h1><ol>
+<li>安装 vue-router</li>
+</ol>
+<p><code>npm install --save vue-router</code> 2. 引用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(router);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>配置路由文件,并在 Vue 实例中注入</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&quot;./App&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">HelloWorld</span> <span class="keyword">from</span> <span class="string">&quot;./components/HelloWorld&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(router); <span class="comment">//引入并且使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rt = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="comment">//下面这个routes是数组,用[]</span></span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/hello&quot;</span>, <span class="comment">//指定要跳转的路径</span></span><br><span class="line">      <span class="attr">component</span>: <span class="title class_">HelloWorld</span>, <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">el</span>: <span class="string">&quot;#app&quot;</span>,</span><br><span class="line">  <span class="attr">router</span>: rt, <span class="comment">//把路由实例rt写到Vue实例中就注入了</span></span><br><span class="line">  <span class="attr">components</span>: &#123; <span class="title class_">App</span> &#125;, <span class="comment">//组件直接注入.分开写便于模块化</span></span><br><span class="line">  <span class="attr">template</span>: <span class="string">&quot;&lt;App/&gt;&quot;</span>, <span class="comment">//同上</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>确定视图加载的位置</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line"><span class="comment">//把这个写到想注入的位置就可以了</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><p>在路由文件中,一般是<code>router/index.js</code>.就是把路由单独写一个文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">HelloWorld</span> <span class="keyword">from</span> <span class="string">&quot;./components/HelloWorld&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">HelloEarth</span> <span class="keyword">from</span> <span class="string">&quot;./components/Helloearth&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(router); <span class="comment">//引入并且使用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title function_">router</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/helloworld&quot;</span>, <span class="comment">//指定要跳转的路径</span></span><br><span class="line">      <span class="attr">component</span>: <span class="title class_">HelloWorld</span>, <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/helloearth&quot;</span>, <span class="comment">//指定要跳转的路径</span></span><br><span class="line">      <span class="attr">component</span>: <span class="title class_">HelloEarth</span>, <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>然后在页面组件中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/helloworld&quot;</span>&gt;</span>HelloWorld<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">&quot;/helloearth&quot;</span>&gt;</span>HelloEarth<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="vue-router-路由参数传递-传参"><a href="#vue-router-路由参数传递-传参" class="headerlink" title="vue-router 路由参数传递(传参)"></a>vue-router 路由参数传递(传参)</h2><ol>
+<li>必须在路由内加入路由的<code>name</code></li>
+<li>必须在<code>path</code>后加<code>/:</code>加传递的参数</li>
+<li>传递参数(传值)和接收参数(具体看下面两种方法)</li>
+</ol>
+<p>传递参数方法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//params:</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;xxx&quot;</span>,</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">id</span>: id,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//params读取参数: this.$route.params.id</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//query</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123;</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&quot;/xxx&quot;</span>,</span><br><span class="line">  <span class="attr">query</span>: &#123;</span><br><span class="line">    <span class="attr">id</span>: id,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//query读取参数: this.$route.query.id</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意: params 传参,push 里只能是 name:’xxx’,不能是 path:’&#x2F;xxx’,因为 params 只能用 name 来引入路由,如果这个写成 path,接收参数页面会是 undefined.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两种方式:</span></span><br><span class="line">  &lt;router-link :to=<span class="string">&quot;&#123;name: helloworld,params:&#123;worldmsg: &#x27;你好世界&#x27; &#125;&#125;&quot;</span>&gt;</span><br><span class="line">      helloworld&lt;/router-link&gt;</span><br><span class="line">  <span class="comment">//接收参数:$route.params.xxx</span></span><br><span class="line">  <span class="comment">//这种方式等同于./helloworld/你好世界</span></span><br><span class="line"></span><br><span class="line">export <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">router</span>(&#123;</span><br><span class="line">    routes: [&#123;</span><br><span class="line">        name: <span class="string">&#x27;helloworld&#x27;</span>,</span><br><span class="line">        path: <span class="string">&#x27;/helloworld/:id&#x27;</span>, <span class="comment">//动态绑定,各个不同id就都使用HelloWorld组件了</span></span><br><span class="line">        component: HelloWorld <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name: <span class="string">&#x27;helloearth&#x27;</span>,</span><br><span class="line">        path: <span class="string">&#x27;/helloearth/:earthmsg&#x27;</span>, <span class="comment">//指定要跳转的路径</span></span><br><span class="line">        component: HelloEarth <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  &lt;router-link :to=<span class="string">&quot;&#123;path: &#x27;/helloearth&#x27;,query:&#123;msg: 只有一个地球&#125;&#125;&quot;</span>&gt;</span><br><span class="line">    &lt;/router-link&gt;</span><br><span class="line">  <span class="comment">//方式等同于./helloworld?name=xxx&amp;count=xxx</span></span><br><span class="line">  <span class="comment">//接收参数this.$route.query.xxx</span></span><br><span class="line"></span><br><span class="line">coust couter = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>:[&#123;</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;/search&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title class_">SearchUser</span>,</span><br><span class="line">    <span class="attr">props</span>: <span class="function">(<span class="params">route</span>) =&gt;</span>(&#123;</span><br><span class="line">      <span class="attr">query</span>: route.<span class="property">query</span>.<span class="property">q</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h1><p>导航守卫就是路由跳转过程中的一些钩子函数.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//钩子函数执行后输出的顺序</span></span><br><span class="line">全局前置守卫: beforeEach;</span><br><span class="line">路由独享守卫: beforeEnter;</span><br><span class="line">组件路由守卫: beforeRouteEnter, 此时<span class="variable language_">this</span>并不指向该组件实例;</span><br><span class="line">全局解析守卫: beforeResolve;</span><br><span class="line">全局后置守卫: aferEach;</span><br><span class="line">组件生命周期: beforeCreate;</span><br><span class="line">组件生命周期: created;</span><br><span class="line">组件生命周期: borforeMount;</span><br><span class="line">组件生命周期: mounted;</span><br><span class="line">组件路由守卫: beforeRouteEnter的next回调;</span><br></pre></td></tr></table></figure>
+
+<p>导航守卫分为：<strong>全局的、单个路由独享的、组件内</strong>的三种.</p>
+<h2 id="全局的"><a href="#全局的" class="headerlink" title="全局的"></a>全局的</h2><p>分别是<code>beforeEach</code>,<code>beforeResolve</code>,<code>afterEach</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123; ... &#125;)</span><br><span class="line"></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>beforeEach</code>: 全局前置守卫.在路由跳转前触发,参数:to,from,next.这个钩子函数主要用于登录验证.</p>
+<p><code>beforeResolve</code>: 全局解析守卫.和<code>beforeEach</code>类似.区别是在<code>beforeEach</code>和组件内<code>beforeRouteEnter</code>之后，<code>afterEach</code>之前调用.</p>
+<p><code>afterEach</code>: 全局后置钩子.和<code>beforeEach</code>相反,在路由跳转完成后触发,参数: to,from.他发生在<code>beforeEach</code>和<code>beforeResolve</code>之后.</p>
+<h3 id="三个参数-to-from-next"><a href="#三个参数-to-from-next" class="headerlink" title="三个参数(to,from,next)"></a>三个参数(to,from,next)</h3><ol>
+<li><code>to</code>: <code>Route</code>: 即将要进入的目标路由对象</li>
+<li><code>from</code>: <code>Route</code>: 当前导航正要离开的路由</li>
+<li><code>next</code>: <code>Function</code>: 必须调用该方法来 resolve 这个钩子.否则不能进入路由.执行效果依赖 next 方法的调用函数.</li>
+<li><code>next(false)</code>: 中断当前导航.如果浏览器的 URL 改变,那么 URL 会重置到 from 路由对应的地址.</li>
+<li><code>next(&#39;/&#39;)</code>: 跳转到一个不同的地址.</li>
+<li><code>next(error)</code>: 如果传入的 next 的参数是一个 Error 实例.则导航会被终止且该错误会被传递给<code>router.onerror()</code>注册过的回调.</li>
+</ol>
+<blockquote>
+<p>确保要调用<code>next</code>方法,否则钩子就不会被<code>resolved</code>.</p>
+</blockquote>
+<h2 id="路由独享的守卫-beforeEnter"><a href="#路由独享的守卫-beforeEnter" class="headerlink" title="路由独享的守卫 beforeEnter"></a>路由独享的守卫 beforeEnter</h2><p>可以在路由配置上直接定义 beforeEnter 守卫:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/foo&quot;</span>,</span><br><span class="line">      <span class="attr">component</span>: <span class="title class_">Foo</span>,</span><br><span class="line">      <span class="attr">brforeEnter</span>: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">//参数用法什么的都一样,调用顺序在全局前置守卫后面，所以不会被全局守卫覆盖</span></span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="组件内的守卫"><a href="#组件内的守卫" class="headerlink" title="组件内的守卫"></a>组件内的守卫</h2><p><code>beforeRouteEnter</code> 进入路由前</p>
+<p><code>beforeRouteUpdate</code> 路由复用同一个组件时</p>
+<p><code>beforeRouteLeave</code> 离开当前路由时</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Foo</span> = &#123;</span><br><span class="line">  <span class="attr">template</span>: <span class="string">`...`</span>,</span><br><span class="line">  <span class="title function_">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>) &#123;</span><br><span class="line">    <span class="comment">//在渲染该组件的对应路由被confirm前调用</span></span><br><span class="line">    <span class="comment">//不能!!获取组件实例this</span></span><br><span class="line">    <span class="comment">//因为当守卫执行前,组件实例还未创建</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span>, next</span>) &#123;</span><br><span class="line">    <span class="comment">//在当前路由改变,但是该组件被复用时调用</span></span><br><span class="line">    <span class="comment">//举例来说,对于一个带有动态参数的路径 /foo/:id,在/foo/1和/foo/2之间跳转的时候,</span></span><br><span class="line">    <span class="comment">//由于会渲染同样的Foo组件,因此组件实例会被复用.而这个钩子就会在这个情况下被调用.</span></span><br><span class="line">    <span class="comment">//可以访问组件实例this</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">beforeRouteLeave</span>(<span class="params">to, <span class="keyword">from</span>, next</span>) &#123;</span><br><span class="line">    <span class="comment">//导航离开该组件的对应路由时调用</span></span><br><span class="line">    <span class="comment">//可以访问组件实例this</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="beforeRouteEnter-守卫不能访问-this"><a href="#beforeRouteEnter-守卫不能访问-this" class="headerlink" title="beforeRouteEnter 守卫不能访问 this"></a>beforeRouteEnter 守卫不能访问 this</h3><p>因为钩子在组件实例还没被创建的时候调用,可以通过传一个回调给<code>next</code>来访问组件实例 。</p>
+<p>不过,可以通过传一个回调给 next 来访问组件实例.在导航被确认的时候执行回调,并且把组件实例作为回调方法的参数.</p>
+<p>但是回调的执行时机在 mounted 后面,所以在我看来这里对 this 的访问意义不太大，可以放在<code>created</code>或者<code>mounted</code>里面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span>, next</span>)&#123;</span><br><span class="line">  <span class="title function_">next</span>(<span class="function"><span class="params">vm</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//通过`vm`访问组件实例</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="beforeRouteLeave"><a href="#beforeRouteLeave" class="headerlink" title="beforeRouteLeave"></a>beforeRouteLeave</h3><p>导航离开该组件的对应路由时调用，我们用它来禁止用户离开，比如还未保存草稿，或者在用户离开前，将 s<code>etInterval</code>销毁，防止离开之后，定时器还在调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteLeave (to, <span class="keyword">from</span> , next) &#123;</span><br><span class="line">  <span class="keyword">if</span> (文章保存) &#123;</span><br><span class="line">    <span class="title function_">next</span>(); <span class="comment">// 允许离开或者可以跳到别的路由 上面讲过了</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">next</span>(<span class="literal">false</span>); <span class="comment">// 取消离开</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="路由钩子函数的错误捕获"><a href="#路由钩子函数的错误捕获" class="headerlink" title="路由钩子函数的错误捕获"></a>路由钩子函数的错误捕获</h4><p>如果在导航守卫的钩子函数中有错误,可以这样捕获:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">onError</span>(<span class="function">(<span class="params">callback</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(callback, <span class="string">&quot;callback&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>假设是从 a 组件离开，第一次进入 b 组件</p>
+<h1 id="完整的路由导航解析流程"><a href="#完整的路由导航解析流程" class="headerlink" title="完整的路由导航解析流程:"></a>完整的路由导航解析流程:</h1><ol>
+<li>触发进入其他路由。</li>
+<li>调用要离开路由的组件守卫<code>beforeRouteLeave</code></li>
+<li>调用全局前置守卫: <code>beforeEach</code></li>
+<li>在重用的组件里调用<code>beforeRouteUpdate</code></li>
+<li>调用路由独享守卫<code>beforeEnter</code></li>
+<li>解析异步路由组件</li>
+<li>在将要进入的路由组件中调用<code>beforeRouteEnter</code></li>
+<li>调用全局解析守卫<code>beforeResolve</code></li>
+<li>导航被确认</li>
+<li>调用全局后置钩子<code>afterEach</code></li>
+<li>触发 DOM 更新(mounted)</li>
+<li>执行<code>beforeRouteEnter</code>守卫中传给 next 的回调函数</li>
+</ol>
+<h1 id="疑难杂症"><a href="#疑难杂症" class="headerlink" title="疑难杂症"></a>疑难杂症</h1><h2 id="监听物理返回键或页面返回"><a href="#监听物理返回键或页面返回" class="headerlink" title="监听物理返回键或页面返回"></a>监听物理返回键或页面返回</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//unit.js</span></span><br><span class="line"><span class="comment">//存储当前历史记录点,实现控制手机物理返回键的按钮事件</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">pushHistory</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> state = &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">history</span>.<span class="title function_">pushState</span>(state, state.<span class="property">title</span>, state.<span class="property">url</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.vue</span></span><br><span class="line"><span class="keyword">import</span> &#123; pushHistory &#125; <span class="keyword">from</span> <span class="string">&#x27;@/misc/utils&#x27;</span> <span class="comment">//引入工具</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="title function_">mounted</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">pushHistory</span>()</span><br><span class="line">    <span class="comment">//监听历史记录点,添加返回事件监听</span></span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">onpopstate</span> = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(...)</span><br><span class="line">      <span class="comment">//输入要返回的上一级路由地址</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">destroyed</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">window</span>.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;popstate&#x27;</span>, <span class="variable language_">this</span>.<span class="property">fun</span>, <span class="literal">false</span>);<span class="comment">//false阻止默认事件</span></span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//页面销毁时，取消监听。否则其他vue路由页面也会被监听</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/27/JS%E8%BF%9B%E9%98%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +537,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:28" itemprop="dateModified" datetime="2022-11-08T11:18:28+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:21" itemprop="dateModified" datetime="2022-11-09T14:32:21+08:00">2022-11-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -498,7 +827,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:33" itemprop="dateModified" datetime="2022-11-08T11:18:33+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:26" itemprop="dateModified" datetime="2022-11-09T14:32:26+08:00">2022-11-09</time>
     </span>
 
   
@@ -653,7 +982,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-08 11:18:32" itemprop="dateModified" datetime="2022-11-08T11:18:32+08:00">2022-11-08</time>
+      <time title="Modified: 2022-11-09 14:32:25" itemprop="dateModified" datetime="2022-11-09T14:32:25+08:00">2022-11-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
