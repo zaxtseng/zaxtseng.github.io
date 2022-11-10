@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-count">106</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,159 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/Git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/Git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">Git版本管理工具</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:04:10" itemprop="dateCreated datePublished" datetime="2022-09-26T21:04:10+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="title-Git版本管理工具date-2019-10-01-13-44-59"><a href="#title-Git版本管理工具date-2019-10-01-13-44-59" class="headerlink" title="title: Git版本管理工具date: 2019-10-01 13:44:59"></a>title: Git版本管理工具date: 2019-10-01 13:44:59</h2><p>tags:</p>
+<h1 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h1><p>去官网下载吧</p>
+<h1 id="建立Git库"><a href="#建立Git库" class="headerlink" title="建立Git库"></a>建立Git库</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//先新建一个空文件夹</span><br><span class="line">mkdir newBash</span><br><span class="line">//在git bash中</span><br><span class="line">cd newBash //切换到newBash文件夹下</span><br><span class="line">git  init //初始化仓库</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="设置基础信息"><a href="#设置基础信息" class="headerlink" title="设置基础信息"></a>设置基础信息</h1><p>配置相关信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//在git bash中</span><br><span class="line">git init</span><br><span class="line">git config -l  //查看当前配置</span><br><span class="line">git config --global user.name &quot;你的用户名&quot;</span><br><span class="line">git config --global user.email &quot;邮箱地址&quot;</span><br><span class="line">git config --global color.ui true  //代码颜色高亮显示</span><br><span class="line">git config -l  //再查看一下对不对</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="提交commit"><a href="#提交commit" class="headerlink" title="提交commit"></a>提交commit</h1><p>基本步骤:</p>
+<ol>
+<li>建立文件(本地工作文件夹)</li>
+<li>追加文件(索引区stage)</li>
+<li>提交文件(本地库local,远程库remote)</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//新建一个文件</span><br><span class="line">touch a.md</span><br><span class="line"></span><br><span class="line">//在文件中写字符</span><br><span class="line">echo &quot;helloworld&quot; &gt; a.md</span><br><span class="line"></span><br><span class="line">//查看此时状态</span><br><span class="line">git status (未提交文件名颜色为红色)</span><br><span class="line"></span><br><span class="line">//提交到索引区(也叫暂存区)</span><br><span class="line">git add a.md  (或者直接git add . 表示提交修改文件)</span><br><span class="line"></span><br><span class="line">//再看看状态</span><br><span class="line">git status  (提交了颜色变绿了)</span><br><span class="line"></span><br><span class="line">//将暂存区的文件提交到本地库(需要附带说明)</span><br><span class="line">git commit -m &quot;add file&quot;  //add file 就是说明,会显示在github的文件名后面</span><br><span class="line"></span><br><span class="line">//再看看状态</span><br><span class="line">git status  (提交到本地库后,暂存区里就空了)</span><br><span class="line"></span><br><span class="line">//看看提交历史</span><br><span class="line">git log </span><br><span class="line">//(会显示提交者的名字,时间,提交记录)</span><br><span class="line"></span><br><span class="line">//提交到远程仓库</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><p>一般远程仓库有一个master主分支,多个其他分支.</p>
+<p>现在展示如何从远端dev分支下载并修改,再推送.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">//切换到一个文件夹下</span><br><span class="line">cd newclone</span><br><span class="line">//从远端仓库clone</span><br><span class="line">git clone git@xxx.com</span><br><span class="line"></span><br><span class="line">//查看当前分支</span><br><span class="line">git branch  (发现远端仓库只有master被clone下来,其他没有)</span><br><span class="line"></span><br><span class="line">//查看所有分支(包括远端分支)</span><br><span class="line">git branch -a  (此时出现远端dev分支)</span><br><span class="line"></span><br><span class="line">//创建dev分支,映射远端dev分支</span><br><span class="line">git branch dev remotes/origin/dev </span><br><span class="line"></span><br><span class="line">//上面几步不执行也可以,直接执行切换分支就可以clone数据</span><br><span class="line"></span><br><span class="line">//切换到dev分支</span><br><span class="line">git checkout dev (此时dev下所有文件都会clone下来)</span><br><span class="line"></span><br><span class="line">//修改其中的文件</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">//推送素质三连</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;修改情况&quot;</span><br><span class="line">git push origin dev</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="分支branch"><a href="#分支branch" class="headerlink" title="分支branch"></a>分支branch</h1><h2 id="新建分支"><a href="#新建分支" class="headerlink" title="新建分支"></a>新建分支</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//查看当前分支状态</span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line">//新建一个分支 dev</span><br><span class="line">git branch dev</span><br><span class="line"></span><br><span class="line">//切换到 dev 分支</span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line">//修改文件</span><br><span class="line">nano style.css</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">//提交 dev 分支中内容到索引区</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">//提交 dev 分支到本地库</span><br><span class="line">git commit -m &quot;added style.css&quot;</span><br><span class="line"></span><br><span class="line">//查看记录</span><br><span class="line">git log</span><br><span class="line"></span><br><span class="line">//切换到主分支 master</span><br><span class="line">git checkout master</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h2><p>书接上回</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//查看分支状态</span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line">//在主分支 master 下,合并 dev 分支</span><br><span class="line">git merge dev</span><br><span class="line"></span><br><span class="line">//查看记录</span><br><span class="line">git log</span><br><span class="line"></span><br><span class="line">//查看后没有问题,删除开发分支</span><br><span class="line">git branch -d dev</span><br><span class="line"></span><br><span class="line">//最后查看分支状态</span><br><span class="line">git branch</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="分支冲突"><a href="#分支冲突" class="headerlink" title="分支冲突"></a>分支冲突</h2><p>案例分析:</p>
+<p>在dev分支创建index文件并修改.在主分支创建index文件并修改.合并分支,必有冲突</p>
+<p>代码重现:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//创建 dev 分支并切换到 dev</span><br><span class="line">git checkout -b dev</span><br><span class="line"></span><br><span class="line">//创建文件.修改文件</span><br><span class="line">nano index.html</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">//提交操作</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;modified by dev&quot;</span><br><span class="line"></span><br><span class="line">//切换到主分支</span><br><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line">//重复上述操作</span><br><span class="line">nano index.html</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;modified by master&quot;</span><br><span class="line"></span><br><span class="line">//查看分支状态</span><br><span class="line">git branch</span><br><span class="line"></span><br><span class="line">//合并分支(必有冲突)</span><br><span class="line">git merge dev</span><br><span class="line"></span><br><span class="line">//报错,在冲突文件中出现提示</span><br><span class="line"></span><br><span class="line">//由 leader 决定以哪个分支的信息为准</span><br><span class="line">//编辑文件,去掉冲突提示,选择以哪个分支的修改为准</span><br><span class="line">nano index.html</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">//重新提交,并将</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;meraged by leader.&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="查看提交历史"><a href="#查看提交历史" class="headerlink" title="查看提交历史"></a>查看提交历史</h1><p>书接上回</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//提交之后,查看提交历史</span><br><span class="line">git log</span><br><span class="line"></span><br><span class="line">//查看最近几次历史,接一个数字</span><br><span class="line">git log -3 (查看最近 3 次的)</span><br><span class="line"></span><br><span class="line">//把历史记录缩成一行.简略显示</span><br><span class="line">git log --oneline</span><br><span class="line"></span><br><span class="line">//详细显示</span><br><span class="line">git log -p (非常详细)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="提交回退"><a href="#提交回退" class="headerlink" title="提交回退"></a>提交回退</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//把刚修改的文件退到未修改状态</span><br><span class="line">git checkout -- a.md (取消修改,恢复到初始状态)</span><br><span class="line"></span><br><span class="line">//查看状态</span><br><span class="line">git status (文件已恢复)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>提交到索引区,想回退</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//把文件从索引区头部退出</span><br><span class="line">git reset HEAD a.md</span><br><span class="line"></span><br><span class="line">//把刚修改的文件退到未修改状态</span><br><span class="line">git checkout -- a.md</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h1><p>回退到远程库最后提交的版本,覆盖本地工作区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//回退到最后一次</span><br><span class="line">git reset --hard HEAD</span><br><span class="line"></span><br><span class="line">//回退到倒数第二次</span><br><span class="line">git reset --hard HEAD~</span><br><span class="line"></span><br><span class="line">//回退到倒数第三次</span><br><span class="line">git reset --hard HEAD~2</span><br><span class="line"></span><br><span class="line">//回退到指定版本</span><br><span class="line">git reset --hard 5d79467</span><br><span class="line">(后面的数字是提交时的 ID)</span><br><span class="line"></span><br><span class="line">//如果没记住 ID,通过 reflog 找到现在位置的 id,再从过去返回来.</span><br><span class="line">git reflog (会出现所有最近的记录,可以加-3,显示最近 3 条记录)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="比较修改内容"><a href="#比较修改内容" class="headerlink" title="比较修改内容"></a>比较修改内容</h1><p>修改文件后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//和修改前进行比较</span><br><span class="line">git diff</span><br><span class="line"></span><br><span class="line">//把修改后的文件加到索引区</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">//和索引区的进行比较</span><br><span class="line">git diff --cached</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//将文件添加到索引区</span><br><span class="line">git add [file1 file2 ...]</span><br><span class="line"></span><br><span class="line">//将工作文件夹下所有文件添加到索引区</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">//删除</span><br><span class="line">git rm</span><br><span class="line">//删除索引区文件</span><br><span class="line">git rm --cached a.md</span><br><span class="line">//更名</span><br><span class="line">git mv a.md b.md</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Git忽略管理"><a href="#Git忽略管理" class="headerlink" title="Git忽略管理"></a>Git忽略管理</h1><p>设置Git忽略文件,这些文件不参与Git库提交.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//新建.gitignore 文件</span><br><span class="line">在该文件中写入要忽略的文件名</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="更新最后的提交"><a href="#更新最后的提交" class="headerlink" title="更新最后的提交"></a>更新最后的提交</h1><p>最后一条提交代码里有bug,想更改,又不想新增一条提交.把更改追加到最后一条提交里.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git commit -m &quot;最后一次提交&quot;</span><br><span class="line"></span><br><span class="line">//发现 bug,修改 bug 后</span><br><span class="line">//此时文件已修改</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">//提交到最后一次修改里</span><br><span class="line">git commit --amend</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="使用Tag标签"><a href="#使用Tag标签" class="headerlink" title="使用Tag标签"></a>使用Tag标签</h1><p>系统版本号管理</p>
+<p>例如: 1.1.3</p>
+<p>格式: NNN.abc.xxx</p>
+<ul>
+<li>NNN: 大版本号</li>
+<li>abc: 每次做出小的更新时发布的版本号</li>
+<li>xxx: 每次bug修正时发布的版本号</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//查看当前版本号</span><br><span class="line">git tag</span><br><span class="line"></span><br><span class="line">//设置当前版本号</span><br><span class="line">git tag v1.0.0</span><br><span class="line"></span><br><span class="line">//查询该版本号时文件状态</span><br><span class="line">git show v1.0.0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<pre><code>
+</code></pre>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E5%89%8D%E7%AB%AF%E5%AE%89%E5%85%A8%E9%98%B2%E8%8C%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +361,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:49" itemprop="dateModified" datetime="2022-11-09T14:32:49+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -364,7 +517,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:49" itemprop="dateModified" datetime="2022-11-09T14:32:49+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -1097,7 +1250,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:49" itemprop="dateModified" datetime="2022-11-09T14:32:49+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -1218,7 +1371,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:49" itemprop="dateModified" datetime="2022-11-09T14:32:49+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -1296,7 +1449,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:49" itemprop="dateModified" datetime="2022-11-09T14:32:49+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -1378,7 +1531,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:50" itemprop="dateModified" datetime="2022-11-09T14:32:50+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -1548,7 +1701,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:50" itemprop="dateModified" datetime="2022-11-09T14:32:50+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -1627,7 +1780,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:50" itemprop="dateModified" datetime="2022-11-09T14:32:50+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -1715,7 +1868,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:50" itemprop="dateModified" datetime="2022-11-09T14:32:50+08:00">2022-11-09</time>
+      <time title="Modified: 2022-11-10 12:45:57" itemprop="dateModified" datetime="2022-11-10T12:45:57+08:00">2022-11-10</time>
     </span>
 
   
@@ -1739,127 +1892,6 @@
 <p>Navigate 组件应该是放在业务组件里。比如路径&#x2F;a 要跳转到路径&#x2F;b，则是放在路径&#x2F;a 对应的 A 组件里，不是放在 routes 里面</p>
 </blockquote>
 <h1 id="不使用"><a href="#不使用" class="headerlink" title="不使用"></a>不使用</h1><h2 id="exact"><a href="#exact" class="headerlink" title="exact"></a>exact</h2><p>取消了,所有路由默认都是严格匹配,如果想模糊匹配,可以在路由后加<code>*</code></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/28/Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/06/28/Git/" class="post-title-link" itemprop="url">Git</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-06-28 16:32:14" itemprop="dateCreated datePublished" datetime="2022-06-28T16:32:14+08:00">2022-06-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-09 14:32:50" itemprop="dateModified" datetime="2022-11-09T14:32:50+08:00">2022-11-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="新建分支并推送"><a href="#新建分支并推送" class="headerlink" title="新建分支并推送"></a>新建分支并推送</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 创建并切换</span><br><span class="line">git checkout -b newBranch</span><br><span class="line">// 推送到远程同名</span><br><span class="line">git push origin newBranch:newBranch</span><br></pre></td></tr></table></figure>
-
-<h1 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 推送空分支到远程就删除了</span><br><span class="line">git push origin :newBranch</span><br><span class="line"></span><br><span class="line">//delete删除</span><br><span class="line">git push origin --delete newBranch</span><br></pre></td></tr></table></figure>
-
-<h1 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 只有推送后才会删除</span><br><span class="line">git branch -d master</span><br><span class="line">// 强制删除</span><br><span class="line">git branch -d master</span><br></pre></td></tr></table></figure>
-
-<h1 id="查看所有分支"><a href="#查看所有分支" class="headerlink" title="查看所有分支"></a>查看所有分支</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
-
-<h1 id="新建本地项目推送远程仓库"><a href="#新建本地项目推送远程仓库" class="headerlink" title="新建本地项目推送远程仓库"></a>新建本地项目推送远程仓库</h1><h2 id="git-初始化"><a href="#git-初始化" class="headerlink" title="git 初始化"></a>git 初始化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-<h2 id="git-暂存提交"><a href="#git-暂存提交" class="headerlink" title="git 暂存提交"></a>git 暂存提交</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &#x27;first&#x27;</span><br></pre></td></tr></table></figure>
-
-<h2 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add git@github.com:xxx/xxx.git</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改主分支名称"><a href="#修改主分支名称" class="headerlink" title="修改主分支名称"></a>修改主分支名称</h2><p>只有 github 是主分支 main,其他都是 master.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//强制修改当前分支为main</span><br><span class="line">git branch -M main</span><br></pre></td></tr></table></figure>
-
-<h2 id="推送到远程并设置对应关系"><a href="#推送到远程并设置对应关系" class="headerlink" title="推送到远程并设置对应关系"></a>推送到远程并设置对应关系</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line">// 强制执行(注意会覆盖之前的)</span><br><span class="line"> git push -u origin master -f</span><br></pre></td></tr></table></figure>
-
-<h2 id="如果之前创建了-Readme"><a href="#如果之前创建了-Readme" class="headerlink" title="如果之前创建了 Readme"></a>如果之前创建了 Readme</h2><p>大概率会推送失败,需要先拉取远程的 readme.md</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git pull origin main</span><br><span class="line">// 如果拉取报错</span><br><span class="line">git pull origin main --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
-
-<p>再执行上面的推送远程</p>
-<h1 id="撤销合并"><a href="#撤销合并" class="headerlink" title="撤销合并"></a>撤销合并</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --abort //回滚到合并之前</span><br></pre></td></tr></table></figure>
-
-<h1 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h1><p>适用场景： 如果想恢复到之前某个提交的版本，且那个版本之后提交的版本我们都不要了，就可以用这种方法。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 版本名</span><br><span class="line">// hash名通过git log查找</span><br></pre></td></tr></table></figure>
-
-<p>使用“git push -f”强制提交更改：<br>此时如果用“git push”会报错，因为我们本地库 HEAD 指向的版本比远程库的要旧.</p>
-<blockquote>
-<p>此方法就可以用于被其他人覆盖代码导致代码消失.</p>
-</blockquote>
-<h1 id="版本删除"><a href="#版本删除" class="headerlink" title="版本删除"></a>版本删除</h1><p>原理： git revert 是用于“反做”某一个版本，以达到撤销该版本的修改的目的。比如，我们 commit 了三个版本（版本一、版本二、 版本三），突然发现版本二不行（如：有 bug），想要撤销版本二，但又不想影响撤销版本三的提交，就可以用 git revert 命令来反做版本二，生成新的版本四，这个版本四里会保留版本三的东西，但撤销了版本二的东西</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert -n 版本名</span><br></pre></td></tr></table></figure>
-
-<h1 id="commitlint"><a href="#commitlint" class="headerlink" title="commitlint"></a>commitlint</h1><p>提交时的分类<br>必填项，用于说明本次提交做出哪种类型的修改，必须是以下任意一值：</p>
-<ul>
-<li><strong>feat</strong>: A new feature（新功能）</li>
-<li><strong>fix</strong>: A bug fix（bug 的修复）</li>
-<li><strong>docs</strong>: Documentation only changes（修改项目中的文档）</li>
-<li><strong>style</strong>: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)（不影响代码逻辑下的样式修改，通常是风格修改，例如空格、格式、分号方面的修改等）</li>
-<li><strong>refactor</strong>: A code change that neither fixes a bug nor adds a feature（重构，不包括修复 bug 和添加新功能）</li>
-<li><strong>perf</strong>: A code change that improves performance（性能优化）</li>
-<li><strong>test</strong>: Adding missing or correcting existing tests（添加或者修改测试代码）</li>
-<li><strong>chore</strong>: Changes to the build process or auxiliary tools and libraries such as documentation generation（对构建过程或辅助工具和库(如文档生成)的更改）</li>
-</ul>
 
       
     </div>
