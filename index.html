@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">106</span>
+          <span class="site-state-item-count">107</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,224 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/Koa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/08/Koa/" class="post-title-link" itemprop="url">Koa</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-08 17:08:25" itemprop="dateCreated datePublished" datetime="2022-11-08T17:08:25+08:00">2022-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-10 20:08:49" itemprop="dateModified" datetime="2022-11-10T20:08:49+08:00">2022-11-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>通过利用 async 函数，Koa 帮你丢弃回调函数，并有力地增强错误处理。 Koa 并没有捆绑任何中间件， 而是提供了一套优雅的方法，帮助您快速而愉快地编写服务端应用程序。</p>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><ul>
+<li>需先建对象与 express 不同：const app &#x3D; new Koa()</li>
+<li>ctx(context)封装了 res 和 req<ul>
+<li>返回使用 ctx.body，可使用 async 和 await<ul>
+<li>ctx.body 最终会转换为 res.end</li>
+<li>执行时机：洋葱模型的最外层，第一个中间件 promise 有结果后，将 ctx.body 转换为 res.end()</li>
+<li>异步使用时，不可放置异步函数中，需放置在 await 的 promise 中</li>
+</ul>
+</li>
+<li>也可直接使用 ctx.res 和 ctx.req</li>
+<li>常用属性：req、res、request、response</li>
+</ul>
+</li>
+<li>ctx 属性：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Koa</span> = <span class="built_in">require</span>(<span class="string">&quot;koa&quot;</span>); <span class="comment">// ⼀个类</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Koa</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 中间件，可以使⽤async await</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">ctx</span>) &#123;</span><br><span class="line">  <span class="comment">// throw new Error(&#x27;出错了&#x27;)</span></span><br><span class="line">  <span class="comment">// ctx封装了req和res的功能，这⾥相当于res.end</span></span><br><span class="line">  <span class="comment">// 1、有输出，ctx.body在promise结果后</span></span><br><span class="line">  ctx.<span class="property">body</span> = <span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="string">&quot;zhuwa&quot;</span>);</span><br><span class="line">  <span class="comment">// 2、无输出</span></span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ctx.<span class="property">body</span> = <span class="string">&quot;zhuwa&quot;</span>;</span><br><span class="line">  &#125;, <span class="number">3000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误事件</span></span><br><span class="line">app.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="keyword">function</span> (<span class="params">err, ctx</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  ctx.<span class="property">res</span>.<span class="title function_">end</span>(<span class="string">`500 错误`</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3002</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;koa server started at 3002&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// req request res response的区别</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">ctx</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">req</span>.<span class="property">path</span>); <span class="comment">// 原⽣的req</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">request</span>.<span class="property">path</span>); <span class="comment">// koa封装的request</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">request</span>.<span class="property">req</span>.<span class="property">path</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(ctx.<span class="property">path</span>); <span class="comment">// 代理到request</span></span><br><span class="line">  ctx.<span class="property">body</span> = <span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="string">&quot;zhuwa&quot;</span>); <span class="comment">// ctx封装了req和res的功能，这⾥相当于res.end</span></span><br><span class="line">  <span class="comment">//ctx.throw(401, &quot;err msg&quot;);</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="中间件-洋葱模型"><a href="#中间件-洋葱模型" class="headerlink" title="中间件(洋葱模型)"></a>中间件(洋葱模型)</h2><p>使用 app.use，回调函数只能传一个，多个需多次注册<br>异步流程会等待后续中间件有结果时返回<br>在 koa 中，中间件被 next() 方法分成了两部分。next() 方法上面部分会先执行，下面部门会在后续中间件执行全部结束之后再执行。</p>
+<ul>
+<li>多个中间件会形成一个栈结构（middlestack），以＂先进后出＂（first-in-last- out）的顺序执行。</li>
+<li>最外层的中间件首先执行。</li>
+<li>调用 next 函数，把执行权交给下一个中间件。</li>
+<li>最内层的中间件最后执行。</li>
+<li>执行结束后，把执行权交回上一层的中间件。</li>
+<li>最外层的中间件收回执行权之后，执行 next 函数后面的代码.</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">ctx, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1-1&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1-2&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">ctx, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;2-1&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;2-2&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">ctx, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;3-1&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;3-2&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//输出：1-1、2-1、3-1、3-2、2-2、1-2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="与-express-比较"><a href="#与-express-比较" class="headerlink" title="与 express 比较"></a>与 express 比较</h2><table>
+<thead>
+<tr>
+<th>框架</th>
+<th>express</th>
+<th>koa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模型</td>
+<td>线性模型</td>
+<td>洋葱模型</td>
+</tr>
+<tr>
+<td>表现</td>
+<td>同步表现为洋葱模型，但遇到异步，即使使⽤了 await next()也不会等待，会继续向下执⾏，因为 next()返回 undefined</td>
+<td>⽆论同步，还是异步，都是洋葱模型，可以使⽤ await 和 next() 来等待下⼀个中间件执⾏完成</td>
+</tr>
+<tr>
+<td>原理</td>
+<td>使⽤回调, next()，返回 undefined</td>
+<td>next()，返回 promise，会把中间件⽤ promise 包裹起来</td>
+</tr>
+<tr>
+<td>错误</td>
+<td>错误处理是在⼀个特殊签名的中间件中完成的，它必须被添加到链的后⾯才能捕获到前⾯的错误</td>
+<td>可以使⽤ try catch 捕获中间件错误</td>
+</tr>
+<tr>
+<td>注意</td>
+<td>await next() 也不会等待下⼀个中间件异步完成</td>
+<td>要使⽤ await 来等待异步操作；注意 res.end 的时机，等最外层的中间件（也就是第⼀个中间件）的 promise 有结果后，响应就会被返回 ctx.body -&gt;res.end(ctx.body)</td>
+</tr>
+</tbody></table>
+<h2 id="中间件编写"><a href="#中间件编写" class="headerlink" title="中间件编写"></a>中间件编写</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//编写⼀个计算请求的时⻓的中间件</span></span><br><span class="line"><span class="comment">// koa 中间件</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">ctx, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">time</span>(<span class="string">&quot;serviceTime&quot;</span>);</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">timeEnd</span>(<span class="string">&quot;serviceTime&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// express 中间件</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">time</span>(<span class="string">&quot;service&quot;</span>);</span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">  res.<span class="title function_">once</span>(<span class="string">&quot;close&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">timeEnd</span>(<span class="string">&quot;service&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><div style="background: #E8F7FF;padding:10px;border: 1px solid #ABD2DA;border-radius:5px;margin-bottom:5px;">在最顶层捕获未处理的错误</div>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以使⽤try catch 捕获中间件错误</span></span><br><span class="line"><span class="comment">// 在最顶层捕获未处理的错误</span></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">     <span class="comment">// await 可以让异步函数的错误得到捕获</span></span><br><span class="line">   		<span class="keyword">await</span> <span class="title function_">next</span>();</span><br><span class="line">   &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">   		<span class="keyword">const</span> status = err.<span class="property">status</span> || <span class="number">500</span>;</span><br><span class="line">   		ctx.<span class="property">status</span> = status;</span><br><span class="line">   		ctx.<span class="property">type</span> = <span class="string">&quot;html&quot;</span>;</span><br><span class="line">   		ctx.<span class="property">body</span> = <span class="string">`</span></span><br><span class="line"><span class="string">   			&lt;b&gt;<span class="subst">$&#123;status&#125;</span>&lt;/b&gt; <span class="subst">$&#123;err&#125;</span></span></span><br><span class="line"><span class="string">   		`</span>;</span><br><span class="line">   		<span class="comment">// emmit</span></span><br><span class="line">   		ctx.<span class="property">app</span>.<span class="title function_">emit</span>(<span class="string">&quot;error&quot;</span>, err, ctx);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx, next) =&gt; &#123;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"><span class="keyword">await</span> <span class="title function_">next</span>()</span><br><span class="line">&#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">ctx.<span class="property">status</span> = <span class="number">400</span></span><br><span class="line">ctx.<span class="property">body</span> = <span class="string">`Uh-oh: <span class="subst">$&#123;err.message&#125;</span>`</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Error handler:&#x27;</span>, err.<span class="property">message</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line"><span class="keyword">if</span> (ctx.<span class="property">query</span>.<span class="property">greet</span> !== <span class="string">&#x27;world&#x27;</span>) &#123;</span><br><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;can only greet &quot;world&quot;&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Sending response&#x27;</span>)</span><br><span class="line">ctx.<span class="property">status</span> = <span class="number">200</span></span><br><span class="line">ctx.<span class="property">body</span> = <span class="string">`Hello <span class="subst">$&#123;ctx.query.greet&#125;</span> from Koa`</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以使⽤总的错误事件来统⼀处理</span></span><br><span class="line"><span class="comment">// 错误事件</span></span><br><span class="line">app.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="keyword">function</span>(<span class="params">err</span>) &#123;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="string">``</span><span class="string">``</span></span><br><span class="line"></span><br><span class="line">## 常用中间件</span><br><span class="line"></span><br><span class="line">- koa-router：路由</span><br><span class="line">- koa-<span class="keyword">static</span>：静态资源</span><br><span class="line">- koa-mounut：子路由</span><br><span class="line">- koa-body：body解析</span><br><span class="line">- koa-parameter：参数校验</span><br><span class="line"><span class="string">``</span><span class="string">`javascript</span></span><br><span class="line"><span class="string">//1、koa-router</span></span><br><span class="line"><span class="string">const KoaRouter = require(&#x27;koa-router&#x27;)</span></span><br><span class="line"><span class="string">router.get(&#x27;/page&#x27;, async ctx =&gt; &#123;</span></span><br><span class="line"><span class="string"> 		ctx.body = await new Promise((resolve, reject) =&gt; &#123;</span></span><br><span class="line"><span class="string"> 				resolve(&#x27;ok&#x27;)</span></span><br><span class="line"><span class="string"> 		&#125;)</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string">// 注册中间件</span></span><br><span class="line"><span class="string">app.use(router.routes())</span></span><br><span class="line"><span class="string">// 添加前缀</span></span><br><span class="line"><span class="string">const router = new Router(&#123; prefix: &#x27;/user&#x27; &#125;)</span></span><br><span class="line"><span class="string">// 重定向</span></span><br><span class="line"><span class="string">router.get(&#x27;/home&#x27;, async ctx =&gt; &#123;</span></span><br><span class="line"><span class="string"> 	ctx.redirect(&#x27;http://baidu.com&#x27;);</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">// 路由参数</span></span><br><span class="line"><span class="string">router.get(&#x27;/:id&#x27;, async ctx =&gt; &#123;</span></span><br><span class="line"><span class="string">   ctx.body = &#123;</span></span><br><span class="line"><span class="string">     msg: &#x27;index page&#x27;,</span></span><br><span class="line"><span class="string">     params: ctx.params.id // 通过 ctx.params.id 获取到的是 1</span></span><br><span class="line"><span class="string">   &#125;;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">router.get(&#x27;/&#x27;, async ctx =&gt; &#123;</span></span><br><span class="line"><span class="string">   ctx.body = &#123;</span></span><br><span class="line"><span class="string">     msg: &#x27;index page&#x27;,</span></span><br><span class="line"><span class="string">     query: ctx.query // ctx.query会获取url后⾯携带的参数对象</span></span><br><span class="line"><span class="string">   &#125;;</span></span><br><span class="line"><span class="string">&#125;);</span></span><br><span class="line"><span class="string">// allowedMethod</span></span><br><span class="line"><span class="string">// 如果没有这⼀⾏, 当使⽤其他请求⽅式请求user时, 会提示404</span></span><br><span class="line"><span class="string">// 如果有这⼀⾏, 当使⽤其他请求⽅式请求user时, 提示405 method not allowed</span></span><br><span class="line"><span class="string">app.use(router.allowedMethod());</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//2、koa-static</span></span><br><span class="line"><span class="string">const KoaStatic = require(&#x27;koa-static&#x27;)</span></span><br><span class="line"><span class="string">// 动态加载静态资源</span></span><br><span class="line"><span class="string">app.use(KoaStatic(path.resolve(__dirname, &#x27;../dist/assets&#x27;)))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//3、koa-mounut</span></span><br><span class="line"><span class="string">const KoaMount = require(&#x27;koa-mount&#x27;)</span></span><br><span class="line"><span class="string">// 添加前缀</span></span><br><span class="line"><span class="string">app.use(KoaMount(&#x27;/assets&#x27;, KoaStatic(path.resolve(__dirname, &#x27;../dist/assets&#x27;))))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//4、koa-body</span></span><br><span class="line"><span class="string">const bodyparser = require(&#x27;koa-body&#x27;);</span></span><br><span class="line"><span class="string">// 在注册此中间件之后, 会在 ctx 上下⽂注⼊ ctx.request.body 属性 ⽤于获取客户端传递来的数据</span></span><br><span class="line"><span class="string">app.use(bodyparser());</span></span><br><span class="line"><span class="string">router.post(&#x27;/&#x27;, async ctx =&gt; &#123;</span></span><br><span class="line"><span class="string">   ctx.body = &#123;</span></span><br><span class="line"><span class="string">   code: 200,</span></span><br><span class="line"><span class="string">   		//body 可以获取form表单数据, json数据</span></span><br><span class="line"><span class="string">   		msg: ctx.request.body</span></span><br><span class="line"><span class="string">   &#125;</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//5、koa-parameter</span></span><br><span class="line"><span class="string">const parameter = require(&#x27;koa-parameter&#x27;);</span></span><br><span class="line"><span class="string">parameter(app);</span></span><br><span class="line"><span class="string">router.post(&#x27;/&#x27;, async ctx =&gt; &#123;</span></span><br><span class="line"><span class="string">   //接收⼀个对象</span></span><br><span class="line"><span class="string">   ctx.verifyParams(&#123;</span></span><br><span class="line"><span class="string">     // 校验的简写形式</span></span><br><span class="line"><span class="string">     username: &#x27;string&#x27;,</span></span><br><span class="line"><span class="string">     password: &#123; type: &#x27;string&#x27;, required: true &#125; // 或者也可以这样</span></span><br><span class="line"><span class="string">   &#125;)</span></span><br><span class="line"><span class="string">   ctx.body = &#123; code: 1 &#125;</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">## koa-compose</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">中间件合并处理</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line"><span class="title function_">compose</span>(stack)(&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>stack 是数组，收集了多个 async 函数，即返回值是 promise，内部有异步，总之就是收集了所有的异步操作；</li>
+<li>compose 是核心代码，函数接收 stack 数组返回一个匿名函数（这里采用了闭包）；</li>
+<li>核心代码就是执行这个匿名函数；</li>
+</ul>
+<p>我们来看下 compose 函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">compose</span>(<span class="params">middleware</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="title class_">Array</span>.<span class="title function_">isArray</span>(middleware))</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TypeError</span>(<span class="string">&quot;Middleware stack must be an array!&quot;</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> fn <span class="keyword">of</span> middleware) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> fn !== <span class="string">&quot;function&quot;</span>)</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TypeError</span>(<span class="string">&quot;Middleware must be composed of functions!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> &#123;<span class="type">Object</span>&#125; <span class="variable">context</span></span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span> &#123;<span class="type">Promise</span>&#125;</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@api</span> <span class="variable">public</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 核心匿名函数：接收上下文对象context和自定义next函数；</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">context, next</span>) &#123;</span><br><span class="line">    <span class="comment">// last called middleware #</span></span><br><span class="line">    <span class="keyword">let</span> index = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">dispatch</span>(<span class="number">0</span>); <span class="comment">//调用第一个元素函数</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">dispatch</span>(<span class="params">i</span>) &#123;</span><br><span class="line">      <span class="comment">// 防止连续执行两次next</span></span><br><span class="line">      <span class="keyword">if</span> (i &lt;= index)</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;next() called multiple times&quot;</span>));</span><br><span class="line">      index = i;</span><br><span class="line">      <span class="keyword">let</span> fn = middleware[i];</span><br><span class="line">      <span class="keyword">if</span> (i === middleware.<span class="property">length</span>) fn = next; <span class="comment">//此处i对应的fn是undefined，也支持自定义next</span></span><br><span class="line">      <span class="keyword">if</span> (!fn) <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(); <span class="comment">// 最后一个直接返回</span></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 递归去执行dispatch，本质是获取下一个fn元素</span></span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="title function_">fn</span>(context, dispatch.<span class="title function_">bind</span>(<span class="literal">null</span>, i + <span class="number">1</span>)));</span><br><span class="line">      &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(err);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Context-上下文"><a href="#Context-上下文" class="headerlink" title="Context(上下文)"></a>Context(上下文)</h1><p>Koa Context 将 node 的 request 和 response 对象封装到单个对象中，为编写 Web 应用程序和 API 提供了许多有用的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line">  ctx; <span class="comment">// 这是 Context</span></span><br><span class="line">  ctx.<span class="property">request</span>; <span class="comment">// 这是 koa Request</span></span><br><span class="line">  ctx.<span class="property">response</span>; <span class="comment">// 这是 koa Response</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>为方便起见许多上下文的访问器和方法直接委托给它们的 ctx.request 或 ctx.response ，不然的话它们是相同的。 例如 ctx.type 和 ctx.length 委托给 response 对象，ctx.path 和 ctx.method 委托给 request。</p>
+<h2 id="ctx-req"><a href="#ctx-req" class="headerlink" title="ctx.req"></a>ctx.req</h2><p>Node 的 request 对象.</p>
+<h2 id="ctx-res"><a href="#ctx-res" class="headerlink" title="ctx.res"></a>ctx.res</h2><p>Node 的 response 对象.<br>绕过 Koa 的 response 处理是 <strong>不被支持的</strong>. 应避免使用以下 node 属性：</p>
+<ul>
+<li>res.statusCode</li>
+<li>res.writeHead()</li>
+<li>res.write()</li>
+<li>res.end()</li>
+</ul>
+<h1 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h1><h2 id="Request-别名"><a href="#Request-别名" class="headerlink" title="Request 别名"></a>Request 别名</h2><p>以下访问器和 <a target="_blank" rel="noopener" href="https://koa.bootcss.com/#request">Request</a> 别名等效：</p>
+<ul>
+<li>ctx.header</li>
+<li>ctx.headers</li>
+<li>ctx.method</li>
+<li>ctx.method&#x3D;</li>
+<li>ctx.url</li>
+<li>ctx.url&#x3D;</li>
+<li>ctx.originalUrl</li>
+<li>ctx.origin</li>
+<li>ctx.href</li>
+<li>ctx.path</li>
+<li>ctx.path&#x3D;</li>
+<li>ctx.query</li>
+<li>ctx.query&#x3D;</li>
+<li>ctx.querystring</li>
+<li>ctx.querystring&#x3D;</li>
+<li>ctx.host</li>
+<li>ctx.hostname</li>
+<li>ctx.fresh</li>
+<li>ctx.stale</li>
+<li>ctx.socket</li>
+<li>ctx.protocol</li>
+<li>ctx.secure</li>
+<li>ctx.ip</li>
+<li>ctx.ips</li>
+<li>ctx.subdomains</li>
+<li>ctx.is()</li>
+<li>ctx.accepts()</li>
+<li>ctx.acceptsEncodings()</li>
+<li>ctx.acceptsCharsets()</li>
+<li>ctx.acceptsLanguages()</li>
+<li>ctx.get()</li>
+</ul>
+<h2 id="Response-别名"><a href="#Response-别名" class="headerlink" title="Response 别名"></a>Response 别名</h2><p>以下访问器和 <a target="_blank" rel="noopener" href="https://koa.bootcss.com/#response">Response</a> 别名等效：</p>
+<ul>
+<li>ctx.body</li>
+<li>ctx.body&#x3D;</li>
+<li>ctx.status</li>
+<li>ctx.status&#x3D;</li>
+<li>ctx.message</li>
+<li>ctx.message&#x3D;</li>
+<li>ctx.length&#x3D;</li>
+<li>ctx.length</li>
+<li>ctx.type&#x3D;</li>
+<li>ctx.type</li>
+<li>ctx.headerSent</li>
+<li>ctx.redirect()</li>
+<li>ctx.attachment()</li>
+<li>ctx.set()</li>
+<li>ctx.append()</li>
+<li>ctx.remove()</li>
+<li>ctx.lastModified&#x3D;</li>
+<li>ctx.etag&#x3D;</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/Redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +426,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:45:58" itemprop="dateModified" datetime="2022-11-10T12:45:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:50" itemprop="dateModified" datetime="2022-11-10T20:08:50+08:00">2022-11-10</time>
     </span>
 
   
@@ -776,6 +994,25 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <li>如果 rdb 文件存在就会去加载 rdb 文件恢复数据，如加载失败则打印日志提示启动失败，如加载成功，那么 redis 重启成功，且使用 rdb 文件恢复数据；</li>
 </ul>
 <p>那么为什么会优先加载 AOF 呢？因为 AOF 保存的数据更完整，通过上面的分析我们知道 AOF 基本上最多损失 1s 的数据。</p>
+<h1 id="Node-中使用-Redis"><a href="#Node-中使用-Redis" class="headerlink" title="Node 中使用 Redis"></a>Node 中使用 Redis</h1><p>推荐模块<code>ioredis</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ioredis = <span class="built_in">require</span>(<span class="string">&quot;ioredis&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立连接</span></span><br><span class="line"><span class="keyword">const</span> redis = <span class="keyword">new</span> <span class="title function_">ioredis</span>(&#123;</span><br><span class="line">  <span class="attr">port</span>: <span class="number">6379</span>,</span><br><span class="line">  <span class="attr">host</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 操作Redis数据库</span></span><br><span class="line"><span class="comment">// redis.set(&#x27;far&#x27;, &#x27;bar&#x27;, (err, ret) =&gt; &#123;</span></span><br><span class="line"><span class="comment">//     if(err) &#123;</span></span><br><span class="line"><span class="comment">//         console.log(&#x27;写入失败&#x27;, err);</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     console.log(&#x27;写入成功&#x27;, ret);</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 支持promise</span></span><br><span class="line">redis</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;far&quot;</span>)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">ret</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;获取失败&quot;</span>, err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用-pipeline-管道"><a href="#使用-pipeline-管道" class="headerlink" title="使用 pipeline 管道"></a>使用 pipeline 管道</h2><p>存在多条命令时,使用<code>pipeline</code>可以提高效率.使用<code>exec</code>结束 pipeline 就会给数据库发送请求.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> pipeline = redis.<span class="title function_">pipeline</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">      pipeline.<span class="title function_">set</span>(<span class="string">`<span class="subst">$&#123;i&#125;</span>-foo`</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 结束命令就执行</span></span><br><span class="line">    <span class="keyword">await</span> pipeline.<span class="title function_">exec</span>();</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 甚至能够链式调用命令</span></span><br><span class="line">redis</span><br><span class="line">  .<span class="title function_">pipeline</span>()</span><br><span class="line">  .<span class="title function_">set</span>(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>)</span><br><span class="line">  .<span class="title function_">del</span>(<span class="string">&quot;cc&quot;</span>)</span><br><span class="line">  .<span class="title function_">exec</span>(<span class="keyword">function</span> (<span class="params">err, results</span>) &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// `exec` 也是返回的promise</span></span><br><span class="line"><span class="keyword">var</span> promise = redis.<span class="title function_">pipeline</span>().<span class="title function_">set</span>(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>).<span class="title function_">get</span>(<span class="string">&quot;foo&quot;</span>).<span class="title function_">exec</span>();</span><br><span class="line">promise.<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">result</span>) &#123;</span><br><span class="line">  <span class="comment">// result === [[null, &#x27;OK&#x27;], [null, &#x27;bar&#x27;]]</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>每个链式命令也可以有一个回调，当命令得到回复时将调用它</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">redis</span><br><span class="line">  .<span class="title function_">pipeline</span>()</span><br><span class="line">  .<span class="title function_">set</span>(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>)</span><br><span class="line">  .<span class="title function_">get</span>(<span class="string">&quot;foo&quot;</span>, <span class="keyword">function</span> (<span class="params">err, result</span>) &#123;</span><br><span class="line">    <span class="comment">// result === &#x27;bar&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">exec</span>(<span class="keyword">function</span> (<span class="params">err, result</span>) &#123;</span><br><span class="line">    <span class="comment">// result[1][1] === &#x27;bar&#x27;</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>除了单独向管道队列添加命令外，还可以将一组命令和参数传递给构造函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis</span><br><span class="line">  .<span class="title function_">pipeline</span>([</span><br><span class="line">    [<span class="string">&quot;set&quot;</span>, <span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>],</span><br><span class="line">    [<span class="string">&quot;get&quot;</span>, <span class="string">&quot;foo&quot;</span>],</span><br><span class="line">  ])</span><br><span class="line">  .<span class="title function_">exec</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">/* ... */</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>查看管道中有多少命令</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis.<span class="title function_">pipeline</span>().<span class="title function_">set</span>(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>).<span class="title function_">get</span>(<span class="string">&quot;foo&quot;</span>).<span class="property">length</span>; <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="事务-1"><a href="#事务-1" class="headerlink" title="事务"></a>事务</h2><p>调用<code>multi</code>时会自动创建<code>pipeline</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> ret = <span class="keyword">await</span> redis.<span class="title function_">multi</span>().<span class="title function_">set</span>(<span class="string">&quot;Jack&quot;</span>, <span class="number">100</span>).<span class="title function_">set</span>(<span class="string">&quot;Tom&quot;</span>, <span class="number">200</span>).<span class="title function_">exec</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="错误调试"><a href="#错误调试" class="headerlink" title="错误调试"></a>错误调试</h2><p><code>showFriendlyErrorStack</code>: 设置为 true 会在报错时提供错误信息.建议只在调试时开启.</p>
 
       
     </div>
@@ -838,7 +1075,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:45:58" itemprop="dateModified" datetime="2022-11-10T12:45:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:50" itemprop="dateModified" datetime="2022-11-10T20:08:50+08:00">2022-11-10</time>
     </span>
 
   
@@ -975,7 +1212,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:45:58" itemprop="dateModified" datetime="2022-11-10T12:45:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:50" itemprop="dateModified" datetime="2022-11-10T20:08:50+08:00">2022-11-10</time>
     </span>
 
   
@@ -1115,7 +1352,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:45:59" itemprop="dateModified" datetime="2022-11-10T12:45:59+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:50" itemprop="dateModified" datetime="2022-11-10T20:08:50+08:00">2022-11-10</time>
     </span>
 
   
@@ -1607,7 +1844,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:45:59" itemprop="dateModified" datetime="2022-11-10T12:45:59+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:51" itemprop="dateModified" datetime="2022-11-10T20:08:51+08:00">2022-11-10</time>
     </span>
 
   
@@ -1676,7 +1913,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#115;&#97;&#120;&#64;&#x33;&#x2e;&#x30;&#46;&#48;">&#115;&#97;&#120;&#64;&#x33;&#x2e;&#x30;&#46;&#48;</a></td>
+<td>pnpm add <a href="mailto:&#x73;&#x61;&#x78;&#64;&#51;&#x2e;&#x30;&#x2e;&#x30;">&#x73;&#x61;&#x78;&#64;&#51;&#x2e;&#x30;&#x2e;&#x30;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
@@ -1742,7 +1979,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:45:59" itemprop="dateModified" datetime="2022-11-10T12:45:59+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:51" itemprop="dateModified" datetime="2022-11-10T20:08:51+08:00">2022-11-10</time>
     </span>
 
   
@@ -1895,7 +2132,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:45:59" itemprop="dateModified" datetime="2022-11-10T12:45:59+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:51" itemprop="dateModified" datetime="2022-11-10T20:08:51+08:00">2022-11-10</time>
     </span>
 
   
@@ -2229,7 +2466,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:45:59" itemprop="dateModified" datetime="2022-11-10T12:45:59+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:51" itemprop="dateModified" datetime="2022-11-10T20:08:51+08:00">2022-11-10</time>
     </span>
 
   
@@ -2399,7 +2636,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:46:00" itemprop="dateModified" datetime="2022-11-10T12:46:00+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-10 20:08:51" itemprop="dateModified" datetime="2022-11-10T20:08:51+08:00">2022-11-10</time>
     </span>
 
   
@@ -2502,465 +2739,6 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <li>生成环境打包 <code>yarn parcel build src/index.html</code></li>
 <li>内部使用多进程同时工作，构建速度快</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/24/webpack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/24/webpack/" class="post-title-link" itemprop="url">webpack</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-24 22:20:43" itemprop="dateCreated datePublished" datetime="2022-10-24T22:20:43+08:00">2022-10-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 12:46:00" itemprop="dateModified" datetime="2022-11-10T12:46:00+08:00">2022-11-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一、模块化开发"><a href="#一、模块化开发" class="headerlink" title="一、模块化开发"></a>一、模块化开发</h1><h2 id="Commonjs-规范"><a href="#Commonjs-规范" class="headerlink" title="Commonjs 规范"></a>Commonjs 规范</h2><ul>
-<li>Commonjs 是以同步模式加载模块</li>
-<li>一个文件就是一个模块</li>
-<li>每个模块都有单独的作用域</li>
-<li>通过 module.exports 导出成员</li>
-<li>通过 require 函数载入模块</li>
-</ul>
-<h2 id="ES-Module-特性"><a href="#ES-Module-特性" class="headerlink" title="ES Module 特性"></a>ES Module 特性</h2><p>通过给 script 添加 type &#x3D; module 的属性，就可以以 ES Module 的标准执行其中的 js 代码了</p>
-<ul>
-<li>自动采用严格模式，忽略‘use strict’</li>
-<li>每个 ES Module 模块都是单独的私有作用域</li>
-<li>ES Module 是通过 CORS 去请求外部 js 模块的，服务器要支持 CORS</li>
-<li>ES Module 的 script 标签会延迟执行脚本（页面渲染完在执行脚本）</li>
-</ul>
-<h3 id="ES-Module-导出"><a href="#ES-Module-导出" class="headerlink" title="ES Module 导出"></a>ES Module 导出</h3><ul>
-<li>导出<ul>
-<li>导出成员使用 export 修饰成员声明的方式，如：<code>export var name = &#39;yan; exprot var age = 18&#39;</code></li>
-<li>export 可以单独使用，如:<code>var name = &#39;yan&#39;; var age = 18; export &#123; name, age &#125;</code></li>
-<li>使用 as 给导出的成员重命名，导入时就要使用重命名后的变量名，如：<code>var name = &#39;yan&#39;; exprot &#123; name as firstName &#125;</code></li>
-<li>如果重命名为 default 那这个成员就会做为当前模块默认导出的成员</li>
-<li>在导入这个成员就必须要给这个成员重命名，default 是一个关键词不能作为一个变量使用</li>
-</ul>
-</li>
-<li>导入<ul>
-<li>导入使用 import 导入，如：<code>import &#123; name &#125; from &#39;./module.js&#39;</code>，name 为导出的变量名</li>
-<li>导入默认导出传成员可以不使用花括号，变量名可以根据需要随便取，如：<code>import name from &#39;./module.js&#39;</code></li>
-<li>如果导入的变量名为 default，需要使用 as 重命名，如：<code>import &#123; default as firstName &#125; from &#39;./module.js&#39;</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="ES-Modules-导入导出的注意事项"><a href="#ES-Modules-导入导出的注意事项" class="headerlink" title="ES Modules 导入导出的注意事项"></a>ES Modules 导入导出的注意事项</h3><ul>
-<li><code>export &#123; name, age &#125;</code> 该写法不是对象字面量的，如果要对象字面量的写法应该是：<code>export default &#123; name, age &#125;</code>，这样花括号会被理解为对象</li>
-<li><code>import &#123;&#125; from &#39;./module.js&#39;</code>，花括号不是解构</li>
-<li>导出成员时，导出的是这个成员的引用，导出的变量是只读的（在导入的文件中无法改变变量的值），如，在导出成员的文件中在一秒后改变变量的值，在导入变量的文件中两秒后输出变量值，输出的结果是改变后的值</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  a = <span class="number">2</span>;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; a &#125; <span class="keyword">from</span> <span class="string">&quot;./module.js&quot;</span>;</span><br><span class="line"><span class="comment">// a = 22 // 报错，Assignment to constant variable</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 2</span></span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="ES-Modules-导入用法"><a href="#ES-Modules-导入用法" class="headerlink" title="ES Modules 导入用法"></a>ES Modules 导入用法</h3><ul>
-<li>import 必须使用完整的路径不能省略扩展名，即使是引入 index 也要完整的路径不能省略 index</li>
-<li>import 可以使用完整的 url 加载模块 <code>import &#123; name &#125; from &#39;https://xxx.com/xxx.js&#39;</code></li>
-<li>相对路径，在网页引用资源是可以省略‘.&#x2F;’的，但是 import 不可以省略，如果省略了就是以字母开头 ES Module 会以为在加载第三方模块，可以使用绝对路径和完整的 url</li>
-<li>如果想要执行某个模块而不用提取模块成员，花括号为空即可，这是就只会执行这个模块，不会提出成员，如：<code>import &#123;&#125; from &#39;./module.js&#39;</code>，简写：<code>import &#39;./module.js&#39;</code></li>
-<li>如果模块导出的成员特别多，而导入的都用到，可以使用星号‘_’，把这个模块的成员全部导入，在通过 as 将导入的成员全部放到一个对象中,导出的成员都会作为这个对象的属性，如：<code>import _ as mod from &#39;./module.js&#39;</code></li>
-<li>动态导入模块，不可以通过判断使用<code>if (true)&#123;import &#123;name&#125; from &#39;./module.js&#39;&#125;</code>，如果需要动态导入，可以使用 import 函数<code>import(&#39;./module.js&#39;)</code>，import 函数返回的是一个 promise</li>
-<li>如果模块同时导出默认成员和命名成员，在导入时可以给默认成员重命名<code>import &#123; name, default as age &#125; from &#39;./module.js&#39;</code>，也可以<code>import age(默认成员), &#123; name &#125; from &#39;./module.js&#39;</code></li>
-</ul>
-<h3 id="ES-Modules-导出导入成员"><a href="#ES-Modules-导出导入成员" class="headerlink" title="ES Modules 导出导入成员"></a>ES Modules 导出导入成员</h3><ul>
-<li>import 可以配合 export 使用，效果就是将导入的结果直接作为当前模块的导出成员，那么在当前作用域就不能访问这些成员，如：<code>export &#123; name, age &#125; from &#39;./module&#39;</code>，利用这种特性可以把散落的模块组织在一起，如，一个 index 把零散的模块组织一起，然后再导出</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// button.js</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Button</span> = <span class="string">&quot;Button Component&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Button</span>;</span><br><span class="line"><span class="comment">// avatar.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> <span class="title class_">Avatar</span> = <span class="string">&quot;Avatar Component&quot;</span>;</span><br><span class="line"><span class="comment">// index.mjs</span></span><br><span class="line"><span class="keyword">export</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> <span class="title class_">Button</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./button.js&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; <span class="title class_">Avatar</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./avatar.js&quot;</span>;</span><br><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span>, <span class="title class_">Avatar</span> &#125; <span class="keyword">from</span> <span class="string">&quot;./index.mjs&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ES-Modules-浏览器环境-Polyfill"><a href="#ES-Modules-浏览器环境-Polyfill" class="headerlink" title="ES Modules 浏览器环境 Polyfill"></a>ES Modules 浏览器环境 Polyfill</h3><ul>
-<li>在不支持 ES Module 的浏览器中，可以使用 browser-es-module-loader 第三方库，在执行的时候解析</li>
-<li>但是在支持 ES Module 的浏览器中，这样会执行两次，可以添加 script 标签的新属性 nomodule</li>
-<li>nomodule:在不支持 ES Module 的浏览器工作</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span></span></span><br><span class="line"><span class="tag">  <span class="attr">nomodule</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/promise-polyfill@8.1.3/dist/polyfill.min.js&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span></span></span><br><span class="line"><span class="tag">  <span class="attr">nomodule</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/browser-es-module-loader@0.4.1/dist/babel-browser-build.js&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span></span></span><br><span class="line"><span class="tag">  <span class="attr">nomodule</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/browser-es-module-loader@0.4.1/dist/browser-es-module-loader.js&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="ES-Modules-in-Node-js-支持情况"><a href="#ES-Modules-in-Node-js-支持情况" class="headerlink" title="ES Modules in Node.js - 支持情况"></a>ES Modules in Node.js - 支持情况</h3><ul>
-<li>在 node 中使用 ES Module 文件后缀名为‘mjs’</li>
-<li>执行 <code>node --experimental-modules 文件</code>，experimental-modules：启用 ES Module 实验特性</li>
-<li>可以通过 import 导入原生的模块和第三方模块<code>import fs from &#39;fs&#39;; import _ form &#39;loadsh&#39;</code></li>
-<li><code>import &#123; camelCase &#125; from &#39;lodash&#39;</code>，不支持，因为第三方模块都是导出默认成员；内置模块兼容了 ES Module 的提取成员方式，所以<code>import &#123; writeFileSync &#125; from &#39;fs&#39;</code>支持</li>
-</ul>
-<h3 id="ES-Modules-in-Node-js-与-CommonJS-交互"><a href="#ES-Modules-in-Node-js-与-CommonJS-交互" class="headerlink" title="ES Modules in Node.js - 与 CommonJS 交互"></a>ES Modules in Node.js - 与 CommonJS 交互</h3><ul>
-<li>ES Module 中可以导入 Commonjs 模块</li>
-<li>Commonjs 中不能导入 ES Module 模块</li>
-<li>Commonjs 始终只会导出一个默认成员</li>
-<li>注意 import 不是解构导出对象</li>
-</ul>
-<h3 id="ES-Modules-in-Node-js-与-CommonJS-的差异"><a href="#ES-Modules-in-Node-js-与-CommonJS-的差异" class="headerlink" title="ES Modules in Node.js - 与 CommonJS 的差异"></a>ES Modules in Node.js - 与 CommonJS 的差异</h3><ul>
-<li>ES Module 中没有 Commonjs 中的那些模块全局成员（require&#x2F;module&#x2F;exports&#x2F;**filename&#x2F;**dirname）</li>
-<li>Commonjs 中 require&#x2F;module&#x2F;exports 在 ES Module 中使用 import 和 export 替代，**filename 和 **dirname 可以通过 import.meta.url 可以拿到当前工作文件的文件 url 地址，可以使用原生的 url 模块的 fileURLToPath()方法可以把文件 url 转换为路径</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; fileURLToPath &#125; <span class="keyword">from</span> <span class="string">&quot;url&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; dirname &#125; <span class="keyword">from</span> <span class="string">&quot;path&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> __filename = <span class="title function_">fileURLToPath</span>(<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>);</span><br><span class="line"><span class="keyword">const</span> __dirname = <span class="title function_">dirname</span>(__filename);</span><br></pre></td></tr></table></figure>
-
-<h3 id="ES-Modules-in-Node-js-新版本进一步支持"><a href="#ES-Modules-in-Node-js-新版本进一步支持" class="headerlink" title="ES Modules in Node.js - 新版本进一步支持"></a>ES Modules in Node.js - 新版本进一步支持</h3><ul>
-<li>在 package.json 文件添加 type 字段值为 module，此时文件扩展名可以用 js，而不需要 mjs</li>
-<li>此时想要使用 Commonjs 规范，那么文件后缀名要改为 cjs</li>
-</ul>
-<h3 id="ES-Modules-in-Node-js-Babel-兼容方案"><a href="#ES-Modules-in-Node-js-Babel-兼容方案" class="headerlink" title="ES Modules in Node.js - Babel 兼容方案"></a>ES Modules in Node.js - Babel 兼容方案</h3><ul>
-<li>安装 babel 相关依赖 <code>yarn add @babel/node @babel/core @babel/preset-env</code> babel 工作依赖插件，preset 是一个插件集合</li>
-<li>执行 <code>yarn babel-node index.js(想要转换的文件) --presets=@babel/preset-env</code></li>
-<li>或者添加一个.babelrc 文件</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;presets&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;@babel/preset-env&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="二、Webpack-打包"><a href="#二、Webpack-打包" class="headerlink" title="二、Webpack 打包"></a>二、Webpack 打包</h1><h2 id="模块打包工具的由来"><a href="#模块打包工具的由来" class="headerlink" title="模块打包工具的由来"></a>模块打包工具的由来</h2><ul>
-<li>ES Module 存在环境兼容问题</li>
-<li>模块文件过多，网络请求频繁</li>
-<li>所有的前端资源都需要模块化</li>
-</ul>
-<h2 id="Webpack-配置文件"><a href="#Webpack-配置文件" class="headerlink" title="Webpack 配置文件"></a>Webpack 配置文件</h2><ul>
-<li>webpack 默认以<code>src/index.js</code> 为入口文件</li>
-<li>在项目的根目录添加<code>webpack.config.js</code>文件，可以自定义相应的配置，该文件是运行在 nodejs 环境中</li>
-<li>该文件导出一个对象，通过导出对象的属性就可以完成相应的配置选项</li>
-<li>entry 属性：webpack 打包入口文件的路径，如果是相对路径<code>‘./’</code>不能省略</li>
-<li>output 属性：webpack 打包输出的位置，值要求是一个对象，通过对象的 filename 属性指定输出的文件名，path 属性指定输出的目录(绝对路径)</li>
-</ul>
-<h2 id="Webpack-工作模式"><a href="#Webpack-工作模式" class="headerlink" title="Webpack 工作模式"></a>Webpack 工作模式</h2><ul>
-<li>在 webpack.config.js 文件对象中添加 mode 属性</li>
-<li>mode 默认值是 production，mode 可选值有 production、development、none</li>
-<li>production：自动启动优化，会把代码压缩加密</li>
-<li>development：会自动优化打包速度，添加一些调式过程中的辅助</li>
-<li>none：运行最原始的打包，不做额外的处理</li>
-</ul>
-<h2 id="Webpack-资源模块加载"><a href="#Webpack-资源模块加载" class="headerlink" title="Webpack 资源模块加载"></a>Webpack 资源模块加载</h2><ul>
-<li>webpack 内容默认只会处理 javascript 文件</li>
-<li>处理其他类型的文件要安装使用对角的 loader（加载器）</li>
-<li>使用 loader，在 webpack.config.js 导出的对象中的 module 属性，添加一个 rules 数组</li>
-<li>rules 数组就是针对加载其他资源模块的规则配置</li>
-<li>每个规则对象要设置两个属性，test：正则表达式，匹配打包过程中遇到的文件；use：匹配到的文件使用的 loader，use 的值可以是单个 loader 字符串也可以是一个数组 loader，<strong>如果是一个数组，会从右往左执行</strong></li>
-<li>css-loader 的作用就是将 css 文件转换为一个 js 模块；具体实现就是将 css 代码 push 到一个数组中</li>
-<li>style-loader 的作用就是将 css-loader 转换后的结果通过 style 标签追加到页面上</li>
-<li>loader 是 webpack 的核心特性</li>
-<li>借助不同的 loader 就可以加载任何类型的资源</li>
-</ul>
-<h2 id="Webpack-文件资源加载器"><a href="#Webpack-文件资源加载器" class="headerlink" title="Webpack 文件资源加载器"></a>Webpack 文件资源加载器</h2><ul>
-<li>安装依赖 <code>yarn add file-loader</code></li>
-<li>在配置文件中添加 rules <code>&#123; test: /.png$/, use: &#39;file-loader&#39; &#125;</code></li>
-<li>webpack 默认所有打包的结果放在网站根目录；为项目中的所有资源指定一个基础路径，在 output 中添加 publicPath 属性，默认值为空表示网站的根目录</li>
-<li>把 publicPath 值修改为 ‘dist&#x2F;‘ 注意“&#x2F;”不能省略，打包后是一个变量名（publicPath 值）拼接资源名（资源名前面没有“&#x2F;”）所有“&#x2F;”不能省略</li>
-</ul>
-<h2 id="Webpack-URL-加载器"><a href="#Webpack-URL-加载器" class="headerlink" title="Webpack URL 加载器"></a>Webpack URL 加载器</h2><ul>
-<li>Data URLS 格式：data(协议):[mediatype(媒体类型和编码)][;base64],</li>
-<li>安装插件 <code>yarn add url-loader --dev</code></li>
-<li>在配置文件中添加 rules</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">use</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.png$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;url-loader&quot;</span>,</span><br><span class="line">          <span class="attr">option</span>: &#123;</span><br><span class="line">            <span class="attr">limit</span>: <span class="number">10</span> * <span class="number">1024</span>, <span class="comment">// 对于小于10kb的png图片使用url-loader打包；而大于10kb的会使用file-loader打包</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>打包后，图片将是以 base64 的格式显示</li>
-</ul>
-<p>最佳实践</p>
-<ul>
-<li>小文件使用 Data URLs，减少请求次数</li>
-<li>大文件单独提取存放，提高加载速度</li>
-</ul>
-<h2 id="Webpack-常用加载器分类"><a href="#Webpack-常用加载器分类" class="headerlink" title="Webpack 常用加载器分类"></a>Webpack 常用加载器分类</h2><ul>
-<li>编译转换类：会把加载的资源转为 js 代码</li>
-<li>文件操作类：会把加载的资源拷贝到输出的目录，导出文件访问路径</li>
-<li>代码检查类：目的是统一代码风格</li>
-</ul>
-<h2 id="Webpack-与-ES-2015"><a href="#Webpack-与-ES-2015" class="headerlink" title="Webpack 与 ES 2015"></a>Webpack 与 ES 2015</h2><ul>
-<li>安装 babel-loader @babel&#x2F;core @babel&#x2F;preset-env</li>
-<li>在配置文件中 module rules 添加</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.js$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="attr">options</span>: &#123;</span><br><span class="line">            <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>],</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-加载资源的方式"><a href="#Webpack-加载资源的方式" class="headerlink" title="Webpack 加载资源的方式"></a>Webpack 加载资源的方式</h2><ul>
-<li>遵循 ES Modules 标准的 import 声明</li>
-<li>遵循 Commonjs 标准的 require 函数</li>
-<li>遵循 AMD 标准的 define 函数和 require 函数</li>
-<li>Loader 加载器的非 JavaScript 也会触发资源加载<ul>
-<li>样式代码中的@import 指令和 url 函数</li>
-<li>HTML 代码中图片标签的 src 属性</li>
-</ul>
-</li>
-</ul>
-<h2 id="Webpack-核心工作原理"><a href="#Webpack-核心工作原理" class="headerlink" title="Webpack 核心工作原理"></a>Webpack 核心工作原理</h2><ul>
-<li>webpack 会根据配置找到打包入口文件，然后顺着入口文件的代码</li>
-<li>根据代码中的 import 或者 require 解析推断这个文件依赖的资源模块</li>
-<li>然后分别解析每个资源模块对应的依赖，形成整个项目中所有用到文件之间的依赖关系的依赖树</li>
-<li>webpack 递归依赖树，找到每个节点对于的资源文件</li>
-<li>根据配置文件中的 rules 属性找到模块对应的加载器，找到对于的资源放在打包结果中，实现整个项目的打包</li>
-</ul>
-<h2 id="Webpack-开发一个-Loader"><a href="#Webpack-开发一个-Loader" class="headerlink" title="Webpack 开发一个 Loader"></a>Webpack 开发一个 Loader</h2><ul>
-<li>loader 负责资源文件从输入到输出的转换</li>
-<li>对于同一个资源可以依次使用多个 loader （css-loader -&gt; style-loader）</li>
-<li>loader 模块导出一个函数；该函数输入的是加载到的资源文件内容；函数体是处理内容的过程；输出的是经过处理过的资源文件内容结果，结果必须是 javascript 代码</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> about <span class="keyword">from</span> <span class="string">&quot;./about.md&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(about);</span><br><span class="line"></span><br><span class="line"><span class="comment">// markdown-loader.js</span></span><br><span class="line"><span class="keyword">const</span> marked = <span class="built_in">require</span>(<span class="string">&quot;marked&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">source</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// source接受输入</span></span><br><span class="line">  <span class="comment">// console.log(source);</span></span><br><span class="line">  <span class="comment">// return &#x27;hello&#x27;;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 方法一</span></span><br><span class="line">  <span class="keyword">const</span> html = <span class="title function_">marked</span>(source);</span><br><span class="line">  <span class="comment">// return `module.exports = $&#123;JSON.stringify(html)&#125;`</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 方法二 返回 html 字符串交给下一个 loader处理 (html-loader)</span></span><br><span class="line">  <span class="keyword">return</span> html;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/main.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">    <span class="attr">publicPath</span>: <span class="string">&quot;dist/&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.md$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;html-loader&quot;</span>, <span class="string">&quot;./markdown-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-插件机制介绍"><a href="#Webpack-插件机制介绍" class="headerlink" title="Webpack 插件机制介绍"></a>Webpack 插件机制介绍</h2><ul>
-<li>增强 webpack 自动化能力</li>
-<li>loader 专注实现资源模块加载</li>
-<li>plugin 解决其他自动化工作<ul>
-<li>清除 dist 目录</li>
-<li>拷贝静态文件至输出目录</li>
-<li>压缩输出代码</li>
-</ul>
-</li>
-</ul>
-<h2 id="Webpack-自动清除输出目录插件"><a href="#Webpack-自动清除输出目录插件" class="headerlink" title="Webpack 自动清除输出目录插件"></a>Webpack 自动清除输出目录插件</h2><ul>
-<li>安装插件 <code>yarn add clean-webpack-plugin --dev</code></li>
-<li>配置文件中导入插件</li>
-<li>在配置对象中 plugins 属性，该属性是专门配置插件的地方，属性值是一个数组</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">CleanWebpackPlugin</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>()],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-自动生成-HTML-插件"><a href="#Webpack-自动生成-HTML-插件" class="headerlink" title="Webpack 自动生成 HTML 插件"></a>Webpack 自动生成 HTML 插件</h2><ul>
-<li>安装插件 <code>yarn add html-webpack-plugin --dev</code></li>
-<li>在配置文件中导入插件</li>
-<li>在配置对象中 plugins 属性，该属性是专门配置插件的地方，属性值是一个数组</li>
-<li>同时输出多个页面文件，可以再通过 HtmlWebpackPlugin 创建额外的 html 文件,通过 filename 指定文件名</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// 用于生成 index.html</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;Webpack Plugin Sample&quot;</span>, <span class="comment">// html文件的title</span></span><br><span class="line">      <span class="attr">meta</span>: &#123;</span><br><span class="line">        <span class="attr">viewport</span>: <span class="string">&quot;width=device-width&quot;</span>, <span class="comment">// 设置meta的viewport</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;./src/index.html&quot;</span>, <span class="comment">// 模版</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;about.html&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.html</span></span><br><span class="line"><span class="comment">// ....</span></span><br><span class="line"><span class="comment">// &lt;h1&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/h1&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-插件使用总结"><a href="#Webpack-插件使用总结" class="headerlink" title="Webpack 插件使用总结"></a>Webpack 插件使用总结</h2><ul>
-<li>安装插件 <code>yarn add copy-webpack-plugin --dev</code></li>
-</ul>
-<h2 id="Webpack-开发一个插件"><a href="#Webpack-开发一个插件" class="headerlink" title="Webpack 开发一个插件"></a>Webpack 开发一个插件</h2><ul>
-<li>相比于 loader，plugin 拥有更宽的能力范围</li>
-<li>plugin 通过钩子机制实现</li>
-<li>插件必须是一个函数或者是一个包含 apply 方法的对象</li>
-<li>通过在生命周期的钩子中挂载函数实现扩展</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyPlugin</span> &#123;</span><br><span class="line">  <span class="comment">// 目标 删除bundle.js中的注释</span></span><br><span class="line">  <span class="title function_">apply</span>(<span class="params">compiler</span>) &#123;</span><br><span class="line">    <span class="comment">// 会自动执行</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;my plugin 启动&quot;</span>);</span><br><span class="line">    <span class="comment">// https://webpack.js.org/api/compiler-hooks/</span></span><br><span class="line">    <span class="comment">// emit钩子：即将输出文件时执行</span></span><br><span class="line">    <span class="comment">// 参数一：插件名 参数二、挂载到钩子上的函数</span></span><br><span class="line">    compiler.<span class="property">hooks</span>.<span class="property">emit</span>.<span class="title function_">tap</span>(<span class="string">&quot;MyPlugin&quot;</span>, <span class="function">(<span class="params">compilation</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// compilation =&gt; 可以理解为此次打包的上下文</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> name <span class="keyword">in</span> compilation.<span class="property">assets</span>) &#123;</span><br><span class="line">        <span class="comment">// assets:资源文件</span></span><br><span class="line">        <span class="comment">// console.log(name); // 文件名</span></span><br><span class="line">        <span class="comment">// console.log(compilation.assets[name].source());//文件内容</span></span><br><span class="line">        <span class="keyword">if</span> (name.<span class="title function_">endsWith</span>(<span class="string">&quot;.js&quot;</span>)) &#123;</span><br><span class="line">          <span class="comment">// 判断是js文件</span></span><br><span class="line">          <span class="keyword">const</span> contents = compilation.<span class="property">assets</span>[name].<span class="title function_">source</span>(); <span class="comment">// 文件内容</span></span><br><span class="line">          <span class="keyword">const</span> withoutComments = contents.<span class="title function_">replace</span>(<span class="regexp">/\/\*\*+\*\//g</span>, <span class="string">&quot;&quot;</span>); <span class="comment">// 全局替换注释</span></span><br><span class="line">          compilation.<span class="property">assets</span>[name] = &#123;</span><br><span class="line">            <span class="comment">// 覆盖原有内容</span></span><br><span class="line">            <span class="attr">source</span>: <span class="function">() =&gt;</span> withoutComments, <span class="comment">// 返回新的内容</span></span><br><span class="line">            <span class="attr">size</span>: <span class="function">() =&gt;</span> withoutComments.<span class="property">length</span>, <span class="comment">// 返回内容的大小 webpack内部规定必须</span></span><br><span class="line">          &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-Dev-Server-静态资源访问"><a href="#Webpack-Dev-Server-静态资源访问" class="headerlink" title="Webpack Dev Server 静态资源访问"></a>Webpack Dev Server 静态资源访问</h2><ul>
-<li>Dev Server 默认只会 serve 打包输出文件</li>
-<li>只要是 webpack 打包输出的文件都可以直接被访问</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">  <span class="comment">// 额外开发服务指定静态资源路径，可以是字符串或数组</span></span><br><span class="line">  <span class="attr">contentBase</span>: <span class="string">&quot;./public&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-Dev-Server-代理-API"><a href="#Webpack-Dev-Server-代理-API" class="headerlink" title="Webpack Dev Server 代理 API"></a>Webpack Dev Server 代理 API</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">proxy</span>: &#123;</span><br><span class="line">      <span class="comment">// 前缀</span></span><br><span class="line">      <span class="string">&quot;/api&quot;</span>: &#123;</span><br><span class="line">        <span class="comment">// http://localhost:8080/api/users =&gt; https://api.github.com/api/users</span></span><br><span class="line">        <span class="attr">target</span>: <span class="string">&quot;https://api.github.com&quot;</span>,</span><br><span class="line">        <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">          <span class="string">&quot;^/api&quot;</span>: <span class="string">&quot;&quot;</span>, <span class="comment">// 去除 /api</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 不能使用 localhost:8080 作为请求github的主机名</span></span><br><span class="line">        <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Source-Map-介绍"><a href="#Source-Map-介绍" class="headerlink" title="Source Map 介绍"></a>Source Map 介绍</h2><ul>
-<li>调试和报错都是基于运行代码</li>
-<li>source map 映射转换后代码和源代码关系，通过 source map 逆向解析</li>
-<li>解决源代码与运行代码不一致所产生的调试问题</li>
-</ul>
-<h2 id="Webpack-配置-Source-Map"><a href="#Webpack-配置-Source-Map" class="headerlink" title="Webpack 配置 Source Map"></a>Webpack 配置 Source Map</h2><p>在配置项添加 <code>devtool: &#39;source-map&#39;</code></p>
-<h2 id="Webpack-eval-模式的-Source-Map"><a href="#Webpack-eval-模式的-Source-Map" class="headerlink" title="Webpack eval 模式的 Source Map"></a>Webpack eval 模式的 Source Map</h2><ul>
-<li>eval 是否使用 eval 执行模块代码，带 eval，用 eval 执行模块代码</li>
-<li>cheap-source map 是否包含行信息</li>
-<li>module 是否能够得到 Loader 处理之前的源代码</li>
-<li>带 module 的模式下解析的出来的原代码是没有经过 loader 加工，手写的源代码</li>
-<li>不带 module 是 loader 加工过后的代码</li>
-<li>inline-source-map：source map 是因 dataURL 嵌入代码，其他的 source map 是以物理文件存在</li>
-<li>hidden-source-map：开发工具看不到 source map 效果 在开发第三方包比较有用</li>
-</ul>
-<h2 id="Webpack-选择-Source-Map-模式"><a href="#Webpack-选择-Source-Map-模式" class="headerlink" title="Webpack 选择 Source Map 模式"></a>Webpack 选择 Source Map 模式</h2><ul>
-<li>开发模式<ul>
-<li>cheap-module-eval-source-map：代码每行不会超过 80 个字符；代码进过 loader 转换后差异较大需要 module 模式（loader 处理前的源代码）；首次打包速度慢无所谓，重写打包相对较快</li>
-</ul>
-</li>
-<li>生成模式<ul>
-<li>none 或 nosources-source-map：Source Map 会暴露源代码</li>
-</ul>
-</li>
-</ul>
-<h2 id="Webpack-HMR-体验（热更新）"><a href="#Webpack-HMR-体验（热更新）" class="headerlink" title="Webpack HMR 体验（热更新）"></a>Webpack HMR 体验（热更新）</h2><ul>
-<li>应用运行过程中实时替换某个模块，应用运行状态不受影响</li>
-<li>HMR 集成在 webpack-dev-server 中</li>
-<li>开启 HMR<ul>
-<li>css 样式（经过 loader 处理的）可以热更新但是 js 还是会刷新浏览器，webpack 中的 HMR 不可以开箱即用</li>
-<li>webpack 中的 HMR 需要手动处理模块热替换逻辑</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&quot;webpack&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">hot</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="keyword">new</span> webpack.<span class="title class_">HotModuleReplacementPlugin</span>()],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-使用-HMR-API"><a href="#Webpack-使用-HMR-API" class="headerlink" title="Webpack 使用 HMR API"></a>Webpack 使用 HMR API</h2><h2 id="Webpack-处理-JS-模块热替换"><a href="#Webpack-处理-JS-模块热替换" class="headerlink" title="Webpack 处理 JS 模块热替换"></a>Webpack 处理 JS 模块热替换</h2><p>js 热更新：保存旧数据，代码发生变化后把数据回填</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> lastEditor = editor;</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&quot;./editor&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(&#x27;editor HMR&#x27;)</span></span><br><span class="line">  <span class="comment">// console.log(createEditor)</span></span><br><span class="line">  <span class="keyword">const</span> value = lastEditor.<span class="property">innerHTML</span>;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">removeChild</span>(editor);</span><br><span class="line">  <span class="keyword">const</span> newEditor = <span class="title function_">createEditor</span>();</span><br><span class="line">  newEditor.<span class="property">innerHTML</span> = value;</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(newEditor);</span><br><span class="line">  lastEditor = newEditor;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 图片热更新</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="string">&quot;./better.png&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  img.<span class="property">src</span> = background;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(background);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="HMR-注意事项"><a href="#HMR-注意事项" class="headerlink" title="HMR 注意事项"></a>HMR 注意事项</h2><ul>
-<li>如果没有开启热更新，但是 js 代码做了热更新处理，先做判断 <code>if (module.hot)&#123;// 热更新逻辑&#125;</code></li>
-<li>hot 会刷新浏览器，报错信息会被刷走；hotOnly 不会刷新浏览器，可以把错误信息输出</li>
-<li>打包后会自动去除 js 热更新逻辑代码</li>
-</ul>
-<h2 id="Webpack-生产环境优化"><a href="#Webpack-生产环境优化" class="headerlink" title="Webpack 生产环境优化"></a>Webpack 生产环境优化</h2><ul>
-<li>mode：none、production、development</li>
-<li>为不同的工作环境创建不同的配置</li>
-</ul>
-<h2 id="Webpack-不同环境下的配置"><a href="#Webpack-不同环境下的配置" class="headerlink" title="Webpack 不同环境下的配置"></a>Webpack 不同环境下的配置</h2><ul>
-<li>配置文件根据环境不同导出不同的配置<ul>
-<li>webpack 可以导出一个函数，函数返回配置</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数一：cli传递的环境名参数；参数二：运行cli传递的所有参数</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">env, argv</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> config = &#123;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">if</span> (env === <span class="string">&quot;production&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 执行 yarn webpack --env production</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>一个环境对应一个配置文件<ul>
-<li>webpack.common.js 存放公共配置</li>
-<li>webpack.dev.js 开发配置，把公共配置和开发配置合并（使用 loadsh merge）</li>
-<li>webpack.prod.js 生产环境，把公共配置和生产配置合并（使用 loadsh merge）</li>
-<li>执行 yarn webpack –config webpack.dev.js</li>
-<li>或者在 scripts 中添加命令 <code>&quot;build&quot;: &quot;webpack --config webpack.dev.js&quot;</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="Webpack-DefinePlugin"><a href="#Webpack-DefinePlugin" class="headerlink" title="Webpack DefinePlugin"></a>Webpack DefinePlugin</h2><ul>
-<li>DefinePlugin 为代码注入全局成员</li>
-<li>接收的是一个对象，每一个键值都会注入到代码中</li>
-<li>文件代码中直接使用键，打包后把注入的值 直接替换到代码中，definePlugin 传递的字符串应该是代码</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">&quot;webpack&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> webpack.<span class="title class_">DefinePlugin</span>(&#123;</span><br><span class="line">      <span class="comment">// 想要输出的是字符串要个引号，否则输出的不是字符串</span></span><br><span class="line">      <span class="comment">// 输出值可以使用JSON.stringify(&#x27;https://api.github.com&#x27;)</span></span><br><span class="line">      <span class="attr">API_BASE_URL</span>: <span class="string">&#x27;&quot;https://api.github.com&quot;&#x27;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// ==</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable constant_">API_BASE_URL</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-体验-Tree-Shaking"><a href="#Webpack-体验-Tree-Shaking" class="headerlink" title="Webpack 体验 Tree Shaking"></a>Webpack 体验 Tree Shaking</h2><ul>
-<li>在生成模式下自动开启，对于冗余、未引用代码不会打包</li>
-<li>不是指某个配置选项，是一组功能搭配使用后的优化效果</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 使用 Tree Shaking</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 集中配置webpack内部优化功能</span></span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">usedExports</span>: <span class="literal">true</span>, <span class="comment">// 只到处外部使用了的成员 （相当于标记没使用的代码）</span></span><br><span class="line">    <span class="attr">minimize</span>: <span class="literal">true</span>, <span class="comment">// 开启webpack代码压缩  会把外部没使用的代码去除</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-合并模块—concatenateModules"><a href="#Webpack-合并模块—concatenateModules" class="headerlink" title="Webpack 合并模块—concatenateModules"></a>Webpack 合并模块—concatenateModules</h2><ul>
-<li>尽可能的将所有模块合并输出到一个函数中</li>
-<li>提升运行效率，减少代码体积</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 集中配置webpack内部优化功能</span></span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">concatenateModules</span>: <span class="literal">true</span>, <span class="comment">// 打包后把所有的模块放在同一个函数中；</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-Tree-Shaking-与-Babel"><a href="#Webpack-Tree-Shaking-与-Babel" class="headerlink" title="Webpack Tree Shaking 与 Babel"></a>Webpack Tree Shaking 与 Babel</h2><ul>
-<li>babel 和 tree shaking 同时使用会导致 tree shaking 失效<ul>
-<li>tree shaking 前提是 ES Modules，由 webpack 打包的代码必须使用 ESM</li>
-<li>babel-loader 转换代码时可能会把 ES Modules 转为 CommonJS<br>新版的 babel-loader 不会导致 tree shaking 失效，</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="attr">options</span>: &#123;</span><br><span class="line">            <span class="attr">presets</span>: [</span><br><span class="line">              <span class="comment">// modules：默认值是auto 根据环境判断是否开启ESM，可以设为false</span></span><br><span class="line">              [<span class="string">&quot;@babel/preset-env&quot;</span>, &#123; <span class="attr">modules</span>: <span class="string">&quot;commonjs&quot;</span> &#125;], <span class="comment">// 强制使用babel ESM，把ESM转为commonjs</span></span><br><span class="line">            ],</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-sideEffects"><a href="#Webpack-sideEffects" class="headerlink" title="Webpack sideEffects"></a>Webpack sideEffects</h2><ul>
-<li>允许通过配置方式标识代码是否有副作用（模块执行时除了导出成员之外所做的事情）</li>
-<li>一般用于开发 npm 包时 标记是否有副作用</li>
-<li>生产模式自动开启 会检查当前代码所属的 package.json 有没有 sideEffects 标识，以此来判断这个模块是否有副作用</li>
-<li>如果这个模块没有副作用，那些没有用到的模块不会被打包</li>
-<li>package.json 添加 <code>sideEffects: false</code> 表示 package.json 所影响的项目当中所有的代码都没有副作用</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">optimization</span>: &#123;</span><br><span class="line">  <span class="attr">sideEffects</span>: <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-sideEffects-注意"><a href="#Webpack-sideEffects-注意" class="headerlink" title="Webpack sideEffects 注意"></a>Webpack sideEffects 注意</h2><ul>
-<li>使用 sideEffects 前提确保代码真的没有副作用，否则 webpack 再打报时会误删有副作用的代码</li>
-<li>如在 Number 原型添加方法然后载入、载入 css 也是</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// extend.js</span></span><br><span class="line"><span class="comment">// 为Number的原型添加一个扩展方法</span></span><br><span class="line"><span class="comment">// 副作用代码 在package.json声明没有副作用，在打包时会被去除</span></span><br><span class="line"><span class="title class_">Number</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">pad</span> = <span class="keyword">function</span>(<span class="params">size</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="variable language_">this</span> + <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="keyword">while</span>(result.<span class="property">length</span> &lt; size) &#123;</span><br><span class="line">    result = <span class="string">&#x27;0&#x27;</span> + result</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./extend.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">8.</span><span class="title function_">pad</span>(<span class="number">3</span>))</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>解决：在 package.json 关闭副作用、标识哪些文件有副作用</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="string">&quot;sideEffects&quot;</span>: [ <span class="comment">// 标识有副作用的文件</span></span><br><span class="line">  <span class="string">&#x27;./src/extends.js&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;*.css&#x27;</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-代码分割"><a href="#Webpack-代码分割" class="headerlink" title="Webpack 代码分割"></a>Webpack 代码分割</h2><ul>
-<li>所有代码最终都被打包到一起，打包文件体积过大</li>
-<li>分包，按需加载</li>
-<li>多入口打包</li>
-<li>动态导入</li>
-</ul>
-<h2 id="Webpack-多入口打包"><a href="#Webpack-多入口打包" class="headerlink" title="Webpack 多入口打包"></a>Webpack 多入口打包</h2><ul>
-<li>多页应用程序，一个页面对应一个打包入口，公共部分单独提取</li>
-<li>多个入口可以把 entry 定义为对象，一个属性就是一个入口，键就是入口名，值就是入口对应的文件路径</li>
-<li>多入口，输出也要多个，可以给 filename 的值添加 <code>[name]</code>占位 <code>outpur:&#123;filename: &#39;[name].bundle.js&#39;&#125;</code> 这样 <code>[name]</code>就会被替换为入口名称</li>
-<li>plugins 中的 HtmlWebpackPlugin 插件会自动输入注入所以打包结果的 html，所以此时入口文件会注入所有的打包结果</li>
-<li>可以给 HtmlWebpackPlugin 插件配置注入的打包文件 <code>new HtmlWebpackPlugin(&#123;chunks:[&#39;index&#39;]&#125;), new HtmlWebpackPlugin(&#123;chunks:[&#39;album&#39;]&#125;)</code></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">CleanWebpackPlugin</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: &#123;</span><br><span class="line">    <span class="attr">index</span>: <span class="string">&quot;./src/index.js&quot;</span>,</span><br><span class="line">    <span class="attr">album</span>: <span class="string">&quot;./src/album.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;[name].bundle.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;style-loader&quot;</span>, <span class="string">&quot;css-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;Multi Entry&quot;</span>,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;./src/index.html&quot;</span>,</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;index.html&quot;</span>,</span><br><span class="line">      <span class="attr">chunks</span>: [<span class="string">&quot;index&quot;</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;Multi Entry&quot;</span>,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;./src/album.html&quot;</span>,</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;album.html&quot;</span>,</span><br><span class="line">      <span class="attr">chunks</span>: [<span class="string">&quot;album&quot;</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-提取公共模块"><a href="#Webpack-提取公共模块" class="headerlink" title="Webpack 提取公共模块"></a>Webpack 提取公共模块</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">splitChunks</span>: &#123;</span><br><span class="line">      <span class="comment">// 自动提取所有公共模块到单独 bundle</span></span><br><span class="line">      <span class="attr">chunks</span>: <span class="string">&quot;all&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-动态导入"><a href="#Webpack-动态导入" class="headerlink" title="Webpack 动态导入"></a>Webpack 动态导入</h2><ul>
-<li>需要用到某个模块时，再加载这个模块</li>
-<li>动态导入的模块会被自动分包</li>
-<li>一般我们都是在文件头直接 import 文件的，这会造成资源浪费</li>
-<li>可以使用 ES Modules 的 import()在需要导入的地方导入模块，该方法返回的是 promise 可以拿到导出的对象</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="title function_">import</span>(<span class="string">&quot;./posts&quot;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; <span class="keyword">default</span>: posts &#125;</span>) =&gt;</span> &#123;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-魔法注释"><a href="#Webpack-魔法注释" class="headerlink" title="Webpack 魔法注释"></a>Webpack 魔法注释</h2><ul>
-<li>在 import()方法中添加特定的注释 <code>import(/* webpackChunkName: &#39;posts&#39; */ &#39;./posts&#39;)</code> 这样在打包后文件名就会带上这个 webpackChunkName 值</li>
-<li>如果 webpackChunkName 相同，打包后会打包在一起</li>
-</ul>
-<h2 id="Webpack-MiniCssExtractPlugin—提取-css-到单独文件"><a href="#Webpack-MiniCssExtractPlugin—提取-css-到单独文件" class="headerlink" title="Webpack MiniCssExtractPlugin—提取 css 到单独文件"></a>Webpack MiniCssExtractPlugin—提取 css 到单独文件</h2><ul>
-<li>安装插件 <code>yarn add mini-css-extract-plugin --dev</code></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">MiniCssExtractPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;mini-css-extract-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          <span class="comment">// &#x27;style-loader&#x27;, // 将样式通过 style 标签注入</span></span><br><span class="line">          <span class="title class_">MiniCssExtractPlugin</span>.<span class="property">loader</span>, <span class="comment">// 通过 link 标签注入</span></span><br><span class="line">          <span class="string">&quot;css-loader&quot;</span>,</span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="keyword">new</span> <span class="title class_">MiniCssExtractPlugin</span>()],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-OptimizeCssAssetsWebpackPlugin—-压缩-css"><a href="#Webpack-OptimizeCssAssetsWebpackPlugin—-压缩-css" class="headerlink" title="Webpack OptimizeCssAssetsWebpackPlugin— 压缩 css"></a>Webpack OptimizeCssAssetsWebpackPlugin— 压缩 css</h2><ul>
-<li>安装插件 <code>yarn add optimize-css-assets-webpack-plugin --dev</code></li>
-<li>如果配置在 plugins 中这个插件在任何情况都会正常工作</li>
-<li>配置在 minimizer 中 只有 minimizer 开启（生产环境自动开启）是才工作</li>
-<li>webpack 建议压缩创建配置在 minimizer 中，以便通过 minimizer 选项统一控制</li>
-<li>当 minimizer 使用一个数组，webpack 认为我们要自定义所使用的压缩器插件，webpack 内部的 js 压缩器就会被覆盖，如果不配置 js 压缩器，这是打包，js 代码不会被压缩</li>
-<li>手动把 js 压缩器添加回来，安装插件 <code>yarn add terser-webpack-plugin --dev</code></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">OptimizeCssAssetsWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;optimize-css-assets-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">TerserWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;terser-webpack-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">minimizer</span>: [</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">TerserWebpackPlugin</span>(),</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">OptimizeCssAssetsWebpackPlugin</span>(),</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Webpack-输出文件名-Hash"><a href="#Webpack-输出文件名-Hash" class="headerlink" title="Webpack 输出文件名 Hash"></a>Webpack 输出文件名 Hash</h2><ul>
-<li>在部署时服务器开启静态文件缓存，如果缓存时间过长，程序发生更改，得不到更新</li>
-<li>生产环境下，文件名使用 Hash，文件名发生变化 对客户端而言全新的文件名就是全新的请求，就不会有缓存问题</li>
-<li>[hash]【占位符】：整个项目级别的，项目中有任何地方改动，这次打包的 hash 值都会发生变化</li>
-<li>[chunkhash]【占位符】：chuankhash 级别，打包过程中只要是同一路的打包 chunkhash 都是相同的</li>
-<li>[contenthask]【占位符】：文件级别 hash，根据文件输出内容生成 hash 值（不同的文件就有不同的 hash 值）</li>
-<li>指定 hash 值长度[chunkhash:8]【占位符】</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;[name]-[contenthash:8].bundle.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
