@@ -20,28 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="title: 电话面试题 date: 2019-11-16 16:29:01tags: 面试题 #CSS  重绘和回流(那些操作会引起重回和回流,如何减少回流) Css 伪类有哪些? Position 的几个属性,各个区别? Css3 常用的属性 实现水平垂直居中的方法 Visible:none 和 display:none,hidden 的区别 Css 的预处理器,好处,优点作用. Css 实">
+    <meta name="description" content="核心思想: 约定大于配置  基础用法建议直接去这里: 官方快速入门 目录结构12345678910111213141516171819202122232425262728293031323334353637egg-project├── package.json├── app.js (可选)├── agent.js (可选)├── app|   ├── router.js│   ├── contro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="电话面试题">
-<meta property="og:url" content="http://example.com/2022/09/26/%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:title" content="Egg.js">
+<meta property="og:url" content="http://example.com/2022/11/08/Egg.js/index.html">
 <meta property="og:site_name" content="ZAX">
-<meta property="og:description" content="title: 电话面试题 date: 2019-11-16 16:29:01tags: 面试题 #CSS  重绘和回流(那些操作会引起重回和回流,如何减少回流) Css 伪类有哪些? Position 的几个属性,各个区别? Css3 常用的属性 实现水平垂直居中的方法 Visible:none 和 display:none,hidden 的区别 Css 的预处理器,好处,优点作用. Css 实">
+<meta property="og:description" content="核心思想: 约定大于配置  基础用法建议直接去这里: 官方快速入门 目录结构12345678910111213141516171819202122232425262728293031323334353637egg-project├── package.json├── app.js (可选)├── agent.js (可选)├── app|   ├── router.js│   ├── contro">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-26T13:07:05.000Z">
-<meta property="article:modified_time" content="2022-11-11T06:46:40.483Z">
+<meta property="article:published_time" content="2022-11-08T09:08:35.000Z">
+<meta property="article:modified_time" content="2022-11-11T06:46:35.031Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2022/09/26/%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E9%A2%98/">
+<link rel="canonical" href="http://example.com/2022/11/08/Egg.js/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/09/26/%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E9%A2%98/","path":"2022/09/26/电话面试题/","title":"电话面试题"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/08/Egg.js/","path":"2022/11/08/Egg.js/","title":"Egg.js"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>电话面试题 | ZAX</title>
+<title>Egg.js | ZAX</title>
   
 
 
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E9%A2%98-date-2019-11-16-16-29-01"><span class="nav-number">1.</span> <span class="nav-text">title: 电话面试题 date: 2019-11-16 16:29:01</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JS"><span class="nav-number"></span> <span class="nav-text">JS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue"><span class="nav-number"></span> <span class="nav-text">Vue</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue-%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number"></span> <span class="nav-text">Vue 面试题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%85%BE%E8%AE%AF%E9%9D%A2%E8%AF%95"><span class="nav-number"></span> <span class="nav-text">腾讯面试</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">基础用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">目录结构</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -178,7 +178,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/Egg.js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -191,12 +191,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="电话面试题 | ZAX">
+      <meta itemprop="name" content="Egg.js | ZAX">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          电话面试题
+          Egg.js
         </h1>
 
         <div class="post-meta-container">
@@ -207,14 +207,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2022-09-26 21:07:05" itemprop="dateCreated datePublished" datetime="2022-09-26T21:07:05+08:00">2022-09-26</time>
+      <time title="Created: 2022-11-08 17:08:35" itemprop="dateCreated datePublished" datetime="2022-11-08T17:08:35+08:00">2022-11-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-11 14:46:40" itemprop="dateModified" datetime="2022-11-11T14:46:40+08:00">2022-11-11</time>
+      <time title="Modified: 2022-11-11 14:46:35" itemprop="dateModified" datetime="2022-11-11T14:46:35+08:00">2022-11-11</time>
     </span>
 
   
@@ -227,72 +227,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <hr>
-<h2 id="title-电话面试题-date-2019-11-16-16-29-01"><a href="#title-电话面试题-date-2019-11-16-16-29-01" class="headerlink" title="title: 电话面试题 date: 2019-11-16 16:29:01"></a>title: 电话面试题 date: 2019-11-16 16:29:01</h2><p>tags: 面试题</p>
-<p>#CSS</p>
-<ol>
-<li>重绘和回流(那些操作会引起重回和回流,如何减少回流)</li>
-<li>Css 伪类有哪些?</li>
-<li>Position 的几个属性,各个区别?</li>
-<li>Css3 常用的属性</li>
-<li>实现水平垂直居中的方法</li>
-<li>Visible:none 和 display:none,hidden 的区别</li>
-<li>Css 的预处理器,好处,优点作用.</li>
-<li>Css 实现三角形.</li>
-<li>Css 引入的方法与区别</li>
-</ol>
-<h1 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h1><ol>
-<li>闭包的理解,作用,场景,缺点.</li>
-<li>类如何创建和继承</li>
-<li>深拷贝有哪些</li>
-<li>微任务和宏任务</li>
-<li>setInterval 如何实现,用 setTimeout 实现.</li>
-<li>for 循环里面有 setTimeout,里面有 console.log(i).不属于 for 循环最后面再有个 console.log(i).17:40 处.</li>
-<li>如果把 var 改为 let,结果如何</li>
-<li>[] &#x3D;&#x3D; ![]结果如何?为什么?</li>
-<li>Promise 的理解</li>
-<li>Async&#x2F;Await 与 Promise 的区别和联系.</li>
-</ol>
-<p>Await 相对于 Promise 相当于 Promise 的什么? 11. 随机生成一个 100-200 之间的数</p>
-<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><ol>
-<li>虚拟 DOM 的理解</li>
-<li>Vue 如何实现双向绑定,底层</li>
-<li>如何监听数组</li>
-<li>异步组件在哪用,优点</li>
-<li>计算属性和侦听器的区别(watch 和 computed)</li>
-<li>Slot 插槽,用在哪里.</li>
-</ol>
-<p>独立配置 webpack?有过修改吗?</p>
-<h1 id="Vue-面试题"><a href="#Vue-面试题" class="headerlink" title="Vue 面试题"></a>Vue 面试题</h1><ol>
-<li>向后台请求数据放在哪个生命周期,为什么?</li>
-<li>Vue 的特性是数据驱动和组件化开发,有封装过自己的组件吗?</li>
-<li>组件和 v-model,如果组件内数据变动,页面会不会都变动?</li>
-<li>V-model 的实现原理</li>
-<li>路由菜单动态改变</li>
-<li>请求菜单时,是每个请求都加上 token 还是加上其他东西?</li>
-<li>v-model 绑定相同类目在不同页面,点击其中一个,另一个会变化吗?为什么?</li>
-</ol>
-<h1 id="腾讯面试"><a href="#腾讯面试" class="headerlink" title="腾讯面试"></a>腾讯面试</h1><p>1.ES6 导入为什么是 require？如何 require 模块？</p>
-<p>2.密码加密用什么插件？这个插件是对称加密还是什么？</p>
-<p>3.说下 http 状态码</p>
-<p>4.缓存有几个阶段？浏览器请求网页，发现没有缓存到，就去重新请求，请问这个过程是怎样的？</p>
-<p>5.如果遇到 304，会用到缓存的哪些字段？</p>
-<p>6.前端工程化是什么？</p>
-<p>7.webpack 插件和 loader 的区别</p>
-<p>8.webpack 如何优化</p>
-<p>8.vue 的底层原理</p>
-<p>9.说下虚拟 dom</p>
-<ol start="10">
-<li>js 的异步机制，底层原理是什么？</li>
-</ol>
-<p>11.node.js 和 js 区别</p>
-<p>12.计算机网络</p>
-<p>#酒铺</p>
-<ol>
-<li>API 输出格式规范</li>
-<li>单页和多页的区别</li>
-<li>鉴权方式</li>
-</ol>
+        <div style="background: #E8F7FF;padding:10px;border: 1px solid #ABD2DA;border-radius:5px;margin-bottom:5px;">核心思想: 约定大于配置</div>
+
+<h1 id="基础用法"><a href="#基础用法" class="headerlink" title="基础用法"></a>基础用法</h1><p>建议直接去这里: <a target="_blank" rel="noopener" href="https://www.eggjs.org/zh-CN/intro/quickstart">官方快速入门</a></p>
+<h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">egg-project</span><br><span class="line">├── package.json</span><br><span class="line">├── app.js (可选)</span><br><span class="line">├── agent.js (可选)</span><br><span class="line">├── app</span><br><span class="line">|   ├── router.js</span><br><span class="line">│   ├── controller</span><br><span class="line">│   |   └── home.js</span><br><span class="line">│   ├── service (可选)</span><br><span class="line">│   |   └── user.js</span><br><span class="line">│   ├── middleware (可选)</span><br><span class="line">│   |   └── response_time.js</span><br><span class="line">│   ├── schedule (可选)</span><br><span class="line">│   |   └── my_task.js</span><br><span class="line">│   ├── public (可选)</span><br><span class="line">│   |   └── reset.css</span><br><span class="line">│   ├── view (可选)</span><br><span class="line">│   |   └── home.tpl</span><br><span class="line">│   └── extend (可选)</span><br><span class="line">│       ├── helper.js (可选)</span><br><span class="line">│       ├── request.js (可选)</span><br><span class="line">│       ├── response.js (可选)</span><br><span class="line">│       ├── context.js (可选)</span><br><span class="line">│       ├── application.js (可选)</span><br><span class="line">│       └── agent.js (可选)</span><br><span class="line">├── config</span><br><span class="line">|   ├── plugin.js</span><br><span class="line">|   ├── config.default.js</span><br><span class="line">│   ├── config.prod.js</span><br><span class="line">|   ├── config.test.js (可选)</span><br><span class="line">|   ├── config.local.js (可选)</span><br><span class="line">|   └── config.unittest.js (可选)</span><br><span class="line">└── <span class="built_in">test</span></span><br><span class="line">    ├── middleware</span><br><span class="line">    |   └── response_time.test.js</span><br><span class="line">    └── controller</span><br><span class="line">        └── home.test.js</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -306,13 +244,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/09/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" rel="prev" title="排序算法">
-                  <i class="fa fa-chevron-left"></i> 排序算法
+                <a href="/2022/11/08/Koa/" rel="prev" title="Koa">
+                  <i class="fa fa-chevron-left"></i> Koa
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/09/26/Vue%E7%BB%84%E4%BB%B6/" rel="next" title="Vue组件">
-                  Vue组件 <i class="fa fa-chevron-right"></i>
+                <a href="/2022/11/10/mongoose/" rel="next" title="mongoose">
+                  mongoose <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

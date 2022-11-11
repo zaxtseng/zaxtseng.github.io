@@ -28,7 +28,7 @@
 <meta property="og:description" content="NoSQL不仅仅是 SQL,即非关系型数据库. 分类 键值数据库(Redis,Flare)  拥有极高的读写性能,用于处理大量数据的高访问负载,例如日志系统.  文档型数据库(mangoDB,CouchDB)  满足海量的访问和存储,同时对字段要求不严格,可以随意增删改,适用于网络应用.  列存储型数据库(Cassandra,Hbase)  查找快,扩展性强,适合用作分布式文件存储系统.(大数据)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-11-08T09:07:43.000Z">
-<meta property="article:modified_time" content="2022-11-10T12:08:50.391Z">
+<meta property="article:modified_time" content="2022-11-11T06:46:35.663Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
@@ -117,7 +117,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NoSQL"><span class="nav-number">1.</span> <span class="nav-text">NoSQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9"><span class="nav-number">1.2.</span> <span class="nav-text">选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MongoDB"><span class="nav-number">2.</span> <span class="nav-text">安装 MongoDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">启动</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NoSQL"><span class="nav-number">1.</span> <span class="nav-text">NoSQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%89%E6%8B%A9"><span class="nav-number">1.2.</span> <span class="nav-text">选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-MongoDB"><span class="nav-number">2.</span> <span class="nav-text">安装 MongoDB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">3.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongo-shell"><span class="nav-number">4.</span> <span class="nav-text">mongo shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="nav-number">4.1.</span> <span class="nav-text">端口号</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C"><span class="nav-number">5.</span> <span class="nav-text">常用操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E6%A1%A3"><span class="nav-number">6.</span> <span class="nav-text">文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5"><span class="nav-number">6.1.</span> <span class="nav-text">字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#id-%E5%AD%97%E6%AE%B5"><span class="nav-number">6.1.1.</span> <span class="nav-text">_id 字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E6%A1%A3"><span class="nav-number">6.2.</span> <span class="nav-text">创建文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%87%E6%A1%A3"><span class="nav-number">6.3.</span> <span class="nav-text">查询文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5"><span class="nav-number">6.3.1.</span> <span class="nav-text">类型检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%9C%A8%E6%A3%80%E6%9F%A5"><span class="nav-number">6.3.2.</span> <span class="nav-text">存在检查</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E6%96%87%E6%A1%A3"><span class="nav-number">6.4.</span> <span class="nav-text">更新文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E6%96%87%E6%A1%A3"><span class="nav-number">6.4.1.</span> <span class="nav-text">替换文档</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E6%A1%A3"><span class="nav-number">6.5.</span> <span class="nav-text">删除文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">7.</span> <span class="nav-text">数据库的操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-%E4%B8%AD%E4%BD%BF%E7%94%A8-MongoDB"><span class="nav-number">8.</span> <span class="nav-text">Node 中使用 MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4-id-%E7%9A%84%E6%96%87%E6%A1%A3"><span class="nav-number">8.1.</span> <span class="nav-text">删除_id 的文档</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -130,7 +130,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -214,7 +214,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:50" itemprop="dateModified" datetime="2022-11-10T20:08:50+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:35" itemprop="dateModified" datetime="2022-11-11T14:46:35+08:00">2022-11-11</time>
     </span>
 
   
@@ -289,6 +289,71 @@
 </tr>
 </tbody></table>
 <h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb-community@4.4</span><br><span class="line">// 停止</span><br><span class="line">brew services stop mongodb-community@4.4</span><br><span class="line">// 查看后台服务列表</span><br><span class="line">brew services list</span><br></pre></td></tr></table></figure>
+
+<h1 id="mongo-shell"><a href="#mongo-shell" class="headerlink" title="mongo shell"></a>mongo shell</h1><p>mongoDB 退出的 shell 命令,进入方法,先启动 MongoDB 服务,再输入<code>mongo</code>.<br>shell 中支持基本的 js 语法.</p>
+<h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p>默认链接 27017 端口,如果要修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongo --prot 27018</span><br><span class="line">// 连接远程主机</span><br><span class="line">mongo --host mongodb0.example.com:28015</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h1><p>查看数据库: <code>show dbs</code><br>当前数据库: <code>db</code><br>切换&#x2F;创建数据库: <code>use &lt;name&gt;</code><br>查看集合: <code>show collections</code><br>清空数据库: <code>db dropDatabase()</code><br>创建集合: <code>db.xxx.insert(&#123;&#125;)</code><br>查询集合: <code>db.xxx.find()</code><br>删除集合: <code>db.xxx.drop()</code></p>
+<h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><p>MongoDB 将数据存储为 BSON 文档.</p>
+<h2 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h2><p>文档对字段名称有以下限制：</p>
+<ul>
+<li>字段名称＿id 保留用作主键；它的值在集合中必须是唯一的，不可变的，并且可以是数组以外的任何类型.</li>
+<li>字段名称不能包含空字符。</li>
+</ul>
+<h3 id="id-字段"><a href="#id-字段" class="headerlink" title="_id 字段"></a>_id 字段</h3><p>在 MongoDB 中，存储在集合中的每个文档都需要一个唯一的<code>_id</code>字段作为主键。如果插入的文档省略<code>_id</code>字段，则 MongoDB 驱动程序会自动为<code>_id</code>字段生成 Objectld。<br>id 字段具有以下行为和约束：</p>
+<ul>
+<li>默认情况下，MongoDB 在创建集合时会在<code>_id</code>字段上创建唯一索引。</li>
+<li><code>_id</code>字段始终是文档中的第一个字段</li>
+<li><code>_id</code>字段可以包含任何 BSON 数据类型的值，而不是数组。</li>
+</ul>
+<h2 id="创建文档"><a href="#创建文档" class="headerlink" title="创建文档"></a>创建文档</h2><ul>
+<li><code>db.xxx.insertOne()</code>: 插入一个,返回 id</li>
+<li><code>db.xxx.insertMany()</code>: 插入多个,返回 id</li>
+<li><code>db.xxx.insert()</code>: 插入任意个,返回是否成功</li>
+</ul>
+<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
+<li><code>db.xxx.find(query, projection)</code><ul>
+<li>query,可选,指定查询条件</li>
+<li>projection,可选,使用投影操作符指定返回的键.</li>
+<li><code>$or</code>或查询,匹配一个或多个条件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 条件查询</span></span><br><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(&#123;</span><br><span class="line">  <span class="attr">status</span>: <span class="string">&quot;A&quot;</span>, <span class="comment">//查询条件为A的所有</span></span><br><span class="line">&#125;);</span><br><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(</span><br><span class="line">  &#123;&#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="number">1</span>, <span class="comment">//1 表示查询item,0表示不包括item</span></span><br><span class="line">    <span class="attr">qty</span>: <span class="number">1</span>,</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"><span class="comment">// 或查询</span></span><br><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(&#123;</span><br><span class="line">  <span class="attr">$or</span>: [</span><br><span class="line">    (<span class="attr">status</span>: <span class="string">&quot;A&quot;</span>),</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">qty</span>: &#123; <span class="attr">$lt</span>: <span class="number">30</span> &#125;, <span class="comment">// qty小于30</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>db.xxx.findOne()</code></li>
+</ul>
+<h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><p>BSON 类型为 Nul(类型编号 10):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(&#123; <span class="attr">item</span>: &#123; <span class="attr">$type</span>: <span class="number">10</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="存在检查"><a href="#存在检查" class="headerlink" title="存在检查"></a>存在检查</h3><p>查询匹配不包含 item 的文档:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(&#123; <span class="attr">item</span>: &#123; <span class="attr">$exists</span>: <span class="literal">false</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h2><ul>
+<li><code>db.xxx.updateOne(&lt;filter&gt;, &lt;update&gt;, &lt;options&gt;)</code></li>
+<li><code>db.xxx.updateMany(&lt;filter&gt;, &lt;update&gt;, &lt;options&gt;)</code></li>
+<li><code>db.xxx.replaceOne(&lt;filter&gt;, &lt;update&gt;, &lt;options&gt;)</code></li>
+</ul>
+<p>可以指定更新文档的条件或过滤器.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将age小于18 的文档中status更新为reject</span></span><br><span class="line">db.<span class="property">xxx</span>.<span class="title function_">updateMany</span>(&#123;</span><br><span class="line">  &#123;<span class="attr">age</span>: &#123; <span class="attr">$lt</span>: <span class="number">18</span> &#125;,</span><br><span class="line">  &#123;<span class="attr">$set</span>: &#123;<span class="attr">stastus</span>: <span class="string">&#x27;reject&#x27;</span>&#125;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换文档"><a href="#替换文档" class="headerlink" title="替换文档"></a>替换文档</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">xxx</span>.<span class="title function_">replaceOne</span>(</span><br><span class="line">  &#123;<span class="attr">item</span>: <span class="string">&#x27;paper&#x27;</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">item</span>: <span class="string">&#x27;paper&#x27;</span>, <span class="attr">instock</span>: &#123;<span class="attr">qty</span>: <span class="number">60</span>&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
+<li><code>db.xxx.deleteMany()</code></li>
+<li><code>db.xxx.deleteOne()</code>: 仅删除一个符合条件的文档</li>
+</ul>
+<h1 id="数据库的操作"><a href="#数据库的操作" class="headerlink" title="数据库的操作"></a>数据库的操作</h1><ul>
+<li>导出数据库 .&#x2F;mongoexport –port [port] –db test –collection users –out export.json</li>
+<li>导入数据库 .&#x2F;mongoimport -h 120.79.229.197:27-17 -d test -c scenics –file&#x3D;.&#x2F;export.json</li>
+</ul>
+<h1 id="Node-中使用-MongoDB"><a href="#Node-中使用-MongoDB" class="headerlink" title="Node 中使用 MongoDB"></a>Node 中使用 MongoDB</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//安装mongo,这是项目中使用的为node准备的工具</span><br><span class="line">npm i mongo -D</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">MongoClient</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;mongodb&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> <span class="title class_">MongoClient</span>(<span class="string">&quot;mongodb://127.0.0.1:27017&quot;</span>); <span class="comment">// 连接本地mongo客户端</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 开始连接</span></span><br><span class="line">    <span class="keyword">await</span> client.<span class="title function_">connect</span>();</span><br><span class="line">    <span class="comment">// 操作数据库</span></span><br><span class="line">    <span class="keyword">const</span> testDB = client.<span class="title function_">db</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">    <span class="comment">// 通过数据库获取集合</span></span><br><span class="line">    <span class="keyword">const</span> userCollection = testDB.<span class="title function_">collection</span>(<span class="string">&quot;users&quot;</span>);</span><br><span class="line">    <span class="comment">// 增加</span></span><br><span class="line">    <span class="comment">// const ret = await userCollection.insertOne(&#123;</span></span><br><span class="line">    <span class="comment">// name: &#x27;Jim&#x27;,</span></span><br><span class="line">    <span class="comment">// age: 12</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">    <span class="comment">// console.log(ret);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查询参数</span></span><br><span class="line">    <span class="keyword">const</span> ret = <span class="keyword">await</span> userCollection.<span class="title function_">find</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ret: &quot;</span>, <span class="keyword">await</span> ret.<span class="title function_">toArray</span>()); <span class="comment">// ret.toArray()返回promise所以await</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;连接失败&quot;</span>, err);</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 断开连接</span></span><br><span class="line">    <span class="keyword">await</span> client.<span class="title function_">close</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">run</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除-id-的文档"><a href="#删除-id-的文档" class="headerlink" title="删除_id 的文档"></a>删除_id 的文档</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">ObjectId</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;mongodb&quot;</span>);</span><br><span class="line"><span class="comment">// 删除</span></span><br><span class="line"><span class="keyword">const</span> ret = <span class="keyword">await</span> userCollection.<span class="title function_">deleteOne</span>(&#123;</span><br><span class="line">  <span class="attr">_id</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;636b5886e7de417db38a5610&quot;</span>),</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br></pre></td></tr></table></figure>
 
     </div>
 

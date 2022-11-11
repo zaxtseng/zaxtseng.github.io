@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,323 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/canvas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/canvas/" class="post-title-link" itemprop="url">canvas</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:04:25" itemprop="dateCreated datePublished" datetime="2022-09-26T21:04:25+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-11 14:46:43" itemprop="dateModified" datetime="2022-11-11T14:46:43+08:00">2022-11-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>title: canvas画板</p>
+<p>date: 2019-08-27 13:39:26</p>
+<p>tags: html5</p>
+<p>categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>HTML5 # 一级分类</li>
+<li>canvas # 二级分类</li>
+</ul>
+<hr>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>canvas 本身没有绘图能力，只是定义了一个容器，都是由 canvas 内部的 CanvasRenderingContext2D 对象来做，需要我们用 JavaScript 脚本完成绘制工作。</p>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><ol>
+<li>html 引入<code>&lt;canvas&gt;</code>标签</li>
+</ol>
+<p><code>&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;</code></p>
+<ol start="2">
+<li>js 获取<code>&lt;canvas&gt;</code>属性,使用 2d 绘制上下文.</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="title function_">getElementById</span>(<span class="string">&quot;canvas&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> context = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span><br><span class="line"><span class="comment">//使用context进行绘制</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>设置宽高</li>
+</ol>
+<p>使用<code>canvas.width</code>设置宽度.</p>
+<p><code>canvas.height</code>设置高度.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span> <span class="attr">sytle</span>=<span class="string">&quot;border: 1px solid #aaa;display: block;margin: 50px auto;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">window</span>.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;canvas&quot;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        canvas.<span class="property">width</span>: <span class="number">1024</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        canvas.<span class="property">height</span>: <span class="number">768</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">if</span>(canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>))&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="comment">//如果浏览器支持canvas,可以使用</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">var</span> context = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;<span class="keyword">else</span>&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="title function_">alert</span>(<span class="string">&#x27;当前浏览器不支持,请使用谷歌浏览器&#x27;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>设置全屏</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> pageWidth = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientWidth</span>;</span><br><span class="line"><span class="keyword">let</span> pageHeight = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientHeight</span>;</span><br><span class="line"></span><br><span class="line">canvas.<span class="property">width</span> = pageWidth;</span><br><span class="line">canvas.<span class="property">height</span> = pageHeight;</span><br></pre></td></tr></table></figure>
+
+<h2 id="绘制线段"><a href="#绘制线段" class="headerlink" title="绘制线段"></a>绘制线段</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> context = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span><br><span class="line">conext.<span class="title function_">beginPath</span>(); <span class="comment">//开始第一段绘制,与其他绘制可以区别开</span></span><br><span class="line">context.<span class="title function_">moveTo</span>(<span class="number">100</span>, <span class="number">100</span>); <span class="comment">//以画布左上角为原点,从坐标(100,100)开始</span></span><br><span class="line">context.<span class="title function_">lineTO</span>(<span class="number">700</span>, <span class="number">700</span>); <span class="comment">//把线画到(700,700)位置</span></span><br><span class="line">context.<span class="title function_">lineTO</span>(<span class="number">100</span>, <span class="number">700</span>); <span class="comment">//折到(100,700)位置</span></span><br><span class="line">context.<span class="title function_">lineTO</span>(<span class="number">100</span>, <span class="number">100</span>); <span class="comment">//线段完成封闭,形成三角形</span></span><br><span class="line">context.<span class="title function_">closePath</span>(); <span class="comment">//结束本段状态</span></span><br><span class="line"></span><br><span class="line">context.<span class="property">fillStyle</span> = <span class="string">&quot;rgab(168,168,168)&quot;</span>; <span class="comment">//设置三角形填充颜色</span></span><br><span class="line">context.<span class="title function_">fill</span>(); <span class="comment">//执行填充颜色</span></span><br><span class="line"></span><br><span class="line">context.<span class="property">lineWidth</span> = <span class="number">5</span>; <span class="comment">//设置线段宽度</span></span><br><span class="line">context.<span class="property">strokeStyle</span> = <span class="string">&quot;red&quot;</span>; <span class="comment">//设置线段颜色</span></span><br><span class="line">context.<span class="property">stroke</span>; <span class="comment">//执行绘图</span></span><br><span class="line"></span><br><span class="line">conext.<span class="title function_">beginPath</span>(); <span class="comment">//开始第二段绘制,与其他绘制可以区别开</span></span><br><span class="line">context.<span class="title function_">moveTo</span>(<span class="number">200</span>, <span class="number">100</span>); <span class="comment">//以画布左上角为原点,从坐标(200,100)开始</span></span><br><span class="line">context.<span class="title function_">lineTO</span>(<span class="number">700</span>, <span class="number">600</span>); <span class="comment">//把线画到(700,600)位置</span></span><br><span class="line">context.<span class="title function_">closePath</span>(); <span class="comment">//结束本段状态</span></span><br><span class="line"></span><br><span class="line">context.<span class="property">strokeStyle</span> = <span class="string">&quot;blue&quot;</span>; <span class="comment">//设置线段颜色</span></span><br><span class="line">context.<span class="property">stroke</span>; <span class="comment">//执行第二段绘图</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>标签属性</p>
+<table>
+<thead>
+<tr>
+<th align="left">标签</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">height</td>
+<td align="left">设置 canvas 的高度</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">设置 canvas 的宽度</td>
+</tr>
+<tr>
+<td align="left">fill()</td>
+<td align="left">可以填充</td>
+</tr>
+<tr>
+<td align="left">fillRect(x,y,width,height)</td>
+<td align="left">绘制一个矩形边框</td>
+</tr>
+<tr>
+<td align="left">fillRect(x,y,width,height)</td>
+<td align="left">绘制一个填充的矩形</td>
+</tr>
+<tr>
+<td align="left">clearRect(x,y,width,height)</td>
+<td align="left">清除指定矩形区域，让清除部分完全透明</td>
+</tr>
+<tr>
+<td align="left">ctx.strokeStyle</td>
+<td align="left">可以改变画笔颜色</td>
+</tr>
+<tr>
+<td align="left">ctx.beginPath()</td>
+<td align="left">设置开始路径</td>
+</tr>
+<tr>
+<td align="left">ctx.moveTo(x,y)</td>
+<td align="left">设置起点</td>
+</tr>
+<tr>
+<td align="left">ctx.lineTo(x,y)</td>
+<td align="left">设置终点</td>
+</tr>
+<tr>
+<td align="left">ctx.stroke()</td>
+<td align="left">绘制</td>
+</tr>
+<tr>
+<td align="left">ctx.closePath()</td>
+<td align="left">结束路径</td>
+</tr>
+<tr>
+<td align="left">ctx.arc(弧形圆心 x 坐标，y 坐标，半径，起始角(以 3 点钟的位置开始)，结束角、方向(true 表示逆时针，false 表示顺时针))</td>
+<td align="left">绘制一个弧形</td>
+</tr>
+<tr>
+<td align="left">ctx.quadraticCurveTo(cpx,cpy,x,y)参数是控制点 x 坐标，控制点 y 坐标，结束点 x 坐标，结束点 y 坐标</td>
+<td align="left">绘制二次贝塞尔曲线</td>
+</tr>
+<tr>
+<td align="left">ctx.quadraticCurveTo(cpx1,cpy1,cpx2,cpy2,x,y)参数是控制点 1 的 x 坐标，控制点 1 的 y 坐标，控制点 2 的 x 坐标，控制点 2 的 y 坐标，结束点 x 坐标，结束点 y 坐标</td>
+<td align="left">绘制三次贝塞尔曲线</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>canvas 画板代码实现</p>
+</li>
+</ol>
+<h3 id="html"><a href="#html" class="headerlink" title="html"></a>html</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>JS Bin<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvas&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;actions&quot;</span><span class="attr">class</span>=<span class="string">&quot;actions x&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">&quot;pen&quot;</span><span class="attr">class</span>=<span class="string">&quot;icon&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">&quot;#icon-pencil&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">&quot;eraser&quot;</span><span class="attr">class</span>=<span class="string">&quot;icon&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">&quot;#icon-eraser&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">&quot;clear&quot;</span><span class="attr">class</span>=<span class="string">&quot;icon&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">&quot;#icon-delete&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">svg</span> <span class="attr">id</span>=<span class="string">&quot;download&quot;</span><span class="attr">class</span>=<span class="string">&quot;icon&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">&quot;#icon-download&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&#x27;colorCir&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;black&quot;</span><span class="attr">class</span>=<span class="string">&quot;black&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;red&quot;</span><span class="attr">class</span>=<span class="string">&quot;red&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;yellow&quot;</span><span class="attr">class</span>=<span class="string">&quot;yellow&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;blue&quot;</span><span class="attr">class</span>=<span class="string">&quot;blue&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">&#x27;lineWidth&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;thin&quot;</span> <span class="attr">class</span>=<span class="string">&quot;thin&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;thick&quot;</span> <span class="attr">class</span>=<span class="string">&quot;thick&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    <span class="attr">margin</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="attr">padding</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">body&#123;</span><br><span class="line">    <span class="attr">background</span>:#eee</span><br><span class="line">&#125;</span><br><span class="line">ul,ol&#123;</span><br><span class="line">    list-<span class="attr">style</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">colorCir</span>&#123;</span><br><span class="line">    <span class="attr">top</span>:60px;</span><br><span class="line">    <span class="attr">left</span>:20px;</span><br><span class="line">    <span class="attr">position</span>: fixed;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">colorCir</span> li&#123;</span><br><span class="line">    <span class="attr">border</span>: 1px solid grey;</span><br><span class="line">    <span class="attr">height</span>:20px;</span><br><span class="line">    <span class="attr">width</span>: 20px;</span><br><span class="line">    border-<span class="attr">radius</span>: <span class="number">50</span>%;</span><br><span class="line">    margin-<span class="attr">bottom</span>:10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">colorCir</span> .<span class="property">red</span>&#123;</span><br><span class="line">    <span class="attr">background</span>:red;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">colorCir</span> .<span class="property">yellow</span>&#123;</span><br><span class="line">    <span class="attr">background</span>:yellow;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">colorCir</span> .<span class="property">blue</span>&#123;</span><br><span class="line">    <span class="attr">background</span>:blue;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">colorCir</span> .<span class="property">black</span>&#123;</span><br><span class="line">    <span class="attr">background</span>:black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">colorCir</span> .<span class="property">red</span>.<span class="property">active</span>&#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">    <span class="attr">transition</span>: all <span class="number">0.</span>3s;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">colorCir</span> .<span class="property">yellow</span>.<span class="property">active</span>&#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">    <span class="attr">transition</span>: all <span class="number">0.</span>3s;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">colorCir</span> .<span class="property">blue</span>.<span class="property">active</span>&#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">    <span class="attr">transition</span>: all <span class="number">0.</span>3s;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">colorCir</span> .<span class="property">black</span>.<span class="property">active</span>&#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">    <span class="attr">transition</span>: all <span class="number">0.</span>3s;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">icon</span> &#123;</span><br><span class="line">    <span class="attr">width</span>: 1em; <span class="attr">height</span>: 1em;</span><br><span class="line">    vertical-<span class="attr">align</span>: -<span class="number">0.</span>15em;</span><br><span class="line">    <span class="attr">fill</span>: currentColor;</span><br><span class="line">    <span class="attr">overflow</span>: hidden;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">body&#123;</span><br><span class="line">    <span class="attr">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line">#canvas&#123;</span><br><span class="line">    <span class="attr">display</span>: block;</span><br><span class="line">    <span class="attr">position</span>: fixed;</span><br><span class="line">    <span class="attr">top</span>:0px;</span><br><span class="line">    <span class="attr">left</span>:0px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">actions</span>&#123;</span><br><span class="line">    <span class="attr">position</span>: fixed;</span><br><span class="line">    <span class="attr">top</span>:0px;</span><br><span class="line">    <span class="attr">left</span>:0px;</span><br><span class="line">    padding-<span class="attr">top</span>:20px;</span><br><span class="line">    padding-<span class="attr">left</span>:15px;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">actions</span> svg&#123;</span><br><span class="line">    <span class="attr">width</span>:<span class="number">1.</span>5em;</span><br><span class="line">    <span class="attr">height</span>:<span class="number">1.</span>5em;</span><br><span class="line">    <span class="attr">transition</span>: all <span class="number">0.</span>3s;</span><br><span class="line">    <span class="attr">margin</span>:<span class="number">0</span> 5px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">actions</span> svg.<span class="property">active</span>&#123;</span><br><span class="line">    <span class="attr">fill</span>:red;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">lineWidth</span>&#123;</span><br><span class="line">    <span class="attr">position</span>: relative;</span><br><span class="line">    <span class="attr">left</span>:-10px;</span><br><span class="line">    <span class="attr">top</span>:140px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">lineWidth</span> .<span class="property">thin</span>&#123;</span><br><span class="line">    <span class="attr">height</span>:0px;</span><br><span class="line">    <span class="attr">width</span>:40px;</span><br><span class="line">    border-<span class="attr">top</span>:2px solid black;</span><br><span class="line">    <span class="attr">margin</span>:15px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">lineWidth</span> .<span class="property">thick</span>&#123;</span><br><span class="line">    <span class="attr">height</span>:0px;</span><br><span class="line">    <span class="attr">width</span>:40px;</span><br><span class="line">    border-<span class="attr">top</span>:6px solid black;</span><br><span class="line">    <span class="attr">margin</span>:15px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">lineWidth</span> .<span class="property">thin</span>.<span class="property">active</span>&#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.<span class="property">lineWidth</span> .<span class="property">thick</span>.<span class="property">active</span>&#123;</span><br><span class="line">    <span class="attr">transform</span>: <span class="title function_">scale</span>(<span class="number">1.2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="js"><a href="#js" class="headerlink" title="js"></a>js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;canvas&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> context = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> using = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> lastPoint = &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="literal">undefined</span>,</span><br><span class="line">  <span class="attr">y</span>: <span class="literal">undefined</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*画板逻辑 */</span></span><br><span class="line"><span class="title function_">autoSetSize</span>(canvas);</span><br><span class="line"></span><br><span class="line"><span class="title function_">listenToUser</span>(canvas);</span><br><span class="line"></span><br><span class="line"><span class="comment">/********/</span></span><br><span class="line"><span class="comment">//画笔、橡皮擦按钮替换</span></span><br><span class="line"><span class="keyword">var</span> eraserEnabled = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">pen.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  eraserEnabled = <span class="literal">false</span>;</span><br><span class="line">  pen.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  eraser.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">eraser.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  eraserEnabled = <span class="literal">true</span>;</span><br><span class="line">  eraser.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  pen.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//颜色替换并高亮</span></span><br><span class="line">red.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  context.<span class="property">fillStyle</span> = <span class="string">&quot;red&quot;</span>;</span><br><span class="line">  context.<span class="property">strokeStyle</span> = <span class="string">&quot;red&quot;</span>;</span><br><span class="line">  red.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  yellow.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  blue.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  black.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">yellow.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  context.<span class="property">fillStyle</span> = <span class="string">&quot;yellow&quot;</span>;</span><br><span class="line">  context.<span class="property">strokeStyle</span> = <span class="string">&quot;yellow&quot;</span>;</span><br><span class="line">  yellow.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  red.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  blue.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  black.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">blue.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  context.<span class="property">fillStyle</span> = <span class="string">&quot;blue&quot;</span>;</span><br><span class="line">  context.<span class="property">strokeStyle</span> = <span class="string">&quot;blue&quot;</span>;</span><br><span class="line">  blue.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  yellow.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  red.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  black.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line">black.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  context.<span class="property">fillStyle</span> = <span class="string">&quot;black&quot;</span>;</span><br><span class="line">  context.<span class="property">strokeStyle</span> = <span class="string">&quot;black&quot;</span>;</span><br><span class="line">  black.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  yellow.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  blue.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  red.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/********/</span></span><br><span class="line"></span><br><span class="line">thin.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  thin.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  thick.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  context.<span class="property">lineWidth</span> = <span class="number">2</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">thick.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  thick.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  thin.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&quot;active&quot;</span>);</span><br><span class="line">  context.<span class="property">lineWidth</span> = <span class="number">4</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">clear.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  context.<span class="title function_">clearRect</span>(<span class="number">0</span>, <span class="number">0</span>, canvas.<span class="property">clientWidth</span>, canvas.<span class="property">clientHeight</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">download.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> url = canvas.<span class="title function_">toDataURL</span>(<span class="string">&quot;image/png&quot;</span>);</span><br><span class="line">  <span class="keyword">var</span> a = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(a);</span><br><span class="line">  a.<span class="property">href</span> = url;</span><br><span class="line">  a.<span class="property">download</span> = <span class="string">&quot;my drawing&quot;</span>;</span><br><span class="line">  a.<span class="title function_">click</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//drawLine</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">drawLine</span>(<span class="params">x1, y1, x2, y2</span>) &#123;</span><br><span class="line">  context.<span class="title function_">beginPath</span>();</span><br><span class="line">  context.<span class="title function_">moveTo</span>(x1, y1);</span><br><span class="line">  context.<span class="title function_">lineTo</span>(x2, y2);</span><br><span class="line">  context.<span class="title function_">stroke</span>();</span><br><span class="line">  context.<span class="title function_">closePath</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//drawCir</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">drawCir</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">  context.<span class="title function_">beginPath</span>();</span><br><span class="line">  context.<span class="title function_">arc</span>(x, y, <span class="number">0.1</span>, <span class="number">0</span>, <span class="title class_">Math</span>.<span class="property">PI</span> * <span class="number">2</span>);</span><br><span class="line">  context.<span class="title function_">fill</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//重置canvas画板宽高</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCanvasSize</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> pageWidth = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientWidth</span>;</span><br><span class="line">  <span class="keyword">var</span> pageHeight = <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientHeight</span>;</span><br><span class="line"></span><br><span class="line">  canvas.<span class="property">width</span> = pageWidth;</span><br><span class="line">  canvas.<span class="property">height</span> = pageHeight;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//自动设置canvas画板宽高</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">autoSetSize</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">setCanvasSize</span>();</span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">onresize</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">setCanvasSize</span>();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">preventBehavior</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;touchmove&quot;</span>, preventBehavior, <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">listenToUser</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//特性检测</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">ontouchstart</span> !== <span class="literal">undefined</span>) &#123;</span><br><span class="line">    <span class="comment">//是触屏设备</span></span><br><span class="line">    canvas.<span class="property">ontouchstart</span> = <span class="keyword">function</span> (<span class="params">aaa</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> x = aaa.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">clientX</span>;</span><br><span class="line">      <span class="keyword">var</span> y = aaa.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">clientY</span>;</span><br><span class="line">      using = <span class="literal">true</span>;</span><br><span class="line">      lastPoint = &#123; <span class="attr">x</span>: x, <span class="attr">y</span>: y &#125;;</span><br><span class="line">      <span class="keyword">if</span> (eraserEnabled) &#123;</span><br><span class="line">        context.<span class="title function_">clearRect</span>(x - <span class="number">10</span>, y - <span class="number">10</span>, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_">drawCir</span>(x, y);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    canvas.<span class="property">ontouchmove</span> = <span class="keyword">function</span> (<span class="params">aaa</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> x = aaa.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">clientX</span>;</span><br><span class="line">      <span class="keyword">var</span> y = aaa.<span class="property">touches</span>[<span class="number">0</span>].<span class="property">clientY</span>;</span><br><span class="line">      <span class="keyword">var</span> newPoint = &#123; <span class="attr">x</span>: x, <span class="attr">y</span>: y &#125;;</span><br><span class="line">      <span class="keyword">if</span> (using) &#123;</span><br><span class="line">        <span class="keyword">if</span> (eraserEnabled) &#123;</span><br><span class="line">          context.<span class="title function_">clearRect</span>(x - <span class="number">10</span>, y - <span class="number">10</span>, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="title function_">drawCir</span>(x, y);</span><br><span class="line">          <span class="title function_">drawLine</span>(lastPoint.<span class="property">x</span>, lastPoint.<span class="property">y</span>, newPoint.<span class="property">x</span>, newPoint.<span class="property">y</span>);</span><br><span class="line">          lastPoint = newPoint;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    canvas.<span class="property">ontouchend</span> = <span class="keyword">function</span> (<span class="params">aaa</span>) &#123;</span><br><span class="line">      using = <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//不是触屏设备</span></span><br><span class="line">    canvas.<span class="property">onmousedown</span> = <span class="keyword">function</span> (<span class="params">aaa</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> x = aaa.<span class="property">clientX</span>;</span><br><span class="line">      <span class="keyword">var</span> y = aaa.<span class="property">clientY</span>;</span><br><span class="line">      using = <span class="literal">true</span>;</span><br><span class="line">      lastPoint = &#123; <span class="attr">x</span>: x, <span class="attr">y</span>: y &#125;;</span><br><span class="line">      <span class="keyword">if</span> (eraserEnabled) &#123;</span><br><span class="line">        context.<span class="title function_">clearRect</span>(x - <span class="number">10</span>, y - <span class="number">10</span>, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="title function_">drawCir</span>(x, y);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//鼠标移动监听</span></span><br><span class="line">    canvas.<span class="property">onmousemove</span> = <span class="keyword">function</span> (<span class="params">aaa</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> x = aaa.<span class="property">clientX</span>;</span><br><span class="line">      <span class="keyword">var</span> y = aaa.<span class="property">clientY</span>;</span><br><span class="line">      <span class="keyword">var</span> newPoint = &#123; <span class="attr">x</span>: x, <span class="attr">y</span>: y &#125;;</span><br><span class="line">      <span class="keyword">if</span> (using) &#123;</span><br><span class="line">        <span class="keyword">if</span> (eraserEnabled) &#123;</span><br><span class="line">          context.<span class="title function_">clearRect</span>(x - <span class="number">10</span>, y - <span class="number">10</span>, <span class="number">20</span>, <span class="number">20</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="title function_">drawCir</span>(x, y);</span><br><span class="line">          <span class="title function_">drawLine</span>(lastPoint.<span class="property">x</span>, lastPoint.<span class="property">y</span>, newPoint.<span class="property">x</span>, newPoint.<span class="property">y</span>);</span><br><span class="line">          lastPoint = newPoint;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//鼠标松开监听</span></span><br><span class="line">    canvas.<span class="property">onmouseup</span> = <span class="keyword">function</span> (<span class="params">aaa</span>) &#123;</span><br><span class="line">      using = <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/Chart-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/Chart-js/" class="post-title-link" itemprop="url">Chart-js</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:04:20" itemprop="dateCreated datePublished" datetime="2022-09-26T21:04:20+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-11 14:46:43" itemprop="dateModified" datetime="2022-11-11T14:46:43+08:00">2022-11-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>title: Chart.js</p>
+<p>date: 2019-10-03 11:30:37</p>
+<p>tags: html5</p>
+<p>categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>HTML5 # 一级分类</li>
+<li>canvas # 二级分类</li>
+</ul>
+<hr>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>而另一个版本 Chart.bundle.js 和 Chart.bundle.min.js 早就包含了 Moment.js 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install chart.<span class="property">js</span> --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="CDN-引入"><a href="#CDN-引入" class="headerlink" title="CDN 引入"></a>CDN 引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模块化引入"><a href="#模块化引入" class="headerlink" title="模块化引入"></a>模块化引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Chart</span> <span class="keyword">from</span> <span class="string">&#x27;chart.js&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> myChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;...&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单上手"><a href="#简单上手" class="headerlink" title="简单上手"></a>简单上手</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;myChart&quot;</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">height</span>=<span class="string">&quot;400&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 获取我们要选择的canvas元素的上下文</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> ctx = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myChart&quot;</span>).<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> myNewChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;...&#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 使用jQuery获取上下文-使用jQuery的.get（）方法。</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> ctx = $(<span class="string">&quot;#myChart&quot;</span>).<span class="title function_">get</span>(<span class="number">0</span>).<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 这将获取jQuery集合中第一个返回的节点。</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> myNewChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>如果您希望所有创建的图表都具有响应性，并在浏览器窗口打开时调整大小，则可以更改以下设置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Chart</span>.<span class="property">defaults</span>.<span class="property">global</span>.<span class="property">responsive</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h1><p>折线图是在一条线上绘制数据点的方法.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLineChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&quot;line&quot;</span>,</span><br><span class="line">  <span class="attr">data</span>: data,</span><br><span class="line">  <span class="attr">options</span>: options,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>数据结构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  <span class="comment">//横坐标显示的值</span></span><br><span class="line">  <span class="attr">labels</span>: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>, <span class="number">2019</span>],</span><br><span class="line">  <span class="attr">datasets</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//第一条线表示优酷</span></span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;优酷&quot;</span>,</span><br><span class="line">      <span class="comment">//设定data数值,表示每年用户总量</span></span><br><span class="line">      <span class="attr">data</span>: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//第二条线表示YouTube</span></span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;YouTube&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置坐标轴"><a href="#设置坐标轴" class="headerlink" title="设置坐标轴"></a>设置坐标轴</h2><h3 id="Y-轴"><a href="#Y-轴" class="headerlink" title="Y 轴"></a>Y 轴</h3><p>options.yAxes</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="comment">//设置缩放</span></span><br><span class="line">  <span class="attr">scales</span>: &#123;</span><br><span class="line">    <span class="comment">//设置Y轴</span></span><br><span class="line">    <span class="attr">yAxes</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">//刻度</span></span><br><span class="line">        <span class="attr">ticks</span>: &#123;</span><br><span class="line">          <span class="comment">//固定最大最小</span></span><br><span class="line">          <span class="attr">min</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">max</span>: <span class="number">2000</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//建议最大最小</span></span><br><span class="line">          <span class="attr">suggestedMin</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">suggestedMax</span>: <span class="number">2000</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//跨度</span></span><br><span class="line">          <span class="attr">stepSize</span>: <span class="number">400</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//用回调函数设置单位</span></span><br><span class="line">          <span class="attr">callback</span>: <span class="keyword">function</span> (<span class="params">value, index, values</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> value + <span class="string">&quot;人&quot;</span>;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="标题和图例"><a href="#标题和图例" class="headerlink" title="标题和图例"></a>标题和图例</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    <span class="comment">//设置标题</span></span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">        <span class="attr">display</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&#x27;阿银&#x27;</span>,</span><br><span class="line">        <span class="attr">fontColor</span>: <span class="string">&#x27;black&#x27;</span>,</span><br><span class="line">        <span class="attr">fontSize</span>: <span class="string">&#x27;24&#x27;</span>,</span><br><span class="line">        <span class="attr">position</span>: <span class="string">&#x27;top&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">legend</span>: &#123;</span><br><span class="line">        <span class="comment">//设置图例</span></span><br><span class="line">        <span class="attr">position</span>: <span class="string">&#x27;left&#x27;</span>,</span><br><span class="line">        <span class="attr">display</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">animation</span>: &#123;</span><br><span class="line">        <span class="comment">//动态效果,为0时禁用动画</span></span><br><span class="line">        <span class="attr">duration</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="attr">easing</span>: <span class="string">&#x27;easeOutQuart&#x27;</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="线型变换"><a href="#线型变换" class="headerlink" title="线型变换"></a>线型变换</h1><p><code>data.datasets</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    <span class="attr">labels</span>: [<span class="number">2014</span>,<span class="number">2015</span>,<span class="number">2016</span>,<span class="number">2017</span>,<span class="number">2018</span>,<span class="number">2019</span>],</span><br><span class="line">    <span class="attr">datasets</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">label</span>:  <span class="string">&#x27;优酷&#x27;</span>,</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">100</span>,<span class="number">200</span>,<span class="number">400</span>,<span class="number">800</span>,<span class="number">1600</span>],</span><br><span class="line">            <span class="comment">//线段颜色</span></span><br><span class="line">            <span class="attr">borderColor</span>: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">            <span class="comment">//线宽</span></span><br><span class="line">            <span class="attr">borderWidth</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="comment">//背景色是否填充</span></span><br><span class="line">            <span class="attr">fill</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="comment">//背景色</span></span><br><span class="line">            <span class="attr">backgroundColor</span>: <span class="string">&#x27;rgba(128,0,0,0.5),</span></span><br><span class="line"><span class="string">            //线段曲率,为0显示折线</span></span><br><span class="line"><span class="string">            lineTension: 0,</span></span><br><span class="line"><span class="string">            //折点的造型,默认是圆点.可选三角,方块,星星</span></span><br><span class="line"><span class="string">            pointStyle: &#x27;</span>rect<span class="string">&#x27;</span></span><br><span class="line"><span class="string">        &#125;,&#123;</span></span><br><span class="line"><span class="string">            label: &#x27;</span><span class="title class_">YouTube</span><span class="string">&#x27;,</span></span><br><span class="line"><span class="string">            data: [50,100,200,400,600]</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    ]</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="条形图-柱状图"><a href="#条形图-柱状图" class="headerlink" title="条形图(柱状图)"></a>条形图(柱状图)</h1><p>垂直条形图: <code>type: bar</code></p>
+<p>水平条形图: <code>type: horizontalBar</code></p>
+<p>大部分属性类似于折线图</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  <span class="attr">labels</span>: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>],</span><br><span class="line">  <span class="attr">datasets</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;优酷&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>],</span><br><span class="line">      <span class="comment">//为每个条形单独设置颜色</span></span><br><span class="line">      <span class="attr">backgroundColor</span>: [<span class="string">&quot;red&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;yellow&quot;</span>, <span class="string">&quot;green&quot;</span>, <span class="string">&quot;blue&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;YouTube&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>还可以设置条形重叠(覆盖)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">options</span>: &#123;</span><br><span class="line">        <span class="attr">scales</span>: &#123;</span><br><span class="line">            <span class="attr">xAxes</span>: [&#123;</span><br><span class="line">                <span class="comment">//设置覆盖</span></span><br><span class="line">                <span class="attr">stacked</span>: <span class="literal">true</span></span><br><span class="line">            &#125;],</span><br><span class="line">            <span class="attr">yAxes</span>: [&#123;</span><br><span class="line">                <span class="comment">//设置覆盖</span></span><br><span class="line">                <span class="attr">stacked</span>: <span class="literal">true</span></span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="混合图"><a href="#混合图" class="headerlink" title="混合图"></a>混合图</h1><p>线形图和条形图的混合</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixedChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&quot;bar&quot;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">datasets</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&quot;优酷&quot;</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&quot;YouTube&quot;</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>],</span><br><span class="line">        <span class="comment">//再改成线图</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;line&quot;</span>,</span><br><span class="line">        <span class="comment">//防止填充遮盖到条形图</span></span><br><span class="line">        <span class="attr">fill</span>: <span class="literal">false</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">labels</span>: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">options</span>: options,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="雷达图-六边形图"><a href="#雷达图-六边形图" class="headerlink" title="雷达图(六边形图)"></a>雷达图(六边形图)</h1><p><code>type = &#39;radar&#39;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">type = <span class="string">&quot;radar&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  <span class="attr">labels</span>: [<span class="string">&quot;力量&quot;</span>, <span class="string">&quot;速度&quot;</span>, <span class="string">&quot;经验&quot;</span>, <span class="string">&quot;防守&quot;</span>, <span class="string">&quot;技术&quot;</span>, <span class="string">&quot;发球&quot;</span>],</span><br><span class="line">  <span class="attr">datasets</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;帝国の破坏龙-马龙&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&quot;rgba(247,247,9,0.2)&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;帝国の绝凶虎-张继科&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&quot;rgba(238,61,17,0.2)&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="attr">scale</span>: &#123;</span><br><span class="line">    <span class="attr">ticks</span>: &#123;</span><br><span class="line">      <span class="attr">suggestedMin</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">suggestedMax</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">stepSize</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">display</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">text</span>: <span class="string">&quot;桌球帝国战力值&quot;</span>,</span><br><span class="line">    <span class="attr">fontSize</span>: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="饼图和甜甜圈"><a href="#饼图和甜甜圈" class="headerlink" title="饼图和甜甜圈"></a>饼图和甜甜圈</h1><p>饼图: <code>type: &#39;pie&#39;</code></p>
+<p>甜甜圈: <code>type: &#39;doughnut&#39;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">  <span class="attr">datasets</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">30</span>, <span class="number">20</span>, <span class="number">30</span>],</span><br><span class="line">      <span class="attr">backgroundColor</span>: [<span class="string">&quot;green&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;yellow&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  <span class="attr">labels</span>: [<span class="string">&quot;马龙&quot;</span>, <span class="string">&quot;张继科&quot;</span>, <span class="string">&quot;王浩&quot;</span>],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="comment">//50-用于甜甜圈，0-用于饼图</span></span><br><span class="line">  <span class="attr">cutoutPercentage</span>: <span class="number">80</span>,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">display</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">text</span>: <span class="string">&quot;桌球帝国战力值&quot;</span>,</span><br><span class="line">    <span class="attr">fontSize</span>: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="极区图"><a href="#极区图" class="headerlink" title="极区图"></a>极区图</h1><p><code>type: &#39;polarArea&#39;</code></p>
+<p>极区图类似于饼图，但是每个线段具有相同的角度-线段的半径根据值而不同。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/TypeScript%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +525,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:43" itemprop="dateModified" datetime="2022-11-11T14:46:43+08:00">2022-11-11</time>
     </span>
 
   
@@ -360,7 +677,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:43" itemprop="dateModified" datetime="2022-11-11T14:46:43+08:00">2022-11-11</time>
     </span>
 
   
@@ -513,7 +830,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:43" itemprop="dateModified" datetime="2022-11-11T14:46:43+08:00">2022-11-11</time>
     </span>
 
   
@@ -669,7 +986,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:44" itemprop="dateModified" datetime="2022-11-11T14:46:44+08:00">2022-11-11</time>
     </span>
 
   
@@ -1402,7 +1719,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:44" itemprop="dateModified" datetime="2022-11-11T14:46:44+08:00">2022-11-11</time>
     </span>
 
   
@@ -1523,7 +1840,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:44" itemprop="dateModified" datetime="2022-11-11T14:46:44+08:00">2022-11-11</time>
     </span>
 
   
@@ -1601,7 +1918,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:44" itemprop="dateModified" datetime="2022-11-11T14:46:44+08:00">2022-11-11</time>
     </span>
 
   
@@ -1683,7 +2000,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
+      <time title="Modified: 2022-11-11 14:46:44" itemprop="dateModified" datetime="2022-11-11T14:46:44+08:00">2022-11-11</time>
     </span>
 
   
@@ -1791,173 +2108,6 @@
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// auth.slice.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> authSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;auth&#x27;</span>,</span><br><span class="line">  initialState,</span><br><span class="line">  <span class="attr">reducers</span>: &#123;</span><br><span class="line">    <span class="title function_">setUser</span>(<span class="params">state,action</span>) &#123;</span><br><span class="line">      state.<span class="property">user</span> = action.<span class="property">payload</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123;setUser&#125; = authSlice.<span class="property">actions</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">selectUser</span> = (<span class="params">state:RootState</span>) =&gt; state.<span class="property">auth</span>.<span class="property">user</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">login</span> = (<span class="params">form:AuthForm</span>) =&gt; <span class="function">(<span class="params">dispatch:AppDispatch</span>) =&gt;</span>auth.<span class="title function_">login</span>(form).<span class="title function_">then</span>(<span class="function"><span class="params">user</span> =&gt;</span> <span class="title function_">dispatch</span>(<span class="title function_">setUser</span>(user))</span><br></pre></td></tr></table></figure>
 
 <p>记得使用 Provider 将 Context 包裹</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/14/%E5%BE%AE%E5%89%8D%E7%AB%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/14/%E5%BE%AE%E5%89%8D%E7%AB%AF/" class="post-title-link" itemprop="url">微前端</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-14 16:33:54" itemprop="dateCreated datePublished" datetime="2022-09-14T16:33:54+08:00">2022-09-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
-<li>拆分巨型应用,使得应用更好维护</li>
-<li>兼容历史应用,实现增量开发</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/React%20CSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/22/React%20CSS/" class="post-title-link" itemprop="url">React CSS</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-22 10:55:31" itemprop="dateCreated datePublished" datetime="2022-08-22T10:55:31+08:00">2022-08-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-10 20:08:58" itemprop="dateModified" datetime="2022-11-10T20:08:58+08:00">2022-11-10</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="emotion"><a href="#emotion" class="headerlink" title="emotion"></a>emotion</h1><p>可以模块化 css</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @emotion/styled @emotion/react</span><br></pre></td></tr></table></figure>
-
-<p>写法,注意首字母大写</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Container</span> = styled.<span class="property">div</span><span class="string">`</span></span><br><span class="line"><span class="string">  display: flex;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意styled后只能跟原生元素,如果要修改antd,加括号</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ShadowCard</span> = <span class="title function_">styled</span>(<span class="title class_">Card</span>)<span class="string">`</span></span><br><span class="line"><span class="string">  width: 40rem;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
-
-<h1 id="antd"><a href="#antd" class="headerlink" title="antd"></a>antd</h1><p>老版本 antd 和新版本 react-script 有冲突会报 less 警告.可以将引入 antd.css 改为 antd.min.css 即可解决.</p>
-<h1 id="Grid-布局和-flex-布局"><a href="#Grid-布局和-flex-布局" class="headerlink" title="Grid 布局和 flex 布局"></a>Grid 布局和 flex 布局</h1><p>区别:</p>
-<ol>
-<li>一维布局: flex;二维布局: grid;</li>
-<li>从内容出发用 flex,布局出发用 grid.</li>
-</ol>
-<p>内容出发:先有一组数据,数量不固定,希望均匀分布在容器中,由内容自己的大小占据空间.<br>布局出发: 先规划网格,再把元素往里面填充.</p>
 
       
     </div>

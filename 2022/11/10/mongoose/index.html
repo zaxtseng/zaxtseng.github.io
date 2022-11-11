@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="连接 mongo1234567891011121314151617181920212223242526&#x2F;* * @ use 数据库连接 *&#x2F;const mongoose &#x3D; require(&quot;mongoose&quot;);const config &#x3D; require(&quot;..&#x2F;..&#x2F;config&#x2F;common&quot;);const dbConfig &#x3D; config[pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoose">
+<meta property="og:url" content="http://example.com/2022/11/10/mongoose/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="连接 mongo1234567891011121314151617181920212223242526&#x2F;* * @ use 数据库连接 *&#x2F;const mongoose &#x3D; require(&quot;mongoose&quot;);const config &#x3D; require(&quot;..&#x2F;..&#x2F;config&#x2F;common&quot;);const dbConfig &#x3D; config[pro">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-10T12:20:41.000Z">
+<meta property="article:modified_time" content="2022-11-11T06:46:35.019Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/11/10/mongoose/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/10/mongoose/","path":"2022/11/10/mongoose/","title":"mongoose"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>mongoose | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5-mongo"><span class="nav-number">1.</span> <span class="nav-text">连接 mongo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-Schema"><span class="nav-number">1.0.1.</span> <span class="nav-text">定义 Schema</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Schema-Type"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Schema.Type</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">查询条件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mongodb-%E5%AF%B9%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E5%85%83%E7%B4%A0%E8%BF%9B%E8%A1%8C%E4%B8%80%E6%AC%A1%E6%80%A7%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95"><span class="nav-number">2.0.1.</span> <span class="nav-text">mongodb 对数组中的所有元素进行一次性修改方法</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/10/mongoose/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="mongoose | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mongoose
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-10 20:20:41" itemprop="dateCreated datePublished" datetime="2022-11-10T20:20:41+08:00">2022-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-11 14:46:35" itemprop="dateModified" datetime="2022-11-11T14:46:35+08:00">2022-11-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="连接-mongo"><a href="#连接-mongo" class="headerlink" title="连接 mongo"></a>连接 mongo</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @ use 数据库连接</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">&quot;../../config/common&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dbConfig = config[process.<span class="property">env</span>.<span class="property">NODE_ENV</span> || <span class="string">&quot;development&quot;</span>];</span><br><span class="line"></span><br><span class="line">mongoose.<span class="title function_">connect</span>(dbConfig.<span class="property">mongo</span>.<span class="property">url</span>, &#123; <span class="attr">useNewUrlParser</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"></span><br><span class="line">mongoose.<span class="title function_">set</span>(<span class="string">&quot;useCreateIndex&quot;</span>, <span class="literal">true</span>); <span class="comment">//加上这个</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接成功</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;connected&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//console.log(&#x27;连接成功 &#x27; + dbConfig.mongo.url);</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接失败</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;连接失败 &quot;</span> + err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 断开连接</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;disconnected&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;断开连接&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义-Schema"><a href="#定义-Schema" class="headerlink" title="定义 Schema"></a>定义 Schema</h3><h4 id="Schema-Type"><a href="#Schema-Type" class="headerlink" title="#Schema.Type"></a><a target="_blank" rel="noopener" href="http://file.jing999.cn/workspace/Server/sql/mongoose.html#schema-type">#</a>Schema.Type</h4><ul>
+<li>String</li>
+<li>Number</li>
+<li>Date</li>
+<li>Buffer</li>
+<li>Boolean</li>
+<li>Mixed</li>
+<li>Objectid</li>
+<li>Array</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Schema</span>   = mongoose.<span class="property">Schema</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">UserSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    name  : &#123; <span class="attr">type</span>: <span class="title class_">String</span>, <span class="attr">unique</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">    posts : [&#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Post&#x27;</span> &#125;]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">User</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;User&#x27;</span>, <span class="title class_">UserSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">PostSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    poster   : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;User&#x27;</span> &#125;,</span><br><span class="line">    comments : [&#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Comment&#x27;</span> &#125;],</span><br><span class="line">    title    : <span class="title class_">String</span>,</span><br><span class="line">    content  : <span class="title class_">String</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Post</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Post&#x27;</span>, <span class="title class_">PostSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">CommentSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    post      : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&quot;Post&quot;</span> &#125;,</span><br><span class="line">    commenter : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;User&#x27;</span> &#125;,</span><br><span class="line">    content   : &#123;</span><br><span class="line">        <span class="attr">main</span>: <span class="title class_">String</span>,</span><br><span class="line">        <span class="attr">label</span>: <span class="title class_">String</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">points</span>: [</span><br><span class="line">        <span class="attr">point</span>: [&#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Point&#x27;</span>&#125;]</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Comment</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Comment&#x27;</span>, <span class="title class_">CommentSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">PointSchema</span> = <span class="keyword">new</span> mongoose.<span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">parent</span>: &#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;point&#x27;</span>&#125;,</span><br><span class="line">  <span class="attr">children</span>: [&#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;point&#x27;</span>&#125;]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Point</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Point&#x27;</span>, <span class="title class_">PointSchema</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="查询条件"><a href="#查询条件" class="headerlink" title="查询条件"></a>查询条件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$or　　　　或关系</span><br><span class="line">$nor　　　 或关系取反</span><br><span class="line">$gt　　　　大于</span><br><span class="line">$gte　　　 大于等于</span><br><span class="line">$lt　　　　 小于</span><br><span class="line">$lte　　　  小于等于</span><br><span class="line">$ne            不等于</span><br><span class="line">$in             在多个值范围内</span><br><span class="line">$nin           不在多个值范围内</span><br><span class="line">$all            匹配数组中多个值</span><br><span class="line">$regex　　正则，用于模糊查询</span><br><span class="line">$size　　　匹配数组大小</span><br><span class="line">$maxDistance　　范围查询，距离（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$mod　　   取模运算</span><br><span class="line">$near　　　邻域查询，查询附近的位置（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$exists　　  字段是否存在</span><br><span class="line">$elemMatch　　匹配内数组内的元素</span><br><span class="line">$within　　范围查询（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$box　　　 范围查询，矩形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$center       范围醒询，圆形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$centerSphere　　范围查询，球形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$slice　　　　查询字段集合中的元素（比如从第几个之后，第N到第M个元素）</span><br></pre></td></tr></table></figure>
+
+<h3 id="mongodb-对数组中的所有元素进行一次性修改方法"><a href="#mongodb-对数组中的所有元素进行一次性修改方法" class="headerlink" title="mongodb 对数组中的所有元素进行一次性修改方法"></a>mongodb 对数组中的所有元素进行一次性修改方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">list</span>: [&#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="number">1504195200000</span>,</span><br><span class="line">        <span class="attr">other</span>: <span class="string">&quot;c&quot;</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;b&quot;</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="number">1504195200000</span>,</span><br><span class="line">        <span class="attr">other</span>: <span class="string">&quot;c&quot;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 现在要把other全部更新为&quot;a&quot;,方法如下</span></span><br><span class="line">db.<span class="title function_">getCollection</span>(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">  .<span class="title function_">update</span>(&#123;<span class="string">&#x27;name&#x27;</span>: <span class="number">4</span>&#125;, &#123;<span class="attr">$set</span>: &#123;<span class="string">&#x27;list.$[].other&#x27;</span>: <span class="string">&#x27;a&#x27;</span>&#125;&#125;, &#123;<span class="attr">multi</span>: <span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/08/Egg.js/" rel="prev" title="Egg.js">
+                  <i class="fa fa-chevron-left"></i> Egg.js
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
