@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,241 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/React%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/React%E5%85%A5%E9%97%A8/" class="post-title-link" itemprop="url">React入门</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:08:10" itemprop="dateCreated datePublished" datetime="2022-09-26T21:08:10+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-18 15:55:40" itemprop="dateModified" datetime="2022-11-18T15:55:40+08:00">2022-11-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="title-React-入门-date-2020-05-05-09-48-17"><a href="#title-React-入门-date-2020-05-05-09-48-17" class="headerlink" title="title: React 入门 date: 2020-05-05 09:48:17"></a>title: React 入门 date: 2020-05-05 09:48:17</h2><p>tags: React</p>
+<p>React 是一个 MVC 框架.</p>
+<h1 id="React-特点"><a href="#React-特点" class="headerlink" title="React 特点"></a>React 特点</h1><ol>
+<li>声明式写法</li>
+<li>组件化</li>
+<li>可开发多种任务</li>
+</ol>
+<h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><h2 id="官方脚手架-creat-react-app"><a href="#官方脚手架-creat-react-app" class="headerlink" title="官方脚手架 creat-react-app"></a>官方脚手架 creat-react-app</h2><p>需求: node &gt; 6.0</p>
+<p>安装命令<code>npm install create-react-app</code></p>
+<p>创建命令<code>create-reate-app my-project</code></p>
+<p>运行命令<code>npm start</code></p>
+<h1 id="文件入口"><a href="#文件入口" class="headerlink" title="文件入口"></a>文件入口</h1><p><code>/src/App.js</code></p>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p>ReactDOM.render()</p>
+<p>React.CreateElement()</p>
+<p>React.Component</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//括号内分别为标签名,属性,默认值</span></span><br><span class="line"><span class="keyword">const</span> hello = <span class="title class_">React</span>.<span class="title class_">CreatElement</span>(</span><br><span class="line">  <span class="string">&quot;h1&quot;</span>,</span><br><span class="line">  &#123; <span class="attr">className</span>: <span class="string">&quot;red&quot;</span>, <span class="attr">name</span>: <span class="string">&quot;Tom&quot;</span> &#125;,</span><br><span class="line">  <span class="string">&quot;hello world&quot;</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">//括号内为所要渲染元素,挂载位置</span></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(hello, <span class="variable language_">document</span>.<span class="title function_">getELementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>特点:</p>
+<p>当插入很多数据,ReactDOM.render 会通过虚拟 DOM 方式生成一个 diff,只插入一次.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用大括号形式将js函数编入HTML</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&quot;Tom&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> ele = (</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">&quot;red&quot;</span> <span class="attr">name</span>=<span class="string">&quot;Tom&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    hello,&#123;name&#125;</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">);</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(ele, <span class="variable language_">document</span>.<span class="title function_">getELementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="书写格式"><a href="#书写格式" class="headerlink" title="书写格式"></a>书写格式</h2><p>src 下新建一个组件 Demo.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//src/Demo.js</span></span><br><span class="line"><span class="comment">//引入react</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="comment">//新建类class</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">    <span class="comment">//render方法渲染</span></span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> &lt;h1&gt; <span class="title class_">Hello</span> <span class="title class_">React</span> &lt;h1&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Demo</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="组件挂载"><a href="#组件挂载" class="headerlink" title="组件挂载"></a>组件挂载</h3><p>将组件挂载到 ReactDOM 节点上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&quot;react-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Demo</span> <span class="keyword">from</span> <span class="string">&quot;./Demo&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDom</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Demo</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;root&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><p>javascript 语法扩展.</p>
+<p>在花括号{}中可以添加任意 js 的表达式(expressions).</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Demo.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> todoList = [<span class="string">&quot;Learn React&quot;</span>, <span class="string">&quot;Learn Redux&quot;</span>];</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello React<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;todoList.map((item) =&gt; (</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          ))&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Demo</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSX-实质"><a href="#JSX-实质" class="headerlink" title="JSX 实质"></a>JSX 实质</h2><p>JSX 是语法糖–<code>React.createElement()</code></p>
+<p>JSX 返回 ReactElement 对象</p>
+<h1 id="实操总结"><a href="#实操总结" class="headerlink" title="实操总结"></a>实操总结</h1><p>&#x2F;&#x2F;jsx 中函数必须用{}括起来,不要有空格,否则失效</p>
+<p>&#x2F;&#x2F;jsx 中调用类中的函数要加 this</p>
+<p>&#x2F;&#x2F;在 jsx 之前要把要用的参数提前解构出来</p>
+<p>&#x2F;&#x2F;函数中调用也要解构</p>
+<h1 id="组件通信-属性传值-Props-x2F-State-x2F-Forms"><a href="#组件通信-属性传值-Props-x2F-State-x2F-Forms" class="headerlink" title="组件通信(属性传值)Props&#x2F;State&#x2F;Forms"></a>组件通信(属性传值)Props&#x2F;State&#x2F;Forms</h1><h2 id="组件和-Props-属性"><a href="#组件和-Props-属性" class="headerlink" title="组件和 Props(属性)"></a>组件和 Props(属性)</h2><ul>
+<li>组件像函数一样,接受特定的输入(props),产生特定的输出(React Elements)</li>
+<li>V &#x3D; f(props)</li>
+<li>props 像纯函数一样,只读,不可变化</li>
+</ul>
+<p><code>props.children</code>可以拿到 div 下的首尾标签的子元素</p>
+<p>示例:</p>
+<h2 id="class-形式带状态组件"><a href="#class-形式带状态组件" class="headerlink" title="class 形式带状态组件"></a>class 形式带状态组件</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">NameCard</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="comment">//使用render()进行渲染</span></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; name, number, isHuman, tags &#125; = <span class="variable language_">this</span>.<span class="property">props</span>;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h4</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>电话: &#123;number&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;isHuman ? &quot;人类&quot; : &quot;外星人&quot;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            &#123;tags.map((tag, index) =&gt; (</span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">span</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;tag&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            ))&#125;</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">NameCard</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="函数式组件-无状态组件"><a href="#函数式组件-无状态组件" class="headerlink" title="函数式组件(无状态组件)"></a>函数式组件(无状态组件)</h3><p>无状态,没有生命周期</p>
+<h4 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Hello</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello,&#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>年龄: &#123;props.age&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Hello</span> <span class="attr">name</span>=<span class="string">&quot;Tom&quot;</span> <span class="attr">age</span>=<span class="string">&quot;12&quot;</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">NameCard</span> = (<span class="params">props</span>) =&gt; &#123;</span><br><span class="line">        <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> &#123;name, number, isHuman, tags &#125; = <span class="variable language_">this</span>.<span class="property">props</span></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">h4</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">h4</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span>电话: &#123;number&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123; isHuman ? &#x27;人类&#x27; : &#x27;外星人&#x27; &#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                        &#123; tags.map((tag,index) =&gt; (</span></span><br><span class="line"><span class="language-xml">                            <span class="tag">&lt;<span class="name">span</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;tag&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                        ))&#125;</span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="State-状态"><a href="#State-状态" class="headerlink" title="State(状态)"></a>State(状态)</h2><ul>
+<li>组件内部的数据可以动态改变</li>
+<li><code>this.setState()</code>是更新 state 的唯一途径</li>
+</ul>
+<h3 id="示例-LikesButton"><a href="#示例-LikesButton" class="headerlink" title="示例:LikesButton"></a>示例:LikesButton</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//cpmponents/LikesButton.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LikesButton</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">likes</span>: <span class="number">0</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//如果未使用箭头函数说明this,需绑定this</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">increaseLikes</span> = <span class="variable language_">this</span>.<span class="property">increaseLikes</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">type</span>=<span class="string">&quot;button&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          // <span class="attr">函数要使用驼峰式</span>,<span class="attr">最好使用箭头函数</span>,<span class="attr">否则this指向不明</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">            this.increaseLikes();</span></span><br><span class="line"><span class="language-xml">          &#125;&#125;</span></span><br><span class="line"><span class="language-xml">        &gt;</span></span><br><span class="line"><span class="language-xml">          点赞 &#123;this.state.likes&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">LikesButton</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ul>
+<li>组件挂载</li>
+<li>组件更新</li>
+<li>组件卸载</li>
+<li>错误处理</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/06/28/NgZCwD.png#alt="></p>
+<h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><p>当组件实例被创建并插入 DOM 中,生命周期调用顺序为</p>
+<ul>
+<li><code>constructor()</code></li>
+</ul>
+<p>构造函数初始化,最先被执行,初始化<code>state</code>等</p>
+<ul>
+<li><code>static getDerivedStateFromProps()</code></li>
+</ul>
+<p>这是一个静态方法，需要在前面增加 static 的属性</p>
+<ul>
+<li><code>render()</code></li>
+</ul>
+<p>渲染函数，返回渲染的内容，当页面产生更新也会触发该方法。</p>
+<p><code>render()</code>方法是<code>class</code>组件中唯一必须实现的方法。</p>
+<ul>
+<li><code>componentDidMount</code></li>
+</ul>
+<p>组件挂载之后，这个时候组件已经挂载完毕了</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><p>当组件的<code>props</code>或<code>state</code>发生变化时会触发更新。组件更新的生命周期调用顺序如下：</p>
+<ul>
+<li><code>static getDrivedStateFromProps()</code></li>
+</ul>
+<p>组件即将被更新，这里参数分别对应前后被修改的内容，通过返回一个布尔值告知是否需要更新视图。</p>
+<ul>
+<li><code>shouldComponentUpdate()</code></li>
+</ul>
+<p>如果<code>shouldComponentUpdate()</code>返回<code>false</code>，则不会调用<code>render()</code>。</p>
+<ul>
+<li><code>render()</code></li>
+</ul>
+<p>当视图更新，那么 Render 也会重新更新</p>
+<ul>
+<li><code>getSnapshotBeforeUpdate</code></li>
+</ul>
+<p><code>getSnapshotBeforeUpdate</code>在<code>render</code>之后<code>componentDidUpdate</code>之前输出，类似于中间件用来做一些捕获操作。</p>
+<ul>
+<li><code>componentDidUpdate</code></li>
+</ul>
+<p><code>componentDidUpdate(prevProps, prevState, snapshot)</code>,三个参数 prevProps，prevState，snapshot，表示之前的 props，之前的 state，和 snapshot。snapshot 是 getSnapshotBeforeUpdate 返回的值.</p>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>当组件从 DOM 中移除时会调用如下方法：</p>
+<p><code>componentWillUnmount</code></p>
+<p>组件卸载，我们可以清除一些定时器,取消网络请求。</p>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：</p>
+<ul>
+<li><code>static getDrivedStateFromError()</code></li>
+<li><code>componentDidCatch()</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span> (props) &#123;</span><br><span class="line">  <span class="variable language_">super</span>(props)</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">state</span> = &#123;&#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1.constructor构造函数&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">componentDidMount () &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;componentDidMount&#x27;</span>)</span><br><span class="line">  <span class="title class_">Store</span>.<span class="title function_">subscribe</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;&#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> getDerivedStateFromProps (nextProps, prevState) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;getDerivedStateFromProps&#x27;</span>)</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(nextProps, prevState)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">getSnapshotBeforeUpdate (prevProps, prevState) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(prevProps, prevState)</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;top: 200&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">componentDidUpdate (prevProps, prevState, snapshot) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(prevProps, prevState, snapshot)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">componentWillUnmount () &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;componentWillUnmount&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">changeText () &#123;</span><br><span class="line">  <span class="title class_">Store</span>.<span class="title function_">dispatch</span>(&#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;changeName&#x27;</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="string">&#x27;我是ClassDemo中修改的名字： wangly&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">render () &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;3.render函数&#x27;</span>)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123; Store.getState().redux_name &#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123; this.state.redux_name &#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;</span> <span class="attr">this.changeText.bind</span>(<span class="attr">this</span>) &#125;&gt;</span>更改文本<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="示例-电子钟表"><a href="#示例-电子钟表" class="headerlink" title="示例: 电子钟表"></a>示例: 电子钟表</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//components/DigitalClock.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DigitalClock</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="comment">//初始化props</span></span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="comment">//初始化状态</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="comment">//初始值</span></span><br><span class="line">      <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//加载前可以发起ajax请求,拉取接口数据</span></span><br><span class="line">  <span class="title function_">componentWillMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;组件加载前&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//挂载后使用定时器更新时间</span></span><br><span class="line">  <span class="title function_">componentDidMount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">timer</span> = setIntervalo(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">        <span class="attr">date</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//结束时,卸载</span></span><br><span class="line">  <span class="title function_">componentWillUnmount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">clearInterval</span>(<span class="variable language_">this</span>.<span class="property">timer</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//组件是否应该更新</span></span><br><span class="line">  <span class="title function_">shouldCompnentUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//为true时执行数据更新</span></span><br><span class="line">  <span class="title function_">componentWillUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;数据将要更新&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;数据已经更新&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;this.state.date.toLocalTimeString()&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">DigitalClock</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="事件处理中-this-的绑定"><a href="#事件处理中-this-的绑定" class="headerlink" title="事件处理中 this 的绑定"></a>事件处理中 this 的绑定</h2><ol>
+<li>箭头函数</li>
+<li>class 中 bind 绑定</li>
+<li>事件中使用箭头函数</li>
+<li>事件中使用 bind 绑定</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Hello</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="comment">//初始化props</span></span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="comment">//初始化状态</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&quot;Tom&quot;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">12</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//或者在class内部通过bind绑定this</span></span><br><span class="line">    <span class="comment">//this.updateUser = this.updateUser.bind(this)</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//数据更新</span></span><br><span class="line">  updateUser = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//使用箭头函数将this指向当前实例</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&quot;Jack&quot;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">13</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//外部就可以拿到this</span></span><br><span class="line">  <span class="comment">//就可以使用普通函数定义</span></span><br><span class="line">  <span class="comment">/*updateUser()&#123;</span></span><br><span class="line"><span class="comment">        this.setState(&#123;</span></span><br><span class="line"><span class="comment">            name: &#x27;Jack&#x27;,</span></span><br><span class="line"><span class="comment">            age: 12</span></span><br><span class="line"><span class="comment">        &#125;)</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//渲染</span></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello,&#123;this.state.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>年龄: &#123;this.state.age&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.updateUser&#125;</span>&gt;</span>更新数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        //或者在此处改为</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> this.updateUser()&#125;&gt;更新数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.updateUser.bind(this)&#125;</span>&gt;</span>更新数据<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Hello</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><p>通常使用三元运算符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;isLogin ? <span class="tag">&lt;<span class="name">Login</span> /&gt;</span> : <span class="tag">&lt;<span class="name">Logout</span> /&gt;</span>&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="组件通信-组件传值"><a href="#组件通信-组件传值" class="headerlink" title="组件通信(组件传值)"></a>组件通信(组件传值)</h2><h3 id="子组件获取父组件的值-Props"><a href="#子组件获取父组件的值-Props" class="headerlink" title="子组件获取父组件的值 Props"></a>子组件获取父组件的值 Props</h3><p>通过 Props 可以快捷的拿到父组件的值.</p>
+<ol>
+<li>在子组件上添加属性名和数据</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;classDemo name=<span class="string">&quot;Tom&quot;</span>&gt;&lt;/classDemo&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在 class 中使用 Props</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">constructor</span>(<span class="params">props</span>)&#123;</span><br><span class="line">    <span class="variable language_">super</span>(props)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">        <span class="attr">defaultText</span>: <span class="string">&quot;默认文字&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>通过<code>this.props.父组件绑定的属性名</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;<span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">name</span>&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="子组件传递父组件"><a href="#子组件传递父组件" class="headerlink" title="子组件传递父组件"></a>子组件传递父组件</h3><p>通过 props 传递一个函数,当子组件需要改变父组件的值时,通过<code>this.props.[自定义函数]</code>执行回调.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">childText</span>: <span class="string">&quot;123&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  onPropChange = <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">childText</span>: val,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;this.state.childText&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ClassDemo</span> <span class="attr">onChange</span>=<span class="string">&#123;this.onPropChange&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">ClassDemo</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassDemo</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">props</span>)&#123;</span><br><span class="line">        <span class="variable language_">super</span>(props)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">            <span class="attr">defaultText</span>: <span class="string">&#x27;默认文字&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    changeText = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">props</span>.<span class="title function_">onChange</span>(<span class="string">&#x27;321&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;</span> <span class="attr">this.changeText</span> &#125;&gt;</span>修改文本<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="列表渲染-循环"><a href="#列表渲染-循环" class="headerlink" title="列表渲染(循环)"></a>列表渲染(循环)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">List</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">list</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> arr = <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">list</span>;</span><br><span class="line">    <span class="keyword">const</span> listItem = [];</span><br><span class="line">    <span class="comment">//使用map方法遍历</span></span><br><span class="line">    <span class="comment">//将初始值加上li标签填入新的list中</span></span><br><span class="line">    arr.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">      listItem.<span class="title function_">push</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//使用return渲染出新的listItem</span></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span>&#123;listItem&#125;<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">List</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="Forms-表单应用"><a href="#Forms-表单应用" class="headerlink" title="Forms 表单应用"></a>Forms 表单应用</h2><p>数据发生变化后需要使用 this.setSate 进行更改数据,否则不会生效</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Forms</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">list</span>: [],</span><br><span class="line">      <span class="attr">val</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  handleChange = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 错误写法 val = event.target.value</span></span><br><span class="line">    <span class="comment">//数据发生变化后需要使用this.setSate进行更改数据</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">val</span>: event.<span class="property">target</span>.<span class="property">value</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  handleAdd = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//从state中获取val和list</span></span><br><span class="line">    <span class="keyword">const</span> &#123; val, list &#125; = <span class="variable language_">this</span>.<span class="property">state</span>;</span><br><span class="line">    <span class="comment">//将输入的新值添加到list中</span></span><br><span class="line">    list.<span class="title function_">push</span>(val);</span><br><span class="line">    <span class="comment">//重新赋值state</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      list,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> arr = <span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">list</span>;</span><br><span class="line">    <span class="keyword">const</span> listItem = [];</span><br><span class="line">    arr.<span class="title function_">map</span>(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">      listItem.<span class="title function_">push</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">value</span>=<span class="string">&#123;this.state.val&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handleChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          /&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleAdd&#125;</span>&gt;</span>点击添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span>&#123;listItem&#125;<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Form</span> /&gt;</span></span>, <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;app&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="受控组件和非受控组件"><a href="#受控组件和非受控组件" class="headerlink" title="受控组件和非受控组件"></a>受控组件和非受控组件</h3><p>受控组件: React 控制输入的表单元素</p>
+<p>实例: 留言框</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//CommentBox.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CommentBox</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;</span><br><span class="line">      <span class="attr">value</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//如果不使用bind绑定,可以在函数声明时使用箭头函数方法</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">handleChange</span> = <span class="variable language_">this</span>.<span class="property">handleChange</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">handleSubmit</span> = <span class="variable language_">this</span>.<span class="property">handleSubmit</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">handleChange</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">setState</span>(&#123;</span><br><span class="line">      <span class="attr">value</span>: event.<span class="property">target</span>.<span class="property">value</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">handleSubmit</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">value</span>);</span><br><span class="line">    event.<span class="title function_">preventDefault</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">label</span>&gt;</span>留言内容<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">placeholder</span>=<span class="string">&quot;请输入内容&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">onChange</span>=<span class="string">&#123;this.handlechange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">value</span>=<span class="string">&#123;this.state.value&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>留言<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">CommonBox</span>;</span><br></pre></td></tr></table></figure>
+
+<p>非受控组件写法</p>
+<p>将真实数据保存在 DOM 中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//CommentBox.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CommentBox</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">handleSubmit</span> = <span class="variable language_">this</span>.<span class="property">handleSubmit</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">handleSubmit</span>(<span class="params">event</span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="variable language_">this</span>.<span class="property">textInput</span>.<span class="property">value</span>);</span><br><span class="line">    event.<span class="title function_">preventDefault</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">onSubmit</span>=<span class="string">&#123;this.handleSubmit&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">label</span>&gt;</span>留言内容<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">input</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">type</span>=<span class="string">&quot;text&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">placeholder</span>=<span class="string">&quot;请输入内容&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">ref</span>=<span class="string">&#123;(textInput)</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">              this.textInput = textInput;</span></span><br><span class="line"><span class="language-xml">            &#125;&#125;</span></span><br><span class="line"><span class="language-xml">          /&gt;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>留言<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">CommonBox</span>;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/this%E4%BB%96%E5%96%B5%E7%9A%84%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +443,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:02" itemprop="dateModified" datetime="2022-11-16T08:48:02+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:40" itemprop="dateModified" datetime="2022-11-18T15:55:40+08:00">2022-11-18</time>
     </span>
 
   
@@ -404,7 +639,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:02" itemprop="dateModified" datetime="2022-11-16T08:48:02+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:40" itemprop="dateModified" datetime="2022-11-18T15:55:40+08:00">2022-11-18</time>
     </span>
 
   
@@ -658,7 +893,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:02" itemprop="dateModified" datetime="2022-11-16T08:48:02+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:41" itemprop="dateModified" datetime="2022-11-18T15:55:41+08:00">2022-11-18</time>
     </span>
 
   
@@ -750,7 +985,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:02" itemprop="dateModified" datetime="2022-11-16T08:48:02+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:41" itemprop="dateModified" datetime="2022-11-18T15:55:41+08:00">2022-11-18</time>
     </span>
 
   
@@ -839,7 +1074,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:02" itemprop="dateModified" datetime="2022-11-16T08:48:02+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:41" itemprop="dateModified" datetime="2022-11-18T15:55:41+08:00">2022-11-18</time>
     </span>
 
   
@@ -925,7 +1160,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:02" itemprop="dateModified" datetime="2022-11-16T08:48:02+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:41" itemprop="dateModified" datetime="2022-11-18T15:55:41+08:00">2022-11-18</time>
     </span>
 
   
@@ -1509,7 +1744,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:03" itemprop="dateModified" datetime="2022-11-16T08:48:03+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:41" itemprop="dateModified" datetime="2022-11-18T15:55:41+08:00">2022-11-18</time>
     </span>
 
   
@@ -1712,7 +1947,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:03" itemprop="dateModified" datetime="2022-11-16T08:48:03+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:41" itemprop="dateModified" datetime="2022-11-18T15:55:41+08:00">2022-11-18</time>
     </span>
 
   
@@ -2199,7 +2434,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:03" itemprop="dateModified" datetime="2022-11-16T08:48:03+08:00">2022-11-16</time>
+      <time title="Modified: 2022-11-18 15:55:42" itemprop="dateModified" datetime="2022-11-18T15:55:42+08:00">2022-11-18</time>
     </span>
 
   
@@ -2579,147 +2814,6 @@
 <blockquote>
 <p>不要过度使用这个模式。当需要渲染大量静态内容时，极少数的情况下它会给你带来便利，除非你非常留意渲染变慢了，不然它完全是没有必要的——再加上它在后期会带来很多困惑。例如，设想另一个开发者并不熟悉 v-once 或漏看了它在模板中，他们可能会花很多个小时去找出模板为什么无法正确更新。</p>
 </blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/%E7%94%B5%E8%AF%9D%E9%9D%A2%E8%AF%95%E9%A2%98/" class="post-title-link" itemprop="url">电话面试题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:07:05" itemprop="dateCreated datePublished" datetime="2022-09-26T21:07:05+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-16 08:48:03" itemprop="dateModified" datetime="2022-11-16T08:48:03+08:00">2022-11-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="title-电话面试题-date-2019-11-16-16-29-01"><a href="#title-电话面试题-date-2019-11-16-16-29-01" class="headerlink" title="title: 电话面试题 date: 2019-11-16 16:29:01"></a>title: 电话面试题 date: 2019-11-16 16:29:01</h2><p>tags: 面试题</p>
-<p>#CSS</p>
-<ol>
-<li>重绘和回流(那些操作会引起重回和回流,如何减少回流)</li>
-<li>Css 伪类有哪些?</li>
-<li>Position 的几个属性,各个区别?</li>
-<li>Css3 常用的属性</li>
-<li>实现水平垂直居中的方法</li>
-<li>Visible:none 和 display:none,hidden 的区别</li>
-<li>Css 的预处理器,好处,优点作用.</li>
-<li>Css 实现三角形.</li>
-<li>Css 引入的方法与区别</li>
-</ol>
-<h1 id="JS"><a href="#JS" class="headerlink" title="JS"></a>JS</h1><ol>
-<li>闭包的理解,作用,场景,缺点.</li>
-<li>类如何创建和继承</li>
-<li>深拷贝有哪些</li>
-<li>微任务和宏任务</li>
-<li>setInterval 如何实现,用 setTimeout 实现.</li>
-<li>for 循环里面有 setTimeout,里面有 console.log(i).不属于 for 循环最后面再有个 console.log(i).17:40 处.</li>
-<li>如果把 var 改为 let,结果如何</li>
-<li>[] &#x3D;&#x3D; ![]结果如何?为什么?</li>
-<li>Promise 的理解</li>
-<li>Async&#x2F;Await 与 Promise 的区别和联系.</li>
-</ol>
-<p>Await 相对于 Promise 相当于 Promise 的什么? 11. 随机生成一个 100-200 之间的数</p>
-<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><ol>
-<li>虚拟 DOM 的理解</li>
-<li>Vue 如何实现双向绑定,底层</li>
-<li>如何监听数组</li>
-<li>异步组件在哪用,优点</li>
-<li>计算属性和侦听器的区别(watch 和 computed)</li>
-<li>Slot 插槽,用在哪里.</li>
-</ol>
-<p>独立配置 webpack?有过修改吗?</p>
-<h1 id="Vue-面试题"><a href="#Vue-面试题" class="headerlink" title="Vue 面试题"></a>Vue 面试题</h1><ol>
-<li>向后台请求数据放在哪个生命周期,为什么?</li>
-<li>Vue 的特性是数据驱动和组件化开发,有封装过自己的组件吗?</li>
-<li>组件和 v-model,如果组件内数据变动,页面会不会都变动?</li>
-<li>V-model 的实现原理</li>
-<li>路由菜单动态改变</li>
-<li>请求菜单时,是每个请求都加上 token 还是加上其他东西?</li>
-<li>v-model 绑定相同类目在不同页面,点击其中一个,另一个会变化吗?为什么?</li>
-</ol>
-<h1 id="腾讯面试"><a href="#腾讯面试" class="headerlink" title="腾讯面试"></a>腾讯面试</h1><p>1.ES6 导入为什么是 require？如何 require 模块？</p>
-<p>2.密码加密用什么插件？这个插件是对称加密还是什么？</p>
-<p>3.说下 http 状态码</p>
-<p>4.缓存有几个阶段？浏览器请求网页，发现没有缓存到，就去重新请求，请问这个过程是怎样的？</p>
-<p>5.如果遇到 304，会用到缓存的哪些字段？</p>
-<p>6.前端工程化是什么？</p>
-<p>7.webpack 插件和 loader 的区别</p>
-<p>8.webpack 如何优化</p>
-<p>8.vue 的底层原理</p>
-<p>9.说下虚拟 dom</p>
-<ol start="10">
-<li>js 的异步机制，底层原理是什么？</li>
-</ol>
-<p>11.node.js 和 js 区别</p>
-<p>12.计算机网络</p>
-<p>#酒铺</p>
-<ol>
-<li>API 输出格式规范</li>
-<li>单页和多页的区别</li>
-<li>鉴权方式</li>
-</ol>
 
       
     </div>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这是一个比较大的话题.包含了很多部分.总体来讲就是尽量快的加载页面,使用资源又尽量少. 从输入网址到页面渲染,发生了啥这道面试题就比较宽范的触及到性能优化的各个点.需要比较系统的去理解. 阻塞渲染想要首屏优化,就得先把页面渲染出来,什么会阻塞渲染呢?HTML 和 CSS 会,因为他们要合成渲染树.所以就要降低要渲染的文件大小,扁平层级,优化选择器.还有一个问题,script会暂停 DOM 渲染.所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能优化">
+<meta property="og:url" content="http://example.com/2022/11/18/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="这是一个比较大的话题.包含了很多部分.总体来讲就是尽量快的加载页面,使用资源又尽量少. 从输入网址到页面渲染,发生了啥这道面试题就比较宽范的触及到性能优化的各个点.需要比较系统的去理解. 阻塞渲染想要首屏优化,就得先把页面渲染出来,什么会阻塞渲染呢?HTML 和 CSS 会,因为他们要合成渲染树.所以就要降低要渲染的文件大小,扁平层级,优化选择器.还有一个问题,script会暂停 DOM 渲染.所">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-18T06:11:17.000Z">
+<meta property="article:modified_time" content="2022-11-18T07:55:35.541Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/11/18/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/18/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/","path":"2022/11/18/性能优化/","title":"性能优化"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>性能优化 | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E8%BE%93%E5%85%A5%E7%BD%91%E5%9D%80%E5%88%B0%E9%A1%B5%E9%9D%A2%E6%B8%B2%E6%9F%93-%E5%8F%91%E7%94%9F%E4%BA%86%E5%95%A5"><span class="nav-number">1.</span> <span class="nav-text">从输入网址到页面渲染,发生了啥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E6%B8%B2%E6%9F%93"><span class="nav-number">2.</span> <span class="nav-text">阻塞渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%93%8D%E4%BD%9C-DOM-%E6%85%A2"><span class="nav-number">2.1.</span> <span class="nav-text">为什么操作 DOM 慢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%87%A0%E4%B8%87%E4%B8%AA-DOM-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B8%8D%E5%8D%A1%E9%A1%BF"><span class="nav-number">2.2.</span> <span class="nav-text">插入几万个 DOM,如何实现页面不卡顿</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML-%E4%BC%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">HTML 优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JS-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">JS 性能优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">5.</span> <span class="nav-text">CSS 性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%B5%81-reflow-%E5%92%8C%E9%87%8D%E7%BB%98-repaint"><span class="nav-number">5.1.</span> <span class="nav-text">回流(reflow)和重绘(repaint)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%8F%E5%B0%91"><span class="nav-number">5.1.1.</span> <span class="nav-text">减少</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">网络性能优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">7.</span> <span class="nav-text">框架性能优化</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="性能优化 | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          性能优化
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-18 14:11:17 / Modified: 15:55:35" itemprop="dateCreated datePublished" datetime="2022-11-18T14:11:17+08:00">2022-11-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>这是一个比较大的话题.包含了很多部分.总体来讲就是尽量快的加载页面,使用资源又尽量少.</p>
+<h1 id="从输入网址到页面渲染-发生了啥"><a href="#从输入网址到页面渲染-发生了啥" class="headerlink" title="从输入网址到页面渲染,发生了啥"></a>从输入网址到页面渲染,发生了啥</h1><p>这道面试题就比较宽范的触及到性能优化的各个点.需要比较系统的去理解.</p>
+<h1 id="阻塞渲染"><a href="#阻塞渲染" class="headerlink" title="阻塞渲染"></a>阻塞渲染</h1><p>想要首屏优化,就得先把页面渲染出来,什么会阻塞渲染呢?<br>HTML 和 CSS 会,因为他们要合成渲染树.所以就要降低要渲染的文件大小,扁平层级,优化选择器.<br>还有一个问题,<code>script</code>会暂停 DOM 渲染.所以一般<code>script</code>会放在 body 后面.<br>不想放底部就可以使用<code>defer</code>和<code>async</code>属性.两个都是异步下载,和 dom 并行.区别就是执行了.<br>下载是没区别的.<br><code>defer</code>:要等到 DOM 执行完,再按照顺序执行.<br><code>async</code>: 下载完就执行,不按顺序,谁先完事谁先跑.</p>
+<h2 id="为什么操作-DOM-慢"><a href="#为什么操作-DOM-慢" class="headerlink" title="为什么操作 DOM 慢"></a>为什么操作 DOM 慢</h2><p>dom 属于渲染引擎,js 属于 js 引擎,通过 js 操作 dom 就涉及到两个线程之间的通信,就会带来性能损耗.还有可能带来回流重绘的情况,导致性能问题.</p>
+<h2 id="插入几万个-DOM-如何实现页面不卡顿"><a href="#插入几万个-DOM-如何实现页面不卡顿" class="headerlink" title="插入几万个 DOM,如何实现页面不卡顿"></a>插入几万个 DOM,如何实现页面不卡顿</h2><p>肯定不能一次性加载,需要分批次加载.<br>方法一: 通过<code>requestAnimationFrame</code>的方式循环插入 DOM.<br>方法二: 虚拟滚动.只渲染可视区域的内容.当用户滚动,实时替换渲染的内容.避免空白记得加上预渲染.</p>
+<h1 id="HTML-优化"><a href="#HTML-优化" class="headerlink" title="HTML 优化"></a>HTML 优化</h1><p>就是在不考虑,网络和缓存的情况下,如何加快渲染?</p>
+<ul>
+<li>从文件大小考虑</li>
+<li>从 script 标签使用上来考虑</li>
+<li>从 CSS、HTML 的代码书写上来考虑</li>
+<li>从需要下载的内容是否需要在首屏使用上来考虑</li>
+</ul>
+<h1 id="JS-性能优化"><a href="#JS-性能优化" class="headerlink" title="JS 性能优化"></a>JS 性能优化</h1><h1 id="CSS-性能优化"><a href="#CSS-性能优化" class="headerlink" title="CSS 性能优化"></a>CSS 性能优化</h1><p>问题: css 层级设置过多导致性能减弱</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">  &lt;<span class="selector-tag">a</span>&gt; &lt;<span class="selector-tag">span</span>&gt;&lt;/<span class="selector-tag">span</span>&gt; &lt;/<span class="selector-tag">a</span>&gt;</span><br><span class="line">&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">div</span> &gt; <span class="selector-tag">a</span> &gt; <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>明显第一种要比第二种效率高得多.减少了因查找递归的过程带来的性能损失.<br>防范: 尽量避免写过于具体的 CSS 选择器,对 HTML 尽量减少无意义的标签.</p>
+<h2 id="回流-reflow-和重绘-repaint"><a href="#回流-reflow-和重绘-repaint" class="headerlink" title="回流(reflow)和重绘(repaint)"></a>回流(reflow)和重绘(repaint)</h2><ul>
+<li>回流: 回的是文档流,都要快加载好了,又倒回去了.就是回流.布局或者几何属性发生的变化.</li>
+<li>重绘: 重新绘画,就是上色.就是外观发生的变化.</li>
+<li>回流肯定重绘,重绘不一定回流.</li>
+</ul>
+<p>1、添加、删除元素(回流+重绘)<br>2、隐藏元素，display:none(回流+重绘)，visibility:hidden(只重绘，不回流)<br>3、移动元素，如改变 top、left 或移动元素到另外 1 个父元素中(重绘+回流)<br>4、改变浏览器大小(回流+重绘)<br>5、改变浏览器的字体大小(回流+重绘)<br>6、改变元素的 padding、border、margin(回流+重绘)<br>7、改变浏览器的字体颜色（只重绘，不回流）<br>8、改变元素的背景颜色（只重绘，不回流）</p>
+<h3 id="减少"><a href="#减少" class="headerlink" title="减少"></a>减少</h3><ul>
+<li>CSS 选择符从右往左匹配查找，避免节点层级过多</li>
+<li>不要使用 table 布局</li>
+<li>不要把节点的属性值放在一个循环里当成循环里的变量</li>
+<li>使用 <code>visibility</code> 替换 <code>display: none</code></li>
+</ul>
+<h1 id="网络性能优化"><a href="#网络性能优化" class="headerlink" title="网络性能优化"></a>网络性能优化</h1><h1 id="框架性能优化"><a href="#框架性能优化" class="headerlink" title="框架性能优化"></a>框架性能优化</h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/10/mongoose/" rel="prev" title="mongoose">
+                  <i class="fa fa-chevron-left"></i> mongoose
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
