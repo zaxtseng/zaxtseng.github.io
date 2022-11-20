@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,139 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/19/%E7%AE%80%E5%8D%95%E5%81%9A%E7%B3%BB%E5%88%97!Docker%E9%83%A8%E7%BD%B2egg.js%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/19/%E7%AE%80%E5%8D%95%E5%81%9A%E7%B3%BB%E5%88%97!Docker%E9%83%A8%E7%BD%B2egg.js%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">简单做系列:Docker部署egg.js到云服务器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-19 10:23:44" itemprop="dateCreated datePublished" datetime="2022-11-19T10:23:44+08:00">2022-11-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-20 09:14:05" itemprop="dateModified" datetime="2022-11-20T09:14:05+08:00">2022-11-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>看了好多 Docker 部署的文章,除了列举相同的主要步骤,具体到底怎么部署的,愣是没搞明白.也许到了这个部署 node 的阶段的前端都已经是大神了,不需要讲那么清楚,那我就只好自己摸索记录一下.</p>
+<p>也不需要讲什么具体概念,直接就冲方法,先把成就感拿到,回头你再反复咀嚼,看看别人文章里的概念细节,品位品位.</p>
+<p>如果讲的不对的地方有大佬指正,将不胜感激.</p>
+<h1 id="0-前提"><a href="#0-前提" class="headerlink" title="0. 前提"></a>0. 前提</h1><p>本项目是 egg.js+mongoDB 的 youtubeclone 的后端项目.</p>
+<h2 id="大体流程"><a href="#大体流程" class="headerlink" title="大体流程"></a>大体流程</h2><h1 id="1-买服务器"><a href="#1-买服务器" class="headerlink" title="1. 买服务器"></a>1. 买服务器</h1><p>首先,你得有个服务器.没有自己想办法白嫖,什么阿里腾讯的学生机,什么 AWS 的一年免费小水管.<br>买了服务器,肯定要装系统,建议就是 Linux 的,什么 CentOS,Debian 之类的.</p>
+<h1 id="2-安装-Docker"><a href="#2-安装-Docker" class="headerlink" title="2. 安装 Docker"></a>2. 安装 Docker</h1><p>文章目的就是冲它,肯定要先装它.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br><span class="line">// 或者</span><br><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure>
+
+<p>测试安装是否成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 启动docker</span><br><span class="line">sudo systemctl start docker</span><br><span class="line">// 设置开机自启动</span><br><span class="line">sudo systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-安装-Docker-compose"><a href="#3-安装-Docker-compose" class="headerlink" title="3. 安装 Docker-compose"></a>3. 安装 Docker-compose</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 国内</span><br><span class="line">curl -L https://get.daocloud.io/docker/compose/releases/download/v2.12.2/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose</span><br><span class="line">// 国外</span><br><span class="line">curl -L &quot;https://github.com/docker/compose/releases/download/2.12.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>添加可执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+
+<p>查看版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-创建-Dockerfile"><a href="#4-创建-Dockerfile" class="headerlink" title="4. 创建 Dockerfile"></a>4. 创建 Dockerfile</h1><p>通过 Dockfile 创建镜像.之后使用.</p>
+<h2 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h2><p>安装 vscode 插件,搜索 docker.安装后 F1,输入 docker add.按照提示一步一步生成 Dockerfile.</p>
+<h2 id="手动写"><a href="#手动写" class="headerlink" title="手动写"></a>手动写</h2><h2 id="新建dockerignore"><a href="#新建dockerignore" class="headerlink" title="新建dockerignore"></a>新建<code>dockerignore</code></h2><p>排除一些不需要打包的文件.</p>
+<h1 id="5-上传代码"><a href="#5-上传代码" class="headerlink" title="5. 上传代码"></a>5. 上传代码</h1><p>不管是上传到 github,gitlab,还是 gitee.因为需要在服务器上下载.<br>当然如果想手动上传压缩也行,不过后期要配置自动化 CI&#x2F;CD 的,那样比较麻烦.</p>
+<h1 id="6-下载代码到服务器"><a href="#6-下载代码到服务器" class="headerlink" title="6.下载代码到服务器"></a>6.下载代码到服务器</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/xx-coding/youtube-clone</span><br></pre></td></tr></table></figure>
+
+<h1 id="7-构建镜像"><a href="#7-构建镜像" class="headerlink" title="7. 构建镜像"></a>7. 构建镜像</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd youtube-clone</span><br><span class="line">docker build -t youtube-clone .</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<h1 id="8-创建容器"><a href="#8-创建容器" class="headerlink" title="8. 创建容器"></a>8. 创建容器</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name youtube-clone-container -d -p 3000:3000 youtube-clone</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试是否连通"><a href="#测试是否连通" class="headerlink" title="测试是否连通"></a>测试是否连通</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl localhost:3000</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意服务器的安全组中端口开放.</p>
+</blockquote>
+<h2 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有容器</span></span><br><span class="line">docker ls -a</span><br></pre></td></tr></table></figure>
+
+<h1 id="9-部署-mongoDB"><a href="#9-部署-mongoDB" class="headerlink" title="9. 部署 mongoDB"></a>9. 部署 mongoDB</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull mongo</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建mongo容器</span></span><br><span class="line">docker run -p 27017:27017 -v ~/docker/mongo:/data/db --name docker_mongodb -d mongo</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>不创建好像连接后访问不了.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入mongoDb容器</span></span><br><span class="line">docker exec -it mongodb /bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入mongoDb</span></span><br><span class="line">mongo</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">use admin</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建用户名为admin, 密码为admin, 角色为root的用户;</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">db.createUser(&#123;user:<span class="string">&quot;admin&quot;</span>,<span class="built_in">pwd</span>:<span class="string">&quot;admin&quot;</span>,roles:[&#123;role:<span class="string">&quot;root&quot;</span>,db:<span class="string">&quot;admin&quot;</span>&#125;]&#125;);</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">出现创建成功提示就对了，退出管理员</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">exit</span>;</span></span><br></pre></td></tr></table></figure>
+
+<p>用管理员账户创建普通用户管理你的数据库.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用刚创建的管理用户登录</span></span><br><span class="line">mongo --port 27017 -u admin -p admin --authenticationDatabase admin</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">再创建一个普通用户</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">use youtube-clone</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">普通用户账户: staff, 密码: staff, 有读写权限;</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">db.createUser(&#123;user:<span class="string">&quot;staff&quot;</span>,<span class="built_in">pwd</span>:<span class="string">&quot;staff&quot;</span>,roles:[&#123;role:<span class="string">&quot;readWrite&quot;</span>,db:<span class="string">&quot;youtube-clone&quot;</span>&#125;]&#125;);</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="10-将数据库容器与后端容器关联"><a href="#10-将数据库容器与后端容器关联" class="headerlink" title="10. 将数据库容器与后端容器关联"></a>10. 将数据库容器与后端容器关联</h1><h2 id="修改后端项目中-MongoDB-的配置"><a href="#修改后端项目中-MongoDB-的配置" class="headerlink" title="修改后端项目中 MongoDB 的配置"></a>修改后端项目中 MongoDB 的配置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config.default.js</span></span><br><span class="line"><span class="attr">url</span>: <span class="string">&#x27;mongodb://staff:staff@db:27017/youtube-clone?authSource=staff&#x27;</span>,</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建自定义网络"><a href="#创建自定义网络" class="headerlink" title="创建自定义网络"></a>创建自定义网络</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create youtube-net</span><br></pre></td></tr></table></figure>
+
+<h2 id="将容器连接进网络"><a href="#将容器连接进网络" class="headerlink" title="将容器连接进网络"></a>将容器连接进网络</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">服务端容器连接网络</span></span><br><span class="line">docker network connect youtube-net youtube-clone-container</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">MongoDB连接网络</span></span><br><span class="line">docker network connect youtube-net docker_mongodb</span><br></pre></td></tr></table></figure>
+
+<p>两个都连接到自定义网络就可以通信了.<br>至此.就应该可以通过 ip+端口号进行后端的接口访问了.</p>
+<h1 id="更简单的方法-docker-compose"><a href="#更简单的方法-docker-compose" class="headerlink" title="更简单的方法 docker-compose"></a>更简单的方法 docker-compose</h1><p>其实就是把上面的指令写到文件中执行</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/18/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -200,9 +333,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2022-11-18 14:11:17 / Modified: 15:55:35" itemprop="dateCreated datePublished" datetime="2022-11-18T14:11:17+08:00">2022-11-18</time>
+      <time title="Created: 2022-11-18 14:11:17" itemprop="dateCreated datePublished" datetime="2022-11-18T14:11:17+08:00">2022-11-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-20 09:14:05" itemprop="dateModified" datetime="2022-11-20T09:14:05+08:00">2022-11-20</time>
     </span>
 
   
@@ -305,7 +444,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:35" itemprop="dateModified" datetime="2022-11-18T15:55:35+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:05" itemprop="dateModified" datetime="2022-11-20T09:14:05+08:00">2022-11-20</time>
     </span>
 
   
@@ -397,7 +536,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:36" itemprop="dateModified" datetime="2022-11-18T15:55:36+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:06" itemprop="dateModified" datetime="2022-11-20T09:14:06+08:00">2022-11-20</time>
     </span>
 
   
@@ -990,7 +1129,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:36" itemprop="dateModified" datetime="2022-11-18T15:55:36+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:06" itemprop="dateModified" datetime="2022-11-20T09:14:06+08:00">2022-11-20</time>
     </span>
 
   
@@ -1208,7 +1347,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:37" itemprop="dateModified" datetime="2022-11-18T15:55:37+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:06" itemprop="dateModified" datetime="2022-11-20T09:14:06+08:00">2022-11-20</time>
     </span>
 
   
@@ -1857,7 +1996,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:37" itemprop="dateModified" datetime="2022-11-18T15:55:37+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:06" itemprop="dateModified" datetime="2022-11-20T09:14:06+08:00">2022-11-20</time>
     </span>
 
   
@@ -2059,7 +2198,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:37" itemprop="dateModified" datetime="2022-11-18T15:55:37+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:07" itemprop="dateModified" datetime="2022-11-20T09:14:07+08:00">2022-11-20</time>
     </span>
 
   
@@ -2199,7 +2338,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:37" itemprop="dateModified" datetime="2022-11-18T15:55:37+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:07" itemprop="dateModified" datetime="2022-11-20T09:14:07+08:00">2022-11-20</time>
     </span>
 
   
@@ -2691,7 +2830,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:37" itemprop="dateModified" datetime="2022-11-18T15:55:37+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:07" itemprop="dateModified" datetime="2022-11-20T09:14:07+08:00">2022-11-20</time>
     </span>
 
   
@@ -2760,7 +2899,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#x73;&#x61;&#x78;&#x40;&#x33;&#46;&#48;&#x2e;&#48;">&#x73;&#x61;&#x78;&#x40;&#x33;&#46;&#48;&#x2e;&#48;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#97;&#x78;&#x40;&#51;&#46;&#48;&#x2e;&#x30;">&#115;&#97;&#x78;&#x40;&#51;&#46;&#48;&#x2e;&#x30;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
@@ -2782,161 +2921,8 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/" class="post-title-link" itemprop="url">代码规范化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-02 22:25:08" itemprop="dateCreated datePublished" datetime="2022-11-02T22:25:08+08:00">2022-11-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:37" itemprop="dateModified" datetime="2022-11-18T15:55:37+08:00">2022-11-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Eslint-安装"><a href="#Eslint-安装" class="headerlink" title="Eslint 安装"></a>Eslint 安装</h3><ul>
-<li>安装 <code>npm install eslint --save-dev</code></li>
-<li>使用 <code>npx eslint --init</code> 初始化一个配置文件</li>
-<li>执行 <code>npm eslint test.js --fix</code> –fix 会自动修正代码风格问题，而一些问题代码就需要手动修正</li>
-<li>当代码有语法问题时 Eslint 无法检查问题代码和代码风格，所有要先手动解决语法问题</li>
-</ul>
-<h3 id="ESLint-配置文件解析"><a href="#ESLint-配置文件解析" class="headerlink" title="ESLint 配置文件解析"></a>ESLint 配置文件解析</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">    <span class="comment">// 标记代码运行环境</span></span><br><span class="line">    <span class="attr">browser</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">es2020</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// 继承共享配置</span></span><br><span class="line">    <span class="string">&quot;standard&quot;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">parser</span>: <span class="string">&quot;@typescript-eslint/parser&quot;</span>, <span class="comment">// 语法解析器</span></span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="comment">// 设置语法解析器，检查语法，而不是代表某个成员是否可以，成员通过环境定义</span></span><br><span class="line">    <span class="attr">ecmaVersion</span>: <span class="number">11</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="comment">// 校验规则的开启、关闭 off：关闭 warning：结果 error：警告</span></span><br><span class="line">    <span class="string">&quot;no-alert&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">globals</span>: &#123;</span><br><span class="line">    <span class="comment">// 额外声明代码中可以使用的全局成员</span></span><br><span class="line">    <span class="attr">jQuery</span>: <span class="string">&quot;readonly&quot;</span>, <span class="comment">// 代码中可以使用jQuery而且不会报错</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ESLint-配置注释"><a href="#ESLint-配置注释" class="headerlink" title="ESLint 配置注释"></a>ESLint 配置注释</h3><ul>
-<li>在编码时有时需要违反 eslint 规则，eslint-disable-line 可以通过注释临时禁用校验规则</li>
-<li>当一行有多个问题时可以跟上具体禁用哪个规则</li>
-<li><a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/configuring#configuring-rules">具体配置注释介绍文档</a></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// eslint-disable-line no-template-curly-in-string</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;$&#123;name&#125; is a coder&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br></pre></td></tr></table></figure>
-
-<h3 id="ESLint-结合自动化工具"><a href="#ESLint-结合自动化工具" class="headerlink" title="ESLint 结合自动化工具"></a>ESLint 结合自动化工具</h3><ul>
-<li>gulp<ul>
-<li>安装 gulp-eslint</li>
-<li>创建 eslint 配置文件</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// plugins 自动加载插件模块</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">script</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="title function_">src</span>(<span class="string">&quot;src/assets/script/*.js&quot;</span>, &#123; <span class="attr">base</span>: <span class="string">&quot;src&quot;</span> &#125;)</span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="title function_">eslint</span>()) <span class="comment">// 默认只会检查代码的问题，并不会根据检查结果做出反馈</span></span><br><span class="line">      <span class="comment">// 控制台打印错误信息</span></span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="property">eslint</span>.<span class="title function_">format</span>())</span><br><span class="line">      <span class="comment">// eslint检查错误后终止任务</span></span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="property">eslint</span>.<span class="title function_">failAfterError</span>())</span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="title function_">babel</span>(&#123; <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>] &#125;))</span><br><span class="line">      .<span class="title function_">pipe</span>(<span class="title function_">dest</span>(<span class="string">&quot;temp&quot;</span>))</span><br><span class="line">      .<span class="title function_">pipe</span>(bs.<span class="title function_">reload</span>(&#123; <span class="attr">stream</span>: <span class="literal">true</span> &#125;))</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ESLint-结合-Webpack"><a href="#ESLint-结合-Webpack" class="headerlink" title="ESLint 结合 Webpack"></a>ESLint 结合 Webpack</h3><ul>
-<li>通过 loader 机制完成校验</li>
-<li>安装 eslint-loader</li>
-<li>初始化配置文件</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;production&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/main.js&quot;</span>,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="comment">// &#x27;eslint-loader&#x27;</span></span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="attr">use</span>: <span class="string">&quot;eslint-loader&quot;</span>,</span><br><span class="line">        <span class="attr">enfore</span>: <span class="string">&quot;pre&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;style-loader&quot;</span>, <span class="string">&quot;css-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;src/index.html&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在 react 项目中会报 React 未使用的问题，和 App is defined but never used no-unused-vars，可以使用插件</li>
-<li>安装插件 <code>npm install eslint-plugin-react</code></li>
-<li>在配置文件的 plugins 属性配置</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">modul.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;react/jsx-uses-react&quot;</span>: <span class="number">2</span>, <span class="comment">// 开启报错，2 代替 error</span></span><br><span class="line">    <span class="string">&quot;react/jsx-uses-vars&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// &#x27;plugin:react/recommended&#x27; // 方法二</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="string">&quot;react&quot;</span>, <span class="comment">// 模块名会去除eslint-plugin</span></span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Stylelint-认识"><a href="#Stylelint-认识" class="headerlink" title="Stylelint 认识"></a>Stylelint 认识</h3><ul>
-<li>安装 <code>npm install stylelint -D</code></li>
-<li>添加配置文件 .stylelintrc.js</li>
-<li>共享配置名称要完整的模块名称</li>
-<li>stylelint 内部没有提供任何可用的共享配置，可以自定义安装</li>
-<li><code>npm install stylelint-config-standard -D</code> 对 css 代码检查</li>
-<li><code>npm install stylelint-config-sass-guidelines -D</code> 对 sass 代码检查</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 共享配置</span></span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;stylelint-config-standard&quot;</span>, <span class="string">&quot;stylelint-config-sass-guidelines&quot;</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Prettier-的使用—代码格式化工具"><a href="#Prettier-的使用—代码格式化工具" class="headerlink" title="Prettier 的使用—代码格式化工具"></a>Prettier 的使用—代码格式化工具</h3><ul>
-<li>安装 <code>npm install prettier -D</code></li>
-<li><code>npm prettier style.css --write</code> 自动格式化文件，–write 把格式化的代码覆盖源代码</li>
-</ul>
-<h3 id="ESLint-结合-Git-Hooks"><a href="#ESLint-结合-Git-Hooks" class="headerlink" title="ESLint 结合 Git Hooks"></a>ESLint 结合 Git Hooks</h3><ul>
-<li>安装依赖 <code>npm install husky -D</code></li>
-<li>在 package.json 文件添加一个 husky 字段，在 husky 添加一个 hooks 属性，在 hooks 属性添加一个 pre-commit 钩子属性，值为 npm run xxxx，在提交 commit 前就会先执行 scripts 下的对应命令，比如执行 eslint，如果不符合规范就不能直接提交到代码仓库中</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint ./index.js&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run link&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装 <code>npm install lint-staged -D</code> 在 commit 前执行 eslint 后，再进行其他操作，如格式化代码</li>
-<li>安装代码格式化工具 <code>npm install prettier -D</code></li>
-<li>在 package.json 中添加一个 lint-staged 字段</li>
-<li>一般 husky 和 lint-staged 配合使用</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint ./index.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;precommit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lint-staged&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run precommit&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lint-staged&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;*.js&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;prettier --write&quot;</span><span class="punctuation">,</span> <span class="string">&quot;eslint --fix&quot;</span><span class="punctuation">,</span> <span class="string">&quot;git add&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Git-提交规范—commitlint"><a href="#Git-提交规范—commitlint" class="headerlink" title="Git 提交规范—commitlint"></a>Git 提交规范—commitlint</h3><ul>
-<li>文档：<a target="_blank" rel="noopener" href="https://commitlint.js.org/#/">https://commitlint.js.org/#/</a></li>
-<li>安装插件 <code>yarn add husky @commitlint/cli @commitlint/config-conventional --dev</code></li>
-<li>husky 是一个 Git Hook 工具</li>
-<li>项目根目录创建配置文件 commitlint.config.js</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;@commitlint/config-conventional&quot;</span>],</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;subject-case&quot;</span>: [<span class="number">0</span>, <span class="string">&quot;never&quot;</span>],</span><br><span class="line">    <span class="string">&quot;type-enum&quot;</span>: [</span><br><span class="line">      <span class="number">2</span>, <span class="comment">// 代表必须输入</span></span><br><span class="line">      <span class="string">&quot;always&quot;</span>,</span><br><span class="line">      [</span><br><span class="line">        <span class="string">&quot;docs&quot;</span>, <span class="comment">// Adds or alters documentation. 仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等</span></span><br><span class="line">        <span class="string">&quot;chore&quot;</span>, <span class="comment">// Other changes that don&#x27;t modify src or test files. 改变构建流程、或者增加依赖库、工具等</span></span><br><span class="line">        <span class="string">&quot;feat&quot;</span>, <span class="comment">// Adds a new feature. 新增feature</span></span><br><span class="line">        <span class="string">&quot;fix&quot;</span>, <span class="comment">// Solves a bug. 修复bug</span></span><br><span class="line">        <span class="string">&quot;merge&quot;</span>, <span class="comment">// Merge branch ? of ?.</span></span><br><span class="line">        <span class="string">&quot;perf&quot;</span>, <span class="comment">// Improves performance. 优化相关，比如提升性能、体验</span></span><br><span class="line">        <span class="string">&quot;refactor&quot;</span>, <span class="comment">// Rewrites code without feature, performance or bug changes. 代码重构，没有加新功能或者修复bug</span></span><br><span class="line">        <span class="string">&quot;revert&quot;</span>, <span class="comment">// Reverts a previous commit. 回滚到上一个版本</span></span><br><span class="line">        <span class="string">&quot;style&quot;</span>, <span class="comment">// Improves formatting, white-space. 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑</span></span><br><span class="line">        <span class="string">&quot;test&quot;</span>, <span class="comment">// Adds or modifies tests. 测试用例，包括单元测试、集成测试等</span></span><br><span class="line">      ],</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>配置 package.json 文件，添加一下内容，在执行 <code>git commit -m &quot;commit message&quot;</code> 命令的时候，将会对 commit message 校验，是否符合 rules</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;husky&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;hooks&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;commit-msg&quot;</span>: <span class="string">&quot;commitlint -E HUSKY_GIT_PARAMS&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>

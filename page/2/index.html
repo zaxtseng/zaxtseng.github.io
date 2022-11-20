@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">110</span>
+          <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,159 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/" class="post-title-link" itemprop="url">代码规范化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-02 22:25:08" itemprop="dateCreated datePublished" datetime="2022-11-02T22:25:08+08:00">2022-11-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-20 09:14:07" itemprop="dateModified" datetime="2022-11-20T09:14:07+08:00">2022-11-20</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Eslint-安装"><a href="#Eslint-安装" class="headerlink" title="Eslint 安装"></a>Eslint 安装</h3><ul>
+<li>安装 <code>npm install eslint --save-dev</code></li>
+<li>使用 <code>npx eslint --init</code> 初始化一个配置文件</li>
+<li>执行 <code>npm eslint test.js --fix</code> –fix 会自动修正代码风格问题，而一些问题代码就需要手动修正</li>
+<li>当代码有语法问题时 Eslint 无法检查问题代码和代码风格，所有要先手动解决语法问题</li>
+</ul>
+<h3 id="ESLint-配置文件解析"><a href="#ESLint-配置文件解析" class="headerlink" title="ESLint 配置文件解析"></a>ESLint 配置文件解析</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">    <span class="comment">// 标记代码运行环境</span></span><br><span class="line">    <span class="attr">browser</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">es2020</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// 继承共享配置</span></span><br><span class="line">    <span class="string">&quot;standard&quot;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">parser</span>: <span class="string">&quot;@typescript-eslint/parser&quot;</span>, <span class="comment">// 语法解析器</span></span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="comment">// 设置语法解析器，检查语法，而不是代表某个成员是否可以，成员通过环境定义</span></span><br><span class="line">    <span class="attr">ecmaVersion</span>: <span class="number">11</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="comment">// 校验规则的开启、关闭 off：关闭 warning：结果 error：警告</span></span><br><span class="line">    <span class="string">&quot;no-alert&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">globals</span>: &#123;</span><br><span class="line">    <span class="comment">// 额外声明代码中可以使用的全局成员</span></span><br><span class="line">    <span class="attr">jQuery</span>: <span class="string">&quot;readonly&quot;</span>, <span class="comment">// 代码中可以使用jQuery而且不会报错</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ESLint-配置注释"><a href="#ESLint-配置注释" class="headerlink" title="ESLint 配置注释"></a>ESLint 配置注释</h3><ul>
+<li>在编码时有时需要违反 eslint 规则，eslint-disable-line 可以通过注释临时禁用校验规则</li>
+<li>当一行有多个问题时可以跟上具体禁用哪个规则</li>
+<li><a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/configuring#configuring-rules">具体配置注释介绍文档</a></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// eslint-disable-line no-template-curly-in-string</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;$&#123;name&#125; is a coder&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br></pre></td></tr></table></figure>
+
+<h3 id="ESLint-结合自动化工具"><a href="#ESLint-结合自动化工具" class="headerlink" title="ESLint 结合自动化工具"></a>ESLint 结合自动化工具</h3><ul>
+<li>gulp<ul>
+<li>安装 gulp-eslint</li>
+<li>创建 eslint 配置文件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// plugins 自动加载插件模块</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">script</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="title function_">src</span>(<span class="string">&quot;src/assets/script/*.js&quot;</span>, &#123; <span class="attr">base</span>: <span class="string">&quot;src&quot;</span> &#125;)</span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="title function_">eslint</span>()) <span class="comment">// 默认只会检查代码的问题，并不会根据检查结果做出反馈</span></span><br><span class="line">      <span class="comment">// 控制台打印错误信息</span></span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="property">eslint</span>.<span class="title function_">format</span>())</span><br><span class="line">      <span class="comment">// eslint检查错误后终止任务</span></span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="property">eslint</span>.<span class="title function_">failAfterError</span>())</span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="title function_">babel</span>(&#123; <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>] &#125;))</span><br><span class="line">      .<span class="title function_">pipe</span>(<span class="title function_">dest</span>(<span class="string">&quot;temp&quot;</span>))</span><br><span class="line">      .<span class="title function_">pipe</span>(bs.<span class="title function_">reload</span>(&#123; <span class="attr">stream</span>: <span class="literal">true</span> &#125;))</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ESLint-结合-Webpack"><a href="#ESLint-结合-Webpack" class="headerlink" title="ESLint 结合 Webpack"></a>ESLint 结合 Webpack</h3><ul>
+<li>通过 loader 机制完成校验</li>
+<li>安装 eslint-loader</li>
+<li>初始化配置文件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;production&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/main.js&quot;</span>,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="comment">// &#x27;eslint-loader&#x27;</span></span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="attr">use</span>: <span class="string">&quot;eslint-loader&quot;</span>,</span><br><span class="line">        <span class="attr">enfore</span>: <span class="string">&quot;pre&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;style-loader&quot;</span>, <span class="string">&quot;css-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;src/index.html&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在 react 项目中会报 React 未使用的问题，和 App is defined but never used no-unused-vars，可以使用插件</li>
+<li>安装插件 <code>npm install eslint-plugin-react</code></li>
+<li>在配置文件的 plugins 属性配置</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">modul.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;react/jsx-uses-react&quot;</span>: <span class="number">2</span>, <span class="comment">// 开启报错，2 代替 error</span></span><br><span class="line">    <span class="string">&quot;react/jsx-uses-vars&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// &#x27;plugin:react/recommended&#x27; // 方法二</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="string">&quot;react&quot;</span>, <span class="comment">// 模块名会去除eslint-plugin</span></span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Stylelint-认识"><a href="#Stylelint-认识" class="headerlink" title="Stylelint 认识"></a>Stylelint 认识</h3><ul>
+<li>安装 <code>npm install stylelint -D</code></li>
+<li>添加配置文件 .stylelintrc.js</li>
+<li>共享配置名称要完整的模块名称</li>
+<li>stylelint 内部没有提供任何可用的共享配置，可以自定义安装</li>
+<li><code>npm install stylelint-config-standard -D</code> 对 css 代码检查</li>
+<li><code>npm install stylelint-config-sass-guidelines -D</code> 对 sass 代码检查</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 共享配置</span></span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;stylelint-config-standard&quot;</span>, <span class="string">&quot;stylelint-config-sass-guidelines&quot;</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Prettier-的使用—代码格式化工具"><a href="#Prettier-的使用—代码格式化工具" class="headerlink" title="Prettier 的使用—代码格式化工具"></a>Prettier 的使用—代码格式化工具</h3><ul>
+<li>安装 <code>npm install prettier -D</code></li>
+<li><code>npm prettier style.css --write</code> 自动格式化文件，–write 把格式化的代码覆盖源代码</li>
+</ul>
+<h3 id="ESLint-结合-Git-Hooks"><a href="#ESLint-结合-Git-Hooks" class="headerlink" title="ESLint 结合 Git Hooks"></a>ESLint 结合 Git Hooks</h3><ul>
+<li>安装依赖 <code>npm install husky -D</code></li>
+<li>在 package.json 文件添加一个 husky 字段，在 husky 添加一个 hooks 属性，在 hooks 属性添加一个 pre-commit 钩子属性，值为 npm run xxxx，在提交 commit 前就会先执行 scripts 下的对应命令，比如执行 eslint，如果不符合规范就不能直接提交到代码仓库中</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint ./index.js&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run link&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>安装 <code>npm install lint-staged -D</code> 在 commit 前执行 eslint 后，再进行其他操作，如格式化代码</li>
+<li>安装代码格式化工具 <code>npm install prettier -D</code></li>
+<li>在 package.json 中添加一个 lint-staged 字段</li>
+<li>一般 husky 和 lint-staged 配合使用</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint ./index.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;precommit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lint-staged&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run precommit&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lint-staged&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;*.js&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;prettier --write&quot;</span><span class="punctuation">,</span> <span class="string">&quot;eslint --fix&quot;</span><span class="punctuation">,</span> <span class="string">&quot;git add&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Git-提交规范—commitlint"><a href="#Git-提交规范—commitlint" class="headerlink" title="Git 提交规范—commitlint"></a>Git 提交规范—commitlint</h3><ul>
+<li>文档：<a target="_blank" rel="noopener" href="https://commitlint.js.org/#/">https://commitlint.js.org/#/</a></li>
+<li>安装插件 <code>yarn add husky @commitlint/cli @commitlint/config-conventional --dev</code></li>
+<li>husky 是一个 Git Hook 工具</li>
+<li>项目根目录创建配置文件 commitlint.config.js</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;@commitlint/config-conventional&quot;</span>],</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;subject-case&quot;</span>: [<span class="number">0</span>, <span class="string">&quot;never&quot;</span>],</span><br><span class="line">    <span class="string">&quot;type-enum&quot;</span>: [</span><br><span class="line">      <span class="number">2</span>, <span class="comment">// 代表必须输入</span></span><br><span class="line">      <span class="string">&quot;always&quot;</span>,</span><br><span class="line">      [</span><br><span class="line">        <span class="string">&quot;docs&quot;</span>, <span class="comment">// Adds or alters documentation. 仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等</span></span><br><span class="line">        <span class="string">&quot;chore&quot;</span>, <span class="comment">// Other changes that don&#x27;t modify src or test files. 改变构建流程、或者增加依赖库、工具等</span></span><br><span class="line">        <span class="string">&quot;feat&quot;</span>, <span class="comment">// Adds a new feature. 新增feature</span></span><br><span class="line">        <span class="string">&quot;fix&quot;</span>, <span class="comment">// Solves a bug. 修复bug</span></span><br><span class="line">        <span class="string">&quot;merge&quot;</span>, <span class="comment">// Merge branch ? of ?.</span></span><br><span class="line">        <span class="string">&quot;perf&quot;</span>, <span class="comment">// Improves performance. 优化相关，比如提升性能、体验</span></span><br><span class="line">        <span class="string">&quot;refactor&quot;</span>, <span class="comment">// Rewrites code without feature, performance or bug changes. 代码重构，没有加新功能或者修复bug</span></span><br><span class="line">        <span class="string">&quot;revert&quot;</span>, <span class="comment">// Reverts a previous commit. 回滚到上一个版本</span></span><br><span class="line">        <span class="string">&quot;style&quot;</span>, <span class="comment">// Improves formatting, white-space. 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑</span></span><br><span class="line">        <span class="string">&quot;test&quot;</span>, <span class="comment">// Adds or modifies tests. 测试用例，包括单元测试、集成测试等</span></span><br><span class="line">      ],</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>配置 package.json 文件，添加一下内容，在执行 <code>git commit -m &quot;commit message&quot;</code> 命令的时候，将会对 commit message 校验，是否符合 rules</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;husky&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;hooks&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;commit-msg&quot;</span>: <span class="string">&quot;commitlint -E HUSKY_GIT_PARAMS&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/25/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +361,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:38" itemprop="dateModified" datetime="2022-11-18T15:55:38+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:07" itemprop="dateModified" datetime="2022-11-20T09:14:07+08:00">2022-11-20</time>
     </span>
 
   
@@ -542,7 +695,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:38" itemprop="dateModified" datetime="2022-11-18T15:55:38+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:07" itemprop="dateModified" datetime="2022-11-20T09:14:07+08:00">2022-11-20</time>
     </span>
 
   
@@ -712,7 +865,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:38" itemprop="dateModified" datetime="2022-11-18T15:55:38+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:07" itemprop="dateModified" datetime="2022-11-20T09:14:07+08:00">2022-11-20</time>
     </span>
 
   
@@ -877,7 +1030,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:38" itemprop="dateModified" datetime="2022-11-18T15:55:38+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:08" itemprop="dateModified" datetime="2022-11-20T09:14:08+08:00">2022-11-20</time>
     </span>
 
   
@@ -1336,7 +1489,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:39" itemprop="dateModified" datetime="2022-11-18T15:55:39+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:08" itemprop="dateModified" datetime="2022-11-20T09:14:08+08:00">2022-11-20</time>
     </span>
 
   
@@ -1503,7 +1656,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:39" itemprop="dateModified" datetime="2022-11-18T15:55:39+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:08" itemprop="dateModified" datetime="2022-11-20T09:14:08+08:00">2022-11-20</time>
     </span>
 
   
@@ -1579,7 +1732,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:39" itemprop="dateModified" datetime="2022-11-18T15:55:39+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:08" itemprop="dateModified" datetime="2022-11-20T09:14:08+08:00">2022-11-20</time>
     </span>
 
   
@@ -1666,7 +1819,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:40" itemprop="dateModified" datetime="2022-11-18T15:55:40+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:09" itemprop="dateModified" datetime="2022-11-20T09:14:09+08:00">2022-11-20</time>
     </span>
 
   
@@ -2215,7 +2368,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:40" itemprop="dateModified" datetime="2022-11-18T15:55:40+08:00">2022-11-18</time>
+      <time title="Modified: 2022-11-20 09:14:09" itemprop="dateModified" datetime="2022-11-20T09:14:09+08:00">2022-11-20</time>
     </span>
 
   
@@ -2296,123 +2449,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/React%E8%B7%AF%E7%94%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/React%E8%B7%AF%E7%94%B1/" class="post-title-link" itemprop="url">React路由</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:08:15" itemprop="dateCreated datePublished" datetime="2022-09-26T21:08:15+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-18 15:55:40" itemprop="dateModified" datetime="2022-11-18T15:55:40+08:00">2022-11-18</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="title-React-路由-date-2020-05-10-13-59-49"><a href="#title-React-路由-date-2020-05-10-13-59-49" class="headerlink" title="title: React 路由 date: 2020-05-10 13:59:49"></a>title: React 路由 date: 2020-05-10 13:59:49</h2><p>tags: React</p>
-<h2 id="安装-react-router-dom"><a href="#安装-react-router-dom" class="headerlink" title="安装 react-router-dom"></a>安装 react-router-dom</h2><p>可以使用<code>&lt;Link&gt;,&lt;NavLink&gt;</code>标签</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-router-dom --save</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建路由模式"><a href="#创建路由模式" class="headerlink" title="创建路由模式"></a>创建路由模式</h2><ol>
-<li>hash 模式</li>
-<li>history 模式</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hash模式</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserRouter</span> <span class="keyword">as</span> <span class="title class_">Router</span>, <span class="title class_">Link</span>, <span class="title class_">Route</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"><span class="comment">//history模式</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Link</span>, <span class="title class_">Route</span>, <span class="title class_">HashRouter</span> <span class="keyword">as</span> <span class="title class_">Router</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<p><code>as</code>类似于起别名,方便简化名称.</p>
-<h2 id="创建路由"><a href="#创建路由" class="headerlink" title="创建路由"></a>创建路由</h2><blockquote>
-<p>需要通过使<code>Route</code>进行对组件的声明配置,才能被<code>Link</code>找到.</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="comment">// histoty</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserRouter</span> <span class="keyword">as</span> <span class="title class_">Router</span>, <span class="title class_">Link</span>, <span class="title class_">Route</span>, <span class="title class_">Switch</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"><span class="comment">// hash</span></span><br><span class="line"><span class="comment">// import &#123; Link, Route, HashRouter as Router &#125; from &#x27;react-router-dom&#x27;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Page1</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是Page1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Page2</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是Page2<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Page3</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是Page3<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Router</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;page1&quot;</span>&gt;</span>Page1<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;page2&quot;</span>&gt;</span>Page2<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;page3&quot;</span>&gt;</span>Page3<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/page1&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page1&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/page2&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page2&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/page3&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page3&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Router</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="函数式-带组件"><a href="#函数式-带组件" class="headerlink" title="函数式(带组件)"></a>函数式(带组件)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//router.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserRouter</span> <span class="keyword">as</span> <span class="title class_">Router</span>, <span class="title class_">Route</span>, <span class="title class_">Switch</span>, <span class="title class_">Link</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Login</span> <span class="keyword">from</span> <span class="string">&quot;./pages/login&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Home</span> <span class="keyword">from</span> <span class="string">&quot;./pages/home&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&quot;./pages/app&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//函数式</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">ARouter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Router</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/&quot;</span> <span class="attr">component</span>=<span class="string">&#123;App&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/home&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Home&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/login&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Login&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Switch</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Router</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Link</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;/home&quot;</span>&gt;</span>去首页<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;/login&quot;</span>&gt;</span>去登陆<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//有状态组件点击跳转</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">App</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  handleJump = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">histroy</span>.<span class="title function_">push</span>(<span class="string">&quot;/login&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;/login&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;/home&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleJump&#125;</span>&gt;</span>点击去登陆<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">App</span>;</span><br></pre></td></tr></table></figure>
-
-<p>如果用<code>Switch</code>，浏览器输入<code>/home</code>也只会加载 App 页，因为<code>/home</code>先匹配了<code>/</code></p>
-<p>加上 <code>exact</code> 可以精准匹配</p>
-<p>如果导入的是<code>HashRouter</code>，会自动加上<code>#</code> 如 <code>http://localhost:3000/login#/</code></p>
-<h2 id="手动跳转"><a href="#手动跳转" class="headerlink" title="手动跳转"></a>手动跳转</h2><p>当你使用 History 路由的时候，某些时候需要主动的跳转道某个路由，</p>
-<p>这时又不能去触发节点行为，所以这个时候就可以通过 API 的方式，进行跳转.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 跳转页面</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">history</span>.<span class="title function_">push</span>(参数和to的内容相似);</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">history</span>.<span class="title function_">push</span>(<span class="string">&quot;page1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重定向页面</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">history</span>.<span class="title function_">replace</span>(<span class="string">&quot;page2&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>当然还有 hash 的 go 方法。</p>
-<h2 id="动态路由"><a href="#动态路由" class="headerlink" title="动态路由"></a>动态路由</h2><h2 id="路由传值"><a href="#路由传值" class="headerlink" title="路由传值"></a>路由传值</h2><p>路由传参(传值)一般使用<code>params</code>和<code>query</code>.</p>
-<p>通过给<code>to</code>传递一个对象的方式进行数据传递.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=<span class="string">&quot;App&quot;</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Router</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Link</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">to</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">pathname:</span> &quot;/<span class="attr">page1</span>/<span class="attr">10</span>&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">search:</span> &quot;?<span class="attr">roles</span>=<span class="string">[10,</span> <span class="attr">20</span>]&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">state:</span> &#123; <span class="attr">name:</span> &quot;<span class="attr">Tom</span>&quot; &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &gt;</span></span></span><br><span class="line"><span class="language-xml">          Page1</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;page2&quot;</span>&gt;</span>Page2<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Link</span> <span class="attr">to</span>=<span class="string">&quot;page3&quot;</span>&gt;</span>Page3<span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/page1/:id&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page1&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/page2&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page2&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Route</span> <span class="attr">exact</span> <span class="attr">path</span>=<span class="string">&quot;/page3&quot;</span> <span class="attr">component</span>=<span class="string">&#123;Page3&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">Router</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，向<code>page1</code>的路由上添加了一个<code>:id</code>表示需要传递<code>param</code>的<code>id</code>的值，</p>
-<p>同时声明了<code>search</code>的文本和<code>state</code>对象多种方式传递了参数。以便根据不同的场景使用。</p>
-<h2 id="路由-Hooks"><a href="#路由-Hooks" class="headerlink" title="路由 Hooks"></a>路由 Hooks</h2><h3 id="useParams-获取参数-内部封装"><a href="#useParams-获取参数-内部封装" class="headerlink" title="useParams: 获取参数(内部封装)"></a>useParams: 获取参数(内部封装)</h3><p>如果在有状态组件(也就是 class 声明的类中)获取参数,需要通过<code>this.props.match.parmas.id</code>.</p>
-<p>而在函数式组件(无状态组件)中获取,需要通过<code>useParams()</code></p>
-<h3 id="useHistory-通过-JS-Api-操作路由跳转"><a href="#useHistory-通过-JS-Api-操作路由跳转" class="headerlink" title="useHistory: 通过 JS Api 操作路由跳转"></a>useHistory: 通过 JS Api 操作路由跳转</h3><p>函数式组件没有作用域,this 为 undefined.所以需要使用 useHistory 进行跳转.</p>
-<p>如果在有状态组件中,需要<code>this.props.history.push(&#39;/&#39;)</code>进行跳转.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Detail</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> params = <span class="title function_">useParams</span>();</span><br><span class="line">  <span class="keyword">const</span> history = <span class="title function_">useHistory</span>();</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>当前的参数值为: &#123;params.goodId&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">          history.push(&quot;/&quot;);</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;</span></span><br><span class="line"><span class="language-xml">      &gt;</span></span><br><span class="line"><span class="language-xml">        跳转</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
