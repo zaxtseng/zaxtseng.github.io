@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:31" itemprop="dateModified" datetime="2022-11-20T09:14:31+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:20" itemprop="dateModified" datetime="2022-11-21T10:15:20+08:00">2022-11-21</time>
     </span>
 
   
@@ -225,6 +225,7 @@
 <p>也不需要讲什么具体概念,直接就冲方法,先把成就感拿到,回头你再反复咀嚼,看看别人文章里的概念细节,品位品位.</p>
 <p>如果讲的不对的地方有大佬指正,将不胜感激.</p>
 <h1 id="0-前提"><a href="#0-前提" class="headerlink" title="0. 前提"></a>0. 前提</h1><p>本项目是 egg.js+mongoDB 的 youtubeclone 的后端项目.</p>
+<h2 id="修改项目"><a href="#修改项目" class="headerlink" title="修改项目"></a>修改项目</h2><p>在 egg 项目的 package.json 文件中，在 start 启动项中，–daemon 是后台启动。如果使用 docker 容器，需要去除 –daemon .</p>
 <h2 id="大体流程"><a href="#大体流程" class="headerlink" title="大体流程"></a>大体流程</h2><h1 id="1-买服务器"><a href="#1-买服务器" class="headerlink" title="1. 买服务器"></a>1. 买服务器</h1><p>首先,你得有个服务器.没有自己想办法白嫖,什么阿里腾讯的学生机,什么 AWS 的一年免费小水管.<br>买了服务器,肯定要装系统,建议就是 Linux 的,什么 CentOS,Debian 之类的.</p>
 <h1 id="2-安装-Docker"><a href="#2-安装-Docker" class="headerlink" title="2. 安装 Docker"></a>2. 安装 Docker</h1><p>文章目的就是冲它,肯定要先装它.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun</span><br><span class="line">// 或者</span><br><span class="line">curl -sSL https://get.daocloud.io/docker | sh</span><br></pre></td></tr></table></figure>
@@ -244,32 +245,41 @@
 
 <h1 id="4-创建-Dockerfile"><a href="#4-创建-Dockerfile" class="headerlink" title="4. 创建 Dockerfile"></a>4. 创建 Dockerfile</h1><p>通过 Dockfile 创建镜像.之后使用.</p>
 <h2 id="自动生成"><a href="#自动生成" class="headerlink" title="自动生成"></a>自动生成</h2><p>安装 vscode 插件,搜索 docker.安装后 F1,输入 docker add.按照提示一步一步生成 Dockerfile.</p>
-<h2 id="手动写"><a href="#手动写" class="headerlink" title="手动写"></a>手动写</h2><h2 id="新建dockerignore"><a href="#新建dockerignore" class="headerlink" title="新建dockerignore"></a>新建<code>dockerignore</code></h2><p>排除一些不需要打包的文件.</p>
-<h1 id="5-上传代码"><a href="#5-上传代码" class="headerlink" title="5. 上传代码"></a>5. 上传代码</h1><p>不管是上传到 github,gitlab,还是 gitee.因为需要在服务器上下载.<br>当然如果想手动上传压缩也行,不过后期要配置自动化 CI&#x2F;CD 的,那样比较麻烦.</p>
-<h1 id="6-下载代码到服务器"><a href="#6-下载代码到服务器" class="headerlink" title="6.下载代码到服务器"></a>6.下载代码到服务器</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/xx-coding/youtube-clone</span><br></pre></td></tr></table></figure>
+<h2 id="手动写"><a href="#手动写" class="headerlink" title="手动写"></a>手动写</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用node镜像</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">14.21</span>.<span class="number">0</span>-alpine</span><br><span class="line"><span class="comment"># 在容器中新建目录文件夹 egg</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mkdir</span> -p /egg</span></span><br><span class="line"><span class="comment"># 将 /egg 设置为默认工作目录</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /egg</span></span><br><span class="line"><span class="comment"># 环境变量</span></span><br><span class="line"><span class="keyword">ENV</span> NODE_ENV=production</span><br><span class="line"><span class="comment"># 修改时区</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; <span class="built_in">echo</span> <span class="string">&#x27;Asia/Shanghai&#x27;</span> &gt;/etc/timezone</span></span><br><span class="line"><span class="comment"># 将 package.json 复制默认工作目录</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> package.json /egg/package.json</span></span><br><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm config <span class="built_in">set</span> register https://registry.npm.taobao.org</span></span><br><span class="line"><span class="comment"># 只安装dependencies的包</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm --production</span></span><br><span class="line"><span class="comment"># 再copy代码至容器</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./ /egg</span></span><br><span class="line"><span class="comment"># 7001端口</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">7001</span></span><br><span class="line"><span class="comment">#等容器启动之后执行脚本</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> npm start</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="7-构建镜像"><a href="#7-构建镜像" class="headerlink" title="7. 构建镜像"></a>7. 构建镜像</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd youtube-clone</span><br><span class="line">docker build -t youtube-clone .</span><br></pre></td></tr></table></figure>
+<h2 id="新建dockerignore"><a href="#新建dockerignore" class="headerlink" title="新建dockerignore"></a>新建<code>dockerignore</code></h2><p>排除一些不需要打包的文件.</p>
+<h1 id="5-上传代码"><a href="#5-上传代码" class="headerlink" title="5. 上传代码"></a>5. 上传代码</h1><p>不管是上传到 github,gitlab,还是 gitee.因为需要在服务器上下载.<br>当然如果想手动上传压缩也行,不过后期要配置自动化 CI&#x2F;CD 的,那样比较麻烦.</p>
+<h1 id="6-下载代码到服务器"><a href="#6-下载代码到服务器" class="headerlink" title="6.下载代码到服务器"></a>6.下载代码到服务器</h1><h2 id="安装-git"><a href="#安装-git" class="headerlink" title="安装 git"></a>安装 git</h2><p>记得安装 git,<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhi-leaf/p/10978538.html">不知道服务端怎么安装点这里</a><br>或者搜符合自己服务器版本的.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/xx-coding/youtube-clone-backend</span><br></pre></td></tr></table></figure>
+
+<h1 id="7-构建镜像"><a href="#7-构建镜像" class="headerlink" title="7. 构建镜像"></a>7. 构建镜像</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd youtube-clone-backend</span><br><span class="line">docker build -t youtube-clone-backend .</span><br></pre></td></tr></table></figure>
 
 <h2 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有镜像</span></span><br><span class="line">docker images</span><br></pre></td></tr></table></figure>
 
-<h1 id="8-创建容器"><a href="#8-创建容器" class="headerlink" title="8. 创建容器"></a>8. 创建容器</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name youtube-clone-container -d -p 3000:3000 youtube-clone</span><br></pre></td></tr></table></figure>
+<h1 id="8-创建容器"><a href="#8-创建容器" class="headerlink" title="8. 创建容器"></a>8. 创建容器</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --name youtube-clone-container -p 7001:7001 youtube-clone-backend</span><br></pre></td></tr></table></figure>
 
-<h2 id="测试是否连通"><a href="#测试是否连通" class="headerlink" title="测试是否连通"></a>测试是否连通</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl localhost:3000</span><br></pre></td></tr></table></figure>
+<h2 id="测试是否连通"><a href="#测试是否连通" class="headerlink" title="测试是否连通"></a>测试是否连通</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl localhost:7001</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>注意服务器的安全组中端口开放.</p>
 </blockquote>
-<h2 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有容器</span></span><br><span class="line">docker ls -a</span><br></pre></td></tr></table></figure>
+<h2 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看所有容器</span></span><br><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
 
+<p>此时,还不能启动这个容器,因为我的需要连接数据库.</p>
 <h1 id="9-部署-mongoDB"><a href="#9-部署-mongoDB" class="headerlink" title="9. 部署 mongoDB"></a>9. 部署 mongoDB</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">拉取镜像</span></span><br><span class="line">docker pull mongo</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建mongo容器</span></span><br><span class="line">docker run -p 27017:27017 -v ~/docker/mongo:/data/db --name docker_mongodb -d mongo</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li><code>-v</code>: 将宿主机<code>~/docker/mongo</code> 目录挂载到容器中的 <code>/data/db</code> 中，此目录为 MongoDB 数据存储位置.</li>
+<li><code>-d</code>：设置容器以守护进程方式运行</li>
+<li><code>-p</code>：宿主机 27017 端口映射到容器 27017 端口</li>
+</ul>
 <h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>不创建好像连接后访问不了.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入mongoDb容器</span></span><br><span class="line">docker exec -it mongodb /bin/bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入mongoDb</span></span><br><span class="line">mongo</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">use admin</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建用户名为admin, 密码为admin, 角色为root的用户;</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">db.createUser(&#123;user:<span class="string">&quot;admin&quot;</span>,<span class="built_in">pwd</span>:<span class="string">&quot;admin&quot;</span>,roles:[&#123;role:<span class="string">&quot;root&quot;</span>,db:<span class="string">&quot;admin&quot;</span>&#125;]&#125;);</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">出现创建成功提示就对了，退出管理员</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">exit</span>;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入mongoDb容器</span></span><br><span class="line">docker exec -it docker_mongodb mongosh</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进入mongoDb</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">use admin</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建用户名为admin, 密码为admin, 角色为root的用户;</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">db.createUser(&#123;user:<span class="string">&quot;admin&quot;</span>,<span class="built_in">pwd</span>:<span class="string">&quot;admin&quot;</span>,roles:[&#123;role:<span class="string">&quot;root&quot;</span>,db:<span class="string">&quot;admin&quot;</span>&#125;]&#125;);</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">出现创建成功提示就对了，退出管理员</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&gt; <span class="built_in">exit</span>;</span></span><br></pre></td></tr></table></figure>
 
 <p>用管理员账户创建普通用户管理你的数据库.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用刚创建的管理用户登录</span></span><br><span class="line">mongo --port 27017 -u admin -p admin --authenticationDatabase admin</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">再创建一个普通用户</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">use youtube-clone</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">普通用户账户: staff, 密码: staff, 有读写权限;</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">db.createUser(&#123;user:<span class="string">&quot;staff&quot;</span>,<span class="built_in">pwd</span>:<span class="string">&quot;staff&quot;</span>,roles:[&#123;role:<span class="string">&quot;readWrite&quot;</span>,db:<span class="string">&quot;youtube-clone&quot;</span>&#125;]&#125;);</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用刚创建的管理用户登录</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">mongo --port 27017 -u admin -p admin --authenticationDatabase admin</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">再创建一个普通用户</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">use youtube-clone</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">普通用户账户: staff, 密码: staff, 有读写权限;</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">db.createUser(&#123;user:<span class="string">&quot;staff&quot;</span>,<span class="built_in">pwd</span>:<span class="string">&quot;staff&quot;</span>,roles:[&#123;role:<span class="string">&quot;readWrite&quot;</span>,db:<span class="string">&quot;youtube-clone&quot;</span>&#125;]&#125;);</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="10-将数据库容器与后端容器关联"><a href="#10-将数据库容器与后端容器关联" class="headerlink" title="10. 将数据库容器与后端容器关联"></a>10. 将数据库容器与后端容器关联</h1><h2 id="修改后端项目中-MongoDB-的配置"><a href="#修改后端项目中-MongoDB-的配置" class="headerlink" title="修改后端项目中 MongoDB 的配置"></a>修改后端项目中 MongoDB 的配置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config.default.js</span></span><br><span class="line"><span class="attr">url</span>: <span class="string">&#x27;mongodb://staff:staff@db:27017/youtube-clone?authSource=staff&#x27;</span>,</span><br></pre></td></tr></table></figure>
+<h1 id="10-将数据库容器与后端容器关联"><a href="#10-将数据库容器与后端容器关联" class="headerlink" title="10. 将数据库容器与后端容器关联"></a>10. 将数据库容器与后端容器关联</h1><h2 id="修改后端项目中-MongoDB-的配置"><a href="#修改后端项目中-MongoDB-的配置" class="headerlink" title="修改后端项目中 MongoDB 的配置"></a>修改后端项目中 MongoDB 的配置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// config.default.js</span></span><br><span class="line"><span class="comment">// 注意xxxxx是你的服务器IP名称,如果不想暴露可以写成环境变量</span></span><br><span class="line"><span class="attr">url</span>: <span class="string">&#x27;mongodb://staff:staff@xxxxxxx:27017/youtube-clone?authSource=staff&#x27;</span>,</span><br></pre></td></tr></table></figure>
 
 <h2 id="创建自定义网络"><a href="#创建自定义网络" class="headerlink" title="创建自定义网络"></a>创建自定义网络</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create youtube-net</span><br></pre></td></tr></table></figure>
 
@@ -278,6 +288,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">MongoDB连接网络</span></span><br><span class="line">docker network connect youtube-net docker_mongodb</span><br></pre></td></tr></table></figure>
 
 <p>两个都连接到自定义网络就可以通信了.<br>至此.就应该可以通过 ip+端口号进行后端的接口访问了.</p>
+<h1 id="查看问题"><a href="#查看问题" class="headerlink" title="查看问题"></a>查看问题</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看执行日志</span></span><br><span class="line">docker logs -f containerID</span><br></pre></td></tr></table></figure>
+
 <h1 id="更简单的方法-docker-compose"><a href="#更简单的方法-docker-compose" class="headerlink" title="更简单的方法 docker-compose"></a>更简单的方法 docker-compose</h1><p>其实就是把上面的指令写到文件中执行</p>
 
       
@@ -341,7 +353,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:31" itemprop="dateModified" datetime="2022-11-20T09:14:31+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:20" itemprop="dateModified" datetime="2022-11-21T10:15:20+08:00">2022-11-21</time>
     </span>
 
   
@@ -444,7 +456,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:31" itemprop="dateModified" datetime="2022-11-20T09:14:31+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:21" itemprop="dateModified" datetime="2022-11-21T10:15:21+08:00">2022-11-21</time>
     </span>
 
   
@@ -536,7 +548,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:32" itemprop="dateModified" datetime="2022-11-20T09:14:32+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:21" itemprop="dateModified" datetime="2022-11-21T10:15:21+08:00">2022-11-21</time>
     </span>
 
   
@@ -1129,7 +1141,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:32" itemprop="dateModified" datetime="2022-11-20T09:14:32+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:22" itemprop="dateModified" datetime="2022-11-21T10:15:22+08:00">2022-11-21</time>
     </span>
 
   
@@ -1347,7 +1359,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:33" itemprop="dateModified" datetime="2022-11-20T09:14:33+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:22" itemprop="dateModified" datetime="2022-11-21T10:15:22+08:00">2022-11-21</time>
     </span>
 
   
@@ -1996,7 +2008,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:33" itemprop="dateModified" datetime="2022-11-20T09:14:33+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:22" itemprop="dateModified" datetime="2022-11-21T10:15:22+08:00">2022-11-21</time>
     </span>
 
   
@@ -2198,7 +2210,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:33" itemprop="dateModified" datetime="2022-11-20T09:14:33+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:22" itemprop="dateModified" datetime="2022-11-21T10:15:22+08:00">2022-11-21</time>
     </span>
 
   
@@ -2338,7 +2350,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:33" itemprop="dateModified" datetime="2022-11-20T09:14:33+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:22" itemprop="dateModified" datetime="2022-11-21T10:15:22+08:00">2022-11-21</time>
     </span>
 
   
@@ -2830,7 +2842,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-20 09:14:33" itemprop="dateModified" datetime="2022-11-20T09:14:33+08:00">2022-11-20</time>
+      <time title="Modified: 2022-11-21 10:15:22" itemprop="dateModified" datetime="2022-11-21T10:15:22+08:00">2022-11-21</time>
     </span>
 
   
@@ -2899,7 +2911,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#x73;&#97;&#120;&#x40;&#51;&#x2e;&#48;&#x2e;&#48;">&#x73;&#97;&#120;&#x40;&#51;&#x2e;&#48;&#x2e;&#48;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#97;&#120;&#64;&#x33;&#46;&#48;&#x2e;&#48;">&#115;&#97;&#120;&#64;&#x33;&#46;&#48;&#x2e;&#48;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
