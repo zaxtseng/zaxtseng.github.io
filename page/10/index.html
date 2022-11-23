@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:00" itemprop="dateModified" datetime="2022-11-22T20:00:00+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:14" itemprop="dateModified" datetime="2022-11-23T16:33:14+08:00">2022-11-23</time>
     </span>
 
   
@@ -403,7 +403,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:00" itemprop="dateModified" datetime="2022-11-22T20:00:00+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:14" itemprop="dateModified" datetime="2022-11-23T16:33:14+08:00">2022-11-23</time>
     </span>
 
   
@@ -423,7 +423,7 @@
 <h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>context 是默认参数,将 <code>&#123;commit&#125;</code>  从 context 中解构出来.<br><code>let &#123; commit &#125; = context</code> <br>那么 <code>commit</code>  就是 <code>context</code>  对象中的一个参数,直接赋值调用即可.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// options 上的属性表示附加参数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCookie</span>(<span class="params">name, value, options</span>) &#123;</span><br><span class="line">  options = options || &#123;&#125;;</span><br><span class="line">  <span class="keyword">let</span> secure = options.<span class="property">secure</span>,</span><br><span class="line">    path = options.<span class="property">path</span>,</span><br><span class="line">    domain = options.<span class="property">domain</span>,</span><br><span class="line">    expires = options.<span class="property">expires</span>;</span><br><span class="line">  <span class="comment">// 设置 cookie 的代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以改写为：对options进行解构并赋予默认值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCookie</span>(<span class="params">name, value, &#123; secure, path, domain, expires &#125; = &#123;&#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>参数 options 默认有 <code>&#123; secure, path, domain, expires &#125;</code>  参数,<br>而 <code>options</code>  默认可能空,设置它的默认值为 <code>&#123;&#125;</code> .</p>
+<p>参数 options 默认有 <code>&#123; secure, path, domain, expires &#125;</code>  参数,<br>而 <code>options</code>  默认可能空,设置它的默认值为 <code>&#123;&#125;</code> .</p>
 <h1 id="state"><a href="#state" class="headerlink" title="state"></a>state</h1><p>state 中的数据不能在组件中赋值,必须使用 mutation 改变.</p>
 <h3 id="获取-state"><a href="#获取-state" class="headerlink" title="获取 state"></a>获取 state</h3><ol>
 <li>通过属性访问</li>
@@ -522,7 +522,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:01" itemprop="dateModified" datetime="2022-11-22T20:00:01+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:14" itemprop="dateModified" datetime="2022-11-23T16:33:14+08:00">2022-11-23</time>
     </span>
 
   
@@ -546,7 +546,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种</span></span><br><span class="line"><span class="variable language_">this</span>.$emit(<span class="string">&#x27;useMoney&#x27;</span>,<span class="number">100</span>)</span><br><span class="line"><span class="comment">//父组件绑定useMoney事件</span></span><br><span class="line">&lt;<span class="title class_">Father</span> @useMoney=<span class="string">&quot;useMoney&quot;</span> /&gt;</span><br><span class="line"><span class="comment">//父级再出发,向上传递</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第二种</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$parent</span>.$emit(<span class="string">&#x27;useMoney&#x27;</span>,<span class="number">100</span>)</span><br><span class="line"><span class="comment">//直接触发父级上的useMoney事件,不用再写触发事件的methods</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第三种</span></span><br><span class="line"><span class="comment">//封装方法</span></span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="title function_">extendEvent</span>(<span class="title class_">Vue</span>)</span><br><span class="line"><span class="comment">//event.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span>(<span class="params">Vue</span>)&#123;</span><br><span class="line">	<span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$eventDispatch</span> = <span class="keyword">function</span>(<span class="params">name, value</span>)&#123;</span><br><span class="line">		<span class="keyword">let</span> parent = $parent</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(parent)&#123;</span><br><span class="line">			parent.$emit(name, value)</span><br><span class="line">      parent = parent.<span class="property">$parent</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$eventNotice</span> = <span class="keyword">function</span>(<span class="params">name,value</span>)&#123;</span><br><span class="line">  	<span class="keyword">let</span> <span class="title function_">bc</span> = children =&gt; &#123;</span><br><span class="line">      children.<span class="title function_">map</span>(<span class="function"><span class="params">c</span> =&gt;</span>&#123;</span><br><span class="line">				c.$emit(name, value)</span><br><span class="line">        <span class="keyword">if</span>(c.<span class="property">$children</span>)&#123;</span><br><span class="line">					<span class="title function_">bc</span>(C.<span class="property">$children</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">bc</span>(<span class="variable language_">this</span>.<span class="property">$children</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="监听的顺序"><a href="#监听的顺序" class="headerlink" title="监听的顺序"></a>监听的顺序</h3><p>关于<code>$emit</code>和<code>$on</code>的顺序问题,注意是先开启<code>$on</code>进行监听,然后触发<code>$emit</code>.否则触发的时候,<code>$on</code>并没有执行.也就监听不到.<br>比如使用<code>uni.$emit</code>进行触发时,如果跳转到另一个页面,<code>$on</code>是监听不到的,因为已经先触发了<code>emit</code>.<br>正确使用方法: 比如需要回退,那么先打开监听<code>$on</code>,然后在另一页面触发后,回退到该页面,该页面就已经监听到了.</p>
-<h2 id="组件传值"><a href="#组件传值" class="headerlink" title="组件传值"></a>组件传值</h2><p>子组件通过$emit给父组件传值,附带参数. <code>this.$emit(&#39;change&#39;, data)</code> . 传递多个参数可以使用函数,<code>this.$emit(&#39;change&#39;, &#123;data0, data1&#125;)</code>父组件在页面接收时不用写接收参数.<code>@change=&#39;change()&#39;</code>  括号里不用写参数.函数里再写.e</p>
+<h2 id="组件传值"><a href="#组件传值" class="headerlink" title="组件传值"></a>组件传值</h2><p>子组件通过$emit给父组件传值,附带参数. <code>this.$emit(&#39;change&#39;, data)</code> .<br>传递多个参数可以使用函数,<code>this.$emit(&#39;change&#39;, &#123;data0, data1&#125;)</code>父组件在页面接收时不用写接收参数.<code>@change=&#39;change()&#39;</code>  括号里不用写参数.函数里再写.e</p>
 <h2 id="nextTick"><a href="#nextTick" class="headerlink" title="nextTick"></a>nextTick</h2><ol>
 <li>在<code>created</code>中进行 DOM 操作一定要放在<code>Vue.nextTick</code>中</li>
 <li>在数据变化后要执行某个操作,而这个操作需要使用随数据改变而改变 DOM 结构时,要放在<code>Vue.nextTick()</code>中.</li>
@@ -786,7 +786,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:01" itemprop="dateModified" datetime="2022-11-22T20:00:01+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
     </span>
 
   
@@ -1246,7 +1246,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:01" itemprop="dateModified" datetime="2022-11-22T20:00:01+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
     </span>
 
   
@@ -1550,7 +1550,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:01" itemprop="dateModified" datetime="2022-11-22T20:00:01+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
     </span>
 
   
@@ -1672,7 +1672,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:01" itemprop="dateModified" datetime="2022-11-22T20:00:01+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
     </span>
 
   
@@ -1762,7 +1762,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:01" itemprop="dateModified" datetime="2022-11-22T20:00:01+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
     </span>
 
   
@@ -1850,7 +1850,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:02" itemprop="dateModified" datetime="2022-11-22T20:00:02+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
     </span>
 
   
@@ -2391,7 +2391,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:02" itemprop="dateModified" datetime="2022-11-22T20:00:02+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
     </span>
 
   

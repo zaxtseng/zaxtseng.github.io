@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:51" itemprop="dateModified" datetime="2022-11-22T19:59:51+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:05" itemprop="dateModified" datetime="2022-11-23T16:33:05+08:00">2022-11-23</time>
     </span>
 
   
@@ -361,7 +361,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:51" itemprop="dateModified" datetime="2022-11-22T19:59:51+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:06" itemprop="dateModified" datetime="2022-11-23T16:33:06+08:00">2022-11-23</time>
     </span>
 
   
@@ -695,7 +695,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:52" itemprop="dateModified" datetime="2022-11-22T19:59:52+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:06" itemprop="dateModified" datetime="2022-11-23T16:33:06+08:00">2022-11-23</time>
     </span>
 
   
@@ -865,7 +865,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:52" itemprop="dateModified" datetime="2022-11-22T19:59:52+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:06" itemprop="dateModified" datetime="2022-11-23T16:33:06+08:00">2022-11-23</time>
     </span>
 
   
@@ -1030,7 +1030,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:52" itemprop="dateModified" datetime="2022-11-22T19:59:52+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:06" itemprop="dateModified" datetime="2022-11-23T16:33:06+08:00">2022-11-23</time>
     </span>
 
   
@@ -1047,10 +1047,10 @@
 <li>Commonjs 是以同步模式加载模块</li>
 <li>一个文件就是一个模块</li>
 <li>每个模块都有单独的作用域</li>
-<li>通过 module.exports 导出成员</li>
-<li>通过 require 函数载入模块</li>
+<li>通过<code>module.exports</code>导出成员</li>
+<li>通过<code>require</code>函数载入模块</li>
 </ul>
-<h2 id="ES-Module-特性"><a href="#ES-Module-特性" class="headerlink" title="ES Module 特性"></a>ES Module 特性</h2><p>通过给 script 添加 type &#x3D; module 的属性，就可以以 ES Module 的标准执行其中的 js 代码了</p>
+<h2 id="ES-Module-特性"><a href="#ES-Module-特性" class="headerlink" title="ES Module 特性"></a>ES Module 特性</h2><p>通过给 script 添加 <code>type = module</code> 的属性，就可以以 ES Module 的标准执行其中的 js 代码了</p>
 <ul>
 <li>自动采用严格模式，忽略‘use strict’</li>
 <li>每个 ES Module 模块都是单独的私有作用域</li>
@@ -1059,13 +1059,25 @@
 </ul>
 <h3 id="ES-Module-导出"><a href="#ES-Module-导出" class="headerlink" title="ES Module 导出"></a>ES Module 导出</h3><ul>
 <li>导出<ul>
-<li>导出成员使用 export 修饰成员声明的方式，如：<code>export var name = &#39;yan; exprot var age = 18&#39;</code></li>
-<li>export 可以单独使用，如:<code>var name = &#39;yan&#39;; var age = 18; export &#123; name, age &#125;</code></li>
-<li>使用 as 给导出的成员重命名，导入时就要使用重命名后的变量名，如：<code>var name = &#39;yan&#39;; exprot &#123; name as firstName &#125;</code></li>
-<li>如果重命名为 default 那这个成员就会做为当前模块默认导出的成员</li>
-<li>在导入这个成员就必须要给这个成员重命名，default 是一个关键词不能作为一个变量使用</li>
+<li>导出成员使用 export 修饰成员声明的方式，如：</li>
 </ul>
 </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> name = <span class="string">&#x27;yan;</span></span><br><span class="line"><span class="string">export var age = 18&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>export 可以单独使用，如:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;yan&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; name, age &#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用 as 给导出的成员重命名，导入时就要使用重命名后的变量名，如：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;yan&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; name <span class="keyword">as</span> firstName &#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果重命名为 default 那这个成员就会做为当前模块默认导出的成员</li>
+<li>在导入这个成员就必须要给这个成员重命名，default 是一个关键词不能作为一个变量使用</li>
 <li>导入<ul>
 <li>导入使用 import 导入，如：<code>import &#123; name &#125; from &#39;./module.js&#39;</code>，name 为导出的变量名</li>
 <li>导入默认导出传成员可以不使用花括号，变量名可以根据需要随便取，如：<code>import name from &#39;./module.js&#39;</code></li>
@@ -1115,7 +1127,7 @@
 </ul>
 <h3 id="ES-Modules-in-Node-js-与-CommonJS-的差异"><a href="#ES-Modules-in-Node-js-与-CommonJS-的差异" class="headerlink" title="ES Modules in Node.js - 与 CommonJS 的差异"></a>ES Modules in Node.js - 与 CommonJS 的差异</h3><ul>
 <li>ES Module 中没有 Commonjs 中的那些模块全局成员（require&#x2F;module&#x2F;exports&#x2F;**filename&#x2F;**dirname）</li>
-<li>Commonjs 中 require&#x2F;module&#x2F;exports 在 ES Module 中使用 import 和 export 替代，**filename 和 **dirname 可以通过 import.meta.url 可以拿到当前工作文件的文件 url 地址，可以使用原生的 url 模块的 fileURLToPath()方法可以把文件 url 转换为路径</li>
+<li>Commonjs 中 require&#x2F;module&#x2F;exports 在 ES Module 中使用 import 和 export 替代，**filename 和 **dirname 可以通过<code>import.meta.url </code>可以拿到当前工作文件的文件 url 地址，可以使用原生的 url 模块的<code>fileURLToPath()</code>方法可以把文件 url 转换为路径</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; fileURLToPath &#125; <span class="keyword">from</span> <span class="string">&quot;url&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; dirname &#125; <span class="keyword">from</span> <span class="string">&quot;path&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> __filename = <span class="title function_">fileURLToPath</span>(<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">url</span>);</span><br><span class="line"><span class="keyword">const</span> __dirname = <span class="title function_">dirname</span>(__filename);</span><br></pre></td></tr></table></figure>
 
@@ -1149,12 +1161,16 @@
 <li>development：会自动优化打包速度，添加一些调式过程中的辅助</li>
 <li>none：运行最原始的打包，不做额外的处理</li>
 </ul>
-<h2 id="Webpack-资源模块加载"><a href="#Webpack-资源模块加载" class="headerlink" title="Webpack 资源模块加载"></a>Webpack 资源模块加载</h2><ul>
+<h1 id="loader"><a href="#loader" class="headerlink" title="loader"></a>loader</h1><h2 id="Webpack-资源模块加载"><a href="#Webpack-资源模块加载" class="headerlink" title="Webpack 资源模块加载"></a>Webpack 资源模块加载</h2><ul>
 <li>webpack 内容默认只会处理 javascript 文件</li>
 <li>处理其他类型的文件要安装使用对角的 loader（加载器）</li>
-<li>使用 loader，在 webpack.config.js 导出的对象中的 module 属性，添加一个 rules 数组</li>
+<li>使用 loader，在<code>webpack.config.js</code>导出的对象中的 module 属性，添加一个 rules 数组</li>
 <li>rules 数组就是针对加载其他资源模块的规则配置</li>
-<li>每个规则对象要设置两个属性，test：正则表达式，匹配打包过程中遇到的文件；use：匹配到的文件使用的 loader，use 的值可以是单个 loader 字符串也可以是一个数组 loader，<strong>如果是一个数组，会从右往左执行</strong></li>
+<li>每个规则对象要设置两个属性，<ul>
+<li>test：正则表达式，匹配打包过程中遇到的文件；</li>
+<li>use：匹配到的文件使用的 loader，use 的值可以是单个 loader 字符串也可以是一个数组 loader，<strong>如果是一个数组，会从右往左执行</strong></li>
+</ul>
+</li>
 <li>css-loader 的作用就是将 css 文件转换为一个 js 模块；具体实现就是将 css 代码 push 到一个数组中</li>
 <li>style-loader 的作用就是将 css-loader 转换后的结果通过 style 标签追加到页面上</li>
 <li>loader 是 webpack 的核心特性</li>
@@ -1166,13 +1182,15 @@
 <li>webpack 默认所有打包的结果放在网站根目录；为项目中的所有资源指定一个基础路径，在 output 中添加 publicPath 属性，默认值为空表示网站的根目录</li>
 <li>把 publicPath 值修改为 ‘dist&#x2F;‘ 注意“&#x2F;”不能省略，打包后是一个变量名（publicPath 值）拼接资源名（资源名前面没有“&#x2F;”）所有“&#x2F;”不能省略</li>
 </ul>
-<h2 id="Webpack-URL-加载器"><a href="#Webpack-URL-加载器" class="headerlink" title="Webpack URL 加载器"></a>Webpack URL 加载器</h2><ul>
+<h2 id="Webpack-URL-加载器"><a href="#Webpack-URL-加载器" class="headerlink" title="Webpack URL 加载器"></a>Webpack URL 加载器</h2><p>优点: 不用再发起 http 请求</p>
+<ul>
 <li>Data URLS 格式：data(协议):[mediatype(媒体类型和编码)][;base64],</li>
 <li>安装插件 <code>yarn add url-loader --dev</code></li>
 <li>在配置文件中添加 rules</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">use</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.png$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;url-loader&quot;</span>,</span><br><span class="line">          <span class="attr">option</span>: &#123;</span><br><span class="line">            <span class="attr">limit</span>: <span class="number">10</span> * <span class="number">1024</span>, <span class="comment">// 对于小于10kb的png图片使用url-loader打包；而大于10kb的会使用file-loader打包</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<p>loader 中做大小限制还是需要安装 file-loader,不然无法解析.</p>
 <ul>
 <li>打包后，图片将是以 base64 的格式显示</li>
 </ul>
@@ -1181,13 +1199,14 @@
 <li>小文件使用 Data URLs，减少请求次数</li>
 <li>大文件单独提取存放，提高加载速度</li>
 </ul>
-<h2 id="Webpack-常用加载器分类"><a href="#Webpack-常用加载器分类" class="headerlink" title="Webpack 常用加载器分类"></a>Webpack 常用加载器分类</h2><ul>
-<li>编译转换类：会把加载的资源转为 js 代码</li>
-<li>文件操作类：会把加载的资源拷贝到输出的目录，导出文件访问路径</li>
-<li>代码检查类：目的是统一代码风格</li>
+<h2 id="Webpack-常用加载器-loader-分类"><a href="#Webpack-常用加载器-loader-分类" class="headerlink" title="Webpack 常用加载器 loader 分类"></a>Webpack 常用加载器 loader 分类</h2><ul>
+<li>编译转换类：会把加载的资源转为 js 代码,如<code>css-loader</code></li>
+<li>文件操作类：会把加载的资源拷贝到输出的目录，导出文件访问路径,如<code>file-loader</code></li>
+<li>代码检查类：目的是统一代码风格,如<code>eslint-loader</code></li>
 </ul>
-<h2 id="Webpack-与-ES-2015"><a href="#Webpack-与-ES-2015" class="headerlink" title="Webpack 与 ES 2015"></a>Webpack 与 ES 2015</h2><ul>
-<li>安装 babel-loader @babel&#x2F;core @babel&#x2F;preset-env</li>
+<h2 id="Webpack-与-ES6"><a href="#Webpack-与-ES6" class="headerlink" title="Webpack 与 ES6"></a>Webpack 与 ES6</h2><p>wepack 并不能转换 es6 中的其他特性,只能处理模块相关的<code>import,export</code></p>
+<ul>
+<li>安装<code>babel-loader @babel/core @babel/preset-env</code></li>
 <li>在配置文件中 module rules 添加</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.js$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="attr">options</span>: &#123;</span><br><span class="line">            <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>],</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -1202,6 +1221,9 @@
 </ul>
 </li>
 </ul>
+<p>如果用<code>require</code>导致 esm 模块代码,需要用导入值的<code>default</code>属性导入.不过,除非必要,不要混用.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> heading = <span class="built_in">require</span>(<span class="string">&quot;./heading.js&quot;</span>).<span class="property">default</span>;</span><br></pre></td></tr></table></figure>
+
 <h2 id="Webpack-核心工作原理"><a href="#Webpack-核心工作原理" class="headerlink" title="Webpack 核心工作原理"></a>Webpack 核心工作原理</h2><ul>
 <li>webpack 会根据配置找到打包入口文件，然后顺着入口文件的代码</li>
 <li>根据代码中的 import 或者 require 解析推断这个文件依赖的资源模块</li>
@@ -1209,14 +1231,16 @@
 <li>webpack 递归依赖树，找到每个节点对于的资源文件</li>
 <li>根据配置文件中的 rules 属性找到模块对应的加载器，找到对于的资源放在打包结果中，实现整个项目的打包</li>
 </ul>
-<h2 id="Webpack-开发一个-Loader"><a href="#Webpack-开发一个-Loader" class="headerlink" title="Webpack 开发一个 Loader"></a>Webpack 开发一个 Loader</h2><ul>
+<h2 id="Webpack-开发一个-Loader"><a href="#Webpack-开发一个-Loader" class="headerlink" title="Webpack 开发一个 Loader"></a>Webpack 开发一个 Loader</h2><p>loader 都需要导出一个函数,这个函数就是对加载资源的处理.</p>
+<ul>
 <li>loader 负责资源文件从输入到输出的转换</li>
 <li>对于同一个资源可以依次使用多个 loader （css-loader -&gt; style-loader）</li>
 <li>loader 模块导出一个函数；该函数输入的是加载到的资源文件内容；函数体是处理内容的过程；输出的是经过处理过的资源文件内容结果，结果必须是 javascript 代码</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> about <span class="keyword">from</span> <span class="string">&quot;./about.md&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(about);</span><br><span class="line"></span><br><span class="line"><span class="comment">// markdown-loader.js</span></span><br><span class="line"><span class="keyword">const</span> marked = <span class="built_in">require</span>(<span class="string">&quot;marked&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">source</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// source接受输入</span></span><br><span class="line">  <span class="comment">// console.log(source);</span></span><br><span class="line">  <span class="comment">// return &#x27;hello&#x27;;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 方法一</span></span><br><span class="line">  <span class="keyword">const</span> html = <span class="title function_">marked</span>(source);</span><br><span class="line">  <span class="comment">// return `module.exports = $&#123;JSON.stringify(html)&#125;`</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 方法二 返回 html 字符串交给下一个 loader处理 (html-loader)</span></span><br><span class="line">  <span class="keyword">return</span> html;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/main.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">    <span class="attr">publicPath</span>: <span class="string">&quot;dist/&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.md$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;html-loader&quot;</span>, <span class="string">&quot;./markdown-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> about <span class="keyword">from</span> <span class="string">&quot;./about.md&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(about);</span><br><span class="line"></span><br><span class="line"><span class="comment">// markdown-loader.js</span></span><br><span class="line"><span class="keyword">const</span> marked = <span class="built_in">require</span>(<span class="string">&quot;marked&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">source</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// source接受输入</span></span><br><span class="line">  <span class="comment">// console.log(source);</span></span><br><span class="line">  <span class="comment">// return &#x27;hello&#x27;;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 方法一</span></span><br><span class="line">  <span class="keyword">const</span> html = marked.<span class="title function_">parse</span>(source);</span><br><span class="line">  <span class="comment">// return `module.exports = $&#123;JSON.stringify(html)&#125;`</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 方法二 返回 html 字符串交给下一个 loader处理 (html-loader)</span></span><br><span class="line">  <span class="keyword">return</span> html;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// webpack.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/main.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">    <span class="attr">publicPath</span>: <span class="string">&quot;dist/&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.md$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;html-loader&quot;</span>, <span class="string">&quot;./markdown-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Webpack-插件机制介绍"><a href="#Webpack-插件机制介绍" class="headerlink" title="Webpack 插件机制介绍"></a>Webpack 插件机制介绍</h2><ul>
+<h1 id="plugin"><a href="#plugin" class="headerlink" title="plugin"></a>plugin</h1><p>loader 实现资源加载,plugin 解决除了资源加载,其他的自动化工作.<br>比如,打包前清除 dist 目录(为了清除上一次代码),文件压缩,拷贝静态文件到输出目录.<br>也就实现了大部分的前端工程化的工作.</p>
+<h1 id="plugin-插件机制介绍"><a href="#plugin-插件机制介绍" class="headerlink" title="plugin 插件机制介绍"></a>plugin 插件机制介绍</h1><ul>
 <li>增强 webpack 自动化能力</li>
 <li>loader 专注实现资源模块加载</li>
 <li>plugin 解决其他自动化工作<ul>
@@ -1226,29 +1250,38 @@
 </ul>
 </li>
 </ul>
-<h2 id="Webpack-自动清除输出目录插件"><a href="#Webpack-自动清除输出目录插件" class="headerlink" title="Webpack 自动清除输出目录插件"></a>Webpack 自动清除输出目录插件</h2><ul>
+<h2 id="plugin-之-自动清除输出目录插件"><a href="#plugin-之-自动清除输出目录插件" class="headerlink" title="plugin 之 自动清除输出目录插件"></a>plugin 之 自动清除输出目录插件</h2><ul>
 <li>安装插件 <code>yarn add clean-webpack-plugin --dev</code></li>
 <li>配置文件中导入插件</li>
 <li>在配置对象中 plugins 属性，该属性是专门配置插件的地方，属性值是一个数组</li>
+<li>数组里就是导入的类型创建的实例.</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">CleanWebpackPlugin</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>()],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Webpack-自动生成-HTML-插件"><a href="#Webpack-自动生成-HTML-插件" class="headerlink" title="Webpack 自动生成 HTML 插件"></a>Webpack 自动生成 HTML 插件</h2><ul>
+<h2 id="plugin-之-自动生成-HTML-插件"><a href="#plugin-之-自动生成-HTML-插件" class="headerlink" title="plugin 之 自动生成 HTML 插件"></a>plugin 之 自动生成 HTML 插件</h2><ul>
 <li>安装插件 <code>yarn add html-webpack-plugin --dev</code></li>
 <li>在配置文件中导入插件</li>
 <li>在配置对象中 plugins 属性，该属性是专门配置插件的地方，属性值是一个数组</li>
-<li>同时输出多个页面文件，可以再通过 HtmlWebpackPlugin 创建额外的 html 文件,通过 filename 指定文件名</li>
+<li>同时输出多个页面文件，可以再通过 HtmlWebpackPlugin 生成多个实例,通过 filename 指定文件名</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// 用于生成 index.html</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;Webpack Plugin Sample&quot;</span>, <span class="comment">// html文件的title</span></span><br><span class="line">      <span class="attr">meta</span>: &#123;</span><br><span class="line">        <span class="attr">viewport</span>: <span class="string">&quot;width=device-width&quot;</span>, <span class="comment">// 设置meta的viewport</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;./src/index.html&quot;</span>, <span class="comment">// 模版</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;about.html&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.html</span></span><br><span class="line"><span class="comment">// ....</span></span><br><span class="line"><span class="comment">// &lt;h1&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/h1&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="comment">// 用于生成 index.html</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;Webpack Plugin Sample&quot;</span>, <span class="comment">// html文件的title</span></span><br><span class="line">      <span class="attr">meta</span>: &#123;</span><br><span class="line">        <span class="attr">viewport</span>: <span class="string">&quot;width=device-width&quot;</span>, <span class="comment">// 设置meta的viewport</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;./src/index.html&quot;</span>, <span class="comment">// 模版,写法见最下方</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="comment">// 输出多个文件</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;about.html&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// index.html</span></span><br><span class="line"><span class="comment">// ....</span></span><br><span class="line"><span class="comment">// &lt;h1&gt;&lt;%= htmlWebpackPlugin.options.title %&gt;&lt;/h1&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Webpack-插件使用总结"><a href="#Webpack-插件使用总结" class="headerlink" title="Webpack 插件使用总结"></a>Webpack 插件使用总结</h2><ul>
+<h2 id="plugin-之-复制静态文件"><a href="#plugin-之-复制静态文件" class="headerlink" title="plugin 之 复制静态文件"></a>plugin 之 复制静态文件</h2><ul>
 <li>安装插件 <code>yarn add copy-webpack-plugin --dev</code></li>
 </ul>
-<h2 id="Webpack-开发一个插件"><a href="#Webpack-开发一个插件" class="headerlink" title="Webpack 开发一个插件"></a>Webpack 开发一个插件</h2><ul>
-<li>相比于 loader，plugin 拥有更宽的能力范围</li>
-<li>plugin 通过钩子机制实现</li>
-<li>插件必须是一个函数或者是一个包含 apply 方法的对象</li>
-<li>通过在生命周期的钩子中挂载函数实现扩展</li>
+<p>有些文件不需要打包,比如网站图标 icon,可以使用<code>copy-webpack-plugin</code>直接复制.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>([</span><br><span class="line">  <span class="string">&quot;public&quot;</span>, <span class="comment">// 将public下所有文件拷贝到输出目录</span></span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<h2 id="plugin-之-开发一个插件"><a href="#plugin-之-开发一个插件" class="headerlink" title="plugin 之 开发一个插件"></a>plugin 之 开发一个插件</h2><p>原理: 钩子机制,通过在生命周期的钩子中挂载函数实现的.</p>
+<ul>
+<li><p>相比于 loader，plugin 拥有更宽的能力范围</p>
+</li>
+<li><p>plugin 通过钩子机制实现</p>
+<div style="background: #E8F7FF;padding:10px;border: 1px solid #ABD2DA;border-radius:5px;margin-bottom:5px;"></li>
+<li><p>插件必须是一个函数或者是一个包含 apply 方法的对象</div></p>
+</li>
+<li><p>通过在生命周期的钩子中挂载函数实现扩展</p>
+</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyPlugin</span> &#123;</span><br><span class="line">  <span class="comment">// 目标 删除bundle.js中的注释</span></span><br><span class="line">  <span class="title function_">apply</span>(<span class="params">compiler</span>) &#123;</span><br><span class="line">    <span class="comment">// 会自动执行</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;my plugin 启动&quot;</span>);</span><br><span class="line">    <span class="comment">// https://webpack.js.org/api/compiler-hooks/</span></span><br><span class="line">    <span class="comment">// emit钩子：即将输出文件时执行</span></span><br><span class="line">    <span class="comment">// 参数一：插件名 参数二、挂载到钩子上的函数</span></span><br><span class="line">    compiler.<span class="property">hooks</span>.<span class="property">emit</span>.<span class="title function_">tap</span>(<span class="string">&quot;MyPlugin&quot;</span>, <span class="function">(<span class="params">compilation</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// compilation =&gt; 可以理解为此次打包的上下文</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> name <span class="keyword">in</span> compilation.<span class="property">assets</span>) &#123;</span><br><span class="line">        <span class="comment">// assets:资源文件</span></span><br><span class="line">        <span class="comment">// console.log(name); // 文件名</span></span><br><span class="line">        <span class="comment">// console.log(compilation.assets[name].source());//文件内容</span></span><br><span class="line">        <span class="keyword">if</span> (name.<span class="title function_">endsWith</span>(<span class="string">&quot;.js&quot;</span>)) &#123;</span><br><span class="line">          <span class="comment">// 判断是js文件</span></span><br><span class="line">          <span class="keyword">const</span> contents = compilation.<span class="property">assets</span>[name].<span class="title function_">source</span>(); <span class="comment">// 文件内容</span></span><br><span class="line">          <span class="keyword">const</span> withoutComments = contents.<span class="title function_">replace</span>(<span class="regexp">/\/\*\*+\*\//g</span>, <span class="string">&quot;&quot;</span>); <span class="comment">// 全局替换注释</span></span><br><span class="line">          compilation.<span class="property">assets</span>[name] = &#123;</span><br><span class="line">            <span class="comment">// 覆盖原有内容</span></span><br><span class="line">            <span class="attr">source</span>: <span class="function">() =&gt;</span> withoutComments, <span class="comment">// 返回新的内容</span></span><br><span class="line">            <span class="attr">size</span>: <span class="function">() =&gt;</span> withoutComments.<span class="property">length</span>, <span class="comment">// 返回内容的大小 webpack内部规定必须</span></span><br><span class="line">          &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1489,7 +1522,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:52" itemprop="dateModified" datetime="2022-11-22T19:59:52+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:06" itemprop="dateModified" datetime="2022-11-23T16:33:06+08:00">2022-11-23</time>
     </span>
 
   
@@ -1656,7 +1689,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:52" itemprop="dateModified" datetime="2022-11-22T19:59:52+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:06" itemprop="dateModified" datetime="2022-11-23T16:33:06+08:00">2022-11-23</time>
     </span>
 
   
@@ -1732,7 +1765,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:53" itemprop="dateModified" datetime="2022-11-22T19:59:53+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:07" itemprop="dateModified" datetime="2022-11-23T16:33:07+08:00">2022-11-23</time>
     </span>
 
   
@@ -1819,7 +1852,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:53" itemprop="dateModified" datetime="2022-11-22T19:59:53+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:07" itemprop="dateModified" datetime="2022-11-23T16:33:07+08:00">2022-11-23</time>
     </span>
 
   
@@ -2368,7 +2401,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:53" itemprop="dateModified" datetime="2022-11-22T19:59:53+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:07" itemprop="dateModified" datetime="2022-11-23T16:33:07+08:00">2022-11-23</time>
     </span>
 
   

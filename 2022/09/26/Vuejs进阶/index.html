@@ -28,7 +28,7 @@
 <meta property="og:description" content="title: Vue.js进阶 date: 2019-09-13 15:47:32 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  Vue.js # 一级分类 Vue.js进阶 # 二级分类   关于h将 h 作为 createElement 的别名是 Vue 生态系统中的一个通用惯例. 响应式原理官网解释 当你把一个普通的 JavaScript 对象传">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-26T13:06:00.000Z">
-<meta property="article:modified_time" content="2022-11-22T11:59:57.537Z">
+<meta property="article:modified_time" content="2022-11-23T08:33:11.355Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 19:59:57" itemprop="dateModified" datetime="2022-11-22T19:59:57+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:11" itemprop="dateModified" datetime="2022-11-23T16:33:11+08:00">2022-11-23</time>
     </span>
 
   
@@ -327,7 +327,7 @@
 <li>路由懒加载</li>
 <li>SSR 服务端渲染</li>
 </ol>
-<h2 id="函数化组件"><a href="#函数化组件" class="headerlink" title="函数化组件"></a>函数化组件</h2><p>先设置<code>functional: true</code>,表示该组件无状态无实例,不能使用<code>this</code></p>
+<h2 id="函数化组件"><a href="#函数化组件" class="headerlink" title="函数化组件"></a>函数化组件</h2><p>先设置<code>functional: true</code>,表示该组件无状态无实例,不能使用<code>this</code></p>
 <p>使用上下文<code>context</code>进行替换</p>
 <p>替换规律:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">text</span>-----context.<span class="property">props</span>.<span class="property">text</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$slots</span>.<span class="property">default</span>------context.<span class="property">children</span></span><br></pre></td></tr></table></figure>

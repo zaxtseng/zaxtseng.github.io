@@ -28,7 +28,7 @@
 <meta property="og:description" content="五大件state,actions,mutations,getter,modules 区别state: 主要存放用户数据mutations: set 用户数据(同步形式)actions: 主要是异步操作,通过 commit  触发 mutations 中的操作改变 stategetters: change 用户数据(经常性的)modules: 将近似的操作抽离放到一个模块里,防止 store 过于臃">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-25T07:31:43.000Z">
-<meta property="article:modified_time" content="2022-11-22T12:00:00.949Z">
+<meta property="article:modified_time" content="2022-11-23T08:33:14.604Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-22 20:00:00" itemprop="dateModified" datetime="2022-11-22T20:00:00+08:00">2022-11-22</time>
+      <time title="Modified: 2022-11-23 16:33:14" itemprop="dateModified" datetime="2022-11-23T16:33:14+08:00">2022-11-23</time>
     </span>
 
   
@@ -234,7 +234,7 @@
 <h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>context 是默认参数,将 <code>&#123;commit&#125;</code>  从 context 中解构出来.<br><code>let &#123; commit &#125; = context</code> <br>那么 <code>commit</code>  就是 <code>context</code>  对象中的一个参数,直接赋值调用即可.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// options 上的属性表示附加参数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCookie</span>(<span class="params">name, value, options</span>) &#123;</span><br><span class="line">  options = options || &#123;&#125;;</span><br><span class="line">  <span class="keyword">let</span> secure = options.<span class="property">secure</span>,</span><br><span class="line">    path = options.<span class="property">path</span>,</span><br><span class="line">    domain = options.<span class="property">domain</span>,</span><br><span class="line">    expires = options.<span class="property">expires</span>;</span><br><span class="line">  <span class="comment">// 设置 cookie 的代码</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//可以改写为：对options进行解构并赋予默认值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCookie</span>(<span class="params">name, value, &#123; secure, path, domain, expires &#125; = &#123;&#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>参数 options 默认有 <code>&#123; secure, path, domain, expires &#125;</code>  参数,<br>而 <code>options</code>  默认可能空,设置它的默认值为 <code>&#123;&#125;</code> .</p>
+<p>参数 options 默认有 <code>&#123; secure, path, domain, expires &#125;</code>  参数,<br>而 <code>options</code>  默认可能空,设置它的默认值为 <code>&#123;&#125;</code> .</p>
 <h1 id="state"><a href="#state" class="headerlink" title="state"></a>state</h1><p>state 中的数据不能在组件中赋值,必须使用 mutation 改变.</p>
 <h3 id="获取-state"><a href="#获取-state" class="headerlink" title="获取 state"></a>获取 state</h3><ol>
 <li>通过属性访问</li>
