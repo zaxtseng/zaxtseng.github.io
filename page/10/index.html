@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:14" itemprop="dateModified" datetime="2022-11-23T16:33:14+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:18" itemprop="dateModified" datetime="2022-11-24T08:46:18+08:00">2022-11-24</time>
     </span>
 
   
@@ -403,7 +403,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:14" itemprop="dateModified" datetime="2022-11-23T16:33:14+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:18" itemprop="dateModified" datetime="2022-11-24T08:46:18+08:00">2022-11-24</time>
     </span>
 
   
@@ -522,7 +522,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:14" itemprop="dateModified" datetime="2022-11-23T16:33:14+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:18" itemprop="dateModified" datetime="2022-11-24T08:46:18+08:00">2022-11-24</time>
     </span>
 
   
@@ -652,9 +652,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;currentTabcomponent&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="异步组件"><a href="#异步组件" class="headerlink" title="异步组件"></a>异步组件</h3><p>就是异步导入,返回 Promise</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//标准写法</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&quot;template&quot;</span>, <span class="keyword">function</span> (<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(&#123; <span class="attr">template</span>: <span class="string">&quot;&lt;div&gt;I am async!&lt;/div&gt;&quot;</span> &#125;);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//require语法</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&quot;template&quot;</span>, <span class="keyword">function</span> (<span class="params">resolve</span>) &#123;</span><br><span class="line">  <span class="built_in">require</span>([<span class="string">&quot;./my-component&quot;</span>], resolve);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//import写法</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&quot;template&quot;</span>, <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;./my-component&quot;</span>));</span><br><span class="line"><span class="comment">//局部注册</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">components</span>: &#123;</span><br><span class="line">    <span class="string">&quot;my-component&quot;</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;./my-component&quot;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//标准写法</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&quot;template&quot;</span>, <span class="keyword">function</span> (<span class="params">resolve, reject</span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(&#123; <span class="attr">template</span>: <span class="string">&quot;&lt;div&gt;I am async!&lt;/div&gt;&quot;</span> &#125;);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//require语法</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&quot;template&quot;</span>, <span class="keyword">function</span> (<span class="params">resolve</span>) &#123;</span><br><span class="line">  <span class="built_in">require</span>([<span class="string">&quot;./my-component&quot;</span>], resolve);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//import写法</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&quot;template&quot;</span>, <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./my-component&quot;</span>));</span><br><span class="line"><span class="comment">//局部注册</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">components</span>: &#123;</span><br><span class="line">    <span class="string">&quot;my-component&quot;</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./my-component&quot;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h3 id="加载状态"><a href="#加载状态" class="headerlink" title="加载状态"></a>加载状态</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">AsyncComponent</span> = (<span class="params"></span>) =&gt; (&#123;</span><br><span class="line">  <span class="attr">component</span>: <span class="title function_">import</span>(<span class="string">&quot;./MyComponent.vue&quot;</span>),</span><br><span class="line">  <span class="comment">//异步组件加载时所用的组件</span></span><br><span class="line">  <span class="attr">loading</span>: <span class="title class_">LoadingComponent</span>,</span><br><span class="line">  <span class="comment">//加载失败使用的组件</span></span><br><span class="line">  <span class="attr">error</span>: <span class="title class_">ErrorComponent</span>,</span><br><span class="line">  <span class="comment">//展示加载时组件的延时时间</span></span><br><span class="line">  <span class="attr">delay</span>: <span class="number">200</span>,</span><br><span class="line">  <span class="comment">//超时时间</span></span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">3000</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="加载状态"><a href="#加载状态" class="headerlink" title="加载状态"></a>加载状态</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">AsyncComponent</span> = (<span class="params"></span>) =&gt; (&#123;</span><br><span class="line">  <span class="attr">component</span>: <span class="keyword">import</span>(<span class="string">&quot;./MyComponent.vue&quot;</span>),</span><br><span class="line">  <span class="comment">//异步组件加载时所用的组件</span></span><br><span class="line">  <span class="attr">loading</span>: <span class="title class_">LoadingComponent</span>,</span><br><span class="line">  <span class="comment">//加载失败使用的组件</span></span><br><span class="line">  <span class="attr">error</span>: <span class="title class_">ErrorComponent</span>,</span><br><span class="line">  <span class="comment">//展示加载时组件的延时时间</span></span><br><span class="line">  <span class="attr">delay</span>: <span class="number">200</span>,</span><br><span class="line">  <span class="comment">//超时时间</span></span><br><span class="line">  <span class="attr">timeout</span>: <span class="number">3000</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <h2 id="处理边界情况"><a href="#处理边界情况" class="headerlink" title="处理边界情况"></a>处理边界情况</h2><p>也就是操作其他组件内部或者手动操作 DOM 的情况.</p>
 <h3 id="根实例"><a href="#根实例" class="headerlink" title="根实例"></a>根实例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$root</span>.<span class="property">foo</span>;</span><br><span class="line"><span class="comment">//写入</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$root</span>.<span class="property">foo</span> = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
@@ -680,7 +680,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在beforeCreate时注册它</span></span><br><span class="line"><span class="title function_">beforeCreate</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">$options</span>.<span class="property">components</span>.<span class="property">TreeFolderContents</span> = <span class="built_in">require</span>(<span class="string">&#x27;./tree-folder-contents.vue&#x27;</span>).<span class="property">default</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>或者在本地注册时,使用异步导入,</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">components</span>: &#123;</span><br><span class="line">  <span class="title class_">TreeFolderContents</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="string">&quot;./tree-folder-contents.vue&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">components</span>: &#123;</span><br><span class="line">  <span class="title class_">TreeFolderContents</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./tree-folder-contents.vue&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h2><h3 id="递归合并"><a href="#递归合并" class="headerlink" title="递归合并"></a>递归合并</h3><p>当组件和混入对象含有同名选项时,这些选项将以恰当的方式进行”合并”.<br>数据对象在内部会进行递归合并,并在发生冲突时以组件数据优先.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixin = &#123;</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&quot;hello&quot;</span>,</span><br><span class="line">      <span class="attr">foo</span>: <span class="string">&quot;abc&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  <span class="attr">mixins</span>: [mixin],</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&quot;goodbye&quot;</span>,</span><br><span class="line">      <span class="attr">bar</span>: <span class="string">&quot;def&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">created</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">$data</span>);</span><br><span class="line">    <span class="comment">//=&gt;&#123; message:&quot;goodbye&#x27;, foo: &#x27;abc&#x27;, bar: &#x27;def&#x27; &#125;</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -786,7 +786,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:18" itemprop="dateModified" datetime="2022-11-24T08:46:18+08:00">2022-11-24</time>
     </span>
 
   
@@ -1246,7 +1246,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:19" itemprop="dateModified" datetime="2022-11-24T08:46:19+08:00">2022-11-24</time>
     </span>
 
   
@@ -1550,7 +1550,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:19" itemprop="dateModified" datetime="2022-11-24T08:46:19+08:00">2022-11-24</time>
     </span>
 
   
@@ -1672,7 +1672,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:19" itemprop="dateModified" datetime="2022-11-24T08:46:19+08:00">2022-11-24</time>
     </span>
 
   
@@ -1762,7 +1762,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:19" itemprop="dateModified" datetime="2022-11-24T08:46:19+08:00">2022-11-24</time>
     </span>
 
   
@@ -1850,7 +1850,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:19" itemprop="dateModified" datetime="2022-11-24T08:46:19+08:00">2022-11-24</time>
     </span>
 
   
@@ -2391,7 +2391,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-23 16:33:15" itemprop="dateModified" datetime="2022-11-23T16:33:15+08:00">2022-11-23</time>
+      <time title="Modified: 2022-11-24 08:46:20" itemprop="dateModified" datetime="2022-11-24T08:46:20+08:00">2022-11-24</time>
     </span>
 
   
