@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,141 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/03/npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/03/npm/" class="post-title-link" itemprop="url">npm</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-03 13:56:47" itemprop="dateCreated datePublished" datetime="2022-11-03T13:56:47+08:00">2022-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-26 19:08:44" itemprop="dateModified" datetime="2022-11-26T19:08:44+08:00">2022-11-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h1><p>切换不同 node 版本.安装之前建议删除之前的 node 版本.</p>
+<h2 id="删除之前-node"><a href="#删除之前-node" class="headerlink" title="删除之前 node"></a>删除之前 node</h2><p>打开 <code>/usr/local/lib</code>，删除 node 和 node_modules 相关的文件和文件夹<br>打开<code> /usr/local/include</code>，删除 node 和 node_modules 相关的文件和文件夹<br>如果你是使用的 <code>brew install node</code> 安装的 NodeJS，那么你还需要在终端中执行 <code>brew uninstall node</code> 命令来卸载<br>检查你的个人主文件夹下面的所有的 local、lib 以及 include 文件夹，并且删除所有与 node 和 node_modules 相关的文件以及文件夹<br>打开 <code>/usr/local/bin</code> 并删除 node 可执行文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/local/bin/npm</span><br><span class="line">sudo rm /usr/local/share/man/man1/node.1</span><br><span class="line">sudo rm /usr/local/lib/dtrace/node.d</span><br><span class="line">sudo rm -rf ~/.npm</span><br><span class="line">sudo rm -rf ~/.node-gyp</span><br><span class="line">sudo rm /opt/local/bin/node</span><br><span class="line">sudo rm /opt/local/include/node</span><br><span class="line">sudo rm -rf /opt/local/lib/node_modules</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-nvm"><a href="#安装-nvm" class="headerlink" title="安装 nvm"></a>安装 nvm</h2><p>mac 安装: <code>$ brew install nvm</code><br>命令安装:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br><span class="line">或</span><br><span class="line">$ wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>安装的时候可以需要配置解释器,按照当时反馈的描述写就行.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建 zsh 配置文件,一遍安装了zsh就不用创建</span></span><br><span class="line">$ <span class="built_in">touch</span> ~/.zshrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑配置文件</span></span><br><span class="line">$ vim ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<p>比如:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1、这是本地不存在配置文件的时候提示需要添加的配置</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、这是本地存在配置文件的时候提示需要添加的配置（推荐）</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br></pre></td></tr></table></figure>
+
+<p>之后重新加载一遍</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装-node"><a href="#安装-node" class="headerlink" title="安装 node"></a>安装 node</h2><p>列出所有远程版本<code>$ nvm ls-remote</code><br>显示当前版本<code>$ nvm current</code><br>列出所有已安装版本<code>$ nvm ls</code><br>切换指定版本 node</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 临时版本 - 只在当前窗口生效指定版本</span><br><span class="line">$ nvm use &lt;version&gt;</span><br><span class="line"></span><br><span class="line">// 永久版本 - 所有窗口生效指定版本</span><br><span class="line">$ nvm <span class="built_in">alias</span> default &lt;version&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：在任意一个命令行窗口进行切换之后，其他的窗口或其他命令行工具窗口 需要关掉工具，重启才能生效。（例如 VSCode 内或外部命令切换之后，需要重启 VSCode，才能正常生效，否则或处于 临时生效状态，也就是在 VSCode 中重新打开一个命令行查看版本还会是旧版本，所以必须要重启。）<br>这里的 重启 不是简单的关掉窗口重启，没有退出后台进程，而是完全退出杀死工具进程，重新启动。</p>
+</blockquote>
+<blockquote>
+<p>本来用 nvm use &lt;版本号&gt; 切换到需要的版本号上，然后用 npm install -g taro 安装是没问题的，但切换了其它命令行后，发现 taro 提示 command not found 。后来细查之后才发现，nvm use &lt;版本号&gt; 只是在当前命令行环境下切换，并不是全局切换。如果想要全局切换，要用 nvm alias default &lt;版本号&gt;</p>
+</blockquote>
+<h1 id="pnpm"><a href="#pnpm" class="headerlink" title="pnpm"></a>pnpm</h1><h2 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pnpm</span><br><span class="line">// brew</span><br><span class="line">brew install pnpm</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>如果要全局安装其他,比如 typescript,还是用 npm,不然和上面 nvm 有冲突.</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pnpm add sax</td>
+<td>保存到 dependencies 配置项下</td>
+</tr>
+<tr>
+<td>pnpm add -D sax</td>
+<td>保存到 devDependencies 配置项下</td>
+</tr>
+<tr>
+<td>pnpm add -O sax</td>
+<td>保存到 optionalDependencies 配置项下</td>
+</tr>
+<tr>
+<td>pnpm add -g sax</td>
+<td>安装软件包到全局环境中</td>
+</tr>
+<tr>
+<td>pnpm add sax@next</td>
+<td>安装标记为 next 的版本</td>
+</tr>
+<tr>
+<td>pnpm add <a href="mailto:&#115;&#x61;&#x78;&#x40;&#x33;&#46;&#x30;&#x2e;&#x30;">&#115;&#x61;&#x78;&#x40;&#x33;&#46;&#x30;&#x2e;&#x30;</a></td>
+<td>安装指定版本 3.0.0</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +343,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:26" itemprop="dateModified" datetime="2022-11-25T09:51:26+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:44" itemprop="dateModified" datetime="2022-11-26T19:08:44+08:00">2022-11-26</time>
     </span>
 
   
@@ -361,7 +496,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:27" itemprop="dateModified" datetime="2022-11-25T09:51:27+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:44" itemprop="dateModified" datetime="2022-11-26T19:08:44+08:00">2022-11-26</time>
     </span>
 
   
@@ -695,7 +830,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:27" itemprop="dateModified" datetime="2022-11-25T09:51:27+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:44" itemprop="dateModified" datetime="2022-11-26T19:08:44+08:00">2022-11-26</time>
     </span>
 
   
@@ -865,7 +1000,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:27" itemprop="dateModified" datetime="2022-11-25T09:51:27+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:45" itemprop="dateModified" datetime="2022-11-26T19:08:45+08:00">2022-11-26</time>
     </span>
 
   
@@ -1030,7 +1165,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:27" itemprop="dateModified" datetime="2022-11-25T09:51:27+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:45" itemprop="dateModified" datetime="2022-11-26T19:08:45+08:00">2022-11-26</time>
     </span>
 
   
@@ -1575,7 +1710,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:27" itemprop="dateModified" datetime="2022-11-25T09:51:27+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:45" itemprop="dateModified" datetime="2022-11-26T19:08:45+08:00">2022-11-26</time>
     </span>
 
   
@@ -1742,7 +1877,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:27" itemprop="dateModified" datetime="2022-11-25T09:51:27+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:45" itemprop="dateModified" datetime="2022-11-26T19:08:45+08:00">2022-11-26</time>
     </span>
 
   
@@ -1818,7 +1953,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:27" itemprop="dateModified" datetime="2022-11-25T09:51:27+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:45" itemprop="dateModified" datetime="2022-11-26T19:08:45+08:00">2022-11-26</time>
     </span>
 
   
@@ -1905,7 +2040,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:28" itemprop="dateModified" datetime="2022-11-25T09:51:28+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:46" itemprop="dateModified" datetime="2022-11-26T19:08:46+08:00">2022-11-26</time>
     </span>
 
   
@@ -2393,131 +2528,6 @@
 
 <h3 id="WebSocket-onclose"><a href="#WebSocket-onclose" class="headerlink" title="WebSocket.onclose"></a>WebSocket.onclose</h3><p>实例对象的<code>onclose</code>属性，用于指定连接关闭后的回调函数。</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/React-Hooks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/React-Hooks/" class="post-title-link" itemprop="url">React-Hooks</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:08:20" itemprop="dateCreated datePublished" datetime="2022-09-26T21:08:20+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:28" itemprop="dateModified" datetime="2022-11-25T09:51:28+08:00">2022-11-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="title-React-Hooksdate-2020-06-27-09-13-34"><a href="#title-React-Hooksdate-2020-06-27-09-13-34" class="headerlink" title="title: React-Hooksdate: 2020-06-27 09:13:34"></a>title: React-Hooksdate: 2020-06-27 09:13:34</h2><p>tags: React</p>
-<h3 id="class-组件类的缺点"><a href="#class-组件类的缺点" class="headerlink" title="class 组件类的缺点"></a>class 组件类的缺点</h3><ul>
-<li>大型业务很难拆分或重构,也很难测试</li>
-<li>业务逻辑分散在组件的各个方法中,导致重复逻辑或关联逻辑.</li>
-<li>组件类引入了复杂的编程模式,比如<code>render props</code>和高阶组件.</li>
-</ul>
-<h2 id="React-Hook-的设计目的"><a href="#React-Hook-的设计目的" class="headerlink" title="React Hook 的设计目的"></a>React Hook 的设计目的</h2><p>加强版函数组件,完全不使用类,就能写出一个全功能组件.</p>
-<blockquote>
-<p>含义为,组件尽量写成纯函数,如果需要外部功能或副作用,就用钩子函数把外部代码”钩”进来.</p>
-</blockquote>
-<p>React 规定,钩子一律使用<code>use</code>前缀命名,便于识别.</p>
-<p>常用钩子: <code>useState()</code>,<code>useContext()</code>,<code>useReducer()</code>,<code>useEffect()</code></p>
-<h2 id="useState-状态钩子"><a href="#useState-状态钩子" class="headerlink" title="useState()状态钩子"></a><code>useState()</code>状态钩子</h2><p>用于为函数组件引入状态(state),纯函数不能有状态,所以将状态放入钩子里.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Button</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> [buttonText, setButtonText] = <span class="title function_">useState</span>(<span class="string">&quot;Click!&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">handleCilck</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">setButtonText</span>(<span class="string">&quot;thank&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>&#123;buttonText&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>用户点击后,文字自发生了变化,文字取决于用户是否点击,这就是状态.</p>
-<blockquote>
-<p>Button 组件是一个函数,内部使用<code>useState()</code>引入状态.</p>
-</blockquote>
-<p><code>useState()</code>函数接收状态的初始值,作为参数,例子中的初始值为按钮的文字,该函数返回一个数组,数组的第一个成员是一个变量(<code>buttonText</code>).</p>
-<p>指向状态的当前值.第二个成员是一个函数,用来更新状态.约定是<code>set</code>前缀加上变量名(<code>setButtonText</code>).</p>
-<h2 id="useContext-共享状态钩子"><a href="#useContext-共享状态钩子" class="headerlink" title="useContext()共享状态钩子"></a><code>useContext()</code>共享状态钩子</h2><p>如果需要在组件之间共享状态,可以使用<code>useContext()</code>.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">AppContext</span> = <span class="title class_">React</span>.<span class="title function_">createContext</span>(&#123;&#125;)</span><br><span class="line"></span><br><span class="line">&lt;<span class="title class_">AppContext</span>.<span class="property">Provider</span> value=&#123;&#123; <span class="attr">username</span>: <span class="string">&quot;super&quot;</span>&#125;&#125;&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Navbar</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">Message</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">AppContext</span>.<span class="property">Provider</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>其中,<code>AppContext.Provider</code>提供一个<code>Context</code>对象,这个对象可以被子组件共享.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Navbar.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Navbar</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(<span class="title class_">AppContext</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;navbar&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Awesome<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>其中,<code>useContext()</code>钩子函数用来引入 Context 对象,从中获取<code>username</code>属性.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Message.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Message</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(<span class="title class_">AppContext</span>);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;messages&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>message for &#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;message&quot;</span>&gt;</span>useContext<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="useReducer-action-钩子"><a href="#useReducer-action-钩子" class="headerlink" title="useReducer(): action 钩子"></a><code>useReducer()</code>: action 钩子</h2><p>React 本身不提供状态管理功能,通常使用外部库,如 Redux.</p>
-<p>Redux 的核心概念,组件发出 action 与状态管理器通信.状态管理器收到 action 后,使用 Reducer 函数算出新的状态,</p>
-<p>Reducer 函数的形式是<code>(state, action)=&gt;newState</code>.</p>
-<p><code>useReducers()</code>用来引入 Reducer 功能.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialState);</span><br></pre></td></tr></table></figure>
-
-<p>上面是<code>useReducer()</code>的基本用法,它接收 Reducer 函数和状态的初始值作为参数,返回一个数组.数组的第一个成员是状态的当前值,</p>
-<p>第二个是发送 action 的<code>dispatch</code>函数.</p>
-<p>由于 Hooks 可以提供共享状态和 Reducer 函数,所以这些方面可以取代 redux.但是无提供<code>中间件</code>和时间旅行.</p>
-<h2 id="useEffect-副作用钩子"><a href="#useEffect-副作用钩子" class="headerlink" title="useEffect(): 副作用钩子"></a><code>useEffect()</code>: 副作用钩子</h2><p><code>useEffect()</code>用来引入具有副作用的操作,如向服务器发送请求数据.</p>
-<p>之前放在<code>componentDidMount</code>之中的代码可以放在<code>useEffect()</code>中.</p>
-<p>解决了没有生命周期的问题.</p>
-<p>用法如下:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//async action</span></span><br><span class="line">&#125;, [dependencies]);</span><br></pre></td></tr></table></figure>
-
-<p><code>useEffect()</code>接收两个参数,第一个参数是一个函数,异步操作的代码放在里面.</p>
-<p>第二个参数是一个数组,用于给<code>Effect</code>的依赖项,只要这个数组发生变化,<code>useEffect()</code>就会执行.</p>
-<p>第二个参数可以省略,这样每次渲染,就会执行<code>useEffect()</code>.</p>
-<p>第二个参数如果是一个空数组<code>[]</code>,就只会在加载时执行一次,数据更新时不执行.</p>
-<h2 id="自定义-Hooks"><a href="#自定义-Hooks" class="headerlink" title="自定义 Hooks"></a>自定义 Hooks</h2>
       
     </div>
 

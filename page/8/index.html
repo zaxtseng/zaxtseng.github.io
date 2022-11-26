@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,230 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/28/Golang/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/28/Golang/" class="post-title-link" itemprop="url">Golang</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-28 15:18:57" itemprop="dateCreated datePublished" datetime="2022-01-28T15:18:57+08:00">2022-01-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><h3 id="Print-和-Println"><a href="#Print-和-Println" class="headerlink" title="Print 和 Println"></a>Print 和 Println</h3><p>参数可以是字符串,数字,数学表达式,传递若干参数用逗号隔开.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="comment">//引入fmt包</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//使用fmt中Print函数进行打印</span></span><br><span class="line">    fmt.Print(<span class="string">&quot;Tom&quot;</span>)</span><br><span class="line">    <span class="comment">//下面的Println函数有换行功能</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;my name is&quot;</span>, <span class="string">&quot;Tom&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="Printf"><a href="#Printf" class="headerlink" title="Printf"></a>Printf</h3><p>第一个参数必须是字符串,其中包含格式化动词,如<code>%v</code>,值由第二个参数决定.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">&quot;My %v is 15&quot;</span>, <span class="string">&quot;age&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//其中格式化动词%v可以指定宽度</span></span><br><span class="line">%<span class="number">4</span>v,就是向左填充<span class="number">4</span>个空格</span><br><span class="line">&amp;<span class="number">-5</span>v,就是向右填充<span class="number">5</span>个空格</span><br></pre></td></tr></table></figure>
+
+<h2 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h2><h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>声明常量</p>
+<h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>声明变量</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> distance = <span class="number">100</span></span><br><span class="line"><span class="keyword">var</span> speed = <span class="number">30</span></span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"><span class="keyword">var</span> distance, speed = <span class="number">100</span>, <span class="number">30</span></span><br><span class="line">/or</span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">    distance = <span class="number">100</span></span><br><span class="line">    speed = <span class="number">30</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="自增运算"><a href="#自增运算" class="headerlink" title="自增运算"></a>自增运算</h2><p>go 中没有<code>++count</code>这种,但是有<code>count++</code></p>
+<h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><p>使用 math 包中的 rand</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">&quot;fmt&quot;</span></span><br><span class="line">  <span class="string">&quot;math/rand&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span> <span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">//Intn(10)是取0-10不包括10的整数.</span></span><br><span class="line">  <span class="keyword">var</span> num = rand.Intn(<span class="number">10</span>) + <span class="number">1</span></span><br><span class="line">  fmt.Println(num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h2><p>true 和 false,不会进行类型转换.</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="strings-Contains"><a href="#strings-Contains" class="headerlink" title="strings.Contains"></a><code>strings.Contains</code></h3><p>返回 boolean 类型.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;string&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span> <span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> str = <span class="string">&quot;aaa bbb ccc&quot;</span></span><br><span class="line">    <span class="keyword">var</span> exit = strings.Contains(str, <span class="string">&quot;aaa&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h2><h3 id="if"><a href="#if" class="headerlink" title="if"></a>if</h3><p>注意 if 后不适应<code>()</code></p>
+<h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>switch 语句中不需要写 break<br>switch 后也不需要跟传入参数</p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><p>for 语句后也不用<code>()</code>,后面的判断如果没有就是无限循环</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>变量的作用域在<code>&#123;&#125;</code>中.</p>
+<h3 id="package-作用域"><a href="#package-作用域" class="headerlink" title="package 作用域"></a>package 作用域</h3><p>在 main 函数之外声明必须使用 var 声明,不能使用短声明.且作用域存在于 package 中.</p>
+<h2 id="短声明"><a href="#短声明" class="headerlink" title="短声明"></a>短声明</h2><p>优势:可以在无法使用 var 的地方使用.比如 for 循环中.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> count = <span class="number">10</span></span><br><span class="line">count := <span class="number">10</span></span><br><span class="line"><span class="comment">//for循环中</span></span><br><span class="line"><span class="keyword">for</span> count:=<span class="number">10</span>; count &gt; <span class="number">0</span>; count++ &#123;</span><br><span class="line">    fmt.Println(count)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="声明浮点型变量"><a href="#声明浮点型变量" class="headerlink" title="声明浮点型变量"></a>声明浮点型变量</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">days := <span class="number">365.2425</span></span><br><span class="line"><span class="keyword">var</span> days = <span class="number">365.2425</span></span><br><span class="line"><span class="keyword">var</span> days <span class="type">float64</span> =  <span class="number">365.2425</span></span><br></pre></td></tr></table></figure>
+
+<p>只要数字带有小数部分,类型就是<code>float64</code>.<br>如果使用整数声明浮点型,必须使用<code>float64</code>,否则就是整数类型.</p>
+<h3 id="单精度浮点类型"><a href="#单精度浮点类型" class="headerlink" title="单精度浮点类型"></a>单精度浮点类型</h3><p>go 语言默认是<code>float64</code>,双精度浮点类型.占用 8 字节内存.<br>也可以使用<code>float32</code>,单精度浮点类型,占用 4 字节内存.<br>使用场景: 处理大量数据时,可以牺牲精度,节省内存.</p>
+<h3 id="显示浮点型"><a href="#显示浮点型" class="headerlink" title="显示浮点型"></a>显示浮点型</h3><p>使用<code>Print</code>和<code>Println</code>打印时,默认显示所有小数.<br>如果想控制小数显示位数,可以使用<code>Printf</code>,结合<code>%f</code>格式化动词.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">third := <span class="number">1.0</span> / <span class="number">3</span></span><br><span class="line">fmt.Println(third)</span><br><span class="line">fmt.Printf(<span class="string">&quot;%f&quot;</span>,third) <span class="comment">//表示显示浮点型</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%.3f&quot;</span>,third) <span class="comment">//表示浮点型有3位数</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%4.2f&quot;</span>,third) <span class="comment">//表示浮点型有2位数,整体包括小数点至少有4位数,如果不足,默认空格填充</span></span><br><span class="line"><span class="comment">//如果想使用0填充空格</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%05.2f&quot;</span>,third)</span><br></pre></td></tr></table></figure>
+
+<h3 id="浮点型的精度问题"><a href="#浮点型的精度问题" class="headerlink" title="浮点型的精度问题"></a>浮点型的精度问题</h3><p>浮点型不适合做金融计算,如果非要使用,可以先乘后除.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">third : = <span class="number">1.0</span> / <span class="number">3.0</span></span><br><span class="line">fmt.Println(third + third + third) <span class="comment">// 输出1</span></span><br><span class="line">pigBank := <span class="number">0.1</span></span><br><span class="line">pigBank += <span class="number">0.2</span></span><br><span class="line">fmt.Pirntln(pigBank) <span class="comment">// 0.300000000004</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="零值"><a href="#零值" class="headerlink" title="零值"></a>零值</h2><p>Go 里面每个类型都有一个默认值,即零值.<br>当声明变量却不初始化时,该值即零值.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> price <span class="type">float64</span></span><br><span class="line">fmt.Println(price)</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line">price := <span class="number">0.0</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h2><h3 id="int"><a href="#int" class="headerlink" title="int"></a>int</h3><p>有符号类型</p>
+<h3 id="uint"><a href="#uint" class="headerlink" title="uint"></a>uint</h3><p>无符号类型</p>
+<h4 id="uint8-表示颜色"><a href="#uint8-表示颜色" class="headerlink" title="uint8 表示颜色"></a>uint8 表示颜色</h4><p>可以用来表示 8 位的颜色(红绿蓝 0-255).<br><code>var red, green, blue uint8 = 0, 141, 213;</code><br>uint8 的取值范围正合适,而 int 则多出来几十亿不合适的数.</p>
+<h3 id="打印数据类型"><a href="#打印数据类型" class="headerlink" title="打印数据类型"></a>打印数据类型</h3><p>在 Printf 中使用<code>%T</code>.</p>
+<h3 id="十六进制"><a href="#十六进制" class="headerlink" title="十六进制"></a>十六进制</h3><p>在数值前加<code>0x</code>即表示十六进制.</p>
+<h3 id="打印十六进制"><a href="#打印十六进制" class="headerlink" title="打印十六进制"></a>打印十六进制</h3><p>使用<code>Printf</code>的<code>%x</code>.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">fmt.Printf(<span class="string">&quot;%x %x %x&quot;</span>, red, green, blue) <span class="comment">// 0 8d d5</span></span><br><span class="line"><span class="comment">//指定宽度</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;color: #%02x%02x%02x;&quot;</span>,red, green, blue) <span class="comment">//color: #008dd5;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="整数环绕"><a href="#整数环绕" class="headerlink" title="整数环绕"></a>整数环绕</h3><p>当超出超出整数的取值范围,就会发生整数环绕.<br>原理: 用二进制表示,比如 11111111,加 1 后变成 100000000,但是内存只有 8 位,所以值变为 0.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> red <span class="type">uint8</span> = <span class="number">255</span></span><br><span class="line">red++</span><br><span class="line">fmt.Println(red) <span class="comment">// 0,因为uint的范围时0-255</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> number <span class="type">int8</span> = <span class="number">128</span></span><br><span class="line">number++</span><br><span class="line">fmt.Println(number) <span class="comment">//-127,因为int的范围时-127~128</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="打印二进制"><a href="#打印二进制" class="headerlink" title="打印二进制"></a>打印二进制</h3><p>格式化动词<code>%b</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> green <span class="type">uint8</span> = <span class="number">3</span></span><br><span class="line">fmt.Printf(<span class="string">&quot;%08b\n&quot;</span>, green) <span class="comment">// 00000011</span></span><br><span class="line">green++</span><br><span class="line">fmt.Printf(<span class="string">&quot;%08b\n&quot;</span>, green) <span class="comment">// 00000100</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="整数类型的最大值最小值"><a href="#整数类型的最大值最小值" class="headerlink" title="整数类型的最大值最小值"></a>整数类型的最大值最小值</h3><p>math 包里,为与架构无关的整数类型,定义了最大值,最小值常量.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">math.MaxInt8</span><br><span class="line">math.MinInt64</span><br></pre></td></tr></table></figure>
+
+<p>而 int 和 uint 可能时 32 位或者 64 位,无最大最小值.</p>
+<h4 id="避免时间环绕"><a href="#避免时间环绕" class="headerlink" title="避免时间环绕"></a>避免时间环绕</h4><p>unix 系统中,时间从 1970 年开始,到 2038 年会超过 20 亿,超过了 int32 的范围.<br>方法: 使用 int64 或者 uint64.</p>
+<h3 id="数值过大"><a href="#数值过大" class="headerlink" title="数值过大"></a>数值过大</h3><p>浮点类型数值大但是精度不高,<br>整数类型精度高但是取值范围小.<br>采用方法可以<br>int64 &lt; uint64 &lt; float64 &lt; 使用 big 包</p>
+<h3 id="big-包"><a href="#big-包" class="headerlink" title="big 包"></a>big 包</h3><p>对于较大的整数(超过 10 的 18 次方): <code>big.Int</code><br>对于任意精度的浮点型: <code>big.Float</code><br>对于分数: <code>big.Rat</code></p>
+<h4 id="big-Int"><a href="#big-Int" class="headerlink" title="big.Int"></a>big.Int</h4><p>使用了<code>big.Int</code>的等式其他部分也需要使用<code>big.Int</code>.<br><code>NewInt()</code>函数可以把<code>int64</code>转化成<code>big.Int</code>类型.</p>
+<blockquote>
+<p>常量和 big.Int 的值不能互换.</p>
+</blockquote>
+<h2 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串字面值和原始字符串字面值"><a href="#字符串字面值和原始字符串字面值" class="headerlink" title="字符串字面值和原始字符串字面值"></a>字符串字面值和原始字符串字面值</h3><p>字符串字面值可以包含转义字符,如<code>\n</code>.<br>如果想显示<code>\n</code>,而不要换行,则可以使用&#96;&#96;&#96;,即原始字符串字面值</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fmt.Println(<span class="string">&quot;pece you\nwith&quot;</span>) <span class="comment">//打印有换行</span></span><br><span class="line">fmt.Println(<span class="string">`pece you \n with`</span>) <span class="comment">// 打印出了\n,没有换行,或者直接在这里使用换行会原始换行</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="code-points-runes-bytes"><a href="#code-points-runes-bytes" class="headerlink" title="code points, runes, bytes"></a>code points, runes, bytes</h3><p>rune 是 int32 的别名,byte 是 int8 的别名.</p>
+<h3 id="自定义类型别名"><a href="#自定义类型别名" class="headerlink" title="自定义类型别名"></a>自定义类型别名</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="type">byte</span> = <span class="type">uint8</span></span><br><span class="line"><span class="keyword">type</span> <span class="type">rune</span> = <span class="type">int32</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用<code>%c</code>打印该字符.</p>
+<h2 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h2><p>字符字面量用<code>&#39;&#39;</code>包裹,如果没有指定字符类型,Go 会推断该类型为<code>rune</code>.<br>字符字面量也可以用<code>byte</code>表示.</p>
+<h3 id="字符解码"><a href="#字符解码" class="headerlink" title="字符解码"></a>字符解码</h3><p>Go 的函数<code>len</code>可以返回字符的长度,但是有的字符是 16 位或 32 位,那么需要把字符解码成<code>rune</code>类型,再操作.<br>使用<code>UTF-8</code>包,他提供可以按<code>rune</code>计算字符串长度的方法.<br><code>RuneCountInString</code>可以返回转换后的长度.<br><code>DecodeRuneInString</code>函数会返回第一个字符,以及字符所占的字节数.<br>所以 Go 里的函数可以返回多个值.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">question := <span class="string">&#x27;(*Φ皿Φ*)&#x27;</span></span><br><span class="line">fmt.Println(utf8.RuneCountInString(question)</span><br><span class="line">c, size := utf8.DecodeRuneInStirng(question)</span><br><span class="line">fmt.Println(<span class="string">&quot;First rune: %c %v bytes&quot;</span>, c, size)</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历方法-range"><a href="#遍历方法-range" class="headerlink" title="遍历方法 range"></a>遍历方法 range</h3><p>range 返回两个值,一个 i 是索引,c 就是遍历的元素.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    question := <span class="string">&#x27;(*Φ皿Φ*)&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i, c := <span class="keyword">range</span> question &#123;</span><br><span class="line">        fmt.Printf(<span class="string">&quot;%v %c\n&quot;</span>, i ,c)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如果不想使用索引,可以使用_替代</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><p>不同类型不能在一起使用,需要进行类型转换.</p>
+<h3 id="数值之间转换"><a href="#数值之间转换" class="headerlink" title="数值之间转换"></a>数值之间转换</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">age := <span class="number">64</span></span><br><span class="line">marsAge := <span class="type">float64</span>(age) <span class="comment">//如果将age转换为浮点型需要进行包裹</span></span><br></pre></td></tr></table></figure>
+
+<p>浮点型转换为整型,小数点后边会被舍弃.<br>无符号和有符号整数之间也需要进行转换<br>不同大小的整数类型之间也需要进行转换.</p>
+<h3 id="转换时的数据环绕"><a href="#转换时的数据环绕" class="headerlink" title="转换时的数据环绕"></a>转换时的数据环绕</h3><p>因为转换时有可能会超过转换类型的最大值,所以可以使用 math 包中的最大值最小值进行判断.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bh <span class="type">float64</span> = <span class="number">32678</span></span><br><span class="line"><span class="keyword">if</span> bh &lt; math.MinInt16 || bh &gt;math.MxInt16 &#123;</span><br><span class="line">    <span class="comment">//handle</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串转换"><a href="#字符串转换" class="headerlink" title="字符串转换"></a>字符串转换</h3><p>将<code>rune</code>,<code>byte</code>转换成<code>string</code>,</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pi <span class="type">rune</span> = <span class="number">960</span></span><br><span class="line"><span class="keyword">var</span> alpha <span class="type">rune</span> = <span class="number">940</span></span><br><span class="line"></span><br><span class="line">fmt.Println(<span class="type">string</span>(pi), <span class="type">string</span>(alpha)) <span class="comment">//转化的结果时code point对应的结果</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>想把数值类型转换成字符串,那么它的值必须可以转换成<code>code point</code>.</p>
+</blockquote>
+<p><code>strconv</code>包的<code>Itoa</code>函数可以转换,或者使用<code>Sprintf</code><br><code>strconv</code>包的<code>Atoi</code>函数可以转换,且有两个参数,第二个返回错误信息,如果不为空,则有错误.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">countdown, err := strconv.Atoi(<span class="string">&quot;10&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">//handle</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><ul>
+<li>函数按值传递</li>
+<li>同一个包中的函数调用彼此不需要加上包名.</li>
+</ul>
+<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//rand包的Intl:</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Intn</span><span class="params">(n <span class="type">int</span>)</span></span> <span class="type">int</span></span><br><span class="line"><span class="comment">//关键字 函数名(参数 参数类型) 返回值类型</span></span><br><span class="line"><span class="comment">//使用方法</span></span><br><span class="line">num := rand.Intn(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="多个返回值"><a href="#多个返回值" class="headerlink" title="多个返回值"></a>多个返回值</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Atio</span> <span class="params">(s <span class="type">string</span>)</span></span> (i <span class="type">int</span>, err <span class="type">error</span>)</span><br><span class="line"><span class="comment">//关键字 函数名 参数名 参数类型 返回值名 返回值类型</span></span><br><span class="line"><span class="comment">//简化写法可以把返回值名省略,只保留返回值类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Atio</span> <span class="params">(s <span class="type">string</span>)</span></span> (<span class="type">int</span> <span class="type">error</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="可变参数函数"><a href="#可变参数函数" class="headerlink" title="可变参数函数"></a>可变参数函数</h4><p><code>Println</code>可以接收多个参数.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Println</span> <span class="params">(a ...<span class="keyword">interface</span>&#123;&#125;)</span></span> (n <span class="type">int</span>, err <span class="type">error</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>...</code>表示函数的参数是可变的</li>
+<li>参数 a 的类型为<code>interface&#123;&#125;</code>,是一个空接口.</li>
+<li><code>...</code>和空接口组合就可以接收任意数量,类型的参数</li>
+</ul>
+<h3 id="一等函数-头等函数-高阶函数"><a href="#一等函数-头等函数-高阶函数" class="headerlink" title="一等函数(头等函数,高阶函数)"></a>一等函数(头等函数,高阶函数)</h3><ul>
+<li>可以将函数赋值给变量</li>
+<li>将函数作为参数传递给函数</li>
+<li>将函数作为函数的返回类型</li>
+</ul>
+<h3 id="闭包和匿名函数"><a href="#闭包和匿名函数" class="headerlink" title="闭包和匿名函数"></a>闭包和匿名函数</h3><ul>
+<li>匿名函数在 go 中被称为函数字面值,函数字面值需要保留外部作用域的变量引用,所以函数字面值都是闭包的.</li>
+<li>闭包就是由于匿名函数封闭并包围作用域中 的变量而得名的.</li>
+<li></li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>方法也属于函数,只不过函数是独立存在的,方法属于某一个类型,或者与类型有关联.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k kelvin)</span></span>  celsius() celsius</span><br><span class="line"><span class="comment">//关键字 (变量名 类型名)=接收者 方法名 返回值</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;fmt&quot;</span></span><br><span class="line">    <span class="string">&quot;math/rand&quot;</span></span><br><span class="line">    <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">type</span> kelvin <span class="type">float64</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">messs</span><span class="params">(samples <span class="type">int</span>, sensor <span class="keyword">func</span>()</span></span> kelvin) &#123;</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>; i &lt; samples; i++ &#123;</span><br><span class="line">        k := sensor()</span><br><span class="line">        fmt.Printf(<span class="string">&quot;%v K\n&quot;</span>, k)</span><br><span class="line">        time.Sleep(time.Second)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fakeSensor</span><span class="params">()</span></span> kelvin &#123;</span><br><span class="line">    <span class="keyword">return</span> kelvin(rand.Intn(<span class="number">151</span>) + <span class="number">150</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    messs(<span class="number">3</span>, fakeSensor)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法添加行为"><a href="#方法添加行为" class="headerlink" title="方法添加行为"></a>方法添加行为</h3><p>可以将方法中同包中声明的任何类型相关联,但不可以是<code>int</code>,<code>float64</code>等预声明的类型进行关联,但是可以通过声明一个新类型的方式曲线救国</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k kelvin)</span></span> celsius() celsius</span><br><span class="line"><span class="comment">//关键字 接收者 接收者类型 方法名 返回值类型</span></span><br><span class="line"><span class="comment">//表明celsius是类型kevin的一个方法</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>上例中<code>celsius</code>方法虽然没有参数,但他前面却有一个类型参数的接收者</li>
+<li>每个方法可以有多个参数,但只能有一个接收者.</li>
+<li>在方法中,接收者的行为和其他函数一样</li>
+</ul>
+<h3 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h3><p><code>变量.方法()</code></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> kevin <span class="type">float64</span></span><br><span class="line"><span class="keyword">type</span> celsius <span class="type">float64</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(k kevin)</span></span> celsius() celsius &#123;</span><br><span class="line">    <span class="keyword">return</span> celsius(k <span class="number">-273.15</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> k kevin = <span class="number">294.0</span></span><br><span class="line">    <span class="keyword">var</span> c = k.celsius()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>长度<code>len</code>,声明数组时未被声明的元素的值为零值.</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明长度为8,元素类型为string的数组</span></span><br><span class="line"><span class="keyword">var</span> arr [<span class="number">8</span>]<span class="type">string</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="数组越界"><a href="#数组越界" class="headerlink" title="数组越界"></a>数组越界</h4><p>Go 在检测到对越界元素的访问时会报错<br>在编译时未发现错误,那么运行时会出现<code>panic</code></p>
+<h3 id="复合字面值初始化数组"><a href="#复合字面值初始化数组" class="headerlink" title="复合字面值初始化数组"></a>复合字面值初始化数组</h3><p>可以使用<code>...</code>作为数组的长度,go 会推断数组长度</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> plants := [...]<span class="type">string</span>&#123;</span><br><span class="line">    <span class="string">&quot;Earth&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Mars&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Venus&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><h4 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plants := [...]<span class="type">string</span>&#123;</span><br><span class="line">    <span class="string">&quot;Earth&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Mars&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Venus&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>;i &lt; <span class="built_in">len</span>(dwarfs); i++ &#123;</span><br><span class="line">    dwarf := dwarfs[i]</span><br><span class="line">    fmt.Println(i, dwarf)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="range-循环"><a href="#range-循环" class="headerlink" title="range 循环"></a>range 循环</h3><p>类似 map</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i, dwarf := <span class="keyword">range</span> dwarfs &#123;</span><br><span class="line">    fmt.Println(i, dwarf)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数组的复制"><a href="#数组的复制" class="headerlink" title="数组的复制"></a>数组的复制</h3><p>无论是复制给新变量还是传递给函数,都会产生一个新数组的副本.<br>数组也是一种值,通过值传递来接收参数,所以作为函数的参数很低效.<br>数组的长度也是数组类型的一部分.<br>函数一般使用<code>slice</code>作为参数.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/02/Redux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +432,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -378,7 +602,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -507,7 +731,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -583,7 +807,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -673,7 +897,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -864,7 +1088,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -943,7 +1167,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -1033,7 +1257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -1120,7 +1344,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:52" itemprop="dateModified" datetime="2022-11-26T19:08:52+08:00">2022-11-26</time>
     </span>
 
   
@@ -1139,110 +1363,6 @@
 <h1 id="H5-端-webview"><a href="#H5-端-webview" class="headerlink" title="H5 端 webview"></a>H5 端 webview</h1><h3 id="修改浏览器的固定-url"><a href="#修改浏览器的固定-url" class="headerlink" title="修改浏览器的固定 url"></a>修改浏览器的固定 url</h3><p>将 webview 用 HBuilderX 打开,修改<code>pages/index/webview.vue</code>中的 url 地址.</p>
 <h2 id="打包成-wgt-包"><a href="#打包成-wgt-包" class="headerlink" title="打包成 wgt 包"></a>打包成 wgt 包</h2><p>将<code>webview.zip</code>解压.用 HBuilderX 修改后发行为原生 app,制作应用 wgt 包.生产包后修改后缀为 zip 解压.<br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1634366875716-11f4a6ce-0a6d-40e5-8047-a6832f53b99a.png#clientId=u8592e4fc-d636-4&from=ui&id=u2ea16012&margin=%5Bobject%20Object%5D&name=1.png&originHeight=1002&originWidth=1192&originalType=binary%E2%88%B6=1&size=321944&status=done&style=none&taskId=u6fe97e4f-af03-448d-9601-b329b052a52" alt="1.png"><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632736814316-37430acc-faa8-4583-83d7-754e6c8e7ff6.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u0c2d8502&margin=%5Bobject%20Object%5D&name=WechatIMG2086.png&originHeight=516&originWidth=446&originalType=binary%E2%88%B6=1&size=63110&status=done&style=none&taskId=u4da2e966-bed8-47d5-8282-e2c9d2859f6" alt="WechatIMG2086.png"><br>将解压后文件复制到<code>simpleDemo/src/main/assets/apps/__UNI__0DD8DA0/www</code><br>重新打包.</p>
 <h2 id="logo-及启动图制作"><a href="#logo-及启动图制作" class="headerlink" title="logo 及启动图制作"></a>logo 及启动图制作</h2><p><a target="_blank" rel="noopener" href="https://console.eeui.app/tools/icons">logo 生成</a><br><a target="_blank" rel="noopener" href="https://console.eeui.app/tools/launchimage">启动图生成</a><br><img src="https://cdn.nlark.com/yuque/0/2021/png/473454/1632737000983-0205cf9a-915c-4156-85b3-794b5ad884c4.png#clientId=ud8eed2ce-b12c-4&from=ui&id=u251b0c54&margin=%5Bobject%20Object%5D&name=WechatIMG2093.png&originHeight=648&originWidth=788&originalType=binary%E2%88%B6=1&size=70873&status=done&style=none&taskId=u315c94c1-36c8-420a-8514-13e1e931a4e" alt="WechatIMG2093.png"><br>生成后复制到<code>/simpleDemo/src/main/res/drawable</code>.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/24/HTML%E8%A1%A5%E6%A1%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/24/HTML%E8%A1%A5%E6%A1%A3/" class="post-title-link" itemprop="url">HTML补档</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-09-24 20:15:29" itemprop="dateCreated datePublished" datetime="2021-09-24T20:15:29+08:00">2021-09-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:34" itemprop="dateModified" datetime="2022-11-25T09:51:34+08:00">2022-11-25</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="图片的相对路径"><a href="#图片的相对路径" class="headerlink" title="图片的相对路径"></a>图片的相对路径</h2><p>图片的前缀不再使用固定的 url,可以加<code>/</code>给图片地址.就会自动在前面拼接上 url 的 origin 地址前缀.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如</span></span><br><span class="line"><span class="keyword">const</span> baseURL = <span class="string">&quot;/&quot;</span>;</span><br><span class="line"><span class="keyword">return</span> baseURL + item.<span class="property">downloadPath</span>;</span><br><span class="line"><span class="comment">//例如</span></span><br><span class="line"><span class="string">&quot;/Rest/pc/file/download?&quot;</span> + item.<span class="property">url</span>;</span><br></pre></td></tr></table></figure>
-
-<p>如果存在网关,则需要加上网关.</p>
-<h2 id="export-和-export-default-区别"><a href="#export-和-export-default-区别" class="headerlink" title="export 和 export default 区别"></a>export 和 export default 区别</h2><ul>
-<li>在一个文件或模块中，export、import 可以有多个，export default 仅有一个</li>
-<li>通过 export 方式导出，在导入时要加{ }，export default 则不需要</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"><span class="keyword">let</span> sex = <span class="string">&quot;boy&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sex（sex不能加大括号）</span><br><span class="line"><span class="comment">//原本直接export sex外部是无法识别的，加上default就可以了.</span></span><br><span class="line"><span class="comment">//但是一个文件内最多只能有一个export default。</span></span><br><span class="line"><span class="comment">//其实此处相当于为sex变量值&quot;boy&quot;起了一个系统默认的变量名default，</span></span><br><span class="line"><span class="comment">//自然default只能有一个值，所以一个文件内不能有多个export default。</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b.js</span></span><br><span class="line">本质上，a.<span class="property">js</span>文件的<span class="keyword">export</span> <span class="keyword">default</span>输出一个叫做<span class="keyword">default</span>的变量，</span><br><span class="line"><span class="comment">//然后系统允许你为它取任意名字。所以可以为import的模块起任何变量名，且不需要用大括号包含</span></span><br><span class="line"><span class="keyword">import</span> any <span class="keyword">from</span> <span class="string">&quot;./a.js&quot;</span></span><br><span class="line"><span class="keyword">import</span> any12 <span class="keyword">from</span> <span class="string">&quot;./a.js&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(any,any12)   <span class="comment">// boy,boy</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="defer-和-async-区别"><a href="#defer-和-async-区别" class="headerlink" title="defer 和 async 区别"></a>defer 和 async 区别</h1><p>区别主要在于一个执行时间,script 的执行时机.<br>两个网络请求都是异步的,不会阻塞浏览器解析 HTML.加载是都会加载,执行就有区别了.</p>
-<p><code>defer</code>会在 dom 解析完之后执行,并且多个<code>defer</code>会按照顺序执行,<br><code>async</code>则是在 js 加载好之后就会执行脚本,并且多个<code>async</code>,哪个加载好就执行哪个</p>
-<p>解析：<br>在没有 defer 或者 async 的情况下：会立即执行脚本,所以通常建议把 script 放在 body 最后<br><code>&lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;</code><br>async：有 async 的话,加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。<br>但是多个 js 文件的加载顺序不会按照书写顺序进行<br><code>&lt;script async src=&quot;script.js&quot;&gt;&lt;/script&gt;</code><br>defer：有 defer 的话,加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但是 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成,并且多个 defer 会按照顺序进行加载。<br><code>&lt;script defer src=&quot;script.js&quot;&gt;&lt;/script&gt;</code></p>
-<h1 id="link-和-import-区别"><a href="#link-和-import-区别" class="headerlink" title="link 和 @import 区别"></a>link 和 @import 区别</h1><p>作用: 样式的导入方式</p>
-<ol>
-<li>引入内容不同.<code>link</code>除了引入样式还可以引入图片等文件,<code>@import</code>只能引入 css.</li>
-<li>加载顺序不同.<code>link</code>在页面加载时同时加载,<code>@import</code>需要等页面加载完.</li>
-<li>兼容性不同.<code>link</code>是<code>XHTML</code>标签,无兼容性问题.<code>@import</code>低版本浏览器有可能不支持.</li>
-<li>对 JS 支持不同.<code>link</code>支持用 js 控制 DOM 去改变样式.<code>@import</code>不支持.</li>
-</ol>
-<h1 id="为什么-link-用-href-获取资源-而-script-和-img-用-src"><a href="#为什么-link-用-href-获取资源-而-script-和-img-用-src" class="headerlink" title="为什么 link 用 href 获取资源,而 script 和 img 用 src?"></a>为什么 link 用 href 获取资源,而 script 和 img 用 src?</h1><p>link 用于在当前文档和引用资源建立联系,<br>src 用于替换当前元素.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link href=<span class="string">&quot;common.css&quot;</span> rel=<span class="string">&quot;stylesheet&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在文档中添加 link 标签，浏览器会识别该文档为 css 文件，就会并行下载资源并且不会停止对当前文档的处理。这也是为什么建议使用 link 方式来加载 css，而不是使用@import 方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;a.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执行完毕，图片和框架 等元素也如此，类似于将所指向资源嵌入当前标签内。这也是为什么将 js 脚本放在底部而不是头部</p>
 
       
     </div>

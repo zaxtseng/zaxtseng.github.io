@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="配置 nginx配置 webpack1234567891011121314151617181920212223242526272829303132333435363738394041const path &#x3D; require(&quot;path&quot;);module.exports &#x3D; &amp;#123;  mode: &quot;none&quot;,  entry: &quot;.&#x2F;src&#x2F;i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="归纳面试题">
+<meta property="og:url" content="http://example.com/2022/11/26/%E5%BD%92%E7%BA%B3%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="配置 nginx配置 webpack1234567891011121314151617181920212223242526272829303132333435363738394041const path &#x3D; require(&quot;path&quot;);module.exports &#x3D; &amp;#123;  mode: &quot;none&quot;,  entry: &quot;.&#x2F;src&#x2F;i">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-26T11:06:37.000Z">
+<meta property="article:modified_time" content="2022-11-26T11:08:42.449Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/11/26/%E5%BD%92%E7%BA%B3%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/11/26/%E5%BD%92%E7%BA%B3%E9%9D%A2%E8%AF%95%E9%A2%98/","path":"2022/11/26/归纳面试题/","title":"归纳面试题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>归纳面试题 | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-nginx"><span class="nav-number">1.</span> <span class="nav-text">配置 nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-webpack"><span class="nav-number">2.</span> <span class="nav-text">配置 webpack</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-rollup"><span class="nav-number">3.</span> <span class="nav-text">配置 rollup</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">React 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-memo-useMemo-useCallback-%E9%83%BD%E6%98%AF%E4%BB%80%E4%B9%88-%E5%8C%BA%E5%88%AB-%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">React.memo useMemo useCallback 都是什么,区别?应用场景?方法?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hook-%E4%B8%BA%E5%95%A5%E4%B8%8D%E8%83%BD%E5%8F%98-%E4%B8%8D%E8%83%BD%E5%9C%A8%E5%89%8D%E9%9D%A2%E5%8A%A0%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5"><span class="nav-number">4.2.</span> <span class="nav-text">Hook 为啥不能变.不能在前面加判断语句?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fiber-%E7%AE%97%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">Fiber 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#useLayoutEffect-%E5%92%8C-useEffect-%E5%8C%BA%E5%88%AB-%E5%9C%A8%E5%93%AA%E4%B8%AA%E9%98%B6%E6%AE%B5%E6%89%A7%E8%A1%8C-beginWork-commit-Work"><span class="nav-number">4.4.</span> <span class="nav-text">useLayoutEffect,和 useEffect 区别?在哪个阶段执行? beginWork,commit Work</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux-%E6%98%AF%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E5%90%97"><span class="nav-number">4.5.</span> <span class="nav-text">Redux 是双向数据绑定吗?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redux-%E5%92%8C-react-redux-%E5%8C%BA%E5%88%AB"><span class="nav-number">4.6.</span> <span class="nav-text">redux 和 react-redux 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-vs-Vue-%E5%8C%BA%E5%88%AB"><span class="nav-number">4.7.</span> <span class="nav-text">react vs Vue 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diff-%E7%AE%97%E6%B3%95%E5%8C%BA%E5%88%AB"><span class="nav-number">4.8.</span> <span class="nav-text">diff 算法区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#react-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%B2%A1%E6%9C%89%E9%87%87%E7%94%A8%E5%8F%8C%E6%8C%87%E9%92%88"><span class="nav-number">4.8.1.</span> <span class="nav-text">react 为什么没有采用双指针?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#react-%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6"><span class="nav-number">4.9.</span> <span class="nav-text">react 异步组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setState-%E6%98%AF%E5%BC%82%E6%AD%A5%E8%BF%98%E6%98%AF%E5%90%8C%E6%AD%A5"><span class="nav-number">4.10.</span> <span class="nav-text">setState 是异步还是同步</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack"><span class="nav-number">5.</span> <span class="nav-text">webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-plugin-%E5%8E%9F%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">webpack plugin 原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-%E4%B8%AD-publicPath-%E4%BD%9C%E7%94%A8"><span class="nav-number">5.2.</span> <span class="nav-text">webpack 中 publicPath 作用?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tree-shaking"><span class="nav-number">5.3.</span> <span class="nav-text">tree shaking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webpack-x3D-gt-sideEffects"><span class="nav-number">5.4.</span> <span class="nav-text">Webpack  &#x3D;&gt; sideEffects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%AF%BC%E5%87%BA%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%BC%9A%E8%A2%AB-tree-shaking-%E5%90%97"><span class="nav-number">5.5.</span> <span class="nav-text">直接导出构造函数会被 tree-shaking 吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-%E6%89%93%E5%8C%85%E4%BD%93%E7%A7%AF%E5%A6%82%E4%BD%95%E5%87%8F%E5%B0%8F"><span class="nav-number">5.6.</span> <span class="nav-text">webpack 打包体积如何减小?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#polyfill-%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD-babel-%E5%85%B8%E5%9E%8B%E9%85%8D%E7%BD%AE"><span class="nav-number">5.7.</span> <span class="nav-text">polyfill 按需加载 babel 典型配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#postcss-%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8"><span class="nav-number">5.8.</span> <span class="nav-text">postcss 什么作用?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sass-loader-%E7%94%A8%E4%BA%86%E4%BB%80%E4%B9%88%E6%96%B9%E6%B3%95"><span class="nav-number">5.9.</span> <span class="nav-text">sass-loader 用了什么方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Esm-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">5.10.</span> <span class="nav-text">Esm 是什么?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Umi-%E4%BA%86%E8%A7%A3%E5%90%97"><span class="nav-number">5.11.</span> <span class="nav-text">Umi 了解吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Element-ant-%E4%B9%8B%E7%B1%BB%E7%9A%84%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80"><span class="nav-number">5.12.</span> <span class="nav-text">Element-ant 之类的是怎么实现响应式布局?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue"><span class="nav-number">6.</span> <span class="nav-text">Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-%E5%AF%B9%E6%95%B0%E7%BB%84%E6%98%AF%E6%80%8E%E4%B9%88%E5%A4%84%E7%90%86%E7%9A%84"><span class="nav-number">6.1.</span> <span class="nav-text">Vue 对数组是怎么处理的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#set-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E6%A3%80%E6%B5%8B%E6%95%B0%E7%BB%84%E5%8F%98%E5%8C%96"><span class="nav-number">6.1.1.</span> <span class="nav-text">$set 为什么可以检测数组变化?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nextTick-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E5%8E%9F%E7%90%86"><span class="nav-number">6.2.</span> <span class="nav-text">$nextTick 的作用和原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mutationObserver-%E4%BA%86%E8%A7%A3%E5%90%97"><span class="nav-number">6.3.</span> <span class="nav-text">mutationObserver 了解吗</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http"><span class="nav-number">7.</span> <span class="nav-text">Http</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#axios-%E5%92%8C-fetch-%E5%8C%BA%E5%88%AB"><span class="nav-number">7.1.</span> <span class="nav-text">axios 和 fetch 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#interceptor-%E5%8E%9F%E7%90%86"><span class="nav-number">7.2.</span> <span class="nav-text">interceptor 原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cors-%E7%9A%84%E8%AF%B7%E6%B1%82%E5%A4%B4"><span class="nav-number">7.3.</span> <span class="nav-text">Cors 的请求头</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6"><span class="nav-number">8.</span> <span class="nav-text">ES6</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-set-weakMap-weakSet-%E5%8C%BA%E5%88%AB"><span class="nav-number">8.1.</span> <span class="nav-text">Map,set, weakMap,weakSet 区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Proxy-%E5%92%8C-reflect"><span class="nav-number">8.2.</span> <span class="nav-text">Proxy 和 reflect?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Node"><span class="nav-number">9.</span> <span class="nav-text">Node</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#node-%E5%86%99%E8%BF%87-cli-%E5%90%97"><span class="nav-number">9.1.</span> <span class="nav-text">node 写过 cli 吗</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8E%86%E9%A1%B9%E7%9B%AE"><span class="nav-number">10.</span> <span class="nav-text">简历项目</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">112</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/26/%E5%BD%92%E7%BA%B3%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="归纳面试题 | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          归纳面试题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-11-26 19:06:37 / Modified: 19:08:42" itemprop="dateCreated datePublished" datetime="2022-11-26T19:06:37+08:00">2022-11-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h1><h1 id="配置-webpack"><a href="#配置-webpack" class="headerlink" title="配置 webpack"></a>配置 webpack</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">    <span class="attr">publicPath</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">hotOnly</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">proxy</span>: &#123;</span><br><span class="line">      <span class="string">&quot;/api&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">target</span>: <span class="string">&quot;api.example.com&quot;</span>,</span><br><span class="line">        <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">          <span class="string">&quot;^api&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.js$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="attr">options</span>: &#123;</span><br><span class="line">            <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>],</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>(),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="配置-rollup"><a href="#配置-rollup" class="headerlink" title="配置 rollup"></a>配置 rollup</h1><h1 id="React-问题"><a href="#React-问题" class="headerlink" title="React 问题"></a>React 问题</h1><h2 id="React-memo-useMemo-useCallback-都是什么-区别-应用场景-方法"><a href="#React-memo-useMemo-useCallback-都是什么-区别-应用场景-方法" class="headerlink" title="React.memo useMemo useCallback 都是什么,区别?应用场景?方法?"></a>React.memo useMemo useCallback 都是什么,区别?应用场景?方法?</h2><ul>
+<li>React.memo 是高阶组件,类似于 class 组件中的<code>shouldComponentUpdate</code>,对 props 是否变化做浅层比较.<br>变化才会重新渲染.如果想深层比较,可以使用它的第二个参数.和<code>shouldComponentUpdate</code>不同的地方是第二个参数的返回值,props 如果相等是返回 true,而<code>shouldComponentUpdate</code>返回的是 false.</li>
+<li>React.memo 是对整个组件进行包裹,useMemo 和 useCallback 是对更细粒度的值或函数进行优化.</li>
+<li>useMemo 和 useCallback 差异在于返回值,一个是返回的 memorize 值,一个是返回 memorize 函数.</li>
+<li>Vue 会自动去做这件事,React 需要手动去做.</li>
+</ul>
+<h2 id="Hook-为啥不能变-不能在前面加判断语句"><a href="#Hook-为啥不能变-不能在前面加判断语句" class="headerlink" title="Hook 为啥不能变.不能在前面加判断语句?"></a>Hook 为啥不能变.不能在前面加判断语句?</h2><p>要保证 hooks 是在最顶层调用.是为了保证多个 hooks 调用的顺序是一致.<br>Hooks 最终是构建了一个单项链表,每次执行都是按照同样的顺序被调用,如果放在循环,条件语句或者嵌套函数中肯定会破坏它的顺序型导致问题.</p>
+<h2 id="Fiber-算法"><a href="#Fiber-算法" class="headerlink" title="Fiber 算法"></a>Fiber 算法</h2><p>Fiber 是一个执行单元,一种数据结构.因为 React16 之前是将虚拟 DOM 树看出一个任务执行,递归处理,任务庞大且不能中断.<br>React16 之后,将整个任务分成一个个小的任务在空余时间里处理,主要是通过 requestIdleCallback 这个浏览器的 API 去获取浏览器的空余时间,如果有,就执行,没有就让出主线程.</p>
+<h2 id="useLayoutEffect-和-useEffect-区别-在哪个阶段执行-beginWork-commit-Work"><a href="#useLayoutEffect-和-useEffect-区别-在哪个阶段执行-beginWork-commit-Work" class="headerlink" title="useLayoutEffect,和 useEffect 区别?在哪个阶段执行? beginWork,commit Work"></a>useLayoutEffect,和 useEffect 区别?在哪个阶段执行? beginWork,commit Work</h2><p>二者的函数签名是相同的,不同点在于触发的时机不同.<br><code>useLayoutEffect</code>是同步处理副作用.<code>useEffect</code> 是异步处理.<br><code>useLayoutEffect</code>在 DOM 更新后,浏览器渲染之前,<code>useLayoutEffect</code>内部的更新将会同步刷新.<br><code>useEffect</code>是在浏览器渲染后.<br><code>useLayoutEffect</code>是在<code>commitWork</code>阶段.</p>
+<h2 id="Redux-是双向数据绑定吗"><a href="#Redux-是双向数据绑定吗" class="headerlink" title="Redux 是双向数据绑定吗?"></a>Redux 是双向数据绑定吗?</h2><p>不是,是单向数据流.</p>
+<h2 id="redux-和-react-redux-区别"><a href="#redux-和-react-redux-区别" class="headerlink" title="redux 和 react-redux 区别"></a>redux 和 react-redux 区别</h2><ol>
+<li>redux 和组件进行对接的时候是直接在组件中进行创建。react-redux 是运用 Provider 将组件和 store 对接，使在 Provider 里的所有组件都能共享 store 里的数据，还要使用 connect 将组件和 react 连接.</li>
+<li>redux 获取 state 是直接通过 store.getState()。<br>react-redux 获取 state 是通过 mapStateToProps 函数，只要 state 数据变化就能获取最新数据</li>
+<li>redux 是使用 dispatch 直接触发，来操作 store 的数据。<br>react-redux 是使用 mapDispatchToProps 函数然后在调用 dispatch 进行触发</li>
+</ol>
+<h2 id="react-vs-Vue-区别"><a href="#react-vs-Vue-区别" class="headerlink" title="react vs Vue 区别"></a>react vs Vue 区别</h2><ol>
+<li>从写法上,react 推荐的是 jsx+内联样式,即<code>all in js</code>.Vue 是 template 的单文件格式,即 html,js,css 写在同一个文件中.</li>
+<li>虚拟 DOM 的区别,主要是 diff 算法的区别</li>
+<li>数据驱动视图.</li>
+</ol>
+<ul>
+<li>Vue 是类似 MVVM 框架,数据响应式 &#x3D;&gt; 转化 data 属性为 getter&#x2F;setter &#x3D;&gt;watcher 实例对象进行依赖收集与监听 &#x3D;&gt;数据 setter 被调用时,watcher 对比前后两个值是否发生变化 &#x3D;&gt; 通知视图是否进行渲染.</li>
+<li>React 通过<code>setState</code>实现数据驱动视图. setState 将接收的第一个参数 state 存储在<code>pending</code>队列中,判断当前 React 是否处在批量更新状态,是的话就将需要更新的 state 组件添加到<code>dirtyComponent</code>中,不是的话,就遍历<code>dirtyComponent</code>中的所有组件,调用<code>updateComponent</code>方法更新每个<code>dirty</code>组件.</li>
+</ul>
+<h2 id="diff-算法区别"><a href="#diff-算法区别" class="headerlink" title="diff 算法区别"></a>diff 算法区别</h2><ol>
+<li>dom 更新策略不同<br>react 会自顶而下全 diff,vue 会跟踪每个组件的依赖关系,不需要重新渲染整个组件树.<br>react 当状态发生改变会重新 render 页面,生成新的虚拟 dom 树,新旧 dom 树进行比较,进行打补丁的方式,局部更新 dom.<br>所以需要手动的对不需要重新渲染的组件或者值进行 memo 优化.<br>vue 是通过数据响应式的方式,通过<code>Object.defineProperty</code>把 data 的属性转化为<code>getter/setter</code>.同时进行依赖收集与监听,setter 被调用时进行组件更新.</li>
+<li>diff 算法源码实现不同<br>vue 采用双端对比的算法,同时从新旧 children 的两端进行比较,借助 key 值找到可复用的节点,再进行相关操作.</li>
+</ol>
+<h3 id="react-为什么没有采用双指针"><a href="#react-为什么没有采用双指针" class="headerlink" title="react 为什么没有采用双指针?"></a>react 为什么没有采用双指针?</h3><p>因为目前 Fiber 上没有设置反向链表,单向链表无法使用双指针,所以无法对算法进行双指针优化.</p>
+<h2 id="react-异步组件"><a href="#react-异步组件" class="headerlink" title="react 异步组件"></a>react 异步组件</h2><p>原理: 用 componentDidCatch 捕获异步请求，如果有异步请求渲染 fallback，等到异步请求执行完毕，渲染真实组件，借此整个异步流程完毕.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">LazyComponent</span> = <span class="title class_">React</span>.<span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./test.js&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Index</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span>&lt;<span class="attr">div</span>&gt;</span>loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;&gt;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">LazyComponent</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="setState-是异步还是同步"><a href="#setState-是异步还是同步" class="headerlink" title="setState 是异步还是同步"></a>setState 是异步还是同步</h2><p>本质上是批量执行或非批量执行的问题.而且只在 React18 以前存在.<br>在 react17 中，setState 是批量执行的，因为执行前会设置 executionContext。但如果在 setTimeout、事件监听器等函数里，就不会设置 executionContext 了，这时候 setState 会同步执行。可以在外面包一层 batchUpdates 函数，手动设置下 executionContext 来切换成异步批量执行<br>在 react18 里面，如果用 createRoot 的 api，就不会有这种问题了，因为所有的 setState 都是异步批量执行了。</p>
+<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><h2 id="webpack-plugin-原理"><a href="#webpack-plugin-原理" class="headerlink" title="webpack plugin 原理"></a>webpack plugin 原理</h2><p>利用钩子机制,在生命周期的钩子上挂载函数实现扩展.</p>
+<h2 id="webpack-中-publicPath-作用"><a href="#webpack-中-publicPath-作用" class="headerlink" title="webpack 中 publicPath 作用?"></a>webpack 中 publicPath 作用?</h2><p>静态资源的基础路径,一般在生成模式下使用.</p>
+<h2 id="tree-shaking"><a href="#tree-shaking" class="headerlink" title="tree shaking"></a>tree shaking</h2><p>作用是移除未引入的代码.<br>webpack 的 tree-shaking 在 production 下是默认开启的.<br>tree-shaking 需要依赖 ESModule 模块才能起作用.<br>在开发环境下可以通过设置<code>optimization: &#123; useExports: true; minimize: true&#125;</code>开启.<br>这个和<code>babel-loader</code>中<code>preset-env</code>互斥,但是新版本的已经改为自动判断是否开启.所以不用担心.</p>
+<h2 id="Webpack-x3D-gt-sideEffects"><a href="#Webpack-x3D-gt-sideEffects" class="headerlink" title="Webpack  &#x3D;&gt; sideEffects"></a>Webpack  &#x3D;&gt; sideEffects</h2><p>可以在<code>optimization</code>中开启标识副作用,在<code>package.json</code>中标识是否有副作用.<br>也可以在<code>package.json</code>中标记哪些有副作用,不过在生产环境是默认开启的.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//package.json</span></span><br><span class="line"><span class="attr">sideEffects</span>: [<span class="string">&quot;./src/extends.js&quot;</span>, <span class="string">&quot;*.css&quot;</span>];</span><br></pre></td></tr></table></figure>
+
+<h2 id="直接导出构造函数会被-tree-shaking-吗"><a href="#直接导出构造函数会被-tree-shaking-吗" class="headerlink" title="直接导出构造函数会被 tree-shaking 吗"></a>直接导出构造函数会被 tree-shaking 吗</h2><p>看导出的构造函数有没有被使用了.</p>
+<h2 id="webpack-打包体积如何减小"><a href="#webpack-打包体积如何减小" class="headerlink" title="webpack 打包体积如何减小?"></a>webpack 打包体积如何减小?</h2><p>分包,<code>import</code>动态导入,提取公共模块.</p>
+<h2 id="polyfill-按需加载-babel-典型配置"><a href="#polyfill-按需加载-babel-典型配置" class="headerlink" title="polyfill 按需加载 babel 典型配置"></a>polyfill 按需加载 babel 典型配置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">presets</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">&quot;@babel/preset-env&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">target</span>: &#123;&#125;, <span class="comment">// 适配哪些浏览器,可以写在.browserlistrc</span></span><br><span class="line">        <span class="attr">corejs</span>: <span class="number">3</span>, <span class="comment">// corejs版本</span></span><br><span class="line">        <span class="attr">useBuiltIns</span>: <span class="string">&quot;usage&quot;</span>, <span class="comment">// 按需加载usage,完全加载entry,</span></span><br><span class="line">        <span class="attr">modules</span>: <span class="literal">false</span>, <span class="comment">// 是否将es6转为其他</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="postcss-什么作用"><a href="#postcss-什么作用" class="headerlink" title="postcss 什么作用?"></a>postcss 什么作用?</h2><p>处理 css 兼容性的工具,一般有多种工具,比如<code>autoprefixer</code>处理不同浏览器的前缀.</p>
+<h2 id="sass-loader-用了什么方法"><a href="#sass-loader-用了什么方法" class="headerlink" title="sass-loader 用了什么方法"></a>sass-loader 用了什么方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> nodeSass = <span class="built_in">require</span>(<span class="string">&quot;node-sass&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = nodeSass.<span class="title function_">renderSync</span>(&#123;</span><br><span class="line">  <span class="attr">file</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;../src/scss/index.scss&quot;</span>),</span><br><span class="line">  <span class="attr">outputStyle</span>: <span class="string">&quot;expanded&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> result.<span class="property">css</span>.<span class="title function_">toString</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到,sass-loader 使用了 node-sass 解析 sass 文件导出为 css 文件.输出为字符串交给下一个 loader.</p>
+<h2 id="Esm-是什么"><a href="#Esm-是什么" class="headerlink" title="Esm 是什么?"></a>Esm 是什么?</h2><p>es module 是一种模块化开发的规范.设计思想是尽量的静态化,使得编译时就能确定模块的依赖关系和导入导出的变量.<br>主要功能由两个命令构成: <code>export</code>, <code>import</code>.</p>
+<h2 id="Umi-了解吗"><a href="#Umi-了解吗" class="headerlink" title="Umi 了解吗"></a>Umi 了解吗</h2><h2 id="Element-ant-之类的是怎么实现响应式布局"><a href="#Element-ant-之类的是怎么实现响应式布局" class="headerlink" title="Element-ant 之类的是怎么实现响应式布局?"></a>Element-ant 之类的是怎么实现响应式布局?</h2><p>参照了 Bootstrap 的 响应式设计，预设了五个响应尺寸：xs、sm、md、lg 和 xl。<br>也就是通过类名.<br>在 less 或者 scss 文件中设置变量.媒体查询通过断点设置 css.</p>
+<h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h2 id="Vue-对数组是怎么处理的"><a href="#Vue-对数组是怎么处理的" class="headerlink" title="Vue 对数组是怎么处理的"></a>Vue 对数组是怎么处理的</h2><ol>
+<li>先获取原生 Array 的原型方法，因为拦截后还是需要原生的方法帮我们实现数组的变化。</li>
+<li>对 Array 的原型方法使用 Object.defineProperty 做一些拦截操作。</li>
+<li>把需要被拦截的 Array 类型的数据原型指向改造后原型。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; def &#125; <span class="keyword">from</span> <span class="string">&quot;../util/index&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrayProto = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>; <span class="comment">// 这是个空数组继承了Array的所有方法</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> arrayMethods = <span class="title class_">Object</span>.<span class="title function_">create</span>(arrayProto); <span class="comment">// 这是个对象继承了所有Array的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> methodsToPatch = [</span><br><span class="line">  <span class="string">&quot;push&quot;</span>,</span><br><span class="line">  <span class="string">&quot;pop&quot;</span>,</span><br><span class="line">  <span class="string">&quot;shift&quot;</span>,</span><br><span class="line">  <span class="string">&quot;unshift&quot;</span>,</span><br><span class="line">  <span class="string">&quot;splice&quot;</span>,</span><br><span class="line">  <span class="string">&quot;sort&quot;</span>,</span><br><span class="line">  <span class="string">&quot;reverse&quot;</span>,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">methodsToPatch.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">method</span>) &#123;</span><br><span class="line">  <span class="comment">// 缓存原来的方法</span></span><br><span class="line">  <span class="keyword">const</span> original = arrayProto[method]; <span class="comment">// 原来Array 的方法</span></span><br><span class="line">  <span class="title function_">def</span>(arrayMethods, method, <span class="keyword">function</span> <span class="title function_">mutator</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> result = original.<span class="title function_">apply</span>(<span class="variable language_">this</span>, args); <span class="comment">// 调用还是用原来Array的方法调用</span></span><br><span class="line">    <span class="keyword">const</span> ob = <span class="variable language_">this</span>.<span class="property">__ob__</span>;</span><br><span class="line">    <span class="keyword">let</span> inserted;</span><br><span class="line">    <span class="comment">// 判断传入的方法,进行修改args,push,unshift只接收一种参数,就把args赋值给inserted</span></span><br><span class="line">    <span class="keyword">switch</span> (method) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&quot;push&quot;</span>:</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&quot;unshift&quot;</span>:</span><br><span class="line">        inserted = args;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="comment">// splice是接收3个参数,实际要处理的参数就是第3个往后的</span></span><br><span class="line">      <span class="keyword">case</span> <span class="string">&quot;splice&quot;</span>:</span><br><span class="line">        inserted = args.<span class="title function_">slice</span>(<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (inserted) ob.<span class="title function_">observeArray</span>(inserted);</span><br><span class="line">    <span class="comment">// notify change</span></span><br><span class="line">    ob.<span class="property">dep</span>.<span class="title function_">notify</span>();</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="set-为什么可以检测数组变化"><a href="#set-为什么可以检测数组变化" class="headerlink" title="$set 为什么可以检测数组变化?"></a>$set 为什么可以检测数组变化?</h3><p>如果 target 是一个数组且索引有效，就设置 length 的属性。<br>通过 splice 方法把 value 设置到 target 数组指定位置。<br>设置的时候，vue 会拦截到 target 发生变化，然后把新增的 value 也变成响应式<br>最后返回 value</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">set</span>(<span class="params">target, key, val</span>) &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  <span class="comment">// target是传入数组或对象,key是索引,val是修改的值</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(target) &amp;&amp; <span class="title function_">isValidArrayIndex</span>(key)) &#123;</span><br><span class="line">    target.<span class="property">length</span> = <span class="title class_">Math</span>.<span class="title function_">max</span>(target.<span class="property">length</span>, key);</span><br><span class="line">    target.<span class="title function_">splice</span>(key, <span class="number">1</span>, val);</span><br><span class="line">    <span class="keyword">return</span> val;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (key <span class="keyword">in</span> target &amp;&amp; !(key <span class="keyword">in</span> <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>)) &#123;</span><br><span class="line">    target[key] = val;</span><br><span class="line">    <span class="keyword">return</span> val;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  <span class="title function_">defineReactive$$1</span>(ob.<span class="property">value</span>, key, val);</span><br><span class="line">  ob.<span class="property">dep</span>.<span class="title function_">notify</span>();</span><br><span class="line">  <span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="nextTick-的作用和原理"><a href="#nextTick-的作用和原理" class="headerlink" title="$nextTick 的作用和原理"></a>$nextTick 的作用和原理</h2><p>Vue 中 DOM 更新是异步的,批量的.在修改 DOM 后立即获取,是获取不到的,需要等待 dom 更新后才能获取.<br>tis.$nextTick 接收一个函数,函数会在下一次循环 DOM 渲染完毕后执行,在这里也就得到了最新的值.</p>
+<h2 id="mutationObserver-了解吗"><a href="#mutationObserver-了解吗" class="headerlink" title="mutationObserver 了解吗"></a>mutationObserver 了解吗</h2><p>属于微任务,观察 dom 元素,并在检测到更改时触发回调.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过new创建实例,接收一个回调</span></span><br><span class="line"><span class="comment">// 回调的两个参数,一个是包含了MutationRecord 的数组,一个是观察者对象本身</span></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(<span class="function">(<span class="params">mutationRecords, observer</span>) =&gt;</span> &#123;&#125;);</span><br><span class="line"><span class="comment">// target是观察目标,options 监听哪方面的内容</span></span><br><span class="line">observer.<span class="title function_">observe</span>(target, options);</span><br><span class="line"><span class="comment">// 主要是在回调中处理,当观察元素或者子元素变化,就做出相应处理</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h1><h2 id="axios-和-fetch-区别"><a href="#axios-和-fetch-区别" class="headerlink" title="axios 和 fetch 区别"></a>axios 和 fetch 区别</h2><h2 id="interceptor-原理"><a href="#interceptor-原理" class="headerlink" title="interceptor 原理"></a>interceptor 原理</h2><h2 id="Cors-的请求头"><a href="#Cors-的请求头" class="headerlink" title="Cors 的请求头"></a>Cors 的请求头</h2><h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h2 id="Map-set-weakMap-weakSet-区别"><a href="#Map-set-weakMap-weakSet-区别" class="headerlink" title="Map,set, weakMap,weakSet 区别?"></a>Map,set, weakMap,weakSet 区别?</h2><h2 id="Proxy-和-reflect"><a href="#Proxy-和-reflect" class="headerlink" title="Proxy 和 reflect?"></a>Proxy 和 reflect?</h2><h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><h2 id="node-写过-cli-吗"><a href="#node-写过-cli-吗" class="headerlink" title="node 写过 cli 吗"></a>node 写过 cli 吗</h2><h1 id="简历项目"><a href="#简历项目" class="headerlink" title="简历项目"></a>简历项目</h1><p>在项目中发现首屏加载时间 xx 秒,有很大优化空间,经过研究采用 xx 方案优化到了 xx 秒.提升了 60%性能.</p>
+<p>借鉴 xx 项目中优秀的方案,讲解</p>
+<p>竟可能多说解决方案</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/19/%E7%AE%80%E5%8D%95%E5%81%9A%E7%B3%BB%E5%88%97!Docker%E9%83%A8%E7%BD%B2egg.js%E5%88%B0%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="prev" title="简单做系列:Docker部署egg.js到云服务器">
+                  <i class="fa fa-chevron-left"></i> 简单做系列:Docker部署egg.js到云服务器
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

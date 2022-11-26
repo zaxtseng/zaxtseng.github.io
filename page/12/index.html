@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,161 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/23/CSS3%E5%B8%83%E5%B1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/08/23/CSS3%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">CSS布局</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-08-23 17:54:50" itemprop="dateCreated datePublished" datetime="2019-08-23T17:54:50+08:00">2019-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-11-26 19:08:51" itemprop="dateModified" datetime="2022-11-26T19:08:51+08:00">2022-11-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="单栏布局"><a href="#单栏布局" class="headerlink" title="单栏布局"></a>单栏布局</h2><p>方式: 定宽+水平居中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">.<span class="property">layout</span>&#123;</span><br><span class="line">max-<span class="attr">width</span>: 100px;</span><br><span class="line"><span class="attr">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>通栏的话再加一层 div,单独给 div 设置背景色即可</p>
+<h2 id="双列布局"><a href="#双列布局" class="headerlink" title="双列布局"></a>双列布局</h2><p>固定 margin+浮动元素</p>
+<p>先设置浮动,再设置普通元素,最后清除浮动</p>
+<h1 id="flex-布局-弹性盒子"><a href="#flex-布局-弹性盒子" class="headerlink" title="flex 布局(弹性盒子)"></a>flex 布局(弹性盒子)</h1><h3 id="display-flex"><a href="#display-flex" class="headerlink" title="display:flex"></a>display:flex</h3><p>一个容器 设置了<code>display:flex</code>属性,就定义了一个 flex 容器.它的直接子元素会接受这个 flex 环境.</p>
+<p>常规布局是基于块和内联流方向，而 Flex 布局是基于<code>flex-flow</code>流可以很方便的用来做居中，能对不同屏幕大小自适应。</p>
+<p>在布局上有了比以前更加灵活的空间。</p>
+<p><img src="https://s2.ax1x.com/2019/09/25/uZC1ud.jpg#alt=%E4%B8%80%E5%BC%A0%E5%9B%BE%E4%BA%86%E8%A7%A3flex"></p>
+<p>这个是 ms 图床</p>
+<p><img src="https://s2.ax1x.com/2019/09/25/uZC1ud.jpg#alt=uZC1ud.jpg"></p>
+<p>这个是路过图床</p>
+<h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">    flex-<span class="attr">direction</span>: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>设置子元素在父容器中的位置</p>
+<ol>
+<li>row 默认值,水平从左到右</li>
+<li>row-reverse,从右到左</li>
+<li>column,垂直从上到下</li>
+<li>column-reverse,垂直从下到上</li>
+</ol>
+<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p>设置换行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  flex-<span class="attr">wrap</span>: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br><span class="line">依次为:不换行,换行,换行且颠倒顺序</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h3><p><code>flex-direction</code>和<code>flex-wrap</code>的缩写,默认值<code>row nowrap</code></p>
+<p><code>flex-flow: &lt;&#39;flex-direction&#39;&gt; || &lt;&#39;flex-wrap&#39;&gt;</code></p>
+<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p>设置子元素在水平方向上的对齐方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  justify-<span class="attr">content</span>: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br><span class="line">分别是水平靠左,水平靠右,水平居中,均匀分布,均匀分布且两端保留子元素间距一半(空间包裹)</span><br></pre></td></tr></table></figure>
+
+<h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p>设置子元素在垂直方向上的对齐方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  align-<span class="attr">items</span>: flex-start |  flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br><span class="line">分别是垂直靠上,垂直靠下,垂直居中,垂直基线对齐,垂直方向拉伸</span><br></pre></td></tr></table></figure>
+
+<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p>设置子元素整体内容的在垂直方向上的对齐方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  align-<span class="attr">content</span>: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br><span class="line">分别是整体靠上,整体靠下,整体居中,整体垂直均匀排列,整体均匀分布且垂直两端保留间距一半空间,整体垂直拉伸占用剩余空间</span><br></pre></td></tr></table></figure>
+
+<h2 id="用在子元素上的属性"><a href="#用在子元素上的属性" class="headerlink" title="用在子元素上的属性"></a>用在子元素上的属性</h2><h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p>默认情况下 flex order 会按照书写顺序排列,可以通过 order 属性改变,数值小的在前面,也可以是负数.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">item</span> &#123;</span><br><span class="line">  <span class="attr">order</span>: &lt;integer&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p><code>.item &#123;flex-grow: 1&#125;</code></p>
+<p>按比例瓜分父元素剩余的空间,1 即分一份.不写默认是 0</p>
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p>基准宽度</p>
+<h3 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h3><p>按比例吸收超出的空间.不写默认是 1</p>
+<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><blockquote>
+<p><code>flex-grow</code>,<code>flex-shrink</code>,<code>flex-basis</code>的缩写</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">item</span>&#123;</span><br><span class="line">  <span class="attr">flex</span>: none | [ &lt;<span class="string">&#x27;flex-grow&#x27;</span>&gt; &lt;<span class="string">&#x27;flex-shrink&#x27;</span>&gt; || &lt;<span class="string">&#x27;&#x27;</span>flex-basis<span class="string">&#x27;&gt;]</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="aglin-self"><a href="#aglin-self" class="headerlink" title="aglin-self"></a>aglin-self</h3><p>单独修改自身的属性</p>
+<h1 id="Grid-布局"><a href="#Grid-布局" class="headerlink" title="Grid 布局"></a>Grid 布局</h1><h3 id="父元素-Grid-container-的属性"><a href="#父元素-Grid-container-的属性" class="headerlink" title="父元素 Grid container 的属性"></a>父元素 Grid container 的属性</h3><h4 id="display"><a href="#display" class="headerlink" title="display"></a>display</h4><p>将元素定义为 gird container,并为其建立新的网格格式化上下文</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  <span class="attr">display</span>: grid | inline-grid |   subgrid;</span><br><span class="line">&#125;</span><br><span class="line">分别是生成一个块级网格;一行网格;如果本身是gird-item,可从父元素获取行列大小</span><br></pre></td></tr></table></figure>
+
+<h3 id="gird-template-columns-和-gird-template-rows"><a href="#gird-template-columns-和-gird-template-rows" class="headerlink" title="gird-template-columns 和 gird-template-rows"></a>gird-template-columns 和 gird-template-rows</h3><p>设置网格的列和行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  gird-template-<span class="attr">columns</span>: 40px 50px auto 50px 40px;</span><br><span class="line">  grid-template-<span class="attr">rows</span>: <span class="number">25</span>% 100px auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简化写法:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line"> gird-template-<span class="attr">columns</span>: <span class="title function_">repeat</span>(<span class="number">3</span>, 20px [col-start]) <span class="number">5</span>%;</span><br><span class="line">&#125;</span><br><span class="line">等价于</span><br><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  gird-template-<span class="attr">columns</span>: 20px [col-start] 20px [col-start] 20px [col-start] <span class="number">5</span>%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>“fr”单位允许将轨道大小设置为网格容器自由空间的一部分.</p>
+<p>如下代码会将每个 gird item 设置为 gird container 宽度的三分之一</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">container</span>&#123;</span><br><span class="line">  .<span class="property">grid</span>-template-<span class="attr">columns</span>: 1fr 1fr 1fr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="gird-template-areas"><a href="#gird-template-areas" class="headerlink" title="gird-template-areas"></a>gird-template-areas</h3><ol>
+<li>— 使用 gird-area 属性设置的网络区域的名称</li>
+<li>.  — 点号代表一个空网格单元</li>
+<li>none — 没有定义网格单元</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">item</span>-a &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: header;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">item</span>-b &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: main;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">item</span>-c &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: sidebar;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">item</span>-d &#123;</span><br><span class="line">  grid-<span class="attr">area</span>: footer;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">container</span> &#123;</span><br><span class="line">  grid-template-<span class="attr">columns</span>: 50px 50px 50px 50px;</span><br><span class="line">  grid-template-<span class="attr">rows</span>: auto;</span><br><span class="line">  grid-template-<span class="attr">areas</span>:</span><br><span class="line">    <span class="string">&quot;header header header header&quot;</span></span><br><span class="line">    <span class="string">&quot;main main . sidebar&quot;</span></span><br><span class="line">    <span class="string">&quot;footer footer footer footer&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这将创建一个四列宽三行高的网格。 整个第一行将由 header 区域组成。 中间一行将由两个 main 区域、一个空单元格和一个 sidebar 区域组成。 最后一行是 footer 区域组成。</p>
+<h1 id="媒体查询-响应式"><a href="#媒体查询-响应式" class="headerlink" title="媒体查询(响应式)"></a>媒体查询(响应式)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  <span class="comment">/* 屏幕宽度为300px-325px时的css样式  */</span></span><br><span class="line">  @<span class="title function_">media</span>(min-<span class="attr">width</span>: 300px) and (max-<span class="attr">width</span>: 325px)&#123;</span><br><span class="line">    body&#123;</span><br><span class="line">     <span class="attr">background</span>: red;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 屏幕宽度小于450px时的css样式  */</span></span><br><span class="line">  @<span class="title function_">media</span>(<span class="params">max-width: 450px</span>)&#123;</span><br><span class="line">    body&#123;</span><br><span class="line">     <span class="attr">background</span>: black;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* 这样前面那个就没用了，被覆盖了  */</span></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>一般不用第一个方法，直接引用一个手机版的 css 即可</p>
+</blockquote>
+<p><code>&lt;link rel=&quot;stylesheet&quot; media=&quot;(max-width:768px)&quot; href=&quot;mobile.css&quot;&gt;</code></p>
+<p>在屏幕宽度小于 768px 时，就会渲染这个 css，要把这个引用写在 main.css 之后，把 main.css 覆盖。</p>
+<p>并加上 meta:vp</p>
+<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&quot;&gt;</code></p>
+<p>让视口等于理想视口,禁止用户缩放.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/18/HTML%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +363,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-25 09:51:32" itemprop="dateModified" datetime="2022-11-25T09:51:32+08:00">2022-11-25</time>
+      <time title="Modified: 2022-11-26 19:08:50" itemprop="dateModified" datetime="2022-11-26T19:08:50+08:00">2022-11-26</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
