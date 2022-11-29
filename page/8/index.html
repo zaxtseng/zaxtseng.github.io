@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:20" itemprop="dateModified" datetime="2022-11-29T09:47:20+08:00">2022-11-29</time>
     </span>
 
   
@@ -432,7 +432,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:20" itemprop="dateModified" datetime="2022-11-29T09:47:20+08:00">2022-11-29</time>
     </span>
 
   
@@ -602,7 +602,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:20" itemprop="dateModified" datetime="2022-11-29T09:47:20+08:00">2022-11-29</time>
     </span>
 
   
@@ -731,7 +731,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:20" itemprop="dateModified" datetime="2022-11-29T09:47:20+08:00">2022-11-29</time>
     </span>
 
   
@@ -807,7 +807,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:21" itemprop="dateModified" datetime="2022-11-29T09:47:21+08:00">2022-11-29</time>
     </span>
 
   
@@ -897,7 +897,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:21" itemprop="dateModified" datetime="2022-11-29T09:47:21+08:00">2022-11-29</time>
     </span>
 
   
@@ -953,7 +953,15 @@
 <blockquote>
 <p>尽管 effect 只运行了一次，第一次渲染中的定时器回调函数可以完美地在每次触发的时候给 React 发送 c &#x3D;&gt; c + 1 更新指令。它不再需要知道当前的 count 值。因为 React 已经知道了。</p>
 </blockquote>
-<h1 id="useHook-与闭包"><a href="#useHook-与闭包" class="headerlink" title="useHook 与闭包"></a>useHook 与闭包</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span>); <span class="comment">// 0,1,2,3...</span></span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>You clicked &#123;count&#125; times<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(count + 1)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">        Click me</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对比class组件</span></span><br><span class="line">  <span class="title function_">componentDidUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`You clicked <span class="subst">$&#123;<span class="variable language_">this</span>.state.count&#125;</span> times`</span>);<span class="comment">// 5,5,5,5,5</span></span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="useHook-与闭包"><a href="#useHook-与闭包" class="headerlink" title="useHook 与闭包"></a>useHook 与闭包</h1><h2 id="闭包陷阱"><a href="#闭包陷阱" class="headerlink" title="闭包陷阱"></a>闭包陷阱</h2><p>hooks 的闭包陷阱是指 useEffect 等 hook 中用到了某个 state，但是没有把它加到 deps 数组里，导致 state 变了，但是执行的函数依然引用着之前的 state</p>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>它的解决方式就是正确设置 deps 数组，把用到的 state 放到 deps 数组里，这样每次 state 变了就能执行最新的函数，引用新的 state。同时要清理上次的定时器、事件监听器等。<br>useRef 能解决闭包陷阱的原因是 useEffect 等 hook 里不直接引用 state，而是引用 ref.current，这样后面只要修改了 ref 中的值，这里取出来的就是最新的。</p>
+<p>解决 hooks 的闭包陷阱有两种方式：</p>
+<ul>
+<li>设置依赖的 state 到 deps 数组中并添加清理函数</li>
+<li>不直接引用 state，把 state 放到 useRef 创建的 ref 对象中再引用</li>
+</ul>
+<p>处理定时器的时候，为保证计时的准确，最好使用 useRef 的方式，其余情况两种都可以。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Counter</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`You clicked <span class="subst">$&#123;count&#125;</span> times`</span>); <span class="comment">// 0,1,2,3...</span></span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>You clicked &#123;count&#125; times<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setCount(count + 1)&#125;&gt;</span></span><br><span class="line"><span class="language-xml">        Click me</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对比class组件</span></span><br><span class="line">  <span class="title function_">componentDidUpdate</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`You clicked <span class="subst">$&#123;<span class="variable language_">this</span>.state.count&#125;</span> times`</span>);<span class="comment">// 5,5,5,5,5</span></span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面两个对比,uesEffect 因为有闭包存在,记录的都是当时 count 的值.<br>class 组件里,React 修改了 class 中的 this.state 使其指向最新状态.所以全都是 5.</p>
 <blockquote>
@@ -997,7 +1005,8 @@
 
 <p><strong>在 class 组件中，函数属性本身并不是数据流的一部分</strong>。组件的方法中包含了可变的 this 变量导致我们不能确定无疑地认为它是不变的。因此，即使我们只需要一个函数，我们也必须把一堆数据传递下去仅仅是为了做“diff”。我们无法知道传入的 this.props.fetchData 是否依赖状态，并且不知道它依赖的状态是否改变了。</p>
 <p>使用 useCallback，函数完全可以参与到数据流中。我们可以说如果一个函数的输入改变了，这个函数就改变了。如果没有，函数也不会改变。感谢周到的 useCallback，属性比如 props.fetchData 的改变也会自动传递下去。</p>
-<h1 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h1><p>useReducer 是另一种返回状态的方法.<br>对于单个状态,可以使用 useState,多个状态,且互相关联,就可以使用 useReducer.</p>
+<h1 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h1><p>useReducer 是另一种返回状态的方法.可以说是<code>useState</code>的升级版本.和 redux 的差别在于并不能进行全局的状态管理.<br>useState 适合单个状态,useReducer 适合多个互相有影响的状态.<br>对于单个状态,可以使用 useState,多个状态,且互相关联,就可以使用 useReducer.</p>
+<p>它接收一个形如 <code>(state, action) =&gt; newState</code> 的 reducer，并返回当前的 state 以及与其配套的 dispatch 方法。<br>在某些场景下，useReducer 会比 useState 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 useReducer 还能给那些会触发深更新的组件做性能优化，因为你可以向子组件传递 dispatch 而不是回调函数</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useReducer &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initalState = &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reducer</span>(<span class="params">state, action</span>) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;increment&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: state.<span class="property">count</span> + <span class="number">1</span> &#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;dcrement&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: state.<span class="property">count</span> - <span class="number">1</span> &#125;;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialState);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      Count: &#123;state.count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123; type: &quot;increment&quot; &#125;)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123; type: &quot;dcrement&quot; &#125;)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h1 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h1><ul>
@@ -1023,6 +1032,11 @@
 <h3 id="页面中使用"><a href="#页面中使用" class="headerlink" title="页面中使用"></a>页面中使用</h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; login, user &#125; = <span class="title function_">useAuth</span>();</span><br></pre></td></tr></table></figure>
 
 <h1 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h1><p>类组件、React 元素用 React.createRef，函数组件使用 useRef<br>useRef 返回一个可变的 ref 对象，其 current 属性被初始化为传入的参数（initialValue）.<br>第二个作用是保存数据<br>即使组件重新渲染,保存的数据仍然存在.保存的数据被更改不会触发组件渲染.</p>
+<p>useRef 是在 memorizedState 链表中放一个对象，current 保存某个值。<br>初始化的时候创建了一个对象放在 memorizedState 上，后面始终返回这个对象。</p>
+<p>这样通过 useRef 保存回调函数，然后在 useEffect 里从 ref.current 来取函数再调用，避免了直接调用，也就没有闭包陷阱的问题了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(count);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> ref = <span class="title function_">useRef</span>(fn);</span><br><span class="line"></span><br><span class="line"><span class="title function_">useLayoutEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  ref.<span class="property">current</span> = fn;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> ref.<span class="title function_">current</span>(), <span class="number">500</span>);</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+
+<p>useEffect 里执行定时器，deps 设置为了 []，所以只会执行一次，回调函数用的是 ref.current，没有直接依赖某个 state，所以不会有闭包陷阱。<br>用 useRef 创建个 ref 对象，初始值为打印 count 的回调函数，每次 render 都修改下其中的函数为新创建的函数，这个函数里引用的 count 就是最新的。<br>这里用了 useLayoutEffect 而不是 useEffect 是因为 useLayoutEffect 是在 render 后同步执行的，useEffect 是在 render 后异步执行的，所以用 useLayoutEffect 能保证在 useEffect 之前被调用。<br>这种方式避免了 useEffect 里直接对 state 的引用，从而避免了闭包问题。<br>另外，修改 count 的地方，可以用 setCount(count &#x3D;&gt; count + 1) 代替 setCount(count + 1)，这样也就避免了闭包问题</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> refContainer = <span class="title function_">useRef</span>(initialValue);</span><br></pre></td></tr></table></figure>
 
 <p>useRef 返回的 ref 对象在组件的整个生命周期内保持不变，也就是说每次重新渲染函数组件时，返回的 ref 对象都是同一个（使用 React.createRef ，每次重新渲染组件都会重新创建 ref）</p>
@@ -1105,7 +1119,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:21" itemprop="dateModified" datetime="2022-11-29T09:47:21+08:00">2022-11-29</time>
     </span>
 
   
@@ -1184,7 +1198,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:21" itemprop="dateModified" datetime="2022-11-29T09:47:21+08:00">2022-11-29</time>
     </span>
 
   
@@ -1274,7 +1288,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:21" itemprop="dateModified" datetime="2022-11-29T09:47:21+08:00">2022-11-29</time>
     </span>
 
   
@@ -1361,7 +1375,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-28 10:40:22" itemprop="dateModified" datetime="2022-11-28T10:40:22+08:00">2022-11-28</time>
+      <time title="Modified: 2022-11-29 09:47:21" itemprop="dateModified" datetime="2022-11-29T09:47:21+08:00">2022-11-29</time>
     </span>
 
   
