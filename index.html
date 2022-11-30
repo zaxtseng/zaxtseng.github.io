@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:04" itemprop="dateModified" datetime="2022-11-29T20:58:04+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:06" itemprop="dateModified" datetime="2022-11-30T14:20:06+08:00">2022-11-30</time>
     </span>
 
   
@@ -221,7 +221,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h1><h1 id="配置-webpack"><a href="#配置-webpack" class="headerlink" title="配置 webpack"></a>配置 webpack</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">    <span class="attr">publicPath</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">hotOnly</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">proxy</span>: &#123;</span><br><span class="line">      <span class="string">&quot;/api&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">target</span>: <span class="string">&quot;api.example.com&quot;</span>,</span><br><span class="line">        <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">          <span class="string">&quot;^api&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.js$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="attr">options</span>: &#123;</span><br><span class="line">            <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>],</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>(),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <h1 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="+配置 nginx"></a>+配置 nginx</h1><h1 id="配置-webpack"><a href="#配置-webpack" class="headerlink" title="配置 webpack"></a>配置 webpack</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">    <span class="attr">publicPath</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">devServer</span>: &#123;</span><br><span class="line">    <span class="attr">hotOnly</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">proxy</span>: &#123;</span><br><span class="line">      <span class="string">&quot;/api&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">target</span>: <span class="string">&quot;api.example.com&quot;</span>,</span><br><span class="line">        <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">          <span class="string">&quot;^api&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.js$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="attr">options</span>: &#123;</span><br><span class="line">            <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>],</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CopyWebpackPlugin</span>(),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h1 id="配置-rollup"><a href="#配置-rollup" class="headerlink" title="配置 rollup"></a>配置 rollup</h1><h1 id="React-问题"><a href="#React-问题" class="headerlink" title="React 问题"></a>React 问题</h1><h2 id="React-memo-useMemo-useCallback-都是什么-区别-应用场景-方法"><a href="#React-memo-useMemo-useCallback-都是什么-区别-应用场景-方法" class="headerlink" title="React.memo useMemo useCallback 都是什么,区别?应用场景?方法?"></a>React.memo useMemo useCallback 都是什么,区别?应用场景?方法?</h2><ul>
 <li>React.memo 是高阶组件,类似于 class 组件中的<code>shouldComponentUpdate</code>,对 props 是否变化做浅层比较.<br>变化才会重新渲染.如果想深层比较,可以使用它的第二个参数.和<code>shouldComponentUpdate</code>不同的地方是第二个参数的返回值,props 如果相等是返回 true,而<code>shouldComponentUpdate</code>返回的是 false.</li>
@@ -270,7 +270,12 @@
 <h2 id="sass-loader-用了什么方法"><a href="#sass-loader-用了什么方法" class="headerlink" title="sass-loader 用了什么方法"></a>sass-loader 用了什么方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> nodeSass = <span class="built_in">require</span>(<span class="string">&quot;node-sass&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = nodeSass.<span class="title function_">renderSync</span>(&#123;</span><br><span class="line">  <span class="attr">file</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;../src/scss/index.scss&quot;</span>),</span><br><span class="line">  <span class="attr">outputStyle</span>: <span class="string">&quot;expanded&quot;</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> result.<span class="property">css</span>.<span class="title function_">toString</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>可以看到,sass-loader 使用了 node-sass 解析 sass 文件导出为 css 文件.输出为字符串交给下一个 loader.</p>
-<h2 id="Esm-是什么"><a href="#Esm-是什么" class="headerlink" title="Esm 是什么?"></a>Esm 是什么?</h2><p>es module 是一种模块化开发的规范.设计思想是尽量的静态化,使得编译时就能确定模块的依赖关系和导入导出的变量.<br>主要功能由两个命令构成: <code>export</code>, <code>import</code>.</p>
+<h2 id="Esm-是什么"><a href="#Esm-是什么" class="headerlink" title="Esm 是什么?"></a>Esm 是什么?</h2><p>es6 module 是一种模块化开发的规范.设计思想是尽量的静态化,使得编译时就能确定模块的依赖关系和导入导出的变量.<br>主要功能由两个命令构成: <code>export</code>, <code>import</code>.</p>
+<ul>
+<li>只能作为模块顶层的语句出现</li>
+<li>import 的模块名只能是字符串常量</li>
+<li>import 之后是不可修改的 例如，在使用 CommonJS 时，必须导入完整的工具 (tool) 或库 (library) 对象，且可带有条件判断来决定是否导入。</li>
+</ul>
 <h2 id="Umi-了解吗"><a href="#Umi-了解吗" class="headerlink" title="Umi 了解吗"></a>Umi 了解吗</h2><h2 id="Element-ant-之类的是怎么实现响应式布局"><a href="#Element-ant-之类的是怎么实现响应式布局" class="headerlink" title="Element-ant 之类的是怎么实现响应式布局?"></a>Element-ant 之类的是怎么实现响应式布局?</h2><p>参照了 Bootstrap 的 响应式设计，预设了五个响应尺寸：xs、sm、md、lg 和 xl。<br>也就是通过类名.<br>在 less 或者 scss 文件中设置变量.媒体查询通过断点设置 css.</p>
 <h1 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h1><h2 id="Vue-对数组是怎么处理的"><a href="#Vue-对数组是怎么处理的" class="headerlink" title="Vue 对数组是怎么处理的"></a>Vue 对数组是怎么处理的</h2><ol>
 <li>先获取原生 Array 的原型方法，因为拦截后还是需要原生的方法帮我们实现数组的变化。</li>
@@ -286,6 +291,10 @@
 <h2 id="mutationObserver-了解吗"><a href="#mutationObserver-了解吗" class="headerlink" title="mutationObserver 了解吗"></a>mutationObserver 了解吗</h2><p>属于微任务,观察 dom 元素,并在检测到更改时触发回调.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过new创建实例,接收一个回调</span></span><br><span class="line"><span class="comment">// 回调的两个参数,一个是包含了MutationRecord 的数组,一个是观察者对象本身</span></span><br><span class="line"><span class="keyword">const</span> observer = <span class="keyword">new</span> <span class="title class_">MutationObserver</span>(<span class="function">(<span class="params">mutationRecords, observer</span>) =&gt;</span> &#123;&#125;);</span><br><span class="line"><span class="comment">// target是观察目标,options 监听哪方面的内容</span></span><br><span class="line">observer.<span class="title function_">observe</span>(target, options);</span><br><span class="line"><span class="comment">// 主要是在回调中处理,当观察元素或者子元素变化,就做出相应处理</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="父子组件的生命周期执行顺序"><a href="#父子组件的生命周期执行顺序" class="headerlink" title="父子组件的生命周期执行顺序?"></a>父子组件的生命周期执行顺序?</h2><p>执行顺序：父组件先创建，然后子组件创建；子组件先挂载，然后父组件挂载，<br>否则父组件先挂载就是结束了,子组件没地方挂载了.<br>大体流程: 先父后字,再先子后父.界限在挂载那里改为先子后父,前面的都是先父后子.</p>
+<blockquote>
+<p>渲染阶段<br>父 beforeCreate-&gt;父 created-&gt;父 beforeMount-&gt;子 beforeCreate-&gt;子 created-&gt;子 beforeMount-&gt;子 mounted-&gt;父 mounted<br>卸载阶段<br>父 beforeDestroy-&gt;子 beforeDestroy-&gt;子 destroyed-&gt;父 destroyed</p>
+</blockquote>
 <h1 id="Http"><a href="#Http" class="headerlink" title="Http"></a>Http</h1><h2 id="axios-和-fetch-区别"><a href="#axios-和-fetch-区别" class="headerlink" title="axios 和 fetch 区别"></a>axios 和 fetch 区别</h2><h2 id="interceptor-原理"><a href="#interceptor-原理" class="headerlink" title="interceptor 原理"></a>interceptor 原理</h2><h2 id="Cors-的请求头"><a href="#Cors-的请求头" class="headerlink" title="Cors 的请求头"></a>Cors 的请求头</h2><h1 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h1><h2 id="Map-set-weakMap-weakSet-区别"><a href="#Map-set-weakMap-weakSet-区别" class="headerlink" title="Map,set, weakMap,weakSet 区别?"></a>Map,set, weakMap,weakSet 区别?</h2><h2 id="Proxy-和-reflect"><a href="#Proxy-和-reflect" class="headerlink" title="Proxy 和 reflect?"></a>Proxy 和 reflect?</h2><h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><h2 id="node-写过-cli-吗"><a href="#node-写过-cli-吗" class="headerlink" title="node 写过 cli 吗"></a>node 写过 cli 吗</h2><h1 id="简历项目"><a href="#简历项目" class="headerlink" title="简历项目"></a>简历项目</h1><p>在项目中发现首屏加载时间 xx 秒,有很大优化空间,经过研究采用 xx 方案优化到了 xx 秒.提升了 60%性能.</p>
 <p>借鉴 xx 项目中优秀的方案,讲解</p>
 <p>竟可能多说解决方案</p>
@@ -351,7 +360,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:04" itemprop="dateModified" datetime="2022-11-29T20:58:04+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:06" itemprop="dateModified" datetime="2022-11-30T14:20:06+08:00">2022-11-30</time>
     </span>
 
   
@@ -496,7 +505,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:05" itemprop="dateModified" datetime="2022-11-29T20:58:05+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:06" itemprop="dateModified" datetime="2022-11-30T14:20:06+08:00">2022-11-30</time>
     </span>
 
   
@@ -599,7 +608,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:05" itemprop="dateModified" datetime="2022-11-29T20:58:05+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:06" itemprop="dateModified" datetime="2022-11-30T14:20:06+08:00">2022-11-30</time>
     </span>
 
   
@@ -691,7 +700,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:06" itemprop="dateModified" datetime="2022-11-29T20:58:06+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:07" itemprop="dateModified" datetime="2022-11-30T14:20:07+08:00">2022-11-30</time>
     </span>
 
   
@@ -1284,7 +1293,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:06" itemprop="dateModified" datetime="2022-11-29T20:58:06+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:07" itemprop="dateModified" datetime="2022-11-30T14:20:07+08:00">2022-11-30</time>
     </span>
 
   
@@ -1502,7 +1511,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:06" itemprop="dateModified" datetime="2022-11-29T20:58:06+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:07" itemprop="dateModified" datetime="2022-11-30T14:20:07+08:00">2022-11-30</time>
     </span>
 
   
@@ -2151,7 +2160,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:06" itemprop="dateModified" datetime="2022-11-29T20:58:06+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:07" itemprop="dateModified" datetime="2022-11-30T14:20:07+08:00">2022-11-30</time>
     </span>
 
   
@@ -2353,7 +2362,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:06" itemprop="dateModified" datetime="2022-11-29T20:58:06+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:07" itemprop="dateModified" datetime="2022-11-30T14:20:07+08:00">2022-11-30</time>
     </span>
 
   
@@ -2493,7 +2502,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-29 20:58:07" itemprop="dateModified" datetime="2022-11-29T20:58:07+08:00">2022-11-29</time>
+      <time title="Modified: 2022-11-30 14:20:08" itemprop="dateModified" datetime="2022-11-30T14:20:08+08:00">2022-11-30</time>
     </span>
 
   
