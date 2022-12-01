@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:39" itemprop="dateModified" datetime="2022-12-01T19:32:39+08:00">2022-12-01</time>
     </span>
 
   
@@ -464,7 +464,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:39" itemprop="dateModified" datetime="2022-12-01T19:32:39+08:00">2022-12-01</time>
     </span>
 
   
@@ -659,7 +659,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:39" itemprop="dateModified" datetime="2022-12-01T19:32:39+08:00">2022-12-01</time>
     </span>
 
   
@@ -778,7 +778,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:39" itemprop="dateModified" datetime="2022-12-01T19:32:39+08:00">2022-12-01</time>
     </span>
 
   
@@ -1042,7 +1042,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:40" itemprop="dateModified" datetime="2022-12-01T19:32:40+08:00">2022-12-01</time>
     </span>
 
   
@@ -1082,6 +1082,7 @@
 <h1 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h1><h2 id="如果是-var-声明-for-循环不是函数，所以-i-是全局作用域中的变量。"><a href="#如果是-var-声明-for-循环不是函数，所以-i-是全局作用域中的变量。" class="headerlink" title="如果是 var 声明,for 循环不是函数，所以 i 是全局作用域中的变量。"></a>如果是 var 声明,for 循环不是函数，所以 i 是全局作用域中的变量。</h2><p>使用 let 关键字时会产生块级作用域，for 每次循环的大括号都是一个独立的块级作用域，由于后面还要用到 i ,所以这几个块级作用域都不会销毁。<br>elements[0].onclick &#x3D; function() { alert(i); } &#x2F;&#x2F; 在此块级作用域中，i &#x3D; 0<br>elements[1].onclick &#x3D; function() { alert(i); } &#x2F;&#x2F; 在此块级作用域中，i &#x3D; 1<br>elements[2].onclick &#x3D; function() { alert(i); } &#x2F;&#x2F; 在此块级作用域中，i &#x3D; 2<br>elements[3].onclick &#x3D; function() { alert(i); } &#x2F;&#x2F; 在此块级作用域中，i &#x3D; 3</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;li&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> length = element.<span class="property">length</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">  element[i].<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>for 循环是同步代码,先执行,事件绑定函数是异步代码.后执行.此时 for 执行完毕,i 是最后一个值.</p>
 <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><blockquote>
 <p>for &gt; for-of &gt; forEach &gt; map &gt; for-in</p>
 </blockquote>
@@ -1306,6 +1307,12 @@
 
 <h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><p><code>undefined</code> 表示一个变量自然的、最原始的状态值，而 <code>null</code> 则表示一个变量被人为的设置为空对象，而不是原始状态。所以，在实际使用过程中，为了保证变量所代表的语义，不要对一个变量显式的赋值 <code>undefined</code>，当需要释放一个对象时，直接赋值为 <code>null</code> 即可。<br><code>&#123; &#125;</code>是一个不完全空对象，原型链上有<code>Object</code>，<code>null</code>为原型链顶端，因此<code>Object.prototype.__proto__ === null</code>为 true。</p>
 <p>null 是完全空对象，原型链也没有。</p>
+<h1 id="0-1-0-2-x3D-0-3"><a href="#0-1-0-2-x3D-0-3" class="headerlink" title="0.1+0.2 !&#x3D; 0.3"></a>0.1+0.2 !&#x3D; 0.3</h1><p>因为 JS 采用 IEEE 754 双精度版本（64 位），并且只要采用 IEEE 754 的语言都有该问题。<br>0.1 在二进制中是无限循环的一些数字，其实不只是 0.1，其实很多十进制小数用二进制表示都是无限循环的。这样其实没什么问题，但是 JS 采用的浮点数标准却会裁剪掉我们的数字。</p>
+<p>那么这些循环的数字被裁剪了，就会出现精度丢失的问题，也就造成了 0.1 不再是 0.1 了，而是变成了 0.100000000000000002.</p>
+<p>那么可能你又会有一个疑问，既然 0.1 不是 0.1，那为什么 console.log(0.1) 却是正确的呢？</p>
+<p>因为在输入内容的时候，二进制被转换为了十进制，十进制又被转换为了字符串，在这个转换的过程中发生了取近似值的过程，所以打印出来的其实是一个近似值.</p>
+<h2 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseFloat</span>((<span class="number">0.1</span> + <span class="number">0.2</span>).<span class="title function_">toFixed</span>(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+
 <h1 id="this-的指向"><a href="#this-的指向" class="headerlink" title="this 的指向"></a>this 的指向</h1><p>this 的指向与函数声明无关,取决于函数调用.</p>
 <ol>
 <li>普通函数调用(<code>fn()</code>) -&gt; this 指向 window</li>
@@ -1326,7 +1333,7 @@
 
 <h2 id="call-apply-bind"><a href="#call-apply-bind" class="headerlink" title="call,apply,bind"></a>call,apply,bind</h2><p>不同点:</p>
 <ol>
-<li>传参不同,call-&gt;多个参数,apply-&gt;数组,bind-&gt;就一个 this</li>
+<li>传参不同,call-&gt;多个参数,<strong>apply</strong>-&gt;数组,bind-&gt;就一个 this</li>
 <li>执行机制不同: call,apply 立即执行,bind 不执行.</li>
 </ol>
 <p><code>call</code>的使用场景:<br><strong>检测数据类型:</strong></p>
@@ -1379,7 +1386,14 @@
 
 <h2 id="工厂函数和构造函数"><a href="#工厂函数和构造函数" class="headerlink" title="工厂函数和构造函数"></a>工厂函数和构造函数</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createPerson</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> p = &#123;&#125;;</span><br><span class="line">  p.<span class="property">name</span> = name;</span><br><span class="line">  p.<span class="property">age</span> = age;</span><br><span class="line">  <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">CreatePerson</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通过new关键字调用的是构造函数</span></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="title class_">CreatePerson</span>(<span class="string">&quot;张三&quot;</span>, <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="new-的用途"><a href="#new-的用途" class="headerlink" title="new 的用途"></a>new 的用途</h3><p>首先创建一个空对象,然后将 this 指向这个空对象,然后赋值,最后将这个对象返回出去.</p>
+<h3 id="new-的用途"><a href="#new-的用途" class="headerlink" title="new 的用途"></a>new 的用途</h3><ol>
+<li>创建空对象.方法很多种,对象字面量<code>const obj = &#123;&#125;</code>,或者<code>Object.create()</code></li>
+<li>将空对象的原型指向构造函数的原型. <code>obj.__proto__ = constructor.prototype</code></li>
+<li>将空对象作为构造函数的上下文(改变 this 指向).<code>const res = constructor.apply(obj, args)</code></li>
+<li>对构造函数的返回值进行处理判断<code>return res instanceof Object ?  res : obj</code></li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 模仿new关键词实现</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Function</span>&#125; constructor 构造函数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>  &#123;<span class="type">...any</span>&#125; argument 任意参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">_new</span> = (<span class="params">constructor, ...argument</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> obj = &#123;&#125;; <span class="comment">//创建一个空的简单对象</span></span><br><span class="line">  obj.<span class="property">__proto__</span> = constructor.<span class="property"><span class="keyword">prototype</span></span>; <span class="comment">//设置原型</span></span><br><span class="line">  <span class="comment">//新创建的对象作为this的上下文传递给构造函数</span></span><br><span class="line">  <span class="keyword">const</span> res = constructor.<span class="title function_">apply</span>(obj, argument);</span><br><span class="line">  <span class="comment">//如果该函数没有返回对象，则返回this(这个this指constructor执行时内部的this))。</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> res === <span class="string">&quot;object&quot;</span> ? res : obj;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, sex</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">sex</span> = sex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> people = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;Ben&quot;</span>, <span class="string">&quot;man&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> peopleOther = <span class="title function_">_new</span>(<span class="title class_">Person</span>, <span class="string">&quot;Alice&quot;</span>, <span class="string">&quot;woman&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;people&quot;</span>, people); <span class="comment">// people Person &#123; name: &#x27;Ben&#x27;, sex: &#x27;man&#x27; &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;peopleOther&quot;</span>, peopleOther); <span class="comment">// peopleOther Person &#123; name: &#x27;Alice&#x27;, sex: &#x27;woman&#x27; &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;people.__proto__&quot;</span>, people.<span class="property">__proto__</span>); <span class="comment">//people.__proto__ Person &#123;&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">info</span>(<span class="string">&quot;peopleOther.__proto__&quot;</span>, peopleOther.<span class="property">__proto__</span>); <span class="comment">//peopleOther.__proto__ Person &#123;&#125;</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="new-的细节"><a href="#new-的细节" class="headerlink" title="new 的细节"></a>new 的细节</h3><ol>
 <li>构造函数的首字母大写,为了提醒别人不要忘记 new 关键字</li>
 <li>关于构造函数主动写 return.对于值类型,无效,还是返回 new 创建的对象,对于引用类型,会覆盖.</li>
@@ -1440,6 +1454,23 @@
 <p>通常来说不建议使用 setInterval。<br>第一，它和 setTimeout 一样，不能保证在预期的时间执行任务。<br>第二，它存在执行累积的问题.</p>
 <h2 id="requestAnimationFrame"><a href="#requestAnimationFrame" class="headerlink" title="requestAnimationFrame"></a>requestAnimationFrame</h2><p>通过 <code>requestAnimationFrame</code> 来实现 setInterval.<br>首先 <code>requestAnimationFrame</code> 自带函数节流功能，基本可以保证在 16.6 毫秒内只执行一次（不掉帧的情况下），并且该函数的延时效果是精确的，没有其他定时器时间不准的问题，当然你也可以通过该函数来实现 setTimeout。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">setInterval</span>(<span class="params">callback, interval</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> timer;</span><br><span class="line">  <span class="keyword">const</span> now = <span class="title class_">Date</span>.<span class="property">now</span>;</span><br><span class="line">  <span class="keyword">let</span> startTime = <span class="title function_">now</span>();</span><br><span class="line">  <span class="keyword">let</span> endTime = startTime;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">loop</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    timer = <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(loop);</span><br><span class="line">    endTime = <span class="title function_">now</span>();</span><br><span class="line">    <span class="keyword">if</span> (endTime - startTime &gt;= interval) &#123;</span><br><span class="line">      startTime = endTime = <span class="title function_">now</span>();</span><br><span class="line">      <span class="title function_">callback</span>(timer);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  timer = <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(loop);</span><br><span class="line">  <span class="keyword">return</span> timer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">setInterval</span>(<span class="function">(<span class="params">timer</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">  a++;</span><br><span class="line">  <span class="keyword">if</span> (a === <span class="number">3</span>) <span class="title function_">cancelAnimationFrame</span>(timer);</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h1><h2 id="新生代算法"><a href="#新生代算法" class="headerlink" title="新生代算法"></a>新生代算法</h2><p>存活时间短,采用 Scavenge GC 算法.<br>分为两部分空间,From 和 To,总是有一个空闲.<br>新分配的对象 &#x3D;&gt; From 空间,放满为止. &#x3D;&gt; 启动 GC,检查 From 空间,<br>存活的,复制到 To 空间, 失活的,清除. &#x3D;&gt; From 和 To 空间互换.</p>
+<h2 id="老生代算法"><a href="#老生代算法" class="headerlink" title="老生代算法"></a>老生代算法</h2><ul>
+<li>经历过一次 GC 的对象进入老生代空间</li>
+<li>To 空间的对象占比大小超过 25% &#x3D;&gt;老生代空间</li>
+</ul>
+<p>老生代采用标记-清除, 标记-紧缩算法.</p>
+<h1 id="JS-异步"><a href="#JS-异步" class="headerlink" title="JS 异步"></a>JS 异步</h1><p>我们都知道 JavaScript 是单线程的，如果 JS 都是同步代码执行意味着什么呢？这样可能会造成阻塞，如果当前我们有一段代码需要执行时，如果使用同步的方式，那么就会阻塞后面的代码执行；而如果使用异步则不会阻塞，我们不需要等待异步代码执行的返回结果，可以继续执行该异步任务之后的代码逻辑。因此在 JS 编程中，会大量使用异步来进行编程</p>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>所谓的同步就是在执行某段代码时，在该代码没有得到返回结果之前，其他代码暂时是无法执行的，但是一旦执行完成拿到返回值之后，就可以执行其他代码了。换句话说，在此段代码执行完未返回结果之前，会阻塞之后的代码执行，这样的情况称为同步。</p>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>所谓异步就是当某一代码执行异步过程调用发出后，这段代码不会立刻得到返回结果。而是在异步调用发出之后，一般通过回调函数处理这个调用之后拿到结果。异步调用发出后，不会影响阻塞后面的代码执行，这样的情形称为异步</p>
+<h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><ul>
+<li>回调函数</li>
+<li>Promise</li>
+<li>Generator</li>
+<li>async&#x2F;await</li>
+</ul>
+<p>还有事件监听,发布订阅模式是异步操作.</p>
 
       
     </div>
@@ -1502,7 +1533,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:40" itemprop="dateModified" datetime="2022-12-01T19:32:40+08:00">2022-12-01</time>
     </span>
 
   
@@ -1834,7 +1865,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:40" itemprop="dateModified" datetime="2022-12-01T19:32:40+08:00">2022-12-01</time>
     </span>
 
   
@@ -1956,7 +1987,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:40" itemprop="dateModified" datetime="2022-12-01T19:32:40+08:00">2022-12-01</time>
     </span>
 
   
@@ -2046,7 +2077,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:17" itemprop="dateModified" datetime="2022-11-30T14:20:17+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:40" itemprop="dateModified" datetime="2022-12-01T19:32:40+08:00">2022-12-01</time>
     </span>
 
   
@@ -2134,7 +2165,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-11-30 14:20:18" itemprop="dateModified" datetime="2022-11-30T14:20:18+08:00">2022-11-30</time>
+      <time title="Modified: 2022-12-01 19:32:41" itemprop="dateModified" datetime="2022-12-01T19:32:41+08:00">2022-12-01</time>
     </span>
 
   
