@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:54" itemprop="dateModified" datetime="2022-12-05T21:32:54+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:54" itemprop="dateModified" datetime="2022-12-07T12:26:54+08:00">2022-12-07</time>
     </span>
 
   
@@ -492,7 +492,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:55" itemprop="dateModified" datetime="2022-12-05T21:32:55+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:55" itemprop="dateModified" datetime="2022-12-07T12:26:55+08:00">2022-12-07</time>
     </span>
 
   
@@ -1257,7 +1257,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:55" itemprop="dateModified" datetime="2022-12-05T21:32:55+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:56" itemprop="dateModified" datetime="2022-12-07T12:26:56+08:00">2022-12-07</time>
     </span>
 
   
@@ -1322,6 +1322,37 @@
 
 <h2 id="直接导出构造函数会被-tree-shaking-吗"><a href="#直接导出构造函数会被-tree-shaking-吗" class="headerlink" title="直接导出构造函数会被 tree-shaking 吗"></a>直接导出构造函数会被 tree-shaking 吗</h2><p>看导出的构造函数有没有被使用了</p>
 <h2 id="webpack-打包体积如何减小"><a href="#webpack-打包体积如何减小" class="headerlink" title="webpack 打包体积如何减小?"></a>webpack 打包体积如何减小?</h2><p>chunk 分包,<code>import</code>动态导入,提取公共模块.</p>
+<h2 id="webpack-优化"><a href="#webpack-优化" class="headerlink" title="webpack 优化"></a>webpack 优化</h2><p>在加快构建时间方面，作用最大的是配置 cache，可大大加快二次构建速度。</p>
+<p>在减小打包体积方面，作用最大的是压缩代码、分离重复代码、Tree Shaking，可最大幅度减小打包体积。</p>
+<p>在加快加载速度方面，按需加载、浏览器缓存、CDN 效果都很显著。</p>
+<p>配置持久化 cache</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cache: &#123;</span><br><span class="line">    type: &quot;filesystem&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>压缩代码:</p>
+<ul>
+<li>压缩 js 代码:在 production 模式默认开启压缩.可以在 optimization 的 minimizer 中进行配置</li>
+<li>压缩 html 代码: 在 HtmlWebpackPlugin 中 minify 开启压缩.</li>
+</ul>
+<p>打包的代码加上 hash,实现缓存文件<br>开启 tree Shaking,移除未引用代码(production 默认开启)<br>开启方法: 在 package.json 配置 sideEffects: false(表示都没有副作用,可以清除所有未引用代码),如果有,写个数组[‘*.css’],一般都是 css 文件<br>按照路由拆分代码,实现按需加载</p>
+<p>多页应用实现多入口打包,设置多个 entry 入口,htmlWebpackPlugin 也是多个<br>提取公共模块,也就是分离代码,在 optimization 中设置 splitChunks,</p>
+<p>图片压缩</p>
+<ul>
+<li>使用雪碧图,字体图标, 5k 一下使用 base64 编码<br>使用 cdn</li>
+</ul>
+<p>使用预加载<br>script 标签中 rel&#x3D;”preload”</p>
+<ul>
+<li>DNS 预解析 dns-prefetch</li>
+<li>资源预加载 preload</li>
+<li>预渲染 prerender</li>
+</ul>
+<p>减少重排重绘</p>
+<ul>
+<li>不使用 table 布局</li>
+<li>css 属性读写分离</li>
+<li>样式批量修改</li>
+<li>减少 dom 深度</li>
+<li>将没用的元素设置为不可见 visibility: hidden</li>
+</ul>
 <h2 id="polyfill-按需加载-babel-典型配置"><a href="#polyfill-按需加载-babel-典型配置" class="headerlink" title="polyfill 按需加载 babel 典型配置"></a>polyfill 按需加载 babel 典型配置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">presets</span>: [</span><br><span class="line">    [</span><br><span class="line">      <span class="string">&quot;@babel/preset-env&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">target</span>: &#123;&#125;, <span class="comment">// 适配哪些浏览器,可以写在.browserlistrc</span></span><br><span class="line">        <span class="attr">corejs</span>: <span class="number">3</span>, <span class="comment">// corejs版本</span></span><br><span class="line">        <span class="attr">useBuiltIns</span>: <span class="string">&quot;usage&quot;</span>, <span class="comment">// 按需加载usage,完全加载entry,</span></span><br><span class="line">        <span class="attr">modules</span>: <span class="literal">false</span>, <span class="comment">// 是否将es6转为其他</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="postcss-什么作用"><a href="#postcss-什么作用" class="headerlink" title="postcss 什么作用?"></a>postcss 什么作用?</h2><p>处理 css 兼容性的工具,一般有多种工具,比如<code>autoprefixer</code>处理不同浏览器的前缀.</p>
@@ -1394,6 +1425,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Tom&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">handler</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">get</span>(<span class="params">target, key, receiver</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(key,<span class="string">&#x27;key&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Reflect</span>.<span class="title function_">get</span>(target, key, receiver)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> proxy = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, handler)</span><br></pre></td></tr></table></figure>
 
 <p>receiver 表示代理对象或者继承对象</p>
+<h2 id="Promise-并发控制"><a href="#Promise-并发控制" class="headerlink" title="Promise 并发控制"></a>Promise 并发控制</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义请求函数</span></span><br><span class="line"><span class="keyword">var</span> <span class="title function_">request</span> = (<span class="params">url</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">resolve</span>(<span class="string">`任务<span class="subst">$&#123;url&#125;</span>完成`</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;外部逻辑&quot;</span>, res);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 执行任务</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> urls = [</span><br><span class="line">    <span class="string">&quot;bytedance.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tencent.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;alibaba.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;microsoft.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;apple.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;hulu.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;amazon.com&quot;</span>,</span><br><span class="line">  ]; <span class="comment">// 请求地址</span></span><br><span class="line">  <span class="keyword">let</span> pool = []; <span class="comment">//并发池</span></span><br><span class="line">  <span class="keyword">let</span> max = <span class="number">3</span>; <span class="comment">//最大并发量</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; urls.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> url = urls[i];</span><br><span class="line">    <span class="keyword">let</span> task = <span class="title function_">request</span>(url);</span><br><span class="line">    task.<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">//每当并发池跑完一个任务,从并发池删除个任务</span></span><br><span class="line">      pool.<span class="title function_">splice</span>(pool.<span class="title function_">indexOf</span>(task), <span class="number">1</span>);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;url&#125;</span> 结束，当前并发数：<span class="subst">$&#123;pool.length&#125;</span>`</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 异步队列等待这个同步任务把pool塞满</span></span><br><span class="line">    pool.<span class="title function_">push</span>(task);</span><br><span class="line">    <span class="comment">// 当pool满后,停止循环,执行异步队列中的task,继续循环</span></span><br><span class="line">    <span class="keyword">if</span> (pool.<span class="property">length</span> === max) &#123;</span><br><span class="line">      <span class="comment">//利用Promise.race方法来获得并发池中某任务完成的信号</span></span><br><span class="line">      <span class="comment">//跟await结合当有任务完成才让程序继续执行,让循环把并发池塞满</span></span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;停止循环&quot;</span>);</span><br><span class="line">      <span class="keyword">await</span> <span class="title class_">Promise</span>.<span class="title function_">race</span>(pool);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>();</span><br></pre></td></tr></table></figure>
+
 <h1 id="Node"><a href="#Node" class="headerlink" title="Node"></a>Node</h1><h2 id="node-写过-cli-吗"><a href="#node-写过-cli-吗" class="headerlink" title="node 写过 cli 吗"></a>node 写过 cli 吗</h2><h1 id="简历项目"><a href="#简历项目" class="headerlink" title="简历项目"></a>简历项目</h1><p>在项目中发现首屏加载时间 xx 秒,有很大优化空间,经过研究采用 xx 方案优化到了 xx 秒.提升了 60%性能.</p>
 <p>借鉴 xx 项目中优秀的方案,讲解</p>
 <p>竟可能多说解决方案</p>
@@ -1459,7 +1492,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:55" itemprop="dateModified" datetime="2022-12-05T21:32:55+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:56" itemprop="dateModified" datetime="2022-12-07T12:26:56+08:00">2022-12-07</time>
     </span>
 
   
@@ -1604,7 +1637,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:55" itemprop="dateModified" datetime="2022-12-05T21:32:55+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:56" itemprop="dateModified" datetime="2022-12-07T12:26:56+08:00">2022-12-07</time>
     </span>
 
   
@@ -1707,7 +1740,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:55" itemprop="dateModified" datetime="2022-12-05T21:32:55+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:56" itemprop="dateModified" datetime="2022-12-07T12:26:56+08:00">2022-12-07</time>
     </span>
 
   
@@ -1799,7 +1832,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:56" itemprop="dateModified" datetime="2022-12-05T21:32:56+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:57" itemprop="dateModified" datetime="2022-12-07T12:26:57+08:00">2022-12-07</time>
     </span>
 
   
@@ -2392,7 +2425,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:56" itemprop="dateModified" datetime="2022-12-05T21:32:56+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:57" itemprop="dateModified" datetime="2022-12-07T12:26:57+08:00">2022-12-07</time>
     </span>
 
   
@@ -2610,7 +2643,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:56" itemprop="dateModified" datetime="2022-12-05T21:32:56+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:57" itemprop="dateModified" datetime="2022-12-07T12:26:57+08:00">2022-12-07</time>
     </span>
 
   
@@ -3259,7 +3292,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-05 21:32:56" itemprop="dateModified" datetime="2022-12-05T21:32:56+08:00">2022-12-05</time>
+      <time title="Modified: 2022-12-07 12:26:57" itemprop="dateModified" datetime="2022-12-07T12:26:57+08:00">2022-12-07</time>
     </span>
 
   
