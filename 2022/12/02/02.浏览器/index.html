@@ -20,37 +20,40 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="浏览器从输入 URL 到页面加载的全过程   首先在浏览器中输入 URL 查找缓存：浏览器先查看浏览器缓存-系统缓存-路由缓存中是否有该地址页面，如果有则显示页面内容。如果没有则进行下一步。   浏览器缓存：浏览器会记录 DNS 一段时间，因此，只是第一个地方解析 DNS 请求； 操作系统缓存:如果在浏览器缓存中不包含这个记录，则会使系统调用操作系统， 获取操作系统的记录(保存最近的 DNS 查询">
+    <meta name="description" content="从输入 URL 到页面加载的全过程   首先在浏览器中输入 URL 查找缓存：浏览器先查看浏览器缓存-系统缓存-路由缓存中是否有该地址页面，如果有则显示页面内容。如果没有则进行下一步。   浏览器缓存：浏览器会记录 DNS 一段时间，因此，只是第一个地方解析 DNS 请求； 操作系统缓存:如果在浏览器缓存中不包含这个记录，则会使系统调用操作系统， 获取操作系统的记录(保存最近的 DNS 查询缓存)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2">
-<meta property="og:url" content="http://example.com/2022/12/02/02/index.html">
+<meta property="og:title" content="02.浏览器">
+<meta property="og:url" content="http://example.com/2022/12/02/02.%E6%B5%8F%E8%A7%88%E5%99%A8/index.html">
 <meta property="og:site_name" content="ZAX">
-<meta property="og:description" content="浏览器从输入 URL 到页面加载的全过程   首先在浏览器中输入 URL 查找缓存：浏览器先查看浏览器缓存-系统缓存-路由缓存中是否有该地址页面，如果有则显示页面内容。如果没有则进行下一步。   浏览器缓存：浏览器会记录 DNS 一段时间，因此，只是第一个地方解析 DNS 请求； 操作系统缓存:如果在浏览器缓存中不包含这个记录，则会使系统调用操作系统， 获取操作系统的记录(保存最近的 DNS 查询">
+<meta property="og:description" content="从输入 URL 到页面加载的全过程   首先在浏览器中输入 URL 查找缓存：浏览器先查看浏览器缓存-系统缓存-路由缓存中是否有该地址页面，如果有则显示页面内容。如果没有则进行下一步。   浏览器缓存：浏览器会记录 DNS 一段时间，因此，只是第一个地方解析 DNS 请求； 操作系统缓存:如果在浏览器缓存中不包含这个记录，则会使系统调用操作系统， 获取操作系统的记录(保存最近的 DNS 查询缓存)">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=N3OQj&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578207788-7b060b5f-458e-4519-8013-0146ea4cd9ee.png#averageHue=%23eff6ed&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u70015989&name=iShot2022-12-09%2017.29.44.png&originHeight=324&originWidth=804&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=111357&status=done&style=none&taskId=u6125a3f5-6b64-4757-b3e2-3b421923f99&title=">
 <meta property="og:image" content="http://example.com/%5Bhttps:/p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image%5D(https:/p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image)">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a90660027f0d4c559732519bad4c6323~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=THEl7&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9ef6cb226b374e89914a2315e4ca9ba9~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=sGDPK&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f83cb61cb9de4a65abeb95e50608af48~tplv-k3u1fbpfcp-watermark.awebp#crop=0&crop=0&crop=1&crop=1&id=XwxpW&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
-<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/67b1336692f540c9a81756f93e82c2f5~tplv-k3u1fbpfcp-watermark.image#crop=0&crop=0&crop=1&crop=1&id=fL7g4&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1dc0f577836c4705bb582b2ac15bc5d1~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=wCvBc&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/487144abaada4b9a8b34bc9375191ec7~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=VOzik&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578287476-3cab35ee-5402-48a7-a7f4-7c2aaadecb63.png#averageHue=%23d9e0a0&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u5d982e5b&name=iShot2022-12-09%2017.31.04.png&originHeight=279&originWidth=617&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=114820&status=done&style=none&taskId=u704c06e6-e991-4fbf-acf6-fb03eb1496e&title=">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a90660027f0d4c559732519bad4c6323~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1dc0f577836c4705bb582b2ac15bc5d1~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f83cb61cb9de4a65abeb95e50608af48~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/67b1336692f540c9a81756f93e82c2f5~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578419299-8cb38d0e-823e-4f1d-a670-dfb766e262f2.png#averageHue=%23f2f0df&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=OiETr&name=iShot2022-12-09%2017.33.11.png&originHeight=460&originWidth=929&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=113095&status=done&style=none&taskId=u0c6edec7-0a4e-4f02-87fd-62890931c22&title=">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1dc0f577836c4705bb582b2ac15bc5d1~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578771184-53709d3b-a546-4907-8533-4f7084f9e6f3.png#averageHue=%23efefef&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=535&id=udeb7f05a&name=image.png&originHeight=535&originWidth=706&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=172984&status=done&style=none&taskId=uf894c99c-5cec-4ba4-ade2-6d04bf63708&title=&width=706">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/487144abaada4b9a8b34bc9375191ec7~tplv-k3u1fbpfcp-zoom-1.image">
 <meta property="article:published_time" content="2022-12-02T01:01:56.000Z">
-<meta property="article:modified_time" content="2022-12-09T05:01:32.196Z">
+<meta property="article:modified_time" content="2022-12-09T09:45:50.936Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=N3OQj&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578207788-7b060b5f-458e-4519-8013-0146ea4cd9ee.png#averageHue=%23eff6ed&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u70015989&name=iShot2022-12-09%2017.29.44.png&originHeight=324&originWidth=804&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=111357&status=done&style=none&taskId=u6125a3f5-6b64-4757-b3e2-3b421923f99&title=">
 
 
-<link rel="canonical" href="http://example.com/2022/12/02/02/">
+<link rel="canonical" href="http://example.com/2022/12/02/02.%E6%B5%8F%E8%A7%88%E5%99%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/12/02/02/","path":"2022/12/02/02/","title":"2"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/12/02/02.%E6%B5%8F%E8%A7%88%E5%99%A8/","path":"2022/12/02/02.浏览器/","title":"02.浏览器"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>2 | ZAX</title>
+<title>02.浏览器 | ZAX</title>
   
 
 
@@ -126,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E8%BE%93%E5%85%A5-URL-%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">1.0.1.</span> <span class="nav-text">从输入 URL 到页面加载的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5-URL-%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E5%93%AA%E4%BA%9B%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B6%89%E5%8F%8A%E5%88%B0%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="nav-number">1.0.2.</span> <span class="nav-text">在浏览器中输入 URL 到显示页面经历哪些过程，涉及到哪些协议？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="nav-number">1.0.3.</span> <span class="nav-text">浏览器的主要功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.0.4.</span> <span class="nav-text">浏览器的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.0.5.</span> <span class="nav-text">浏览器的主要组成部分是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93-UI-%E7%9A%84%EF%BC%9F"><span class="nav-number">1.0.6.</span> <span class="nav-text">浏览器是如何渲染 UI 的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-Tree-%E6%98%AF%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E7%9A%84%EF%BC%9F"><span class="nav-number">1.0.7.</span> <span class="nav-text">DOM Tree 是如何构建的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8D%E7%BB%98%E4%B8%8E%E9%87%8D%E6%8E%92%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">1.0.8.</span> <span class="nav-text">浏览器重绘与重排的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91%E9%87%8D%E6%8E%92%E5%92%8C%E9%87%8D%E7%BB%98%EF%BC%9F"><span class="nav-number">1.0.9.</span> <span class="nav-text">如何触发重排和重绘？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E7%BB%98%E6%88%96%E8%80%85%E9%87%8D%E6%8E%92%EF%BC%9F"><span class="nav-number">1.0.10.</span> <span class="nav-text">如何避免重绘或者重排？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E4%B8%8B-304-%E8%BF%87%E7%A8%8B"><span class="nav-number">1.0.11.</span> <span class="nav-text">介绍下 304 过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6-%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98-amp-amp-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="nav-number">1.0.12.</span> <span class="nav-text">浏览器的缓存机制 强制缓存 &amp;&amp; 协商缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie%E3%80%81sessionStorage%E3%80%81localStorage-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.0.13.</span> <span class="nav-text">Cookie、sessionStorage、localStorage 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%8B%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8B"><span class="nav-number">1.0.14.</span> <span class="nav-text">说下进程、线程和协程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.15.</span> <span class="nav-text">进程间的通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B7%E5%BC%8F%E5%85%BC%E5%AE%B9"><span class="nav-number">1.0.16.</span> <span class="nav-text">浏览器样式兼容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81CSS-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">1.0.16.1.</span> <span class="nav-text">一、CSS 初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="nav-number">1.0.16.2.</span> <span class="nav-text">二、浏览器私有属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81CSS-hack%EF%BC%88%E6%9D%A1%E4%BB%B6-hack%E3%80%81%E5%B1%9E%E6%80%A7%E7%BA%A7-hack%E3%80%81%E9%80%89%E6%8B%A9%E7%AC%A6%E7%BA%A7-hack%EF%BC%89"><span class="nav-number">1.0.16.3.</span> <span class="nav-text">三、CSS hack（条件 hack、属性级 hack、选择符级 hack）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">1.0.17.</span> <span class="nav-text">JS 垃圾回收机制</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E8%BE%93%E5%85%A5-URL-%E5%88%B0%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E7%9A%84%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">从输入 URL 到页面加载的全过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5-URL-%E5%88%B0%E6%98%BE%E7%A4%BA%E9%A1%B5%E9%9D%A2%E7%BB%8F%E5%8E%86%E5%93%AA%E4%BA%9B%E8%BF%87%E7%A8%8B%EF%BC%8C%E6%B6%89%E5%8F%8A%E5%88%B0%E5%93%AA%E4%BA%9B%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">在浏览器中输入 URL 到显示页面经历哪些过程，涉及到哪些协议？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">浏览器的主要功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">浏览器的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%BB%E8%A6%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">浏览器的主要组成部分是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%AF%E5%A6%82%E4%BD%95%E6%B8%B2%E6%9F%93-UI-%E7%9A%84%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">浏览器是如何渲染 UI 的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-Tree-%E6%98%AF%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E7%9A%84%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">DOM Tree 是如何构建的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%87%8D%E7%BB%98%E4%B8%8E%E9%87%8D%E6%8E%92%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">浏览器重绘与重排的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91%E9%87%8D%E6%8E%92%E5%92%8C%E9%87%8D%E7%BB%98%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">如何触发重排和重绘？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E9%87%8D%E7%BB%98%E6%88%96%E8%80%85%E9%87%8D%E6%8E%92%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">如何避免重绘或者重排？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E4%B8%8B-304-%E8%BF%87%E7%A8%8B"><span class="nav-number">11.</span> <span class="nav-text">介绍下 304 过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6-%E5%BC%BA%E5%88%B6%E7%BC%93%E5%AD%98-amp-amp-%E5%8D%8F%E5%95%86%E7%BC%93%E5%AD%98"><span class="nav-number">12.</span> <span class="nav-text">浏览器的缓存机制 强制缓存 &amp;&amp; 协商缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie%E3%80%81sessionStorage%E3%80%81localStorage-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">13.</span> <span class="nav-text">Cookie、sessionStorage、localStorage 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E4%B8%8B%E8%BF%9B%E7%A8%8B%E3%80%81%E7%BA%BF%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8B"><span class="nav-number">14.</span> <span class="nav-text">说下进程、线程和协程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-number">15.</span> <span class="nav-text">进程间的通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A0%B7%E5%BC%8F%E5%85%BC%E5%AE%B9"><span class="nav-number">16.</span> <span class="nav-text">浏览器样式兼容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81CSS-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-number">16.1.</span> <span class="nav-text">一、CSS 初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%8F%E8%A7%88%E5%99%A8%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7"><span class="nav-number">16.2.</span> <span class="nav-text">二、浏览器私有属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81CSS-hack%EF%BC%88%E6%9D%A1%E4%BB%B6-hack%E3%80%81%E5%B1%9E%E6%80%A7%E7%BA%A7-hack%E3%80%81%E9%80%89%E6%8B%A9%E7%AC%A6%E7%BA%A7-hack%EF%BC%89"><span class="nav-number">16.3.</span> <span class="nav-text">三、CSS hack（条件 hack、属性级 hack、选择符级 hack）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="nav-number">17.</span> <span class="nav-text">JS 垃圾回收机制</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -139,7 +142,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,7 +190,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/02/02/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/02/02.%E6%B5%8F%E8%A7%88%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -200,12 +203,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="2 | ZAX">
+      <meta itemprop="name" content="02.浏览器 | ZAX">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2
+          02.浏览器
         </h1>
 
         <div class="post-meta-container">
@@ -223,7 +226,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 13:01:32" itemprop="dateModified" datetime="2022-12-09T13:01:32+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 17:45:50" itemprop="dateModified" datetime="2022-12-09T17:45:50+08:00">2022-12-09</time>
     </span>
 
   
@@ -236,7 +239,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><h3 id="从输入-URL-到页面加载的全过程"><a href="#从输入-URL-到页面加载的全过程" class="headerlink" title="从输入 URL 到页面加载的全过程"></a>从输入 URL 到页面加载的全过程</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=N3OQj&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+        <h3 id="从输入-URL-到页面加载的全过程"><a href="#从输入-URL-到页面加载的全过程" class="headerlink" title="从输入 URL 到页面加载的全过程"></a>从输入 URL 到页面加载的全过程</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578207788-7b060b5f-458e-4519-8013-0146ea4cd9ee.png#averageHue=%23eff6ed&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u70015989&name=iShot2022-12-09%2017.29.44.png&originHeight=324&originWidth=804&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=111357&status=done&style=none&taskId=u6125a3f5-6b64-4757-b3e2-3b421923f99&title=" alt="iShot2022-12-09 17.29.44.png"></p>
 <p><img src="/%5Bhttps:/p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image%5D(https:/p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image)" alt="流程"></p>
 <ol>
 <li>首先在浏览器中输入 URL</li>
@@ -263,7 +266,7 @@
 <li>布局（Layout）：计算出每个节点在屏幕中的位置</li>
 <li>绘制（Painting）：即遍历 render 树，并使用 UI 后端层绘制每个节点。</li>
 </ul>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a90660027f0d4c559732519bad4c6323~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=THEl7&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578287476-3cab35ee-5402-48a7-a7f4-7c2aaadecb63.png#averageHue=%23d9e0a0&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=u5d982e5b&name=iShot2022-12-09%2017.31.04.png&originHeight=279&originWidth=617&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=114820&status=done&style=none&taskId=u704c06e6-e991-4fbf-acf6-fb03eb1496e&title=" alt="iShot2022-12-09 17.31.04.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a90660027f0d4c559732519bad4c6323~tplv-k3u1fbpfcp-zoom-1.image" alt="浏览器渲染流程图"></p>
 <ol start="9">
 <li>JS 引擎解析过程：调用 JS 引擎执行 JS 代码（JS 的解释阶段，预处理阶段，执行阶段生成执行上下文，VO，作用域链、回收机制等等）</li>
 </ol>
@@ -290,7 +293,7 @@
 <h3 id="浏览器的主要功能"><a href="#浏览器的主要功能" class="headerlink" title="浏览器的主要功能"></a>浏览器的主要功能</h3><p>浏览器的主要功能就是向服务器发出请求，在浏览器窗口中展示您选择的网络资源。这里所说的资源一般是指 HTML 文档，也可以是 PDF、图片或其他的类型。资源的位置由用户使用 URI（统一资源标示符）指定。</p>
 <h3 id="浏览器的工作原理"><a href="#浏览器的工作原理" class="headerlink" title="浏览器的工作原理"></a>浏览器的工作原理</h3><p>渲染引擎一开始会从网络层获取请求文档的内容，内容的大小一般限制在 8000 个块以内。</p>
 <p>然后进行如下所示的基本流程：</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9ef6cb226b374e89914a2315e4ca9ba9~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=sGDPK&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1dc0f577836c4705bb582b2ac15bc5d1~tplv-k3u1fbpfcp-zoom-1.image" alt="2019-06-22-11-48-00"></p>
 <p>图：渲染引擎的基本流程。</p>
 <p>渲染引擎将开始<code>解析 HTML 文档</code>，并将各标记逐个转化成“内容树”上的  <a href="https://link.juejin.cn/?target=https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/%23DOM">DOM</a>  节点。同时也会<code>解析外部 CSS 文件以及样式元素中的样式数据</code>。HTML 中这些带有视觉指令的样式信息将用于创建另一个树结构：<code>[渲染树](https://link.juejin.cn?target=https%3A%2F%2Fwww.html5rocks.com%2Fzh%2Ftutorials%2Finternals%2Fhowbrowserswork%2F%23Render_tree_construction)</code>。</p>
 <p>渲染树包含多个带有视觉属性（如颜色和尺寸）的矩形。这些矩形的排列顺序就是它们将在屏幕上显示的顺序。</p>
@@ -303,9 +306,9 @@
 <li><strong>网络</strong> - 用于网络调用，比如 HTTP 请求。其接口与平台无关，并为所有平台提供底层实现。</li>
 <li><strong>用户界面后端</strong> - 用于绘制基本的窗口小部件，比如组合框和窗口。其公开了与平台无关的通用接口，而在底层使用操作系统的用户界面方法。</li>
 <li><strong>JavaScript 解释器</strong>。用于解析和执行 JavaScript 代码。</li>
-<li><strong>数据存储</strong>。这是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie。新的 HTML 规范 (HTML5) 定义了“网络数据库”，这是一个完整（但是轻便）的浏览器内数据库。<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f83cb61cb9de4a65abeb95e50608af48~tplv-k3u1fbpfcp-watermark.awebp#crop=0&crop=0&crop=1&crop=1&id=XwxpW&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title="></li>
+<li><strong>数据存储</strong>。这是持久层。浏览器需要在硬盘上保存各种数据，例如 Cookie。新的 HTML 规范 (HTML5) 定义了“网络数据库”，这是一个完整（但是轻便）的浏览器内数据库。</li>
 </ol>
-<p>图：浏览器的主要组件。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f83cb61cb9de4a65abeb95e50608af48~tplv-k3u1fbpfcp-watermark.awebp"><br>图：浏览器的主要组件。</p>
 <p>值得注意的是，和大多数浏览器不同，Chrome 浏览器的每个标签页都分别对应一个呈现引擎实例。每个标签页都是一个独立的进程。</p>
 <h3 id="浏览器是如何渲染-UI-的？"><a href="#浏览器是如何渲染-UI-的？" class="headerlink" title="浏览器是如何渲染 UI 的？"></a>浏览器是如何渲染 UI 的？</h3><ol>
 <li>浏览器获取 HTML 文件，然后对文件进行解析，形成 DOM Tree</li>
@@ -314,14 +317,14 @@
 <li>接着进入布局（Layout）阶段，也就是为每个节点分配一个应出现在屏幕上的确切坐标</li>
 <li>随后调用 GPU 进行绘制（Paint），遍历 Render Tree 的节点，并将元素呈现出来</li>
 </ol>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/67b1336692f540c9a81756f93e82c2f5~tplv-k3u1fbpfcp-watermark.image#crop=0&crop=0&crop=1&crop=1&id=fL7g4&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/67b1336692f540c9a81756f93e82c2f5~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
 <h3 id="DOM-Tree-是如何构建的？"><a href="#DOM-Tree-是如何构建的？" class="headerlink" title="DOM Tree 是如何构建的？"></a>DOM Tree 是如何构建的？</h3><ol>
 <li>转码: 浏览器将接收到的二进制数据按照指定编码格式转化为 HTML 字符串</li>
 <li>生成 Tokens: 之后开始 parser，浏览器会将 HTML 字符串解析成 Tokens</li>
 <li>构建 Nodes: 对 Node 添加特定的属性，通过指针确定 Node 的父、子、兄弟关系和所属 treeScope</li>
 <li>生成 DOM Tree: 通过 node 包含的指针确定的关系构建出 DOM<br>Tree</li>
 </ol>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1dc0f577836c4705bb582b2ac15bc5d1~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=wCvBc&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578419299-8cb38d0e-823e-4f1d-a670-dfb766e262f2.png#averageHue=%23f2f0df&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=ui&id=OiETr&name=iShot2022-12-09%2017.33.11.png&originHeight=460&originWidth=929&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=113095&status=done&style=none&taskId=u0c6edec7-0a4e-4f02-87fd-62890931c22&title=" alt="iShot2022-12-09 17.33.11.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1dc0f577836c4705bb582b2ac15bc5d1~tplv-k3u1fbpfcp-zoom-1.image" alt="2019-06-22-11-48-00"></p>
 <h3 id="浏览器重绘与重排的区别？"><a href="#浏览器重绘与重排的区别？" class="headerlink" title="浏览器重绘与重排的区别？"></a>浏览器重绘与重排的区别？</h3><ul>
 <li><code>重排/回流（Reflow）</code>：当<code>DOM</code>的变化影响了元素的几何信息，浏览器需要重新计算元素的几何属性，将其安放在界面中的正确位置，这个过程叫做重排。表现为重新生成布局，重新排列元素。</li>
 <li><code>重绘(Repaint)</code>: 当一个元素的外观发生改变，但没有改变布局,重新把元素外观绘制出来的过程，叫做重绘。表现为某些元素的外观被改变</li>
@@ -364,7 +367,7 @@
 <li>c. 协商缓存 Last-Modify&#x2F;If-Modify-Since 阶段，客户端第一次请求资源时，服务服返回的 header 中会加上 Last-Modify，Last-modify 是一个时间标识该资源的最后修改时间。再次请求该资源时，request 的请求头中会包含 If-Modify-Since，该值为缓存之前返回的 Last-Modify。服务器收到 If-Modify-Since 后，根据资源的最后修改时间判断是否命中缓存。</li>
 </ul>
 <h3 id="浏览器的缓存机制-强制缓存-amp-amp-协商缓存"><a href="#浏览器的缓存机制-强制缓存-amp-amp-协商缓存" class="headerlink" title="浏览器的缓存机制 强制缓存 &amp;&amp; 协商缓存"></a>浏览器的缓存机制 强制缓存 &amp;&amp; 协商缓存</h3><p>浏览器与服务器通信的方式为应答模式，即是：浏览器发起 HTTP 请求 – 服务器响应该请求。那么浏览器第一次向服务器发起该请求后拿到请求结果，会根据响应报文中 HTTP 头的缓存标识，决定是否缓存结果，是则将请求结果和缓存标识存入浏览器缓存中，简单的过程如下图：</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/487144abaada4b9a8b34bc9375191ec7~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=VOzik&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578771184-53709d3b-a546-4907-8533-4f7084f9e6f3.png#averageHue=%23efefef&clientId=u17b43133-bb0d-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=535&id=udeb7f05a&name=image.png&originHeight=535&originWidth=706&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=172984&status=done&style=none&taskId=uf894c99c-5cec-4ba4-ade2-6d04bf63708&title=&width=706" alt="image.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/487144abaada4b9a8b34bc9375191ec7~tplv-k3u1fbpfcp-zoom-1.image" alt="图片"></p>
 <p>由上图我们可以知道：</p>
 <ul>
 <li>浏览器每次发起请求，都会<code>先在浏览器缓存中查找该请求的结果以及缓存标识</code></li>

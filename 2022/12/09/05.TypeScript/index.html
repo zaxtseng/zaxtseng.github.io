@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1、什么是 TypeScript？TypeScript 是 JavaScript 的加强版，它给 JavaScript 添加了可选的静态类型和基于类的面向对象编程，它拓展了 JavaScript 的语法。 而且 TypeScript 不存在跟浏览器不兼容的问题，因为在编译时，它产生的都是 JavaScript 代码。 2、TypeScript 和 JavaScript 的区别是什么？Typescr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="05.TypeScript">
+<meta property="og:url" content="http://example.com/2022/12/09/05.TypeScript/index.html">
+<meta property="og:site_name" content="ZAX">
+<meta property="og:description" content="1、什么是 TypeScript？TypeScript 是 JavaScript 的加强版，它给 JavaScript 添加了可选的静态类型和基于类的面向对象编程，它拓展了 JavaScript 的语法。 而且 TypeScript 不存在跟浏览器不兼容的问题，因为在编译时，它产生的都是 JavaScript 代码。 2、TypeScript 和 JavaScript 的区别是什么？Typescr">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-09T09:40:26.000Z">
+<meta property="article:modified_time" content="2022-12-09T09:45:50.604Z">
+<meta property="article:author" content="Zax Tseng">
+<meta property="article:tag" content="javascript, React, Vue, HTML5">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/12/09/05.TypeScript/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/12/09/05.TypeScript/","path":"2022/12/09/05.TypeScript/","title":"05.TypeScript"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>05.TypeScript | ZAX</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">ZAX</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-TypeScript%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1、什么是 TypeScript？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81TypeScript-%E5%92%8C-JavaScript-%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">2、TypeScript 和 JavaScript 的区别是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeScript-%E5%92%8C-JavaScript-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.</span> <span class="nav-text">TypeScript 和 JavaScript 的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E4%B8%8D%E5%90%8C%E7%82%B9%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">主要不同点如下：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8-TypeScript-%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">3. 为什么要用 TypeScript ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81TypeScript-%E5%92%8C-JavaScript-%E5%93%AA%E4%B8%AA%E6%9B%B4%E5%A5%BD%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">4、TypeScript 和 JavaScript 哪个更好？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%9B%E5%9E%8B%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">5、什么是泛型？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81TS-%E4%B8%AD%E7%9A%84%E7%B1%BB"><span class="nav-number">7.</span> <span class="nav-text">6、TS 中的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%EF%BC%8C%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">7、什么是构造函数，构造函数作用是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8%E3%80%81%E5%AE%9E%E4%BE%8B%E5%8C%96%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">8、实例化是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9%E3%80%81%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">9、方法重写是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%AF%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="nav-number">11.</span> <span class="nav-text">10、什么是可索引类型接口？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0%E7%B1%BB%E5%9E%8B%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="nav-number">12.</span> <span class="nav-text">11、什么是函数类型接口？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E7%B1%BB%E5%9E%8B%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="nav-number">13.</span> <span class="nav-text">12、什么是类类型接口？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%B7%B7%E5%90%88%E7%B1%BB%E5%9E%8B%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">13、什么是混合类型接口？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14%E3%80%81never-%E5%92%8C-void-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">15.</span> <span class="nav-text">14、never 和 void 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15%E3%80%81TS-%E7%9A%84%E5%AD%A6%E5%89%8D%E5%9F%BA%E7%A1%80%EF%BC%9F"><span class="nav-number">16.</span> <span class="nav-text">15、TS 的学前基础？</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zax Tseng</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/09/05.TypeScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="05.TypeScript | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          05.TypeScript
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-09 17:40:26 / Modified: 17:45:50" itemprop="dateCreated datePublished" datetime="2022-12-09T17:40:26+08:00">2022-12-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="1、什么是-TypeScript？"><a href="#1、什么是-TypeScript？" class="headerlink" title="1、什么是 TypeScript？"></a>1、什么是 TypeScript？</h2><p>TypeScript 是 JavaScript 的加强版，它给 JavaScript 添加了可选的静态类型和基于类的面向对象编程，它拓展了 JavaScript 的语法。</p>
+<p>而且 TypeScript 不存在跟浏览器不兼容的问题，因为在编译时，它产生的都是 JavaScript 代码。</p>
+<h2 id="2、TypeScript-和-JavaScript-的区别是什么？"><a href="#2、TypeScript-和-JavaScript-的区别是什么？" class="headerlink" title="2、TypeScript 和 JavaScript 的区别是什么？"></a>2、TypeScript 和 JavaScript 的区别是什么？</h2><p>Typescript 是 JavaScript 的超集，可以被编译成 JavaScript 代码。 用 JavaScript 编写的合法代码，在 TypeScript 中依然有效。Typescript 是纯面向对象的编程语言，包含类和接口的概念。 程序员可以用它来编写面向对象的服务端或客户端程序，并将它们编译成 JavaScript 代码。</p>
+<h2 id="TypeScript-和-JavaScript-的关系"><a href="#TypeScript-和-JavaScript-的关系" class="headerlink" title="TypeScript 和 JavaScript 的关系"></a>TypeScript 和 JavaScript 的关系</h2><p>TypeScript 引入了很多面向对象程序设计的特征，包括：</p>
+<p>interfaces   接口<br>classes   类<br>enumerated types 枚举类型<br>generics 泛型<br>modules 模块</p>
+<h3 id="主要不同点如下："><a href="#主要不同点如下：" class="headerlink" title="主要不同点如下："></a>主要不同点如下：</h3><p>TS 是一种面向对象编程语言，而 JS 是一种脚本语言（尽管 JS 是基于对象的）。<br>TS 支持可选参数， JS 则不支持该特性。<br>TS 支持静态类型，JS 不支持。<br>TS 支持接口，JS 不支持接口。</p>
+<h2 id="3-为什么要用-TypeScript-？"><a href="#3-为什么要用-TypeScript-？" class="headerlink" title="3. 为什么要用 TypeScript ？"></a>3. 为什么要用 TypeScript ？</h2><p>TS 在开发时就能给出编译错误， 而 JS 错误则需要在运行时才能暴露。<br>作为强类型语言，你可以明确知道数据的类型。代码可读性极强，几乎每个人都能理解。<br>TS 非常流行，被很多业界大佬使用。像 Asana、Circle CI 和 Slack 这些公司都在用 TS。</p>
+<h2 id="4、TypeScript-和-JavaScript-哪个更好？"><a href="#4、TypeScript-和-JavaScript-哪个更好？" class="headerlink" title="4、TypeScript 和 JavaScript 哪个更好？"></a>4、TypeScript 和 JavaScript 哪个更好？</h2><p>由于 TS 的先天优势，TS 越来越受欢迎。但是 TS 最终不可能取代 JS，因为 JS 是 TS 的核心。</p>
+<p>选择 TypeScript 还是 JavaScript 要由开发者自己去做决定。如果你喜欢类型安全的语言，那么推荐你选择 TS。 如果你已经用 JS 好久了，你可以选择走出舒适区学习 TS，也可以选择坚持自己的强项，继续使用 JS。</p>
+<h2 id="5、什么是泛型？"><a href="#5、什么是泛型？" class="headerlink" title="5、什么是泛型？"></a>5、什么是泛型？</h2><p>泛型是指在定义函数、接口或类的时候，不预先指定具体的类型，使用时再去指定类型的一种特性。<br>可以把泛型理解为代表类型的参数<br>&#x2F;&#x2F; 我们希望传入的值是什么类型，返回的值就是什么类型<br>&#x2F;&#x2F; 传入的值可以是任意的类型，这时候就可以用到 泛型</p>
+<p>&#x2F;&#x2F; 如果使用 any 的话，就失去了类型检查的意义</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createArray1</span>(<span class="params">length: <span class="built_in">any</span>, value: <span class="built_in">any</span></span>): <span class="title class_">Array</span>&lt;<span class="built_in">any</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">result</span>: <span class="built_in">any</span> = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    result[i] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> result = <span class="title function_">createArray1</span>(<span class="number">3</span>, <span class="string">&quot;x&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 最傻的写法：每种类型都得定义一种函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createArray2</span>(<span class="params">length: <span class="built_in">number</span>, value: <span class="built_in">string</span></span>): <span class="title class_">Array</span>&lt;<span class="built_in">string</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">result</span>: <span class="title class_">Array</span>&lt;<span class="built_in">string</span>&gt; = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    result[i] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createArray3</span>(<span class="params">length: <span class="built_in">number</span>, value: <span class="built_in">number</span></span>): <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">result</span>: <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt; = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    result[i] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或者使用函数重载，写法有点麻烦</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createArray4</span>(<span class="params">length: <span class="built_in">number</span>, value: <span class="built_in">number</span></span>): <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createArray4</span>(<span class="params">length: <span class="built_in">number</span>, value: <span class="built_in">string</span></span>): <span class="title class_">Array</span>&lt;<span class="built_in">string</span>&gt;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createArray4</span>(<span class="params">length: <span class="built_in">number</span>, value: <span class="built_in">any</span></span>): <span class="title class_">Array</span>&lt;<span class="built_in">any</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">result</span>: <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt; = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    result[i] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">createArray4</span>(<span class="number">6</span>, <span class="string">&quot;666&quot;</span>);</span><br><span class="line"><span class="comment">//使用泛型</span></span><br><span class="line"><span class="comment">// 有关联的地方都改成 &lt;T&gt;</span></span><br><span class="line"><span class="keyword">function</span> createArray&lt;T&gt;(<span class="attr">length</span>: <span class="built_in">number</span>, <span class="attr">value</span>: T): <span class="title class_">Array</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="attr">result</span>: T[] = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">    result[i] = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用的时候再指定类型</span></span><br><span class="line"><span class="keyword">let</span> result = createArray&lt;<span class="built_in">string</span>&gt;(<span class="number">3</span>, <span class="string">&quot;x&quot;</span>);</span><br><span class="line"><span class="comment">// 也可以不指定类型，TS 会自动类型推导</span></span><br><span class="line"><span class="keyword">let</span> result2 = <span class="title function_">createArray</span>(<span class="number">3</span>, <span class="string">&quot;x&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+<h2 id="6、TS-中的类"><a href="#6、TS-中的类" class="headerlink" title="6、TS 中的类"></a>6、TS 中的类</h2><p>TypeScript 是面向对象的 JavaScript。而其中的类描述了所创建的对象共同的属性和方法。</p>
+<p>传统的 JavaScript 程序使用函数和基于原型的继承来创建可重用的组件，但这对于熟悉使用面向对象方式的程序员来说有些棘手，因为他们用的是基于类的继承并且对象是从类构建出来的。</p>
+<p>从 ECMAScript 2015，也就是 ECMAScript 6，JavaScript 程序将可以使用这种基于类的面向对象方法。在 TypeScript 里允许开发者现在就使用这些特性，并且编译后的 JavaScript 可以在所有主流浏览器和平台上运行，</p>
+<h2 id="7、什么是构造函数，构造函数作用是什么？"><a href="#7、什么是构造函数，构造函数作用是什么？" class="headerlink" title="7、什么是构造函数，构造函数作用是什么？"></a>7、什么是构造函数，构造函数作用是什么？</h2><p>构造函数 ，是一种特殊的方法。主要用来在创建对象时初始化对象， 即为对象成员变量赋初始值，总与 new 运算符一起使用在创建对象的语句中。而 TypeScript 的构造函数用关键字 constructor 来实现。可以通过 this（和 java&#x2F;C#一样代表对象实例的成员访问）关键字来访问当前类体中的属性和方法。</p>
+<h2 id="8、实例化是什么？"><a href="#8、实例化是什么？" class="headerlink" title="8、实例化是什么？"></a>8、实例化是什么？</h2><p>一般情况下，创建一个类后并不能直接的对属性和方法进行引用，必须对类进行实例化，即创建一个对象。TypeScript 中用 new 关键字创建对象。实例化后通过“.”来访问属性和方法</p>
+<h2 id="9、方法重写是什么？"><a href="#9、方法重写是什么？" class="headerlink" title="9、方法重写是什么？"></a>9、方法重写是什么？</h2><p>子类可继承父类中的方法，而不需要重新编写相同的方法。但有时子类并不想原封不动地继承父类的方法，而是想作一定的修改，这就需要采用方法的重写</p>
+<p>重写的作用在于子类可以根据需要，定义特定于自己的行为。也就是说子类能够根据需要实现父类的方法。</p>
+<h2 id="10、什么是可索引类型接口？"><a href="#10、什么是可索引类型接口？" class="headerlink" title="10、什么是可索引类型接口？"></a>10、什么是可索引类型接口？</h2><p>一般用来约束数组和对象</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数字索引——约束数组</span></span><br><span class="line"><span class="comment">// index 是随便取的名字，可以任意取名</span></span><br><span class="line"><span class="comment">// 只要 index 的类型是 number，那么值的类型必须是 string</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">StringArray</span> &#123;</span><br><span class="line">  <span class="comment">// key 的类型为 number ，一般都代表是数组</span></span><br><span class="line">  <span class="comment">// 限制 value 的类型为 string</span></span><br><span class="line">  [<span class="attr">index</span>: <span class="built_in">number</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">arr</span>: <span class="title class_">StringArray</span> = [<span class="string">&quot;aaa&quot;</span>, <span class="string">&quot;bbb&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串索引——约束对象</span></span><br><span class="line"><span class="comment">// 只要 index 的类型是 string，那么值的类型必须是 string</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">StringObject</span> &#123;</span><br><span class="line">  <span class="comment">// key 的类型为 string ，一般都代表是对象</span></span><br><span class="line">  <span class="comment">// 限制 value 的类型为 string</span></span><br><span class="line">  [<span class="attr">index</span>: <span class="built_in">string</span>]: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">obj</span>: <span class="title class_">StringObject</span> = &#123; <span class="attr">name</span>: <span class="string">&quot;ccc&quot;</span> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="11、什么是函数类型接口？"><a href="#11、什么是函数类型接口？" class="headerlink" title="11、什么是函数类型接口？"></a>11、什么是函数类型接口？</h2><p>对方法传入的参数和返回值进行约束</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意区别</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 普通的接口</span></span><br><span class="line"><span class="keyword">interface</span> discount1 &#123;</span><br><span class="line">  <span class="attr">getNum</span>: <span class="function">(<span class="params">price: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数类型接口</span></span><br><span class="line"><span class="keyword">interface</span> discount2 &#123;</span><br><span class="line">  <span class="comment">// 注意:</span></span><br><span class="line">  <span class="comment">// “:” 前面的是函数的签名，用来约束函数的参数</span></span><br><span class="line">  <span class="comment">// &quot;:&quot; 后面的用来约束函数的返回值</span></span><br><span class="line">  (<span class="attr">price</span>: <span class="built_in">number</span>): <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">cost</span>: discount2 = <span class="keyword">function</span> (<span class="params">price: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> price * <span class="number">0.8</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可以使用类型别名</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Add</span> = <span class="function">(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">number</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">add</span>: <span class="title class_">Add</span> = <span class="function">(<span class="params">a: <span class="built_in">number</span>, b: <span class="built_in">number</span></span>) =&gt;</span> a + b;</span><br></pre></td></tr></table></figure>
+
+<h2 id="12、什么是类类型接口？"><a href="#12、什么是类类型接口？" class="headerlink" title="12、什么是类类型接口？"></a>12、什么是类类型接口？</h2><p>如果接口用于一个类的话，那么接口会表示“行为的抽象”<br>对类的约束，让类去实现接口，类可以实现多个接口<br>接口只能约束类的公有成员（实例属性&#x2F;方法），无法约束私有成员、构造函数、静态属性&#x2F;方法</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口可以在面向对象编程中表示为行为的抽象</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Speakable</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// &quot;:&quot; 前面的是函数签名，用来约束函数的参数</span></span><br><span class="line">  <span class="comment">// &quot;:&quot; 后面的用来约束函数的返回值</span></span><br><span class="line">  <span class="title function_">speak</span>(<span class="attr">words</span>: <span class="built_in">string</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Speakable2</span> &#123;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dog</span> <span class="keyword">implements</span> <span class="title class_">Speakable</span>, <span class="title class_">Speakable2</span> &#123;</span><br><span class="line">  name!: <span class="built_in">string</span>;</span><br><span class="line">  age = <span class="number">18</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">speak</span>(<span class="params">words: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(words);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dog = <span class="keyword">new</span> <span class="title class_">Dog</span>();</span><br><span class="line">dog.<span class="title function_">speak</span>(<span class="string">&quot;汪汪汪&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="13、什么是混合类型接口？"><a href="#13、什么是混合类型接口？" class="headerlink" title="13、什么是混合类型接口？"></a>13、什么是混合类型接口？</h2><p>一个对象可以同时做为函数和对象使用</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">FnType</span> &#123;</span><br><span class="line">  (<span class="attr">getName</span>: <span class="built_in">string</span>): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">MixedType</span> <span class="keyword">extends</span> <span class="title class_">FnType</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Counter</span> &#123;</span><br><span class="line">  (<span class="attr">start</span>: <span class="built_in">number</span>): <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">interval</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="title function_">reset</span>(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getCounter</span>(<span class="params"></span>): <span class="title class_">Counter</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> counter = &lt;<span class="title class_">Counter</span>&gt;<span class="keyword">function</span> (<span class="params">start: <span class="built_in">number</span></span>) &#123;&#125;;</span><br><span class="line">  counter.<span class="property">interval</span> = <span class="number">123</span>;</span><br><span class="line">  counter.<span class="property">reset</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line">  <span class="keyword">return</span> counter;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = <span class="title function_">getCounter</span>();</span><br><span class="line"><span class="title function_">c</span>(<span class="number">10</span>);</span><br><span class="line">c.<span class="title function_">reset</span>();</span><br><span class="line">c.<span class="property">interval</span> = <span class="number">5.0</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="14、never-和-void-的区别？"><a href="#14、never-和-void-的区别？" class="headerlink" title="14、never 和 void 的区别？"></a>14、never 和 void 的区别？</h2><p>void 表示没有任何类型（可以被赋值为 null 和 undefined）。<br>never 表示一个不包含值的类型，即表示永远不存在的值。<br>拥有 void 返回值类型的函数能正常运行。拥有 never 返回值类型的函数无法正常返回，无法终止，或会抛出异常。</p>
+<h2 id="15、TS-的学前基础？"><a href="#15、TS-的学前基础？" class="headerlink" title="15、TS 的学前基础？"></a>15、TS 的学前基础？</h2><p>因为 TypeScript 是对 JavaScript 的扩展，更准确的说是 ECMAScript。所以，我们学习我们这套 TypeScript 的课程，需要具备 ECMAScript 语言的基础：</p>
+<p>熟悉语法基础（变量、语句、函数等基础概念）<br>掌握内置对象（Array、Date 等）的使用<br>面向对象基本概念（构造函数、原型、继承）</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/09/axios%E5%92%8Cfetch/" rel="prev" title="axios和fetch">
+                  <i class="fa fa-chevron-left"></i> axios和fetch
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zax Tseng</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
