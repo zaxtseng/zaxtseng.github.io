@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,133 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/14/VueX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/09/14/VueX/" class="post-title-link" itemprop="url">Vuex</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-09-14 21:38:29" itemprop="dateCreated datePublished" datetime="2019-09-14T21:38:29+08:00">2019-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-09 10:57:47" itemprop="dateModified" datetime="2022-12-09T10:57:47+08:00">2022-12-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Vuex-介绍"><a href="#Vuex-介绍" class="headerlink" title="Vuex 介绍"></a>Vuex 介绍</h1><p>每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的**状态(state)**。Vuex 和单纯的全局对象有以下两点不同：</p>
+<ol>
+<li>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
+<li>不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交**(commit)mutation**。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
+</ol>
+<p>我的理解: Vuex 相当于一个扩展板的<code>bus</code>中介.起步虽相似,但功能更丰富.</p>
+<h2 id="Vuex-之-store"><a href="#Vuex-之-store" class="headerlink" title="Vuex 之 store"></a>Vuex 之 store</h2><p>起步: 安装,引入,<code>use</code>,创建状态仓库.在 Vue 实例中注入(把 store 写进去).一条龙服务.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建仓库格式</span></span><br><span class="line"><span class="keyword">var</span> store = <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">    <span class="attr">state</span>: &#123;</span><br><span class="line">        <span class="comment">//定义你的状态</span></span><br><span class="line">        <span class="attr">XXX</span>: xxx</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">mutations</span>: &#123;</span><br><span class="line">        <span class="comment">//在此处定义状态改变的方法</span></span><br><span class="line">        <span class="title function_">increase</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">num</span> ++</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title function_">decrease</span>(<span class="params">state</span>)&#123;</span><br><span class="line">            state.<span class="property">num</span> --</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">actions</span>: &#123;</span><br><span class="line">        <span class="comment">//actions中传递的不再是state,而是context</span></span><br><span class="line">        <span class="title function_">increaseAction</span>(<span class="params">context</span>)&#123;</span><br><span class="line">            <span class="comment">//actions中只能对mutations中的方法进行操作</span></span><br><span class="line">            context.<span class="title function_">commit</span>(<span class="string">&#x27;increase&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>mutations 改变状态:</p>
+</blockquote>
+<p>直接通过<code>this.$store.state.XXX</code>拿到状态</p>
+<p>在 methods 中.定义一个函数通过<code>this.$store.commit(&#39;xxx&#39;)</code>方法触发状态变更</p>
+<blockquote>
+<p>actions 改变状态:</p>
+</blockquote>
+<p>通过<code>this.$store.dispatch(xxx)</code>调用</p>
+<p>二者区别:</p>
+<ol>
+<li>传入参数不同,mutations 传入<code>state</code>.actions 传入<code>context</code></li>
+<li>调用方式不同,前者<code>this.$store.commit(&#39;xxx&#39;)</code>.后者<code>this.$store.dispatch(xxx)</code></li>
+<li>函数要求不同.mutations 中只能有同步操作,actions 中可以有异步操作.</li>
+</ol>
+<h2 id="getters"><a href="#getters" class="headerlink" title="getters"></a>getters</h2><p>有时需要对 mutations 处理后的 state 进行处理.</p>
+<p>可以当做 vuex 的计算属性(computed).</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">getters</span>: &#123;</span><br><span class="line">    <span class="title function_">getNum</span>(<span class="params">state</span>)&#123;</span><br><span class="line">        <span class="comment">//因为要处理state,自然传入state</span></span><br><span class="line">        <span class="keyword">return</span> state.<span class="property">num</span> &gt; <span class="number">0</span> ? state.<span class="property">num</span> : <span class="number">0</span></span><br><span class="line">        <span class="comment">//这里是防止一直减出现负数进行的处理</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取状态也就改为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在组件中</span></span><br><span class="line"><span class="attr">computed</span>: &#123;</span><br><span class="line">    <span class="title function_">getCount</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="comment">//return this.$store.state.num</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">getters</span>.<span class="property">getNum</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Vuex-状态管理流程"><a href="#Vuex-状态管理流程" class="headerlink" title="Vuex 状态管理流程"></a>Vuex 状态管理流程</h1><p>view–&gt;actions–&gt;mutations–&gt;state–&gt;view</p>
+<h1 id="新增"><a href="#新增" class="headerlink" title="新增"></a>新增</h1><p>VueX 中</p>
+<p><code>state</code>相当于<code>data</code></p>
+<p><code>getter</code>相当于<code>computed</code></p>
+<p><code>mutation</code>相当于<code>methods</code></p>
+<p><code>action</code>是异步的<code>mutation</code></p>
+<p><code>module</code>模块将上述进行封装分块</p>
+<h2 id="mapState-和-mapGetters"><a href="#mapState-和-mapGetters" class="headerlink" title="mapState 和 mapGetters"></a>mapState 和 mapGetters</h2><p><code>mapState</code>辅助函数仅仅是将 store 中的<code>getter</code>映射到局部计算属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...<span class="title class_">Vuex</span>.<span class="title function_">mapState</span>([<span class="string">&#x27;firstName&#x27;</span>, <span class="string">&#x27;lastName&#x27;</span>])</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="title function_">firstName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">state</span>.<span class="property">firstName</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">lastName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">state</span>.<span class="property">lastName</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">..<span class="property">Vuex</span>.<span class="title function_">mapGetters</span>([<span class="string">&#x27;fullName&#x27;</span>])</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line"><span class="title function_">fullName</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">$store</span>.<span class="property">getters</span>.<span class="property">fullName</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>store.commit(&#39;xxFirstName&#39;, &#39;jirengu&#39;)</code></p>
+<p>提交 mutation 中 xxFirstName 的方法。</p>
+<p>第一个参数是 state 中有的，后添加的 jirengu 是载荷<code>payload</code>。</p>
+<h2 id="提交载荷（payload）"><a href="#提交载荷（payload）" class="headerlink" title="提交载荷（payload）"></a>提交载荷（payload）</h2><p>向<code>store.commit</code>传入额外参数，即<code>mutation</code>的载荷</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mutations</span>:&#123;</span><br><span class="line">increment (state, payload)&#123;</span><br><span class="line">state.<span class="property">count</span> += payload.<span class="property">amount</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">store.<span class="title function_">commit</span>(<span class="string">&#x27;increment&#x27;</span>, &#123;</span><br><span class="line"><span class="attr">amount</span>: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>actions 中传入第一个参数是<code>context</code>，第二个是<code>payload</code></p>
+<p>触发 action</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.<span class="title function_">dispatch</span>(<span class="string">&quot;increment&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="moudle-模块化"><a href="#moudle-模块化" class="headerlink" title="moudle(模块化)"></a>moudle(模块化)</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> moduleA = &#123;</span><br><span class="line">  <span class="attr">state</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">getters</span>: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> moduleB = &#123;</span><br><span class="line">  <span class="attr">state</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">mutations</span>: &#123; ... &#125;,</span><br><span class="line">  <span class="attr">actions</span>: &#123; ... &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    <span class="attr">a</span>: moduleA,</span><br><span class="line">    <span class="attr">b</span>: moduleB</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">store.<span class="property">state</span>.<span class="property">a</span> <span class="comment">// -&gt; moduleA 的状态</span></span><br><span class="line">store.<span class="property">state</span>.<span class="property">b</span> <span class="comment">// -&gt; moduleB 的状态</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/14/VueRouter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +335,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:03" itemprop="dateModified" datetime="2022-12-09T10:56:03+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:46" itemprop="dateModified" datetime="2022-12-09T10:57:46+08:00">2022-12-09</time>
     </span>
 
   
@@ -396,7 +523,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:59" itemprop="dateModified" datetime="2022-12-09T10:55:59+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:42" itemprop="dateModified" datetime="2022-12-09T10:57:42+08:00">2022-12-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -686,7 +813,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:03" itemprop="dateModified" datetime="2022-12-09T10:56:03+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:46" itemprop="dateModified" datetime="2022-12-09T10:57:46+08:00">2022-12-09</time>
     </span>
 
   
@@ -841,7 +968,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:03" itemprop="dateModified" datetime="2022-12-09T10:56:03+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:46" itemprop="dateModified" datetime="2022-12-09T10:57:46+08:00">2022-12-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">

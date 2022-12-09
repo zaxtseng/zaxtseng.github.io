@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,208 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/mangoDB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/08/mangoDB/" class="post-title-link" itemprop="url">mangoDB</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-08 17:07:43" itemprop="dateCreated datePublished" datetime="2022-11-08T17:07:43+08:00">2022-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-09 10:57:39" itemprop="dateModified" datetime="2022-12-09T10:57:39+08:00">2022-12-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h1><p>不仅仅是 SQL,即非关系型数据库.</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
+<li>键值数据库(Redis,Flare)</li>
+</ol>
+<p>拥有极高的读写性能,用于处理大量数据的高访问负载,例如日志系统.</p>
+<ol start="2">
+<li>文档型数据库(mangoDB,CouchDB)</li>
+</ol>
+<p>满足海量的访问和存储,同时对字段要求不严格,可以随意增删改,适用于网络应用.</p>
+<ol start="3">
+<li>列存储型数据库(Cassandra,Hbase)</li>
+</ol>
+<p>查找快,扩展性强,适合用作分布式文件存储系统.(大数据)</p>
+<ol start="4">
+<li>图存储型数据库(InfoGrid,Heo4J)</li>
+</ol>
+<p>利用图结构的相关算法来存储实体之间的关系信息,适用于构建社交网络和推荐系统的关系图谱.</p>
+<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>既然 NoSQL 数据库有这么多的优势，那它是否可以直接取代天系型数据库？<br>NoSQL 并不能完全取代关系型数据库，NoSQL 主要被用来处理大量且多元数据的存储及运算问题。在这样的特性差异下，我们该如何选择合适的数据库以解决数据存储与处理问题呢？这里提供以下几点作为判断依据。</p>
+<ol>
+<li>数据模型的关联性要求</li>
+</ol>
+<p>NoSQL 适合模型关联性比较低的应用。因此：<br>·如果需要多表关联，则更适合用 RDB<br>·如果对象实体关联少，则更适合用 NoSQL 数据库.<br>其中 MongoDB 可以支持复杂度相对高的数据结构，能够将相关联的数据以文档的方式嵌入，从而减少数据之间的关联操作</p>
+<ol start="2">
+<li>数据库的性能要求</li>
+</ol>
+<p>如果数据量多切访问速度至关重要，那么使用 NoSQL 数据库可能是比较合适的。NoSQL 数据库能通过数据的分布存储大幅地提供存储性能。</p>
+<ol start="3">
+<li>数据的一致性要求</li>
+</ol>
+<p>NoSQL 数据库有一个缺点：其在事务处理与一致性方面无法与 RDB 相提并论。<br>因此，NoSQL 数据库很难同时满足强一致性与高并发性。如果应用对性能有高要求，则 NoSQL 数据库只能做到数据最终一致。</p>
+<ol start="4">
+<li>数据的可用性要求</li>
+</ol>
+<p>考虑到数据不可用可能会造成风险，NoSQL 数据库提供了强大的数据可用性（在一些需要快速反馈信息给使用者的应用中，响应延迟也算某种程度的高可用）。<br><strong>一个项目并非只选择一种数据库，可以将其拆开设计，将需要 RDB 特性的放到 RDB 中管理，而其它数据放到 NoSQL 中管理。</strong></p>
+<h1 id="安装-MongoDB"><a href="#安装-MongoDB" class="headerlink" title="安装 MongoDB"></a>安装 MongoDB</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew tap mongodb/brew</span><br><span class="line">brew install mongodb-community@4.4</span><br></pre></td></tr></table></figure>
+
+<p>然后按照提示修改环境变量,使用<code>source</code>命令重启.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>英特尔处理器</th>
+<th>苹果 M1 处理器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://link.juejin.cn/?target=https://docs.mongodb.com/v4.4/reference/configuration-options/">配置文件</a></td>
+<td>&#x2F;usr&#x2F;local&#x2F;etc&#x2F;mongod.conf</td>
+<td>&#x2F;opt&#x2F;homebrew&#x2F;etc&#x2F;mongod.conf</td>
+</tr>
+<tr>
+<td><a href="https://link.juejin.cn/?target=https://docs.mongodb.com/v4.4/reference/configuration-options/%23mongodb-setting-systemLog.path">log directory</a>(log 目录)</td>
+<td>&#x2F;usr&#x2F;local&#x2F;var&#x2F;log&#x2F;mongodb</td>
+<td>&#x2F;opt&#x2F;homebrew&#x2F;var&#x2F;log&#x2F;mongodb</td>
+</tr>
+<tr>
+<td><a href="https://link.juejin.cn/?target=https://docs.mongodb.com/v4.4/reference/configuration-options/%23mongodb-setting-storage.dbPath">data directory</a>(data 目录)</td>
+<td>&#x2F;usr&#x2F;local&#x2F;var&#x2F;mongodb</td>
+<td>&#x2F;opt&#x2F;homebrew&#x2F;var&#x2F;mongodb</td>
+</tr>
+</tbody></table>
+<h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb-community@4.4</span><br><span class="line">// 停止</span><br><span class="line">brew services stop mongodb-community@4.4</span><br><span class="line">// 查看后台服务列表</span><br><span class="line">brew services list</span><br></pre></td></tr></table></figure>
+
+<h1 id="mongo-shell"><a href="#mongo-shell" class="headerlink" title="mongo shell"></a>mongo shell</h1><p>mongoDB 退出的 shell 命令,进入方法,先启动 MongoDB 服务,再输入<code>mongo</code>.<br>shell 中支持基本的 js 语法.</p>
+<h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p>默认链接 27017 端口,如果要修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongo --prot 27018</span><br><span class="line">// 连接远程主机</span><br><span class="line">mongo --host mongodb0.example.com:28015</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h1><p>查看数据库: <code>show dbs</code><br>当前数据库: <code>db</code><br>切换&#x2F;创建数据库: <code>use &lt;name&gt;</code><br>查看集合: <code>show collections</code><br>清空数据库: <code>db dropDatabase()</code><br>创建集合: <code>db.xxx.insert(&#123;&#125;)</code><br>查询集合: <code>db.xxx.find()</code><br>删除集合: <code>db.xxx.drop()</code></p>
+<h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><p>MongoDB 将数据存储为 BSON 文档.</p>
+<h2 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h2><p>文档对字段名称有以下限制：</p>
+<ul>
+<li>字段名称＿id 保留用作主键；它的值在集合中必须是唯一的，不可变的，并且可以是数组以外的任何类型.</li>
+<li>字段名称不能包含空字符。</li>
+</ul>
+<h3 id="id-字段"><a href="#id-字段" class="headerlink" title="_id 字段"></a>_id 字段</h3><p>在 MongoDB 中，存储在集合中的每个文档都需要一个唯一的<code>_id</code>字段作为主键。如果插入的文档省略<code>_id</code>字段，则 MongoDB 驱动程序会自动为<code>_id</code>字段生成 Objectld。<br>id 字段具有以下行为和约束：</p>
+<ul>
+<li>默认情况下，MongoDB 在创建集合时会在<code>_id</code>字段上创建唯一索引。</li>
+<li><code>_id</code>字段始终是文档中的第一个字段</li>
+<li><code>_id</code>字段可以包含任何 BSON 数据类型的值，而不是数组。</li>
+</ul>
+<h2 id="创建文档"><a href="#创建文档" class="headerlink" title="创建文档"></a>创建文档</h2><ul>
+<li><code>db.xxx.insertOne()</code>: 插入一个,返回 id</li>
+<li><code>db.xxx.insertMany()</code>: 插入多个,返回 id</li>
+<li><code>db.xxx.insert()</code>: 插入任意个,返回是否成功</li>
+</ul>
+<h2 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h2><ul>
+<li><code>db.xxx.find(query, projection)</code><ul>
+<li>query,可选,指定查询条件</li>
+<li>projection,可选,使用投影操作符指定返回的键.</li>
+<li><code>$or</code>或查询,匹配一个或多个条件</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 条件查询</span></span><br><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(&#123;</span><br><span class="line">  <span class="attr">status</span>: <span class="string">&quot;A&quot;</span>, <span class="comment">//查询条件为A的所有</span></span><br><span class="line">&#125;);</span><br><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(</span><br><span class="line">  &#123;&#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">item</span>: <span class="number">1</span>, <span class="comment">//1 表示查询item,0表示不包括item</span></span><br><span class="line">    <span class="attr">qty</span>: <span class="number">1</span>,</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"><span class="comment">// 或查询</span></span><br><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(&#123;</span><br><span class="line">  <span class="attr">$or</span>: [</span><br><span class="line">    (<span class="attr">status</span>: <span class="string">&quot;A&quot;</span>),</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">qty</span>: &#123; <span class="attr">$lt</span>: <span class="number">30</span> &#125;, <span class="comment">// qty小于30</span></span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>db.xxx.findOne()</code></li>
+</ul>
+<h3 id="类型检查"><a href="#类型检查" class="headerlink" title="类型检查"></a>类型检查</h3><p>BSON 类型为 Nul(类型编号 10):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(&#123; <span class="attr">item</span>: &#123; <span class="attr">$type</span>: <span class="number">10</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="存在检查"><a href="#存在检查" class="headerlink" title="存在检查"></a>存在检查</h3><p>查询匹配不包含 item 的文档:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">xxx</span>.<span class="title function_">find</span>(&#123; <span class="attr">item</span>: &#123; <span class="attr">$exists</span>: <span class="literal">false</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h2><ul>
+<li><code>db.xxx.updateOne(&lt;filter&gt;, &lt;update&gt;, &lt;options&gt;)</code></li>
+<li><code>db.xxx.updateMany(&lt;filter&gt;, &lt;update&gt;, &lt;options&gt;)</code></li>
+<li><code>db.xxx.replaceOne(&lt;filter&gt;, &lt;update&gt;, &lt;options&gt;)</code></li>
+</ul>
+<p>可以指定更新文档的条件或过滤器.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将age小于18 的文档中status更新为reject</span></span><br><span class="line">db.<span class="property">xxx</span>.<span class="title function_">updateMany</span>(&#123;</span><br><span class="line">  &#123;<span class="attr">age</span>: &#123; <span class="attr">$lt</span>: <span class="number">18</span> &#125;,</span><br><span class="line">  &#123;<span class="attr">$set</span>: &#123;<span class="attr">stastus</span>: <span class="string">&#x27;reject&#x27;</span>&#125;&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="替换文档"><a href="#替换文档" class="headerlink" title="替换文档"></a>替换文档</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.<span class="property">xxx</span>.<span class="title function_">replaceOne</span>(</span><br><span class="line">  &#123;<span class="attr">item</span>: <span class="string">&#x27;paper&#x27;</span>&#125;,</span><br><span class="line">  &#123;<span class="attr">item</span>: <span class="string">&#x27;paper&#x27;</span>, <span class="attr">instock</span>: &#123;<span class="attr">qty</span>: <span class="number">60</span>&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h2><ul>
+<li><code>db.xxx.deleteMany()</code></li>
+<li><code>db.xxx.deleteOne()</code>: 仅删除一个符合条件的文档</li>
+</ul>
+<h1 id="数据库的操作"><a href="#数据库的操作" class="headerlink" title="数据库的操作"></a>数据库的操作</h1><ul>
+<li>导出数据库 .&#x2F;mongoexport –port [port] –db test –collection users –out export.json</li>
+<li>导入数据库 .&#x2F;mongoimport -h 120.79.229.197:27-17 -d test -c scenics –file&#x3D;.&#x2F;export.json</li>
+</ul>
+<h1 id="Node-中使用-MongoDB"><a href="#Node-中使用-MongoDB" class="headerlink" title="Node 中使用 MongoDB"></a>Node 中使用 MongoDB</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//安装mongo,这是项目中使用的为node准备的工具</span><br><span class="line">npm i mongo -D</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">MongoClient</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;mongodb&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> <span class="title class_">MongoClient</span>(<span class="string">&quot;mongodb://127.0.0.1:27017&quot;</span>); <span class="comment">// 连接本地mongo客户端</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 开始连接</span></span><br><span class="line">    <span class="keyword">await</span> client.<span class="title function_">connect</span>();</span><br><span class="line">    <span class="comment">// 操作数据库</span></span><br><span class="line">    <span class="keyword">const</span> testDB = client.<span class="title function_">db</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">    <span class="comment">// 通过数据库获取集合</span></span><br><span class="line">    <span class="keyword">const</span> userCollection = testDB.<span class="title function_">collection</span>(<span class="string">&quot;users&quot;</span>);</span><br><span class="line">    <span class="comment">// 增加</span></span><br><span class="line">    <span class="comment">// const ret = await userCollection.insertOne(&#123;</span></span><br><span class="line">    <span class="comment">// name: &#x27;Jim&#x27;,</span></span><br><span class="line">    <span class="comment">// age: 12</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">    <span class="comment">// console.log(ret);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查询参数</span></span><br><span class="line">    <span class="keyword">const</span> ret = <span class="keyword">await</span> userCollection.<span class="title function_">find</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ret: &quot;</span>, <span class="keyword">await</span> ret.<span class="title function_">toArray</span>()); <span class="comment">// ret.toArray()返回promise所以await</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;连接失败&quot;</span>, err);</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 断开连接</span></span><br><span class="line">    <span class="keyword">await</span> client.<span class="title function_">close</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">run</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除-id-的文档"><a href="#删除-id-的文档" class="headerlink" title="删除_id 的文档"></a>删除_id 的文档</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">ObjectId</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;mongodb&quot;</span>);</span><br><span class="line"><span class="comment">// 删除</span></span><br><span class="line"><span class="keyword">const</span> ret = <span class="keyword">await</span> userCollection.<span class="title function_">deleteOne</span>(&#123;</span><br><span class="line">  <span class="attr">_id</span>: <span class="title class_">ObjectId</span>(<span class="string">&quot;636b5886e7de417db38a5610&quot;</span>),</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(ret);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +410,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:56" itemprop="dateModified" datetime="2022-12-09T10:55:56+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:40" itemprop="dateModified" datetime="2022-12-09T10:57:40+08:00">2022-12-09</time>
     </span>
 
   
@@ -348,7 +550,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:57" itemprop="dateModified" datetime="2022-12-09T10:55:57+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:40" itemprop="dateModified" datetime="2022-12-09T10:57:40+08:00">2022-12-09</time>
     </span>
 
   
@@ -840,7 +1042,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:57" itemprop="dateModified" datetime="2022-12-09T10:55:57+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:40" itemprop="dateModified" datetime="2022-12-09T10:57:40+08:00">2022-12-09</time>
     </span>
 
   
@@ -909,7 +1111,7 @@
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#115;&#97;&#120;&#x40;&#x33;&#46;&#x30;&#46;&#x30;">&#115;&#97;&#120;&#x40;&#x33;&#46;&#x30;&#46;&#x30;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#x61;&#120;&#64;&#x33;&#46;&#48;&#x2e;&#48;">&#115;&#x61;&#120;&#64;&#x33;&#46;&#48;&#x2e;&#48;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
@@ -975,7 +1177,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:57" itemprop="dateModified" datetime="2022-12-09T10:55:57+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:40" itemprop="dateModified" datetime="2022-12-09T10:57:40+08:00">2022-12-09</time>
     </span>
 
   
@@ -1128,7 +1330,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:57" itemprop="dateModified" datetime="2022-12-09T10:55:57+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:40" itemprop="dateModified" datetime="2022-12-09T10:57:40+08:00">2022-12-09</time>
     </span>
 
   
@@ -1462,7 +1664,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:57" itemprop="dateModified" datetime="2022-12-09T10:55:57+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:40" itemprop="dateModified" datetime="2022-12-09T10:57:40+08:00">2022-12-09</time>
     </span>
 
   
@@ -1632,7 +1834,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:57" itemprop="dateModified" datetime="2022-12-09T10:55:57+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:40" itemprop="dateModified" datetime="2022-12-09T10:57:40+08:00">2022-12-09</time>
     </span>
 
   
@@ -1798,7 +2000,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:58" itemprop="dateModified" datetime="2022-12-09T10:55:58+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:41" itemprop="dateModified" datetime="2022-12-09T10:57:41+08:00">2022-12-09</time>
     </span>
 
   
@@ -2343,7 +2545,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:58" itemprop="dateModified" datetime="2022-12-09T10:55:58+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:41" itemprop="dateModified" datetime="2022-12-09T10:57:41+08:00">2022-12-09</time>
     </span>
 
   
@@ -2464,82 +2666,6 @@
 <li>也可以判断 isError 字段为 true 时，只显示报错信息，隐藏缓存数据。</li>
 </ul>
 <h1 id="更多内容"><a href="#更多内容" class="headerlink" title="更多内容"></a>更多内容</h1><p>建议看官方文档</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/19/%E5%B8%B8%E7%94%A8%E7%BB%84%E4%BB%B6/" class="post-title-link" itemprop="url">常用组件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-19 16:23:33" itemprop="dateCreated datePublished" datetime="2022-10-19T16:23:33+08:00">2022-10-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:55:58" itemprop="dateModified" datetime="2022-12-09T10:55:58+08:00">2022-12-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="树形选项点击主项子项默认全选"><a href="#树形选项点击主项子项默认全选" class="headerlink" title="树形选项点击主项子项默认全选"></a>树形选项点击主项子项默认全选</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">carSelectedChange</span>(<span class="params">val, row</span>) &#123;</span><br><span class="line">  <span class="comment">//先重置</span></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">car</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (val.<span class="title function_">find</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x.<span class="property">accCarSeq</span> == car.<span class="property">accCarSeq</span>)) &#123;</span><br><span class="line">      car.<span class="property">checked</span> = <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      car.<span class="property">checked</span> = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (car.<span class="property">children</span>) &#123;</span><br><span class="line">      car.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (val.<span class="title function_">find</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x.<span class="property">accCarSeq</span> == p.<span class="property">accCarSeq</span>)) &#123;</span><br><span class="line">          p.<span class="property">checked</span> = <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          p.<span class="property">checked</span> = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (row) &#123;</span><br><span class="line">    <span class="comment">//单独操作行</span></span><br><span class="line">    <span class="keyword">let</span> action = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断是否是新增</span></span><br><span class="line">    <span class="keyword">if</span> (val.<span class="title function_">find</span>(<span class="function">(<span class="params">x</span>) =&gt;</span> x.<span class="property">accCarSeq</span> == row.<span class="property">accCarSeq</span>)) &#123;</span><br><span class="line">      <span class="comment">//新增</span></span><br><span class="line">      action = <span class="string">&quot;add&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//移除</span></span><br><span class="line">      action = <span class="string">&quot;remove&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> carIndex = <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>.<span class="title function_">findIndex</span>(</span><br><span class="line">      <span class="function">(<span class="params">car</span>) =&gt;</span> car.<span class="property">accCarSeq</span> == row.<span class="property">accCarSeq</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (carIndex &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>[carIndex].<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">        p.<span class="property">checked</span> = action == <span class="string">&quot;add&quot;</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">carTable</span>.<span class="title function_">toggleRowSelection</span>(p, action == <span class="string">&quot;add&quot;</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">car</span>) =&gt;</span> &#123;</span><br><span class="line">        car.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (p.<span class="property">accCarSeq</span> == row.<span class="property">accCarSeq</span> &amp;&amp; action == <span class="string">&quot;add&quot;</span>) &#123;</span><br><span class="line">            car.<span class="property">checked</span> = <span class="literal">true</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">carTable</span>.<span class="title function_">toggleRowSelection</span>(car, <span class="literal">true</span>);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//全选</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">responseData</span>.<span class="property">carInfo</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">car</span>) =&gt;</span> &#123;</span><br><span class="line">      car.<span class="property">children</span>.<span class="title function_">map</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">        p.<span class="property">checked</span> = car.<span class="property">checked</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">carTable</span>.<span class="title function_">toggleRowSelection</span>(p, p.<span class="property">checked</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
       
     </div>

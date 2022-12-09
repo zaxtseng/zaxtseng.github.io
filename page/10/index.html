@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,167 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/04/Vue%20Router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/04/Vue%20Router/" class="post-title-link" itemprop="url">Vue Router</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-06-04 17:21:58" itemprop="dateCreated datePublished" datetime="2021-06-04T17:21:58+08:00">2021-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-09 10:57:49" itemprop="dateModified" datetime="2022-12-09T10:57:49+08:00">2022-12-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="捕获路由"><a href="#捕获路由" class="headerlink" title="捕获路由"></a>捕获路由</h1><p>匹配参数</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匹配所有参数</span></span><br><span class="line"><span class="punctuation">&#123;</span> path<span class="punctuation">:</span> <span class="string">&quot;*&quot;</span> <span class="punctuation">&#125;</span></span><br><span class="line"><span class="comment">//匹配`/user-`开头的任意路径</span></span><br><span class="line"><span class="punctuation">&#123;</span> path<span class="punctuation">:</span> <span class="string">&quot;/user-&quot;</span> <span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>含有通配符的路由通常放在最后,<code>&#123;path:&quot;*&quot;&#125;</code>通常用于 404 页面.</p>
+<h3 id="路由后缀"><a href="#路由后缀" class="headerlink" title="路由后缀"></a>路由后缀</h3><p>当使用通配符时,<code>$route.params</code>内会自动添加一个名为<code>pathMatch</code>.包含了 URL 通过通配符被匹配的部分:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给出一个路由 &#123; path: &quot;/user-*&quot;&#125;</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(<span class="string">&quot;/user-admin&quot;</span>);</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">params</span>.<span class="property">pathMatch</span>; <span class="comment">//&#x27;admin&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h2><h4 id="router-push"><a href="#router-push" class="headerlink" title="router.push"></a>router.push</h4><p>声明式: <code>&lt;router-link :to=&quot;...&quot;&gt;</code><br>编程式: <code>router.push(...)</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符串</span></span><br><span class="line">router.<span class="title function_">push</span>(<span class="string">&quot;home&quot;</span>);</span><br><span class="line"><span class="comment">//对象</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">&quot;home&quot;</span> &#125;);</span><br><span class="line"><span class="comment">//命名的路由</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">name</span>: <span class="string">&quot;user&quot;</span>, <span class="attr">params</span>: &#123; <span class="attr">userId</span>: <span class="string">&quot;123&quot;</span> &#125; &#125;);</span><br><span class="line"><span class="comment">//带查询参数,变成/register?plan=private</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">&quot;register&quot;</span>, <span class="attr">query</span>: &#123; <span class="attr">plan</span>: <span class="string">&quot;parivate&quot;</span> &#125; &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>注意<code>name</code>和<code>params</code>搭配,<code>path</code>和<code>query</code>搭配</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userId = <span class="string">&#x27;123&#x27;</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123;<span class="attr">name</span>:<span class="string">&quot;user&quot;</span>, <span class="attr">params</span>:&#123; userId &#125;) <span class="comment">//=&gt; /user/123</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123;<span class="attr">path</span>: <span class="string">`/user/<span class="subst">$&#123;userId&#125;</span>`</span>&#125;) <span class="comment">//=&gt; /user/123</span></span><br><span class="line"><span class="comment">//这里的params不生效</span></span><br><span class="line">router.<span class="title function_">push</span>(&#123; <span class="attr">path</span>: <span class="string">&#x27;user&#x27;</span>, <span class="attr">params</span>: &#123; userId &#125;&#125;) <span class="comment">//=&gt;/user</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="router-replace"><a href="#router-replace" class="headerlink" title="router.replace"></a>router.replace</h4><p>此方法和 router.push 很像,不同的是不会向 history 添加新记录,而是替换掉当前的 history 记录.<br>声明式: <code>&lt;router-link :to=&quot;...&quot; replace&gt;</code><br>编程式: <code>router.push(...)</code></p>
+<h4 id="router-go"><a href="#router-go" class="headerlink" title="router.go"></a>router.go</h4><p>此方法参数是整数,类似<code>window.history.go()</code></p>
+<h3 id="和-window-的方法类似"><a href="#和-window-的方法类似" class="headerlink" title="和 window 的方法类似"></a>和 window 的方法类似</h3><p><code>router.push</code> &#x3D;&gt; <code>window.history.pushState</code><br><code>router.replace</code> &#x3D;&gt; <code>window.history.replaceState</code><br><code>router.go</code> &#x3D;&gt; <code>window.history.go</code></p>
+<h2 id="路由命名"><a href="#路由命名" class="headerlink" title="路由命名"></a>路由命名</h2><p>通过<code>name</code>给路由命名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跳转调用</span></span><br><span class="line">&lt;router-link :to=<span class="string">&quot;&#123;name: &#x27;user&#x27;,params: &#123; userId: 123 &#125; &#125;&gt;User&lt;/router-link&gt;</span></span><br><span class="line"><span class="string">//编程式写法</span></span><br><span class="line"><span class="string">router.push(&#123;name: &#x27;user&#x27;, params: &#123;userId:123&#125;&#125;)</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">	<span class="attr">routes</span>: [</span><br><span class="line">    &#123;<span class="attr">path</span>: <span class="string">&#x27;/a&#x27;</span>, <span class="attr">redirect</span>: <span class="string">&#x27;/b&#x27;</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//重定向到命名路由</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">	<span class="attr">routes</span>: [</span><br><span class="line">    &#123;<span class="attr">path</span>: <span class="string">&#x27;/a&#x27;</span>, <span class="attr">redirect</span>: &#123; <span class="attr">name</span>: <span class="string">&#x27;foo&#x27;</span>&#125; &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//方法</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">	<span class="attr">routes</span>: [</span><br><span class="line">    &#123;<span class="attr">path</span>: <span class="string">&#x27;/a&#x27;</span>, <span class="attr">redirect</span>: <span class="function"><span class="params">to</span> =&gt;</span> &#123;</span><br><span class="line">				<span class="comment">//方法接收 目标路由作为参数</span></span><br><span class="line">      	<span class="comment">//return 重定向的 字符串路径/路径对象</span></span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>区别:<br>重定向: 用户访问<code>/a</code>,URL 被替换为<code>/b</code>,匹配路由为<code> /b</code><br>别名: <code>/a</code>的别名是<code>/b</code>.用户访问<code>/b</code>时,URL 会保持为<code>/b</code>,但是路由匹配是<code>/a</code>.就像访问了<code>/a</code>一样.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [&#123; <span class="attr">path</span>: <span class="string">&quot;/a&quot;</span>, <span class="attr">component</span>: A, <span class="attr">alias</span>: <span class="string">&quot;/b&quot;</span> &#125;],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由传参"><a href="#路由传参" class="headerlink" title="路由传参"></a>路由传参</h2><p>通过在路由 routes 中设置 props 进行解耦</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">User</span> = &#123;</span><br><span class="line">  <span class="attr">props</span>: [<span class="string">&quot;id&quot;</span>],</span><br><span class="line">  <span class="attr">template</span>: <span class="string">&quot;&lt;div&gt;User &#123;&#123; id &#125;&#125;&lt;/div&gt;&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&quot;/user/:id&quot;</span>, <span class="attr">component</span>: <span class="title class_">User</span>, <span class="attr">props</span>: <span class="literal">true</span> &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对于包含命名视图的路由，你必须分别为每个命名视图添加 `props` 选项：</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/user/:id&quot;</span>,</span><br><span class="line">      <span class="attr">components</span>: &#123; <span class="attr">default</span>: <span class="title class_">User</span>, <span class="attr">sidebar</span>: <span class="title class_">Sidebar</span> &#125;,</span><br><span class="line">      <span class="attr">props</span>: &#123; <span class="attr">default</span>: <span class="literal">true</span>, <span class="attr">sidebar</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果 props 为 true,就可以通过组件获取参数.</p>
+<h2 id="history-模式"><a href="#history-模式" class="headerlink" title="history 模式"></a>history 模式</h2><p>除了在 new Router()中设置<code>mode: history</code>外,还需要后端设置.</p>
+<h1 id="路由钩子-导航守卫-路由守卫"><a href="#路由钩子-导航守卫-路由守卫" class="headerlink" title="路由钩子(导航守卫,路由守卫)"></a>路由钩子(导航守卫,路由守卫)</h1><h2 id="beforeEach"><a href="#beforeEach" class="headerlink" title="beforeEach"></a>beforeEach</h2><p>可以设置进度条,<br>重置 store</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">store.<span class="title function_">commit</span>(<span class="string">&quot;SET_TABS&quot;</span>, []);</span><br><span class="line">store.<span class="title function_">dispatch</span>(<span class="string">&quot;app/goToTop&quot;</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>判断是否有不需要登录就可以看的页面<br>如果需要跳转到登录<br>如果已登录,操作一些需要做的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//未登录不能验证身份</span></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (to.<span class="property">name</span> !== <span class="string">&quot;Login&quot;</span> &amp;&amp; !isAuthenticated) <span class="title function_">next</span>(&#123; <span class="attr">name</span>: <span class="string">&quot;Login&quot;</span> &#125;);</span><br><span class="line">  <span class="keyword">else</span> <span class="title function_">next</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由独享守卫"><a href="#路由独享守卫" class="headerlink" title="路由独享守卫"></a>路由独享守卫</h2><p>在路由配置上的<code>beforeEnter</code>守卫:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/foo&quot;</span>,</span><br><span class="line">      <span class="attr">component</span>: <span class="title class_">Foo</span>,</span><br><span class="line">      <span class="attr">beforeEnter</span>: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由元信息"><a href="#路由元信息" class="headerlink" title="路由元信息"></a>路由元信息</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/foo&quot;</span>,</span><br><span class="line">      <span class="attr">component</span>: <span class="title class_">Foo</span>,</span><br><span class="line">      <span class="attr">children</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">path</span>: <span class="string">&quot;bar&quot;</span>,</span><br><span class="line">          <span class="attr">component</span>: <span class="title class_">Bar</span>,</span><br><span class="line">          <span class="comment">// a meta field</span></span><br><span class="line">          <span class="attr">meta</span>: &#123; <span class="attr">requiresAuth</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>一个路由匹配到的所有路由记录会暴露为<code>$route</code>对象(还有在导航守卫中的路由对象)的<code>$route.matched</code>数组.因此,我们需要遍历<code>$route.matched</code>来检查路由记录中的<code>meta</code>字段.</p>
+<p>如果有的页面不用登录就可以访问,就可以在 meta 中设置字段.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (to.<span class="property">matched</span>.<span class="title function_">some</span>(<span class="function">(<span class="params">record</span>) =&gt;</span> record.<span class="property">meta</span>.<span class="property">requiresAuth</span>)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!auth.<span class="title function_">loggedIn</span>()) &#123;</span><br><span class="line">      <span class="title function_">next</span>(&#123;</span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;/login&quot;</span>,</span><br><span class="line">        <span class="attr">query</span>: &#123; <span class="attr">redirect</span>: to.<span class="property">fullPath</span> &#125;,</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="title function_">next</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_">next</span>(); <span class="comment">//确保一定要调用 next()</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h1><p>分为三种,全局,单个路由独享,组件的.</p>
+<h3 id="全局"><a href="#全局" class="headerlink" title="全局"></a>全局</h3><p>相当于程序的页面生命周期.<br>全局守卫 3 个,<code>beforeEach</code>, <code>beforeResolve</code>, <code>afterEach</code><br>分别表示进入路由前,解析前,离开路由时.<br>beforeEach: 路由跳转前触发,参数<code>to,form,next</code>,主要用于登录验证.<br>beforeResolve: 和 beforeEach 类似,在 beforeEach 和 beforeRouteEnter 之后,afterEach 之前.<br>afterEach: 在路由跳转后触发.参数<code>to,from</code>.</p>
+<p>next()函数的作用是回调验证导航.<br>next(): 什么都不传,表示继续执行.多个 next()则可能不会解析或报错.<br>next(false): 中断当前导航.<br>next(‘&#x2F;‘): 跳转到该地址.<br>next(error): 钩子中止将错误传递给 router.onerror()回调.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>();</span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由独享守卫-1"><a href="#路由独享守卫-1" class="headerlink" title="路由独享守卫"></a>路由独享守卫</h3><p>beforeEnter: 只在进入路由时触发.不会在<code>params</code>,<code>query</code>,<code>hash</code>改变时触发.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;./foo&quot;</span>,</span><br><span class="line">      <span class="attr">component</span>: <span class="title class_">Foo</span>,</span><br><span class="line">      <span class="attr">beforeEnter</span>: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="组件内守卫"><a href="#组件内守卫" class="headerlink" title="组件内守卫"></a>组件内守卫</h2><p>有三个,<code>beforeRouteEnter</code>,<code>beforeRouteUpdate</code>,<code>beforeRouteLeave</code>.<br>分别代表,渲染该组件对应的路由被验证前调用,路由复用同一个组件,离开当前路由</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Foo</span> = &#123;</span><br><span class="line">  <span class="attr">template</span>: <span class="string">&quot;...&quot;</span>,</span><br><span class="line">  <span class="title function_">beforeRouteEnter</span>(<span class="params">to, <span class="keyword">from</span></span>) &#123;&#125;,</span><br><span class="line">  <span class="title function_">beforeRouteUpdate</span>(<span class="params">to, <span class="keyword">from</span></span>) &#123;</span><br><span class="line">    <span class="comment">// 比如动态参数/users/:id/,在user/1和user/2之间切换,那就复用同一个组件,</span></span><br><span class="line">    <span class="comment">// 就会被调用,而且可以使用this,其他两个不行,因为组件没有了</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">beforeRouteLeave</span>(<span class="params">to, <span class="keyword">from</span></span>) &#123;&#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="滚动行为"><a href="#滚动行为" class="headerlink" title="滚动行为"></a>滚动行为</h2><p>切换到新路由时,滚动到顶部或者保持原来的位置,可以设置滚动行为.</p>
+<blockquote>
+<p>此功能只在支持<code>history.pushState</code>的浏览器可用</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [...],</span><br><span class="line">  <span class="title function_">scrollBehavior</span>(<span class="params">to, <span class="keyword">from</span>, savedPosition</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;<span class="attr">x</span>:<span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><code>scrollBehavior</code>方法接收<code>to</code>和<code>from</code>路由对象.第三个参数<code>savedPosition</code>当且仅当<code>popstate</code>导航(浏览器的前进后退按钮触发)时才可用.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">scrollBehavior</span>(<span class="params">to, form, savedPosition</span>)&#123;</span><br><span class="line"><span class="keyword">if</span>(savedPosition) &#123;</span><br><span class="line">	<span class="keyword">return</span> savedPosition</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">x</span>:<span class="number">0</span>,<span class="attr">y</span>:<span class="number">0</span>&#125;</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="滚动到锚点"><a href="#滚动到锚点" class="headerlink" title="滚动到锚点"></a>滚动到锚点</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">scrollBehavior</span>(<span class="params">to, form, savedPosition</span>)&#123;</span><br><span class="line"><span class="keyword">if</span>(to.<span class="property">hash</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> to.<span class="property">hash</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="平滑滚动"><a href="#平滑滚动" class="headerlink" title="平滑滚动"></a>平滑滚动</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">scrollBehavior</span>(<span class="params">to, form, savedPosition</span>)&#123;</span><br><span class="line"><span class="keyword">if</span>(to.<span class="property">hash</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">selector</span>: to.<span class="property">hash</span>,</span><br><span class="line">    <span class="attr">behavior</span>: <span class="string">&#x27;smooth&#x27;</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由懒加载"><a href="#路由懒加载" class="headerlink" title="路由懒加载"></a>路由懒加载</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">path</span>: <span class="string">&#x27;/bbsHome&#x27;</span>,</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;BbsHome&#x27;</span>,</span><br><span class="line">  <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="comment">/* webpackChunkName: &quot;portal&quot; */</span> <span class="string">&#x27;@/views/bbs/bbsHome.vue&#x27;</span>),</span><br><span class="line">  <span class="attr">meta</span>: &#123; <span class="attr">title</span>: <span class="string">&#x27;论坛首页&#x27;</span>, <span class="attr">auth</span>: <span class="string">&#x27;no&#x27;</span> &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
+<li>两个页面参数不同使用同一组件，默认情况下当这两个页面切换时并不会触发 created 或者 mounted 钩子。</li>
+</ol>
+<ul>
+<li>通过<code>watch</code>$route 的变化处理</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">watch</span>: &#123;</span><br><span class="line">	$route() &#123;</span><br><span class="line">		<span class="keyword">if</span>($route) &#123;</span><br><span class="line">	...</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>通过在<code>&lt;route-view&gt;</code>上加唯一的<code>key保证渲染.</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view :key=<span class="string">&#x27;$route.fullPath&#x27;</span>&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="刷新当前页面"><a href="#刷新当前页面" class="headerlink" title="刷新当前页面"></a>刷新当前页面</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">go</span>(<span class="number">0</span>);</span><br><span class="line">location.<span class="title function_">reload</span>();</span><br><span class="line"><span class="comment">//这个只刷数据</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$forceUpdate</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="跳转到其他页面"><a href="#跳转到其他页面" class="headerlink" title="跳转到其他页面"></a>跳转到其他页面</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接跳转,可以用后退返回</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">location</span>.<span class="property">href</span> = url;</span><br><span class="line"><span class="comment">//打开新的窗口</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">open</span>(url);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/21/iView/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +369,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:06" itemprop="dateModified" datetime="2022-12-09T10:56:06+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:49" itemprop="dateModified" datetime="2022-12-09T10:57:49+08:00">2022-12-09</time>
     </span>
 
   
@@ -285,7 +446,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:06" itemprop="dateModified" datetime="2022-12-09T10:56:06+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:49" itemprop="dateModified" datetime="2022-12-09T10:57:49+08:00">2022-12-09</time>
     </span>
 
   
@@ -429,7 +590,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:06" itemprop="dateModified" datetime="2022-12-09T10:56:06+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:49" itemprop="dateModified" datetime="2022-12-09T10:57:49+08:00">2022-12-09</time>
     </span>
 
   
@@ -725,7 +886,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:06" itemprop="dateModified" datetime="2022-12-09T10:56:06+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:49" itemprop="dateModified" datetime="2022-12-09T10:57:49+08:00">2022-12-09</time>
     </span>
 
   
@@ -920,7 +1081,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:06" itemprop="dateModified" datetime="2022-12-09T10:56:06+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:49" itemprop="dateModified" datetime="2022-12-09T10:57:49+08:00">2022-12-09</time>
     </span>
 
   
@@ -1039,7 +1200,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:06" itemprop="dateModified" datetime="2022-12-09T10:56:06+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:49" itemprop="dateModified" datetime="2022-12-09T10:57:49+08:00">2022-12-09</time>
     </span>
 
   
@@ -1307,7 +1468,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:07" itemprop="dateModified" datetime="2022-12-09T10:56:07+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:50" itemprop="dateModified" datetime="2022-12-09T10:57:50+08:00">2022-12-09</time>
     </span>
 
   
@@ -1798,7 +1959,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:07" itemprop="dateModified" datetime="2022-12-09T10:56:07+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:50" itemprop="dateModified" datetime="2022-12-09T10:57:50+08:00">2022-12-09</time>
     </span>
 
   
@@ -2130,7 +2291,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:07" itemprop="dateModified" datetime="2022-12-09T10:56:07+08:00">2022-12-09</time>
+      <time title="Modified: 2022-12-09 10:57:50" itemprop="dateModified" datetime="2022-12-09T10:57:50+08:00">2022-12-09</time>
     </span>
 
   
@@ -2190,96 +2351,6 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 <li>actions  目录，用来放置所有的  actions</li>
 <li>reducers  目录，用来放置所有的  reducers</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/28/Koa2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/02/28/Koa2/" class="post-title-link" itemprop="url">Koa2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-02-28 09:57:58" itemprop="dateCreated datePublished" datetime="2021-02-28T09:57:58+08:00">2021-02-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-09 10:56:07" itemprop="dateModified" datetime="2022-12-09T10:56:07+08:00">2022-12-09</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Koa 本质上是调用一系列的中间件，来处理对应的请求，并决定是否传递到下一个中间件去处理。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install koa --save</span><br></pre></td></tr></table></figure>
-
-<p>所以，接口的本质，就是判断不同的请求链接，干不同的事情，返回相应的结果。那么我们得需要一个路由中间件来处理分发请求。<br>使用 <code>koa-router</code>  处理路由.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install koa-router --save</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Koa</span> = <span class="built_in">require</span>(<span class="string">&quot;koa&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Koa</span>();</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Router</span> = <span class="built_in">require</span>(<span class="string">&quot;koa-router&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">//地址跳转</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  ctx.<span class="property">body</span> = <span class="string">&quot;这是主页&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/user&quot;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  ctx.<span class="property">body</span> = <span class="string">&quot;这是user页&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//这里koa不会去处理数据,需要使用中间件body-parse</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/post&quot;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">  ctx.<span class="property">body</span> = ctx.<span class="property">request</span>.<span class="property">body</span>;</span><br><span class="line">&#125;);</span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;async&quot;</span>, <span class="keyword">async</span> (ctx) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">sleep</span> = <span class="keyword">async</span> (<span class="params">ms</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">resolve</span>(<span class="literal">true</span>);</span><br><span class="line">      &#125;, ms);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">sleep</span>(<span class="number">1000</span>);</span><br><span class="line">  ctz.<span class="property">body</span> = <span class="string">`这是异步网页`</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(router.<span class="title function_">routes</span>()).<span class="title function_">use</span>(router.<span class="title function_">allowedMethods</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// app.use(ctx =&gt; &#123;</span></span><br><span class="line"><span class="comment">// 	ctx.body = `您的网址为:$&#123;ctx.request.url&#125;`</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>安装 <code>body-parse</code> .</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install koa-bodyparser --save</span><br></pre></td></tr></table></figure>
-
-<h2 id="业务分离"><a href="#业务分离" class="headerlink" title="业务分离"></a>业务分离</h2><p>改造后目录结构</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-koa2 - node_modules - controller;</span><br><span class="line">user.<span class="property">js</span> - index.<span class="property">js</span> - router.<span class="property">js</span> - package.<span class="property">json</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//index.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Koa</span> = <span class="built_in">require</span>(<span class="string">&quot;koa&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> <span class="title class_">Koa</span>();</span><br><span class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">&quot;./router&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">&quot;koa-bodparser&quot;</span>);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(bodyParser);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">use</span>(router.<span class="title function_">routes</span>()).<span class="title function_">use</span>(router.<span class="title function_">allowedMethods</span>());</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">listen</span>(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
 
       
     </div>
