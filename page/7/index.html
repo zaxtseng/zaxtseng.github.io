@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:04" itemprop="dateModified" datetime="2022-12-09T10:56:04+08:00">2022-12-09</time>
     </span>
 
   
@@ -941,7 +941,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:04" itemprop="dateModified" datetime="2022-12-09T10:56:04+08:00">2022-12-09</time>
     </span>
 
   
@@ -1062,7 +1062,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:04" itemprop="dateModified" datetime="2022-12-09T10:56:04+08:00">2022-12-09</time>
     </span>
 
   
@@ -1140,7 +1140,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:04" itemprop="dateModified" datetime="2022-12-09T10:56:04+08:00">2022-12-09</time>
     </span>
 
   
@@ -1269,7 +1269,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:04" itemprop="dateModified" datetime="2022-12-09T10:56:04+08:00">2022-12-09</time>
     </span>
 
   
@@ -1439,7 +1439,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:04" itemprop="dateModified" datetime="2022-12-09T10:56:04+08:00">2022-12-09</time>
     </span>
 
   
@@ -1518,7 +1518,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:04" itemprop="dateModified" datetime="2022-12-09T10:56:04+08:00">2022-12-09</time>
     </span>
 
   
@@ -1606,7 +1606,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:04" itemprop="dateModified" datetime="2022-12-09T10:56:04+08:00">2022-12-09</time>
     </span>
 
   
@@ -1692,7 +1692,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:05" itemprop="dateModified" datetime="2022-12-09T10:56:05+08:00">2022-12-09</time>
     </span>
 
   
@@ -1740,7 +1740,42 @@
 <h1 id="版本删除"><a href="#版本删除" class="headerlink" title="版本删除"></a>版本删除</h1><p>原理： git revert 是用于“反做”某一个版本，以达到撤销该版本的修改的目的。比如，我们 commit 了三个版本（版本一、版本二、 版本三），突然发现版本二不行（如：有 bug），想要撤销版本二，但又不想影响撤销版本三的提交，就可以用 git revert 命令来反做版本二，生成新的版本四，这个版本四里会保留版本三的东西，但撤销了版本二的东西</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert -n 版本名</span><br></pre></td></tr></table></figure>
 
-<h1 id="commitlint"><a href="#commitlint" class="headerlink" title="commitlint"></a>commitlint</h1><p>提交时的分类<br>必填项，用于说明本次提交做出哪种类型的修改，必须是以下任意一值：</p>
+<p>git 使用 dev 覆盖本地及远程 master 分支<br>1、切换到 dev 分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout dev</span><br></pre></td></tr></table></figure>
+
+<p>2、删除本地的 master 分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D master</span><br></pre></td></tr></table></figure>
+
+<p>3、将 dev 分支复制到本地的 master 分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b master</span><br></pre></td></tr></table></figure>
+
+<p>4、推送到远程并覆盖仓库的 master 分支：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master --force</span><br></pre></td></tr></table></figure>
+
+<p>git 远程分支强制覆盖本地的分支<br>1、下载代码到本地</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git fetch --all</span><br></pre></td></tr></table></figure>
+
+<p>2、将 HEAD 指向最新下载的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard origin/分支名</span><br></pre></td></tr></table></figure>
+
+<h1 id="git-rebase"><a href="#git-rebase" class="headerlink" title="git rebase"></a>git rebase</h1><p>目的是改变提交的基底.从而实现之前的提交记录都是一条.</p>
+<h2 id="git-rebase-和-git-merge-区别"><a href="#git-rebase-和-git-merge-区别" class="headerlink" title="git rebase 和 git merge 区别"></a>git rebase 和 git merge 区别</h2><p>二者的目的都是将代码合并.但是 git merge 的提交记录更整洁.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 从master的提交A创建了新分支feature,并有两条提交记录</span><br><span class="line">	D---E feature</span><br><span class="line"> /</span><br><span class="line">A---B---C master</span><br></pre></td></tr></table></figure>
+
+<p>使用 merge</p>
+<ul>
+<li>切换到 feature 分支： git checkout feature。</li>
+<li>合并 master 分支的更新： git merge master。</li>
+<li>新增一个提交 F： git add . &amp;&amp; git commit -m “commit F” 。</li>
+<li>切回 master 分支并执行快进合并： git chekcout master &amp;&amp; git merge feature。</li>
+</ul>
+<p>下面提交历史可以看到,提交历史有两条线,一条是 master 的提交记录,一条是 feature 的.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">* 6fa5484 (HEAD -&gt; master, feature) commit F</span><br><span class="line">*   875906b Merge branch &#x27;master&#x27; into feature</span><br><span class="line">|\</span><br><span class="line">| | 5b05585 commit E</span><br><span class="line">| | f5b0fc0 commit D</span><br><span class="line">* * d017dff commit C</span><br><span class="line">* * 9df916f commit B</span><br><span class="line">|/</span><br><span class="line">* cb932a6 commit A</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用 rebase<br>就是第二条命令换为 git rebase master.<br>而 rebase 的提交记录,只有一条线,rebase 保存了 DE 的修改,把基底从 A 挪到了 C,实际上是复制了 DE 的提交,把之前的丢弃,再从 C 处重新新增的.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* 74199ce (HEAD -&gt; master, feature) commit F</span><br><span class="line">* e7c7111 commit E</span><br><span class="line">* d9623b0 commit D</span><br><span class="line">* 73deeed commit C</span><br><span class="line">* c50221f commit B</span><br><span class="line">* ef13725 commit A</span><br></pre></td></tr></table></figure>
+
+<h1 id="git-撤销-回滚"><a href="#git-撤销-回滚" class="headerlink" title="git 撤销(回滚)"></a>git 撤销(回滚)</h1><h1 id="commitlint"><a href="#commitlint" class="headerlink" title="commitlint"></a>commitlint</h1><p>提交时的分类<br>必填项，用于说明本次提交做出哪种类型的修改，必须是以下任意一值：</p>
 <ul>
 <li><strong>feat</strong>: A new feature（新功能）</li>
 <li><strong>fix</strong>: A bug fix（bug 的修复）</li>
@@ -1813,7 +1848,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-08 17:09:28" itemprop="dateModified" datetime="2022-12-08T17:09:28+08:00">2022-12-08</time>
+      <time title="Modified: 2022-12-09 10:56:05" itemprop="dateModified" datetime="2022-12-09T10:56:05+08:00">2022-12-09</time>
     </span>
 
   
