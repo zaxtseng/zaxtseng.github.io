@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -264,6 +264,7 @@
 <blockquote>
 <p>尽管 effect 只运行了一次，第一次渲染中的定时器回调函数可以完美地在每次触发的时候给 React 发送 c &#x3D;&gt; c + 1 更新指令。它不再需要知道当前的 count 值。因为 React 已经知道了。</p>
 </blockquote>
+<h2 id="useLayoutEffect-和-useEffect-区别-在哪个阶段执行-beginWork-commit-Work"><a href="#useLayoutEffect-和-useEffect-区别-在哪个阶段执行-beginWork-commit-Work" class="headerlink" title="useLayoutEffect,和 useEffect 区别?在哪个阶段执行? beginWork,commit Work"></a>useLayoutEffect,和 useEffect 区别?在哪个阶段执行? beginWork,commit Work</h2><p>二者的函数签名是相同的,不同点在于触发的时机不同.<br><code>useLayoutEffect</code>是同步处理副作用.<code>useEffect</code> 是异步处理.<br><code>useLayoutEffect</code>在 DOM 更新后,浏览器渲染之前,<code>useLayoutEffect</code>内部的更新将会同步刷新.<br><code>useEffect</code>是在浏览器渲染后.<br><code>useLayoutEffect</code>是在<code>commitWork</code>阶段.</p>
 <h1 id="useHook-与闭包"><a href="#useHook-与闭包" class="headerlink" title="useHook 与闭包"></a>useHook 与闭包</h1><h2 id="闭包陷阱"><a href="#闭包陷阱" class="headerlink" title="闭包陷阱"></a>闭包陷阱</h2><p>hooks 的闭包陷阱是指 useEffect 等 hook 中用到了某个 state，但是没有把它加到 deps 数组里，导致 state 变了，但是执行的函数依然引用着之前的 state</p>
 <h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>它的解决方式就是正确设置 deps 数组，把用到的 state 放到 deps 数组里，这样每次 state 变了就能执行最新的函数，引用新的 state。同时要清理上次的定时器、事件监听器等。<br>useRef 能解决闭包陷阱的原因是 useEffect 等 hook 里不直接引用 state，而是引用 ref.current，这样后面只要修改了 ref 中的值，这里取出来的就是最新的。</p>
 <p>解决 hooks 的闭包陷阱有两种方式：</p>
@@ -431,7 +432,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -510,7 +511,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -600,7 +601,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -687,7 +688,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -768,7 +769,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -872,7 +873,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -962,7 +963,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -1111,7 +1112,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
@@ -1189,7 +1190,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-11 19:58:19" itemprop="dateModified" datetime="2022-12-11T19:58:19+08:00">2022-12-11</time>
+      <time title="Modified: 2022-12-12 10:59:13" itemprop="dateModified" datetime="2022-12-12T10:59:13+08:00">2022-12-12</time>
     </span>
 
   
