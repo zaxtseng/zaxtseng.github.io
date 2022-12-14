@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">117</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,137 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/Chart-js/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/Chart-js/" class="post-title-link" itemprop="url">Chart-js</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:04:20" itemprop="dateCreated datePublished" datetime="2022-09-26T21:04:20+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-14 17:30:40" itemprop="dateModified" datetime="2022-12-14T17:30:40+08:00">2022-12-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>title: Chart.js</p>
+<p>date: 2019-10-03 11:30:37</p>
+<p>tags: html5</p>
+<p>categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>HTML5 # 一级分类</li>
+<li>canvas # 二级分类</li>
+</ul>
+<hr>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>而另一个版本 Chart.bundle.js 和 Chart.bundle.min.js 早就包含了 Moment.js 。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install chart.<span class="property">js</span> --save</span><br></pre></td></tr></table></figure>
+
+<h2 id="CDN-引入"><a href="#CDN-引入" class="headerlink" title="CDN 引入"></a>CDN 引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模块化引入"><a href="#模块化引入" class="headerlink" title="模块化引入"></a>模块化引入</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Chart</span> <span class="keyword">from</span> <span class="string">&#x27;chart.js&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> myChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;...&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单上手"><a href="#简单上手" class="headerlink" title="简单上手"></a>简单上手</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;myChart&quot;</span> <span class="attr">width</span>=<span class="string">&quot;400&quot;</span> <span class="attr">height</span>=<span class="string">&quot;400&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 获取我们要选择的canvas元素的上下文</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> ctx = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;myChart&quot;</span>).<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> myNewChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;...&#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 使用jQuery获取上下文-使用jQuery的.get（）方法。</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> ctx = $(<span class="string">&quot;#myChart&quot;</span>).<span class="title function_">get</span>(<span class="number">0</span>).<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="comment">// 这将获取jQuery集合中第一个返回的节点。</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> myNewChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>如果您希望所有创建的图表都具有响应性，并在浏览器窗口打开时调整大小，则可以更改以下设置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Chart</span>.<span class="property">defaults</span>.<span class="property">global</span>.<span class="property">responsive</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h1><p>折线图是在一条线上绘制数据点的方法.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myLineChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&quot;line&quot;</span>,</span><br><span class="line">  <span class="attr">data</span>: data,</span><br><span class="line">  <span class="attr">options</span>: options,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>数据结构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  <span class="comment">//横坐标显示的值</span></span><br><span class="line">  <span class="attr">labels</span>: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>, <span class="number">2019</span>],</span><br><span class="line">  <span class="attr">datasets</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//第一条线表示优酷</span></span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;优酷&quot;</span>,</span><br><span class="line">      <span class="comment">//设定data数值,表示每年用户总量</span></span><br><span class="line">      <span class="attr">data</span>: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//第二条线表示YouTube</span></span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;YouTube&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置坐标轴"><a href="#设置坐标轴" class="headerlink" title="设置坐标轴"></a>设置坐标轴</h2><h3 id="Y-轴"><a href="#Y-轴" class="headerlink" title="Y 轴"></a>Y 轴</h3><p>options.yAxes</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="comment">//设置缩放</span></span><br><span class="line">  <span class="attr">scales</span>: &#123;</span><br><span class="line">    <span class="comment">//设置Y轴</span></span><br><span class="line">    <span class="attr">yAxes</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">//刻度</span></span><br><span class="line">        <span class="attr">ticks</span>: &#123;</span><br><span class="line">          <span class="comment">//固定最大最小</span></span><br><span class="line">          <span class="attr">min</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">max</span>: <span class="number">2000</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//建议最大最小</span></span><br><span class="line">          <span class="attr">suggestedMin</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">suggestedMax</span>: <span class="number">2000</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//跨度</span></span><br><span class="line">          <span class="attr">stepSize</span>: <span class="number">400</span>,</span><br><span class="line"></span><br><span class="line">          <span class="comment">//用回调函数设置单位</span></span><br><span class="line">          <span class="attr">callback</span>: <span class="keyword">function</span> (<span class="params">value, index, values</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> value + <span class="string">&quot;人&quot;</span>;</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="标题和图例"><a href="#标题和图例" class="headerlink" title="标题和图例"></a>标题和图例</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">    <span class="comment">//设置标题</span></span><br><span class="line">    <span class="attr">title</span>: &#123;</span><br><span class="line">        <span class="attr">display</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&#x27;阿银&#x27;</span>,</span><br><span class="line">        <span class="attr">fontColor</span>: <span class="string">&#x27;black&#x27;</span>,</span><br><span class="line">        <span class="attr">fontSize</span>: <span class="string">&#x27;24&#x27;</span>,</span><br><span class="line">        <span class="attr">position</span>: <span class="string">&#x27;top&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">legend</span>: &#123;</span><br><span class="line">        <span class="comment">//设置图例</span></span><br><span class="line">        <span class="attr">position</span>: <span class="string">&#x27;left&#x27;</span>,</span><br><span class="line">        <span class="attr">display</span>: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">animation</span>: &#123;</span><br><span class="line">        <span class="comment">//动态效果,为0时禁用动画</span></span><br><span class="line">        <span class="attr">duration</span>: <span class="number">1000</span>,</span><br><span class="line">        <span class="attr">easing</span>: <span class="string">&#x27;easeOutQuart&#x27;</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="线型变换"><a href="#线型变换" class="headerlink" title="线型变换"></a>线型变换</h1><p><code>data.datasets</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">    <span class="attr">labels</span>: [<span class="number">2014</span>,<span class="number">2015</span>,<span class="number">2016</span>,<span class="number">2017</span>,<span class="number">2018</span>,<span class="number">2019</span>],</span><br><span class="line">    <span class="attr">datasets</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">label</span>:  <span class="string">&#x27;优酷&#x27;</span>,</span><br><span class="line">            <span class="attr">data</span>: [<span class="number">100</span>,<span class="number">200</span>,<span class="number">400</span>,<span class="number">800</span>,<span class="number">1600</span>],</span><br><span class="line">            <span class="comment">//线段颜色</span></span><br><span class="line">            <span class="attr">borderColor</span>: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">            <span class="comment">//线宽</span></span><br><span class="line">            <span class="attr">borderWidth</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="comment">//背景色是否填充</span></span><br><span class="line">            <span class="attr">fill</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="comment">//背景色</span></span><br><span class="line">            <span class="attr">backgroundColor</span>: <span class="string">&#x27;rgba(128,0,0,0.5),</span></span><br><span class="line"><span class="string">            //线段曲率,为0显示折线</span></span><br><span class="line"><span class="string">            lineTension: 0,</span></span><br><span class="line"><span class="string">            //折点的造型,默认是圆点.可选三角,方块,星星</span></span><br><span class="line"><span class="string">            pointStyle: &#x27;</span>rect<span class="string">&#x27;</span></span><br><span class="line"><span class="string">        &#125;,&#123;</span></span><br><span class="line"><span class="string">            label: &#x27;</span><span class="title class_">YouTube</span><span class="string">&#x27;,</span></span><br><span class="line"><span class="string">            data: [50,100,200,400,600]</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    ]</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="条形图-柱状图"><a href="#条形图-柱状图" class="headerlink" title="条形图(柱状图)"></a>条形图(柱状图)</h1><p>垂直条形图: <code>type: bar</code></p>
+<p>水平条形图: <code>type: horizontalBar</code></p>
+<p>大部分属性类似于折线图</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  <span class="attr">labels</span>: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>],</span><br><span class="line">  <span class="attr">datasets</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;优酷&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>],</span><br><span class="line">      <span class="comment">//为每个条形单独设置颜色</span></span><br><span class="line">      <span class="attr">backgroundColor</span>: [<span class="string">&quot;red&quot;</span>, <span class="string">&quot;orange&quot;</span>, <span class="string">&quot;yellow&quot;</span>, <span class="string">&quot;green&quot;</span>, <span class="string">&quot;blue&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;YouTube&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>还可以设置条形重叠(覆盖)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">options</span>: &#123;</span><br><span class="line">        <span class="attr">scales</span>: &#123;</span><br><span class="line">            <span class="attr">xAxes</span>: [&#123;</span><br><span class="line">                <span class="comment">//设置覆盖</span></span><br><span class="line">                <span class="attr">stacked</span>: <span class="literal">true</span></span><br><span class="line">            &#125;],</span><br><span class="line">            <span class="attr">yAxes</span>: [&#123;</span><br><span class="line">                <span class="comment">//设置覆盖</span></span><br><span class="line">                <span class="attr">stacked</span>: <span class="literal">true</span></span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="混合图"><a href="#混合图" class="headerlink" title="混合图"></a>混合图</h1><p>线形图和条形图的混合</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mixedChart = <span class="keyword">new</span> <span class="title class_">Chart</span>(ctx, &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&quot;bar&quot;</span>,</span><br><span class="line">  <span class="attr">data</span>: &#123;</span><br><span class="line">    <span class="attr">datasets</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&quot;优酷&quot;</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">800</span>, <span class="number">1600</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">label</span>: <span class="string">&quot;YouTube&quot;</span>,</span><br><span class="line">        <span class="attr">data</span>: [<span class="number">50</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">600</span>],</span><br><span class="line">        <span class="comment">//再改成线图</span></span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;line&quot;</span>,</span><br><span class="line">        <span class="comment">//防止填充遮盖到条形图</span></span><br><span class="line">        <span class="attr">fill</span>: <span class="literal">false</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">labels</span>: [<span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">options</span>: options,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="雷达图-六边形图"><a href="#雷达图-六边形图" class="headerlink" title="雷达图(六边形图)"></a>雷达图(六边形图)</h1><p><code>type = &#39;radar&#39;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">type = <span class="string">&quot;radar&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> data = &#123;</span><br><span class="line">  <span class="attr">labels</span>: [<span class="string">&quot;力量&quot;</span>, <span class="string">&quot;速度&quot;</span>, <span class="string">&quot;经验&quot;</span>, <span class="string">&quot;防守&quot;</span>, <span class="string">&quot;技术&quot;</span>, <span class="string">&quot;发球&quot;</span>],</span><br><span class="line">  <span class="attr">datasets</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;帝国の破坏龙-马龙&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&quot;rgba(247,247,9,0.2)&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;帝国の绝凶虎-张继科&quot;</span>,</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>],</span><br><span class="line">      <span class="attr">backgroundColor</span>: <span class="string">&quot;rgba(238,61,17,0.2)&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="attr">scale</span>: &#123;</span><br><span class="line">    <span class="attr">ticks</span>: &#123;</span><br><span class="line">      <span class="attr">suggestedMin</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">suggestedMax</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">stepSize</span>: <span class="number">1</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">display</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">text</span>: <span class="string">&quot;桌球帝国战力值&quot;</span>,</span><br><span class="line">    <span class="attr">fontSize</span>: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="饼图和甜甜圈"><a href="#饼图和甜甜圈" class="headerlink" title="饼图和甜甜圈"></a>饼图和甜甜圈</h1><p>饼图: <code>type: &#39;pie&#39;</code></p>
+<p>甜甜圈: <code>type: &#39;doughnut&#39;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">  <span class="attr">datasets</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">data</span>: [<span class="number">30</span>, <span class="number">20</span>, <span class="number">30</span>],</span><br><span class="line">      <span class="attr">backgroundColor</span>: [<span class="string">&quot;green&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="string">&quot;yellow&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  <span class="attr">labels</span>: [<span class="string">&quot;马龙&quot;</span>, <span class="string">&quot;张继科&quot;</span>, <span class="string">&quot;王浩&quot;</span>],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  <span class="comment">//50-用于甜甜圈，0-用于饼图</span></span><br><span class="line">  <span class="attr">cutoutPercentage</span>: <span class="number">80</span>,</span><br><span class="line">  <span class="attr">title</span>: &#123;</span><br><span class="line">    <span class="attr">display</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">text</span>: <span class="string">&quot;桌球帝国战力值&quot;</span>,</span><br><span class="line">    <span class="attr">fontSize</span>: <span class="string">&quot;24&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="极区图"><a href="#极区图" class="headerlink" title="极区图"></a>极区图</h1><p><code>type: &#39;polarArea&#39;</code></p>
+<p>极区图类似于饼图，但是每个线段具有相同的角度-线段的半径根据值而不同。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/TypeScript%E5%85%A5%E9%97%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +339,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:50" itemprop="dateModified" datetime="2022-12-14T14:33:50+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:40" itemprop="dateModified" datetime="2022-12-14T17:30:40+08:00">2022-12-14</time>
     </span>
 
   
@@ -360,7 +491,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:50" itemprop="dateModified" datetime="2022-12-14T14:33:50+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:40" itemprop="dateModified" datetime="2022-12-14T17:30:40+08:00">2022-12-14</time>
     </span>
 
   
@@ -513,7 +644,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:50" itemprop="dateModified" datetime="2022-12-14T14:33:50+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:40" itemprop="dateModified" datetime="2022-12-14T17:30:40+08:00">2022-12-14</time>
     </span>
 
   
@@ -669,7 +800,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:50" itemprop="dateModified" datetime="2022-12-14T14:33:50+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:40" itemprop="dateModified" datetime="2022-12-14T17:30:40+08:00">2022-12-14</time>
     </span>
 
   
@@ -1402,7 +1533,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:50" itemprop="dateModified" datetime="2022-12-14T14:33:50+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:40" itemprop="dateModified" datetime="2022-12-14T17:30:40+08:00">2022-12-14</time>
     </span>
 
   
@@ -1523,7 +1654,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:51" itemprop="dateModified" datetime="2022-12-14T14:33:51+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:40" itemprop="dateModified" datetime="2022-12-14T17:30:40+08:00">2022-12-14</time>
     </span>
 
   
@@ -1619,7 +1750,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:51" itemprop="dateModified" datetime="2022-12-14T14:33:51+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:40" itemprop="dateModified" datetime="2022-12-14T17:30:40+08:00">2022-12-14</time>
     </span>
 
   
@@ -1748,7 +1879,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:51" itemprop="dateModified" datetime="2022-12-14T14:33:51+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:41" itemprop="dateModified" datetime="2022-12-14T17:30:41+08:00">2022-12-14</time>
     </span>
 
   
@@ -1918,7 +2049,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:51" itemprop="dateModified" datetime="2022-12-14T14:33:51+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:41" itemprop="dateModified" datetime="2022-12-14T17:30:41+08:00">2022-12-14</time>
     </span>
 
   
@@ -1935,94 +2066,6 @@
 <li>拆分巨型应用,使得应用更好维护</li>
 <li>兼容历史应用,实现增量开发</li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/React%20CSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/08/22/React%20CSS/" class="post-title-link" itemprop="url">React CSS</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-08-22 10:55:31" itemprop="dateCreated datePublished" datetime="2022-08-22T10:55:31+08:00">2022-08-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:51" itemprop="dateModified" datetime="2022-12-14T14:33:51+08:00">2022-12-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="emotion"><a href="#emotion" class="headerlink" title="emotion"></a>emotion</h1><p>可以模块化 css</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add @emotion/styled @emotion/react</span><br></pre></td></tr></table></figure>
-
-<p>写法,注意首字母大写</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Container</span> = styled.<span class="property">div</span><span class="string">`</span></span><br><span class="line"><span class="string">  display: flex;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意styled后只能跟原生元素,如果要修改antd,加括号</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ShadowCard</span> = <span class="title function_">styled</span>(<span class="title class_">Card</span>)<span class="string">`</span></span><br><span class="line"><span class="string">  width: 40rem;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
-
-<h1 id="antd"><a href="#antd" class="headerlink" title="antd"></a>antd</h1><p>老版本 antd 和新版本 react-script 有冲突会报 less 警告.可以将引入 antd.css 改为 antd.min.css 即可解决.</p>
-<h1 id="Grid-布局和-flex-布局"><a href="#Grid-布局和-flex-布局" class="headerlink" title="Grid 布局和 flex 布局"></a>Grid 布局和 flex 布局</h1><p>区别:</p>
-<ol>
-<li>一维布局: flex;二维布局: grid;</li>
-<li>从内容出发用 flex,布局出发用 grid.</li>
-</ol>
-<p>内容出发:先有一组数据,数量不固定,希望均匀分布在容器中,由内容自己的大小占据空间.<br>布局出发: 先规划网格,再把元素往里面填充.</p>
 
       
     </div>

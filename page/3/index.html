@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">117</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,172 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/24/rolllup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/24/rolllup/" class="post-title-link" itemprop="url">rolllup</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-24 22:20:58" itemprop="dateCreated datePublished" datetime="2022-10-24T22:20:58+08:00">2022-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-14 17:30:34" itemprop="dateModified" datetime="2022-12-14T17:30:34+08:00">2022-12-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Rollup-概述"><a href="#Rollup-概述" class="headerlink" title="Rollup 概述"></a>Rollup 概述</h2><ul>
+<li>Rollup 更小巧，仅仅是一款 ESModule 打包器</li>
+<li>Rollup 中并不支持类似 HMR 这种高级特性</li>
+<li>提供一个充分利用 ESM 各项特性的高效打包器</li>
+</ul>
+<h2 id="Rollup-快速上手"><a href="#Rollup-快速上手" class="headerlink" title="Rollup 快速上手"></a>Rollup 快速上手</h2><ul>
+<li>安装 <code>yarn add rollup --dev</code></li>
+<li>打包 <code>yarn rollup ./src/index.js --format iife --file dist/bundle.js</code></li>
+<li>入口文件 index.js，指定输出格式：–format，格式：iife（自执行函数），–file：输出到目录</li>
+<li>没使用的不会打包，自动开启 Tree Shaking</li>
+</ul>
+<h2 id="Rollup-配置文件"><a href="#Rollup-配置文件" class="headerlink" title="Rollup 配置文件"></a>Rollup 配置文件</h2><ul>
+<li>rollup 运行在 node 环境中</li>
+<li>根目录新建 <code>rollup.config.mjs</code> 配置文件</li>
+<li>rollup 会额外处理这个配置文件，所有可以使用 ESM,注意使用 esm 需要将后缀改为<code>.mjs</code></li>
+<li>配置文件导出一个对象</li>
+<li>通过 input 属性指定打包入口</li>
+<li>通过 output 属性指定输出，该属性值是一个对象，通过 file 指定输出的文件名，format 属性指定输出格式</li>
+<li>打包 <code>pnpm rollup --config rollup.config.mjs</code> 通过–config 告诉 rollup 使用配置文件，可以根据开发、生产指定对应的配置文件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-使用插件"><a href="#Rollup-使用插件" class="headerlink" title="Rollup 使用插件"></a>Rollup 使用插件</h2><ul>
+<li>插件是 rollup 唯一的扩展途径</li>
+<li>安装插件 <code>pnpm add @rollup/plugin-json -D</code> 一个可以在代码导入 json 文件的插件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-json&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="comment">// package.json 的属性会作为成员导出</span></span><br><span class="line"><span class="keyword">import</span> &#123; name, version &#125; <span class="keyword">from</span> <span class="string">&quot;../package&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, version);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-加载-NPM-模块"><a href="#Rollup-加载-NPM-模块" class="headerlink" title="Rollup 加载 NPM 模块"></a>Rollup 加载 NPM 模块</h2><ul>
+<li>安装插件 <code>pnpm add @rollup/plugin-node-resolve -D</code></li>
+<li>安装 lodash 的 es 版本 <code>pnpm add lodash-es</code></li>
+</ul>
+<p>该插件可以让 rollup 通过模块名成导入插件.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-json&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; nodeResolve &#125; <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-node-resolve&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>(), <span class="title function_">nodeResolve</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">&quot;lodash-es&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(_.<span class="title function_">camelCase</span>(<span class="string">&quot;hello world&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-加载-CommonJS-模块"><a href="#Rollup-加载-CommonJS-模块" class="headerlink" title="Rollup 加载 CommonJS 模块"></a>Rollup 加载 CommonJS 模块</h2><ul>
+<li>安装插件 <code>yarn add @rollup/plugin-commonjs --dev</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-json&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; nodeResolve &#125; <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-node-resolve&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> commonjs <span class="keyword">from</span> <span class="string">&quot;@rollup/plugin-commonjs&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">file</span>: <span class="string">&quot;dist/bundle.js&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;iife&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">json</span>(), <span class="title function_">nodeResolve</span>(), <span class="title function_">commonjs</span>()],</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// cjs-module.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123; <span class="attr">foo</span>: <span class="string">&quot;bar&quot;</span> &#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span> cjs <span class="keyword">from</span> <span class="string">&quot;./cjs-module.js&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cjs);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-代码拆分"><a href="#Rollup-代码拆分" class="headerlink" title="Rollup 代码拆分"></a>Rollup 代码拆分</h2><ul>
+<li>可以 ESM 的动态导入方式（import()）实现模块的按需加载</li>
+<li>rollup 内部会自动处理代码拆分</li>
+<li>代码拆分的方式打包 formats 不可以使用 iife（自执行函数）</li>
+<li>自执行函数会把所有模块放到同一个函数中，可以使用 AMD 或者 Commonjs 标准，浏览器使用 AMD</li>
+<li>需要输出多个文件 output 中就不能使用 file 属性，而是使用 dis 属性 值是输出目录</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">input</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">dir</span>: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;amd&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// index.js</span></span><br><span class="line"><span class="keyword">import</span>(<span class="string">&quot;./logger&quot;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">&#123; log &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">log</span>(<span class="string">&quot;code splitting~&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-多入口打包"><a href="#Rollup-多入口打包" class="headerlink" title="Rollup 多入口打包"></a>Rollup 多入口打包</h2><ul>
+<li>会把不同入口公共代码自动提取到单个文件中作为独立的 bundle</li>
+<li>把配置文件的 input 属性值修改为一个数组，或者使用对象的方式</li>
+<li>rollup 内部会自动拆分 format 要使用 AMD</li>
+<li>AMD 文件不能直接引入，要使用特定的库去加载</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="comment">// input: [&#x27;src/index.js&#x27;, &#x27;src/album.js&#x27;]</span></span><br><span class="line">  <span class="attr">input</span>: &#123;</span><br><span class="line">    <span class="attr">foo</span>: <span class="string">&quot;src/index.js&quot;</span>,</span><br><span class="line">    <span class="attr">bar</span>: <span class="string">&quot;src/album.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">dir</span>: <span class="string">&quot;dist&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;amd&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;ie=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- AMD 标准格式的输出 bundle 不能直接引用 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- &lt;script src=&quot;foo.js&quot;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 需要 Require.js 这样的库 --&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--data-main：指定require入口路径--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span></span></span><br><span class="line"><span class="tag">      <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/requirejs@2.3.6/require.js&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">data-main</span>=<span class="string">&quot;foo.js&quot;</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Rollup-选用原则"><a href="#Rollup-选用原则" class="headerlink" title="Rollup 选用原则"></a>Rollup 选用原则</h2><ul>
+<li>优势<ul>
+<li>输出结果更加扁平</li>
+<li>自动移除未引用的代码</li>
+<li>打包结果依然完全可读</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>加载非 ESM 的第三方模块比较复杂</li>
+<li>模块最终都被打包到一个函数中，无法实现 HMR</li>
+<li>浏览器环境中，代码拆分功能依赖 AMD 库</li>
+</ul>
+</li>
+<li>应用开发建议使用 webpack</li>
+<li>库、框架开发建议使用 Rollup</li>
+</ul>
+<h2 id="Parcel-打包器"><a href="#Parcel-打包器" class="headerlink" title="Parcel 打包器"></a>Parcel 打包器</h2><ul>
+<li>零配置的前端应用打包器</li>
+<li>安装 <code>yarn add parcel-bundler --dev</code></li>
+<li>官方建议使用 html 文件作为打包入口</li>
+<li>打包 <code>yarn parcel src/index.html</code> parcel 会根据导入的模块查找 从而完成整个项目的打包，会自动开启一个服务</li>
+<li>模块热更新</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable language_">module</span>.<span class="property">hot</span>) &#123;</span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">hot</span>.<span class="title function_">accept</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hmr&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>会自动安装模块依赖，如文件中导入 JQ，保存文件后，会自动安装模块</li>
+<li>支持导入其他类型文件，而且是零配置的 <code>import &#39;./style.css</code> 保存就生效了</li>
+<li>可以动态导入模块 import()</li>
+<li>生成环境打包 <code>yarn parcel build src/index.html</code></li>
+<li>内部使用多进程同时工作，构建速度快</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/24/webpack/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +374,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:44" itemprop="dateModified" datetime="2022-12-14T14:33:44+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:34" itemprop="dateModified" datetime="2022-12-14T17:30:34+08:00">2022-12-14</time>
     </span>
 
   
@@ -753,7 +919,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:45" itemprop="dateModified" datetime="2022-12-14T14:33:45+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:34" itemprop="dateModified" datetime="2022-12-14T17:30:34+08:00">2022-12-14</time>
     </span>
 
   
@@ -936,7 +1102,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:45" itemprop="dateModified" datetime="2022-12-14T14:33:45+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:34" itemprop="dateModified" datetime="2022-12-14T17:30:34+08:00">2022-12-14</time>
     </span>
 
   
@@ -1012,7 +1178,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:45" itemprop="dateModified" datetime="2022-12-14T14:33:45+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:34" itemprop="dateModified" datetime="2022-12-14T17:30:34+08:00">2022-12-14</time>
     </span>
 
   
@@ -1099,7 +1265,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:45" itemprop="dateModified" datetime="2022-12-14T14:33:45+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:34" itemprop="dateModified" datetime="2022-12-14T17:30:34+08:00">2022-12-14</time>
     </span>
 
   
@@ -1648,7 +1814,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:45" itemprop="dateModified" datetime="2022-12-14T14:33:45+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:35" itemprop="dateModified" datetime="2022-12-14T17:30:35+08:00">2022-12-14</time>
     </span>
 
   
@@ -1773,7 +1939,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:45" itemprop="dateModified" datetime="2022-12-14T14:33:45+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:35" itemprop="dateModified" datetime="2022-12-14T17:30:35+08:00">2022-12-14</time>
     </span>
 
   
@@ -1888,7 +2054,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:45" itemprop="dateModified" datetime="2022-12-14T14:33:45+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:35" itemprop="dateModified" datetime="2022-12-14T17:30:35+08:00">2022-12-14</time>
     </span>
 
   
@@ -2123,7 +2289,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:45" itemprop="dateModified" datetime="2022-12-14T14:33:45+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:30:35" itemprop="dateModified" datetime="2022-12-14T17:30:35+08:00">2022-12-14</time>
     </span>
 
   
@@ -2257,260 +2423,6 @@
 <p>那么问题出在哪？</p>
 <p>其实，就是在 class 中，定义类的时候默认使用的是严格模式。</p>
 <p>所以在严格模式下，由于 this 不能指向全局变量，因此这里就变成了 undefined。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/ES6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/ES6/" class="post-title-link" itemprop="url">ES6</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:07:55" itemprop="dateCreated datePublished" datetime="2022-09-26T21:07:55+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 14:33:46" itemprop="dateModified" datetime="2022-12-14T14:33:46+08:00">2022-12-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>title: ES6</p>
-<p>date: 2019-09-05 13:59:32</p>
-<p>tags: javascript</p>
-<p>categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
-<ul>
-<li>JS # 一级分类</li>
-<li>ES6 # 二级分类</li>
-</ul>
-<hr>
-<p>ES6 常见语法</p>
-<h1 id="let-和-const"><a href="#let-和-const" class="headerlink" title="let 和 const"></a>let 和 const</h1><p><code>let</code>定义局部变量</p>
-<p><code>var</code>定义全局变量.用<code>var</code>定义的全部变量，有时候会污染整个 js 的作用域。</p>
-<p><code>const</code>定义常量</p>
-<p>在全局作用域下使用<code>let</code>和<code>const</code>声明变量，变量并不会挂载到<code>window</code></p>
-<ol>
-<li>var 可声明前置(变量提升)</li>
-</ol>
-<p>变量会提升，函数也会提升，并且函数优先于变量提升，函数提升会把整个函数提到作用域顶部，变量提升只会把声明提上去.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>let 不可声明前置</li>
-</ol>
-<p>暂时性死区：不能在变量声明之前使用变量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">3</span>; <span class="comment">//报错</span></span><br><span class="line"><span class="keyword">let</span> a;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>let 不可重复声明</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">4</span>; <span class="comment">//报错</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="number">5</span>; <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>存在块级作用域</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">//块级作用域只在大括号内,出了大括号,i并没有声明,会报错</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
-
-<p>暂时性死区: 在 let 声明变量之前都是该变量的死区,在死区内该变量不可使用.不能被声明也不能被获取.</p>
-<ol start="5">
-<li>const 声明的常量不可改变</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</span><br><span class="line">a = <span class="number">2</span>; <span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;;</span><br><span class="line">obj.<span class="property">a</span> = <span class="number">2</span>; <span class="comment">//正常</span></span><br><span class="line">obj = &#123; <span class="attr">a</span>: <span class="number">2</span> &#125;; <span class="comment">//报错</span></span><br></pre></td></tr></table></figure>
-
-<p>const 对象等于引用类型,obj 存的是<code>&#123;a: 1&#125;</code>的地址,里面的东西改变并不影响地址.而<code>obj = &#123;a: 2&#125;</code>是赋给一个新的地址,发生了改变,会报错.</p>
-<ol start="6">
-<li>适用于<code>let</code>同样适用于<code>const</code></li>
-</ol>
-<p><code>let</code>和<code>const</code>作用基本一致，<code>const</code>声明的变量不能再次赋值</p>
-<p>ES6 可以大量使用<code>let</code>,如果认定模块不改变,可以使用<code>const</code></p>
-<h1 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h1><h2 id="关于数组的解构赋值"><a href="#关于数组的解构赋值" class="headerlink" title="关于数组的解构赋值"></a>关于数组的解构赋值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a, [b], c] = [<span class="number">2</span>, [<span class="number">3</span>], <span class="number">4</span>];</span><br><span class="line">a; <span class="comment">//2</span></span><br><span class="line">b; <span class="comment">//3</span></span><br><span class="line">c; <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a] = <span class="number">1</span>; <span class="comment">//报错,因为[a]是一个数组,把值赋值给数组就报错了</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>默认值</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b = <span class="number">2</span>] = [<span class="number">3</span>]</span><br><span class="line">a <span class="comment">// 3</span></span><br><span class="line">b <span class="comment">// 2,因为b没有对应值,所以是undefined,使用默认值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a, b = <span class="number">2</span>] = [<span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">a <span class="comment">//3</span></span><br><span class="line">b <span class="comment">//4</span></span><br><span class="line">数组对应对值有没有？如果没有（数组对没有指<span class="literal">undefined</span>）就使用默认值，如果有就使用对应值</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [a=<span class="number">2</span>, b=<span class="number">3</span>] = [<span class="literal">undefined</span>, <span class="literal">null</span>]</span><br><span class="line">a <span class="comment">//2</span></span><br><span class="line">b <span class="comment">//null</span></span><br><span class="line"><span class="keyword">let</span> [a=<span class="number">1</span>, b=a] = [<span class="number">2</span>]</span><br><span class="line">a <span class="comment">//2</span></span><br><span class="line">b <span class="comment">//2,因为b没有对应值,所以是undefined,使用默认值,此时a的默认值为2</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>对象的解构赋值</li>
-</ol>
-<p>前置知识</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [name, age] = [<span class="string">&quot;hunger&quot;</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> p1 = &#123; name, age &#125;;</span><br><span class="line"><span class="comment">//等同于</span></span><br><span class="line"><span class="keyword">let</span> p2 = &#123; <span class="attr">name</span>: name, <span class="attr">age</span>: age &#125;;</span><br><span class="line">解构范例;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; name, age &#125; = &#123; <span class="attr">name</span>: <span class="string">&quot;jirengu&quot;</span>, <span class="attr">age</span>: <span class="number">4</span> &#125;;</span><br><span class="line">name; <span class="comment">//‘jirengu’</span></span><br><span class="line">age; <span class="comment">//4</span></span><br><span class="line">以上代码等同于;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> name;</span><br><span class="line"><span class="keyword">let</span> age;</span><br><span class="line">(&#123; <span class="attr">name</span>: name, <span class="attr">age</span>: age &#125; = &#123; <span class="attr">name</span>: <span class="string">&quot;jirengu&quot;</span>, <span class="attr">age</span>: <span class="number">4</span> &#125;);</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>默认值</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; x, y = <span class="number">5</span> &#125; = &#123; <span class="attr">x</span>: <span class="number">1</span> &#125;;</span><br><span class="line">x; <span class="comment">//1</span></span><br><span class="line">y; <span class="comment">//5</span></span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>函数解构</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">[x = <span class="number">1</span>, y = <span class="number">2</span>]</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">add</span>(); <span class="comment">//Error</span></span><br><span class="line"><span class="title function_">add</span>([<span class="number">2</span>]); <span class="comment">//4</span></span><br><span class="line"><span class="title function_">add</span>([<span class="number">3</span>, <span class="number">4</span>]); <span class="comment">//7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sum</span>(<span class="params">&#123; x, y &#125; = &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;, &#123; a = <span class="number">1</span>, b = <span class="number">1</span> &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> [x + a, y + b];</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">sum</span>(&#123; <span class="attr">x</span>: <span class="number">1</span>, <span class="attr">y</span>: <span class="number">2</span> &#125;, &#123; <span class="attr">a</span>: <span class="number">2</span> &#125;); <span class="comment">//[3, 3]</span></span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>作用</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> [x, y] = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">[x, y] = [y, x]</span><br><span class="line">x <span class="comment">//2</span></span><br><span class="line">y <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ajax</span>(<span class="params">&#123;url, type=‘GET’&#125;</span>)&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">ajax</span>(&#123;<span class="attr">url</span>: ‘<span class="attr">http</span>:<span class="comment">//localhost:3000/getData’&#125;)</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="字符串-数组-对象"><a href="#字符串-数组-对象" class="headerlink" title="字符串,数组,对象"></a>字符串,数组,对象</h1><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ol>
-<li>多行字符串</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">`</span></span><br><span class="line"><span class="string">Hi,</span></span><br><span class="line"><span class="string">This is jirengu.com.</span></span><br><span class="line"><span class="string">You can study frontend here.</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>字符串模板</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> website = <span class="string">&quot;jirengucom&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> who = <span class="string">&quot;You&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">`Hi</span></span><br><span class="line"><span class="string">This is <span class="subst">$&#123;website&#125;</span>.</span></span><br><span class="line"><span class="string"><span class="subst">$&#123;who&#125;</span> can study frontend here</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"><span class="comment">//$&#123;&#125;,可以替换变量</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> data = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> liArr = data.<span class="title function_">map</span>(<span class="function">(<span class="params">v</span>) =&gt;</span> <span class="string">`&lt;li&gt;<span class="subst">$&#123;v&#125;</span>&lt;/li&gt;`</span>).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> html = <span class="string">`&lt;ul&gt;<span class="subst">$&#123;liArr&#125;</span>&lt;/ul&gt;`</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(html);</span><br><span class="line"><span class="comment">//&quot;&lt;ul&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;&lt;li&gt;4&lt;/li&gt;&lt;/ul&gt;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><ol>
-<li>扩展运算符<code>...</code></li>
-</ol>
-<p><strong>主要作用</strong>是将数组或对象进行展开.</p>
-<blockquote>
-<p>对象中的扩展运算符(…)用于取出参数对象中的所有可遍历属性，拷贝到当前对象之中</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(...a); <span class="comment">// 1, 2,这三个点相当于脱壳,把数组的壳拿掉</span></span><br><span class="line"><span class="keyword">var</span> b = [...a, <span class="number">3</span>];</span><br><span class="line">b; <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = b.<span class="title function_">concat</span>([<span class="number">4</span>, <span class="number">5</span>]); <span class="comment">//b拼接[4,5]变成[1,2,3,4,5]</span></span><br><span class="line"><span class="keyword">var</span> d = [...b, <span class="number">4</span>, <span class="number">5</span>]; <span class="comment">//直接把脱壳后的1,2,3放入数组中</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>函数参数的扩展</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sort</span>(<span class="params">...arr</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">sort</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">sort</span>(<span class="number">3</span>, <span class="number">1</span>, <span class="number">5</span>); <span class="comment">//[1, 3, 5]</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">max</span>(<span class="params">arr</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">max</span>(...arr);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">max</span>([<span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>]); <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>类数组对象转数组</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ps = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;p&quot;</span>);</span><br><span class="line"><span class="title class_">Array</span>.<span class="title function_">from</span>(ps).<span class="title function_">forEach</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">innerText</span>);</span><br><span class="line">&#125;);</span><br><span class="line">[...ps].<span class="title function_">forEach</span>(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">innerText</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><ol>
-<li>默认值</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sayHi</span>(<span class="params">name = <span class="string">&quot;jirengu&quot;</span></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`hi, <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">sayHi</span>();</span><br><span class="line"><span class="title function_">sayHi</span>(<span class="string">&quot;ruoyu&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fetch</span>(<span class="params">url, &#123; body = <span class="string">&quot;&quot;</span>, method = <span class="string">&quot;GET&quot;</span>, headers = &#123;&#125; &#125; = &#123;&#125;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(method);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://example.com&quot;</span>); <span class="comment">//如果没有定义那么就是undefined,使用默认值,如果传入了参数,那就使用传入值</span></span><br></pre></td></tr></table></figure>
-
-<p><em>以下两种写法的区别?</em></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ex1</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">m1</span>(<span class="params">&#123; x = <span class="number">0</span>, y = <span class="number">0</span> &#125; = &#123;&#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ex2</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">m2</span>(<span class="params">&#123; x, y &#125; = &#123; x: <span class="number">0</span>, y: <span class="number">0</span> &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> [x, y];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数没有参数的情况</span></span><br><span class="line"><span class="title function_">m1</span>(); <span class="comment">// [0, 0]</span></span><br><span class="line"><span class="title function_">m2</span>(); <span class="comment">// [0, 0]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// x 和 y 都有值的情况</span></span><br><span class="line"><span class="title function_">m1</span>(&#123; <span class="attr">x</span>: <span class="number">3</span>, <span class="attr">y</span>: <span class="number">8</span> &#125;); <span class="comment">// [3, 8]</span></span><br><span class="line"><span class="title function_">m2</span>(&#123; <span class="attr">x</span>: <span class="number">3</span>, <span class="attr">y</span>: <span class="number">8</span> &#125;); <span class="comment">// [3, 8]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// x 有值，y 无值的情况</span></span><br><span class="line"><span class="title function_">m1</span>(&#123; <span class="attr">x</span>: <span class="number">3</span> &#125;); <span class="comment">// [3, 0]</span></span><br><span class="line"><span class="title function_">m2</span>(&#123; <span class="attr">x</span>: <span class="number">3</span> &#125;); <span class="comment">// [3, undefined]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// x 和 y 都无值的情况</span></span><br><span class="line"><span class="title function_">m1</span>(&#123;&#125;); <span class="comment">// [0, 0];把&#123;&#125;赋给(x = 0,y = 0)</span></span><br><span class="line"><span class="title function_">m2</span>(&#123;&#125;); <span class="comment">// [undefined, undefined];把&#123;&#125;赋给&#123;x,y&#125;,也就是把undefined, undefined赋给&#123;x,y&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">m1</span>(&#123; <span class="attr">z</span>: <span class="number">3</span> &#125;); <span class="comment">// [0, 0]</span></span><br><span class="line"><span class="title function_">m2</span>(&#123; <span class="attr">z</span>: <span class="number">3</span> &#125;); <span class="comment">// [undefined, undefined]</span></span><br></pre></td></tr></table></figure>
-
-<p>ex1：调用函数需要你传递一个对象，如果你没传对象就用默认值对象{}，默认值对象里面都是 undefined， 所以属性使用初始值</p>
-<p>ex2：参数需要是一个对象，如果没传对象，就用默认值对象{ x: 0, y: 0 }如果传了对象，就使用你传递的对象</p>
-<ol start="2">
-<li>箭头函数</li>
-</ol>
-<p>箭头后面的内容，就相当于<code>return</code>的内容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title function_">f</span> = (<span class="params">v</span>) =&gt; v + <span class="number">1</span>;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params">v</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> v + <span class="number">1</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title function_">f</span> = (<span class="params"></span>) =&gt; <span class="number">5</span>;</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title function_">sum</span> = (<span class="params">num1, num2</span>) =&gt; num1 + num2; <span class="comment">//适用于立刻返回,即把代码写成一行的情况</span></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">var</span> sum = <span class="keyword">function</span> (<span class="params">num1, num2</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组的平方</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = arr.<span class="title function_">map</span>(<span class="function">(<span class="params">v</span>) =&gt;</span> v * v);</span><br><span class="line">arr2; <span class="comment">//[1, 4, 9]</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>箭头函数里面的 this</li>
-</ol>
-<p>1.箭头函数会捕获其所在上下文的 this 值作为自己的 this 值,自己本身并没有 this 值.</p>
-<p>2.箭头函数的 this 永远指向其上下文的 this,任何方法都改变不了其指向,如 call,bind,apply.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;id:&quot;</span>, <span class="variable language_">this</span>.<span class="property">id</span>);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  等同于如下ES5</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> _this = <span class="variable language_">this</span>;</span><br><span class="line">  <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;id:&quot;</span>, _this.<span class="property">id</span>);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">&quot;jirengu&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> age = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">var</span> people = &#123; name, age &#125;; <span class="comment">//&#123;name:&#x27;jirengu&#x27;, age:3&#125;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> app = &#123;</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">&quot;#app&quot;</span>,</span><br><span class="line">  <span class="comment">//函数简写</span></span><br><span class="line">  <span class="title function_">init</span>(<span class="params"></span>) &#123;&#125;,</span><br><span class="line">  <span class="title function_">bind</span>(<span class="params"></span>) &#123;&#125;,</span><br><span class="line">&#125;;</span><br><span class="line">app.<span class="title function_">init</span>();</span><br></pre></td></tr></table></figure>
-
-<h1 id="类和继承"><a href="#类和继承" class="headerlink" title="类和继承"></a>类和继承</h1><ol>
-<li>构造函数</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">sayHello</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>, i am <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span> years old`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">等价于;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">sayHello</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>, i am <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span> years old`</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;hunger&quot;</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>静态方法调用直接在类上进行，不能在类的实例上调用。</p>
-<p>下面的例子说明了这几点:</p>
-<p>静态方法如何在类上实现。</p>
-<p>具有静态成员的类，可以被子类化 。</p>
-<p>什么情况下静态方法可以调用，什么情况下不能调用。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Tripple</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">tripple</span>(<span class="params">n = <span class="number">1</span></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> n * <span class="number">3</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BiggerTripple</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Tripple</span> &#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">tripple</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">super</span>.<span class="title function_">tripple</span>(n) * <span class="variable language_">super</span>.<span class="title function_">tripple</span>(n);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Tripple</span>.<span class="title function_">tripple</span>()); <span class="comment">// 3</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Tripple</span>.<span class="title function_">tripple</span>(<span class="number">6</span>)); <span class="comment">// 18</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> tp = <span class="keyword">new</span> <span class="title class_">Tripple</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">BiggerTripple</span>.<span class="title function_">tripple</span>(<span class="number">3</span>)); <span class="comment">// 81（不会受父类实例化的影响）</span></span><br><span class="line"><span class="comment">//super继承父类的方法super.tripple(n) = 3n,BiggerTripple.tripple(n) = (3n)^2.当n=3,输出81</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(tp.<span class="title function_">tripple</span>()); <span class="comment">// &#x27;tp.tripple 不是一个函数&#x27;.说明只能在类上实现.</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>继承</li>
-</ol>
-<p>js 中并不存在类，<code>class</code>只是语法糖，本质是函数</p>
-<p>class 继承的核心在于使用<code>extends</code>表明继承自哪个父类，并在子类构造函数中必须调用<code>super</code></p>
-<p>通过<code>super</code>获取父类的属性.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">sayHello</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//写的函数会直接放到原型上</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>, i am <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span> years old`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span> &#123;</span><br><span class="line">  <span class="comment">//这里的constructor是Student的构造函数,内含三个参数</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name, age, score</span>) &#123;</span><br><span class="line">    <span class="comment">//这里的super是继承自父类的参数</span></span><br><span class="line">    <span class="variable language_">super</span>(name, age);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">score</span> = score;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">sayScore</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">      <span class="string">`hello, <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>, i am <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span> years old, i get <span class="subst">$&#123;<span class="variable language_">this</span>.score&#125;</span>`</span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><p>为什么使用模块化?</p>
-<ol>
-<li>解决命名冲突</li>
-<li>提供复用性</li>
-<li>提高代码可维护性</li>
-</ol>
-<p>写法 1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// profile.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> firstName = <span class="string">&quot;Michael&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> lastName = <span class="string">&quot;Jackson&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"><span class="comment">//useage.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; firstName, lastName, year &#125; <span class="keyword">from</span> <span class="string">&quot;./profile&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(firstName);</span><br></pre></td></tr></table></figure>
-
-<p>写法 2</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> firstName = <span class="string">&quot;Michael&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> lastName = <span class="string">&quot;Jackson&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; firstName, lastName, year &#125;;</span><br><span class="line"><span class="comment">//useage.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; firstName, lastName, year &#125; <span class="keyword">from</span> <span class="string">&quot;./profile&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(firstName);</span><br></pre></td></tr></table></figure>
-
-<p>写法 3</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//helper.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">getName</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">getYear</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; getName, getYear &#125; <span class="keyword">from</span> <span class="string">&quot;./helper&quot;</span>;</span><br><span class="line"><span class="title function_">getName</span>();</span><br></pre></td></tr></table></figure>
-
-<p>写法 4</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//helper.js</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getName</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getYear</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; getName, getYear &#125;;</span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; getName, getYear &#125; <span class="keyword">from</span> <span class="string">&quot;./helper&quot;</span>;</span><br><span class="line"><span class="title function_">getName</span>();</span><br></pre></td></tr></table></figure>
-
-<p>写法 5</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// export-default.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;foo&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// import-default.js</span></span><br><span class="line"><span class="keyword">import</span> getName <span class="keyword">from</span> <span class="string">&quot;./export-default&quot;</span>;</span><br><span class="line"><span class="title function_">getName</span>();</span><br></pre></td></tr></table></figure>
 
       
     </div>
