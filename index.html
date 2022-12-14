@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,118 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/14/Mobx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/12/14/Mobx/" class="post-title-link" itemprop="url">Mobx</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-12-14 17:29:08 / Modified: 17:57:53" itemprop="dateCreated datePublished" datetime="2022-12-14T17:29:08+08:00">2022-12-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>全局状态管理插件设计的核心思想都可以概括成：不能随意的去修改状态（state）。因此我们通常需要一个 action 来统一 modify 我们的 state。<br>MobX 也是基于这种思想设计的，它具有：</p>
+<ul>
+<li>定义状态并使其可观察 （observable）</li>
+<li>创建视图以响应状态的变化（observer、computed）</li>
+<li>更改状态（action）</li>
+</ul>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1671011314047-5a3aa026-a8bb-423c-9796-45492772c408.png#averageHue=%23fbfaf8&clientId=ue204e994-17e2-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=574&id=u0b88d30e&margin=%5Bobject%20Object%5D&name=image.png&originHeight=574&originWidth=690&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=135881&status=done&style=none&taskId=ucd8de1df-4adf-495a-ad12-0c9c19a9225&title=&width=690" alt="image.png"></p>
+<h1 id="Function-组件里使用"><a href="#Function-组件里使用" class="headerlink" title="Function 组件里使用"></a>Function 组件里使用</h1><p>由于 React Hooks 的出现，以及注解的不稳定性。在 6.x 中，MobX 升级了它的使用方法。<br>这里我们以 makeAutoObservable 的 Store 设计为例：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Store6_makeAutoObservable</span> &#123;</span><br><span class="line">  readonly base = <span class="number">5</span>;</span><br><span class="line">  <span class="title class_">MCount</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">makeAutoObservable</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">setMCount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">MCount</span>++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">total</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">MCount</span> * <span class="variable language_">this</span>.<span class="property">base</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Store6</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后在函数组件里，我们需要使用 observer 函数来替代注解：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observer &#125; <span class="keyword">from</span> <span class="string">&quot;mobx-react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> store6 <span class="keyword">from</span> <span class="string">&quot;@/store&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">MobXFunc</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="title function_">observer</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">           </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">          store6.setMCount();</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;</span></span><br><span class="line"><span class="language-xml">      &gt;</span></span><br><span class="line"><span class="language-xml">               count++      </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">           <span class="tag">&lt;<span class="name">span</span>&gt;</span> Count &#123;store6.MCount&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>     </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">span</span>&gt;</span> Base &#123;store6.base&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>     <span class="tag">&lt;<span class="name">span</span>&gt;</span> Total &#123;store6.total&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span> </span></span><br><span class="line"><span class="language-xml">       </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="MobX-Hooks-写法"><a href="#MobX-Hooks-写法" class="headerlink" title="MobX + Hooks 写法"></a>MobX + Hooks 写法</h1><p>为了更好的结合 Hooks 语法，Mobx 在 6.x 中也提供了 2 个新的 API:</p>
+<h2 id="useLocalStore（Hooks-环境下的-observable）"><a href="#useLocalStore（Hooks-环境下的-observable）" class="headerlink" title="useLocalStore（Hooks 环境下的 observable）"></a><code>useLocalStore</code>（Hooks 环境下的 observable）</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="title function_">useLocalStore</span>(<span class="function">() =&gt;</span> (&#123; <span class="attr">key</span>: <span class="string">&quot;value&quot;</span> &#125;));</span><br></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [store] = <span class="title function_">useState</span>(<span class="function">() =&gt;</span> <span class="title function_">observable</span>(&#123; <span class="attr">key</span>: <span class="string">&quot;value&quot;</span> &#125;));</span><br></pre></td></tr></table></figure>
+
+<p>为 Hooks 解决了 依赖传递 和 缓存雪崩 的问题。</p>
+<h2 id="useObserver"><a href="#useObserver" class="headerlink" title="useObserver"></a>useObserver</h2><p>Mobx 使组件响应数据状态的变化主要有以下三种方式：</p>
+<ul>
+<li><a href="/observer">@observer </a><ul>
+<li>给类组件提供 pure component 的能力，将组件的 props 和 state 转换为 observable 态，响应数据变化</li>
+<li>不推荐在 Hooks 中使用</li>
+</ul>
+</li>
+<li>observer 方法</li>
+<li>Component：Observer（Mobx 6 中已经基于 useObserver 来实现了）</li>
+<li>Hooks：useObserver</li>
+</ul>
+<p>还是以 makeAutoObservable 的 Store 设计为例，这里就不展示了。</p>
+<p>我们在函数组件里：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Observer</span>, useLocalObservable, useObserver &#125; <span class="keyword">from</span> <span class="string">&quot;mobx-react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; store6_auto <span class="keyword">as</span> store6 &#125; <span class="keyword">from</span> <span class="string">&quot;@/store&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">MobXHook</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> store = <span class="title function_">useLocalObservable</span>(<span class="function">() =&gt;</span> store6);</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">useObserver</span>(<span class="function">() =&gt;</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">           </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">          store.setMCount();</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;</span></span><br><span class="line"><span class="language-xml">      &gt;</span></span><br><span class="line"><span class="language-xml">               count++      </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">           <span class="tag">&lt;<span class="name">span</span>&gt;</span> Count &#123;store.MCount&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>     </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">span</span>&gt;</span> Base &#123;store.base&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>     <span class="tag">&lt;<span class="name">span</span>&gt;</span> Total &#123;store.total&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>   </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  ));</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">MobXHook</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> store = <span class="title function_">useLocalObservable</span>(<span class="function">() =&gt;</span> store6);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Observer</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">         &#123;&quot; &quot;&#125;</span></span><br><span class="line"><span class="language-xml">      &#123;() =&gt; (</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                   </span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">            <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">              store.setMCount();</span></span><br><span class="line"><span class="language-xml">            &#125;&#125;</span></span><br><span class="line"><span class="language-xml">          &gt;</span></span><br><span class="line"><span class="language-xml">                       count++          </span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                   <span class="tag">&lt;<span class="name">span</span>&gt;</span> Count &#123;store.MCount&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>         </span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">span</span>&gt;</span> Base &#123;store.base&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>         <span class="tag">&lt;<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            &#123;&quot; &quot;&#125;</span></span><br><span class="line"><span class="language-xml">            Total &#123;store.total&#125;&#123;&quot; &quot;&#125;</span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">span</span>&gt;</span>       </span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      )&#125;</span></span><br><span class="line"><span class="language-xml">         </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Observer</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>同时，useLocalObservable 也可以用来创建一个新的 observable，并在组件的整个生命周期内将其保留在组件中（可以理解为组件级别的 observer）。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">MouseEventListenerMobx</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> state = <span class="title function_">useLocalStore</span>(</span><br><span class="line">    <span class="function">(<span class="params">target</span>) =&gt;</span> (&#123;</span><br><span class="line">      <span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">y</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="title function_">handler</span>(<span class="params">e</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> nx = e.<span class="property">xxx</span>;</span><br><span class="line">        <span class="keyword">const</span> ny = e.<span class="property">xxx</span>;</span><br><span class="line">        <span class="keyword">if</span> (</span><br><span class="line">          <span class="title class_">Math</span>.<span class="title function_">abs</span>(nx - state.<span class="property">x</span>) &gt;= target.<span class="property">size</span> ||</span><br><span class="line">          <span class="title class_">Math</span>.<span class="title function_">abs</span>(ny - state.<span class="property">y</span>) &gt;= target.<span class="property">size</span></span><br><span class="line">        ) &#123;</span><br><span class="line">          state.<span class="property">x</span> = nx;</span><br><span class="line">          state.<span class="property">y</span> = ny;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;),</span><br><span class="line">    props</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;mousemove&quot;</span>, state.<span class="property">handler</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="variable language_">document</span>.<span class="title function_">removeEventListener</span>(<span class="string">&quot;mousemove&quot;</span>, state.<span class="property">handler</span>);</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">useObserver</span>(<span class="function">() =&gt;</span> props.<span class="title function_">children</span>(state.<span class="property">x</span>, state.<span class="property">y</span>));</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="最终推荐方案"><a href="#最终推荐方案" class="headerlink" title="最终推荐方案"></a>最终推荐方案</h1><p>综上所述，在结尾给出最终推荐方案。<br>在 store 设计上，建议采用 makeAutoObservable 的写法。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Store6_makeAutoObservable</span> &#123;</span><br><span class="line">  <span class="keyword">readonly</span> base = <span class="number">5</span>;</span><br><span class="line">  <span class="title class_">MCount</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">makeAutoObservable</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">setMCount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">MCount</span>++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">total</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">MCount</span> * <span class="variable language_">this</span>.<span class="property">base</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Store6</span>();</span><br></pre></td></tr></table></figure>
+
+<p>在 store 使用上，建议采用 observer 函数包裹组件。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; observer &#125; <span class="keyword">from</span> <span class="string">&quot;mobx-react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; store6_auto <span class="keyword">as</span> store6 &#125; <span class="keyword">from</span> <span class="string">&quot;@/store&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">MobXHook</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> store = store6;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">           </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-xml">          store.setMCount();</span></span><br><span class="line"><span class="language-xml">        &#125;&#125;</span></span><br><span class="line"><span class="language-xml">      &gt;</span></span><br><span class="line"><span class="language-xml">               count++      </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">           <span class="tag">&lt;<span class="name">span</span>&gt;</span> Count &#123;store.MCount&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>     </span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">span</span>&gt;</span> Base &#123;store.base&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>     <span class="tag">&lt;<span class="name">span</span>&gt;</span> Total &#123;store.total&#125; <span class="tag">&lt;/<span class="name">span</span>&gt;</span>   </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">observer</span>(<span class="title class_">MobXHook</span>);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/14/React%20FC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -202,7 +314,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-12-14 17:10:46 / Modified: 17:30:29" itemprop="dateCreated datePublished" datetime="2022-12-14T17:10:46+08:00">2022-12-14</time>
+      <time title="Created: 2022-12-14 17:10:46 / Modified: 17:57:53" itemprop="dateCreated datePublished" datetime="2022-12-14T17:10:46+08:00">2022-12-14</time>
     </span>
 
   
@@ -285,7 +397,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:30" itemprop="dateModified" datetime="2022-12-14T17:30:30+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:53" itemprop="dateModified" datetime="2022-12-14T17:57:53+08:00">2022-12-14</time>
     </span>
 
   
@@ -530,7 +642,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:30" itemprop="dateModified" datetime="2022-12-14T17:30:30+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:54" itemprop="dateModified" datetime="2022-12-14T17:57:54+08:00">2022-12-14</time>
     </span>
 
   
@@ -640,7 +752,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:30" itemprop="dateModified" datetime="2022-12-14T17:30:30+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:54" itemprop="dateModified" datetime="2022-12-14T17:57:54+08:00">2022-12-14</time>
     </span>
 
   
@@ -716,7 +828,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:30" itemprop="dateModified" datetime="2022-12-14T17:30:30+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:54" itemprop="dateModified" datetime="2022-12-14T17:57:54+08:00">2022-12-14</time>
     </span>
 
   
@@ -1000,7 +1112,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:31" itemprop="dateModified" datetime="2022-12-14T17:30:31+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:55" itemprop="dateModified" datetime="2022-12-14T17:57:55+08:00">2022-12-14</time>
     </span>
 
   
@@ -1823,7 +1935,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:32" itemprop="dateModified" datetime="2022-12-14T17:30:32+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:55" itemprop="dateModified" datetime="2022-12-14T17:57:55+08:00">2022-12-14</time>
     </span>
 
   
@@ -2058,7 +2170,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:32" itemprop="dateModified" datetime="2022-12-14T17:30:32+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:55" itemprop="dateModified" datetime="2022-12-14T17:57:55+08:00">2022-12-14</time>
     </span>
 
   
@@ -2203,7 +2315,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:32" itemprop="dateModified" datetime="2022-12-14T17:30:32+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:55" itemprop="dateModified" datetime="2022-12-14T17:57:55+08:00">2022-12-14</time>
     </span>
 
   
@@ -2245,98 +2357,6 @@
 <li>使用 <code>visibility</code> 替换 <code>display: none</code></li>
 </ul>
 <h1 id="网络性能优化"><a href="#网络性能优化" class="headerlink" title="网络性能优化"></a>网络性能优化</h1><h1 id="框架性能优化"><a href="#框架性能优化" class="headerlink" title="框架性能优化"></a>框架性能优化</h1>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/10/mongoose/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/10/mongoose/" class="post-title-link" itemprop="url">mongoose</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-10 20:20:41" itemprop="dateCreated datePublished" datetime="2022-11-10T20:20:41+08:00">2022-11-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:32" itemprop="dateModified" datetime="2022-12-14T17:30:32+08:00">2022-12-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="连接-mongo"><a href="#连接-mongo" class="headerlink" title="连接 mongo"></a>连接 mongo</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @ use 数据库连接</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">&quot;../../config/common&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dbConfig = config[process.<span class="property">env</span>.<span class="property">NODE_ENV</span> || <span class="string">&quot;development&quot;</span>];</span><br><span class="line"></span><br><span class="line">mongoose.<span class="title function_">connect</span>(dbConfig.<span class="property">mongo</span>.<span class="property">url</span>, &#123; <span class="attr">useNewUrlParser</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"></span><br><span class="line">mongoose.<span class="title function_">set</span>(<span class="string">&quot;useCreateIndex&quot;</span>, <span class="literal">true</span>); <span class="comment">//加上这个</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接成功</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;connected&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//console.log(&#x27;连接成功 &#x27; + dbConfig.mongo.url);</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接失败</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;连接失败 &quot;</span> + err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 断开连接</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;disconnected&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;断开连接&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="定义-Schema"><a href="#定义-Schema" class="headerlink" title="定义 Schema"></a>定义 Schema</h3><h4 id="Schema-Type"><a href="#Schema-Type" class="headerlink" title="#Schema.Type"></a><a target="_blank" rel="noopener" href="http://file.jing999.cn/workspace/Server/sql/mongoose.html#schema-type">#</a>Schema.Type</h4><ul>
-<li>String</li>
-<li>Number</li>
-<li>Date</li>
-<li>Buffer</li>
-<li>Boolean</li>
-<li>Mixed</li>
-<li>Objectid</li>
-<li>Array</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Schema</span>   = mongoose.<span class="property">Schema</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">UserSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    name  : &#123; <span class="attr">type</span>: <span class="title class_">String</span>, <span class="attr">unique</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">    posts : [&#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Post&#x27;</span> &#125;]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">User</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;User&#x27;</span>, <span class="title class_">UserSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">PostSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    poster   : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;User&#x27;</span> &#125;,</span><br><span class="line">    comments : [&#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Comment&#x27;</span> &#125;],</span><br><span class="line">    title    : <span class="title class_">String</span>,</span><br><span class="line">    content  : <span class="title class_">String</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Post</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Post&#x27;</span>, <span class="title class_">PostSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">CommentSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    post      : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&quot;Post&quot;</span> &#125;,</span><br><span class="line">    commenter : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;User&#x27;</span> &#125;,</span><br><span class="line">    content   : &#123;</span><br><span class="line">        <span class="attr">main</span>: <span class="title class_">String</span>,</span><br><span class="line">        <span class="attr">label</span>: <span class="title class_">String</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">points</span>: [</span><br><span class="line">        <span class="attr">point</span>: [&#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Point&#x27;</span>&#125;]</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Comment</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Comment&#x27;</span>, <span class="title class_">CommentSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">PointSchema</span> = <span class="keyword">new</span> mongoose.<span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">parent</span>: &#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;point&#x27;</span>&#125;,</span><br><span class="line">  <span class="attr">children</span>: [&#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;point&#x27;</span>&#125;]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Point</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Point&#x27;</span>, <span class="title class_">PointSchema</span>);</span><br></pre></td></tr></table></figure>
-
-<h1 id="查询条件"><a href="#查询条件" class="headerlink" title="查询条件"></a>查询条件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$or　　　　或关系</span><br><span class="line">$nor　　　 或关系取反</span><br><span class="line">$gt　　　　大于</span><br><span class="line">$gte　　　 大于等于</span><br><span class="line">$lt　　　　 小于</span><br><span class="line">$lte　　　  小于等于</span><br><span class="line">$ne            不等于</span><br><span class="line">$in             在多个值范围内</span><br><span class="line">$nin           不在多个值范围内</span><br><span class="line">$all            匹配数组中多个值</span><br><span class="line">$regex　　正则，用于模糊查询</span><br><span class="line">$size　　　匹配数组大小</span><br><span class="line">$maxDistance　　范围查询，距离（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$mod　　   取模运算</span><br><span class="line">$near　　　邻域查询，查询附近的位置（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$exists　　  字段是否存在</span><br><span class="line">$elemMatch　　匹配内数组内的元素</span><br><span class="line">$within　　范围查询（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$box　　　 范围查询，矩形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$center       范围醒询，圆形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$centerSphere　　范围查询，球形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$slice　　　　查询字段集合中的元素（比如从第几个之后，第N到第M个元素）</span><br></pre></td></tr></table></figure>
-
-<h3 id="mongodb-对数组中的所有元素进行一次性修改方法"><a href="#mongodb-对数组中的所有元素进行一次性修改方法" class="headerlink" title="mongodb 对数组中的所有元素进行一次性修改方法"></a>mongodb 对数组中的所有元素进行一次性修改方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">list</span>: [&#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="number">1504195200000</span>,</span><br><span class="line">        <span class="attr">other</span>: <span class="string">&quot;c&quot;</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;b&quot;</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="number">1504195200000</span>,</span><br><span class="line">        <span class="attr">other</span>: <span class="string">&quot;c&quot;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 现在要把other全部更新为&quot;a&quot;,方法如下</span></span><br><span class="line">db.<span class="title function_">getCollection</span>(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">  .<span class="title function_">update</span>(&#123;<span class="string">&#x27;name&#x27;</span>: <span class="number">4</span>&#125;, &#123;<span class="attr">$set</span>: &#123;<span class="string">&#x27;list.$[].other&#x27;</span>: <span class="string">&#x27;a&#x27;</span>&#125;&#125;, &#123;<span class="attr">multi</span>: <span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
-
       
     </div>
 

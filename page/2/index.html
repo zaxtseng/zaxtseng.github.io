@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,98 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/10/mongoose/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/10/mongoose/" class="post-title-link" itemprop="url">mongoose</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-10 20:20:41" itemprop="dateCreated datePublished" datetime="2022-11-10T20:20:41+08:00">2022-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-14 17:57:55" itemprop="dateModified" datetime="2022-12-14T17:57:55+08:00">2022-12-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="连接-mongo"><a href="#连接-mongo" class="headerlink" title="连接 mongo"></a>连接 mongo</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @ use 数据库连接</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">&quot;mongoose&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">&quot;../../config/common&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> dbConfig = config[process.<span class="property">env</span>.<span class="property">NODE_ENV</span> || <span class="string">&quot;development&quot;</span>];</span><br><span class="line"></span><br><span class="line">mongoose.<span class="title function_">connect</span>(dbConfig.<span class="property">mongo</span>.<span class="property">url</span>, &#123; <span class="attr">useNewUrlParser</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"></span><br><span class="line">mongoose.<span class="title function_">set</span>(<span class="string">&quot;useCreateIndex&quot;</span>, <span class="literal">true</span>); <span class="comment">//加上这个</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接成功</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;connected&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//console.log(&#x27;连接成功 &#x27; + dbConfig.mongo.url);</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接失败</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;连接失败 &quot;</span> + err);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 断开连接</span></span><br><span class="line">mongoose.<span class="property">connection</span>.<span class="title function_">on</span>(<span class="string">&quot;disconnected&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;断开连接&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义-Schema"><a href="#定义-Schema" class="headerlink" title="定义 Schema"></a>定义 Schema</h3><h4 id="Schema-Type"><a href="#Schema-Type" class="headerlink" title="#Schema.Type"></a><a target="_blank" rel="noopener" href="http://file.jing999.cn/workspace/Server/sql/mongoose.html#schema-type">#</a>Schema.Type</h4><ul>
+<li>String</li>
+<li>Number</li>
+<li>Date</li>
+<li>Buffer</li>
+<li>Boolean</li>
+<li>Mixed</li>
+<li>Objectid</li>
+<li>Array</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">&#x27;mongoose&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Schema</span>   = mongoose.<span class="property">Schema</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">UserSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    name  : &#123; <span class="attr">type</span>: <span class="title class_">String</span>, <span class="attr">unique</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">    posts : [&#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Post&#x27;</span> &#125;]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">User</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;User&#x27;</span>, <span class="title class_">UserSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">PostSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    poster   : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;User&#x27;</span> &#125;,</span><br><span class="line">    comments : [&#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Comment&#x27;</span> &#125;],</span><br><span class="line">    title    : <span class="title class_">String</span>,</span><br><span class="line">    content  : <span class="title class_">String</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Post</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Post&#x27;</span>, <span class="title class_">PostSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">CommentSchema</span> = <span class="keyword">new</span> <span class="title class_">Schema</span>(&#123;</span><br><span class="line">    post      : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&quot;Post&quot;</span> &#125;,</span><br><span class="line">    commenter : &#123; <span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;User&#x27;</span> &#125;,</span><br><span class="line">    content   : &#123;</span><br><span class="line">        <span class="attr">main</span>: <span class="title class_">String</span>,</span><br><span class="line">        <span class="attr">label</span>: <span class="title class_">String</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">points</span>: [</span><br><span class="line">        <span class="attr">point</span>: [&#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;Point&#x27;</span>&#125;]</span><br><span class="line">    ]</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Comment</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Comment&#x27;</span>, <span class="title class_">CommentSchema</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">PointSchema</span> = <span class="keyword">new</span> mongoose.<span class="title class_">Schema</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="title class_">String</span>,</span><br><span class="line">  <span class="attr">parent</span>: &#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;point&#x27;</span>&#125;,</span><br><span class="line">  <span class="attr">children</span>: [&#123;<span class="attr">type</span>: <span class="title class_">Schema</span>.<span class="property">Types</span>.<span class="property">ObjectId</span>, <span class="attr">ref</span>: <span class="string">&#x27;point&#x27;</span>&#125;]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Point</span> = mongoose.<span class="title function_">model</span>(<span class="string">&#x27;Point&#x27;</span>, <span class="title class_">PointSchema</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="查询条件"><a href="#查询条件" class="headerlink" title="查询条件"></a>查询条件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$or　　　　或关系</span><br><span class="line">$nor　　　 或关系取反</span><br><span class="line">$gt　　　　大于</span><br><span class="line">$gte　　　 大于等于</span><br><span class="line">$lt　　　　 小于</span><br><span class="line">$lte　　　  小于等于</span><br><span class="line">$ne            不等于</span><br><span class="line">$in             在多个值范围内</span><br><span class="line">$nin           不在多个值范围内</span><br><span class="line">$all            匹配数组中多个值</span><br><span class="line">$regex　　正则，用于模糊查询</span><br><span class="line">$size　　　匹配数组大小</span><br><span class="line">$maxDistance　　范围查询，距离（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$mod　　   取模运算</span><br><span class="line">$near　　　邻域查询，查询附近的位置（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$exists　　  字段是否存在</span><br><span class="line">$elemMatch　　匹配内数组内的元素</span><br><span class="line">$within　　范围查询（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$box　　　 范围查询，矩形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$center       范围醒询，圆形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$centerSphere　　范围查询，球形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$slice　　　　查询字段集合中的元素（比如从第几个之后，第N到第M个元素）</span><br></pre></td></tr></table></figure>
+
+<h3 id="mongodb-对数组中的所有元素进行一次性修改方法"><a href="#mongodb-对数组中的所有元素进行一次性修改方法" class="headerlink" title="mongodb 对数组中的所有元素进行一次性修改方法"></a>mongodb 对数组中的所有元素进行一次性修改方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">list</span>: [&#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="number">1504195200000</span>,</span><br><span class="line">        <span class="attr">other</span>: <span class="string">&quot;c&quot;</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;b&quot;</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="number">1504195200000</span>,</span><br><span class="line">        <span class="attr">other</span>: <span class="string">&quot;c&quot;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 现在要把other全部更新为&quot;a&quot;,方法如下</span></span><br><span class="line">db.<span class="title function_">getCollection</span>(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">  .<span class="title function_">update</span>(&#123;<span class="string">&#x27;name&#x27;</span>: <span class="number">4</span>&#125;, &#123;<span class="attr">$set</span>: &#123;<span class="string">&#x27;list.$[].other&#x27;</span>: <span class="string">&#x27;a&#x27;</span>&#125;&#125;, &#123;<span class="attr">multi</span>: <span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/Egg.js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +300,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:32" itemprop="dateModified" datetime="2022-12-14T17:30:32+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:56" itemprop="dateModified" datetime="2022-12-14T17:57:56+08:00">2022-12-14</time>
     </span>
 
   
@@ -801,7 +893,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:32" itemprop="dateModified" datetime="2022-12-14T17:30:32+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:56" itemprop="dateModified" datetime="2022-12-14T17:57:56+08:00">2022-12-14</time>
     </span>
 
   
@@ -1019,7 +1111,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:33" itemprop="dateModified" datetime="2022-12-14T17:30:33+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:56" itemprop="dateModified" datetime="2022-12-14T17:57:56+08:00">2022-12-14</time>
     </span>
 
   
@@ -1668,7 +1760,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:33" itemprop="dateModified" datetime="2022-12-14T17:30:33+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:56" itemprop="dateModified" datetime="2022-12-14T17:57:56+08:00">2022-12-14</time>
     </span>
 
   
@@ -1870,7 +1962,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:33" itemprop="dateModified" datetime="2022-12-14T17:30:33+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:56" itemprop="dateModified" datetime="2022-12-14T17:57:56+08:00">2022-12-14</time>
     </span>
 
   
@@ -2010,7 +2102,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:33" itemprop="dateModified" datetime="2022-12-14T17:30:33+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:57" itemprop="dateModified" datetime="2022-12-14T17:57:57+08:00">2022-12-14</time>
     </span>
 
   
@@ -2502,7 +2594,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:33" itemprop="dateModified" datetime="2022-12-14T17:30:33+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:57" itemprop="dateModified" datetime="2022-12-14T17:57:57+08:00">2022-12-14</time>
     </span>
 
   
@@ -2571,7 +2663,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#x73;&#x61;&#x78;&#64;&#51;&#x2e;&#48;&#46;&#48;">&#x73;&#x61;&#x78;&#64;&#51;&#x2e;&#48;&#46;&#48;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#97;&#x78;&#64;&#x33;&#x2e;&#48;&#46;&#x30;">&#115;&#97;&#x78;&#64;&#x33;&#x2e;&#48;&#46;&#x30;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
@@ -2637,7 +2729,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:33" itemprop="dateModified" datetime="2022-12-14T17:30:33+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:57" itemprop="dateModified" datetime="2022-12-14T17:57:57+08:00">2022-12-14</time>
     </span>
 
   
@@ -2790,7 +2882,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:33" itemprop="dateModified" datetime="2022-12-14T17:30:33+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:57" itemprop="dateModified" datetime="2022-12-14T17:57:57+08:00">2022-12-14</time>
     </span>
 
   
@@ -3062,176 +3154,6 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <li>也可以在项目的 package.json 文件中的 scripts 字段添加命令</li>
 </ul>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;clean&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zce-pages clean&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zce-pages build&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;develop&quot;</span><span class="punctuation">:</span> <span class="string">&quot;zce-pages develop&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/10/25/%E8%84%9A%E6%89%8B%E6%9E%B6/" class="post-title-link" itemprop="url">脚手架</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-10-25 15:56:35" itemprop="dateCreated datePublished" datetime="2022-10-25T15:56:35+08:00">2022-10-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:34" itemprop="dateModified" datetime="2022-12-14T17:30:34+08:00">2022-12-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Yeoman"><a href="#Yeoman" class="headerlink" title="Yeoman"></a>Yeoman</h1><p>构建定制化的脚手架.</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn global add yo</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn global add generator-node</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo node</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yo node:cli</span><br></pre></td></tr></table></figure>
-
-<h2 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h2><p>这里执行当前项目的命令时会遇到权限问题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn <span class="built_in">link</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">chmod</span> -R 777 目录名</span><br></pre></td></tr></table></figure>
-
-<p>这里需要目录名,要么是绝对路径,要么可以先返回到上一层,再给这个文件夹权限.</p>
-<h2 id="自定义-generator"><a href="#自定义-generator" class="headerlink" title="自定义 generator"></a>自定义 generator</h2><h3 id="Yeoman-使用步骤总结"><a href="#Yeoman-使用步骤总结" class="headerlink" title="Yeoman 使用步骤总结"></a>Yeoman 使用步骤总结</h3><ul>
-<li>明确需求</li>
-<li>找到合适的<a target="_blank" rel="noopener" href="https://yeoman.io/generators/">Generator</a></li>
-<li>全局范围安装找到 Generator</li>
-<li>通过 yo 运行对应的 Generator</li>
-<li>通过命令行交互填写选项</li>
-<li>生成你需要的项目结构</li>
-</ul>
-<h3 id="创建-Generator-模块"><a href="#创建-Generator-模块" class="headerlink" title="创建 Generator 模块"></a>创建 Generator 模块</h3><p>Generator 本质上就是一个 NPM 模块<br>Generator 基本结构</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">|— generator-sample</span><br><span class="line">| |— generators/ ------------- 生成器目录</span><br><span class="line">| | |— app/ ----------------- 默认生成器目录</span><br><span class="line">| |— components -------- 模板文件</span><br><span class="line">| |— index.js ---------- 默认生成器实现</span><br><span class="line">|— package.json --------------- 模块包配置文件</span><br></pre></td></tr></table></figure>
-
-<p>如果需要提供多个 Sub Generator，可以在 app 目录添加新的生成器目录</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">|— generator-sample</span><br><span class="line">| |— generators/ ------------ 生成器目录</span><br><span class="line">| | |— app/ ---------------- 默认生成器目录</span><br><span class="line">| | | |— components ------- 模板文件</span><br><span class="line">| | | |— index.js --------- 默认生成器实现</span><br><span class="line">+| |— component/ ------------- 其他生产器目录</span><br><span class="line">+| |— index.js ------------ 其他生成器实现</span><br><span class="line">|— package.json -------------- 模块包配置文件</span><br></pre></td></tr></table></figure>
-
-<p>Yeoman Generator 模快的名称必须是<code>generator-</code>，否则 Yeoman 后续工作无法找到你的生成器模块</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此文件为 Generator 的核心入口</span></span><br><span class="line"><span class="comment">// 需要导出一个继承自 Yeoman Generator 的类</span></span><br><span class="line"><span class="comment">// Yeoman Generator 在工作时会自动调用我们在此类型中定义的一些生命周期方法</span></span><br><span class="line"><span class="comment">// 我们在这些生命周期方法中通过调用父类提供的一些工具方法实现一些功能，例如文件写入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Generator</span> = <span class="built_in">require</span>(<span class="string">&quot;yeoman-generator&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">class</span> <span class="title class_">extends</span> <span class="title class_">Generator</span> &#123;</span><br><span class="line">  <span class="title function_">writing</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Yeoman 自动在生成文件阶段调用此方法</span></span><br><span class="line">    <span class="comment">// 我们尝试往项目目录中写入文件</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">fs</span>.<span class="title function_">write</span>(<span class="variable language_">this</span>.<span class="title function_">destinationPath</span>(<span class="string">&quot;temp.txt&quot;</span>), <span class="title class_">Math</span>.<span class="title function_">random</span>().<span class="title function_">toString</span>());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在生成器目录终端执行<code>yarn link</code></li>
-<li>在新建项目终端执行<code>yo sample</code></li>
-</ul>
-<h3 id="根据模板创建文件"><a href="#根据模板创建文件" class="headerlink" title="根据模板创建文件"></a>根据模板创建文件</h3><p>在生成器目录下添加 template 目录，模板中遵循 EJS 模板语法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">class</span> <span class="title class_">extends</span> <span class="title class_">Generator</span> &#123;</span><br><span class="line">  <span class="title function_">writing</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Yeoman 自动在生成文件阶段调用此方法</span></span><br><span class="line">    <span class="comment">// 通过模板方式写入文件到目标目录</span></span><br><span class="line">    <span class="comment">// 模板文件路径</span></span><br><span class="line">    <span class="keyword">const</span> tmpl = <span class="variable language_">this</span>.<span class="title function_">templatePath</span>(<span class="string">&quot;foo.txt&quot;</span>); <span class="comment">// 自动获取当前生成器下template目录下的文件路径</span></span><br><span class="line">    <span class="comment">// 输出目标路径</span></span><br><span class="line">    <span class="keyword">const</span> outPut = <span class="variable language_">this</span>.<span class="title function_">destinationPath</span>(<span class="string">&quot;foo.txt&quot;</span>);</span><br><span class="line">    <span class="comment">// 模板数据上下文</span></span><br><span class="line">    <span class="keyword">const</span> context = &#123; <span class="attr">title</span>: <span class="string">&quot;Hello zyh~&quot;</span>, <span class="attr">success</span>: <span class="literal">false</span> &#125;;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">fs</span>.<span class="title function_">copyTpl</span>(tmpl, outPut, context);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="接收用户输入（终端命令行交互）prompting-方法"><a href="#接收用户输入（终端命令行交互）prompting-方法" class="headerlink" title="接收用户输入（终端命令行交互）prompting()方法"></a>接收用户输入（终端命令行交互）prompting()方法</h3><p>Yeoman 在询问用户环节会调用<code>prompting()</code>方法，在此方法中可以调用父类的 <code>prompt()</code> 方法发出对用户的命令行询问<br><code>prompt()</code>方法参数为一个数组，数组的每一个元素是一个问题对象(命令行交互)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Generator</span> = <span class="built_in">require</span>(<span class="string">&quot;yeoman-generator&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">class</span> <span class="title class_">extends</span> <span class="title class_">Generator</span> &#123;</span><br><span class="line">  <span class="title function_">prompting</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Yeoman 在询问用户环节会自动调用此方法</span></span><br><span class="line">    <span class="comment">// 在此方法中可以调用父类的 prompt() 方法发出对用户的命令行询问</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 数组的每个元素都是一个问题（终端命令行交互）</span></span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">prompt</span>([</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;input&quot;</span>, <span class="comment">// input:使用用户输入的方式</span></span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;name&quot;</span>, <span class="comment">// value是最终得到结果的键（用户输入的值的键）</span></span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;Your project name&quot;</span>, <span class="comment">// 终端界面给用户的提示（问题）</span></span><br><span class="line">        <span class="attr">default</span>: <span class="variable language_">this</span>.<span class="property">appname</span>, <span class="comment">// 默认值，如果用户不输入则使用默认值，appname 为项目生成目录名称</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ]).<span class="title function_">then</span>(<span class="function">(<span class="params">answers</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 用户交互选择的结果</span></span><br><span class="line">      <span class="comment">// answers =&gt; &#123; name: &#x27;user input value&#x27; &#125;</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">answers</span> = answers;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">writing</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// Yeoman 自动在生成文件阶段调用此方法</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模板文件路径</span></span><br><span class="line">    <span class="keyword">const</span> tmp = <span class="variable language_">this</span>.<span class="title function_">templatePath</span>(<span class="string">&quot;bar.html&quot;</span>);</span><br><span class="line">    <span class="comment">//输出模板路径</span></span><br><span class="line">    <span class="keyword">const</span> outPut = <span class="variable language_">this</span>.<span class="title function_">destinationPath</span>(<span class="string">&quot;bar.html&quot;</span>);</span><br><span class="line">    <span class="comment">// 模板数据上下文</span></span><br><span class="line">    <span class="keyword">const</span> context = <span class="variable language_">this</span>.<span class="property">answers</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">fs</span>.<span class="title function_">copyTpl</span>(tmp, outPut, context);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="生成-vue-项目结构"><a href="#生成-vue-项目结构" class="headerlink" title="生成 vue 项目结构"></a>生成 vue 项目结构</h3><p>如果模板文件中有<code>&#39;&lt;%= BASE_URL %&gt;&#39;</code>需要添加一个<code>%</code>进行转义，<code>&#39;&lt;%%= BASE_URL %&gt;&#39;</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">Generator</span> = <span class="built_in">require</span>(<span class="string">&quot;yeoman-generator&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">class</span> <span class="title class_">extends</span> <span class="title class_">Generator</span> &#123;</span><br><span class="line">  <span class="title function_">prompting</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">prompt</span>([</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;input&quot;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;name&quot;</span>,</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;Your project name&quot;</span>,</span><br><span class="line">        <span class="attr">default</span>: <span class="variable language_">this</span>.<span class="property">appname</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;list&quot;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;tool&quot;</span>,</span><br><span class="line">        <span class="attr">choices</span>: [<span class="string">&quot;yarn&quot;</span>, <span class="string">&quot;npm&quot;</span>],</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;请选择版本管理工具&quot;</span>,</span><br><span class="line">        <span class="attr">default</span>: <span class="string">&quot;yarn&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ]).<span class="title function_">then</span>(<span class="function">(<span class="params">answers</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">answers</span> = answers;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">writing</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// 把每一个文件都通过模板转换到目标路径</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// templates目录下的模板文件相对路径</span></span><br><span class="line">    <span class="keyword">const</span> templates = [</span><br><span class="line">      <span class="string">&quot;.browserslistrc&quot;</span>,</span><br><span class="line">      <span class="string">&quot;.editorconfig&quot;</span>,</span><br><span class="line">      <span class="string">&quot;.env.development&quot;</span>,</span><br><span class="line">      <span class="string">&quot;.env.production&quot;</span>,</span><br><span class="line">      <span class="string">&quot;.eslintrc.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;.gitignore&quot;</span>,</span><br><span class="line">      <span class="string">&quot;babel.config.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;package.json&quot;</span>,</span><br><span class="line">      <span class="string">&quot;postcss.config.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;README.md&quot;</span>,</span><br><span class="line">      <span class="string">&quot;public/favicon.ico&quot;</span>,</span><br><span class="line">      <span class="string">&quot;public/index.html&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/App.vue&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/main.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/router.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/assets/logo.png&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/components/HelloWorld.vue&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/store/actions.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/store/getters.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/store/index.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/store/mutations.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/store/state.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/utils/request.js&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/views/About.vue&quot;</span>,</span><br><span class="line">      <span class="string">&quot;src/views/Home.vue&quot;</span>,</span><br><span class="line">    ];</span><br><span class="line">    templates.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> temp = <span class="variable language_">this</span>.<span class="title function_">templatePath</span>(item);</span><br><span class="line">      <span class="keyword">const</span> outPut = <span class="variable language_">this</span>.<span class="title function_">destinationPath</span>(<span class="variable language_">this</span>.<span class="property">answers</span>.<span class="property">name</span> + <span class="string">&quot;/&quot;</span> + item);</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">fs</span>.<span class="title function_">copyTpl</span>(temp, outPut, <span class="variable language_">this</span>.<span class="property">answers</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 进入项目目录，根据用户选择的管理工具安装依赖</span></span><br><span class="line">  <span class="title function_">install</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; name, tool &#125; = <span class="variable language_">this</span>.<span class="property">answers</span>;</span><br><span class="line">    <span class="keyword">const</span> npmDir = process.<span class="title function_">cwd</span>() + <span class="string">&quot;/&quot;</span> + name;</span><br><span class="line">    process.<span class="title function_">chdir</span>(npmDir);</span><br><span class="line">    tool === <span class="string">&quot;yarn&quot;</span> ? <span class="variable language_">this</span>.<span class="title function_">yarnInstall</span>() : <span class="variable language_">this</span>.<span class="title function_">npmInstall</span>();</span><br><span class="line">    <span class="comment">// this.installDependencies(&#123;</span></span><br><span class="line">    <span class="comment">//   bower: true,</span></span><br><span class="line">    <span class="comment">//   npm: true</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="发布-Generator"><a href="#发布-Generator" class="headerlink" title="发布 Generator"></a>发布 Generator</h3><ol>
-<li>上传 GitHub</li>
-<li><code>yarn publish</code>填写相关信息后，如果出现错误是因为使用淘宝镜像取代官方镜像，所以往 npm 仓库发布代码就会出现问题，淘宝镜像是只读镜像；<ul>
-<li>可以修改本地的镜像配置；</li>
-<li><code>yarn publish --registry=https://registry.yarnpkg.com</code>(官方的镜像)</li>
-</ul>
-</li>
-<li>发布成功</li>
-</ol>
-<h1 id="Plop"><a href="#Plop" class="headerlink" title="Plop"></a>Plop</h1><p>小型脚手架工具.<br>相当于一个可定制化的自动生成代码文件的工具.<br>比如有一套文件,包括 js,css,还要复制很多几乎相同的页面文件,使用 Plop 就可以一键生成.</p>
-<p>可以帮助我们自动生成文件</p>
-<ul>
-<li>将 plop 模快作为项目开发依赖安装<code>yarn add plop --dev</code></li>
-<li>在项目根目录新建文件 plopfile.js 作为 Plop 入口文件，需要导出一个函数，此函数接收一个 plop 对象，用于创建生成器任务</li>
-<li>在 plopfile.js 文件中定义脚手架任务</li>
-<li>编写用于生成特定类型文件的模板</li>
-<li>通过 Plop 提供的 CLI 运行脚手架任务<code>yarn plop component</code></li>
-<li>如果执行 <code>yarn plop Home</code>，则直接把<code>Home</code>作为文件名创建相应的目录文件，如何输入的是<code>yarn plop component</code>，则会提示输入组件名</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">plop</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 第一个：生成器名字 第二个：生成器的配置选项</span></span><br><span class="line">  plop.<span class="title function_">setGenerator</span>(<span class="string">&quot;component&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">description</span>: <span class="string">`cretate a component`</span>,</span><br><span class="line">    <span class="attr">prompts</span>: [</span><br><span class="line">      <span class="comment">// 命令行问题</span></span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;input&quot;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;name&quot;</span>,</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;component name&quot;</span>,</span><br><span class="line">        <span class="attr">default</span>: <span class="string">&quot;MyComponent&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;input&quot;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&quot;path&quot;</span>,</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;output path&quot;</span>,</span><br><span class="line">        <span class="attr">default</span>: <span class="string">&quot;src/components&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 完成命令行交互后，执行的一些动作</span></span><br><span class="line">    <span class="attr">actions</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;add&quot;</span>, <span class="comment">// 代表添加文件</span></span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;&#123;&#123;path&#125;&#125;/&#123;&#123;name&#125;&#125;/&#123;&#123;name&#125;&#125;.js&quot;</span>, <span class="comment">// 输出路径；name为上面命令行交互中得到的name值</span></span><br><span class="line">        <span class="attr">templateFile</span>: <span class="string">&quot;plop-templates/component.hbs&quot;</span>, <span class="comment">// 添加的文件的模板文件</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;add&quot;</span>, <span class="comment">// 代表添加文件</span></span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;&#123;&#123;path&#125;&#125;/&#123;&#123;name&#125;&#125;/&#123;&#123;name&#125;&#125;.css&quot;</span>, <span class="comment">// name为上面命令行交互中得到的name值</span></span><br><span class="line">        <span class="attr">templateFile</span>: <span class="string">&quot;plop-templates/component.css.hbs&quot;</span>, <span class="comment">// 添加的文件的模板文件</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;add&quot;</span>, <span class="comment">// 代表添加文件</span></span><br><span class="line">        <span class="attr">path</span>: <span class="string">&quot;&#123;&#123;path&#125;&#125;/&#123;&#123;name&#125;&#125;/&#123;&#123;name&#125;&#125;.test.js&quot;</span>, <span class="comment">// name为上面命令行交互中得到的name值</span></span><br><span class="line">        <span class="attr">templateFile</span>: <span class="string">&quot;plop-templates/component.test.hbs&quot;</span>, <span class="comment">// 添加的文件的模板文件</span></span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="脚手架的工作原理"><a href="#脚手架的工作原理" class="headerlink" title="脚手架的工作原理"></a>脚手架的工作原理</h3><p>工作原理：启用脚手架后询问用户一些问题，将用户回答结果结合一些模板文件生成项目结构</p>
-<ul>
-<li>新建一个项目</li>
-<li><code>yarn init -y</code>初始化，在 package.json 文件下添加<code>bin</code>字段，用于指定 CLI 的入口文件：如：<code>&quot;bin&quot;: &quot;cli.js&quot;</code></li>
-<li>在项目新增 bin 入口文件 cli.js</li>
-<li>Node CLI 应用入口文件必须要有这样的文件头：<code>#!/usr/bin/env node</code>，如果是 Linux 或者 macOS 系统下还需要修改此文件的读写权限为 755，具体就是通过 <code>chmod 755 cli.js</code> 实现修改</li>
-<li>脚手架的工作过程：<ul>
-<li>通过命令行交互询问用户问题</li>
-<li>根据用户回答的结果生成文件</li>
-</ul>
-</li>
-<li>node 中发起命令行交互方式使用<code>inquirer</code>库。安装 inquirer 库 <code>yarn add inquirer</code>；inquirer 库提供一个 prompt 方法用于发起命令行交互</li>
-<li><code>commander</code>库，命令行工具</li>
-<li><code>chalk</code>库，命令行输出美化</li>
-<li><code>child_process</code>模块，nodejs 的子进程模块，可以运行命令、检查 npm、yarn<ul>
-<li><code>child_process.execSync(&#39;yarnpkg --version&#39;).toString()</code></li>
-<li><code>child_process.spawn(&#39;npm&#39;, [&#39;isntall&#39;, &#39;webpack&#39;, &#39;-D&#39;], &#123;shell: true&#125;)</code></li>
-</ul>
-</li>
-<li><code>download-git-repo</code>库，下载仓库模板</li>
-<li>编写用于生成特定类型文件的模板</li>
-<li>命令行执行<code>yarn link</code>把模块 link 到全局</li>
-<li>新建项目，在项目命令行执行<code>sample-scaffolding</code></li>
-<li>另外 webpack 的<code>ProgressPlugin</code>插件，用于监听编译进度</li>
-<li>webpack 启动的 devServer，可以通过 nodejs 的<code>os</code>模块获取本机 IP 地址</li>
-</ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sample-scaffolding</span><br><span class="line">|— templates</span><br><span class="line">|— cli.js</span><br><span class="line">|— package.json</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> inquirer = <span class="built_in">require</span>(<span class="string">&quot;inquirer&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">&quot;ejs&quot;</span>);</span><br><span class="line"></span><br><span class="line">inquirer</span><br><span class="line">  .<span class="title function_">prompt</span>([</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// 命令行问题</span></span><br><span class="line">      <span class="attr">type</span>: <span class="string">&quot;input&quot;</span>,</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&quot;name&quot;</span>,</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&quot;Project name?&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ])</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">anwsers</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 用户回答</span></span><br><span class="line">    <span class="comment">// console.log(anwsers)</span></span><br><span class="line">    <span class="comment">// 根据用户回答的结果生成文件</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模板目录</span></span><br><span class="line">    <span class="keyword">const</span> tmplDir = path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;templates&quot;</span>);</span><br><span class="line">    <span class="comment">// 目标目录</span></span><br><span class="line">    <span class="keyword">const</span> destDir = process.<span class="title function_">cwd</span>(); <span class="comment">// 输出目录（命令行在那执行，就输出到哪个目录）</span></span><br><span class="line">    <span class="comment">// 将模板下的文件全部转换到目标目录</span></span><br><span class="line">    fs.<span class="title function_">readdir</span>(tmplDir, <span class="function">(<span class="params">err, files</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line">      files.<span class="title function_">forEach</span>(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 通过模板引擎渲染文件</span></span><br><span class="line">        ejs.<span class="title function_">renderFile</span>(path.<span class="title function_">join</span>(tmplDir, file), anwsers, <span class="function">(<span class="params">err, result</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (err) <span class="keyword">throw</span> err;</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 将结果写入目标文件路径</span></span><br><span class="line">          fs.<span class="title function_">writeFileSync</span>(path.<span class="title function_">join</span>(destDir, file), result);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>

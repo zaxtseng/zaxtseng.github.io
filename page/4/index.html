@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,202 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/this%E4%BB%96%E5%96%B5%E7%9A%84%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/this%E4%BB%96%E5%96%B5%E7%9A%84%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88/" class="post-title-link" itemprop="url">this他喵的到底是什么</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:08:05" itemprop="dateCreated datePublished" datetime="2022-09-26T21:08:05+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-14 17:57:58" itemprop="dateModified" datetime="2022-12-14T17:57:58+08:00">2022-12-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="title-this-他喵的到底是什么-date-2020-07-09-15-20-43"><a href="#title-this-他喵的到底是什么-date-2020-07-09-15-20-43" class="headerlink" title="title: this 他喵的到底是什么 date: 2020-07-09 15:20:43"></a>title: this 他喵的到底是什么 date: 2020-07-09 15:20:43</h2><p>tags:</p>
+<blockquote>
+<p>原文地址：WTF is this - Understanding the this keyword, call, apply, and bind in JavaScript</p>
+</blockquote>
+<p>原文作者：Tyler McGinnis</p>
+<p>译文出自：掘金翻译计划</p>
+<p>本文永久链接：github.com&#x2F;xitu&#x2F;gold-m…</p>
+<p>译者：CoolRice</p>
+<p>校对者：周家未</p>
+<p>在深入了解 JavaScript 中的 this 关键字之前，有必要先退一步，看一下为什么 this 关键字很重要。this 允许复用函数时使用不同的上下文。换句话说，“this” 关键字允许在调用函数或方法时决定哪个对象应该是焦点。 之后讨论的所有东西都是基于这个理念。我们希望能够在不同的上下文或在不同的对象中复用函数或方法。</p>
+<p>我们要关注的第一件事是如何判断 this 关键字的引用。当你试图回答这个问题时，你需要问自己的第一个也是最重要的问题是“这个函数在哪里被调用？”。判断 this 引用什么的 唯一 方法就是看使用 this 关键字的这个方法在哪里被调用的。</p>
+<p>用一个你已经十分熟悉的例子来展示这一点，比如我们有一个 greet 方法，它接受一个名字参数并显示有欢迎消息的警告框。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">`Hello, my name is <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果我问你 greet 会具体警告什么内容，你会怎样回答？只给出函数定义是不可能知道答案的。为了知道 name 是什么，你必须看看 greet 函数的调用过程。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">greet</span>(<span class="string">&quot;Tyler&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>判断 this 关键字引用什么也是同样的道理，你甚至可以把 this 当成一个普通的函数参数对待 — 它会随着函数调用方式的变化而变化。</p>
+<p>现在我们知道为了判断 this 的引用必须先看函数的定义，在实际地查看函数定义时，我们设立了四条规则来查找引用，它们是</p>
+<ol>
+<li>隐式绑定</li>
+<li>显式绑定</li>
+<li>new 绑定</li>
+<li>window 绑定</li>
+</ol>
+<h2 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h2><p>请记住，这里的目标是查看使用 this 关键字的函数定义，并判断 this 的指向。执行绑定的第一个也是最常见的规则称为 隐式绑定。80% 的情况下它会告诉你 this 关键字引用的是什么。</p>
+<p>假如我们有一个这样的对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Tyler&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现在，如果你要调用 user 对象上的 greet 方法，你会用到点号。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user.<span class="title function_">greet</span>();</span><br></pre></td></tr></table></figure>
+
+<p>这就把我们带到隐式绑定规则的主要关键点。为了判断 this 关键字的引用，函数被调用时先看一看点号左侧。如果有“点”就查看点左侧的对象，这个对象就是 this 的引用。</p>
+<p>在上面的例子中，user 在“点号左侧”意味着 this 引用了 user 对象。所以就好像 在 greet 方法的内部 JavaScript 解释器把 this 变成了 user。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// alert(`Hello, my name is $&#123;this.name&#125;`)</span></span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">`Hello, my name is <span class="subst">$&#123;user.name&#125;</span>`</span>) <span class="comment">// Tyler</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们来看一个类似但稍微高级点的例子。现在，我们的对象不仅要拥有 name、age 和 greet 属性，还要被添加一个 mother 属性，并且此属性也拥有 name 和 greet 属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Tyler&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mother</span>: &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;Stacey&quot;</span>,</span><br><span class="line">    <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="title function_">alert</span>(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>现在问题变成下面的每个函数调用会警告什么？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user.<span class="title function_">greet</span>();</span><br><span class="line">user.<span class="property">mother</span>.<span class="title function_">greet</span>();</span><br></pre></td></tr></table></figure>
+
+<p>每当判断 this 的引用时，我们都需要查看调用过程，并确认“点的左侧”是什么。第一个调用，user 在点左侧意味着 this 将引用 user。第二次调用中，mother 在点的左侧意味着 this 引用 mother。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user.<span class="title function_">greet</span>(); <span class="comment">// Tyler</span></span><br><span class="line">user.<span class="property">mother</span>.<span class="title function_">greet</span>(); <span class="comment">// Stacey</span></span><br></pre></td></tr></table></figure>
+
+<p>如前所述，大约有 80% 的情况下在“点的左侧”都会有一个对象。这就是为什么在判断 this 指向时“查看点的左侧”是你要做的第一件事。但是，如果没有点呢？这就为我们引出了下一条规则</p>
+<h2 id="显式绑定"><a href="#显式绑定" class="headerlink" title="显式绑定"></a>显式绑定</h2><p>如果 greet 函数不是 user 对象的函数，只是一个独立的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Tyler&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>我们知道为了判断 this 的引用我们首先必须查看这个函数的调用位置。现在就引出了一个问题，我们怎样能让 greet 方法调用的时候将 this 指向 user 对象？。我们不能再像之前那样简单的使用 user.greet()，因为 user 并没有 greet 方法。在 JavaScript 中，每个函数都包含了一个能让你恰好解决这个问题的方法，这个方法的名字叫做 call。</p>
+<blockquote>
+<p><code>call</code>是每个函数都有的一个方法，它允许你在调用函数时为函数指定上下文。</p>
+</blockquote>
+<p>考虑到这一点，用下面的代码可以在调用 greet 时用 user 做上下文。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">greet.<span class="title function_">call</span>(user);</span><br></pre></td></tr></table></figure>
+
+<p>再强调一遍，call 是每个函数都有的一个属性，并且传递给它的第一个参数会作为函数被调用时的上下文。换句话说，this 将会指向传递给 call 的第一个参数。</p>
+<p>这就是第 2 条规则的基础（显示绑定），因为我们明确地（使用 .call）指定了 this 的引用。</p>
+<p>现在让我们对 greet 方法做一点小小的改动。假如我们想传一些参数呢？不仅提示他们的名字，还要提示他们知道的语言。就像下面这样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">lang1, lang2, lang3</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> and I know <span class="subst">$&#123;lang1&#125;</span>, <span class="subst">$&#123;lang2&#125;</span>, and <span class="subst">$&#123;lang3&#125;</span>`</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在为了将这些参数传递给使用 <code>.call</code> 调用的函数，你需要在指定上下文（第一个参数）后一个一个地传入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">lang1, lang2, lang3</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> and I know <span class="subst">$&#123;lang1&#125;</span>, <span class="subst">$&#123;lang2&#125;</span>, and <span class="subst">$&#123;lang3&#125;</span>`</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Tyler&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&quot;JavaScript&quot;</span>, <span class="string">&quot;Ruby&quot;</span>, <span class="string">&quot;Python&quot;</span>];</span><br><span class="line"></span><br><span class="line">greet.<span class="title function_">call</span>(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>方法奏效，它显示了如何将参数传递给使用 <code>.call</code> 调用的函数。不过你可能注意到，必须一个一个传递 languages 数组的元素，这样有些恼人。如果我们可以把整个数组作为第二个参数并让 JavaScript 为我们自动展开就好了。有个好消息，这就是 <code>.apply</code> 干的事情。<code>.apply</code> 和 <code>.call</code> 本质相同，但不是一个一个传递参数，你可以用数组传参而且 <code>.apply</code> 会在函数中为你自动展开。</p>
+<p>那么现在用 <code>.apply</code>，我们的代码可以改为下面这个，其他一切都保持不变。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> languages = [<span class="string">&quot;JavaScript&quot;</span>, <span class="string">&quot;Ruby&quot;</span>, <span class="string">&quot;Python&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// greet.call(user, languages[0], languages[1], languages[2])</span></span><br><span class="line">greet.<span class="title function_">apply</span>(user, languages);</span><br></pre></td></tr></table></figure>
+
+<p>到目前为止，我们学习了关于 <code>.call</code> 和 <code>.apply</code> 的“显式绑定”规则，用此规则调用的方法可以让你指定 this 在方法内的指向。关于这个规则的最后一个部分是 <code>.bind</code>。<code>.bind</code> 和 <code>.call</code> 完全相同，除了不会立刻调用函数，而是返回一个能以后调用的新函数。因此，如果我们看看之前所写的代码，换用 <code>.bind</code>，它看起来就像这样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">greet</span>(<span class="params">lang1, lang2, lang3</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(</span><br><span class="line">    <span class="string">`Hello, my name is <span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> and I know <span class="subst">$&#123;lang1&#125;</span>, <span class="subst">$&#123;lang2&#125;</span>, and <span class="subst">$&#123;lang3&#125;</span>`</span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Tyler&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> languages = [<span class="string">&quot;JavaScript&quot;</span>, <span class="string">&quot;Ruby&quot;</span>, <span class="string">&quot;Python&quot;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newFn = greet.<span class="title function_">bind</span>(user, languages[<span class="number">0</span>], languages[<span class="number">1</span>], languages[<span class="number">2</span>]);</span><br><span class="line"><span class="title function_">newFn</span>(); <span class="comment">// alerts &quot;Hello, my name is Tyler and I know JavaScript, Ruby, and Python&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="new-绑定"><a href="#new-绑定" class="headerlink" title="new 绑定"></a>new 绑定</h3><p>第三条判断 this 引用的规则是 new 绑定。若你不熟悉 JavaScript 中的 new 关键字，其实每当用 new 调用函数时，JavaScript 解释器都会在底层创建一个全新的对象并把这个对象当做 this。如果用 new 调用一个函数，this 会自然地引用解释器创建的新对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">User</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="comment">/*</span></span><br><span class="line"><span class="comment">    JavaScript 会在底层创建一个新对象 `this`，它会代理不在 User 原型链上的属性。</span></span><br><span class="line"><span class="comment">    如果一个函数用 new 关键字调用，this 就会指向解释器创建的新对象。</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"></span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> me = <span class="keyword">new</span> <span class="title class_">User</span>(<span class="string">&quot;Tyler&quot;</span>, <span class="number">27</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="window-绑定"><a href="#window-绑定" class="headerlink" title="window 绑定"></a>window 绑定</h2><p>假如我们有下面这段代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">sayAge</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`My age is <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;Tyler&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">27</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如前所述，如果你想用 user 做上下文调用 sayAge，你可以使用 .call、.apply 或 .bind。但如果我们没有用这些方法，而是直接和平时一样直接调用 sayAge 会发生什么呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">sayAge</span>(); <span class="comment">// My age is undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>不出意外，你会得到 My name is undefined，因为 this.age 是 undefined。事情开始变得神奇了。实际上这是因为点的左侧没有任何东西，我们也没有用 .call、.apply、.bind 或者 new 关键字，JavaScript 会默认 this 指向 window 对象。这意味着如果我们向 window 对象添加 age 属性并再次调用 sayAge 方法，this.age 将不再是 undefined 并且变成 window 对象的 age 属性值。不相信？让我们运行这段代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">age</span> = <span class="number">27</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sayAge</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`My age is <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>非常神奇，不是吗？这就是第 4 条规则为什么是 window 绑定 的原因。如果其它规则都没满足，JavaScript 就会默认 this 指向 window 对象。</p>
+<blockquote>
+<p>在 ES5 添加的 严格模式 中，JavaScript 不会默认 this 指向 window 对象，而会正确地把 this 保持为 undefined。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">age</span> = <span class="number">27</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sayAge</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`My age is <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">sayAge</span>(); <span class="comment">// TypeError: Cannot read property &#x27;age&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>因此，将所有规则付诸实践，每当我在函数内部看到 this 关键字时，这些就是我为了判断它的引用而采取的步骤。</p>
+<ol>
+<li>查看函数在哪被调用。</li>
+<li>点左侧有没有对象？如果有，它就是 “this” 的引用。如果没有，继续第 3 步。</li>
+<li>该函数是不是用 “call”、“apply” 或者 “bind” 调用的？如果是，它会显式地指明 “this” 的引用。如果不是，继续第 4 步。</li>
+<li>该函数是不是用 “new” 调用的？如果是，“this” 指向的就是 JavaScript 解释器新创建的对象。如果不是，继续第 5 步。</li>
+<li>是否在“严格模式”下？如果是，“this” 就是 undefined，如果不是，继续第 6 步。</li>
+<li>JavaScript 很奇怪，“this” 会指向 “window” 对象。</li>
+</ol>
+<h2 id="class-中-this-的绑定"><a href="#class-中-this-的绑定" class="headerlink" title="class 中 this 的绑定"></a>class 中 this 的绑定</h2><p>前景提要：当我们打印<code>typeof Cat</code>可知是函数类型，ES6 中的 class 类其实只是个语法糖，皆可以用 ES5 来实现。由构造函数 Cat 创建的实例 cat 是一个对象。在初始化 cat 实例的时候，在 constructor 中就会把 this 上的属性挂载到实例对象上面。</p>
+<p>另外牢记，this 的指向与作用域无关，与调用执行函数时的上下文相关。</p>
+<p>示例一：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;run&quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> cat = <span class="keyword">new</span> <span class="title class_">Cat</span>(<span class="string">&quot;米粒&quot;</span>, <span class="string">&quot;5个月&quot;</span>);</span><br><span class="line">cat.<span class="property">name</span>; <span class="comment">// &#x27;米粒&#x27;</span></span><br><span class="line">cat.<span class="title function_">run</span>(); <span class="comment">// run Cat &#123;name: &quot;米粒&quot;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>当调用<code>cat.run()</code>的时候，当前上下文是 cat,所以其 this 指向的是 cat 这个实例。</p>
+<p>示例二:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">jump</span> = <span class="variable language_">this</span>.<span class="property">jump</span>.<span class="title function_">bind</span>(<span class="variable language_">this</span>);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">drink</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;drink&quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">run</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;run&quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">jump</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;jump&quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">go</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;go&quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Cat</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">walk</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;walk&quot;</span>, <span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cat = <span class="keyword">new</span> <span class="title class_">Cat</span>(<span class="string">&quot;米粒&quot;</span>, <span class="string">&quot;5个月&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> run = cat.<span class="property">run</span>;</span><br><span class="line"><span class="keyword">let</span> jump = cat.<span class="property">jump</span>;</span><br><span class="line"><span class="keyword">let</span> go = <span class="title class_">Cat</span>.<span class="property">go</span>;</span><br><span class="line"><span class="keyword">let</span> walk = cat.<span class="property">walk</span>;</span><br><span class="line"><span class="keyword">let</span> drink = cat.<span class="property">drink</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">run</span>(); <span class="comment">// run undefined</span></span><br><span class="line"><span class="title function_">jump</span>(); <span class="comment">// jump Cat &#123;name: &quot;米粒&quot;, jump: ƒ&#125;</span></span><br><span class="line"><span class="title class_">Cat</span>.<span class="title function_">go</span>(); <span class="comment">// go class Cat &#123;&#125;</span></span><br><span class="line"><span class="title function_">go</span>(); <span class="comment">// go undefined</span></span><br><span class="line">cat.<span class="title function_">walk</span>(); <span class="comment">// walk Window</span></span><br><span class="line"><span class="title function_">walk</span>(); <span class="comment">// walk Window</span></span><br><span class="line">cat.<span class="title function_">drink</span>(); <span class="comment">// drink Cat &#123;name: &quot;米粒&quot;, jump: ƒ, drink: ƒ&#125;</span></span><br><span class="line"><span class="title function_">drink</span>(); <span class="comment">// drink Cat &#123;name: &quot;米粒&quot;, jump: ƒ, drink: ƒ&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>先看 run 方法：当把实例中的方法赋值给一个变量，但是只是赋予了方法的引用，所以当变量在执行方法的时候，其实改变了方法的执行时的上下文。原来执行的上下文是实例 cat，后来赋值之后再执行，上下文就变成了全局，this 默认绑定。class 中使用的是严格模式，在该模式下，全局的 this 默认绑定的是 undefined，不是在严格模式下的时候，若在浏览器中执行，则 this 默认绑定 window。</p>
+<p>jump 方法：因为在构造函数执行的时候，显式绑定了 jump 执行的上下文——cat 实例。由文章开头 this 绑定的优先级可知，显式绑定&gt;默认绑定。所以 jump 的执行上下文依然是 cat 实例</p>
+<p>go 方法：go 方法使用静态方法定义，无法共享个实例 cat，只能在构造函数 Cat 上直接调用。</p>
+<p>walk 与 drink 方法：这两个方法是用箭头函数定义的。箭头函数的 this 是在定义函数时绑定的，不是在执行过程中绑定的。简单的说，函数在定义时，this 就继承了定义函数的对象。</p>
+<p>所以 walk 是在<code>Cat.prototype.walk</code>时定义的，此时的 this 指向是 window。无论之后赋值给哪个变量，也只是函数的引用，所以其 this 还是 window。</p>
+<p>同理，drink 在定义的时候，this 指向的是该构造函数。</p>
+<blockquote>
+<p>在 class 中 ，this 默认指向类的实例。但是，如果将这个方法提取出来单独使用，this 会指向该方法运行时所在的环境。</p>
+</blockquote>
+<p>那么问题来了，既然是全局环境的话，那么此时的 this 应该是输出 window，但是却不是 window 而是 undefined。</p>
+<p>那么问题出在哪？</p>
+<p>其实，就是在 class 中，定义类的时候默认使用的是严格模式。</p>
+<p>所以在严格模式下，由于 this 不能指向全局变量，因此这里就变成了 undefined。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/ES6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +404,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:35" itemprop="dateModified" datetime="2022-12-14T17:30:35+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:59" itemprop="dateModified" datetime="2022-12-14T17:57:59+08:00">2022-12-14</time>
     </span>
 
   
@@ -462,7 +658,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:35" itemprop="dateModified" datetime="2022-12-14T17:30:35+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:59" itemprop="dateModified" datetime="2022-12-14T17:57:59+08:00">2022-12-14</time>
     </span>
 
   
@@ -554,7 +750,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:35" itemprop="dateModified" datetime="2022-12-14T17:30:35+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:59" itemprop="dateModified" datetime="2022-12-14T17:57:59+08:00">2022-12-14</time>
     </span>
 
   
@@ -643,7 +839,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:35" itemprop="dateModified" datetime="2022-12-14T17:30:35+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:59" itemprop="dateModified" datetime="2022-12-14T17:57:59+08:00">2022-12-14</time>
     </span>
 
   
@@ -729,7 +925,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:36" itemprop="dateModified" datetime="2022-12-14T17:30:36+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:59" itemprop="dateModified" datetime="2022-12-14T17:57:59+08:00">2022-12-14</time>
     </span>
 
   
@@ -1313,7 +1509,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:36" itemprop="dateModified" datetime="2022-12-14T17:30:36+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:59" itemprop="dateModified" datetime="2022-12-14T17:57:59+08:00">2022-12-14</time>
     </span>
 
   
@@ -1516,7 +1712,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:36" itemprop="dateModified" datetime="2022-12-14T17:30:36+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:57:59" itemprop="dateModified" datetime="2022-12-14T17:57:59+08:00">2022-12-14</time>
     </span>
 
   
@@ -2003,7 +2199,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:36" itemprop="dateModified" datetime="2022-12-14T17:30:36+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:00" itemprop="dateModified" datetime="2022-12-14T17:58:00+08:00">2022-12-14</time>
     </span>
 
   
@@ -2445,7 +2641,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:37" itemprop="dateModified" datetime="2022-12-14T17:30:37+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:00" itemprop="dateModified" datetime="2022-12-14T17:58:00+08:00">2022-12-14</time>
     </span>
 
   
@@ -2524,103 +2720,6 @@
 <li>单页和多页的区别</li>
 <li>鉴权方式</li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">排序算法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:07:00" itemprop="dateCreated datePublished" datetime="2022-09-26T21:07:00+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:37" itemprop="dateModified" datetime="2022-12-14T17:30:37+08:00">2022-12-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<h2 id="title-排序算法-date-2019-12-05-15-26-08"><a href="#title-排序算法-date-2019-12-05-15-26-08" class="headerlink" title="title: 排序算法 date: 2019-12-05 15:26:08"></a>title: 排序算法 date: 2019-12-05 15:26:08</h2><p>tags:</p>
-<p>算法和数据结构是相互依存的.</p>
-<p>前端的数据结构主要用数组和对象.js 没有指针,无法使用链表.</p>
-<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序-体育委员两两对比"><a href="#冒泡排序-体育委员两两对比" class="headerlink" title="冒泡排序(体育委员两两对比)"></a>冒泡排序(体育委员两两对比)</h2><h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>需求: 数组 a&#x3D;[3,2,4,5,1,6]从小到大排列打印出来.</p>
-<p>方法: 找出最大的放在最右边,然后排前 5 个.然后依次把最大的放在最右边.</p>
-<h2 id="选择排序-体育老师点人"><a href="#选择排序-体育老师点人" class="headerlink" title="选择排序(体育老师点人)"></a>选择排序(体育老师点人)</h2><h3 id="时间复杂度：O-n-1"><a href="#时间复杂度：O-n-1" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>方法: 选出最小的一个放在最前面.然后看剩下的.</p>
-<p>剩下的最小的再放前面.</p>
-<h2 id="插入排序-排扑克牌"><a href="#插入排序-排扑克牌" class="headerlink" title="插入排序(排扑克牌)"></a>插入排序(排扑克牌)</h2><h3 id="时间复杂度：O-n-2"><a href="#时间复杂度：O-n-2" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>声明空数组.取第一张牌,第二个数字和数组中比较,比最后一个大,就放后面,比最后一个小,就往前放.</p>
-<h2 id="基数排序-桶排序-整理扑克牌"><a href="#基数排序-桶排序-整理扑克牌" class="headerlink" title="基数排序(桶排序)(整理扑克牌)"></a>基数排序(桶排序)(整理扑克牌)</h2><p>优点：</p>
-<p>和计数排序不同的是一个桶里可放多个数字，效率高，计数排序的改良版，时间复杂度：O(N+C)</p>
-<p>缺点：</p>
-<p>需要 hash 工具，和计数排序不同的是每个桶里都是无序的，还要再排一次序</p>
-<p>用途：</p>
-<p>高考总分排序，每 100 分放在一个桶里，数字很分散的时候不好用，可用基数排序（比如从几十到几千）</p>
-<p>有重复的数.类似于 4 张 1,4 张 2,4 张 3.拿到 1 放到最前面,2 依次,如果还是 1,放在 1 那一摞.每一种放一摞.最后排序.</p>
-<h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><p>优点：</p>
-<p>效率高,时间复杂度：O(n*log2n)</p>
-<p>缺点：</p>
-<p>有时候比计数排序慢</p>
-<p>挑选一个数,放中间,比它小的放左边,比它大的放右边.它的位置就固定了.</p>
-<p>看前面的部分,再挑一个数,比它小的放左边,比它大的放右边.后面的部分,再挑一个数,比它小的放左边,比它大的放右边.又有两个数固定了.</p>
 
       
     </div>

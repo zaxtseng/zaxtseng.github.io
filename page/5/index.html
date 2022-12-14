@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,103 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">排序算法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:07:00" itemprop="dateCreated datePublished" datetime="2022-09-26T21:07:00+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-14 17:58:00" itemprop="dateModified" datetime="2022-12-14T17:58:00+08:00">2022-12-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="title-排序算法-date-2019-12-05-15-26-08"><a href="#title-排序算法-date-2019-12-05-15-26-08" class="headerlink" title="title: 排序算法 date: 2019-12-05 15:26:08"></a>title: 排序算法 date: 2019-12-05 15:26:08</h2><p>tags:</p>
+<p>算法和数据结构是相互依存的.</p>
+<p>前端的数据结构主要用数组和对象.js 没有指针,无法使用链表.</p>
+<h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序-体育委员两两对比"><a href="#冒泡排序-体育委员两两对比" class="headerlink" title="冒泡排序(体育委员两两对比)"></a>冒泡排序(体育委员两两对比)</h2><h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>需求: 数组 a&#x3D;[3,2,4,5,1,6]从小到大排列打印出来.</p>
+<p>方法: 找出最大的放在最右边,然后排前 5 个.然后依次把最大的放在最右边.</p>
+<h2 id="选择排序-体育老师点人"><a href="#选择排序-体育老师点人" class="headerlink" title="选择排序(体育老师点人)"></a>选择排序(体育老师点人)</h2><h3 id="时间复杂度：O-n-1"><a href="#时间复杂度：O-n-1" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>方法: 选出最小的一个放在最前面.然后看剩下的.</p>
+<p>剩下的最小的再放前面.</p>
+<h2 id="插入排序-排扑克牌"><a href="#插入排序-排扑克牌" class="headerlink" title="插入排序(排扑克牌)"></a>插入排序(排扑克牌)</h2><h3 id="时间复杂度：O-n-2"><a href="#时间复杂度：O-n-2" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>声明空数组.取第一张牌,第二个数字和数组中比较,比最后一个大,就放后面,比最后一个小,就往前放.</p>
+<h2 id="基数排序-桶排序-整理扑克牌"><a href="#基数排序-桶排序-整理扑克牌" class="headerlink" title="基数排序(桶排序)(整理扑克牌)"></a>基数排序(桶排序)(整理扑克牌)</h2><p>优点：</p>
+<p>和计数排序不同的是一个桶里可放多个数字，效率高，计数排序的改良版，时间复杂度：O(N+C)</p>
+<p>缺点：</p>
+<p>需要 hash 工具，和计数排序不同的是每个桶里都是无序的，还要再排一次序</p>
+<p>用途：</p>
+<p>高考总分排序，每 100 分放在一个桶里，数字很分散的时候不好用，可用基数排序（比如从几十到几千）</p>
+<p>有重复的数.类似于 4 张 1,4 张 2,4 张 3.拿到 1 放到最前面,2 依次,如果还是 1,放在 1 那一摞.每一种放一摞.最后排序.</p>
+<h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><p>优点：</p>
+<p>效率高,时间复杂度：O(n*log2n)</p>
+<p>缺点：</p>
+<p>有时候比计数排序慢</p>
+<p>挑选一个数,放中间,比它小的放左边,比它大的放右边.它的位置就固定了.</p>
+<p>看前面的部分,再挑一个数,比它小的放左边,比它大的放右边.后面的部分,再挑一个数,比它小的放左边,比它大的放右边.又有两个数固定了.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E5%90%8E%E5%8F%B0%E8%B5%84%E9%87%91%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E9%A1%B9%E7%9B%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +305,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:37" itemprop="dateModified" datetime="2022-12-14T17:30:37+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:00" itemprop="dateModified" datetime="2022-12-14T17:58:00+08:00">2022-12-14</time>
     </span>
 
   
@@ -625,7 +722,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:37" itemprop="dateModified" datetime="2022-12-14T17:30:37+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:01" itemprop="dateModified" datetime="2022-12-14T17:58:01+08:00">2022-12-14</time>
     </span>
 
   
@@ -837,7 +934,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:38" itemprop="dateModified" datetime="2022-12-14T17:30:38+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:01" itemprop="dateModified" datetime="2022-12-14T17:58:01+08:00">2022-12-14</time>
     </span>
 
   
@@ -1337,7 +1434,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:38" itemprop="dateModified" datetime="2022-12-14T17:30:38+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:01" itemprop="dateModified" datetime="2022-12-14T17:58:01+08:00">2022-12-14</time>
     </span>
 
   
@@ -2119,7 +2216,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:38" itemprop="dateModified" datetime="2022-12-14T17:30:38+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:01" itemprop="dateModified" datetime="2022-12-14T17:58:01+08:00">2022-12-14</time>
     </span>
 
   
@@ -2211,7 +2308,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:38" itemprop="dateModified" datetime="2022-12-14T17:30:38+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:01" itemprop="dateModified" datetime="2022-12-14T17:58:01+08:00">2022-12-14</time>
     </span>
 
   
@@ -2492,7 +2589,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:38" itemprop="dateModified" datetime="2022-12-14T17:30:38+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:01" itemprop="dateModified" datetime="2022-12-14T17:58:01+08:00">2022-12-14</time>
     </span>
 
   
@@ -2710,7 +2807,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:38" itemprop="dateModified" datetime="2022-12-14T17:30:38+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:01" itemprop="dateModified" datetime="2022-12-14T17:58:01+08:00">2022-12-14</time>
     </span>
 
   
@@ -2827,7 +2924,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:39" itemprop="dateModified" datetime="2022-12-14T17:30:39+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-14 17:58:02" itemprop="dateModified" datetime="2022-12-14T17:58:02+08:00">2022-12-14</time>
     </span>
 
   
@@ -2981,135 +3078,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">my-component</span> <span class="attr">v-bind:name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">v-model</span>=<span class="string">&quot;name&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span></span><br><span class="line">&#123;&#123; name &#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;my-component&#x27;</span>,&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">render</span>: <span class="keyword">function</span>(<span class="params">createElement</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">props</span>:[<span class="string">&#x27;name&#x27;</span>],</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">var</span> self = <span class="variable language_">this</span> <span class="comment">//指的是当前的Vue实例</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">return</span> <span class="title function_">createElement</span>(<span class="string">&#x27;input&#x27;</span>,&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">domProps</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">//原生DOM</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">value</span>: self.<span class="property">name</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">on</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="comment">//这里添加事件</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                <span class="attr">input</span>: <span class="keyword">function</span>(<span class="params">event</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                    <span class="comment">//此处的this是window,所以需要声明self指代vue实例</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                    self.$emit(<span class="string">&#x27;input&#x27;</span>,event.<span class="property">target</span>.<span class="property">value</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">el</span>: <span class="string">&quot;#app&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">data</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">name</span>: <span class="string">&quot;Tom&quot;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <h2 id="render-函数中使用作用域插槽"><a href="#render-函数中使用作用域插槽" class="headerlink" title="render 函数中使用作用域插槽"></a>render 函数中使用作用域插槽</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">&quot;app&quot;</span>&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">my-component</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">scoped</span>=<span class="string">&quot;prop&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        &#123;&#123; prop.text &#125;&#125;</span></span><br><span class="line"><span class="language-xml">        &#123;&#123; prop.msg &#125;&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">my-component</span>&gt;</span></span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;my-component&#x27;</span>,&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">render</span>: <span class="keyword">function</span>(<span class="params">createElement</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">return</span> <span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>,<span class="variable language_">this</span>.<span class="property">$scopedSlots</span>.<span class="title function_">default</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">text</span>: <span class="string">&#x27;我是子组件传递的数据&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">msg</span>: <span class="string">&#x27;scopetext&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;))</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">el</span>: <span class="string">&quot;#app&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">data</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/Axios/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/Axios/" class="post-title-link" itemprop="url">Axios</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:05:45" itemprop="dateCreated datePublished" datetime="2022-09-26T21:05:45+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:30:39" itemprop="dateModified" datetime="2022-12-14T17:30:39+08:00">2022-12-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>title: Axios</p>
-<p>date: 2019-09-24 11:33:48</p>
-<p>tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
-<ul>
-<li>HTML # 一级分类</li>
-<li>HTTP进阶 # 二级分类</li>
-</ul>
-<hr>
-<h1 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h1><p>axios 是一个基于 Promise 用于浏览器和 nodejs 的 HTTP 客户端，它本身具有以下特征：</p>
-<ul>
-<li>从浏览器中创建 XMLHttpRequest</li>
-<li>从 node.js 发出 http 请求</li>
-<li>支持  Promise API 拦截请求和响应</li>
-<li>转换请求和响应数据</li>
-<li>取消请求</li>
-<li>自动转换 JSON 数据</li>
-<li>客户端支持防止  CSRF&#x2F;XSRF</li>
-</ul>
-<p>步骤:</p>
-<ol>
-<li>安装</li>
-</ol>
-<p><code>$ npm install axios</code></p>
-<p>或者 CDN 引入 2. 引入 3. 一般是把 axios 挂载到原型上,便于全局使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$http</span> = axios;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Axios-之-get-请求"><a href="#Axios-之-get-请求" class="headerlink" title="Axios 之 get 请求"></a>Axios 之 get 请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">    <span class="title function_">getData</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">get</span>(<span class="string">&#x27;https://cnode.js.org/api/v1/topic&#x27;</span>,&#123;</span><br><span class="line">        <span class="attr">params</span>: &#123;</span><br><span class="line">            <span class="attr">page</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">limit</span>: <span class="number">10</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">items</span> = res.<span class="property">data</span>.<span class="property">data</span></span><br><span class="line">        &#125;)</span><br><span class="line">        .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上面get请求的其他写法</span></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&quot;/user&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">params</span>: &#123;</span><br><span class="line">    <span class="attr">ID</span>: <span class="number">12345</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//如果只有一个选项</span></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&quot;/user&quot;</span>, &#123;</span><br><span class="line">  <span class="attr">ID</span>: <span class="number">12345</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//将数据写到url里</span></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&quot;/user?page=1&amp;limit=10&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Axios-之-post-请求"><a href="#Axios-之-post-请求" class="headerlink" title="Axios 之 post 请求"></a>Axios 之 post 请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">axios</span><br><span class="line">  .<span class="title function_">post</span>(<span class="string">&quot;/user&quot;</span>, &#123;</span><br><span class="line">    <span class="attr">firstName</span>: <span class="string">&quot;tom&quot;</span>,</span><br><span class="line">    <span class="attr">lastName</span>: <span class="string">&quot;green&quot;</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">catch</span>(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>POST 传递参数有两种格式:</p>
-<ul>
-<li>form­-data  格式: <code>?page=1&amp;limit=48</code>.<strong>但是不能写在 url 里</strong></li>
-<li>x-­www-­form-­urlencoded 格式: <code>&#123; page: 1,limit: 10 &#125;</code></li>
-</ul>
-<blockquote>
-<p>在 axios 中，post 请求接收的参数必须是 form-­data</p>
-</blockquote>
-<p>可以使用 qs 插件—­qs.stringify</p>
-<h2 id="执行多个并发请求"><a href="#执行多个并发请求" class="headerlink" title="执行多个并发请求"></a>执行多个并发请求</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getUserAccount</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> axios.<span class="title function_">get</span>(<span class="string">&quot;/user/12345&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getUserPermissions</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> axios.<span class="title function_">get</span>(<span class="string">&quot;/user/12345/permissions&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">all</span>([<span class="title function_">getUserAccount</span>(), <span class="title function_">getUserPermissions</span>()]).<span class="title function_">then</span>(</span><br><span class="line">  axios.<span class="title function_">spread</span>(<span class="keyword">function</span> (<span class="params">acct, perms</span>) &#123;</span><br><span class="line">    <span class="comment">// 两个请求现在都执行完成</span></span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">postData</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="comment">//先要安装qs插件,然后引入</span></span><br><span class="line">    <span class="comment">//使用qs插件将对象格式转化为form-data格式</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">post</span>(url,qs.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">        <span class="attr">page</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">limit</span>: <span class="number">10</span></span><br><span class="line">    &#125;))</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="拦截器-interceptors"><a href="#拦截器-interceptors" class="headerlink" title="拦截器 interceptors"></a>拦截器 interceptors</h1><p>在请求或响应被 then 或 catch 处理前拦截它们。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加请求拦截器</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">config</span>) &#123;</span><br><span class="line">    <span class="comment">// 在发送请求之前做些什么</span></span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 对请求错误做些什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加响应拦截器</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// 对响应数据做点什么</span></span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 对响应错误做点什么</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>如果你想在稍后移除拦截器，可以这样：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myInterceptor = axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">/*...*/</span></span><br><span class="line">&#125;);</span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">eject</span>(myInterceptor);</span><br></pre></td></tr></table></figure>
-
-<p>可以为自定义 axios 实例添加拦截器</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> instance = axios.<span class="title function_">create</span>();</span><br><span class="line">instance.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">/*...*/</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
     </div>
