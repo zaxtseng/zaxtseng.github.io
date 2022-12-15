@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">120</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,130 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" class="post-title-link" itemprop="url">移动端适配</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:04:55" itemprop="dateCreated datePublished" datetime="2022-09-26T21:04:55+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>title: 移动端适配</p>
+<p>date: 2019-10-09 21:30:02</p>
+<p>tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<ul>
+<li>css # 一级分类</li>
+<li>移动端 # 二级分类</li>
+</ul>
+<hr>
+<h1 id="媒体查询-media-query"><a href="#媒体查询-media-query" class="headerlink" title="媒体查询 media-query"></a>媒体查询 media-query</h1><p>当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只不过不会被应用）。</p>
+<p>包含了一个媒体类型和至少一个使用宽度、高度和颜色等媒体属性来限制样式表范围的表达式。CSS3 加入的媒体查询使得无需修改内容便可以使样式应用于某些特定的设备范围。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">@media (min-<span class="attr">width</span>: 700px) and (<span class="attr">orientation</span>: landscape)&#123;</span><br><span class="line">    .<span class="property">sidebar</span> &#123;</span><br><span class="line">        <span class="attr">display</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="视口-iewport"><a href="#视口-iewport" class="headerlink" title="视口 iewport"></a>视口 iewport</h1><p>为什么要设置 viewport</p>
+<p>viewport 的设置不会对 PC 页面产生影响，但对于移动页面却很重要。下面我们举例来说明：</p>
+<ol>
+<li>媒体查询 @media 响应式布局中，会根据媒体查询功能来适配多端布局，必须对 viewport 进行设置，否则根据查询到的尺寸无法正确匹配视觉宽度而导致布局混乱。如不设置 viewport 参数，多说移动端媒体查询的结果将是 980px 这个节点布局的参数，而非我们通常设置的 768px 范围内的这个布局参数</li>
+<li>由于目前多数手机的 dpr 都不再是 1，为了产出高保真页面，我们一般会给出 750px 的设计稿，那么就需要通过设置 viewport 的参数来进行整体换算，而不是在每次设置尺寸时进行长度的换算。</li>
+</ol>
+<h2 id="viewport-详解"><a href="#viewport-详解" class="headerlink" title="viewport 详解"></a>viewport 详解</h2><p>在移动端有三种类型的 viewport: layoutviewport、visualviewport、idealviewport。具体解释如下：</p>
+<p><code>layoutviewport</code>:   大于实际屏幕， 元素的宽度继承于 layoutviewport，用于保证网站的外观特性与桌面浏览器一样。layoutviewport 到底多宽，每个浏览器不同。iPhone 的 safari 为 980px，通过 document.documentElement.clientWidth 获取。</p>
+<p><code>visualviewport</code>: 当前显示在屏幕上的页面，即浏览器可视区域的宽度。</p>
+<p><code>idealviewport</code>: 为浏览器定义的可完美适配移动端的理想 viewport，固定不变，可以认为是设备视口宽度。比如 iphone 7 为 375px, iphone 7p 为 414px。</p>
+<h2 id="viewport-设置"><a href="#viewport-设置" class="headerlink" title="viewport 设置"></a>viewport 设置</h2><p><code>&lt;meta name=&#39;viewport&#39; content=&#39;width=device-width,initial-scale=1,user-scalable=no&#39;/&gt;</code></p>
+<p>通过对 meta 标签三个 viewport 的设置，最终使页面完美展示。</p>
+<ol>
+<li>width 设置的是 layoutviewport 的宽度</li>
+<li>initial-scale 设置页面的初始缩放值，并且这个初始缩放值是相对于 idealviewport 缩放的，最终得到的结果不仅会决定 visualviewport，还会影响到 layoutviewport</li>
+<li>user-scalable 是否允许用户进行缩放的设置</li>
+</ol>
+<blockquote>
+<p>只要 layoutviewport &#x3D;&#x3D;&#x3D; visualviewport，页面下面不会出现滚动条，默认只是把页面放大或缩小。</p>
+</blockquote>
+<h2 id="设备像素比-dpr-与-1px-物理像素"><a href="#设备像素比-dpr-与-1px-物理像素" class="headerlink" title="设备像素比 dpr 与 1px 物理像素"></a>设备像素比 dpr 与 1px 物理像素</h2><h4 id="物理像素（physical-pixel）"><a href="#物理像素（physical-pixel）" class="headerlink" title="物理像素（physical pixel）"></a>物理像素（physical pixel）</h4><p>手机屏幕上显示的最小单元，该最小单元具有颜色及亮度的属性可供设置，iphone6、7、8 为：750 _ 1334，iphone6+、7+、8+ 为 1242 _ 2208</p>
+<h4 id="设备独立像素（density-indenpendent-pixel）"><a href="#设备独立像素（density-indenpendent-pixel）" class="headerlink" title="设备独立像素（density-indenpendent pixel）"></a>设备独立像素（density-indenpendent pixel）</h4><p>此为逻辑像素，计算机设备中的一个点，css 中设置的像素指的就是该像素。老早在没有 retina 屏之前，设备独立像素与物理像素是相等的。</p>
+<h4 id="设备像素比（device-pixel-ratio）"><a href="#设备像素比（device-pixel-ratio）" class="headerlink" title="设备像素比（device pixel ratio）"></a>设备像素比（device pixel ratio）</h4><p>设备像素比(dpr) &#x3D; 物理像素&#x2F;设备独立像素。如 iphone 6、7、8 的 dpr 为 2，那么一个设备独立像素便为 4 个物理像素，因此在 css 上设置的 1px 在其屏幕上占据的是 2 个物理像素，0.5px 对应的才是其所能展示的最小单位。这就是 1px 在 retina 屏上变粗的原因，目前有很多办法来解决这一问题。</p>
+<h4 id="1px-的物理像素的解决方案"><a href="#1px-的物理像素的解决方案" class="headerlink" title="1px 的物理像素的解决方案"></a>1px 的物理像素的解决方案</h4><p>从第一部分的讨论可知 viewport 的 initial-scale 具有缩放页面的效果。对于 dpr&#x3D;2 的屏幕，1px 压缩一半便可与 1px 的设备像素比匹配，这就可以通过将缩放比 initial-scale 设置为 0.5&#x3D;1&#x2F;2 而实现。以此类推 dpr&#x3D;3 的屏幕可以将 initial-scale 设置为 0.33&#x3D;1&#x2F;3 来实现。</p>
+<h1 id="设备像素比-dpr-与-rem-的适配方案"><a href="#设备像素比-dpr-与-rem-的适配方案" class="headerlink" title="设备像素比 dpr 与 rem 的适配方案"></a>设备像素比 dpr 与 rem 的适配方案</h1><p>rem 是相对于根元素 html 的 font-size 来做计算。通常在页面初始化时加载时通过对 document.documentElement.style.fontSize 设置来实现。</p>
+<h4 id="rem-适配规则"><a href="#rem-适配规则" class="headerlink" title="rem 适配规则"></a>rem 适配规则</h4><p>通过对 initial-scale &#x3D; 1&#x2F;dpr 的设置，已将对屏幕的描述从物理像素转化到了物理像素上了，这将是后续推导的基础，且设计稿为 750px。</p>
+<p>物理像素为 750 &#x3D; 375 * 2，若屏幕等分为 10 份，那么 1rem &#x3D; 75px，10rem &#x3D; 750px;</p>
+<p>物理像素为 1125 &#x3D; 375 * 3，若屏幕等分为 10 份，那么 1rem &#x3D; 112.5px, 10rem &#x3D; 1125px;</p>
+<p>物理像素为 1242 &#x3D; 414 * 3, 若屏幕等分为 10 份，那么 1rem &#x3D; 124.2px, 10rem &#x3D; 1242px;</p>
+<p>同时为了书写方便可以直接通过 px 布局，然后在打包时利用 pxtorem 库转化为基于 rem 的布局。</p>
+<h1 id="视口单位-vw-vh-适配方案"><a href="#视口单位-vw-vh-适配方案" class="headerlink" title="视口单位(vw,vh)适配方案"></a>视口单位(vw,vh)适配方案</h1><p>将视口宽度 window.innerWidth 和视口高度 window.innerHeight 等分为 100 份，且将这里的视口理解成 idealviewport 更为贴切，并不会随着 viewport 的不同设置而改变。</p>
+<p>vw : 1vw 为视口宽度的 1%</p>
+<p>vh : 1vh 为视口高度的 1%</p>
+<p>vmin :  vw 和 vh 中的较小值</p>
+<p>vmax : 选取 vw 和 vh 中的较大值</p>
+<p>如果设计稿为 750px，那么 1vw &#x3D; 7.5px，100vw &#x3D; 750px。其实设计稿按照设么都没多大关系，最终转化过来的都是相对单位，上面讲的 rem 也是对它的模拟。这里的比例关系也推荐不要自己换算，使用 pxtoviewport 的库就可以帮我们转换。当然每种方案都会有其弊端，这里就不展开讨论。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/canvas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +332,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:03" itemprop="dateModified" datetime="2022-12-14T17:58:03+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -394,7 +518,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:03" itemprop="dateModified" datetime="2022-12-14T17:58:03+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -525,7 +649,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:03" itemprop="dateModified" datetime="2022-12-14T17:58:03+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -677,7 +801,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:03" itemprop="dateModified" datetime="2022-12-14T17:58:03+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -830,7 +954,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:04" itemprop="dateModified" datetime="2022-12-14T17:58:04+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -986,7 +1110,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:04" itemprop="dateModified" datetime="2022-12-14T17:58:04+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -1719,7 +1843,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:04" itemprop="dateModified" datetime="2022-12-14T17:58:04+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -1840,7 +1964,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:04" itemprop="dateModified" datetime="2022-12-14T17:58:04+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -1936,7 +2060,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:04" itemprop="dateModified" datetime="2022-12-14T17:58:04+08:00">2022-12-14</time>
+      <time title="Modified: 2022-12-15 14:16:00" itemprop="dateModified" datetime="2022-12-15T14:16:00+08:00">2022-12-15</time>
     </span>
 
   
@@ -2004,176 +2128,6 @@
 </ul>
 <h2 id="lazy-和-Suspense"><a href="#lazy-和-Suspense" class="headerlink" title="lazy 和 Suspense"></a>lazy 和 Suspense</h2><p>异步加载组件</p>
 <h2 id="不可变数据-immer"><a href="#不可变数据-immer" class="headerlink" title="不可变数据 immer"></a>不可变数据 immer</h2>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/15/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E9%9B%86%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/15/%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E9%9B%86%E5%90%88/" class="post-title-link" itemprop="url">项目问题集合</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-15 16:48:51" itemprop="dateCreated datePublished" datetime="2022-09-15T16:48:51+08:00">2022-09-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-14 17:58:04" itemprop="dateModified" datetime="2022-12-14T17:58:04+08:00">2022-12-14</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Jira"><a href="#Jira" class="headerlink" title="Jira"></a>Jira</h1><h2 id="参数解构"><a href="#参数解构" class="headerlink" title="参数解构"></a>参数解构</h2><p>用于简化浅拷贝操作</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onChange=&#123;<span class="function"><span class="params">e</span> =&gt;</span> <span class="title function_">setParam</span>(...param, e.<span class="property">target</span>.<span class="property">value</span>)&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="fetch-方法使用"><a href="#fetch-方法使用" class="headerlink" title="fetch 方法使用"></a>fetch 方法使用</h2><p>fetch 方法返回的是异步的可以使用 async&#x2F;await</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;&quot;</span>).<span class="title function_">then</span>(<span class="keyword">async</span> (res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (res.<span class="property">ok</span>) &#123;</span><br><span class="line">    <span class="title function_">setList</span>(<span class="keyword">await</span> res.<span class="title function_">json</span>());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="避免修改原值"><a href="#避免修改原值" class="headerlink" title="避免修改原值"></a>避免修改原值</h2><p>对于修改某个值,可以先将该值拷贝,再修改拷贝值,将修改后的拷贝值抛出,避免修改原值.</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">removeIndex</span>: <span class="function">(<span class="params">index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> copy = [...value];</span><br><span class="line">  copy.<span class="title function_">splice</span>(index, <span class="number">1</span>);</span><br><span class="line">  <span class="title function_">setValue</span>(copy);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="自定义-Hook"><a href="#自定义-Hook" class="headerlink" title="自定义 Hook"></a>自定义 Hook</h1><p>注意点:</p>
-<ol>
-<li>hooks 要放在最外层,层级要求最高.</li>
-<li>不要在循环,条件,嵌套中使用 Hook,确保它在最顶层.</li>
-</ol>
-<p>只在 React 函数中调用 Hook,不要在 js 函数中调用.</p>
-<h2 id="挂载时-Hook"><a href="#挂载时-Hook" class="headerlink" title="挂载时 Hook"></a>挂载时 Hook</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">useMount</span> = (<span class="params">callback</span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">callback</span>();</span><br><span class="line">  &#125;, []);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="防抖-Hook"><a href="#防抖-Hook" class="headerlink" title="防抖 Hook"></a>防抖 Hook</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 参数一,需要防抖的值,可以是任意类型</span></span><br><span class="line"><span class="keyword">const</span> useDebounce = &lt;V&gt;(<span class="attr">value</span>: V, delay?: <span class="built_in">number</span>): <span class="function"><span class="params">any</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [debounceValue, setDebounceValue] = <span class="title function_">useState</span>();</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//挂载时设置定时器</span></span><br><span class="line">    <span class="keyword">const</span> timeout = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> <span class="title function_">setDebounceValue</span>(value), (delay = <span class="number">1000</span>));</span><br><span class="line">    <span class="comment">//卸载时,清除定时器</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="title function_">cleatTimeout</span>(timeout);</span><br><span class="line">    <span class="comment">//设置的依赖用于变化后重新执行</span></span><br><span class="line">  &#125;, [value, delay]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Hooks-中的闭包陷阱"><a href="#Hooks-中的闭包陷阱" class="headerlink" title="Hooks 中的闭包陷阱"></a>Hooks 中的闭包陷阱</h1><p>以设置网站标题为例</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">useDocument</span> = (<span class="params">title:<span class="built_in">string</span>, keepOnUnmount?:<span class="built_in">boolean</span>=<span class="literal">true</span></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 拿到文档当前的title</span></span><br><span class="line">  <span class="keyword">const</span> oldTitle = <span class="title class_">React</span>.<span class="title function_">useRef</span>(<span class="variable language_">document</span>.<span class="property">title</span>).<span class="title function_">current</span>()</span><br><span class="line">  <span class="comment">// 挂载时,将传入title赋值</span></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">title</span> = title</span><br><span class="line">  &#125;,[])</span><br><span class="line">  <span class="comment">// 卸载时,判断是否有保持传入title的参数</span></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//这里闭包里保存的oldTitle没有变化</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(!keepOnUnmount) &#123;</span><br><span class="line">        <span class="variable language_">document</span>.<span class="property">title</span> = oldTitle</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,[keepOnUnmount,oldTitle])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="闭包陷阱"><a href="#闭包陷阱" class="headerlink" title="闭包陷阱"></a>闭包陷阱</h2><p>“闭包陷阱” 最大的问题就是在函数数内无法获取的最新的 state 的值.<br>函数式组件每次 render 都会生产一个新的 log 函数，这个新的 log 函数会产生一个在当前这个阶段 value 值的闭包。<br>log 方法内的 value 和点击触发时的 value 相同,value 的后续变化对 log 内的 value 不造成影响.<br>如何解决:</p>
-<ol>
-<li>使用 useRef</li>
-</ol>
-<p>原理: useRef 每次 render 时都会返回同一个引用类型的对象.设置值和读取值都在这个对象上处理.</p>
-<ol start="2">
-<li>useState 更新值时传入回调函数</li>
-</ol>
-<p><code>**setValue**(value =&gt; value + 1)</code></p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">FunctionComponent</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [value, setValue] = <span class="title function_">useState</span>(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">log</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">alert</span>(value);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>FunctionComponent<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>value: &#123;value&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> setValue(value + 1)&#125;&gt;add<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;log&#125;</span>&gt;</span>alert<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="副作用"><a href="#副作用" class="headerlink" title="副作用"></a>副作用</h1><p>副作用(Side Effect)是指函数或者表达式的行为依赖于外部世界。</p>
-<h1 id="useMemo-和-useCallback"><a href="#useMemo-和-useCallback" class="headerlink" title="useMemo 和 useCallback"></a>useMemo 和 useCallback</h1><p>而 useCallback 就是一个特殊版本的 useMemo，专门来处理函数的<br>案例:</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;./styles.css&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="number">0</span>); <span class="comment">// 加了这一行</span></span><br><span class="line">  <span class="keyword">const</span> value = &#123; <span class="attr">name</span>: <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="title class_">React</span>.<span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">setCount</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>()); <span class="comment">// 加了这一行</span></span><br><span class="line">    (<span class="string">&quot;render&quot;</span>);</span><br><span class="line">  &#125;, [value]);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello CodeSandbox<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Edit to see some magic happen!<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里循环的原因是：组件渲染 → useEffect 执行 → setCount 触发循环 → 组件渲染 → useEffect 执行 → setCount 触发循环…<br>注意是组件渲染之后,刷新的是 value,和上一个不是同一个 value.那就需要给它套上 useMemo.</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> value = <span class="title class_">React</span>.<span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">name</span>: <span class="number">1</span> &#125;;</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
-
-<p>useMemo 的意思就是：不要每次渲染都重新定义，而是我让你重新定义的时候再重新定义(第二个参数，依赖列表)。大家看到这里的依赖列表是空的，是因为 useMemo 里的回调函数确实没用到啥变量，如果有变量的话大家的 IDE 就会提醒加上依赖了。<br>这就是使用 useMemo 的原理，useMemo 适用于所有类型的值，加入这个值恰好是函数，那么用 useCallback 也可以。也就是说，useCallback 是一种特殊的 useMemo。<br>使用场景:</p>
-<ol>
-<li>它不是状态，也就是说，不是用 useState 定义的(redux 中的状态实际上也是用 useState 定义的)</li>
-<li>它不是基本类型</li>
-<li>它会被放在 useEffect 的依赖列表里 || 自定义 hook 的返回值</li>
-</ol>
-<p>自定义 hook 的返回值也成立是因为，你不知道自定义 hook 的返回值将会被用在哪里，它可能会被用在依赖也可能不会，所以干脆都加上；而像上面那个在组件中定义的 value，你就可以见机行事了</p>
-<h1 id="自定义-Hook-1"><a href="#自定义-Hook-1" class="headerlink" title="自定义 Hook"></a>自定义 Hook</h1><p>自定义 Hook 是目前最好的重用 React 逻辑的方法，它和普通的函数很像很像，自定义 Hook 的特殊之处在于，它是有状态的，它返回的也是状态。所以在什么时候我们应该用到自定义 Hook？那就是，我们想要抽象出处理状态的逻辑的时候</p>
-<h1 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h1><p>大概可以分为三种场景<br>简单场景:使用状态提升,组合组件<br>使用缓存管理:react-query<br>使用客户端状态管理:redux, context, url</p>
-<h2 id="关于全局使用的状态操作"><a href="#关于全局使用的状态操作" class="headerlink" title="关于全局使用的状态操作"></a>关于全局使用的状态操作</h2><p>方法一: 可以使用 redux 设置一个 state,设置对应的 reducer,<br>一个同步设置状态,一个异步 thunk.<br>方法二: 使用缓存,react-query.</p>
-<h2 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h2><p>给整个 app 设置登录注册用户信息相关的 context.将 app 包裹,就可以随时验证登录状态.</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.创建Context</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">IContext</span> &#123;</span><br><span class="line">  <span class="attr">user</span>: <span class="title class_">User</span> | <span class="literal">null</span>;</span><br><span class="line">  <span class="attr">login</span>: <span class="function">(<span class="params">form:AuthForm</span>) =&gt;</span> <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt;;</span><br><span class="line">  <span class="attr">register</span>: <span class="function">(<span class="params">form:AuthForm</span>) =&gt;</span> <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt;;</span><br><span class="line">  <span class="attr">logout</span>: <span class="function">() =&gt;</span> <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">AuthForm</span> &#123;</span><br><span class="line">  <span class="attr">username</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">password</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">AuthContext</span> = createContext&lt;<span class="title class_">IContext</span>| <span class="literal">undefined</span>&gt;(<span class="literal">undefined</span>);</span><br><span class="line"><span class="comment">// 2.设置Context的名字</span></span><br><span class="line"><span class="title class_">AuthContext</span>.<span class="property">displayName</span> = <span class="string">&#x27;AuthContext&#x27;</span></span><br><span class="line"><span class="comment">// 3. 设置provider包裹整个app组件</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">AuthProvider</span> = (<span class="params">&#123;children&#125;:&#123;children: ReactNode&#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 各种在登录或者要验证用户信息的方法</span></span><br><span class="line">  <span class="comment">// 设置报错反馈</span></span><br><span class="line">  <span class="keyword">return</span> (<span class="language-xml"><span class="tag">&lt;<span class="name">AuthContext.Provider</span> <span class="attr">children</span>=<span class="string">&#123;children&#125;</span> <span class="attr">value</span>=<span class="string">&#123;/*各种方法的变量*/&#125;</span> /&gt;</span></span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 4. 使用自定义Hook设置调用方法</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">useAuth</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> context = <span class="title function_">useContext</span>(<span class="title class_">AuthContext</span>)</span><br><span class="line">  <span class="keyword">if</span>(!context)&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;useAuth必须在AuthProvider中使用&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> context</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 5. 将AuthProvider和父级的Provider合并</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title class_">AppProvider</span> = (&#123; children &#125;: &#123; <span class="attr">children</span>: <span class="title class_">ReactNode</span> &#125;)) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">QueryClientProvider</span> <span class="attr">client</span>=<span class="string">&#123;new</span> <span class="attr">QueryClient</span>()&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">AuthProvider</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">AuthProvider</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">QueryClientProvider</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 6. 在index.ts文件将整个app组件包裹</span></span><br><span class="line">&lt;<span class="title class_">AppProviders</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">DevTools</span> /&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">AppProviders</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="redux"><a href="#redux" class="headerlink" title="redux"></a>redux</h2><h2 id="react-query"><a href="#react-query" class="headerlink" title="react-query"></a>react-query</h2><p>这是一个适用于 React Hooks 的请求库，这个库将帮助你获取、同步、更新和缓存你的远程数据， 提供两个简单的 hooks，就能完成增删改查等操作，React-Query 使用声明式管理服务端状态，可以使用零配置开箱即用地处理缓存，后台更新和陈旧数据。</p>
-<p>React-Query 封装了完整的请求中间状态（<code>isLoading</code>、<code>isError</code>…）。<br>不仅如此，React-Query 还为我们做了如下工作：<br>多个组件请求同一个 query 时只发出一个请求<br>缓存数据失效&#x2F;更新策略（判断缓存合适失效，失效后自动请求数据）<br>对失效数据垃圾清理<br>数据的 CRUD 由 2 个 hook 处理：<br><code>useQuery</code>处理数据的查<br><code>useMutation</code>处理数据的增&#x2F;删&#x2F;改</p>
-<h1 id="乐观更新"><a href="#乐观更新" class="headerlink" title="乐观更新"></a>乐观更新</h1><p>更新操作后,在数据返回前可以先乐观的更新数据,但是有的情况下会有失败的可能.这时候再选择回滚更新.<br><code>useMutation</code> 的 <code>onMutate</code> 回调允许返回一个特定值，该值稍后将作为最后一个参数传递给 <code>onError</code> 和 <code>onSettled</code> 处理</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> queryClient = <span class="title function_">useQueryClient</span>();</span><br><span class="line"></span><br><span class="line"><span class="title function_">useMutation</span>(updateTodo, &#123;</span><br><span class="line">  <span class="comment">// 当 mutate 调用时</span></span><br><span class="line">  <span class="attr">onMutate</span>: <span class="keyword">async</span> (newTodo) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 撤销相关的查询（这样它们就不会覆盖我们的乐观更新）</span></span><br><span class="line">    <span class="keyword">await</span> queryClient.<span class="title function_">cancelQueries</span>([<span class="string">&quot;todos&quot;</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 保存前一次状态的快照</span></span><br><span class="line">    <span class="keyword">const</span> previousTodos = queryClient.<span class="title function_">getQueryData</span>([<span class="string">&quot;todos&quot;</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行&quot;乐观&quot;更新</span></span><br><span class="line">    queryClient.<span class="title function_">setQueryData</span>([<span class="string">&quot;todos&quot;</span>], <span class="function">(<span class="params">old</span>) =&gt;</span> [...old, newTodo]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 返回具有快照值的上下文对象</span></span><br><span class="line">    <span class="keyword">return</span> &#123; previousTodos &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 如果修改失败，则使用 onMutate 返回的上下文进行回滚</span></span><br><span class="line">  <span class="attr">onError</span>: <span class="function">(<span class="params">err, newTodo, context</span>) =&gt;</span> &#123;</span><br><span class="line">    queryClient.<span class="title function_">setQueryData</span>([<span class="string">&quot;todos&quot;</span>], context.<span class="property">previousTodos</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 总是在错误或成功之后重新获取：</span></span><br><span class="line">  <span class="attr">onSettled</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    queryClient.<span class="title function_">invalidateQueries</span>(<span class="string">&quot;todos&quot;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>项目案例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">QueryKey</span>, useQueryClient &#125; <span class="keyword">from</span> <span class="string">&quot;react-query&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Task</span> &#125; <span class="keyword">from</span> <span class="string">&quot;types/task&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; reorder &#125; <span class="keyword">from</span> <span class="string">&quot;./reorder&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">useConfig</span> = (<span class="params"></span></span><br><span class="line"><span class="params">  queryKey: QueryKey,</span></span><br><span class="line"><span class="params">  callback: (target: any, old?: any[]) =&gt; any[]</span></span><br><span class="line"><span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> queryClient = <span class="title function_">useQueryClient</span>();</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="comment">// 第二个参数即在成功获取数据后刷新数据</span></span><br><span class="line">    <span class="attr">onSuccess</span>: <span class="function">() =&gt;</span> queryClient.<span class="title function_">invalidateQueries</span>(queryKey),</span><br><span class="line">    <span class="comment">// 配置乐观更新</span></span><br><span class="line">    <span class="attr">onMutate</span>: <span class="keyword">async</span> (<span class="attr">target</span>: any) =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> previousItems = queryClient.<span class="title function_">getQueryData</span>(queryKey);</span><br><span class="line">      queryClient.<span class="title function_">setQueryData</span>(queryKey, <span class="function">(<span class="params">old?: any[]</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">callback</span>(target, old);</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        previousItems,</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 如果出错就将原数据回滚</span></span><br><span class="line">    <span class="attr">onError</span>: <span class="function">(<span class="params">error: any, newItem: any, context: any</span>) =&gt;</span> &#123;</span><br><span class="line">      queryClient.<span class="title function_">setQueryData</span>(queryKey, context.<span class="property">previousItems</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="fetch-与-axios-区别"><a href="#fetch-与-axios-区别" class="headerlink" title="fetch 与 axios 区别"></a>fetch 与 axios 区别</h1><p>使用 fetch 封装,注意和 axios 的区别,无法捕获非网络异常导致的 error.必须手动 Promise.reject()抛出.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = <span class="keyword">await</span> res.<span class="title function_">json</span>();</span><br><span class="line"><span class="keyword">if</span> (res.<span class="property">ok</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="无感登录"><a href="#无感登录" class="headerlink" title="无感登录"></a>无感登录</h1><p>在挂载时,设置方法.获取 token,更新 user 信息.没有 token 后端返回 401 就跳转到登录页.</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">bootstrapUser</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">let</span> user = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">const</span> token = auth.<span class="title function_">getToken</span>();</span><br><span class="line">  <span class="keyword">if</span> (!token) &#123;</span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> <span class="title function_">http</span>(<span class="string">&quot;me&quot;</span>, &#123; token &#125;);</span><br><span class="line">    user = data.<span class="property">user</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> user;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="乐观更新-1"><a href="#乐观更新-1" class="headerlink" title="乐观更新"></a>乐观更新</h1><h1 id="自定义-Hook-异步操作"><a href="#自定义-Hook-异步操作" class="headerlink" title="自定义 Hook 异步操作"></a>自定义 Hook 异步操作</h1><p>自带 loading,错误处理</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">State</span>&lt;D&gt; &#123;</span><br><span class="line">  <span class="attr">error</span>: <span class="title class_">Error</span> | <span class="literal">null</span>;</span><br><span class="line">  <span class="attr">data</span>: D | <span class="literal">null</span>;</span><br><span class="line">  <span class="attr">stat</span>: <span class="string">&quot;idle&quot;</span> | <span class="string">&quot;loading&quot;</span> | <span class="string">&quot;error&quot;</span> | <span class="string">&quot;success&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">defaultInitialState</span>: <span class="title class_">State</span> = &#123;</span><br><span class="line">  <span class="attr">stat</span>: <span class="string">&quot;idle&quot;</span>,</span><br><span class="line">  <span class="attr">data</span>: <span class="literal">null</span>,</span><br><span class="line">  <span class="attr">error</span>: <span class="literal">null</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useAsync = &lt;D&gt;<span class="function">(<span class="params">initialState?: State&lt;D&gt;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, setState] = useState&lt;<span class="title class_">State</span>&lt;D&gt;&gt;(&#123;</span><br><span class="line">    ...defaultInitialState,</span><br><span class="line">    initialState,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//设置data说明状态成功</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">setData</span> = (<span class="params">data: D</span>) =&gt;</span><br><span class="line">    <span class="title function_">setState</span>(&#123;</span><br><span class="line">      data,</span><br><span class="line">      <span class="attr">error</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="attr">stat</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="comment">//设置data说明状态失败</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">setError</span> = (<span class="params">error: <span class="built_in">Error</span></span>) =&gt;</span><br><span class="line">    <span class="title function_">setState</span>(&#123;</span><br><span class="line">      error,</span><br><span class="line">      <span class="attr">data</span>: <span class="literal">null</span>,</span><br><span class="line">      <span class="attr">stat</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="comment">// 接收异步</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">run</span> = (<span class="params">promise: <span class="built_in">Promise</span>&lt;D&gt;</span>) =&gt; &#123;</span><br><span class="line">    <span class="comment">// 如果不是promise类型报错</span></span><br><span class="line">    <span class="keyword">if</span> (!promise || !promise.<span class="property">then</span>) &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;请传入Promise类型数据&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果是,刚开始是loading状态</span></span><br><span class="line">    <span class="title function_">setState</span>(&#123; ...state, <span class="attr">stat</span>: <span class="string">&quot;loading&quot;</span> &#125;);</span><br><span class="line">    <span class="comment">// 最后返回promise</span></span><br><span class="line">    <span class="keyword">return</span> promise</span><br><span class="line">      .<span class="title function_">then</span>(<span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">setData</span>(data);</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">setError</span>(error);</span><br><span class="line">        <span class="comment">// 注意catch会捕获error,不主动抛出就不能继续往下传递</span></span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// 将所有信息暴露</span></span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">isIdle</span>: state.<span class="property">stat</span> === <span class="string">&quot;idle&quot;</span>,</span><br><span class="line">    <span class="attr">isLoading</span>: state.<span class="property">stat</span> === <span class="string">&quot;loading&quot;</span>,</span><br><span class="line">    <span class="attr">isError</span>: state.<span class="property">stat</span> === <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="attr">isSuccess</span>: state.<span class="property">stat</span> === <span class="string">&quot;success&quot;</span>,</span><br><span class="line">    run,</span><br><span class="line">    setData,</span><br><span class="line">    setError,</span><br><span class="line">    ...state,</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h1 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h1><p>捕获错误显示备用 UI,而不是整个组件崩溃.<br>无法捕获:</p>
-<ol>
-<li>事件处理</li>
-<li>异步代码 （例如 setTimeout 或 requestAnimationFrame 回调函数）</li>
-<li>服务端渲染</li>
-<li>错误边界自身抛出来的错误 （而不是其子组件）</li>
-</ol>
-<p>如果一个类组件定义了生命周期方法中的任何一个（或两个）<code>static getDerivedStateFromError()</code> 或 <code>componentDidCatch()</code>，那么它就成了一个错误边界。<br>使用<code>static getDerivedStateFromError()</code>在抛出错误后渲染回退 UI。 使用 <code>componentDidCatch()</code> 来记录错误信息。</p>
-<h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><p>需要使用类组件声明</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">FallBackRender</span> = <span class="function">(<span class="params">props: &#123; error: <span class="built_in">Error</span> | <span class="literal">null</span> &#125;</span>) =&gt;</span> <span class="title class_">React</span>.<span class="property">ReactElement</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">ErrorBoundary</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span>&lt;</span><br><span class="line">  <span class="title class_">React</span>.<span class="property">PropsWithChildren</span>&lt;&#123; <span class="attr">fallbackRender</span>: <span class="title class_">FallBackRender</span> &#125;&gt;,</span><br><span class="line">  &#123; <span class="attr">error</span>: <span class="title class_">Error</span> | <span class="literal">null</span> &#125;</span><br><span class="line">&gt; &#123;</span><br><span class="line">  state = &#123; <span class="attr">error</span>: <span class="literal">null</span> &#125;;</span><br><span class="line">  <span class="comment">// 当子组件抛出异常，这里会接收到并且调用</span></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">getDerivedStateFromError</span>(<span class="params">error: <span class="built_in">Error</span></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; error &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; error &#125; = <span class="variable language_">this</span>.<span class="property">state</span>;</span><br><span class="line">    <span class="keyword">const</span> &#123; fallbackRender, children &#125; = <span class="variable language_">this</span>.<span class="property">props</span>;</span><br><span class="line">    <span class="keyword">if</span> (error) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title function_">fallbackRender</span>(&#123; error &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> children;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后包裹整个组件树</p>
-<h1 id="类型守卫"><a href="#类型守卫" class="headerlink" title="类型守卫"></a>类型守卫</h1><p>类型守卫(当符合条件时,value 就是 Error 类型)</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isError = (<span class="attr">value</span>: <span class="built_in">any</span>): value is <span class="title class_">Error</span> =&gt; value?.<span class="property">message</span>;</span><br></pre></td></tr></table></figure>
-
-<h1 id="React-Router"><a href="#React-Router" class="headerlink" title="React Router"></a>React Router</h1><p>在要使用的页面构建 Router 的 Context.</p>
-<h2 id="路由参数-Hook"><a href="#路由参数-Hook" class="headerlink" title="路由参数 Hook"></a>路由参数 Hook</h2><p>由此设置依据 url 返回参数进行数据传递.<br>作用:返回页面 URL 中指定键的参数值.</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> useUrlQueryParam = &lt;K <span class="keyword">extends</span> <span class="built_in">string</span>&gt;<span class="function">(<span class="params">keys: K[]</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [searchParams, setSearchParams] = <span class="title function_">useSearchParams</span>()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> [</span><br><span class="line">    <span class="comment">//使用useMemo优化这个方法</span></span><br><span class="line">    <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span></span><br><span class="line">      keys.<span class="title function_">reduce</span>(<span class="function">(<span class="params">prev, key</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        ...prev, [key]:searchParams.<span class="title function_">get</span>(<span class="string">&#x27;key&#x27;</span>) || <span class="string">&#x27;&#x27;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,&#123;&#125; <span class="keyword">as</span> &#123;[key <span class="keyword">in</span> K]: <span class="built_in">string</span>&#125;)</span><br><span class="line">    ,[keys,searchParams]),</span><br><span class="line">    <span class="comment">// 返回setSearchParams,约束入参</span></span><br><span class="line">    <span class="function">(<span class="params">params: Partial&lt;[key <span class="keyword">in</span> K]: <span class="built_in">unknown</span>&gt;</span>) =&gt;</span><span class="title function_">setSearchParams</span>(params)</span><br><span class="line">  ] <span class="keyword">as</span> <span class="keyword">const</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Shop-项目"><a href="#Shop-项目" class="headerlink" title="Shop 项目"></a>Shop 项目</h1><p>使用 reduxjs&#x2F;toolkit 中的 redux.<br>reducer 采用切片的方法.</p>
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store/index.ts</span></span><br><span class="line"><span class="comment">// 设置根reducer对象</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> rootReducer = &#123;</span><br><span class="line">  <span class="attr">auth</span>: authSlice.<span class="property">reducer</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> store = <span class="title function_">configureStore</span>(&#123;</span><br><span class="line">  <span class="attr">reducer</span>: rootReducer,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// auth.slice.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> authSlice = <span class="title function_">createSlice</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;auth&#x27;</span>,</span><br><span class="line">  initialState,</span><br><span class="line">  <span class="attr">reducers</span>: &#123;</span><br><span class="line">    <span class="title function_">setUser</span>(<span class="params">state,action</span>) &#123;</span><br><span class="line">      state.<span class="property">user</span> = action.<span class="property">payload</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123;setUser&#125; = authSlice.<span class="property">actions</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">selectUser</span> = (<span class="params">state:RootState</span>) =&gt; state.<span class="property">auth</span>.<span class="property">user</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">login</span> = (<span class="params">form:AuthForm</span>) =&gt; <span class="function">(<span class="params">dispatch:AppDispatch</span>) =&gt;</span>auth.<span class="title function_">login</span>(form).<span class="title function_">then</span>(<span class="function"><span class="params">user</span> =&gt;</span> <span class="title function_">dispatch</span>(<span class="title function_">setUser</span>(user))</span><br></pre></td></tr></table></figure>
-
-<p>记得使用 Provider 将 Context 包裹</p>
-
       
     </div>
 
