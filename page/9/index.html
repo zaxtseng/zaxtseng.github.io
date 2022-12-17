@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:31" itemprop="dateModified" datetime="2022-12-15T20:47:31+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:31" itemprop="dateModified" datetime="2022-12-17T10:33:31+08:00">2022-12-17</time>
     </span>
 
   
@@ -337,7 +337,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:31" itemprop="dateModified" datetime="2022-12-15T20:47:31+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:31" itemprop="dateModified" datetime="2022-12-17T10:33:31+08:00">2022-12-17</time>
     </span>
 
   
@@ -413,7 +413,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:31" itemprop="dateModified" datetime="2022-12-15T20:47:31+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:31" itemprop="dateModified" datetime="2022-12-17T10:33:31+08:00">2022-12-17</time>
     </span>
 
   
@@ -503,7 +503,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:32" itemprop="dateModified" datetime="2022-12-15T20:47:32+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:32" itemprop="dateModified" datetime="2022-12-17T10:33:32+08:00">2022-12-17</time>
     </span>
 
   
@@ -620,7 +620,7 @@
 <h1 id="Hook-规则"><a href="#Hook-规则" class="headerlink" title="Hook 规则"></a>Hook 规则</h1><p>不要在循环,条件,嵌套中使用 Hook,确保它在最顶层.<br>只在 React 函数中调用 Hook,不要在 js 函数中调用.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误方式</span></span><br><span class="line"><span class="keyword">if</span> (count === <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">`clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//正确方式</span></span><br><span class="line"><span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (count === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">title</span> = <span class="string">`clicked <span class="subst">$&#123;count&#125;</span> times`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h1 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h1><p>行为类似于 Vue 中的计算属性.防止内部因 js 属性导致无限循环.<br>另外当 obj 是对象的 state 时,不会无限循环.</p>
+<h1 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a>useMemo</h1><p>useMemo 起作用的前提是,该组件必须是浅比较.<br>行为类似于 Vue 中的计算属性.防止内部因 js 属性导致无限循环.<br>另外当 obj 是对象的 state 时,不会无限循环.</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useMemo &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//如果count变化则此函数重新执行</span></span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;, [count]);</span><br></pre></td></tr></table></figure>
 
 <h1 id="memo-方法"><a href="#memo-方法" class="headerlink" title="memo 方法"></a>memo 方法</h1><p>用于性能优化,节省开销.,如果本组件内数据未变化,阻止组件更新.<br>类似于 React.pureComponent,该函数会浅比较 props,state 是否变化,未变化就不重复渲染.</p>
@@ -632,6 +632,39 @@
 
 <p><strong>在 class 组件中，函数属性本身并不是数据流的一部分</strong>。组件的方法中包含了可变的 this 变量导致我们不能确定无疑地认为它是不变的。因此，即使我们只需要一个函数，我们也必须把一堆数据传递下去仅仅是为了做“diff”。我们无法知道传入的 this.props.fetchData 是否依赖状态，并且不知道它依赖的状态是否改变了。</p>
 <p>使用 useCallback，函数完全可以参与到数据流中。我们可以说如果一个函数的输入改变了，这个函数就改变了。如果没有，函数也不会改变。感谢周到的 useCallback，属性比如 props.fetchData 的改变也会自动传递下去。</p>
+<h1 id="useMemo-和-useCallback-准则"><a href="#useMemo-和-useCallback-准则" class="headerlink" title="useMemo 和 useCallback 准则"></a>useMemo 和 useCallback 准则</h1><ol>
+<li>大部分的 useMemo 和 useCallback 都应该被移除，他们可能没有带来性能上的优化，反而增加首次渲染的负担，增加程序的复杂性。</li>
+<li>使用 useMemo&#x2F;useCallback 优化子组件 re-render 时，必须满足以下条件才有效。<ol>
+<li>子组件已通过 React.memo&#x2F;useMemo 被缓存</li>
+<li>子组件所有 props 被缓存</li>
+</ol>
+</li>
+</ol>
+<h2 id="如何判断是否应该缓存组件？"><a href="#如何判断是否应该缓存组件？" class="headerlink" title="如何判断是否应该缓存组件？"></a>如何判断是否应该缓存组件？</h2><ol>
+<li>react dev tools profiler</li>
+<li>useRenderTImes</li>
+</ol>
+<h2 id="什么时候应该用-useMemo-x2F-useCallback？"><a href="#什么时候应该用-useMemo-x2F-useCallback？" class="headerlink" title="什么时候应该用 useMemo&#x2F;useCallback？"></a>什么时候应该用 useMemo&#x2F;useCallback？</h2><ol>
+<li>防止不必要的 effect</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Component</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> a = <span class="title function_">useMemo</span>(<span class="function">() =&gt;</span> (&#123; <span class="attr">test</span>: <span class="number">1</span> &#125;), []);</span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 只有当a变化了，这里才触发</span></span><br><span class="line">    <span class="title function_">doSomething</span>();</span><br><span class="line">  &#125;, [a]);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Component</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> fetch = <span class="title function_">useCallback</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// fetch数据</span></span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 仅fetch值被改变时，才会触发</span></span><br><span class="line">    <span class="title function_">fetch</span>();</span><br><span class="line">  &#125;, [fetch]);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>防止不必要的 re-render<ol>
+<li>组件什么时候会 re-render<ol>
+<li>本身的 props 或者 state 改变时</li>
+<li>Context value 改变，使用该值的组件会 re-render</li>
+<li>当父组件重新渲染，所有的子组件都会 re-render</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 必须同时缓存组件本身和onClick方法</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">PageMemoized</span> = <span class="title class_">React</span>.<span class="title function_">memo</span>(<span class="title class_">Page</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">App</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, setState] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> onClick = <span class="title function_">useCallback</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//dosomething</span></span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">PageMemorized</span> <span class="attr">onClick</span>=<span class="string">&#123;onClick&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>防止不必要的重复计算</li>
+</ol>
 <h1 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h1><p>useReducer 是另一种返回状态的方法.可以说是<code>useState</code>的升级版本.和 redux 的差别在于并不能进行全局的状态管理.<br>useState 适合单个状态,useReducer 适合多个互相有影响的状态.<br>对于单个状态,可以使用 useState,多个状态,且互相关联,就可以使用 useReducer.</p>
 <p>它接收一个形如 <code>(state, action) =&gt; newState</code> 的 reducer，并返回当前的 state 以及与其配套的 dispatch 方法。<br>在某些场景下，useReducer 会比 useState 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 useReducer 还能给那些会触发深更新的组件做性能优化，因为你可以向子组件传递 dispatch 而不是回调函数</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useReducer &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initalState = &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reducer</span>(<span class="params">state, action</span>) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;increment&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: state.<span class="property">count</span> + <span class="number">1</span> &#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;dcrement&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: state.<span class="property">count</span> - <span class="number">1</span> &#125;;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialState);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      Count: &#123;state.count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123; type: &quot;increment&quot; &#125;)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123; type: &quot;dcrement&quot; &#125;)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -753,7 +786,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:32" itemprop="dateModified" datetime="2022-12-15T20:47:32+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:32" itemprop="dateModified" datetime="2022-12-17T10:33:32+08:00">2022-12-17</time>
     </span>
 
   
@@ -832,7 +865,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:32" itemprop="dateModified" datetime="2022-12-15T20:47:32+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:32" itemprop="dateModified" datetime="2022-12-17T10:33:32+08:00">2022-12-17</time>
     </span>
 
   
@@ -922,7 +955,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:32" itemprop="dateModified" datetime="2022-12-15T20:47:32+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:32" itemprop="dateModified" datetime="2022-12-17T10:33:32+08:00">2022-12-17</time>
     </span>
 
   
@@ -1009,7 +1042,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:32" itemprop="dateModified" datetime="2022-12-15T20:47:32+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:32" itemprop="dateModified" datetime="2022-12-17T10:33:32+08:00">2022-12-17</time>
     </span>
 
   
@@ -1090,7 +1123,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:32" itemprop="dateModified" datetime="2022-12-15T20:47:32+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:32" itemprop="dateModified" datetime="2022-12-17T10:33:32+08:00">2022-12-17</time>
     </span>
 
   
@@ -1194,7 +1227,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-15 20:47:32" itemprop="dateModified" datetime="2022-12-15T20:47:32+08:00">2022-12-15</time>
+      <time title="Modified: 2022-12-17 10:33:32" itemprop="dateModified" datetime="2022-12-17T10:33:32+08:00">2022-12-17</time>
     </span>
 
   
