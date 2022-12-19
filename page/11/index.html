@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:49" itemprop="dateModified" datetime="2022-12-18T15:30:49+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:35" itemprop="dateModified" datetime="2022-12-19T09:43:35+08:00">2022-12-19</time>
     </span>
 
   
@@ -336,7 +336,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:49" itemprop="dateModified" datetime="2022-12-18T15:30:49+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:35" itemprop="dateModified" datetime="2022-12-19T09:43:35+08:00">2022-12-19</time>
     </span>
 
   
@@ -618,7 +618,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:50" itemprop="dateModified" datetime="2022-12-18T15:30:50+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:35" itemprop="dateModified" datetime="2022-12-19T09:43:35+08:00">2022-12-19</time>
     </span>
 
   
@@ -712,6 +712,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="keyword">var</span> trees = <span class="keyword">new</span> <span class="title class_">Array</span>(<span class="string">&quot;redwood&quot;</span>, <span class="string">&quot;bay&quot;</span>, <span class="string">&quot;cedar&quot;</span>, <span class="string">&quot;oak&quot;</span>, <span class="string">&quot;maple&quot;</span>);</span><br><span class="line"><span class="number">0</span> <span class="keyword">in</span> trees; <span class="comment">// 返回true</span></span><br><span class="line"><span class="number">3</span> <span class="keyword">in</span> trees; <span class="comment">// 返回true</span></span><br><span class="line"><span class="number">6</span> <span class="keyword">in</span> trees; <span class="comment">// 返回false</span></span><br><span class="line"><span class="string">&quot;bay&quot;</span> <span class="keyword">in</span> trees; <span class="comment">// 返回false (必须使用索引号,而不是数组元素的值)</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;length&quot;</span> <span class="keyword">in</span> trees; <span class="comment">// 返回true (length是一个数组属性)</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Symbol</span>.<span class="property">iterator</span> <span class="keyword">in</span> trees; <span class="comment">// 返回true (数组可迭代，只在ES2015+上有效)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 内置对象</span></span><br><span class="line"><span class="string">&quot;PI&quot;</span> <span class="keyword">in</span> <span class="title class_">Math</span>; <span class="comment">// 返回true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义对象</span></span><br><span class="line"><span class="keyword">var</span> mycar = &#123; <span class="attr">make</span>: <span class="string">&quot;Honda&quot;</span>, <span class="attr">model</span>: <span class="string">&quot;Accord&quot;</span>, <span class="attr">year</span>: <span class="number">1998</span> &#125;;</span><br><span class="line"><span class="string">&quot;make&quot;</span> <span class="keyword">in</span> mycar; <span class="comment">// 返回true</span></span><br><span class="line"><span class="string">&quot;model&quot;</span> <span class="keyword">in</span> mycar; <span class="comment">// 返回true</span></span><br></pre></td></tr></table></figure>
 
 <p>如果只是将一个属性值赋值为<code>undefined</code>,而没有删除,则<code>in</code>运算符仍然会返回 true.</p>
+<h2 id="判断对象上是否有某个属性"><a href="#判断对象上是否有某个属性" class="headerlink" title="判断对象上是否有某个属性"></a>判断对象上是否有某个属性</h2><p>方法有： for…in，Object.keys，in 操作符， hasownProperty。<br>for…in：可以遍历包括原型链上的属性<br>Object.keys: 遍历所有可枚举属性，不包括原型链<br>in 操作符： 可以检查原型链<br>hasOwnProperty：无法检查原型链</p>
 <h2 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h2><p>值类型用<code>**typeof**</code>,引用类型用<code>**instanceof**</code></p>
 <h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>运算符返回一个字符串，表示操作数的类型。<br>原始类型: 除了 null 判断为 object,其他都正常.因为 null 是全零,被判断为 object.<br>引用类型: 除了函数显示<code>function</code>,其他都是<code>object</code>.</p>
 <h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>判断对象类型就可以用 instanceof,它会通过原型链判断.<br>但是原始类型就不行了.</p>
@@ -1110,7 +1111,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:50" itemprop="dateModified" datetime="2022-12-18T15:30:50+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:35" itemprop="dateModified" datetime="2022-12-19T09:43:35+08:00">2022-12-19</time>
     </span>
 
   
@@ -1442,7 +1443,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:50" itemprop="dateModified" datetime="2022-12-18T15:30:50+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:35" itemprop="dateModified" datetime="2022-12-19T09:43:35+08:00">2022-12-19</time>
     </span>
 
   
@@ -1564,7 +1565,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:50" itemprop="dateModified" datetime="2022-12-18T15:30:50+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:35" itemprop="dateModified" datetime="2022-12-19T09:43:35+08:00">2022-12-19</time>
     </span>
 
   
@@ -1654,7 +1655,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:50" itemprop="dateModified" datetime="2022-12-18T15:30:50+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:35" itemprop="dateModified" datetime="2022-12-19T09:43:35+08:00">2022-12-19</time>
     </span>
 
   
@@ -1742,7 +1743,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:50" itemprop="dateModified" datetime="2022-12-18T15:30:50+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:36" itemprop="dateModified" datetime="2022-12-19T09:43:36+08:00">2022-12-19</time>
     </span>
 
   
@@ -2283,7 +2284,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:50" itemprop="dateModified" datetime="2022-12-18T15:30:50+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:36" itemprop="dateModified" datetime="2022-12-19T09:43:36+08:00">2022-12-19</time>
     </span>
 
   
@@ -2421,7 +2422,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:44" itemprop="dateModified" datetime="2022-12-18T15:30:44+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:29" itemprop="dateModified" datetime="2022-12-19T09:43:29+08:00">2022-12-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">

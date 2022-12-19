@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -337,7 +337,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -413,7 +413,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -503,7 +503,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -671,6 +671,7 @@
 </ol>
 <h1 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h1><p>useReducer 是另一种返回状态的方法.可以说是<code>useState</code>的升级版本.和 redux 的差别在于并不能进行全局的状态管理.<br>useState 适合单个状态,useReducer 适合多个互相有影响的状态.<br>对于单个状态,可以使用 useState,多个状态,且互相关联,就可以使用 useReducer.</p>
 <p>它接收一个形如 <code>(state, action) =&gt; newState</code> 的 reducer，并返回当前的 state 以及与其配套的 dispatch 方法。<br>在某些场景下，useReducer 会比 useState 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 useReducer 还能给那些会触发深更新的组件做性能优化，因为你可以向子组件传递 dispatch 而不是回调函数</p>
+<p>假如层级过深，还可以搭配 context 使用，此时使用 dispatch 代替 callback 优势更明显。因为 dispatch 在 re-render 时不变，不会引起使用 context 的组件执行无意义的更新。<br>批量更新 react 对事件之外的更新不会批量处理，使用 reducer 可以避免此类问题</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useReducer &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initalState = &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">reducer</span>(<span class="params">state, action</span>) &#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.<span class="property">type</span>) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;increment&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: state.<span class="property">count</span> + <span class="number">1</span> &#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&quot;dcrement&quot;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123; <span class="attr">count</span>: state.<span class="property">count</span> - <span class="number">1</span> &#125;;</span><br><span class="line">    <span class="attr">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = <span class="title function_">useReducer</span>(reducer, initialState);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      Count: &#123;state.count&#125;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123; type: &quot;increment&quot; &#125;)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123; type: &quot;dcrement&quot; &#125;)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h1 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h1><ul>
@@ -680,6 +681,9 @@
 <li><code>useContext(MyContext)</code> 相当于 class 组件中的 <code>static contextType = MyContext</code> 或者 <code>&lt;MyContext.Consumer&gt;</code></li>
 <li><code>useContext(MyContext)</code> 只是让你能够读取 context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 <code>&lt;MyContext.Provider&gt;</code>来为下层组件提供 context</li>
 </ul>
+<h2 id="createContext"><a href="#createContext" class="headerlink" title="createContext"></a>createContext</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> context = <span class="title function_">createContext</span>(defaultValue);</span><br></pre></td></tr></table></figure>
+
+<p>只有当组件所处的树中没有匹配到 Provider 时，其 defaultValue 参数才会生效。此默认值有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 undefined 传递给 Provider 的 value 时，消费组件的 defaultValue 不会生效。</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useContext &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&quot;react-dom&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./styles.css&quot;</span>;</span><br><span class="line"><span class="comment">//先创建一个Context</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">AppContext</span> = <span class="title class_">React</span>.<span class="title function_">createContext</span>(&#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Navbar</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(<span class="title class_">AppContext</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;navbar&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>AwesomeSite<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">Messages</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; username &#125; = <span class="title function_">useContext</span>(<span class="title class_">AppContext</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;messages&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Messages<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>1 message for &#123;username&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;message&quot;</span>&gt;</span>useContext is awesome!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//用创建的Context包裹组件</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">AppContext.Provider</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">value</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">username:</span> &quot;<span class="attr">superawesome</span>&quot;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    &gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;App&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Navbar</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Messages</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">AppContext.Provider</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootElement = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;root&quot;</span>);</span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, rootElement);</span><br></pre></td></tr></table></figure>
 
 <h2 id="全局使用"><a href="#全局使用" class="headerlink" title="全局使用"></a>全局使用</h2><h3 id="创建-context"><a href="#创建-context" class="headerlink" title="创建 context"></a>创建 context</h3><p>使用 createContext 方法创建 context</p>
@@ -790,7 +794,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -869,7 +873,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -959,7 +963,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -1046,7 +1050,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -1127,7 +1131,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
@@ -1231,7 +1235,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-18 15:30:48" itemprop="dateModified" datetime="2022-12-18T15:30:48+08:00">2022-12-18</time>
+      <time title="Modified: 2022-12-19 09:43:34" itemprop="dateModified" datetime="2022-12-19T09:43:34+08:00">2022-12-19</time>
     </span>
 
   
