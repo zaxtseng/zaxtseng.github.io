@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:12" itemprop="dateModified" datetime="2022-12-31T14:48:12+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -477,7 +477,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:12" itemprop="dateModified" datetime="2022-12-31T14:48:12+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -505,7 +505,7 @@
 
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">TaskObj</span> &#123;</span><br><span class="line">  <span class="attr">id</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">content</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">isDone</span>: <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> [task, setTask] = useState&lt;<span class="title class_">TaskObj</span>[]&gt;([]);</span><br></pre></td></tr></table></figure>
 
-<h3 id="继承父组件中-state-并有自己的初始值"><a href="#继承父组件中-state-并有自己的初始值" class="headerlink" title="继承父组件中 state 并有自己的初始值"></a>继承父组件中 state 并有自己的初始值</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1647768671368-ee2c3aa9-d61e-46dc-84ac-57f5c8479bd2.png#clientId=udbde1c6a-2f68-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=1256&id=u72f894a7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1256&originWidth=1576&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=798017&status=done&style=none&taskId=u5ee7f9d9-a87a-402f-8946-2b8dc07c6d2&title=&width=1576" alt="image.png"></p>
+<h3 id="继承父组件中-state-并有自己的初始值"><a href="#继承父组件中-state-并有自己的初始值" class="headerlink" title="继承父组件中 state 并有自己的初始值"></a>继承父组件中 state 并有自己的初始值</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1647768671368-ee2c3aa9-d61e-46dc-84ac-57f5c8479bd2.png#averageHue=%2348105a&clientId=udbde1c6a-2f68-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=1256&id=u72f894a7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1256&originWidth=1576&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=798017&status=done&style=none&taskId=u5ee7f9d9-a87a-402f-8946-2b8dc07c6d2&title=&width=1576" alt="image.png"></p>
 <h2 id="父子传参"><a href="#父子传参" class="headerlink" title="父子传参"></a>父子传参</h2><p>js 中传参直接在子组件上写,子组件通过<code>props</code>接收</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Doing</span> doing=&#123;doing&#125; setTask=&#123;setTask&#125; /&gt;</span><br></pre></td></tr></table></figure>
 
@@ -527,10 +527,12 @@
 <li>React.WheelEvent - 鼠标滚动事件</li>
 <li>React.TouchEvent - 触摸事件</li>
 </ul>
+<p>注意,有的不能加 react,因为加了 React 是合成事件,不加是原生事件.</p>
 <h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> addTodo = (<span class="attr">e</span>: <span class="title class_">React</span>.<span class="property">KeyboardEvent</span>&lt;<span class="title class_">HTMLInputElement</span>&gt;): <span class="function"><span class="params">void</span> =&gt;</span> &#123;...&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="输入事件"><a href="#输入事件" class="headerlink" title="输入事件"></a>输入事件</h3><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;input</span><br><span class="line">  ref=&#123;editInput&#125;</span><br><span class="line">  onBlur=&#123;<span class="function">(<span class="params">e: React.FocusEvent&lt;HTMLInputElement&gt;</span>) =&gt;</span> <span class="title function_">onBlurEdit</span>(e)&#125;</span><br><span class="line">  className=<span class="string">&quot;text-edit&quot;</span></span><br><span class="line">  style=&#123;&#123; <span class="attr">display</span>: state.<span class="property">onEdit</span> ? <span class="string">&quot;block&quot;</span> : <span class="string">&quot;none&quot;</span> &#125;&#125;</span><br><span class="line">  value=&#123;todo.<span class="property">content</span>&#125;</span><br><span class="line">  onChange=&#123;<span class="function">(<span class="params">e: React.ChangeEvent&lt;HTMLInputElement&gt;</span>) =&gt;</span></span><br><span class="line">    <span class="title function_">handleTodoTextEdit</span>(e, todo)</span><br><span class="line">  &#125;</span><br><span class="line">  onKeyPress=&#123;<span class="function">(<span class="params">e: React.KeyboardEvent&lt;HTMLInputElement&gt;</span>) =&gt;</span> <span class="title function_">submitEditText</span>(e)&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
 
+<p>e 的值可以是<code>(e.target as HTMLInputElement).value</code>.</p>
 <h2 id="细节的注意"><a href="#细节的注意" class="headerlink" title="细节的注意"></a>细节的注意</h2><h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>泛型在类型或者接口后,是传入参数的约束.也就是说传入的参数是在这个泛型之内的.</p>
 <h3 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h3><p>jsx 的返回类型是<code>ReactElement</code><br>node 元素的返回类型是<code>ReactNode</code></p>
 <h1 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h1><p>useState 中设置 setState 中的方法可以将参数解构,简化浅拷贝</p>
@@ -544,6 +546,9 @@
 
 <h2 id="自定义-http"><a href="#自定义-http" class="headerlink" title="自定义 http"></a>自定义 http</h2><p>当一个参数有默认值时,参数内自动变为可选</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">http</span> = (<span class="params"></span></span><br><span class="line"><span class="params">  endpoint: <span class="built_in">string</span>,</span></span><br><span class="line"><span class="params">  &#123; data, token, headers, ...customConfig &#125;: Config = &#123;&#125;</span></span><br><span class="line"><span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> config = &#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&quot;GET&quot;</span>,</span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">      <span class="title class_">Authorization</span>: token ? <span class="string">`Bearer <span class="subst">$&#123;token&#125;</span>`</span> : <span class="string">&quot;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;Content-Type&quot;</span>: data ? <span class="string">&quot;applcation/json&quot;</span> : <span class="string">&quot;&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...customConfig,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (config.<span class="property">method</span>.<span class="title function_">toUpperCase</span>() === <span class="string">&quot;GET&quot;</span>) &#123;</span><br><span class="line">    endpoint += <span class="string">`?<span class="subst">$&#123;qs.stringify(data)&#125;</span>`</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    config.<span class="property">body</span> = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data || &#123;&#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">window</span>.<span class="title function_">fetch</span>(<span class="string">`<span class="subst">$&#123;apiUrl&#125;</span>/<span class="subst">$&#123;endpoint&#125;</span>`</span>, config).<span class="title function_">then</span>(<span class="keyword">async</span> (res) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">status</span> === <span class="number">401</span>) &#123;</span><br><span class="line">      <span class="comment">// 未登录或token失效</span></span><br><span class="line">      <span class="keyword">await</span> auth.<span class="title function_">logout</span>();</span><br><span class="line">      <span class="variable language_">window</span>.<span class="property">location</span>.<span class="title function_">reload</span>();</span><br><span class="line">      <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(&#123; <span class="attr">message</span>: <span class="string">&quot;请重新登录&quot;</span> &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> data = <span class="keyword">await</span> res.<span class="title function_">json</span>();</span><br><span class="line">    <span class="keyword">if</span> (res.<span class="property">ok</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> data;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(data);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">useHttp</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; user &#125; = <span class="title function_">useAuth</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">...[endpoint, config]: Parameters&lt;<span class="keyword">typeof</span> http&gt;</span>) =&gt;</span></span><br><span class="line">    <span class="title function_">http</span>(endpoint, &#123; ...config, <span class="attr">token</span>: user?.<span class="property">token</span> &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于-svg-的引入问题"><a href="#关于-svg-的引入问题" class="headerlink" title="关于 svg 的引入问题"></a>关于 svg 的引入问题</h2><p>cra 虽然声明了 svg 作为模块可以引入,但是仍会报错.<br>解决方法:<br>新建<code>src/react-app-env.d.ts</code></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// &lt;reference types=&quot;react-scripts&quot; /&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -606,7 +611,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:12" itemprop="dateModified" datetime="2022-12-31T14:48:12+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -682,7 +687,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:12" itemprop="dateModified" datetime="2022-12-31T14:48:12+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -772,7 +777,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:12" itemprop="dateModified" datetime="2022-12-31T14:48:12+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -1077,7 +1082,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:12" itemprop="dateModified" datetime="2022-12-31T14:48:12+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -1156,7 +1161,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:12" itemprop="dateModified" datetime="2022-12-31T14:48:12+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -1246,7 +1251,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:12" itemprop="dateModified" datetime="2022-12-31T14:48:12+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -1333,7 +1338,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:13" itemprop="dateModified" datetime="2022-12-31T14:48:13+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -1414,7 +1419,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:48:13" itemprop="dateModified" datetime="2022-12-31T14:48:13+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:38" itemprop="dateModified" datetime="2023-01-02T10:28:38+08:00">2023-01-02</time>
     </span>
 
   
@@ -1494,7 +1499,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

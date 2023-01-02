@@ -28,9 +28,8 @@
 <meta property="og:description" content="React 面试专题React.js 是 MVVM 框架吗?React 就是 Facebook 的一个开源 JS 框架，专注的层面为 View 层，不包括数据访问层或者那种 Hash 路由（不过 React 有插件支持），与 Angularjs，Emberjs 等大而全的框架不同，React 专注的中心是 Component，即组件。React 认为一切页面元素都可以抽象成组件，比如一个表单，或者">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8bae01e6eb804d849e5bb889f787707d~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=oTzwI&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2089718f74b342869de15f01588f033f~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=nZH3d&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title=">
 <meta property="article:published_time" content="2022-12-09T09:45:21.000Z">
-<meta property="article:modified_time" content="2022-12-31T06:47:56.978Z">
+<meta property="article:modified_time" content="2023-01-02T02:28:26.772Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
@@ -217,7 +216,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-12-31 14:47:56" itemprop="dateModified" datetime="2022-12-31T14:47:56+08:00">2022-12-31</time>
+      <time title="Modified: 2023-01-02 10:28:26" itemprop="dateModified" datetime="2023-01-02T10:28:26+08:00">2023-01-02</time>
     </span>
 
   
@@ -373,7 +372,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 异步懒加载</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Box</span> = <span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./components/Box&quot;</span>));</span><br><span class="line"><span class="comment">// 使用组件的时候要用suspense进行包裹</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span>&lt;<span class="attr">div</span>&gt;</span>loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;&gt;&#123;show &amp;&amp; <span class="tag">&lt;<span class="name">Box</span> /&gt;</span>&#125;<span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
 
 <h3 id="React-事件绑定原理"><a href="#React-事件绑定原理" class="headerlink" title="React 事件绑定原理"></a>React 事件绑定原理</h3><p>React 并不是将 click 事件绑在该 div 的真实 DOM 上，而是<code>在document处监听所有支持的事件</code>，当事件发生并冒泡至 document 处时，React 将事件内容封装并交由真正的处理函数运行。这样的方式不仅减少了内存消耗，还能在组件挂载销毁时统一订阅和移除事件。<br>另外冒泡到 document 上的事件也不是原生浏览器事件，而是 React 自己实现的合成事件（SyntheticEvent）。因此我们如果不想要事件冒泡的话，调用 event.stopPropagation 是无效的，而应该调用 <code>event.preventDefault</code>。</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2089718f74b342869de15f01588f033f~tplv-k3u1fbpfcp-zoom-1.image#crop=0&crop=0&crop=1&crop=1&id=nZH3d&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&status=done&style=none&title="></p>
 <h3 id="React-lazy-实现的原理"><a href="#React-lazy-实现的原理" class="headerlink" title="React.lazy() 实现的原理"></a>React.lazy() 实现的原理</h3><p>React 的懒加载示例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Suspense</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">OtherComponent</span> = <span class="title class_">React</span>.<span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./OtherComponent&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MyComponent</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span>&lt;<span class="attr">div</span>&gt;</span>Loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;&gt;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">OtherComponent</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -441,7 +439,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
