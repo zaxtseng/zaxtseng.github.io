@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">121</span>
+          <span class="site-state-item-count">122</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -172,6 +172,493 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/26/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="post-title-link" itemprop="url">前端工程化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-26 21:07:20" itemprop="dateCreated datePublished" datetime="2022-09-26T21:07:20+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-04 10:01:50" itemprop="dateModified" datetime="2023-01-04T10:01:50+08:00">2023-01-04</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<p>title: 前端工程化</p>
+<p>date: 2019-09-01 14:26:50</p>
+<p>tags: javascript</p>
+<p>categories:  # 这里写的分类会自动汇集到 categories 页面上,分类可以多级</p>
+<ul>
+<li>JS # 一级分类</li>
+<li>前端工程化 # 二级分类</li>
+</ul>
+<hr>
+<h1 id="模块化初探"><a href="#模块化初探" class="headerlink" title="模块化初探"></a>模块化初探</h1><h2 id="模块化系统的风格"><a href="#模块化系统的风格" class="headerlink" title="模块化系统的风格"></a>模块化系统的风格</h2><p>模块化的价值</p>
+<p>最主要的目的：</p>
+<ul>
+<li>解决命名冲突</li>
+<li>依赖管理</li>
+</ul>
+<p>其他价值:</p>
+<ul>
+<li>提高代码可读性</li>
+<li>代码解耦,提高复用性</li>
+</ul>
+<h3 id="lt-script-gt-标签风格"><a href="#lt-script-gt-标签风格" class="headerlink" title="&lt;script&gt;标签风格"></a><code>&lt;script&gt;</code>标签风格</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;module1.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;module2.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;module3.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>各个模块把接口暴露给全局对象,比如 window.各个模块通过全局对象进行相互访问</p>
+<p>出现的问题:</p>
+<ol>
+<li>全局对象的冲突</li>
+<li>加载的顺序很重要</li>
+<li>开发者需要解决模块的依赖问题</li>
+<li>在大项目中模块非常多难以维护</li>
+</ol>
+<h3 id="CommonJs-同步的-require"><a href="#CommonJs-同步的-require" class="headerlink" title="CommonJs: 同步的 require"></a>CommonJs: 同步的 require</h3><p>CommonJs 是 Node 独有的规范，浏览器中使用就需要用到 Browserify 解析了。</p>
+<p>使用同步的<code>require</code>方法来加载依赖和返回暴露的接口.一个模块可以通过<code>exports</code>对象添加属性,或者设置<code>module.exports</code>的值来描述暴露对象.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>(<span class="string">&quot;moudle&quot;</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">&quot;../file.js&quot;</span>);</span><br><span class="line"><span class="built_in">exports</span>.<span class="property">doStuff</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line">moudle.<span class="property">exports</span> = someValue;</span><br></pre></td></tr></table></figure>
+
+<p>优点:</p>
+<ol>
+<li>服务端代码可以被复用.</li>
+<li>npm 有大量的代码</li>
+<li>使用方便</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>阻塞调用无法在网络环境应用,网络请求是异步的</li>
+<li>不能并行<code>require</code>多个模块</li>
+</ol>
+<h4 id="CommonJS-规范"><a href="#CommonJS-规范" class="headerlink" title="CommonJS 规范"></a>CommonJS 规范</h4><ol>
+<li>在一个模块中,存在一个自由的变量”require”,它是一个函数。</li>
+</ol>
+<p>这个”require”函数接收一个模块标识符。</p>
+<p>“require”返回外部模块所输出的 API。 2. 在一个模块中,会存在一个名为”exports”的自由变量,它是一个对象,模块可以在执行的时候把自身的 API 加入到其中。 3. 模块必须使用”exports”对象来做为输出的唯一表示。</p>
+<h3 id="AMD-规范-异步的-require"><a href="#AMD-规范-异步的-require" class="headerlink" title="AMD 规范: 异步的 require"></a>AMD 规范: 异步的 require</h3><p>AMD 主要解决两个问题:</p>
+<ol>
+<li>多个 js 文件可能有依赖关系,被依赖的文件需要早于依赖它的文件加载到浏览器</li>
+<li>js 加载的时候浏览器会停止页面渲染,加载文件越多,页面失去响应时间越长</li>
+</ol>
+<h4 id="requireJS-语法"><a href="#requireJS-语法" class="headerlink" title="requireJS 语法"></a>requireJS 语法</h4><p>RequireJS 遵循 AMD 规范,用于解决命名冲突和文件依赖的问题.</p>
+<p>requireJS 定义了一个函数 define,它是全局变量,用来定义模块</p>
+<p><code>define(id?, dependencies?, factory);</code></p>
+<ol>
+<li>id：可选参数,用来定义模块的标识,如果没有提供该参数,脚本文件名(去掉拓展名)</li>
+<li>dependencies：是一个当前模块依赖的模块名称数组</li>
+<li>factory：工厂方法,模块初始化要执行的函数或对象。如果为函数,它应该只被执行一次。如果是对象,此对象应该为模块的输出值</li>
+</ol>
+<p>在页面上使用 require 函数加载模块</p>
+<p><code>require([dependencies], function()&#123;&#125;);</code></p>
+<p>require()函数接受两个参数:</p>
+<ol>
+<li>第一个参数是一个数组,表示所依赖的模块</li>
+<li>第二个参数是一个回调函数,当前面指定的模块都加载成功后,它将被调用。加载的模块会以参数形式传入该函数,从而在回调函数内部就可以使用这些模块.</li>
+</ol>
+<p>require()函数在加载依赖的函数的时候是异步加载的,这样浏览器不会失去响应,它指定的回调函数,只有前面的模块都加载成功后,才会运行,解决了依赖性的问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">&quot;moudle&quot;</span>, <span class="string">&quot;../file&quot;</span>], <span class="keyword">function</span> (<span class="params">moudle, file</span>) &#123;</span><br><span class="line">  <span class="comment">/* ... */</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="title function_">define</span>(<span class="string">&quot;moudle&quot;</span>, [<span class="string">&quot;dep1&quot;</span>, <span class="string">&quot;dep2&quot;</span>], <span class="keyword">function</span> (<span class="params">d1, d2</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> someExportedValue;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="import和export的区别"><a href="#import和export的区别" class="headerlink" title="import和export的区别"></a><code>import</code>和<code>export</code>的区别</h1><p>以前:</p>
+<p>CommonJS（服务器） 和 AMD（浏览器）规范各自实现了运行时加载模块的方法（没办法在编译时做“静态优化”）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CommonJS模块</span></span><br><span class="line"><span class="keyword">let</span> &#123; stat, exists, readFile &#125; = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">let</span> _fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">let</span> stat = _fs.<span class="property">stat</span>;</span><br><span class="line"><span class="keyword">let</span> exists = _fs.<span class="property">exists</span>;</span><br><span class="line"><span class="keyword">let</span> readfile = _fs.<span class="property">readfile</span>;</span><br></pre></td></tr></table></figure>
+
+<p>现在：</p>
+<p><strong>ES6</strong>：一个模块就是一个文件，<code>export/import</code>命令可以出现在模块的任何位置，只要处于模块顶层就可以。</p>
+<p>通过<code>import</code>和<code>export</code>实现静态加载（编译时加载），服务端和浏览器通用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES6模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; stat, exists, readFile &#125; <span class="keyword">from</span> <span class="string">&quot;fs&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>export</strong>：如果你希望外部能够读取模块内部的某个变量，就必须使用 export 关键字输出该变量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// profile.js</span></span><br><span class="line"><span class="keyword">var</span> firstName = <span class="string">&quot;Michael&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> lastName = <span class="string">&quot;Jackson&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> year = <span class="number">1958</span>;</span><br><span class="line"><span class="keyword">export</span> &#123; firstName, lastName, year &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>还可以输出函数和 class 类：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">multiply</span>(<span class="params">x, y</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> x * y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还可以改个名字输出：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">v1</span>(<span class="params"></span>) &#123; ... &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">v2</span>(<span class="params"></span>) &#123; ... &#125;</span><br><span class="line"><span class="keyword">export</span> &#123;</span><br><span class="line">  v1 <span class="keyword">as</span> streamV1,</span><br><span class="line">  v2 <span class="keyword">as</span> streamV2,</span><br><span class="line">  v2 <span class="keyword">as</span> streamLatestVersion</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需要特别注意的是，export 命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。</p>
+</blockquote>
+<p>export 语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。</p>
+<p>CommonJS 模块输出的是值的缓存，不存在动态更新。</p>
+<p>import：加载模块</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">import</span> &#123; firstName, lastName, year &#125; <span class="keyword">from</span> <span class="string">&quot;./profile&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setName</span>(<span class="params">element</span>) &#123;</span><br><span class="line">  element.<span class="property">textContent</span> = firstName + <span class="string">&quot; &quot;</span> + lastName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以改名字：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; lastName <span class="keyword">as</span> surname &#125; <span class="keyword">from</span> <span class="string">&quot;./profile&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，import 命令具有提升效果，会提升到整个模块的头部，首先执行。import 命令是编译阶段执行的，在代码运行之前。</p>
+</blockquote>
+<p>由于 import 是静态执行，所以不能使用表达式和变量。</p>
+<p>会执行加载的模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;lodash&quot;</span>; <span class="comment">//仅仅执行lodash模块，但是不输入任何值。多次引入同一个模块仅执行一次。</span></span><br></pre></td></tr></table></figure>
+
+<p>整体加载所有的模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> circle <span class="keyword">from</span> <span class="string">&quot;./circle&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>export default</strong>：为模块指定默认输出，引用的时候不用知道输出的到底是什么，可以指定任意名字。</p>
+<p>需要注意的是，这时 import 命令后面，不使用大括号。一个模块只能有一个默认输出。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// export-default.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;foo&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// import-default.js</span></span><br><span class="line"><span class="keyword">import</span> customName <span class="keyword">from</span> <span class="string">&quot;./export-default&quot;</span>;</span><br><span class="line"><span class="title function_">customName</span>(); <span class="comment">// &#x27;foo&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>同时引用默认模块和其他模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> (<span class="params">obj</span>) &#123;</span><br><span class="line">  <span class="comment">// ···</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">each</span>(<span class="params">obj, iterator, context</span>) &#123;</span><br><span class="line">  <span class="comment">// ···</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; each <span class="keyword">as</span> forEach &#125;;</span><br><span class="line"><span class="comment">//对应的加载</span></span><br><span class="line"><span class="keyword">import</span> _, &#123; each, each <span class="keyword">as</span> forEach &#125; <span class="keyword">from</span> <span class="string">&quot;lodash&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>ES6 模块加载 CommonJS 模块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//commonjs模块：</span></span><br><span class="line"><span class="comment">// a.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="string">&quot;hello&quot;</span>,</span><br><span class="line">  <span class="attr">bar</span>: <span class="string">&quot;world&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">foo</span>: <span class="string">&quot;hello&quot;</span>,</span><br><span class="line">  <span class="attr">bar</span>: <span class="string">&quot;world&quot;</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//es6加载上面的模块：</span></span><br><span class="line"><span class="comment">// 写法一</span></span><br><span class="line"><span class="keyword">import</span> baz <span class="keyword">from</span> <span class="string">&quot;./a&quot;</span>;</span><br><span class="line"><span class="comment">// baz = &#123;foo: &#x27;hello&#x27;, bar: &#x27;world&#x27;&#125;;</span></span><br><span class="line"><span class="comment">// 写法二</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> baz &#125; <span class="keyword">from</span> <span class="string">&quot;./a&quot;</span>;</span><br><span class="line"><span class="comment">// baz = &#123;foo: &#x27;hello&#x27;, bar: &#x27;world&#x27;&#125;;</span></span><br><span class="line"><span class="comment">// 写法三</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> baz <span class="keyword">from</span> <span class="string">&quot;./a&quot;</span>;</span><br><span class="line"><span class="comment">// baz = &#123;</span></span><br><span class="line"><span class="comment">//   get default() &#123;return module.exports;&#125;,</span></span><br><span class="line"><span class="comment">//   get foo() &#123;return this.default.foo&#125;.bind(baz),</span></span><br><span class="line"><span class="comment">//   get bar() &#123;return this.default.bar&#125;.bind(baz)</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>CommonJS 加载 ES6 模块：通过<code>import()</code>函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// es6.mjs</span></span><br><span class="line"><span class="keyword">let</span> foo = &#123; <span class="attr">bar</span>: <span class="string">&quot;my-default&quot;</span> &#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> foo;</span><br><span class="line">foo = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// commonjs.js</span></span><br><span class="line"><span class="keyword">const</span> es_namespace = <span class="keyword">await</span> <span class="keyword">import</span>(<span class="string">&quot;./es&quot;</span>);</span><br><span class="line"><span class="comment">// es_namespace = &#123;</span></span><br><span class="line"><span class="comment">//   get default() &#123;</span></span><br><span class="line"><span class="comment">//     ...</span></span><br><span class="line"><span class="comment">//   &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(es_namespace.<span class="property">default</span>);</span><br><span class="line"><span class="comment">// &#123; bar:&#x27;my-default&#x27; &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="import-和-require-的区别"><a href="#import-和-require-的区别" class="headerlink" title="import 和 require 的区别"></a>import 和 require 的区别</h1><p>#module.exports 和 export default 的区别</p>
+<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><p>webpack 是收把项目当作一个整体,通过一个给定的的主文件,webpack 将从这个文件开始找到你的项目的所有依赖文件,使用 loaders 处理它们,最后打包成一个或多个浏览器可识别的 js 文件.</p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><ol>
+<li>新建一个文件夹,cd 到它的目录下.执行<code>npm init -y</code>命令</li>
+<li>执行<code>npm install --save--dev webpack</code>命令安装(也可以全局安装)</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/配置</span><br><span class="line">touch webpack.<span class="property">config</span>.<span class="property">js</span></span><br><span class="line">vi  webpack.<span class="property">config</span>.<span class="property">js</span></span><br><span class="line"><span class="comment">//在里面写以下内容</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">const path = require(&#x27;path&#x27;);</span></span><br><span class="line"><span class="comment">module.exports = &#123;</span></span><br><span class="line"><span class="comment">  entry: &#x27;./src/index.js&#x27;, //入口</span></span><br><span class="line"><span class="comment">  output: &#123;</span></span><br><span class="line"><span class="comment">    filename: &#x27;bundle.js&#x27;,</span></span><br><span class="line"><span class="comment">    path: path.resolve(__dirname, &#x27;dist&#x27;)</span></span><br><span class="line"><span class="comment">  &#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建文件</span></span><br><span class="line">touch src/index.<span class="property">js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//运行webpack</span></span><br><span class="line">npx webpack  <span class="comment">//这时会多出dist目录,里面有bundle.js文件</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h1><h3 id="1-在-index-js-里写"><a href="#1-在-index-js-里写" class="headerlink" title="1.在 index.js 里写"></a>1.在 index.js 里写</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(1)</span><br><span class="line"></span><br><span class="line">//再运行webpack:</span><br><span class="line">npx webpack</span><br><span class="line"></span><br><span class="line">//再看bundle.js,这时会多出来一行console.log(1)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装-babel-loader-自动转换-es6"><a href="#2-安装-babel-loader-自动转换-es6" class="headerlink" title="2.安装 babel-loader 自动转换 es6"></a>2.安装 babel-loader 自动转换 es6</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安装v6,命令行</span></span><br><span class="line">npm install babel-loader babel-core babel-preset-env webpack</span><br><span class="line"></span><br><span class="line"><span class="comment">//将这个复制到webpack的配置文件webpack.config.js里,加在output的下面</span></span><br><span class="line"><span class="attr">module</span>: &#123;</span><br><span class="line">  <span class="attr">rules</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">      <span class="attr">exclude</span>: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">      <span class="attr">use</span>: &#123;</span><br><span class="line">        <span class="attr">loader</span>: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">        <span class="attr">options</span>: &#123;</span><br><span class="line">          <span class="attr">presets</span>: [<span class="string">&#x27;env&#x27;</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//加在output的下面,复制完后成这样</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">    <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">  <span class="attr">rules</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">      <span class="attr">exclude</span>: <span class="regexp">/(node_modules|bower_components)/</span>,</span><br><span class="line">      <span class="attr">use</span>: &#123;</span><br><span class="line">        <span class="attr">loader</span>: <span class="string">&#x27;babel-loader&#x27;</span>,</span><br><span class="line">        <span class="attr">options</span>: &#123;</span><br><span class="line">          <span class="attr">presets</span>: [<span class="string">&#x27;env&#x27;</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运行 npx webpack</p>
+</blockquote>
+<p>若出现 can’t find ‘…’或 can’t resolve ‘…’的报错,则安装省略号里的东西 npm i ‘省略号’</p>
+<p>注意：若是 Couldn’t find preset “env”,不要安装 env,而是 npm i babel-preset-env</p>
+<h3 id="3-使用-babel"><a href="#3-使用-babel" class="headerlink" title="3.使用 babel"></a>3.使用 babel</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当你在写index.js里写</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="comment">//它就会帮你自动转换成es5了</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="NPM-脚本-NPM-Scripts"><a href="#NPM-脚本-NPM-Scripts" class="headerlink" title="NPM 脚本(NPM Scripts)"></a>NPM 脚本(NPM Scripts)</h3><p>在 package.json 文件中写入 npm 脚本,就可以使用<code>npm run build</code>替代<code>npx</code>命令.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;name&quot;</span>: <span class="string">&quot;webpack-demo&quot;</span>,</span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;main&quot;</span>: <span class="string">&quot;index.js&quot;</span>,</span><br><span class="line">    <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">+     <span class="string">&quot;build&quot;</span>: <span class="string">&quot;webpack&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&quot;keywords&quot;</span>: [],</span><br><span class="line">    <span class="string">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">    <span class="string">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">    <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;webpack&quot;</span>: <span class="string">&quot;^4.0.1&quot;</span>,</span><br><span class="line">      <span class="string">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^2.0.9&quot;</span>,</span><br><span class="line">      <span class="string">&quot;lodash&quot;</span>: <span class="string">&quot;^4.17.5&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="管理资源-css-图片之类"><a href="#管理资源-css-图片之类" class="headerlink" title="管理资源(css,图片之类)"></a>管理资源(css,图片之类)</h3><h4 id="加载-CSS"><a href="#加载-CSS" class="headerlink" title="加载 CSS"></a>加载 CSS</h4><ol>
+<li>需要先安装 style-laoder 和 css-loader</li>
+</ol>
+<p><code>npm install --save-dev style-loader css-loader</code></p>
+<ol start="2">
+<li>然后在<code>webpack.config.js</code>文件里添加规则</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">entry</span>: <span class="string">&#x27;./src/index.js&#x27;</span>,</span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&#x27;bundle.js&#x27;</span>,</span><br><span class="line">      <span class="attr">path</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;dist&#x27;</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">+   <span class="attr">module</span>: &#123;</span><br><span class="line">+     <span class="attr">rules</span>: [</span><br><span class="line">+       &#123;</span><br><span class="line">+         <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">+         <span class="attr">use</span>: [</span><br><span class="line">+           <span class="string">&#x27;style-loader&#x27;</span>,</span><br><span class="line">+           <span class="string">&#x27;css-loader&#x27;</span></span><br><span class="line">+         ]</span><br><span class="line">+       &#125;</span><br><span class="line">+     ]</span><br><span class="line">+   &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>webpack 根据正则表达式,来确定应该查找哪些文件,并将其提供给指定的 loader。在这种情况下,以 .css 结尾的全部文件,都将被提供给 style-loader 和 css-loader。</p>
+</blockquote>
+<p>这使你可以在依赖于此样式的文件中<code>import &#39;./style.css&#39;</code>。现在,当该模块运行时,含有 CSS 字符串的<code>&lt;style&gt;</code>标签,将被插入到 html 文件的 <code>&lt;head&gt;</code>中。</p>
+<h4 id="加载图片"><a href="#加载图片" class="headerlink" title="加载图片"></a>加载图片</h4><ol>
+<li>安装<code>npm install --save-dev file-loader</code>插件</li>
+<li>配置<code>webpack.config.js</code>文件</li>
+</ol>
+<p>现在,当你 <code>import MyImage from &#39;./my-image.png&#39;</code>,该图像将被处理并添加到 output 目录,</p>
+<p><em>并且</em> <code>MyImage</code> 变量将包含该图像在处理后的最终 url。当使用 css-loader 时,如上所示,</p>
+<p>你的 CSS 中的<code>url(&#39;./my-image.png&#39;)</code> 会使用类似的过程去处理。loader 会识别这是一个本地文件,</p>
+<p>并将 <code>&#39;./my-image.png&#39;</code>路径,替换为输出目录中图像的最终路径。</p>
+<p>html-loader 以相同的方式处理 <code>&lt;img src=&quot;./my-image.png&quot; /&gt;</code>。</p>
+<ol start="3">
+<li><p>在 src 文件夹下创建 icon.png.</p>
+</li>
+<li><p>修改<code>src/index.js</code>文件</p>
+</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">&#x27;lodash&#x27;</span>;</span><br><span class="line">  <span class="keyword">import</span> <span class="string">&#x27;./style.css&#x27;</span>;</span><br><span class="line">+ <span class="keyword">import</span> <span class="title class_">Icon</span> <span class="keyword">from</span> <span class="string">&#x27;./icon.png&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">component</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> element = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Lodash,现在由此脚本导入</span></span><br><span class="line">    element.<span class="property">innerHTML</span> = _.<span class="title function_">join</span>([<span class="string">&#x27;Hello&#x27;</span>, <span class="string">&#x27;webpack&#x27;</span>], <span class="string">&#x27; &#x27;</span>);</span><br><span class="line">    element.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;hello&#x27;</span>);</span><br><span class="line"></span><br><span class="line">+   <span class="comment">// 将图像添加到我们现有的 div。</span></span><br><span class="line">+   <span class="keyword">var</span> myIcon = <span class="keyword">new</span> <span class="title class_">Image</span>();</span><br><span class="line">+   myIcon.<span class="property">src</span> = <span class="title class_">Icon</span>;</span><br><span class="line">+</span><br><span class="line">+   element.<span class="title function_">appendChild</span>(myIcon);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> element;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(<span class="title function_">component</span>());</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li><code>src/style.css</code>中引入图片</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  .<span class="property">hello</span> &#123;</span><br><span class="line">    <span class="attr">color</span>: red;</span><br><span class="line">+   <span class="attr">background</span>: <span class="title function_">url</span>(<span class="string">&#x27;./icon.png&#x27;</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>重新构建<code>npm run build</code></li>
+</ol>
+<h1 id="Glup"><a href="#Glup" class="headerlink" title="Glup"></a>Glup</h1><p><strong>简介</strong></p>
+<p>它是一款 nodejs 应用。</p>
+<p>它是打造前端工作流的利器,打包、压缩、合并、git、远程操作…,</p>
+<p>简单易用</p>
+<p>无快不破</p>
+<p>高质量的插件</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装 gulp</p>
+<p><code>npm install -g gulp</code></p>
+<p>如果报<code>Error: EACCES, open &#39;/Users/xxx/xxx.lock</code>错误。</p>
+<p>先执行：<code>sudo chown -R $(whoami) $HOME/.npm</code></p>
+<p>如果使用 npm 安装插件太慢(被墙),</p>
+<p>可执行 <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></p>
+<p>先安装 cnpm, 之后再安装插件时用 cnpm 安装<code>cnpm install gulp</code></p>
+<ol start="2">
+<li>安装各种插件</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm install --save gulp            <span class="comment">//本地使用gulp</span></span><br><span class="line">npm install --save gulp-imagemin   <span class="comment">//压缩图片</span></span><br><span class="line">npm install --save gulp-minify-css <span class="comment">//压缩css</span></span><br><span class="line">npm install --save gulp-ruby-sass  <span class="comment">//sass</span></span><br><span class="line">npm install --save gulp-jshint     <span class="comment">//js代码检测</span></span><br><span class="line">npm install --save gulp-uglify     <span class="comment">//js压缩</span></span><br><span class="line">npm install --save gulp-concat     <span class="comment">//文件合并</span></span><br><span class="line">npm install --save gulp-rename     <span class="comment">//文件重命名</span></span><br><span class="line">npm install --save png-sprite      <span class="comment">//png合并</span></span><br><span class="line">npm install --save gulp-htmlmin    <span class="comment">//压缩html</span></span><br><span class="line">npm install --save gulp-clean      <span class="comment">//清空文件夹</span></span><br><span class="line">npm install --save browser-sync    <span class="comment">//文件修改浏览器自动刷新</span></span><br><span class="line">npm install --save gulp-shell      <span class="comment">//执行shell命令</span></span><br><span class="line">npm install --save gulp-ssh        <span class="comment">//操作远程机器</span></span><br><span class="line">npm install --save run-sequence    <span class="comment">//task顺序执行</span></span><br></pre></td></tr></table></figure>
+
+<p>或者根据 package.json 自动安装。把 package.json 拷贝到自己的工程目录下,进入目录,执行:<code>npm install</code></p>
+<h1 id="语法-gulp-API"><a href="#语法-gulp-API" class="headerlink" title="语法 gulp API"></a>语法 gulp API</h1><h2 id="gulp-src-globs-options"><a href="#gulp-src-globs-options" class="headerlink" title="gulp.src(globs[,options])"></a>gulp.src(globs[,options])</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gulp</span><br><span class="line">  .<span class="title function_">src</span>(<span class="string">&quot;client/templates/*.jade&quot;</span>)</span><br><span class="line">  .<span class="title function_">pipe</span>(<span class="title function_">jade</span>())</span><br><span class="line">  .<span class="title function_">pipe</span>(<span class="title function_">minify</span>()) <span class="comment">//压缩文件</span></span><br><span class="line">  .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;build/minified_templates&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>作用: 输出符合所提供的匹配模式或数组的文件.</p>
+<p><strong>globs</strong> 类型: string 或 Array</p>
+<p>所要读取的 glob 或者包含 globs 的数组.可以是地址</p>
+<p><strong>options</strong> 类型:object</p>
+<p>额外的选项参数</p>
+<h2 id="gulp-dest-path-options"><a href="#gulp-dest-path-options" class="headerlink" title="gulp.dest(path[,options])"></a>gulp.dest(path[,options])</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp</span><br><span class="line">  .<span class="title function_">src</span>(<span class="string">&quot;./client/templates/*.jade&quot;</span>)</span><br><span class="line">  .<span class="title function_">pipe</span>(<span class="title function_">jade</span>())</span><br><span class="line">  .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;./build/templates&quot;</span>))</span><br><span class="line">  .<span class="title function_">pipe</span>(<span class="title function_">minify</span>())</span><br><span class="line">  .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;./build/minified_templates&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>文件被 pipe 进来,dest 生成或者写入一个文件.</p>
+<p><strong>path</strong></p>
+<p>文件将被写入的路径(输出目录)。</p>
+<h2 id="gulp-task-name-deps-fn"><a href="#gulp-task-name-deps-fn" class="headerlink" title="gulp.task(name[,deps],fn)"></a>gulp.task(name[,deps],fn)</h2><p>定义一个实现任务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&#x27;somename&#x27;, function()&#123;</span><br><span class="line">  //任务</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>name</strong></p>
+<p>任务名字</p>
+<p><strong>deps</strong> 类型: array</p>
+<p>一个包含任务列表的数组,这些任务会在你当前运行任务之前完成.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&#x27;mytask&#x27;, [&#x27;array&#x27;, &#x27;of&#x27;, &#x27;task&#x27;, &#x27;names&#x27;], function()&#123;</span><br><span class="line">  //任务</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>fn</strong></p>
+<p>该函数定义任务所要执行的一些操作。通常来说,它会是这种形式：gulp.src().pipe(someplugin())。</p>
+<h2 id="gulp-watch-glob-opts-tasks"><a href="#gulp-watch-glob-opts-tasks" class="headerlink" title="gulp.watch(glob[, opts], tasks)"></a>gulp.watch(glob[, opts], tasks)</h2><p>监视文件,并且可以在文件发生改动时候做一些事情。它总会返回一个 EventEmitter 来发射(emit) change 事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> watcher = gulp.<span class="title function_">watch</span>(<span class="string">&quot;js/**/*.js&quot;</span>, [<span class="string">&quot;uglify&quot;</span>, <span class="string">&quot;reload&quot;</span>]);</span><br><span class="line">watcher.<span class="title function_">on</span>(<span class="string">&quot;change&quot;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">    <span class="string">&quot;File &quot;</span> + event.<span class="property">path</span> + <span class="string">&quot; was &quot;</span> + event.<span class="property">type</span> + <span class="string">&quot;, running tasks...&quot;</span></span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="gulp-使用实例"><a href="#gulp-使用实例" class="headerlink" title="gulp 使用实例"></a>gulp 使用实例</h1><h2 id="范例-1-压缩合并"><a href="#范例-1-压缩合并" class="headerlink" title="范例 1. 压缩合并"></a>范例 1. 压缩合并</h2><p>demo1 目录结构如下。把 demo1 中的 index.html 压缩,把 src 里面的 less 编译、合并、压缩、重命名、存储到 dist。src 里面的图片压缩、合并存储到 dist。src 里面的 js 做代码检查,压缩,合并,存储到 dist。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+ demo1</span><br><span class="line">    + dist</span><br><span class="line">        + css</span><br><span class="line">            - merge.min.css</span><br><span class="line">        + js</span><br><span class="line">            - merge.min.js</span><br><span class="line">        + imgs</span><br><span class="line">            - 1.png</span><br><span class="line">            - 2.png</span><br><span class="line">        - index.html</span><br><span class="line">    + src</span><br><span class="line">        + css</span><br><span class="line">            - a.css</span><br><span class="line">            - b.css</span><br><span class="line">        + js</span><br><span class="line">            - a.js</span><br><span class="line">            - b.js</span><br><span class="line">        + imgs</span><br><span class="line">            - 1.png</span><br><span class="line">            - 2.png</span><br><span class="line">        - index.html</span><br></pre></td></tr></table></figure>
+
+<p>创建 gulpfile.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入组件</span></span><br><span class="line"><span class="keyword">var</span> minifycss = <span class="built_in">require</span>(<span class="string">&quot;gulp-minify-css&quot;</span>), <span class="comment">// CSS压缩</span></span><br><span class="line">  uglify = <span class="built_in">require</span>(<span class="string">&quot;gulp-uglify&quot;</span>), <span class="comment">// js压缩</span></span><br><span class="line">  concat = <span class="built_in">require</span>(<span class="string">&quot;gulp-concat&quot;</span>), <span class="comment">// 合并文件</span></span><br><span class="line">  rename = <span class="built_in">require</span>(<span class="string">&quot;gulp-rename&quot;</span>), <span class="comment">// 重命名</span></span><br><span class="line">  clean = <span class="built_in">require</span>(<span class="string">&quot;gulp-clean&quot;</span>), <span class="comment">//清空文件夹</span></span><br><span class="line">  minhtml = <span class="built_in">require</span>(<span class="string">&quot;gulp-htmlmin&quot;</span>), <span class="comment">//html压缩</span></span><br><span class="line">  jshint = <span class="built_in">require</span>(<span class="string">&quot;gulp-jshint&quot;</span>), <span class="comment">//js代码规范性检查</span></span><br><span class="line">  imagemin = <span class="built_in">require</span>(<span class="string">&quot;gulp-imagemin&quot;</span>); <span class="comment">//图片压缩</span></span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;html&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> gulp</span><br><span class="line">    .<span class="title function_">src</span>(<span class="string">&quot;src/*.html&quot;</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">minhtml</span>(&#123; <span class="attr">collapseWhitespace</span>: <span class="literal">true</span> &#125;)) <span class="comment">//html压缩</span></span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;dist&quot;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;css&quot;</span>, <span class="keyword">function</span> (<span class="params">argument</span>) &#123;</span><br><span class="line">  gulp</span><br><span class="line">    .<span class="title function_">src</span>(<span class="string">&quot;src/css/*.css&quot;</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">concat</span>(<span class="string">&quot;merge.css&quot;</span>)) <span class="comment">// CSS压缩</span></span><br><span class="line">    .<span class="title function_">pipe</span>(</span><br><span class="line">      <span class="title function_">rename</span>(&#123;</span><br><span class="line">        <span class="attr">suffix</span>: <span class="string">&quot;.min&quot;</span>, <span class="comment">// 重命名</span></span><br><span class="line">      &#125;)</span><br><span class="line">    )</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">minifycss</span>()) <span class="comment">// CSS压缩</span></span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;dist/css/&quot;</span>));</span><br><span class="line">&#125;);</span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;js&quot;</span>, <span class="keyword">function</span> (<span class="params">argument</span>) &#123;</span><br><span class="line">  gulp</span><br><span class="line">    .<span class="title function_">src</span>(<span class="string">&quot;src/js/*.js&quot;</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">jshint</span>()) <span class="comment">//js代码规范性检查</span></span><br><span class="line">    .<span class="title function_">pipe</span>(jshint.<span class="title function_">reporter</span>(<span class="string">&quot;default&quot;</span>))</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">concat</span>(<span class="string">&quot;merge.js&quot;</span>)) <span class="comment">// 合并文件</span></span><br><span class="line">    .<span class="title function_">pipe</span>(</span><br><span class="line">      <span class="title function_">rename</span>(&#123;</span><br><span class="line">        <span class="attr">suffix</span>: <span class="string">&quot;.min&quot;</span>, <span class="comment">// 重命名</span></span><br><span class="line">      &#125;)</span><br><span class="line">    )</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">uglify</span>()) <span class="comment">// js压缩</span></span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;dist/js/&quot;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;img&quot;</span>, <span class="keyword">function</span> (<span class="params">argument</span>) &#123;</span><br><span class="line">  gulp</span><br><span class="line">    .<span class="title function_">src</span>(<span class="string">&quot;src/imgs/*&quot;</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">imagemin</span>()) <span class="comment">//图片压缩</span></span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;dist/imgs&quot;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;clear&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  gulp.<span class="title function_">src</span>(<span class="string">&quot;dist/*&quot;</span>, &#123; <span class="attr">read</span>: <span class="literal">false</span> &#125;).<span class="title function_">pipe</span>(<span class="title function_">clean</span>()); <span class="comment">//清空文件夹</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;build&quot;</span>, [<span class="string">&quot;html&quot;</span>, <span class="string">&quot;css&quot;</span>, <span class="string">&quot;js&quot;</span>, <span class="string">&quot;img&quot;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>最后命令行<code>gulp build;</code></p>
+<p>可实现 src 目录下的 html 压缩,css、js 合并压缩,图片压缩,最后放入 dist 目录下</p>
+<h2 id="范例-2-监控变动自动同步"><a href="#范例-2-监控变动自动同步" class="headerlink" title="范例 2. 监控变动自动同步"></a>范例 2. 监控变动自动同步</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 引入组件</span></span><br><span class="line"><span class="keyword">var</span> browserSync = <span class="built_in">require</span>(<span class="string">&quot;browser-sync&quot;</span>).<span class="title function_">create</span>(); <span class="comment">//用于浏览器自动刷新</span></span><br><span class="line"><span class="keyword">var</span> scp = <span class="built_in">require</span>(<span class="string">&quot;gulp-scp2&quot;</span>); <span class="comment">//用于scp到远程机器</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;reload&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  browserSync.<span class="title function_">reload</span>();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;server&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  browserSync.<span class="title function_">init</span>(&#123;</span><br><span class="line">    <span class="attr">server</span>: &#123;</span><br><span class="line">      <span class="attr">baseDir</span>: <span class="string">&quot;./src&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  gulp.<span class="title function_">watch</span>([<span class="string">&quot;**/*.css&quot;</span>, <span class="string">&quot;**/*.js&quot;</span>, <span class="string">&quot;**/*.html&quot;</span>], [<span class="string">&quot;reload&quot;</span>, <span class="string">&quot;scp&quot;</span>]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;scp&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> gulp</span><br><span class="line">    .<span class="title function_">src</span>(<span class="string">&quot;src/**/*&quot;</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(</span><br><span class="line">      <span class="title function_">scp</span>(&#123;</span><br><span class="line">        <span class="attr">host</span>: <span class="string">&quot;121.40.201.213&quot;</span>,</span><br><span class="line">        <span class="attr">username</span>: <span class="string">&quot;root&quot;</span>,</span><br><span class="line">        <span class="attr">privateKey</span>: fs.<span class="title function_">readFileSync</span>(<span class="string">&quot;/Users/wingo/.ssh/id_rsa&quot;</span>),</span><br><span class="line">        <span class="attr">dest</span>: <span class="string">&quot;/var/www/fe.jirengu.com&quot;</span>,</span><br><span class="line">        <span class="attr">watch</span>: <span class="keyword">function</span> (<span class="params">client</span>) &#123;</span><br><span class="line">          client.<span class="title function_">on</span>(<span class="string">&quot;write&quot;</span>, <span class="keyword">function</span> (<span class="params">o</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;write %s&quot;</span>, o.<span class="property">destination</span>);</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;)</span><br><span class="line">    )</span><br><span class="line">    .<span class="title function_">on</span>(<span class="string">&quot;error&quot;</span>, <span class="keyword">function</span> (<span class="params">err</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>命令行执行:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gulp scp;  <span class="comment">// 可把本地开发环境代码拷贝到服务器</span></span><br><span class="line">gulp server; <span class="comment">//可在本地创建服务器,本地开发浏览器立刻刷新</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="范例-3-监控项目文件变动-自动压缩、合并、打包、添加版本号"><a href="#范例-3-监控项目文件变动-自动压缩、合并、打包、添加版本号" class="headerlink" title="范例 3.   监控项目文件变动,自动压缩、合并、打包、添加版本号"></a>范例 3.   监控项目文件变动,自动压缩、合并、打包、添加版本号</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">html</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!-- build:css css/merge.css --&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/a.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;css/b.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!-- endbuild --&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>demo1-工程化手动版<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!-- build:js js/merge.js --&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/a.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;js/b.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="comment">&lt;!-- endbuild --&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>设置 gulpfile.js 文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> rev = <span class="built_in">require</span>(<span class="string">&quot;gulp-rev&quot;</span>); <span class="comment">//添加版本号</span></span><br><span class="line"><span class="keyword">var</span> revReplace = <span class="built_in">require</span>(<span class="string">&quot;gulp-rev-replace&quot;</span>); <span class="comment">//版本号替换</span></span><br><span class="line"><span class="keyword">var</span> useref = <span class="built_in">require</span>(<span class="string">&quot;gulp-useref&quot;</span>); <span class="comment">//解析html资源定位</span></span><br><span class="line"><span class="keyword">var</span> filter = <span class="built_in">require</span>(<span class="string">&quot;gulp-filter&quot;</span>); <span class="comment">//过滤数据</span></span><br><span class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">&quot;gulp-uglify&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> csso = <span class="built_in">require</span>(<span class="string">&quot;gulp-csso&quot;</span>); <span class="comment">//css优化压缩</span></span><br><span class="line"><span class="keyword">var</span> clean = <span class="built_in">require</span>(<span class="string">&quot;gulp-clean&quot;</span>);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;index&quot;</span>, [<span class="string">&quot;clear&quot;</span>], <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> jsFilter = <span class="title function_">filter</span>(<span class="string">&quot;**/*.js&quot;</span>, &#123; <span class="attr">restore</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">  <span class="keyword">var</span> cssFilter = <span class="title function_">filter</span>(<span class="string">&quot;**/*.css&quot;</span>, &#123; <span class="attr">restore</span>: <span class="literal">true</span> &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> userefAssets = useref.<span class="title function_">assets</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> gulp</span><br><span class="line">    .<span class="title function_">src</span>(<span class="string">&quot;src/index.html&quot;</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(userefAssets) <span class="comment">// Concatenate with gulp-useref</span></span><br><span class="line">    .<span class="title function_">pipe</span>(jsFilter)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">uglify</span>()) <span class="comment">// Minify any javascript sources</span></span><br><span class="line">    .<span class="title function_">pipe</span>(jsFilter.<span class="property">restore</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(cssFilter)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">csso</span>()) <span class="comment">// Minify any CSS sources</span></span><br><span class="line">    .<span class="title function_">pipe</span>(cssFilter.<span class="property">restore</span>)</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">rev</span>()) <span class="comment">// Rename the concatenated files</span></span><br><span class="line">    .<span class="title function_">pipe</span>(userefAssets.<span class="title function_">restore</span>())</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">useref</span>())</span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">revReplace</span>()) <span class="comment">// Substitute in new filenames</span></span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&quot;dist&quot;</span>));</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;clear&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  gulp.<span class="title function_">src</span>(<span class="string">&quot;dist/*&quot;</span>, &#123; <span class="attr">read</span>: <span class="literal">false</span> &#125;).<span class="title function_">pipe</span>(<span class="title function_">clean</span>());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="范例-4-本地-shell-命令-远程-shell-任务顺序执行…"><a href="#范例-4-本地-shell-命令-远程-shell-任务顺序执行…" class="headerlink" title="范例 4. 本地 shell 命令, 远程 shell, 任务顺序执行…"></a>范例 4. 本地 shell 命令, 远程 shell, 任务顺序执行…</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> shell = <span class="built_in">require</span>(<span class="string">&quot;gulp-shell&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> runSequence = <span class="built_in">require</span>(<span class="string">&quot;run-sequence&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">GulpSSH</span> = <span class="built_in">require</span>(<span class="string">&quot;gulp-ssh&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//shell操作,</span></span><br><span class="line">gulp.<span class="title function_">task</span>(</span><br><span class="line">  <span class="string">&quot;git&quot;</span>,</span><br><span class="line">  shell.<span class="title function_">task</span>([<span class="string">&quot;git add .&quot;</span>, <span class="string">&#x27;git commit -am &quot;dd&quot;&#x27;</span>, <span class="string">&quot;git push -u origin dev&quot;</span>])</span><br><span class="line">);</span><br><span class="line">gulp.<span class="title function_">task</span>(</span><br><span class="line">  <span class="string">&quot;clear&quot;</span>,</span><br><span class="line">  shell.<span class="title function_">task</span>([<span class="string">&#x27;find . -name &quot;.DS_Store&quot; -depth -exec rm &#123;&#125; \\;&#x27;</span>])</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//操作远程主机</span></span><br><span class="line"><span class="keyword">var</span> gulpSSH = <span class="keyword">new</span> <span class="title class_">GulpSSH</span>(&#123;</span><br><span class="line">  <span class="attr">ignoreErrors</span>: <span class="literal">false</span>,</span><br><span class="line">  <span class="attr">sshConfig</span>: &#123;</span><br><span class="line">    <span class="attr">host</span>: <span class="string">&quot;121.40.201.213&quot;</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">22</span>,</span><br><span class="line">    <span class="attr">username</span>: <span class="string">&quot;root&quot;</span>,</span><br><span class="line">    <span class="attr">privateKey</span>: fs.<span class="title function_">readFileSync</span>(<span class="string">&quot;/Users/wingo/.ssh/id_rsa&quot;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;remote&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> gulpSSH.<span class="title function_">shell</span>([</span><br><span class="line">    <span class="string">&quot;cd /var/www/fe.jirengu.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;git pull origin dev&quot;</span>,</span><br><span class="line">    <span class="string">&quot;rm -rf _runtime&quot;</span>,</span><br><span class="line">  ]);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;build&quot;</span>, <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">  <span class="title function_">runSequence</span>(<span class="string">&quot;git&quot;</span>, <span class="string">&quot;clear&quot;</span>, <span class="string">&quot;remote&quot;</span>, callback);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;watch&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  gulp.<span class="title function_">watch</span>([<span class="string">&quot;**/*.css&quot;</span>, <span class="string">&quot;**/*.js&quot;</span>, <span class="string">&quot;**/*.html&quot;</span>, <span class="string">&quot;**/*.php&quot;</span>], [<span class="string">&quot;build&quot;</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="webpack-相关问题"><a href="#webpack-相关问题" class="headerlink" title="webpack 相关问题"></a>webpack 相关问题</h1><ol>
+<li><strong>webpack 与 grunt、gulp 的不同</strong>？</li>
+</ol>
+<p>三者都是前端构建工具,grunt 和 gulp 在早期比较流行,现在 webpack 相对来说比较主流,不过一些轻量化的任务还是会用 gulp 来处理,比如单独打包 CSS 文件等。</p>
+<p>grunt 和 gulp 是基于任务和流(Task、Stream)的。类似 jQuery,找到一个(或一类)文件,对其做一系列链式操作,更新流上的数据, 整条链式操作构成了一个任务,多个任务就构成了整个 web 的构建流程。</p>
+<p>webpack 是基于入口的。webpack 会自动地递归解析入口所需要加载的所有资源文件,然后用不同的 Loader 来处理不同的文件,用 Plugin 来扩展 webpack 功能。</p>
+<p>所以总结一下：</p>
+<p>从构建思路来说</p>
+<p>gulp 和 grunt 需要开发者将整个前端构建过程拆分成多个<code>Task</code>,并合理控制所有<code>Task</code>的调用关系</p>
+<p>webpack 需要开发者找到入口,并需要清楚对于不同的资源应该使用什么 Loader 做何种解析和加工</p>
+<p>对于知识背景来说</p>
+<p>gulp 更像后端开发者的思路,需要对于整个流程了如指掌 webpack 更倾向于前端开发者的思路</p>
+<ol start="2">
+<li><strong>与 webpack 类似的工具还有哪些？谈谈你为什么最终选择(或放弃)使用 webpack？</strong></li>
+</ol>
+<p>同样是基于入口的打包工具还有以下几个主流的：</p>
+<p>webpack</p>
+<p>rollup</p>
+<p>parcel</p>
+<p>从应用场景上来看：</p>
+<p>webpack 适用于大型复杂的前端站点构建</p>
+<p>rollup 适用于基础库的打包,如 vue、react</p>
+<p>parcel 适用于简单的实验性项目,他可以满足低门槛的快速看到效果</p>
+<p>由于 parcel 在打包过程中给出的调试信息十分有限,所以一旦打包出错难以调试,所以不建议复杂的项目使用 parcel</p>
+<ol start="3">
+<li><strong>有哪些常见的 Loader？他们是解决什么问题的？</strong></li>
+</ol>
+<p><code>file-loader</code>：把文件输出到一个文件夹中,在代码中通过相对 URL 去引用输出的文件</p>
+<p><code>url-loader</code>：和 file-loader 类似,但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去</p>
+<p><code>source-map-loader</code>：加载额外的 Source Map 文件,以方便断点调试</p>
+<p><code>image-loader</code>：加载并且压缩图片文件</p>
+<p><code>babel-loader</code>：把 ES6 转换成 ES5</p>
+<p><code>css-loader</code>：加载 CSS,支持模块化、压缩、文件导入等特性</p>
+<p><code>style-loader</code>：把 CSS 代码注入到 JavaScript 中,通过 DOM 操作去加载 CSS。</p>
+<p><code>eslint-loader</code>：通过 ESLint 检查 JavaScript 代码</p>
+<ol start="4">
+<li><strong>有哪些常见的 Plugin？他们是解决什么问题的？</strong></li>
+</ol>
+<p><code>define-plugin</code>：定义环境变量</p>
+<p><code>commons-chunk-plugin</code>：提取公共代码</p>
+<p><code>uglifyjs-webpack-plugin</code>：通过 UglifyES 压缩 ES6 代码</p>
+<ol start="5">
+<li><strong>Loader 和 Plugin 的不同？</strong></li>
+</ol>
+<p><strong>不同的作用</strong></p>
+<p>Loader 直译为”加载器”。Webpack 将一切文件视为模块,但是 webpack 原生是只能解析 js 文件,如果想将其他文件也打包的话,就会用到 loader。 所以 Loader 的作用是<strong>让 webpack 拥有了加载和解析非 JavaScript 文件的能力</strong>。</p>
+<p>Plugin 直译为”插件”。Plugin 可以扩展 webpack 的功能,让 webpack 具有更多的灵活性。 在 Webpack 运行的生命周期中会广播出许多事件,Plugin 可以监听这些事件,在合适的时机通过 Webpack 提供的 API 改变输出结果。</p>
+<p><strong>不同的用法</strong></p>
+<p>Loader 在 module.rules 中配置,也就是它作为模块的解析规则而存在。 类型为数组,每一项都是一个 Object,里面描述了对于什么类型的文件(test),使用什么加载(loader)和使用的参数(options)</p>
+<p>Plugin 在 plugins 中单独配置。 类型为数组,每一项是一个 plugin 的实例,参数都通过构造函数传入。</p>
+<ol start="6">
+<li><strong>webpack 的构建流程是什么?从读取配置到输出文件这个过程尽量说全</strong></li>
+</ol>
+<p>Webpack 的运行流程是一个串行的过程,从启动到结束会依次执行以下流程：</p>
+<p>初始化参数：从配置文件和 Shell 语句中读取与合并参数,得出最终的参数;</p>
+<p>开始编译：用上一步得到的参数初始化 Compiler 对象,加载所有配置的插件,执行对象的 run 方法开始执行编译;</p>
+<p>确定入口：根据配置中的 entry 找出所有的入口文件;</p>
+<p>编译模块：从入口文件出发,调用所有配置的 Loader 对模块进行翻译,再找出该模块依赖的模块,再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理;</p>
+<p>完成模块编译：在经过第 4 步使用 Loader 翻译完所有模块后,得到了每个模块被翻译后的最终内容以及它们之间的依赖关系;</p>
+<p>输出资源：根据入口和模块之间的依赖关系,组装成一个个包含多个模块的 Chunk,再把每个 Chunk 转换成一个单独的文件加入到输出列表,这步是可以修改输出内容的最后机会;</p>
+<p>输出完成：在确定好输出内容后,根据配置确定输出的路径和文件名,把文件内容写入到文件系统。</p>
+<p>在以上过程中,Webpack 会在特定的时间点广播出特定的事件,插件在监听到感兴趣的事件后会执行特定的逻辑,并且插件可以调用 Webpack 提供的 API 改变 Webpack 的运行结果。</p>
+<ol start="7">
+<li><strong>是否写过 Loader 和 Plugin？描述一下编写 loader 或 plugin 的思路？</strong></li>
+</ol>
+<p>Loader 像一个”翻译官”把读到的源文件内容转义成新的文件内容,并且每个 Loader 通过链式操作,将源文件一步步翻译成想要的样子。</p>
+<p>编写 Loader 时要遵循单一原则,每个 Loader 只做一种”转义”工作。 每个 Loader 的拿到的是源文件内容(source),可以通过返回值的方式将处理后的内容输出,也可以调用 this.callback()方法,将内容返回给 webpack。 还可以通过 this.async()生成一个 callback 函数,再用这个 callback 将处理后的内容输出出去。 此外 webpack 还为开发者准备了开发 loader 的工具函数集——loader-utils。</p>
+<p>相对于 Loader 而言,Plugin 的编写就灵活了许多。 webpack 在运行的生命周期中会广播出许多事件,Plugin 可以监听这些事件,在合适的时机通过 Webpack 提供的 API 改变输出结果。</p>
+<ol start="8">
+<li><strong>webpack 的热更新是如何做到的？说明其原理？</strong></li>
+</ol>
+<p>webpack 的热更新又称热替换(Hot Module Replacement),缩写为 HMR。 这个机制可以做到不用刷新浏览器而将新变更的模块替换掉旧的模块。</p>
+<p><strong>原理：</strong></p>
+<p><img src="https://i.loli.net/2019/09/20/vY3hdHTJVUNgtjo.jpg#alt=9m5z9odoe6.jpeg"></p>
+<p>首先要知道 server 端和 client 端都做了处理工作</p>
+<p><strong>第一步</strong>,在 webpack 的 watch 模式下,文件系统中某一个文件发生修改,webpack 监听到文件变化,根据配置文件对模块重新编译打包,并将打包后的代码通过简单的 JavaScript 对象保存在内存中。</p>
+<p><strong>第二步</strong>是 webpack-dev-server 和 webpack 之间的接口交互,而在这一步,主要是 dev-server 的中间件 webpack-dev-middleware 和 webpack 之间的交互,webpack-dev-middleware 调用 webpack 暴露的 API 对代码变化进行监控,并且告诉 webpack,将代码打包到内存中。</p>
+<p><strong>第三步</strong>是 webpack-dev-server 对文件变化的一个监控,这一步不同于第一步,并不是监控代码变化重新打包。当我们在配置文件中配置了 devServer.watchContentBase 为 true 的时候,Server 会监听这些配置文件夹中静态文件的变化,变化后会通知浏览器端对应用进行 live reload。注意,这儿是浏览器刷新,和 HMR 是两个概念。</p>
+<p><strong>第四步</strong>也是 webpack-dev-server 代码的工作,该步骤主要是通过 sockjs(webpack-dev-server 的依赖)在浏览器端和服务端之间建立一个 websocket 长连接,将 webpack 编译打包的各个阶段的状态信息告知浏览器端,同时也包括第三步中 Server 监听静态文件变化的信息。浏览器端根据这些 socket 消息进行不同的操作。当然服务端传递的最主要信息还是新模块的 hash 值,后面的步骤根据这一 hash 值来进行模块热替换。</p>
+<p>webpack-dev-server&#x2F;client 端并不能够请求更新的代码,也不会执行热更模块操作,而把这些工作又交回给了 webpack,webpack&#x2F;hot&#x2F;dev-server 的工作就是根据 webpack-dev-server&#x2F;client 传给它的信息以及 dev-server 的配置决定是刷新浏览器呢还是进行模块热更新。当然如果仅仅是刷新浏览器,也就没有后面那些步骤了。</p>
+<p>HotModuleReplacement.runtime 是客户端 HMR 的中枢,它接收到上一步传递给他的新模块的 hash 值,它通过 JsonpMainTemplate.runtime 向 server 端发送 Ajax 请求,服务端返回一个 json,该 json 包含了所有要更新的模块的 hash 值,获取到更新列表后,该模块再次通过 jsonp 请求,获取到最新的模块代码。这就是上图中 7、8、9 步骤。</p>
+<p>而第 10 步是决定 HMR 成功与否的关键步骤,在该步骤中,HotModulePlugin 将会对新旧模块进行对比,决定是否更新模块,在决定更新模块后,检查模块之间的依赖关系,更新模块的同时更新模块间的依赖引用。</p>
+<p>最后一步,当 HMR 失败后,回退到 live reload 操作,也就是进行浏览器刷新来获取最新打包代码。</p>
+<ol start="9">
+<li><strong>如何利用 webpack 来优化前端性能？(提高性能和体验)</strong></li>
+</ol>
+<p>用 webpack 优化前端性能是指优化 webpack 的输出结果,让打包的最终结果在浏览器运行快速高效。</p>
+<p>压缩代码。删除多余的代码、注释、简化代码的写法等等方式。可以利用 webpack 的 UglifyJsPlugin 和 ParallelUglifyPlugin 来压缩 JS 文件, 利用 cssnano(css-loader?minimize)来压缩 css</p>
+<p>利用 CDN 加速。在构建过程中,将引用的静态资源路径修改为 CDN 上对应的路径。可以利用 webpack 对于 output 参数和各 loader 的 publicPath 参数来修改资源路径</p>
+<p>删除死代码(Tree Shaking)。将代码中永远不会走到的片段删除掉。可以通过在启动 webpack 时追加参数–optimize-minimize 来实现</p>
+<p>提取公共代码。</p>
+<ol start="10">
+<li><strong>如何提高 webpack 的构建速度？</strong></li>
+</ol>
+<p>多入口情况下,使用 CommonsChunkPlugin 来提取公共代码</p>
+<p>通过 externals 配置来提取常用库</p>
+<p>利用 DllPlugin 和 DllReferencePlugin 预编译资源模块 通过 DllPlugin 来对那些我们引用但是绝对不会修改的 npm 包来进行预编译,再通过 DllReferencePlugin 将预编译的模块加载进来。</p>
+<p>使用 Happypack 实现多线程加速编译</p>
+<p>使用 webpack-uglify-parallel 来提升 uglifyPlugin 的压缩速度。 原理上 webpack-uglify-parallel 采用了多核并行压缩来提升压缩速度</p>
+<p>使用 Tree-shaking 和 Scope Hoisting 来剔除多余代码</p>
+<ol start="11">
+<li><strong>怎么配置单页应用？怎么配置多页应用?</strong></li>
+</ol>
+<p>单页应用可以理解为 webpack 的标准模式,直接在 entry 中指定单页应用的入口即可,这里不再赘述</p>
+<p>多页应用的话,可以使用 webpack 的 AutoWebPlugin 来完成简单自动化的构建,但是前提是项目的目录结构必须遵守他预设的规范。 多页应用中要注意的是：</p>
+<p>每个页面都有公共的代码,可以将这些代码抽离出来,避免重复的加载。比如,每个页面都引用了同一套 css 样式表</p>
+<p>随着业务的不断扩展,页面可能会不断的追加,所以一定要让入口的配置足够灵活,避免每次添加新页面还需要修改构建配置</p>
+<ol start="12">
+<li><strong>npm 打包时需要注意哪些？如何利用 webpack 来更好的构建？</strong></li>
+</ol>
+<p>Npm 是目前最大的 JavaScript 模块仓库,里面有来自全世界开发者上传的可复用模块。你可能只是 JS 模块的使用者,但是有些情况你也会去选择上传自己开发的模块。 关于 NPM 模块上传的方法可以去官网上进行学习,这里只讲解如何利用 webpack 来构建。</p>
+<p>NPM 模块需要注意以下问题：</p>
+<p>要支持 CommonJS 模块化规范,所以要求打包后的最后结果也遵守该规则。</p>
+<p>Npm 模块使用者的环境是不确定的,很有可能并不支持 ES6,所以打包的最后结果应该是采用 ES5 编写的。并且如果 ES5 是经过转换的,请最好连同 SourceMap 一同上传。</p>
+<p>Npm 包大小应该是尽量小(有些仓库会限制包大小)</p>
+<p>发布的模块不能将依赖的模块也一同打包,应该让用户选择性的去自行安装。这样可以避免模块应用者再次打包时出现底层模块被重复打包的情况。</p>
+<p>UI 组件类的模块应该将依赖的其它资源文件,例如.css 文件也需要包含在发布的模块里。</p>
+<p>基于以上需要注意的问题,我们可以对于 webpack 配置做以下扩展和优化：</p>
+<p>CommonJS 模块化规范的解决方案：</p>
+<p>设置<code>output.libraryTarget=&#39;commonjs2&#39;</code>使输出的代码符合 CommonJS2 模块化规范,以供给其它模块导入使用</p>
+<p>输出 ES5 代码的解决方案：</p>
+<p>使用 babel-loader 把 ES6 代码转换成 ES5 的代码。再通过开启<code>devtool: &#39;source-map&#39;</code>输出 SourceMap 以发布调试。</p>
+<p>Npm 包大小尽量小的解决方案：</p>
+<p>Babel 在把 ES6 代码转换成 ES5 代码时会注入一些辅助函数,最终导致每个输出的文件中都包含这段辅助函数的代码,造成了代码的冗余。解决方法是修改.babelrc 文件,为其加入 transform-runtime 插件</p>
+<p>不能将依赖模块打包到 NPM 模块中的解决方案：</p>
+<p>使用 externals 配置项来告诉 webpack 哪些模块不需要打包。</p>
+<p>对于依赖的资源文件打包的解决方案：通过 css-loader 和 extract-text-webpack-plugin 来实现,配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">ExtractTextPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;extract-text-webpack-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="comment">//增加对CSS文件的支持</span></span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css/</span>,</span><br><span class="line">        <span class="comment">//提取出 Chunk 中的CSS代码到单独的文件中</span></span><br><span class="line">        <span class="attr">use</span>: <span class="title class_">ExtractTextPlugin</span>.<span class="title function_">extract</span>(&#123;</span><br><span class="line">          <span class="attr">use</span>: [<span class="string">&quot;css-loader&quot;</span>],</span><br><span class="line">        &#125;),</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">ExtractTextPlugin</span>(&#123;</span><br><span class="line">      <span class="comment">//输出的CSS文件名称</span></span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;index.css&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="13">
+<li><strong>如何在 vue 项目中实现按需加载？</strong></li>
+</ol>
+<p><strong>Vue UI 组件库的按需加载</strong>:</p>
+<p>为了快速开发前端项目,经常会引入现成的 UI 组件库如 ElementUI、iView 等,但是他们的体积和他们所提供的功能一样,是很庞大的。 而通常情况下,我们仅仅需要少量的几个组件就足够了,但是我们却将庞大的组件库打包到我们的源码中,造成了不必要的开销。</p>
+<p>不过很多组件库已经提供了现成的解决方案,如 Element 出品的 babel-plugin-component 和 AntDesign 出品的 babel-plugin-import 安装以上插件后,在.babelrc 配置中或 babel-loader 的参数中进行设置,即可实现组件按需加载了。</p>
+<p><strong>单页应用的按需加载</strong></p>
+<p>现在很多前端项目都是通过单页应用的方式开发的,但是随着业务的不断扩展,会面临一个严峻的问题——首次加载的代码量会越来越多,影响用户的体验。</p>
+<p>通过<code>import(*)</code>语句来控制加载时机,webpack 内置了对于<code>import(*)</code>的解析,会将<code>import(*)</code>中引入的模块作为一个新的入口在生成一个 chunk。 当代码执行到<code>import(*)</code>语句时,会去加载 Chunk 对应生成的文件。<code>import()</code>会返回一个<strong>Promise 对象</strong>,所以为了让浏览器支持,需要事先注入<code>Promise polyfill</code>.</p>
+<h1 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h1><p>nginx 是一个反向代理服务器.客户端向服务端发送请求,可以配置一个 nginx 代理服务器.</p>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>代理服务器负责接收请求,转发给内部的服务器.从颞部服务器得到响应返回给客户端.</p>
+<p>反向代理服务器为服务端工作.对服务端是透明的,对客户端不透明.</p>
+<h2 id="nginx-的作用"><a href="#nginx-的作用" class="headerlink" title="nginx 的作用"></a>nginx 的作用</h2><p>解决跨域</p>
+<p>请求过滤</p>
+<p>负载均衡</p>
+<p>配置 gzip</p>
+<p>静态资源服务器</p>
+<h3 id="解决跨域"><a href="#解决跨域" class="headerlink" title="解决跨域"></a>解决跨域</h3><p>在 server 中配置一个 server-name,和客户端同域名</p>
+<p>在 Location 中拦截向客户端域名发送的请求,并且请求代理回服务器.</p>
+<h3 id="请求过滤"><a href="#请求过滤" class="headerlink" title="请求过滤"></a>请求过滤</h3><p>在 Location 中过滤相应的状态码或者 url,或者请求类型</p>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>通过配置 upstream 指定后端服务器的地址列表</p>
+<p>在 server 中拦截请求,并将请求转发到 upstream 的后端服务器列表里.</p>
+<h4 id="策略"><a href="#策略" class="headerlink" title="策略"></a>策略</h4><p>默认采用轮训的策略,缺点是一台服务器压力过大时,会影响其他服务器.</p>
+<p>最小连接数策略,优先分配给连接数最少的服务器</p>
+<p>least_connt</p>
+<p>最快响应时间策略,优先分配给响应时间最短的服务器</p>
+<p>fair</p>
+<h2 id="静态资源服务器"><a href="#静态资源服务器" class="headerlink" title="静态资源服务器"></a>静态资源服务器</h2><p>在 Location 中配置,匹配比如说图片为结尾的请求,转发到本地路径.设置 root 指定路径.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/Vue%E7%BB%84%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -208,7 +695,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:42" itemprop="dateModified" datetime="2023-01-03T10:25:42+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:50" itemprop="dateModified" datetime="2023-01-04T10:01:50+08:00">2023-01-04</time>
     </span>
 
   
@@ -650,7 +1137,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:42" itemprop="dateModified" datetime="2023-01-03T10:25:42+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:50" itemprop="dateModified" datetime="2023-01-04T10:01:50+08:00">2023-01-04</time>
     </span>
 
   
@@ -791,7 +1278,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:42" itemprop="dateModified" datetime="2023-01-03T10:25:42+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:50" itemprop="dateModified" datetime="2023-01-04T10:01:50+08:00">2023-01-04</time>
     </span>
 
   
@@ -888,7 +1375,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:43" itemprop="dateModified" datetime="2023-01-03T10:25:43+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:51" itemprop="dateModified" datetime="2023-01-04T10:01:51+08:00">2023-01-04</time>
     </span>
 
   
@@ -1305,7 +1792,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:43" itemprop="dateModified" datetime="2023-01-03T10:25:43+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:51" itemprop="dateModified" datetime="2023-01-04T10:01:51+08:00">2023-01-04</time>
     </span>
 
   
@@ -1517,7 +2004,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:44" itemprop="dateModified" datetime="2023-01-03T10:25:44+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:51" itemprop="dateModified" datetime="2023-01-04T10:01:51+08:00">2023-01-04</time>
     </span>
 
   
@@ -2017,7 +2504,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:44" itemprop="dateModified" datetime="2023-01-03T10:25:44+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:51" itemprop="dateModified" datetime="2023-01-04T10:01:51+08:00">2023-01-04</time>
     </span>
 
   
@@ -2799,7 +3286,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:44" itemprop="dateModified" datetime="2023-01-03T10:25:44+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:51" itemprop="dateModified" datetime="2023-01-04T10:01:51+08:00">2023-01-04</time>
     </span>
 
   
@@ -2891,7 +3378,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:44" itemprop="dateModified" datetime="2023-01-03T10:25:44+08:00">2023-01-03</time>
+      <time title="Modified: 2023-01-04 10:01:51" itemprop="dateModified" datetime="2023-01-04T10:01:51+08:00">2023-01-04</time>
     </span>
 
   
@@ -3110,224 +3597,6 @@
 </ol>
 <p>没有包裹的时候,a 标签的颜色是 common.less 设置的黑色,会覆盖)</p>
 <p>标题颜色错误,把标题文本和普通文本颜色算在一起了.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/Express/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/26/Express/" class="post-title-link" itemprop="url">Express</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-26 21:06:15" itemprop="dateCreated datePublished" datetime="2022-09-26T21:06:15+08:00">2022-09-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-03 10:25:44" itemprop="dateModified" datetime="2023-01-03T10:25:44+08:00">2023-01-03</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <hr>
-<p>title: Express</p>
-<p>date: 2019-09-06 14:30:24</p>
-<p>tags: 后端</p>
-<p>categories:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
-<ul>
-<li>后端 # 一级分类</li>
-<li>Node.js # 二级分类</li>
-</ul>
-<hr>
-<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Express 是基于 Node.js 平台的 web 开发框架.</p>
-<h1 id="快速创建"><a href="#快速创建" class="headerlink" title="快速创建"></a>快速创建</h1><p>使用以下命令安装 express</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//express脚手架</span></span><br><span class="line">npm install express-generator -g</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>-h</code>选项显示命令选项</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">express -h</span><br><span class="line">  <span class="title class_">Usage</span>: express [options][dir]</span><br><span class="line">  <span class="comment">//用法</span></span><br><span class="line"></span><br><span class="line">  <span class="title class_">Options</span>:</span><br><span class="line"></span><br><span class="line">    -h, --help          output usage information</span><br><span class="line">        --version       output the version number</span><br><span class="line">    -e, --ejs           add ejs engine support</span><br><span class="line">        --hbs           add handlebars engine support</span><br><span class="line">        --pug           add pug engine support</span><br><span class="line">    -H, --hogan         add hogan.<span class="property">js</span> engine support</span><br><span class="line">        --no-view       generate without view engine</span><br><span class="line">    -v, --view &lt;engine&gt; add view &lt;engine&gt; support (ejs|hbs|hjs|jade|pug|twig|vash) (defaults to jade)</span><br><span class="line">    -c, --css &lt;engine&gt;  add stylesheet &lt;engine&gt; support (less|stylus|compass|sass) (defaults to plain css)</span><br><span class="line">        --git           add .<span class="property">gitignore</span></span><br><span class="line">    -f, --force         force on non-empty directory</span><br></pre></td></tr></table></figure>
-
-<p>例如，以下语句在当前工作目录中创建名为 myapp 的 Express 应用程序：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ express --view=pug myapp</span><br><span class="line"></span><br><span class="line">   create : myapp</span><br><span class="line">   create : myapp/package.<span class="property">json</span></span><br><span class="line">   create : myapp/app.<span class="property">js</span></span><br><span class="line">   create : myapp/public</span><br><span class="line">   create : myapp/public/javascripts</span><br><span class="line">   create : myapp/public/images</span><br><span class="line">   create : myapp/routes</span><br><span class="line">   create : myapp/routes/index.<span class="property">js</span></span><br><span class="line">   create : myapp/routes/users.<span class="property">js</span></span><br><span class="line">   create : myapp/public/stylesheets</span><br><span class="line">   create : myapp/public/stylesheets/style.<span class="property">css</span></span><br><span class="line">   create : myapp/views</span><br><span class="line">   create : myapp/views/index.<span class="property">pug</span></span><br><span class="line">   create : myapp/views/layout.<span class="property">pug</span></span><br><span class="line">   create : myapp/views/error.<span class="property">pug</span></span><br><span class="line">   create : myapp/bin</span><br><span class="line">   create : myapp/bin/www</span><br></pre></td></tr></table></figure>
-
-<p>然后安装依赖项:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd myapp</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>在 Mac 或 Linux 下采用以下命令运行此程序</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">DEBUG</span>=<span class="attr">myapp</span>:* npm start</span><br></pre></td></tr></table></figure>
-
-<p>在 windows 上</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set <span class="variable constant_">DEBUG</span>=<span class="attr">myapp</span>:* &amp; npm start</span><br></pre></td></tr></table></figure>
-
-<p>然后在浏览器输入&#96;<a target="_blank" rel="noopener" href="http://localhost:3000/">http://localhost:3000</a> 访问</p>
-<h1 id="基本路由"><a href="#基本路由" class="headerlink" title="基本路由"></a>基本路由</h1><p>中间件: 处理请求的函数.</p>
-<p>模板引擎: <code>&lt;%= 写入的变量名 %&gt;</code>,其中变量名可以在其他地方赋值,这样就可以批量改变变量了.</p>
-<h1 id="后台"><a href="#后台" class="headerlink" title="后台"></a>后台</h1><p>基本页面: 创建,列表,展示</p>
-<h2 id="静态文件"><a href="#静态文件" class="headerlink" title="静态文件"></a>静态文件</h2><p>提供图像,css 和 js 之类的静态文件,请使用 express.static 内置中间件函数.</p>
-<p>使用以下代码在名为 public 的目录中提供图像,css 和 js 之类的静态文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&quot;public&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>现在，可以访问位于 public 目录中的文件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:3000/images/kitten.jpg</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:3000/css/style.css</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:3000/js/app.js</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:3000/images/bg.png</span></span><br><span class="line"><span class="attr">http</span>:<span class="comment">//localhost:3000/hello.html</span></span><br></pre></td></tr></table></figure>
-
-<p>要使用多个静态资源目录，请多次调用 express.static 中间件函数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&quot;public&quot;</span>));</span><br><span class="line">app.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&quot;files&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>Express 以您使用 express.static 中间件函数设置静态目录的顺序来查找文件。</p>
-<p>要为 express.static 函数提供的文件创建虚拟路径前缀（路径并不实际存在于文件系统中），请为静态目录指定安装路径，如下所示：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="string">&quot;/static&quot;</span>, express.<span class="title function_">static</span>(<span class="string">&quot;public&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<p>向 express.static 函数提供的路径相对于您在其中启动 node 进程的目录。如果从另一个目录运行 Express 应用程序，那么对于提供资源的目录使用绝对路径会更安全：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">use</span>(<span class="string">&quot;/static&quot;</span>, express.<span class="title function_">static</span>(__dirname + <span class="string">&quot;/public&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>基本路由示例:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>(); <span class="comment">//在`myapp/bin/www`里创建了app的服务器</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  red.<span class="title function_">send</span>(<span class="string">&quot;hello world&quot;</span>); <span class="comment">//给浏览器发一个hello world</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="路由方法"><a href="#路由方法" class="headerlink" title="路由方法"></a>路由方法</h3><p>GET 和 POST 的示例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//GET</span></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;GET request to the homepage&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//POST</span></span><br><span class="line">app.<span class="title function_">post</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;POST request to the homepage&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>有一种特殊路由方法：<code>app.all()</code>，它并非派生自 HTTP 方法。该方法用于在所有请求方法的路径中装入中间件函数。</p>
-<p>在以下示例中，无论您使用 GET、POST、PUT、DELETE 还是在 http 模块中支持的其他任何 HTTP 请求方法，都将为针对“&#x2F;secret”的请求执行处理程序。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">all</span>(<span class="string">&quot;/secret&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Accessing the secret section ...&quot;</span>);</span><br><span class="line">  <span class="title function_">next</span>(); <span class="comment">// pass control to the next handler</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="路由路径"><a href="#路由路径" class="headerlink" title="路由路径"></a>路由路径</h3><p>‘&#x2F;‘表示根路径</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;root&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>和’&#x2F;about’路径匹配</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/about&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;random.txt&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="基于字符串模式的匹配"><a href="#基于字符串模式的匹配" class="headerlink" title="基于字符串模式的匹配"></a>基于字符串模式的匹配</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//此路由路径将匹配 abcd、abbcd、abbbcd 等。</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/ab+cd&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;ab+cd&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//此路由路径将匹配 abcd、abbcd、abbbcd 等。</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/ab+cd&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;ab+cd&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//此路由路径将匹配 abcd、abxcd、abRABDOMcd、ab123cd 等。</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/ab*cd&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;ab*cd&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//此路由路径将匹配 /abe 和 /abcde。</span></span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/ab(cd)?e&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;ab(cd)?e&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>字符 ?、+、* 和 () 是其正则表达式同应项的子集。基于字符串的路径按字面理解连字符 (-) 和点 (.)。</p>
-<h4 id="路由处理程序"><a href="#路由处理程序" class="headerlink" title="路由处理程序"></a>路由处理程序</h4><p>可以提供多个回调函数，以类似于中间件的行为方式来处理请求。</p>
-<p>唯一例外是这些回调函数可能调用 next(‘route’) 来绕过剩余的路由回调。</p>
-<p>可以使用此机制对路由施加先决条件，在没有理由继续执行当前路由的情况下，可将控制权传递给后续路由。</p>
-<p>路由处理程序的形式可以是一个函数、一组函数或者两者的结合，如以下示例中所示。</p>
-<p>单个回调函数可以处理一个路由。例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/example/a&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;Hello from A!&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>多个回调函数可以处理一个路由（确保您指定 next 对象）。例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">get</span>(</span><br><span class="line">  <span class="string">&quot;/example/b&quot;</span>,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;the response will be sent by the next function ...&quot;</span>);</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">&quot;Hello from B!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>一组回调函数可以处理一个路由。例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cb0 = <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;CB0&quot;</span>);</span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cb1 = <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;CB1&quot;</span>);</span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cb2 = <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;Hello from C!&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(<span class="string">&quot;/example/c&quot;</span>, [cb0, cb1, cb2]);</span><br></pre></td></tr></table></figure>
-
-<p>独立函数与一组函数的组合可以处理一个路由。例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cb0 = <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;CB0&quot;</span>);</span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cb1 = <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;CB1&quot;</span>);</span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">get</span>(</span><br><span class="line">  <span class="string">&quot;/example/d&quot;</span>,</span><br><span class="line">  [cb0, cb1],</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">req, res, next</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;the response will be sent by the next function ...&quot;</span>);</span><br><span class="line">    <span class="title function_">next</span>();</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">&quot;Hello from D!&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<h1 id="响应方法"><a href="#响应方法" class="headerlink" title="响应方法"></a>响应方法</h1><p>响应对象 (res) 的方法可以向客户端发送响应，并终止请求&#x2F;响应循环。如果没有从路由处理程序调用其中任何方法，客户端请求将保持挂起状态。</p>
-<table>
-<thead>
-<tr>
-<th align="left">方法</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">res.download()</td>
-<td align="left">提示将要下载文件。</td>
-</tr>
-<tr>
-<td align="left">res.end()</td>
-<td align="left">结束响应进程。</td>
-</tr>
-<tr>
-<td align="left">res.json()</td>
-<td align="left">发送 JSON 响应。</td>
-</tr>
-<tr>
-<td align="left">res.jsonp()</td>
-<td align="left">在 JSONP 的支持下发送 JSON 响应。</td>
-</tr>
-<tr>
-<td align="left">res.redirect()</td>
-<td align="left">重定向请求。</td>
-</tr>
-<tr>
-<td align="left">res.render()</td>
-<td align="left">呈现视图模板。</td>
-</tr>
-<tr>
-<td align="left">res.send()</td>
-<td align="left">发送各种类型的响应。</td>
-</tr>
-<tr>
-<td align="left">res.sendFile</td>
-<td align="left">以八位元流形式发送文件。</td>
-</tr>
-<tr>
-<td align="left">res.sendStatus()</td>
-<td align="left">设置响应状态码并以响应主体形式发送其字符串表示。</td>
-</tr>
-</tbody></table>
-<h1 id="app-route"><a href="#app-route" class="headerlink" title="app.route()"></a>app.route()</h1><p>可以使用<code>app.route()</code>为路由路径创建可连接的路由处理程序</p>
-<p>因为在单一位置指定路径,可以减少冗杂和输入错误.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">app</span><br><span class="line">  .<span class="title function_">route</span>(<span class="string">&quot;/book&quot;</span>)</span><br><span class="line">  .<span class="title function_">get</span>(<span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">&quot;get a book&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">post</span>(<span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">&quot;add a book&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">put</span>(<span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">&quot;update a book&quot;</span>);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-
-<h1 id="express-Router"><a href="#express-Router" class="headerlink" title="express.Router"></a>express.Router</h1><p>使用 express.Router 类来创建可安装的模块化路由处理程序。Router 实例是完整的中间件和路由系统；因此，常常将其称为“微型应用程序”。</p>
-<p>以下示例将路由器创建为模块，在其中装入中间件，定义一些路由，然后安装在主应用程序的路径中。</p>
-<p>在应用程序目录中创建名为 birds.js 的路由器文件，其中包含以下内容：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&quot;express&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> router = express.<span class="title class_">Router</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// middleware that is specific to this router</span></span><br><span class="line"><span class="comment">//use是不管get还是post都可以匹配</span></span><br><span class="line">router.<span class="title function_">use</span>(<span class="keyword">function</span> <span class="title function_">timeLog</span>(<span class="params">req, res, next</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Time: &quot;</span>, <span class="title class_">Date</span>.<span class="title function_">now</span>());</span><br><span class="line">  <span class="title function_">next</span>();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// define the home page route</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;Birds home page&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// define the about route</span></span><br><span class="line">router.<span class="title function_">get</span>(<span class="string">&quot;/about&quot;</span>, <span class="keyword">function</span> (<span class="params">req, res</span>) &#123;</span><br><span class="line">  res.<span class="title function_">send</span>(<span class="string">&quot;About birds&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = router;</span><br></pre></td></tr></table></figure>
-
-<p>接着，在应用程序中装入路由器模块：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> birds = <span class="built_in">require</span>(<span class="string">&#x27;./birds&#x27;</span>);</span><br><span class="line">...</span><br><span class="line">app.<span class="title function_">use</span>(<span class="string">&#x27;/birds&#x27;</span>, birds);</span><br></pre></td></tr></table></figure>
-
-<p>此应用程序现在可处理针对 &#x2F;birds 和 &#x2F;birds&#x2F;about 的请求，调用特定于此路由的 timeLog 中间件函数。</p>
 
       
     </div>
