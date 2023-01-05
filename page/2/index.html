@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">123</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:55" itemprop="dateModified" datetime="2023-01-04T10:01:55+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:47" itemprop="dateModified" datetime="2023-01-05T12:12:47+08:00">2023-01-05</time>
     </span>
 
   
@@ -311,7 +311,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:55" itemprop="dateModified" datetime="2023-01-04T10:01:55+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:47" itemprop="dateModified" datetime="2023-01-05T12:12:47+08:00">2023-01-05</time>
     </span>
 
   
@@ -341,6 +341,82 @@
 <h1 id="查询条件"><a href="#查询条件" class="headerlink" title="查询条件"></a>查询条件</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$or　　　　或关系</span><br><span class="line">$nor　　　 或关系取反</span><br><span class="line">$gt　　　　大于</span><br><span class="line">$gte　　　 大于等于</span><br><span class="line">$lt　　　　 小于</span><br><span class="line">$lte　　　  小于等于</span><br><span class="line">$ne            不等于</span><br><span class="line">$in             在多个值范围内</span><br><span class="line">$nin           不在多个值范围内</span><br><span class="line">$all            匹配数组中多个值</span><br><span class="line">$regex　　正则，用于模糊查询</span><br><span class="line">$size　　　匹配数组大小</span><br><span class="line">$maxDistance　　范围查询，距离（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$mod　　   取模运算</span><br><span class="line">$near　　　邻域查询，查询附近的位置（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$exists　　  字段是否存在</span><br><span class="line">$elemMatch　　匹配内数组内的元素</span><br><span class="line">$within　　范围查询（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$box　　　 范围查询，矩形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$center       范围醒询，圆形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$centerSphere　　范围查询，球形范围（基于<span class="variable constant_">LBS</span>）</span><br><span class="line">$slice　　　　查询字段集合中的元素（比如从第几个之后，第N到第M个元素）</span><br></pre></td></tr></table></figure>
 
 <h3 id="mongodb-对数组中的所有元素进行一次性修改方法"><a href="#mongodb-对数组中的所有元素进行一次性修改方法" class="headerlink" title="mongodb 对数组中的所有元素进行一次性修改方法"></a>mongodb 对数组中的所有元素进行一次性修改方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">list</span>: [&#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;a&quot;</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="number">1504195200000</span>,</span><br><span class="line">        <span class="attr">other</span>: <span class="string">&quot;c&quot;</span></span><br><span class="line">    &#125;,&#123;</span><br><span class="line">        <span class="attr">id</span>: <span class="string">&quot;b&quot;</span>,</span><br><span class="line">        <span class="attr">date</span>: <span class="number">1504195200000</span>,</span><br><span class="line">        <span class="attr">other</span>: <span class="string">&quot;c&quot;</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 现在要把other全部更新为&quot;a&quot;,方法如下</span></span><br><span class="line">db.<span class="title function_">getCollection</span>(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">  .<span class="title function_">update</span>(&#123;<span class="string">&#x27;name&#x27;</span>: <span class="number">4</span>&#125;, &#123;<span class="attr">$set</span>: &#123;<span class="string">&#x27;list.$[].other&#x27;</span>: <span class="string">&#x27;a&#x27;</span>&#125;&#125;, &#123;<span class="attr">multi</span>: <span class="literal">true</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/08/GraphQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Zax Tseng">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ZAX">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | ZAX">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/11/08/GraphQL/" class="post-title-link" itemprop="url">GraphQL</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-11-08 17:08:54" itemprop="dateCreated datePublished" datetime="2022-11-08T17:08:54+08:00">2022-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-05 12:12:47" itemprop="dateModified" datetime="2023-01-05T12:12:47+08:00">2023-01-05</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>暂无</p>
 
       
     </div>
@@ -403,7 +479,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:56" itemprop="dateModified" datetime="2023-01-04T10:01:56+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:48" itemprop="dateModified" datetime="2023-01-05T12:12:48+08:00">2023-01-05</time>
     </span>
 
   
@@ -996,7 +1072,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:56" itemprop="dateModified" datetime="2023-01-04T10:01:56+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:48" itemprop="dateModified" datetime="2023-01-05T12:12:48+08:00">2023-01-05</time>
     </span>
 
   
@@ -1214,7 +1290,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:56" itemprop="dateModified" datetime="2023-01-04T10:01:56+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:48" itemprop="dateModified" datetime="2023-01-05T12:12:48+08:00">2023-01-05</time>
     </span>
 
   
@@ -1863,7 +1939,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:56" itemprop="dateModified" datetime="2023-01-04T10:01:56+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:48" itemprop="dateModified" datetime="2023-01-05T12:12:48+08:00">2023-01-05</time>
     </span>
 
   
@@ -2065,7 +2141,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:57" itemprop="dateModified" datetime="2023-01-04T10:01:57+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:48" itemprop="dateModified" datetime="2023-01-05T12:12:48+08:00">2023-01-05</time>
     </span>
 
   
@@ -2205,7 +2281,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:57" itemprop="dateModified" datetime="2023-01-04T10:01:57+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:48" itemprop="dateModified" datetime="2023-01-05T12:12:48+08:00">2023-01-05</time>
     </span>
 
   
@@ -2697,7 +2773,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:57" itemprop="dateModified" datetime="2023-01-04T10:01:57+08:00">2023-01-04</time>
+      <time title="Modified: 2023-01-05 12:12:48" itemprop="dateModified" datetime="2023-01-05T12:12:48+08:00">2023-01-05</time>
     </span>
 
   
@@ -2766,163 +2842,10 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#x73;&#x61;&#x78;&#x40;&#51;&#46;&#x30;&#46;&#48;">&#x73;&#x61;&#x78;&#x40;&#51;&#46;&#x30;&#46;&#48;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#97;&#x78;&#64;&#51;&#46;&#48;&#x2e;&#48;">&#115;&#97;&#x78;&#64;&#51;&#46;&#48;&#x2e;&#48;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Zax Tseng">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ZAX">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | ZAX">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/11/02/%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83%E5%8C%96/" class="post-title-link" itemprop="url">代码规范化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-11-02 22:25:08" itemprop="dateCreated datePublished" datetime="2022-11-02T22:25:08+08:00">2022-11-02</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-04 10:01:57" itemprop="dateModified" datetime="2023-01-04T10:01:57+08:00">2023-01-04</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Eslint-安装"><a href="#Eslint-安装" class="headerlink" title="Eslint 安装"></a>Eslint 安装</h3><ul>
-<li>安装 <code>npm install eslint --save-dev</code></li>
-<li>使用 <code>npx eslint --init</code> 初始化一个配置文件</li>
-<li>执行 <code>npm eslint test.js --fix</code> –fix 会自动修正代码风格问题，而一些问题代码就需要手动修正</li>
-<li>当代码有语法问题时 Eslint 无法检查问题代码和代码风格，所有要先手动解决语法问题</li>
-</ul>
-<h3 id="ESLint-配置文件解析"><a href="#ESLint-配置文件解析" class="headerlink" title="ESLint 配置文件解析"></a>ESLint 配置文件解析</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">env</span>: &#123;</span><br><span class="line">    <span class="comment">// 标记代码运行环境</span></span><br><span class="line">    <span class="attr">browser</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">es2020</span>: <span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// 继承共享配置</span></span><br><span class="line">    <span class="string">&quot;standard&quot;</span>,</span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">parser</span>: <span class="string">&quot;@typescript-eslint/parser&quot;</span>, <span class="comment">// 语法解析器</span></span><br><span class="line">  <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">    <span class="comment">// 设置语法解析器，检查语法，而不是代表某个成员是否可以，成员通过环境定义</span></span><br><span class="line">    <span class="attr">ecmaVersion</span>: <span class="number">11</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="comment">// 校验规则的开启、关闭 off：关闭 warning：结果 error：警告</span></span><br><span class="line">    <span class="string">&quot;no-alert&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">globals</span>: &#123;</span><br><span class="line">    <span class="comment">// 额外声明代码中可以使用的全局成员</span></span><br><span class="line">    <span class="attr">jQuery</span>: <span class="string">&quot;readonly&quot;</span>, <span class="comment">// 代码中可以使用jQuery而且不会报错</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ESLint-配置注释"><a href="#ESLint-配置注释" class="headerlink" title="ESLint 配置注释"></a>ESLint 配置注释</h3><ul>
-<li>在编码时有时需要违反 eslint 规则，eslint-disable-line 可以通过注释临时禁用校验规则</li>
-<li>当一行有多个问题时可以跟上具体禁用哪个规则</li>
-<li><a target="_blank" rel="noopener" href="http://eslint.cn/docs/user-guide/configuring#configuring-rules">具体配置注释介绍文档</a></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// eslint-disable-line no-template-curly-in-string</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&quot;$&#123;name&#125; is a coder&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str);</span><br></pre></td></tr></table></figure>
-
-<h3 id="ESLint-结合自动化工具"><a href="#ESLint-结合自动化工具" class="headerlink" title="ESLint 结合自动化工具"></a>ESLint 结合自动化工具</h3><ul>
-<li>gulp<ul>
-<li>安装 gulp-eslint</li>
-<li>创建 eslint 配置文件</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// plugins 自动加载插件模块</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">script</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="title function_">src</span>(<span class="string">&quot;src/assets/script/*.js&quot;</span>, &#123; <span class="attr">base</span>: <span class="string">&quot;src&quot;</span> &#125;)</span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="title function_">eslint</span>()) <span class="comment">// 默认只会检查代码的问题，并不会根据检查结果做出反馈</span></span><br><span class="line">      <span class="comment">// 控制台打印错误信息</span></span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="property">eslint</span>.<span class="title function_">format</span>())</span><br><span class="line">      <span class="comment">// eslint检查错误后终止任务</span></span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="property">eslint</span>.<span class="title function_">failAfterError</span>())</span><br><span class="line">      .<span class="title function_">pipe</span>(plugins.<span class="title function_">babel</span>(&#123; <span class="attr">presets</span>: [<span class="string">&quot;@babel/preset-env&quot;</span>] &#125;))</span><br><span class="line">      .<span class="title function_">pipe</span>(<span class="title function_">dest</span>(<span class="string">&quot;temp&quot;</span>))</span><br><span class="line">      .<span class="title function_">pipe</span>(bs.<span class="title function_">reload</span>(&#123; <span class="attr">stream</span>: <span class="literal">true</span> &#125;))</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="ESLint-结合-Webpack"><a href="#ESLint-结合-Webpack" class="headerlink" title="ESLint 结合 Webpack"></a>ESLint 结合 Webpack</h3><ul>
-<li>通过 loader 机制完成校验</li>
-<li>安装 eslint-loader</li>
-<li>初始化配置文件</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;production&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/main.js&quot;</span>,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="attr">use</span>: [</span><br><span class="line">          <span class="string">&quot;babel-loader&quot;</span>,</span><br><span class="line">          <span class="comment">// &#x27;eslint-loader&#x27;</span></span><br><span class="line">        ],</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</span><br><span class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="attr">use</span>: <span class="string">&quot;eslint-loader&quot;</span>,</span><br><span class="line">        <span class="attr">enfore</span>: <span class="string">&quot;pre&quot;</span>,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;style-loader&quot;</span>, <span class="string">&quot;css-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;src/index.html&quot;</span>,</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在 react 项目中会报 React 未使用的问题，和 App is defined but never used no-unused-vars，可以使用插件</li>
-<li>安装插件 <code>npm install eslint-plugin-react</code></li>
-<li>在配置文件的 plugins 属性配置</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">modul.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;react/jsx-uses-react&quot;</span>: <span class="number">2</span>, <span class="comment">// 开启报错，2 代替 error</span></span><br><span class="line">    <span class="string">&quot;react/jsx-uses-vars&quot;</span>: <span class="number">2</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">extends</span>: [</span><br><span class="line">    <span class="comment">// &#x27;plugin:react/recommended&#x27; // 方法二</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="string">&quot;react&quot;</span>, <span class="comment">// 模块名会去除eslint-plugin</span></span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Stylelint-认识"><a href="#Stylelint-认识" class="headerlink" title="Stylelint 认识"></a>Stylelint 认识</h3><ul>
-<li>安装 <code>npm install stylelint -D</code></li>
-<li>添加配置文件 .stylelintrc.js</li>
-<li>共享配置名称要完整的模块名称</li>
-<li>stylelint 内部没有提供任何可用的共享配置，可以自定义安装</li>
-<li><code>npm install stylelint-config-standard -D</code> 对 css 代码检查</li>
-<li><code>npm install stylelint-config-sass-guidelines -D</code> 对 sass 代码检查</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// 共享配置</span></span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;stylelint-config-standard&quot;</span>, <span class="string">&quot;stylelint-config-sass-guidelines&quot;</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Prettier-的使用—代码格式化工具"><a href="#Prettier-的使用—代码格式化工具" class="headerlink" title="Prettier 的使用—代码格式化工具"></a>Prettier 的使用—代码格式化工具</h3><ul>
-<li>安装 <code>npm install prettier -D</code></li>
-<li><code>npm prettier style.css --write</code> 自动格式化文件，–write 把格式化的代码覆盖源代码</li>
-</ul>
-<h3 id="ESLint-结合-Git-Hooks"><a href="#ESLint-结合-Git-Hooks" class="headerlink" title="ESLint 结合 Git Hooks"></a>ESLint 结合 Git Hooks</h3><ul>
-<li>安装依赖 <code>npm install husky -D</code></li>
-<li>在 package.json 文件添加一个 husky 字段，在 husky 添加一个 hooks 属性，在 hooks 属性添加一个 pre-commit 钩子属性，值为 npm run xxxx，在提交 commit 前就会先执行 scripts 下的对应命令，比如执行 eslint，如果不符合规范就不能直接提交到代码仓库中</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint ./index.js&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run link&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装 <code>npm install lint-staged -D</code> 在 commit 前执行 eslint 后，再进行其他操作，如格式化代码</li>
-<li>安装代码格式化工具 <code>npm install prettier -D</code></li>
-<li>在 package.json 中添加一个 lint-staged 字段</li>
-<li>一般 husky 和 lint-staged 配合使用</li>
-</ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;link&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eslint ./index.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;precommit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lint-staged&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm run precommit&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lint-staged&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;*.js&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;prettier --write&quot;</span><span class="punctuation">,</span> <span class="string">&quot;eslint --fix&quot;</span><span class="punctuation">,</span> <span class="string">&quot;git add&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Git-提交规范—commitlint"><a href="#Git-提交规范—commitlint" class="headerlink" title="Git 提交规范—commitlint"></a>Git 提交规范—commitlint</h3><ul>
-<li>文档：<a target="_blank" rel="noopener" href="https://commitlint.js.org/#/">https://commitlint.js.org/#/</a></li>
-<li>安装插件 <code>yarn add husky @commitlint/cli @commitlint/config-conventional --dev</code></li>
-<li>husky 是一个 Git Hook 工具</li>
-<li>项目根目录创建配置文件 commitlint.config.js</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">extends</span>: [<span class="string">&quot;@commitlint/config-conventional&quot;</span>],</span><br><span class="line">  <span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&quot;subject-case&quot;</span>: [<span class="number">0</span>, <span class="string">&quot;never&quot;</span>],</span><br><span class="line">    <span class="string">&quot;type-enum&quot;</span>: [</span><br><span class="line">      <span class="number">2</span>, <span class="comment">// 代表必须输入</span></span><br><span class="line">      <span class="string">&quot;always&quot;</span>,</span><br><span class="line">      [</span><br><span class="line">        <span class="string">&quot;docs&quot;</span>, <span class="comment">// Adds or alters documentation. 仅仅修改了文档，比如README, CHANGELOG, CONTRIBUTE等等</span></span><br><span class="line">        <span class="string">&quot;chore&quot;</span>, <span class="comment">// Other changes that don&#x27;t modify src or test files. 改变构建流程、或者增加依赖库、工具等</span></span><br><span class="line">        <span class="string">&quot;feat&quot;</span>, <span class="comment">// Adds a new feature. 新增feature</span></span><br><span class="line">        <span class="string">&quot;fix&quot;</span>, <span class="comment">// Solves a bug. 修复bug</span></span><br><span class="line">        <span class="string">&quot;merge&quot;</span>, <span class="comment">// Merge branch ? of ?.</span></span><br><span class="line">        <span class="string">&quot;perf&quot;</span>, <span class="comment">// Improves performance. 优化相关，比如提升性能、体验</span></span><br><span class="line">        <span class="string">&quot;refactor&quot;</span>, <span class="comment">// Rewrites code without feature, performance or bug changes. 代码重构，没有加新功能或者修复bug</span></span><br><span class="line">        <span class="string">&quot;revert&quot;</span>, <span class="comment">// Reverts a previous commit. 回滚到上一个版本</span></span><br><span class="line">        <span class="string">&quot;style&quot;</span>, <span class="comment">// Improves formatting, white-space. 仅仅修改了空格、格式缩进、都好等等，不改变代码逻辑</span></span><br><span class="line">        <span class="string">&quot;test&quot;</span>, <span class="comment">// Adds or modifies tests. 测试用例，包括单元测试、集成测试等</span></span><br><span class="line">      ],</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>配置 package.json 文件，添加一下内容，在执行 <code>git commit -m &quot;commit message&quot;</code> 命令的时候，将会对 commit message 校验，是否符合 rules</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;husky&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;hooks&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;commit-msg&quot;</span>: <span class="string">&quot;commitlint -E HUSKY_GIT_PARAMS&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 
       
     </div>
