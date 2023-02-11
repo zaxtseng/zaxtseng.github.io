@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:00" itemprop="dateModified" datetime="2023-02-04T10:52:00+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:12" itemprop="dateModified" datetime="2023-02-11T08:48:12+08:00">2023-02-11</time>
     </span>
 
   
@@ -326,7 +326,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:00" itemprop="dateModified" datetime="2023-02-04T10:52:00+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:12" itemprop="dateModified" datetime="2023-02-11T08:48:12+08:00">2023-02-11</time>
     </span>
 
   
@@ -413,6 +413,12 @@ of 'team' in its own useMemo() Hook.</div>
 <p>所以当两者在做深比较的时候，如果内容一致，isDeepEqual 会返回 true，teamRef.current 会继续指向原本 team 对象的内存地址。那依赖数组里的元素 teamRef.current 就没有发生变化，useEffect 也不会再执行。如果 isDeepEqual 返回 false，teamRef.current 就会被赋予新的 team 值，effect 就会执行。</p>
 <p>如果你发现自己遇到了 Option4 这样的情况，我建议安装 react-usenpm 包，使用其中的 useDeepCompareEffect Hook 来解决问题，还能够避免 react-hooks&#x2F;exhaustive-depslint rule 报错。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>大多数情况下，我能用 Option1 来解决问题。如果 Option1 无法解决，我就会使用 react-use 包里的 helper Hook 来解决问题。</p>
+<h1 id="多次调用同一个-setState"><a href="#多次调用同一个-setState" class="headerlink" title="多次调用同一个 setState"></a>多次调用同一个 setState</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [num, setNum] = <span class="title class_">React</span>.<span class="title function_">useState</span>(<span class="number">0</span>); <span class="comment">// 声明一个变量 num</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setNum</span>(num + <span class="number">1</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(num);</span><br><span class="line">    <span class="title function_">setNum</span>(num + <span class="number">2</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(num);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;num&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;add&#125;</span>&gt;</span>加1<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样只会计算最后一个 setNum。<br>如果想依赖上一次的可以使用函数写法。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">add</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="title function_">setNum</span>(<span class="function">(<span class="params">n</span>) =&gt;</span> n + <span class="number">1</span>);</span><br><span class="line">  <span class="comment">// 一些操作</span></span><br><span class="line">  <span class="title function_">setNum</span>(<span class="function">(<span class="params">n</span>) =&gt;</span> n + <span class="number">2</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这种写法是传入的就不是直接的值，而是一个 function，它接受前面的 state，我们可以根据这个 stat 来做一些处理以后，再返回一个 state。<br>所以我们这里调用完以后，页面上就会成功显示加 3 后的结果了。（但是一定要记住我说的：生效的只会是最后一个<code>setState</code>，如果你在最后仍写的是<code>setNum(x)</code>，最后都会以 x 的值作为渲染）</p>
 
       
     </div>
@@ -475,7 +481,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:01" itemprop="dateModified" datetime="2023-02-04T10:52:01+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:12" itemprop="dateModified" datetime="2023-02-11T08:48:12+08:00">2023-02-11</time>
     </span>
 
   
@@ -719,7 +725,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:01" itemprop="dateModified" datetime="2023-02-04T10:52:01+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:12" itemprop="dateModified" datetime="2023-02-11T08:48:12+08:00">2023-02-11</time>
     </span>
 
   
@@ -829,7 +835,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:01" itemprop="dateModified" datetime="2023-02-04T10:52:01+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:12" itemprop="dateModified" datetime="2023-02-11T08:48:12+08:00">2023-02-11</time>
     </span>
 
   
@@ -1065,7 +1071,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:01" itemprop="dateModified" datetime="2023-02-04T10:52:01+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:13" itemprop="dateModified" datetime="2023-02-11T08:48:13+08:00">2023-02-11</time>
     </span>
 
   
@@ -1141,7 +1147,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:01" itemprop="dateModified" datetime="2023-02-04T10:52:01+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:13" itemprop="dateModified" datetime="2023-02-11T08:48:13+08:00">2023-02-11</time>
     </span>
 
   
@@ -1425,7 +1431,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:02" itemprop="dateModified" datetime="2023-02-04T10:52:02+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:14" itemprop="dateModified" datetime="2023-02-11T08:48:14+08:00">2023-02-11</time>
     </span>
 
   
@@ -2248,7 +2254,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:03" itemprop="dateModified" datetime="2023-02-04T10:52:03+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:14" itemprop="dateModified" datetime="2023-02-11T08:48:14+08:00">2023-02-11</time>
     </span>
 
   
@@ -2483,7 +2489,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-04 10:52:03" itemprop="dateModified" datetime="2023-02-04T10:52:03+08:00">2023-02-04</time>
+      <time title="Modified: 2023-02-11 08:48:14" itemprop="dateModified" datetime="2023-02-11T08:48:14+08:00">2023-02-11</time>
     </span>
 
   
