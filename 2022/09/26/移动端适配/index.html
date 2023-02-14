@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="title: 移动端适配 date: 2019-10-09 21:30:02 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  css # 一级分类 移动端 # 二级分类   媒体查询 media-query当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只">
+    <meta name="description" content="title: 移动端适配date: 2019-10-09 21:30:02tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  css # 一级分类 移动端 # 二级分类   媒体查询 media-query当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只不过">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端适配">
 <meta property="og:url" content="http://example.com/2022/09/26/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/index.html">
 <meta property="og:site_name" content="ZAX">
-<meta property="og:description" content="title: 移动端适配 date: 2019-10-09 21:30:02 tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  css # 一级分类 移动端 # 二级分类   媒体查询 media-query当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只">
+<meta property="og:description" content="title: 移动端适配date: 2019-10-09 21:30:02tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级  css # 一级分类 移动端 # 二级分类   媒体查询 media-query当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只不过">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-09-26T13:04:55.000Z">
-<meta property="article:modified_time" content="2023-02-11T00:48:22.615Z">
+<meta property="article:modified_time" content="2023-02-14T02:17:47.139Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-11 08:48:22" itemprop="dateModified" datetime="2023-02-11T08:48:22+08:00">2023-02-11</time>
+      <time title="Modified: 2023-02-14 10:17:47" itemprop="dateModified" datetime="2023-02-14T10:17:47+08:00">2023-02-14</time>
     </span>
 
   
@@ -228,9 +228,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <hr>
-<p>title: 移动端适配</p>
-<p>date: 2019-10-09 21:30:02</p>
-<p>tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
+<p>title: 移动端适配<br>date: 2019-10-09 21:30:02<br>tags:  # 这里写的分类会自动汇集到 categories 页面上，分类可以多级</p>
 <ul>
 <li>css # 一级分类</li>
 <li>移动端 # 二级分类</li>
@@ -238,20 +236,16 @@
 <hr>
 <h1 id="媒体查询-media-query"><a href="#媒体查询-media-query" class="headerlink" title="媒体查询 media-query"></a>媒体查询 media-query</h1><p>当媒体查询为 true 时，相关的样式表或样式规则会按照正常的级联规被应用。 当媒体查询返回 false， 标签上带有媒体查询的样式表仍将被下载 （只不过不会被应用）。</p>
 <p>包含了一个媒体类型和至少一个使用宽度、高度和颜色等媒体属性来限制样式表范围的表达式。CSS3 加入的媒体查询使得无需修改内容便可以使样式应用于某些特定的设备范围。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">@media (min-<span class="attr">width</span>: 700px) and (<span class="attr">orientation</span>: landscape)&#123;</span><br><span class="line">    .<span class="property">sidebar</span> &#123;</span><br><span class="line">        <span class="attr">display</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">@media (min-<span class="attr">width</span>: 700px) and (<span class="attr">orientation</span>: landscape)&#123;</span><br><span class="line">  <span class="comment">// 大于700px执行display：none</span></span><br><span class="line">    .<span class="property">sidebar</span> &#123;</span><br><span class="line">        <span class="attr">display</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
-<h1 id="视口-iewport"><a href="#视口-iewport" class="headerlink" title="视口 iewport"></a>视口 iewport</h1><p>为什么要设置 viewport</p>
-<p>viewport 的设置不会对 PC 页面产生影响，但对于移动页面却很重要。下面我们举例来说明：</p>
+<h1 id="视口-iewport"><a href="#视口-iewport" class="headerlink" title="视口 iewport"></a>视口 iewport</h1><p>为什么要设置 viewport<br>viewport 的设置不会对 PC 页面产生影响，但对于移动页面却很重要。下面我们举例来说明：</p>
 <ol>
 <li>媒体查询 @media 响应式布局中，会根据媒体查询功能来适配多端布局，必须对 viewport 进行设置，否则根据查询到的尺寸无法正确匹配视觉宽度而导致布局混乱。如不设置 viewport 参数，多说移动端媒体查询的结果将是 980px 这个节点布局的参数，而非我们通常设置的 768px 范围内的这个布局参数</li>
 <li>由于目前多数手机的 dpr 都不再是 1，为了产出高保真页面，我们一般会给出 750px 的设计稿，那么就需要通过设置 viewport 的参数来进行整体换算，而不是在每次设置尺寸时进行长度的换算。</li>
 </ol>
 <h2 id="viewport-详解"><a href="#viewport-详解" class="headerlink" title="viewport 详解"></a>viewport 详解</h2><p>在移动端有三种类型的 viewport: layoutviewport、visualviewport、idealviewport。具体解释如下：</p>
-<p><code>layoutviewport</code>:   大于实际屏幕， 元素的宽度继承于 layoutviewport，用于保证网站的外观特性与桌面浏览器一样。layoutviewport 到底多宽，每个浏览器不同。iPhone 的 safari 为 980px，通过 document.documentElement.clientWidth 获取。</p>
-<p><code>visualviewport</code>: 当前显示在屏幕上的页面，即浏览器可视区域的宽度。</p>
-<p><code>idealviewport</code>: 为浏览器定义的可完美适配移动端的理想 viewport，固定不变，可以认为是设备视口宽度。比如 iphone 7 为 375px, iphone 7p 为 414px。</p>
-<h2 id="viewport-设置"><a href="#viewport-设置" class="headerlink" title="viewport 设置"></a>viewport 设置</h2><p><code>&lt;meta name=&#39;viewport&#39; content=&#39;width=device-width,initial-scale=1,user-scalable=no&#39;/&gt;</code></p>
-<p>通过对 meta 标签三个 viewport 的设置，最终使页面完美展示。</p>
+<p><code>layoutviewport</code>:   大于实际屏幕， 元素的宽度继承于 layoutviewport，用于保证网站的外观特性与桌面浏览器一样。layoutviewport 到底多宽，每个浏览器不同。iPhone 的 safari 为 980px，通过 document.documentElement.clientWidth 获取。<br><code>visualviewport</code>: 当前显示在屏幕上的页面，即浏览器可视区域的宽度。<br><code>idealviewport</code>: 为浏览器定义的可完美适配移动端的理想 viewport，固定不变，可以认为是设备视口宽度。比如 iphone 7 为 375px, iphone 7p 为 414px。</p>
+<h2 id="viewport-设置"><a href="#viewport-设置" class="headerlink" title="viewport 设置"></a>viewport 设置</h2><p><code>&lt;meta name=&#39;viewport&#39; content=&#39;width=device-width,initial-scale=1,user-scalable=no&#39;/&gt;</code><br>通过对 meta 标签三个 viewport 的设置，最终使页面完美展示。</p>
 <ol>
 <li>width 设置的是 layoutviewport 的宽度</li>
 <li>initial-scale 设置页面的初始缩放值，并且这个初始缩放值是相对于 idealviewport 缩放的，最终得到的结果不仅会决定 visualviewport，还会影响到 layoutviewport</li>
@@ -266,15 +260,10 @@
 <h4 id="1px-的物理像素的解决方案"><a href="#1px-的物理像素的解决方案" class="headerlink" title="1px 的物理像素的解决方案"></a>1px 的物理像素的解决方案</h4><p>从第一部分的讨论可知 viewport 的 initial-scale 具有缩放页面的效果。对于 dpr&#x3D;2 的屏幕，1px 压缩一半便可与 1px 的设备像素比匹配，这就可以通过将缩放比 initial-scale 设置为 0.5&#x3D;1&#x2F;2 而实现。以此类推 dpr&#x3D;3 的屏幕可以将 initial-scale 设置为 0.33&#x3D;1&#x2F;3 来实现。</p>
 <h1 id="设备像素比-dpr-与-rem-的适配方案"><a href="#设备像素比-dpr-与-rem-的适配方案" class="headerlink" title="设备像素比 dpr 与 rem 的适配方案"></a>设备像素比 dpr 与 rem 的适配方案</h1><p>rem 是相对于根元素 html 的 font-size 来做计算。通常在页面初始化时加载时通过对 document.documentElement.style.fontSize 设置来实现。</p>
 <h4 id="rem-适配规则"><a href="#rem-适配规则" class="headerlink" title="rem 适配规则"></a>rem 适配规则</h4><p>通过对 initial-scale &#x3D; 1&#x2F;dpr 的设置，已将对屏幕的描述从物理像素转化到了物理像素上了，这将是后续推导的基础，且设计稿为 750px。</p>
-<p>物理像素为 750 &#x3D; 375 * 2，若屏幕等分为 10 份，那么 1rem &#x3D; 75px，10rem &#x3D; 750px;</p>
-<p>物理像素为 1125 &#x3D; 375 * 3，若屏幕等分为 10 份，那么 1rem &#x3D; 112.5px, 10rem &#x3D; 1125px;</p>
-<p>物理像素为 1242 &#x3D; 414 * 3, 若屏幕等分为 10 份，那么 1rem &#x3D; 124.2px, 10rem &#x3D; 1242px;</p>
+<p>物理像素为 750 &#x3D; 375 _ 2，若屏幕等分为 10 份，那么 1rem &#x3D; 75px，10rem &#x3D; 750px;<br>物理像素为 1125 &#x3D; 375 _ 3，若屏幕等分为 10 份，那么 1rem &#x3D; 112.5px, 10rem &#x3D; 1125px;<br>物理像素为 1242 &#x3D; 414 * 3, 若屏幕等分为 10 份，那么 1rem &#x3D; 124.2px, 10rem &#x3D; 1242px;</p>
 <p>同时为了书写方便可以直接通过 px 布局，然后在打包时利用 pxtorem 库转化为基于 rem 的布局。</p>
 <h1 id="视口单位-vw-vh-适配方案"><a href="#视口单位-vw-vh-适配方案" class="headerlink" title="视口单位(vw,vh)适配方案"></a>视口单位(vw,vh)适配方案</h1><p>将视口宽度 window.innerWidth 和视口高度 window.innerHeight 等分为 100 份，且将这里的视口理解成 idealviewport 更为贴切，并不会随着 viewport 的不同设置而改变。</p>
-<p>vw : 1vw 为视口宽度的 1%</p>
-<p>vh : 1vh 为视口高度的 1%</p>
-<p>vmin :  vw 和 vh 中的较小值</p>
-<p>vmax : 选取 vw 和 vh 中的较大值</p>
+<p>vw : 1vw 为视口宽度的 1%<br>vh : 1vh 为视口高度的 1%<br>vmin :  vw 和 vh 中的较小值<br>vmax : 选取 vw 和 vh 中的较大值</p>
 <p>如果设计稿为 750px，那么 1vw &#x3D; 7.5px，100vw &#x3D; 750px。其实设计稿按照设么都没多大关系，最终转化过来的都是相对单位，上面讲的 rem 也是对它的模拟。这里的比例关系也推荐不要自己换算，使用 pxtoviewport 的库就可以帮我们转换。当然每种方案都会有其弊端，这里就不展开讨论。</p>
 
     </div>
