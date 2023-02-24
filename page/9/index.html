@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:25" itemprop="dateModified" datetime="2023-02-22T20:58:25+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:04" itemprop="dateModified" datetime="2023-02-24T14:33:04+08:00">2023-02-24</time>
     </span>
 
   
@@ -299,7 +299,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:25" itemprop="dateModified" datetime="2023-02-22T20:58:25+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   
@@ -523,7 +523,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:26" itemprop="dateModified" datetime="2023-02-22T20:58:26+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   
@@ -617,13 +617,42 @@
 
 <p>上面例子中<code>handleSubmit</code>方法触发 action.</p>
 <h2 id="Hooks"><a href="#Hooks" class="headerlink" title="Hooks"></a>Hooks</h2><p>现在官方默认推荐使用 Hooks 方案替代上面的 connect().因为更简单明了.配合 ts 更是起飞.</p>
-<h3 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a>useSelector</h3><p>作用: 在函数组件中获取 state.</p>
+<h3 id="useSelector"><a href="#useSelector" class="headerlink" title="useSelector"></a>useSelector</h3><p>作用: 在函数组件中获取 state.<br>替代：<code>mapStateToProps</code><br>允许传入一个选择器函数从 redux state 中取需要的状态数据并返回。示例：</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="attr">data</span>: <span class="built_in">any</span> = <span class="title function_">useSelector</span>(<span class="attr">selector</span>: <span class="title class_">Selector</span>, eqaulityFn?: <span class="title class_">Function</span>)</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">num</span>);</span><br></pre></td></tr></table></figure>
 
-<h3 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a>useDispatch</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>();</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>选择器 Selector 函数可以返回任意类型的数据，而不仅限于 对象</p>
+</li>
+<li><p>当 dispath 一个 action 的时候，useSelector() 函数将对 Selector 选择器函数的返回值和上一个状态的返回值进行比较，如果 不同就会强制渲染组件，相同则不会</p>
+</li>
+<li><p>Selector 选择器 没有 接收 ownProps 属性</p>
+</li>
+<li><p>useSelector 默认比较更新 方式 为 &#x3D;&#x3D;&#x3D;, 如果需要浅层比较可以传入 第二个参数 equalityFn</p>
+<blockquote>
+<p>Tips: 不要在 Selector 选择器函数中 使用 props 属性, 否则可能会导致错误， 原因如下</p>
+</blockquote>
+</li>
+<li><p>选择器函数依赖 props 的 某个数据</p>
+</li>
+<li><p>dispatch action 会导致父组件重新渲染，并传递新的 props</p>
+</li>
+<li><p>子组件渲染时，选择器函数的执行时机会在 新 props 传入之前先执行，此时就会可能导致选择器函数返回错误数据，甚至报错 Zombile Child 是另一种 旧 props 导致异常的情况, 具体可以查看 <a target="_blank" rel="noopener" href="https://react-redux.js.org/api/hooks#usage-warnings">常用警告</a></p>
+</li>
+</ul>
+<h3 id="useDispatch"><a href="#useDispatch" class="headerlink" title="useDispatch"></a>useDispatch</h3><p>作用：返回 store 的 dispatch 方法，可以手动调用 dispatch 方法。<br>替代：<code>mapDispatchToProps</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>();</span><br></pre></td></tr></table></figure>
 
 <h3 id="useStore"><a href="#useStore" class="headerlink" title="useStore"></a>useStore</h3><p>这个 Hook 返回 redux <code>&lt;Provider&gt;</code>组件的 store 对象的引用。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = <span class="title function_">useStore</span>();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Tips： 大多数情况用不到这个 api， 取数据使用 useSelector() 代替</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useStore &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">CounterComponent</span> = (<span class="params">&#123; value &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> store = <span class="title function_">useStore</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// EXAMPLE ONLY! Do not do this in a real app.</span></span><br><span class="line">  <span class="comment">// The component will not automatically update if the store state changes</span></span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;store.getState()&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hooks-组件与-Connect-组件的对比"><a href="#Hooks-组件与-Connect-组件的对比" class="headerlink" title="Hooks 组件与 Connect 组件的对比"></a>Hooks 组件与 Connect 组件的对比</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; addCount &#125; <span class="keyword">from</span> <span class="string">&quot;./store/counter/actions&quot;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">Demo</span> = (<span class="params">&#123; count, addCount &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span>Count: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;addCount&#125;</span>&gt;</span>Count<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">mapStateToProps</span> = (<span class="params">state</span>) =&gt; (&#123;</span><br><span class="line">  <span class="attr">count</span>: state.<span class="property">counter</span>.<span class="property">count</span>,</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> mapDispatchToProps = &#123; addCount &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// content 链接</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">connect</span>(mapStateToProps, mapDispatchToProps)(<span class="title class_">Demo</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useDispatch, useSelector &#125; <span class="keyword">from</span> <span class="string">&quot;react-redux&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; addCount &#125; <span class="keyword">from</span> <span class="string">&quot;./store/counter/actions&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">Demo</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> count = <span class="title function_">useSelector</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">counter</span>.<span class="property">count</span>);</span><br><span class="line">  <span class="keyword">const</span> dispatch = <span class="title function_">useDispatch</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span>Count: &#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(addCount())&#125;&gt;Count<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          </span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h1 id="中间件-middleware"><a href="#中间件-middleware" class="headerlink" title="中间件 middleware"></a>中间件 middleware</h1><p>最最重要不要忘记<code>return next(action)</code><br>中间件就是一个函数,带有科里化.是对 dispatch 方法的改造，在发出 action 和执行 reducer 之间，添加的功能。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (store) =&gt; <span class="function">(<span class="params">next</span>) =&gt;</span> <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;&#125;;</span><br></pre></td></tr></table></figure>
@@ -792,7 +821,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:26" itemprop="dateModified" datetime="2023-02-22T20:58:26+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   
@@ -926,7 +955,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:26" itemprop="dateModified" datetime="2023-02-22T20:58:26+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   
@@ -1002,7 +1031,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:26" itemprop="dateModified" datetime="2023-02-22T20:58:26+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   
@@ -1092,7 +1121,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:26" itemprop="dateModified" datetime="2023-02-22T20:58:26+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   
@@ -1397,7 +1426,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:26" itemprop="dateModified" datetime="2023-02-22T20:58:26+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   
@@ -1476,7 +1505,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:26" itemprop="dateModified" datetime="2023-02-22T20:58:26+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   
@@ -1575,7 +1604,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:26" itemprop="dateModified" datetime="2023-02-22T20:58:26+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:05" itemprop="dateModified" datetime="2023-02-24T14:33:05+08:00">2023-02-24</time>
     </span>
 
   

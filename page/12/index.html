@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:28" itemprop="dateModified" datetime="2023-02-22T20:58:28+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:08" itemprop="dateModified" datetime="2023-02-24T14:33:08+08:00">2023-02-24</time>
     </span>
 
   
@@ -233,7 +233,7 @@
 <ol start="2">
 <li>使用数组泛型.</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: <span class="title class_">Array</span>&lt;number&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt; = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
 
 <h3 id="元组-Tuple"><a href="#元组-Tuple" class="headerlink" title="元组 Tuple"></a>元组 Tuple</h3><p>元组类型允许表示一个已知元素数量和类型的数组,各元素的类型不必相同.(可以理解为混合数组).</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="attr">x</span>: [string, number];</span><br><span class="line">x = [<span class="string">&quot;hello&quot;</span>, <span class="number">10</span>]; <span class="comment">//正确</span></span><br><span class="line">x = [<span class="number">10</span>, <span class="string">&quot;hello&quot;</span>]; <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
@@ -386,7 +386,8 @@
 <blockquote>
 <p>在上面的例子里，SelectableControl 包含了 Control 的所有成员，包括私有成员 state。  因为  state 是私有成员，所以只能够是 Control 的子类们才能实现 SelectableControl 接口。  因为只有  Control 的子类才能够拥有一个声明于 Control 的私有成员 state，这对私有成员的兼容性是必需的。<br>在 Control 类内部，是允许通过 SelectableControl 的实例来访问私有成员 state 的。  实际上， SelectableControl 接口和拥有 select 方法的 Control 类是一样的。 Button 和 TextBox 类是 SelectableControl 的子类（因为它们都继承自 Control 并有 select 方法），但 Image 和 Location 类并不是这样的</p>
 </blockquote>
-<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Greeter</span> &#123;</span><br><span class="line">  <span class="attr">greeting</span>: string;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">message: string</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">greeting</span> = message;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello, &quot;</span> + <span class="variable language_">this</span>.<span class="property">greeting</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> greeter = <span class="keyword">new</span> <span class="title class_">Greeter</span>(<span class="string">&quot;world&quot;</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="类型别名-type"><a href="#类型别名-type" class="headerlink" title="类型别名 type"></a>类型别名 type</h2><p>大部分时候,类型别名 type 和接口 interface 可以互换.但是有些时候只能使用类型别名.<br>比如,联合类型.</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Greeter</span> &#123;</span><br><span class="line">  <span class="attr">greeting</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">message: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">greeting</span> = message;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">greet</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hello, &quot;</span> + <span class="variable language_">this</span>.<span class="property">greeting</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> greeter = <span class="keyword">new</span> <span class="title class_">Greeter</span>(<span class="string">&quot;world&quot;</span>);</span><br></pre></td></tr></table></figure>
 
 <h3 id="类的关键字"><a href="#类的关键字" class="headerlink" title="类的关键字"></a>类的关键字</h3><ul>
 <li>public</li>
@@ -620,10 +621,10 @@
 </ul>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="title class_">ParamType</span>&lt;T&gt; = T <span class="keyword">extends</span> (<span class="attr">param</span>: infer P) =&gt; <span class="built_in">any</span> ? P : T;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">IDog</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Func</span> = <span class="function">(<span class="params">dog: IDog</span>) =&gt;</span> <span class="built_in">void</span>;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Param</span> = <span class="title class_">ParamType</span>&lt;<span class="title class_">Func</span>&gt;; <span class="comment">//IDog</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">TypeSring</span> = <span class="title class_">ParamType</span>&lt;stirng&gt;; <span class="comment">//string</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="keyof-索引类型"><a href="#keyof-索引类型" class="headerlink" title="keyof(索引类型)"></a>keyof(索引类型)</h3><p>用来取得一个对象接口的所有 key 值.</p>
+<h3 id="keyof-索引类型"><a href="#keyof-索引类型" class="headerlink" title="keyof(索引类型)"></a>keyof(索引类型)</h3><p>用来取得一个对象接口的所有 key 值.<br>keyof 可以获取某种类型的所有键，返回类型是联合类型。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IPerson</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">  sex?: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">K1</span> = keyof <span class="title class_">IPerson</span>; <span class="comment">//&#x27;name&#x27; | &#x27;age&#x27; | &#x27;sex&#x27;</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">K2</span> = keyof <span class="title class_">IPerson</span>[]; <span class="comment">//&#x27;length&#x27;|&#x27;push&#x27;|&#x27;pop&#x27;...</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">K3</span> = <span class="keyword">typeof</span> &#123; [<span class="attr">x</span>:<span class="built_in">string</span>]: <span class="title class_">Person</span> &#125;; <span class="comment">//string | number`</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>在 JS 中,typeof 判断数据类型.<br>在 TS 中,获取一个变量的声明类型,如果不存在,获取该变量的推论类型.</p>
+<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>在 JS 中,typeof 判断数据类型.<br>在 TS 中,获取一个变量的声明类型,如果不存在,获取该变量的推论类型.<br>typeof 可以获取一个变量或者对象（包括函数）的类型。</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IPerson</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">  sex?: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">jack</span>: <span class="title class_">IPerson</span> = &#123; <span class="attr">name</span>: <span class="string">&quot;jack&quot;</span>, <span class="attr">age</span>: <span class="number">100</span> &#125;;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Jack</span> = <span class="keyword">typeof</span> jack; <span class="comment">// -&gt; IPerson</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">x: <span class="built_in">number</span></span>): <span class="title class_">Array</span>&lt;<span class="built_in">number</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> [x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> F = <span class="keyword">typeof</span> foo; <span class="comment">// -&gt; (x: number) =&gt; number[]</span></span><br><span class="line"><span class="comment">//Jack 这个类型别名实际上就是 jack 的类型 IPerson，</span></span><br><span class="line"><span class="comment">//而 F 的类型就是 TS 自己推导出来的 foo 的类型 (x: number) =&gt; number[]。</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="内置帮助类型"><a href="#内置帮助类型" class="headerlink" title="内置帮助类型"></a>内置帮助类型</h2><h3 id="Partial-映射类型"><a href="#Partial-映射类型" class="headerlink" title="Partial(映射类型)"></a>Partial<T>(映射类型)</h3><p>让 T 中所有属性都是可选的.</p>
@@ -653,12 +654,12 @@
 <h3 id="Extract-lt-T-U-gt"><a href="#Extract-lt-T-U-gt" class="headerlink" title="Extract&lt;T,U&gt;"></a>Extract&lt;T,U&gt;</h3><p>相当于取交集</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Extract from T those types that are assignable to U</span></span><br><span class="line"><span class="comment"> * 从T中提取可分配给U的类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Extract</span>&lt;T, U&gt; = T <span class="keyword">extends</span> U ? T : <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Omit-lt-T-K-gt"><a href="#Omit-lt-T-K-gt" class="headerlink" title="Omit&lt;T,K&gt;"></a>Omit&lt;T,K&gt;</h3><p>类似于<code>Exclude</code>,但是更方便.</p>
+<h3 id="Omit-lt-T-K-gt"><a href="#Omit-lt-T-K-gt" class="headerlink" title="Omit&lt;T,K&gt;"></a>Omit&lt;T,K&gt;</h3><p>类似于<code>Exclude</code>,但是更方便.<br>用于保留一些属性,再排除一些属性.</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Construct a type with the properties of T except for those in type K.</span></span><br><span class="line"><span class="comment"> * 构造一个除类型K之外的T属性的类型</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Omit</span>&lt;T, K <span class="keyword">extends</span> keyof <span class="built_in">any</span>&gt; = <span class="title class_">Pick</span>&lt;T, <span class="title class_">Exclude</span>&lt;keyof T, K&gt;&gt;;</span><br></pre></td></tr></table></figure>
 
 <h3 id="NonNullable"><a href="#NonNullable" class="headerlink" title="NonNullable"></a>NonNullable</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Exclude null and undefined from T</span></span><br><span class="line"><span class="comment"> * 从T中排除null和undefined</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">NonNullable</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="literal">null</span> | <span class="literal">undefined</span> ? <span class="built_in">never</span> : T;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>返回类型为 T 的函数的参数类型所组成的数组.</p>
+<h3 id="Parameters"><a href="#Parameters" class="headerlink" title="Parameters"></a>Parameters</h3><p>返回类型为 T 的函数的参数类型所组成的数组.<br>也就是将参数取出来放进数组里.</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Obtain the parameters of a function type in a tuple</span></span><br><span class="line"><span class="comment"> * 在元组中获取构造函数类型的参数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Parameters</span>&lt;T <span class="keyword">extends</span> (...<span class="attr">args</span>: <span class="built_in">any</span>) =&gt; <span class="built_in">any</span>&gt; = T <span class="keyword">extends</span> (</span><br><span class="line">  ...<span class="attr">args</span>: infer P</span><br><span class="line">) =&gt; <span class="built_in">any</span></span><br><span class="line">  ? P</span><br><span class="line">  : <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> <span class="variable constant_">T0</span> = <span class="title class_">Parameters</span>&lt;<span class="function">() =&gt;</span> <span class="built_in">string</span>&gt;; <span class="comment">// []</span></span><br><span class="line"><span class="keyword">type</span> <span class="variable constant_">T1</span> = <span class="title class_">Parameters</span>&lt;<span class="function">(<span class="params">s: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">void</span>&gt;; <span class="comment">// [string]</span></span><br></pre></td></tr></table></figure>
@@ -749,7 +750,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:28" itemprop="dateModified" datetime="2023-02-22T20:58:28+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:08" itemprop="dateModified" datetime="2023-02-24T14:33:08+08:00">2023-02-24</time>
     </span>
 
   
@@ -887,7 +888,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:21" itemprop="dateModified" datetime="2023-02-22T20:58:21+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:00" itemprop="dateModified" datetime="2023-02-24T14:33:00+08:00">2023-02-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1364,7 +1365,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:23" itemprop="dateModified" datetime="2023-02-22T20:58:23+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:02" itemprop="dateModified" datetime="2023-02-24T14:33:02+08:00">2023-02-24</time>
     </span>
 
   
@@ -1629,7 +1630,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:24" itemprop="dateModified" datetime="2023-02-22T20:58:24+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:03" itemprop="dateModified" datetime="2023-02-24T14:33:03+08:00">2023-02-24</time>
     </span>
 
   
@@ -1746,7 +1747,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:24" itemprop="dateModified" datetime="2023-02-22T20:58:24+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:03" itemprop="dateModified" datetime="2023-02-24T14:33:03+08:00">2023-02-24</time>
     </span>
 
   
@@ -1873,7 +1874,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:21" itemprop="dateModified" datetime="2023-02-22T20:58:21+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:00" itemprop="dateModified" datetime="2023-02-24T14:33:00+08:00">2023-02-24</time>
     </span>
 
   
@@ -2145,7 +2146,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:24" itemprop="dateModified" datetime="2023-02-22T20:58:24+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:03" itemprop="dateModified" datetime="2023-02-24T14:33:03+08:00">2023-02-24</time>
     </span>
 
   
@@ -2245,7 +2246,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:24" itemprop="dateModified" datetime="2023-02-22T20:58:24+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:03" itemprop="dateModified" datetime="2023-02-24T14:33:03+08:00">2023-02-24</time>
     </span>
 
   
@@ -2372,7 +2373,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-22 20:58:23" itemprop="dateModified" datetime="2023-02-22T20:58:23+08:00">2023-02-22</time>
+      <time title="Modified: 2023-02-24 14:33:02" itemprop="dateModified" datetime="2023-02-24T14:33:02+08:00">2023-02-24</time>
     </span>
 
   
