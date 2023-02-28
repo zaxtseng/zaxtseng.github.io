@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:20" itemprop="dateModified" datetime="2023-02-27T17:14:20+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:52" itemprop="dateModified" datetime="2023-02-28T19:42:52+08:00">2023-02-28</time>
     </span>
 
   
@@ -352,7 +352,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:20" itemprop="dateModified" datetime="2023-02-27T17:14:20+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:53" itemprop="dateModified" datetime="2023-02-28T19:42:53+08:00">2023-02-28</time>
     </span>
 
   
@@ -648,7 +648,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:20" itemprop="dateModified" datetime="2023-02-27T17:14:20+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:53" itemprop="dateModified" datetime="2023-02-28T19:42:53+08:00">2023-02-28</time>
     </span>
 
   
@@ -843,7 +843,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:20" itemprop="dateModified" datetime="2023-02-27T17:14:20+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:53" itemprop="dateModified" datetime="2023-02-28T19:42:53+08:00">2023-02-28</time>
     </span>
 
   
@@ -971,7 +971,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:20" itemprop="dateModified" datetime="2023-02-27T17:14:20+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:53" itemprop="dateModified" datetime="2023-02-28T19:42:53+08:00">2023-02-28</time>
     </span>
 
   
@@ -1253,7 +1253,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:21" itemprop="dateModified" datetime="2023-02-27T17:14:21+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:54" itemprop="dateModified" datetime="2023-02-28T19:42:54+08:00">2023-02-28</time>
     </span>
 
   
@@ -1352,6 +1352,10 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&quot;0&quot;</span>;</span><br><span class="line">!a == <span class="literal">false</span>; <span class="comment">// 字符串取反,就是false, 所以判断结果为true</span></span><br><span class="line">a == <span class="literal">false</span>; <span class="comment">// 使用==转化false为0, &quot;0&quot;和0比较,&quot;0&quot;被转化为0,结果为true</span></span><br><span class="line">a == <span class="number">0</span>; <span class="comment">//跟上一条一样</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="双逻辑非"><a href="#双逻辑非" class="headerlink" title="双逻辑非(!!)"></a>双逻辑非(!!)</h2><p>用于始终返回<code>true</code>或者<code>false</code><br>比如<code>!!undefined</code>返回<code>false</code>,否则直接会返回<code>undefined</code>.</p>
+<h3 id="空值合并运算符"><a href="#空值合并运算符" class="headerlink" title="空值合并运算符(??)"></a>空值合并运算符(<code>??</code>)</h3><p>当左侧为<code>null</code>或<code>undefined</code>，返回右侧。<br>与<code>||</code>的区别，当左侧是<code>&#39;&#39;</code>或者<code>0</code>，是可以取左侧的值的。</p>
+<h2 id="逗号运算符"><a href="#逗号运算符" class="headerlink" title="(,)逗号运算符"></a><code>(,)</code>逗号运算符</h2><p>逗号表达式的值是成员表达式最右侧的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a, b, c;</span><br><span class="line"></span><br><span class="line">(a = b = <span class="number">3</span>), (c = <span class="number">4</span>); <span class="comment">// 值 4 返回到控制台</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a); <span class="comment">// 3 (left-most)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> x, y, z;</span><br><span class="line"></span><br><span class="line">x = ((y = <span class="number">5</span>), (z = <span class="number">6</span>)); <span class="comment">// 值 6 返回到控制台</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x); <span class="comment">// 6 (right-most)</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="二进制运算符"><a href="#二进制运算符" class="headerlink" title="二进制运算符"></a>二进制运算符</h2><p><code>&lt;&lt;</code>:左偏移,将数值转换为二进制,然后向左偏移多少位.<br><code>|</code>:按位或.按照二进制转换后,位数有则计算.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span> &lt;&lt; <span class="number">1</span>;</span><br><span class="line"><span class="comment">//二进制: 0000 0001 =&gt; 左偏移1位 =&gt; 0000 0010 =&gt; 2</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">2</span> &lt;&lt; <span class="number">2</span>;</span><br><span class="line"><span class="comment">//二进制: 0000 0010 =&gt; 左偏移2位 =&gt; 0000 1000 =&gt; 8</span></span><br><span class="line"><span class="keyword">let</span> c = a | b;</span><br><span class="line"><span class="comment">//二进制: 0000 0010</span></span><br><span class="line"><span class="comment">//二进制: 0000 1000 =&gt; 0000 1010 =&gt;10</span></span><br></pre></td></tr></table></figure>
 
@@ -1768,7 +1772,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:21" itemprop="dateModified" datetime="2023-02-27T17:14:21+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:54" itemprop="dateModified" datetime="2023-02-28T19:42:54+08:00">2023-02-28</time>
     </span>
 
   
@@ -2100,7 +2104,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:21" itemprop="dateModified" datetime="2023-02-27T17:14:21+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:54" itemprop="dateModified" datetime="2023-02-28T19:42:54+08:00">2023-02-28</time>
     </span>
 
   
@@ -2227,7 +2231,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:21" itemprop="dateModified" datetime="2023-02-27T17:14:21+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:54" itemprop="dateModified" datetime="2023-02-28T19:42:54+08:00">2023-02-28</time>
     </span>
 
   
@@ -2317,7 +2321,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-27 17:14:21" itemprop="dateModified" datetime="2023-02-27T17:14:21+08:00">2023-02-27</time>
+      <time title="Modified: 2023-02-28 19:42:54" itemprop="dateModified" datetime="2023-02-28T19:42:54+08:00">2023-02-28</time>
     </span>
 
   
