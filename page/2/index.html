@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:37" itemprop="dateModified" datetime="2023-02-28T19:42:37+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:15" itemprop="dateModified" datetime="2023-03-04T19:32:15+08:00">2023-03-04</time>
     </span>
 
   
@@ -311,7 +311,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:37" itemprop="dateModified" datetime="2023-02-28T19:42:37+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:15" itemprop="dateModified" datetime="2023-03-04T19:32:15+08:00">2023-03-04</time>
     </span>
 
   
@@ -403,7 +403,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:37" itemprop="dateModified" datetime="2023-02-28T19:42:37+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:15" itemprop="dateModified" datetime="2023-03-04T19:32:15+08:00">2023-03-04</time>
     </span>
 
   
@@ -479,7 +479,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:38" itemprop="dateModified" datetime="2023-02-28T19:42:38+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:16" itemprop="dateModified" datetime="2023-03-04T19:32:16+08:00">2023-03-04</time>
     </span>
 
   
@@ -1072,7 +1072,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:38" itemprop="dateModified" datetime="2023-02-28T19:42:38+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:16" itemprop="dateModified" datetime="2023-03-04T19:32:16+08:00">2023-03-04</time>
     </span>
 
   
@@ -1290,7 +1290,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:39" itemprop="dateModified" datetime="2023-02-28T19:42:39+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:16" itemprop="dateModified" datetime="2023-03-04T19:32:16+08:00">2023-03-04</time>
     </span>
 
   
@@ -1939,7 +1939,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:39" itemprop="dateModified" datetime="2023-02-28T19:42:39+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:16" itemprop="dateModified" datetime="2023-03-04T19:32:16+08:00">2023-03-04</time>
     </span>
 
   
@@ -2141,7 +2141,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:39" itemprop="dateModified" datetime="2023-02-28T19:42:39+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:16" itemprop="dateModified" datetime="2023-03-04T19:32:16+08:00">2023-03-04</time>
     </span>
 
   
@@ -2281,7 +2281,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:40" itemprop="dateModified" datetime="2023-02-28T19:42:40+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:17" itemprop="dateModified" datetime="2023-03-04T19:32:17+08:00">2023-03-04</time>
     </span>
 
   
@@ -2394,7 +2394,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 
 <h1 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h1><ul>
 <li>同步代码</li>
-<li>process.nextTick 和 promise.then() ，之后进入事件循环</li>
+<li>process.nextTick(优先级高于 promise)和 promise.then() ，之后进入事件循环</li>
 <li>timers 阶段：这个阶段执行 timer（setTimeout、setInterval）的回调</li>
 <li>I&#x2F;O callbacks 阶段 ：处理一些上一轮循环中的少数未执行的 I&#x2F;O 回调</li>
 <li>idle, prepare 阶段 ：仅 node 内部使用</li>
@@ -2402,7 +2402,15 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <li>check 阶段 ：执行 setImmediate() 的回调</li>
 <li>close callbacks 阶段：执行 socket 的 close 事件回调</li>
 </ul>
-<p>习题解析：</p>
+<h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2><ul>
+<li>执行同步代码</li>
+<li>查看是否有满足条件的微任务,执行</li>
+<li>执行 timer 中满足条件的宏任务</li>
+<li>timer 中宏任务全部执行完毕切换队列</li>
+<li>切换前会清空微任务</li>
+<li>之后按照 timer &#x3D;&gt; poll &#x3D;&gt; check 检查是否有任务执行</li>
+</ul>
+<h3 id="和浏览器-eventloop-区别"><a href="#和浏览器-eventloop-区别" class="headerlink" title="和浏览器 eventloop 区别:"></a>和浏览器 eventloop 区别:</h3><p>浏览器执行宏任务就会把本次循环生成的微任务清空,而 node 是在切换队列前清空,所以要将 timer 中宏任务全部执行完毕,再执行微任务.<br>习题解析：</p>
 <ul>
 <li>new Promise(()&#x3D;&gt;{&#x2F;&#x2F;同步执行}).then(()&#x3D;&gt;{&#x2F;&#x2F;异步执行})</li>
 <li>async function test(){console.log() &#x2F;&#x2F;同步 -&gt; await test(0) &#x2F;&#x2F;同步 -&gt; console.log()&#x2F;&#x2F;异步}</li>
@@ -2473,6 +2481,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <li>readline: 读取 stdin 的⼀⾏内容，可以读取、增加、删除我们命令⾏中的内容</li>
 <li>os：操作系统层⾯的⼀些 api，例如告诉你当前系统类型及⼀些参数</li>
 <li>vm: ⼀个专⻔处理沙箱的虚拟机模块，底层主要来调⽤ v8 相关 api 进⾏代码解析</li>
+<li>promisify：可以把异步函数回调形式改为 promise 形式。</li>
 </ul>
 <h2 id="fs"><a href="#fs" class="headerlink" title="fs"></a>fs</h2><ul>
 <li>文件常识<ul>
@@ -2695,6 +2704,8 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data</span><br><span class="line">  .<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;data end&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">pipe</span>(a)</span><br><span class="line">  .<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;a end&quot;</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .<span class="title function_">pipe</span>(b)</span><br><span class="line">  .<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;b end&quot;</span>);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
 
+<h1 id="promisify"><a href="#promisify" class="headerlink" title="promisify"></a>promisify</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; readFile &#125; <span class="keyword">from</span> <span class="string">&quot;fs&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; promisify &#125; <span class="keyword">from</span> <span class="string">&quot;uitl&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 该方法可以将read变为返回promise形式的异步函数</span></span><br><span class="line"><span class="keyword">const</span> read = <span class="title function_">promisify</span>(readFile);</span><br></pre></td></tr></table></figure>
+
 <h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>可理解为一种存储数据的结构.<br>链表是一组节点组成的集合，每个节点都使用一个对象的引用来指向它的后一个节点。指向另一节点的引用讲做链。</p>
 <h2 id="链表结构图"><a href="#链表结构图" class="headerlink" title="链表结构图"></a>链表结构图</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data1|<span class="function"><span class="params">next</span> =&gt;</span> data2|<span class="function"><span class="params">next</span> =&gt;</span> data3|<span class="function"><span class="params">next</span> =&gt;</span> <span class="title class_">Null</span></span><br></pre></td></tr></table></figure>
 
@@ -2773,7 +2784,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-02-28 19:42:40" itemprop="dateModified" datetime="2023-02-28T19:42:40+08:00">2023-02-28</time>
+      <time title="Modified: 2023-03-04 19:32:17" itemprop="dateModified" datetime="2023-03-04T19:32:17+08:00">2023-03-04</time>
     </span>
 
   
@@ -2842,7 +2853,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#x73;&#x61;&#x78;&#x40;&#x33;&#46;&#x30;&#46;&#48;">&#x73;&#x61;&#x78;&#x40;&#x33;&#46;&#x30;&#46;&#48;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#x61;&#120;&#x40;&#x33;&#x2e;&#x30;&#x2e;&#x30;">&#115;&#x61;&#120;&#x40;&#x33;&#x2e;&#x30;&#x2e;&#x30;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
