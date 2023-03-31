@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:07" itemprop="dateModified" datetime="2023-03-28T22:47:07+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:12" itemprop="dateModified" datetime="2023-03-31T08:07:12+08:00">2023-03-31</time>
     </span>
 
   
@@ -299,7 +299,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:07" itemprop="dateModified" datetime="2023-03-28T22:47:07+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
@@ -523,7 +523,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:07" itemprop="dateModified" datetime="2023-03-28T22:47:07+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
@@ -821,7 +821,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:07" itemprop="dateModified" datetime="2023-03-28T22:47:07+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
@@ -955,7 +955,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:07" itemprop="dateModified" datetime="2023-03-28T22:47:07+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
@@ -1031,7 +1031,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:07" itemprop="dateModified" datetime="2023-03-28T22:47:07+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
@@ -1121,7 +1121,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:08" itemprop="dateModified" datetime="2023-03-28T22:47:08+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
@@ -1342,6 +1342,7 @@
 <li>每次渲染 useRef 返回值不变</li>
 <li>ref.current 发生变化不会造成 re-render。</li>
 <li>ref.current 发生变化应该作为 side effect（因为它会影响下次渲染）。所以不应该在 render 阶段更新 current 属性。</li>
+<li>修改 ref.current 的值不能另外赋值再修改,必须修改 ref.current。这和指针有关。</li>
 </ol>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">RenderCounter</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> counter = <span class="title function_">useRef</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handler</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      counter.<span class="property">current</span> = counter.<span class="property">current</span> + <span class="number">1</span>;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="property">current</span>); <span class="comment">// 虽然打印123，但是没有re-render，页面始终是0</span></span><br><span class="line">      <span class="comment">//所以应该在useEffect中写</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handler&#125;</span>&gt;</span>add<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;`The component has been re-rendered $&#123;counter.current&#125; times`&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">RenderCounter</span> /&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -1364,6 +1365,9 @@
 <li>使用场景: 父组件调用子组件方法</li>
 </ul>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>,&#123;useState,useEffect,createRef,useRef,forwardRef,useImperativeHandle&#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Child</span>(<span class="params">props,parentRef</span>)&#123;</span><br><span class="line">    <span class="comment">// 子组件内部自己创建 ref</span></span><br><span class="line">    <span class="keyword">let</span> focusRef = <span class="title function_">useRef</span>();</span><br><span class="line">    <span class="keyword">let</span> inputRef = <span class="title function_">useRef</span>();</span><br><span class="line">    <span class="title function_">useImperativeHandle</span>(parentRef,<span class="function">()=&gt;</span>(</span><br><span class="line">      <span class="comment">// 这个函数会返回一个对象</span></span><br><span class="line">      <span class="comment">// 该对象会作为父组件 current 属性的值</span></span><br><span class="line">      <span class="comment">// 通过这种方式，父组件可以使用操作子组件中的多个 ref</span></span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          <span class="comment">//注意这里是返回对象,必须有&#123;&#125;</span></span><br><span class="line">            focusRef,</span><br><span class="line">            inputRef,</span><br><span class="line">            <span class="attr">name</span>:<span class="string">&#x27;计数器&#x27;</span>,</span><br><span class="line">            <span class="title function_">focus</span>(<span class="params"></span>)&#123;</span><br><span class="line">                focusRef.<span class="property">current</span>.<span class="title function_">focus</span>();</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="title function_">changeText</span>(<span class="params">text</span>)&#123;</span><br><span class="line">                inputRef.<span class="property">current</span>.<span class="property">value</span> = text;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;focusRef&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 子组件需要forwardRef包裹</span></span><br><span class="line"><span class="title class_">Child</span> = <span class="title function_">forwardRef</span>(<span class="title class_">Child</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Parent</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">const</span> parentRef = <span class="title function_">useRef</span>();<span class="comment">//&#123;current:&#x27;&#x27;&#125;</span></span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">getFocus</span>(<span class="params"></span>)&#123;</span><br><span class="line">    parentRef.<span class="property">current</span>.<span class="title function_">focus</span>();</span><br><span class="line">    <span class="comment">// 因为子组件中没有定义这个属性，实现了保护，所以这里的代码无效</span></span><br><span class="line">    parentRef.<span class="property">current</span>.<span class="title function_">addNumber</span>(<span class="number">666</span>);</span><br><span class="line">    parentRef.<span class="property">current</span>.<span class="title function_">changeText</span>(<span class="string">&#x27;&lt;script&gt;alert(1)&lt;/script&gt;&#x27;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(parentRef.<span class="property">current</span>.<span class="property">name</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">        // 子组件上绑定父组件设置的ref</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">ForwardChild</span> <span class="attr">ref</span>=<span class="string">&#123;parentRef&#125;/</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;getFocus&#125;</span>&gt;</span>获得焦点<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="useTransition"><a href="#useTransition" class="headerlink" title="useTransition"></a>useTransition</h1><p>用于提升性能，一般用在大量数据展示时，频繁修改请求参数。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState, useTransition &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Home</span>: <span class="title class_">React</span>.<span class="property">FC</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [val, setVal] = <span class="title function_">useState</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="keyword">const</span> [arr, setArr] = useState&lt;<span class="built_in">number</span>[]&gt;([]);</span><br><span class="line">  <span class="comment">// pending 就是确定当前状态是否是已经设置的，可搭配loading</span></span><br><span class="line">  <span class="keyword">const</span> [pending, transition] = <span class="title function_">useTransition</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">getList</span> = (<span class="params">e: <span class="built_in">any</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setVal</span>(e.<span class="property">target</span>.<span class="property">value</span>);</span><br><span class="line">    <span class="keyword">let</span> arr = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10000</span>), <span class="function">(<span class="params">item</span>) =&gt;</span> <span class="title class_">Date</span>.<span class="title function_">now</span>());</span><br><span class="line">    <span class="comment">// 这里transition可以将数据减缓，相当于debounce</span></span><br><span class="line">    <span class="title function_">transition</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">setArr</span>(arr);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.box&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">value</span>=<span class="string">&#123;val&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;getList&#125;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;pending ? (</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>loading....<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      ) : (</span></span><br><span class="line"><span class="language-xml">        arr.map((item, key) =&gt; <span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">&#123;key&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span>)</span></span><br><span class="line"><span class="language-xml">      )&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Home</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1426,7 +1430,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:08" itemprop="dateModified" datetime="2023-03-28T22:47:08+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
@@ -1505,7 +1509,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:08" itemprop="dateModified" datetime="2023-03-28T22:47:08+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
@@ -1604,7 +1608,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-03-28 22:47:08" itemprop="dateModified" datetime="2023-03-28T22:47:08+08:00">2023-03-28</time>
+      <time title="Modified: 2023-03-31 08:07:13" itemprop="dateModified" datetime="2023-03-31T08:07:13+08:00">2023-03-31</time>
     </span>
 
   
