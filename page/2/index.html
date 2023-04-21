@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:14" itemprop="dateModified" datetime="2023-04-20T14:45:14+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:49" itemprop="dateModified" datetime="2023-04-21T18:04:49+08:00">2023-04-21</time>
     </span>
 
   
@@ -233,6 +233,15 @@
 <li>从 CSS、HTML 的代码书写上来考虑</li>
 <li>从需要下载的内容是否需要在首屏使用上来考虑</li>
 </ul>
+<h2 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h2><h3 id="html-实现"><a href="#html-实现" class="headerlink" title="html 实现"></a>html 实现</h3><p>给图片加上<code>loading=‘lazy’</code></p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src<span class="string">&#x27;./a.png&#x27;</span> loading=<span class="string">&#x27;lazy&#x27;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JS-实现懒加载"><a href="#JS-实现懒加载" class="headerlink" title="JS 实现懒加载"></a>JS 实现懒加载</h3><p>原理：拿到所有图片的 DOM，遍历每个图片是否到了可视区域，到了就设置 src 属性，绑定<code>scroll</code>事件进行事件监听。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./img/default.png&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;./img/1.png&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./img/default.png&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;./img/2.png&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;./img/default.png&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;./img/3.png&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">lazyLoad</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 可视区高度</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> viewHeight =</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">window</span>.<span class="property">innerHeight</span> ||</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="property">documentElement</span>.<span class="property">clientHeight</span> ||</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">clientHeight</span>;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 所有图片</span></span></span><br><span class="line"><span class="language-javascript">      <span class="keyword">let</span> imgs = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;img[data-src]&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 循环</span></span></span><br><span class="line"><span class="language-javascript">      imgs.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (item.<span class="property">dataset</span>.<span class="property">src</span> === <span class="string">&quot;&quot;</span>) <span class="keyword">return</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 获取该元素在视口位置</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> rect = item.<span class="title function_">getBoundingClientRect</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 可视区域的高度 &gt; 元素到顶部的高度 =&gt; 元素露头了</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (rect.<span class="property">top</span> &lt; viewHeight) &#123;</span></span><br><span class="line"><span class="language-javascript">          item.<span class="property">src</span> = item.<span class="property">dataset</span>.<span class="property">src</span>;</span></span><br><span class="line"><span class="language-javascript">          item.<span class="title function_">removeAttribute</span>(<span class="string">&quot;data-src&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 这里还需要使用节流函数</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;scroll&quot;</span>, lazyLoad);</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="intersectionObserver"><a href="#intersectionObserver" class="headerlink" title="intersectionObserver"></a>intersectionObserver</h3><p>Intersection Observer 即重叠观察者，从这个命名就可以看出它用于判断两个元素是否重叠，因为不用进行事件的监听，性能方面相比 getBoundingClientRect 会好很多<br>目标元素与视口产生交叉区域。<br>IntersectionObserver 是浏览器原生提供的构造函数，接受两个参数：callback 是可见性变化时的回调函数，option 是配置对象（该参数可选）。<br>目标元素的可见性变化时，就会调用观察器的回调函数 callback。callback 一般会触发两次。一次是目标元素刚刚进入视口（开始可见），另一次是完全离开视口（开始不可见）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> imgs = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&quot;img[data-src]&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> config = &#123;</span><br><span class="line">  <span class="attr">rootMargin</span>: <span class="string">&quot;0px&quot;</span>,</span><br><span class="line">  <span class="attr">threshold</span>: <span class="number">0</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">callback</span> = (<span class="params">entries, self</span>) =&gt; &#123;</span><br><span class="line">  entries.<span class="title function_">forEach</span>(<span class="function">(<span class="params">entry</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> img = entry.<span class="property">target</span>;</span><br><span class="line">    <span class="keyword">let</span> src = img.<span class="property">dataset</span>.<span class="property">src</span>;</span><br><span class="line">    <span class="keyword">if</span> (src) &#123;</span><br><span class="line">      img.<span class="property">src</span> = src;</span><br><span class="line">      img.<span class="title function_">removeAttribute</span>(<span class="string">&quot;data-src&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 解除观察</span></span><br><span class="line">    self.<span class="title function_">unobserve</span>(entry.<span class="property">target</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 传入回调</span></span><br><span class="line"><span class="keyword">let</span> observer = <span class="keyword">new</span> <span class="title class_">IntersectionObserver</span>(callback, config);</span><br><span class="line"><span class="comment">// 开始观察</span></span><br><span class="line">imgs.<span class="title function_">forEach</span>(<span class="function">(<span class="params">img</span>) =&gt;</span> observer.<span class="title function_">observe</span>(img));</span><br></pre></td></tr></table></figure>
+
 <h1 id="JS-性能优化"><a href="#JS-性能优化" class="headerlink" title="JS 性能优化"></a>JS 性能优化</h1><h1 id="CSS-性能优化"><a href="#CSS-性能优化" class="headerlink" title="CSS 性能优化"></a>CSS 性能优化</h1><p>问题: css 层级设置过多导致性能减弱</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">  &lt;<span class="selector-tag">a</span>&gt; &lt;<span class="selector-tag">span</span>&gt;&lt;/<span class="selector-tag">span</span>&gt; &lt;/<span class="selector-tag">a</span>&gt;</span><br><span class="line">&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">div</span> &gt; <span class="selector-tag">a</span> &gt; <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 
@@ -311,7 +320,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:14" itemprop="dateModified" datetime="2023-04-20T14:45:14+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:49" itemprop="dateModified" datetime="2023-04-21T18:04:49+08:00">2023-04-21</time>
     </span>
 
   
@@ -403,7 +412,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:14" itemprop="dateModified" datetime="2023-04-20T14:45:14+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:49" itemprop="dateModified" datetime="2023-04-21T18:04:49+08:00">2023-04-21</time>
     </span>
 
   
@@ -479,7 +488,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:14" itemprop="dateModified" datetime="2023-04-20T14:45:14+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:50" itemprop="dateModified" datetime="2023-04-21T18:04:50+08:00">2023-04-21</time>
     </span>
 
   
@@ -1072,7 +1081,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:14" itemprop="dateModified" datetime="2023-04-20T14:45:14+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:50" itemprop="dateModified" datetime="2023-04-21T18:04:50+08:00">2023-04-21</time>
     </span>
 
   
@@ -1290,7 +1299,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:15" itemprop="dateModified" datetime="2023-04-20T14:45:15+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:50" itemprop="dateModified" datetime="2023-04-21T18:04:50+08:00">2023-04-21</time>
     </span>
 
   
@@ -1939,7 +1948,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:15" itemprop="dateModified" datetime="2023-04-20T14:45:15+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:50" itemprop="dateModified" datetime="2023-04-21T18:04:50+08:00">2023-04-21</time>
     </span>
 
   
@@ -2141,7 +2150,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:15" itemprop="dateModified" datetime="2023-04-20T14:45:15+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:50" itemprop="dateModified" datetime="2023-04-21T18:04:50+08:00">2023-04-21</time>
     </span>
 
   
@@ -2281,7 +2290,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:15" itemprop="dateModified" datetime="2023-04-20T14:45:15+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:51" itemprop="dateModified" datetime="2023-04-21T18:04:51+08:00">2023-04-21</time>
     </span>
 
   
@@ -2784,7 +2793,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-20 14:45:15" itemprop="dateModified" datetime="2023-04-20T14:45:15+08:00">2023-04-20</time>
+      <time title="Modified: 2023-04-21 18:04:51" itemprop="dateModified" datetime="2023-04-21T18:04:51+08:00">2023-04-21</time>
     </span>
 
   
@@ -2853,7 +2862,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <td>安装标记为 next 的版本</td>
 </tr>
 <tr>
-<td>pnpm add <a href="mailto:&#115;&#x61;&#x78;&#64;&#51;&#x2e;&#48;&#x2e;&#x30;">&#115;&#x61;&#x78;&#64;&#51;&#x2e;&#48;&#x2e;&#x30;</a></td>
+<td>pnpm add <a href="mailto:&#115;&#97;&#x78;&#64;&#51;&#x2e;&#48;&#46;&#x30;">&#115;&#97;&#x78;&#64;&#51;&#x2e;&#48;&#46;&#x30;</a></td>
 <td>安装指定版本 3.0.0</td>
 </tr>
 </tbody></table>
