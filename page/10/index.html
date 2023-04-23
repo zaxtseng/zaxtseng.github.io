@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:00" itemprop="dateModified" datetime="2023-04-21T19:14:00+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:45" itemprop="dateModified" datetime="2023-04-23T09:28:45+08:00">2023-04-23</time>
     </span>
 
   
@@ -289,7 +289,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:00" itemprop="dateModified" datetime="2023-04-21T19:14:00+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:45" itemprop="dateModified" datetime="2023-04-23T09:28:45+08:00">2023-04-23</time>
     </span>
 
   
@@ -407,7 +407,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:00" itemprop="dateModified" datetime="2023-04-21T19:14:00+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:45" itemprop="dateModified" datetime="2023-04-23T09:28:45+08:00">2023-04-23</time>
     </span>
 
   
@@ -497,7 +497,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:00" itemprop="dateModified" datetime="2023-04-21T19:14:00+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:46" itemprop="dateModified" datetime="2023-04-23T09:28:46+08:00">2023-04-23</time>
     </span>
 
   
@@ -646,7 +646,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:00" itemprop="dateModified" datetime="2023-04-21T19:14:00+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:46" itemprop="dateModified" datetime="2023-04-23T09:28:46+08:00">2023-04-23</time>
     </span>
 
   
@@ -724,7 +724,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:00" itemprop="dateModified" datetime="2023-04-21T19:14:00+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:46" itemprop="dateModified" datetime="2023-04-23T09:28:46+08:00">2023-04-23</time>
     </span>
 
   
@@ -759,6 +759,8 @@
 <h3 id="使用-this"><a href="#使用-this" class="headerlink" title="使用 this"></a>使用 this</h3><blockquote>
 <p><strong>在 setup() 内部，this 不是该活跃实例的引用</strong>，因为 setup() 是在解析其它组件选项之前被调用的，所以 setup() 内部的 this 的行为与其它选项中的 this 完全不同。这使得 setup() 在和其它选项式 API 一起使用时可能会导致混淆。</p>
 </blockquote>
+<h2 id="toRefs"><a href="#toRefs" class="headerlink" title="toRefs"></a>toRefs</h2><p>可以把基本类型的数据变为响应式的，适用于对象解构后的处理。<br>可以把响应式数据内的所有属性都转化为响应式的。</p>
+<h2 id="reactive"><a href="#reactive" class="headerlink" title="reactive"></a>reactive</h2><p>可以把</p>
 <h2 id="带ref的响应式变量"><a href="#带ref的响应式变量" class="headerlink" title="带ref的响应式变量"></a>带<code>ref</code>的响应式变量</h2><p>在 3.0 中,可以通过<code>ref</code>函数使任何响应式变量在任何地方起作用.<br><code>ref</code>接收参数并将其包裹在一个带有<code>value</code>属性的对象中返回,然后可以使用该属性访问或更改响应式变量的值.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counter = <span class="title function_">ref</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter); <span class="comment">// &#123;value: 0&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="property">value</span>); <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line">counter.<span class="property">value</span>++;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="property">value</span>); <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
 
@@ -786,6 +788,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123; watchEffect, ref &#125; from &#x27;vue&#x27; const count = ref(0) const stop =</span><br><span class="line">watchEffect((onInvalidate) =&gt; &#123; console.log(count.value) onInvalidate(() =&gt; &#123;</span><br><span class="line">console.log(&#x27;执行了onInvalidate&#x27;) &#125;) &#125;) setTimeout(()=&gt; &#123; stop() &#125;, 1000)</span><br></pre></td></tr></table></figure>
 
 <p>上述代码：当我们显示执行 stop 函数停止侦听，此时也会触发 onInvalidate 的回调函数。同样，watchEffect 所在的组件被卸载时会隐式调用 stop 函数停止侦听，故也能触发 onInvalidate 的回调函数。</p>
+<h3 id="watchEffect-的应用"><a href="#watchEffect-的应用" class="headerlink" title="watchEffect 的应用"></a>watchEffect 的应用</h3><p>场景一:<br>定时器的注册和清除; DOM 事件的监听和清除(DOM 事件只能在挂载后,onMounted)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">watchEffect((onInvalidate) =&gt; &#123; let timer = setInterval(()=&gt;&#123;&#125;,1000)</span><br><span class="line">onInvalidate(()=&gt; clearInterval(timer)) &#125;) // dom事件的监听 onMounted(() =&gt; &#123;</span><br><span class="line">watchEffect((onOnvalidate) =&gt; &#123;</span><br><span class="line">document.getElementById(&#x27;.btn&#x27;).addEventListener(&#x27;click&#x27;,function()&#123;&#125;)</span><br><span class="line">onInvalidate(()</span><br><span class="line">=&gt;document.getElementById(&#x27;.btn&#x27;).removeEventListener(&#x27;click&#x27;,function()&#123;&#125;) &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>场景二:<br>利用 watchEffect 做防抖节流</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const id = ref(1) watchEffect((onInvalidate) =&gt; &#123; // 异步请求 const token =</span><br><span class="line">await fetch(&#x27;...&#x27;,id) onInvalidate(() =&gt; &#123; // id变化频繁就取消请求</span><br><span class="line">token.cancel() &#125;) &#125;)</span><br></pre></td></tr></table></figure>
+
 <h2 id="watch-和-watchEffect-的区别"><a href="#watch-和-watchEffect-的区别" class="headerlink" title="watch 和 watchEffect 的区别"></a>watch 和 watchEffect 的区别</h2><ol>
 <li>watch 可以访问新旧值,watchEffect 不可以</li>
 <li>watchEffect 有副作用,DOM 挂载或者更新前会触发,需要手动清除</li>
@@ -878,7 +886,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:00" itemprop="dateModified" datetime="2023-04-21T19:14:00+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:46" itemprop="dateModified" datetime="2023-04-23T09:28:46+08:00">2023-04-23</time>
     </span>
 
   
@@ -954,7 +962,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:00" itemprop="dateModified" datetime="2023-04-21T19:14:00+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:46" itemprop="dateModified" datetime="2023-04-23T09:28:46+08:00">2023-04-23</time>
     </span>
 
   
@@ -1035,7 +1043,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:01" itemprop="dateModified" datetime="2023-04-21T19:14:01+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:46" itemprop="dateModified" datetime="2023-04-23T09:28:46+08:00">2023-04-23</time>
     </span>
 
   
@@ -1196,7 +1204,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-21 19:14:01" itemprop="dateModified" datetime="2023-04-21T19:14:01+08:00">2023-04-21</time>
+      <time title="Modified: 2023-04-23 09:28:46" itemprop="dateModified" datetime="2023-04-23T09:28:46+08:00">2023-04-23</time>
     </span>
 
   
