@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="ZAX">
 <meta property="og:description" content="错误边界捕获错误显示备用 UI,而不是整个组件崩溃.无法捕获:  事件处理 异步代码 （例如 setTimeout 或 requestAnimationFrame 回调函数） 服务端渲染 错误边界自身抛出来的错误 （而不是其子组件）  虚拟 DOMVirtual DOM,即虚拟 DOM 节点.使用 JS 的 Object 对象模拟 DOM 中的节点.通过特定的 render 方法将其渲染成真实 D">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628426277-2fd08850-6a30-4f2f-a51b-2edf2ccc0438.png#averageHue=%23fafafa&clientId=ucd2db471-e0ef-4&from=paste&height=432&id=u368dabbd&name=image.png&originHeight=432&originWidth=424&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=28089&status=done&style=none&taskId=ube3adbea-32ee-47c1-8d98-0522fc58eca&title=&width=424">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628479417-a56bd511-feff-47cf-8b2f-caa3f3ebeedd.png#averageHue=%23fbfbfb&clientId=ucd2db471-e0ef-4&from=paste&height=467&id=u732bb189&name=image.png&originHeight=467&originWidth=586&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=32753&status=done&style=none&taskId=uc4500bf3-9b14-40d0-af6b-a3f44970565&title=&width=586">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628426277-2fd08850-6a30-4f2f-a51b-2edf2ccc0438.png#averageHue=%23fafafa&clientId=ucd2db471-e0ef-4&from=paste&height=432&id=u368dabbd&originHeight=432&originWidth=424&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=28089&status=done&style=none&taskId=ube3adbea-32ee-47c1-8d98-0522fc58eca&title=&width=424">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628479417-a56bd511-feff-47cf-8b2f-caa3f3ebeedd.png#averageHue=%23fbfbfb&clientId=ucd2db471-e0ef-4&from=paste&height=467&id=u732bb189&originHeight=467&originWidth=586&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=32753&status=done&style=none&taskId=uc4500bf3-9b14-40d0-af6b-a3f44970565&title=&width=586">
 <meta property="article:published_time" content="2022-09-20T09:27:10.000Z">
-<meta property="article:modified_time" content="2023-04-25T01:13:04.880Z">
+<meta property="article:modified_time" content="2023-04-28T00:59:26.940Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628426277-2fd08850-6a30-4f2f-a51b-2edf2ccc0438.png#averageHue=%23fafafa&clientId=ucd2db471-e0ef-4&from=paste&height=432&id=u368dabbd&name=image.png&originHeight=432&originWidth=424&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=28089&status=done&style=none&taskId=ube3adbea-32ee-47c1-8d98-0522fc58eca&title=&width=424">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628426277-2fd08850-6a30-4f2f-a51b-2edf2ccc0438.png#averageHue=%23fafafa&clientId=ucd2db471-e0ef-4&from=paste&height=432&id=u368dabbd&originHeight=432&originWidth=424&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=28089&status=done&style=none&taskId=ube3adbea-32ee-47c1-8d98-0522fc58eca&title=&width=424">
 
 
 <link rel="canonical" href="http://example.com/2022/09/20/React%E9%AB%98%E9%98%B6/">
@@ -217,7 +217,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:04" itemprop="dateModified" datetime="2023-04-25T09:13:04+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:26" itemprop="dateModified" datetime="2023-04-28T08:59:26+08:00">2023-04-28</time>
     </span>
 
   
@@ -301,7 +301,7 @@
 <h2 id="构建-Fiber-链表"><a href="#构建-Fiber-链表" class="headerlink" title="构建 Fiber 链表"></a>构建 Fiber 链表</h2><ol>
 <li>链表的构建顺序</li>
 </ol>
-<p>链表的顺序是由 DOM 操作的顺序决定的，c1 是第一个要执行 DOM 操作的所以它是链的开始，A1 是最后一个被添加到 Root 中的元素，所以它是链的最后。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628426277-2fd08850-6a30-4f2f-a51b-2edf2ccc0438.png#averageHue=%23fafafa&clientId=ucd2db471-e0ef-4&from=paste&height=432&id=u368dabbd&name=image.png&originHeight=432&originWidth=424&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=28089&status=done&style=none&taskId=ube3adbea-32ee-47c1-8d98-0522fc58eca&title=&width=424" alt="image.png"></p>
+<p>链表的顺序是由 DOM 操作的顺序决定的，c1 是第一个要执行 DOM 操作的所以它是链的开始，A1 是最后一个被添加到 Root 中的元素，所以它是链的最后。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628426277-2fd08850-6a30-4f2f-a51b-2edf2ccc0438.png#averageHue=%23fafafa&clientId=ucd2db471-e0ef-4&from=paste&height=432&id=u368dabbd&originHeight=432&originWidth=424&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=28089&status=done&style=none&taskId=ube3adbea-32ee-47c1-8d98-0522fc58eca&title=&width=424" alt="image.png"></p>
 <ol start="2">
 <li>如何向链的尾部添加新元素？</li>
 </ol>
@@ -309,7 +309,7 @@
 <ol start="3">
 <li>将链表保存在什么位置？</li>
 </ol>
-<p>链表需要被保存在 Root 中，因为在进入到第二阶段时，也就是 commitRoot 方法中，是将 Root 提交到第二阶段的。<br>在源码中，Root Fiber 下有一个叫 firstEffect 的属性，用于存储链表。<br>在构建链表的遍历过程中，C1 开始，Root 是结尾，如何才能将 C1 存储到 Root 中呢？<br>其实是链头的不断上移做到的。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628479417-a56bd511-feff-47cf-8b2f-caa3f3ebeedd.png#averageHue=%23fbfbfb&clientId=ucd2db471-e0ef-4&from=paste&height=467&id=u732bb189&name=image.png&originHeight=467&originWidth=586&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=32753&status=done&style=none&taskId=uc4500bf3-9b14-40d0-af6b-a3f44970565&title=&width=586" alt="image.png"></p>
+<p>链表需要被保存在 Root 中，因为在进入到第二阶段时，也就是 commitRoot 方法中，是将 Root 提交到第二阶段的。<br>在源码中，Root Fiber 下有一个叫 firstEffect 的属性，用于存储链表。<br>在构建链表的遍历过程中，C1 开始，Root 是结尾，如何才能将 C1 存储到 Root 中呢？<br>其实是链头的不断上移做到的。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628479417-a56bd511-feff-47cf-8b2f-caa3f3ebeedd.png#averageHue=%23fbfbfb&clientId=ucd2db471-e0ef-4&from=paste&height=467&id=u732bb189&originHeight=467&originWidth=586&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=32753&status=done&style=none&taskId=uc4500bf3-9b14-40d0-af6b-a3f44970565&title=&width=586" alt="image.png"></p>
 <h1 id="React-性能优化"><a href="#React-性能优化" class="headerlink" title="React 性能优化"></a>React 性能优化</h1><h2 id="React-memo-useMemo-useCallback"><a href="#React-memo-useMemo-useCallback" class="headerlink" title="React.memo useMemo useCallback"></a>React.memo useMemo useCallback</h2><ul>
 <li>React.memo 是包裹整个组件,浅层对比 props 的变化,决定是否渲染组件,</li>
 <li>useMemo 是更加细粒度的进行性能优化.</li>

@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="ZAX">
 <meta property="og:description" content="cookie,session.token服务器验证是前提。cookie 保存在客户端，服务器不加密不保存；大小 4K，一般保存 sessionId。session 保存在服务端，服务器要加密并保存；token 保存在客户端，服务器要加密不保存。明文传递给客户端，但是是加密的。 强制缓存,协商缓存HTTP 缓存都是从第二次请求开始的：第一次请求资源时，服务器返回资源，并在 response head">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#averageHue=%23ebdbd0&clientId=u28f1947f-f233-4&from=paste&height=214&id=u3198c11f&name=image.png&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#averageHue=%23ebdbd0&clientId=u28f1947f-f233-4&from=paste&height=214&id=u3198c11f&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096">
 <meta property="article:published_time" content="2022-09-26T03:03:49.000Z">
-<meta property="article:modified_time" content="2023-04-25T01:13:04.644Z">
+<meta property="article:modified_time" content="2023-04-28T00:59:26.676Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#averageHue=%23ebdbd0&clientId=u28f1947f-f233-4&from=paste&height=214&id=u3198c11f&name=image.png&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#averageHue=%23ebdbd0&clientId=u28f1947f-f233-4&from=paste&height=214&id=u3198c11f&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096">
 
 
 <link rel="canonical" href="http://example.com/2022/09/26/HTTP%E8%A1%A5%E6%A1%A3/">
@@ -216,7 +216,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:04" itemprop="dateModified" datetime="2023-04-25T09:13:04+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:26" itemprop="dateModified" datetime="2023-04-28T08:59:26+08:00">2023-04-28</time>
     </span>
 
   
@@ -230,7 +230,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="cookie-session-token"><a href="#cookie-session-token" class="headerlink" title="cookie,session.token"></a>cookie,session.token</h1><p>服务器验证是前提。<br>cookie 保存在客户端，服务器不加密不保存；大小 4K，一般保存 sessionId。<br>session 保存在服务端，服务器要加密并保存；<br>token 保存在客户端，服务器要加密不保存。明文传递给客户端，但是是加密的。</p>
-<h1 id="强制缓存-协商缓存"><a href="#强制缓存-协商缓存" class="headerlink" title="强制缓存,协商缓存"></a>强制缓存,协商缓存</h1><p>HTTP 缓存都是从第二次请求开始的：<br>第一次请求资源时，服务器返回资源，并在 response header 中回传资源的缓存策略；<br>第二次请求时，浏览器判断这些请求参数，击中强缓存就直接 200，否则就把请求参数加到 request header 头中传给服务器，看是否击中协商缓存，击中则返回 304，否则服务器会返回新的资源。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#averageHue=%23ebdbd0&clientId=u28f1947f-f233-4&from=paste&height=214&id=u3198c11f&name=image.png&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096" alt="image.png"></p>
+<h1 id="强制缓存-协商缓存"><a href="#强制缓存-协商缓存" class="headerlink" title="强制缓存,协商缓存"></a>强制缓存,协商缓存</h1><p>HTTP 缓存都是从第二次请求开始的：<br>第一次请求资源时，服务器返回资源，并在 response header 中回传资源的缓存策略；<br>第二次请求时，浏览器判断这些请求参数，击中强缓存就直接 200，否则就把请求参数加到 request header 头中传给服务器，看是否击中协商缓存，击中则返回 304，否则服务器会返回新的资源。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#averageHue=%23ebdbd0&clientId=u28f1947f-f233-4&from=paste&height=214&id=u3198c11f&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096" alt="image.png"></p>
 <h2 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h2><p>在缓存未失效时,直接使用浏览器缓存数据,不再请求服务端.生效时,状态码是 200.<br>cache-control 优先级 &gt; expires 优先级。</p>
 <h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>第一次请求服务器,或者<code>cache-control</code>和<code>Expire</code>过期,第二次请求就会与服务器协商,与服务端对比资源是否修改更新.没有修改,则返回 304 状态码,继续使用缓存数据.如果更新,则返回 200 状态码,并将缓存信息一并返回.</p>
 <h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><p>原因: 浏览器的同源策略(为了安全),即同端口,域名,协议.</p>

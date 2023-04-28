@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:06" itemprop="dateModified" datetime="2023-04-25T09:13:06+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:29" itemprop="dateModified" datetime="2023-04-28T08:59:29+08:00">2023-04-28</time>
     </span>
 
   
@@ -352,7 +352,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:06" itemprop="dateModified" datetime="2023-04-25T09:13:06+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:29" itemprop="dateModified" datetime="2023-04-28T08:59:29+08:00">2023-04-28</time>
     </span>
 
   
@@ -648,7 +648,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:06" itemprop="dateModified" datetime="2023-04-25T09:13:06+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:29" itemprop="dateModified" datetime="2023-04-28T08:59:29+08:00">2023-04-28</time>
     </span>
 
   
@@ -843,7 +843,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:07" itemprop="dateModified" datetime="2023-04-25T09:13:07+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:29" itemprop="dateModified" datetime="2023-04-28T08:59:29+08:00">2023-04-28</time>
     </span>
 
   
@@ -971,7 +971,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:07" itemprop="dateModified" datetime="2023-04-25T09:13:07+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:30" itemprop="dateModified" datetime="2023-04-28T08:59:30+08:00">2023-04-28</time>
     </span>
 
   
@@ -1070,7 +1070,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 <p>注意到 handler 了吗，我们给 firstName 绑定了一个 handler 方法，之前我们写的 watch 方法其实默认写的就是这个 handler，Vue.js 会去处理这个逻辑，最终编译出来其实就是这个 handler。<br>而 immediate:true 代表如果在 wacth 里声明了 firstName 之后，就会立即先去执行里面的 handler 方法，如果为 false 就跟我们以前的效果一样，不会在绑定的时候就执行。</p>
 <h3 id="箭头函数不能在-watch-中写"><a href="#箭头函数不能在-watch-中写" class="headerlink" title="箭头函数不能在 watch 中写"></a>箭头函数不能在 watch 中写</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误写法</span></span><br><span class="line"><span class="attr">watch</span>: &#123;</span><br><span class="line">  <span class="attr">studentId</span>: <span class="function">(<span class="params">newData, oldData</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">disabled</span> = !newData</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="string">&#x27;this&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确写法</span></span><br><span class="line"><span class="attr">watch</span>: &#123;</span><br><span class="line">    <span class="attr">studentId</span>: <span class="keyword">function</span> (<span class="params">newData, oldData</span>) &#123;</span><br><span class="line">       <span class="variable language_">this</span>.<span class="property">disabled</span> = !newData</span><br><span class="line">       <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="string">&#x27;this&#x27;</span>)</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
-<p>箭头函数会改变 this 的指向，在 Vue 组件中，最好不要随便使用箭头函数。特别是 watch 以及生命周期中。！文档也有相应的提示<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1653556794259-1cb290b7-f13a-45be-95f5-76a1330b3fae.png#averageHue=%23f0ebe1&clientId=ubfda83d1-df90-4&from=paste&height=237&id=u5b90b9ff&name=image.png&originHeight=237&originWidth=680&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=135477&status=done&style=none&taskId=u162fc147-019b-4f39-a07b-a0727fecdec&title=&width=680" alt="image.png"></p>
+<p>箭头函数会改变 this 的指向，在 Vue 组件中，最好不要随便使用箭头函数。特别是 watch 以及生命周期中。！文档也有相应的提示<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1653556794259-1cb290b7-f13a-45be-95f5-76a1330b3fae.png#averageHue=%23f0ebe1&clientId=ubfda83d1-df90-4&from=paste&height=237&id=u5b90b9ff&originHeight=237&originWidth=680&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=135477&status=done&style=none&taskId=u162fc147-019b-4f39-a07b-a0727fecdec&title=&width=680" alt="image.png"></p>
 <h1 id="computed-和-watch-区别"><a href="#computed-和-watch-区别" class="headerlink" title="computed 和 watch 区别"></a>computed 和 watch 区别</h1><p>计算属性是根据组件数据派生出新数据.使用方式是设置一个函数,返回计算后的结果.具备缓存性质,如果依赖项不变,是不会重新计算的.<br>监听器 watch 可以监听某个响应式数据的变化并执行副作用.使用方式是传递一个函数,并执行副作用.一般用于请求接口.<br>场景上:<br>计算属性一般是在模板中表达式过于复杂就可以写在计算属性中.<br>监听器是在状态变化后做一些额外的 DOM 操作或者异步请求.</p>
 <h2 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h2><p>通过<code>component</code>加<code>is</code>属性.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;component :is=<span class="string">&quot;currentTabComponent&quot;</span>&gt;&lt;/component&gt;</span><br></pre></td></tr></table></figure>
@@ -1253,7 +1253,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:07" itemprop="dateModified" datetime="2023-04-25T09:13:07+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:30" itemprop="dateModified" datetime="2023-04-28T08:59:30+08:00">2023-04-28</time>
     </span>
 
   
@@ -1605,14 +1605,14 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 </ul>
 <h1 id="原型和原型链"><a href="#原型和原型链" class="headerlink" title="原型和原型链"></a>原型和原型链</h1><p>每个实例对象都有一个私有属性<code>__proto__</code>，指向构造函数的原型对象<code>prototype</code>。<br>该原型对象也有自己的原型对象，层层向上直到一个对象的原型对象为 null。这构成了原型链。<br>null 没有原型，是原型链的最后一环。</p>
 <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>当访问一个对象的属性时，不只从该对象上寻找，还从原型链上查找，直到找到或者到达原型链的末端。</p>
-<h1 id="constructor-和原型对象-构造函数-实例对象"><a href="#constructor-和原型对象-构造函数-实例对象" class="headerlink" title="constructor 和原型对象,构造函数,实例对象"></a>constructor 和原型对象,构造函数,实例对象</h1><p><code>prototype</code>属于构造函数,指向原型对象. 作用:解决内存浪费和变量污染.<br><code>constructor</code>属于原型对象,指向构造函数.作用:可以让实例对象知道自己是被谁创建的.<br><code>__proto__</code>属于实例对象,指向原型对象.作用:实例对象访问原型对象的成员.<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1664181323672-63ddb950-9558-4713-a12e-8889f0532fef.png#averageHue=%23f7f7f7&clientId=u84dfcbb8-1307-4&from=paste&height=347&id=u3a5e30ca&name=image.png&originHeight=449&originWidth=573&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=84467&status=done&style=none&taskId=u91ac1b2a-1524-4384-b47e-76f1a63fd50&title=&width=443" alt="image.png"></p>
+<h1 id="constructor-和原型对象-构造函数-实例对象"><a href="#constructor-和原型对象-构造函数-实例对象" class="headerlink" title="constructor 和原型对象,构造函数,实例对象"></a>constructor 和原型对象,构造函数,实例对象</h1><p><code>prototype</code>属于构造函数,指向原型对象. 作用:解决内存浪费和变量污染.<br><code>constructor</code>属于原型对象,指向构造函数.作用:可以让实例对象知道自己是被谁创建的.<br><code>__proto__</code>属于实例对象,指向原型对象.作用:实例对象访问原型对象的成员.<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1664181323672-63ddb950-9558-4713-a12e-8889f0532fef.png#averageHue=%23f7f7f7&clientId=u84dfcbb8-1307-4&from=paste&height=347&id=u3a5e30ca&originHeight=449&originWidth=573&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=84467&status=done&style=none&taskId=u91ac1b2a-1524-4384-b47e-76f1a63fd50&title=&width=443" alt="image.png"></p>
 <blockquote>
 <p>如何方便理解三者关系,构造函数是父级,父级的 prototype(老婆)就是原型对象,原型对象的 constructor(老公)就是构造函数,子级实例对象的<strong>proto</strong>(母亲)就是原型对象.</p>
 </blockquote>
 <p>实例对象是无条件继承原型对象.<br>原型链的作用就是继承.也就说,js 是利用原型链实现面向对象继承的.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Person</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 原型对象</span></span><br><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">eat</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;吃东西&quot;</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 实例对象</span></span><br><span class="line"><span class="keyword">const</span> p1 = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;张三&quot;</span>, <span class="number">30</span>);</span><br></pre></td></tr></table></figure>
 
-<p>构造函数中的方法会导致内存的浪费.<br>两个实例对象虽然都可以调用 eat()方法,但是两个方法堆地址不同.每次调用函数都会在堆内存中生成一块新的空间.<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1664200975310-09fb6834-6fd6-4750-86cb-09f1a5a63c5a.png#averageHue=%234d4c44&clientId=u0ca97a65-2fdb-4&from=paste&height=727&id=u04988d1f&name=image.png&originHeight=727&originWidth=1437&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=422821&status=done&style=none&taskId=u2217fa30-5759-4ec2-8123-b745aacbe77&title=&width=1437" alt="image.png"><br>解决方法 1: 使用全局变量.即将函数在全局书写,在构造函数内赋值,也即只获取地址.<br>缺点: 导致变量污染.<br>解决方法 2: 使用对象将全局变量函数包裹,但是治标不治本.<br>最终解决方法: 原型对象.</p>
+<p>构造函数中的方法会导致内存的浪费.<br>两个实例对象虽然都可以调用 eat()方法,但是两个方法堆地址不同.每次调用函数都会在堆内存中生成一块新的空间.<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1664200975310-09fb6834-6fd6-4750-86cb-09f1a5a63c5a.png#averageHue=%234d4c44&clientId=u0ca97a65-2fdb-4&from=paste&height=727&id=u04988d1f&originHeight=727&originWidth=1437&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=422821&status=done&style=none&taskId=u2217fa30-5759-4ec2-8123-b745aacbe77&title=&width=1437" alt="image.png"><br>解决方法 1: 使用全局变量.即将函数在全局书写,在构造函数内赋值,也即只获取地址.<br>缺点: 导致变量污染.<br>解决方法 2: 使用对象将全局变量函数包裹,但是治标不治本.<br>最终解决方法: 原型对象.</p>
 <h3 id="原型对象"><a href="#原型对象" class="headerlink" title="原型对象"></a>原型对象</h3><p>原型对象是构造函数的默认属性 prototype 所指向的一个空对象.用于解决内存浪费和变量污染的问题.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Person</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">eat</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br></pre></td></tr></table></figure>
 
@@ -1776,7 +1776,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:07" itemprop="dateModified" datetime="2023-04-25T09:13:07+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:30" itemprop="dateModified" datetime="2023-04-28T08:59:30+08:00">2023-04-28</time>
     </span>
 
   
@@ -2108,7 +2108,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:07" itemprop="dateModified" datetime="2023-04-25T09:13:07+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:31" itemprop="dateModified" datetime="2023-04-28T08:59:31+08:00">2023-04-28</time>
     </span>
 
   
@@ -2235,7 +2235,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:07" itemprop="dateModified" datetime="2023-04-25T09:13:07+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:31" itemprop="dateModified" datetime="2023-04-28T08:59:31+08:00">2023-04-28</time>
     </span>
 
   
@@ -2325,7 +2325,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:13:07" itemprop="dateModified" datetime="2023-04-25T09:13:07+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:31" itemprop="dateModified" datetime="2023-04-28T08:59:31+08:00">2023-04-28</time>
     </span>
 
   

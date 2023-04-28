@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="ZAX">
 <meta property="og:description" content="介绍Redis 是使用 c 语言开发的一个高性能键值数据库。Redis 可以通过一些键值类型来存储数据。键值类型：  String 字符类型 map 散列类型 list 列表类型 set 集合类型 sortedset 有序集合类型  Redis 使用起来就像是 JS 中的 Map 数据结构（但 key 只能是字符串，value 要符合支持的数据结构）。在业务中，我们可以用 Redis 来存储用户的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046045649-ac030646-fb19-4dee-b71a-5e40bbaf3e18.png#averageHue=%23fcfcfc&clientId=u429e2987-0087-4&from=paste&height=1694&id=u9cbd2945&name=image.png&originHeight=1694&originWidth=2650&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=329193&status=done&style=none&taskId=u36381aa8-c655-4117-8c4c-26305d9a989&title=&width=2650">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046794639-85a5122f-003f-44fc-91ee-86f558d484ea.png#averageHue=%23f4f4f4&clientId=u429e2987-0087-4&from=paste&height=264&id=ucff4cff4&name=image.png&originHeight=544&originWidth=776&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=84607&status=done&style=none&taskId=u38c54c41-b5d6-410b-a6f3-c338680a070&title=&width=376">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046794744-59fa1954-a3fb-4f6b-b9db-2ad186213ecb.png#averageHue=%23f1f1f1&clientId=u429e2987-0087-4&from=paste&height=314&id=ue8a23193&name=image.png&originHeight=582&originWidth=742&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=110423&status=done&style=none&taskId=ub674fa52-35d2-45ae-8524-6dbbc3ae697&title=&width=400">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046795662-27f20f36-efd9-477c-89e8-7c313a70203d.png#averageHue=%23efefef&clientId=u429e2987-0087-4&from=paste&height=271&id=ucd440152&name=image.png&originHeight=542&originWidth=730&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=112382&status=done&style=none&taskId=ua48b7096-4a6b-42d1-9e90-c5b381a661a&title=&width=365">
-<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668048056883-714411f5-c41c-4e46-8ae4-143657cf13a0.png#averageHue=%23ece7e0&clientId=u429e2987-0087-4&from=paste&id=u8cfe1626&name=image.png&originHeight=461&originWidth=490&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=53767&status=done&style=none&taskId=u2a46a21b-4487-4474-be01-a94c1391f8b&title=">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046045649-ac030646-fb19-4dee-b71a-5e40bbaf3e18.png#averageHue=%23fcfcfc&clientId=u429e2987-0087-4&from=paste&height=1694&id=u9cbd2945&originHeight=1694&originWidth=2650&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=329193&status=done&style=none&taskId=u36381aa8-c655-4117-8c4c-26305d9a989&title=&width=2650">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046794639-85a5122f-003f-44fc-91ee-86f558d484ea.png#averageHue=%23f4f4f4&clientId=u429e2987-0087-4&from=paste&height=264&id=ucff4cff4&originHeight=544&originWidth=776&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=84607&status=done&style=none&taskId=u38c54c41-b5d6-410b-a6f3-c338680a070&title=&width=376">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046794744-59fa1954-a3fb-4f6b-b9db-2ad186213ecb.png#averageHue=%23f1f1f1&clientId=u429e2987-0087-4&from=paste&height=314&id=ue8a23193&originHeight=582&originWidth=742&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=110423&status=done&style=none&taskId=ub674fa52-35d2-45ae-8524-6dbbc3ae697&title=&width=400">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046795662-27f20f36-efd9-477c-89e8-7c313a70203d.png#averageHue=%23efefef&clientId=u429e2987-0087-4&from=paste&height=271&id=ucd440152&originHeight=542&originWidth=730&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=112382&status=done&style=none&taskId=ua48b7096-4a6b-42d1-9e90-c5b381a661a&title=&width=365">
+<meta property="og:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668048056883-714411f5-c41c-4e46-8ae4-143657cf13a0.png#averageHue=%23ece7e0&clientId=u429e2987-0087-4&from=paste&id=u8cfe1626&originHeight=461&originWidth=490&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=53767&status=done&style=none&taskId=u2a46a21b-4487-4474-be01-a94c1391f8b&title=">
 <meta property="article:published_time" content="2022-11-08T09:07:57.000Z">
-<meta property="article:modified_time" content="2023-04-25T01:12:56.747Z">
+<meta property="article:modified_time" content="2023-04-28T00:59:16.652Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046045649-ac030646-fb19-4dee-b71a-5e40bbaf3e18.png#averageHue=%23fcfcfc&clientId=u429e2987-0087-4&from=paste&height=1694&id=u9cbd2945&name=image.png&originHeight=1694&originWidth=2650&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=329193&status=done&style=none&taskId=u36381aa8-c655-4117-8c4c-26305d9a989&title=&width=2650">
+<meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046045649-ac030646-fb19-4dee-b71a-5e40bbaf3e18.png#averageHue=%23fcfcfc&clientId=u429e2987-0087-4&from=paste&height=1694&id=u9cbd2945&originHeight=1694&originWidth=2650&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=329193&status=done&style=none&taskId=u36381aa8-c655-4117-8c4c-26305d9a989&title=&width=2650">
 
 
 <link rel="canonical" href="http://example.com/2022/11/08/Redis/">
@@ -220,7 +220,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:56" itemprop="dateModified" datetime="2023-04-25T09:12:56+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:16" itemprop="dateModified" datetime="2023-04-28T08:59:16+08:00">2023-04-28</time>
     </span>
 
   
@@ -275,7 +275,7 @@
 <h1 id="多数据库"><a href="#多数据库" class="headerlink" title="多数据库"></a>多数据库</h1><p>默认分配 16 个数据库,数字 0-15.默认使用 0 数据库.数据库相对独立,可以配置参数<code>databases</code>修改个数.</p>
 <h2 id="切换数据库-SELECT"><a href="#切换数据库-SELECT" class="headerlink" title="切换数据库[SELECT]"></a>切换数据库[SELECT]</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">SELECT</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="知识体系"><a href="#知识体系" class="headerlink" title="知识体系"></a>知识体系</h1><p>多个数据库并不是完全独立.如果要不同应用存储建议开多个 Redis 实例.<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046045649-ac030646-fb19-4dee-b71a-5e40bbaf3e18.png#averageHue=%23fcfcfc&clientId=u429e2987-0087-4&from=paste&height=1694&id=u9cbd2945&name=image.png&originHeight=1694&originWidth=2650&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=329193&status=done&style=none&taskId=u36381aa8-c655-4117-8c4c-26305d9a989&title=&width=2650" alt="image.png"></p>
+<h1 id="知识体系"><a href="#知识体系" class="headerlink" title="知识体系"></a>知识体系</h1><p>多个数据库并不是完全独立.如果要不同应用存储建议开多个 Redis 实例.<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046045649-ac030646-fb19-4dee-b71a-5e40bbaf3e18.png#averageHue=%23fcfcfc&clientId=u429e2987-0087-4&from=paste&height=1694&id=u9cbd2945&originHeight=1694&originWidth=2650&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=329193&status=done&style=none&taskId=u36381aa8-c655-4117-8c4c-26305d9a989&title=&width=2650" alt="image.png"></p>
 <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><p>Redis 数据库支持五种数据类型。</p>
 <ul>
 <li>字符串（string）</li>
@@ -401,7 +401,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <ul>
 <li><strong>图例</strong></li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046794639-85a5122f-003f-44fc-91ee-86f558d484ea.png#averageHue=%23f4f4f4&clientId=u429e2987-0087-4&from=paste&height=264&id=ucff4cff4&name=image.png&originHeight=544&originWidth=776&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=84607&status=done&style=none&taskId=u38c54c41-b5d6-410b-a6f3-c338680a070&title=&width=376" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046794639-85a5122f-003f-44fc-91ee-86f558d484ea.png#averageHue=%23f4f4f4&clientId=u429e2987-0087-4&from=paste&height=264&id=ucff4cff4&originHeight=544&originWidth=776&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=84607&status=done&style=none&taskId=u38c54c41-b5d6-410b-a6f3-c338680a070&title=&width=376" alt="image.png"></p>
 <h3 id="命令使用-2"><a href="#命令使用-2" class="headerlink" title="命令使用"></a><strong>命令使用</strong></h3><table>
 <thead>
 <tr>
@@ -444,7 +444,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <ul>
 <li><strong>图例</strong></li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046794744-59fa1954-a3fb-4f6b-b9db-2ad186213ecb.png#averageHue=%23f1f1f1&clientId=u429e2987-0087-4&from=paste&height=314&id=ue8a23193&name=image.png&originHeight=582&originWidth=742&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=110423&status=done&style=none&taskId=ub674fa52-35d2-45ae-8524-6dbbc3ae697&title=&width=400" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046794744-59fa1954-a3fb-4f6b-b9db-2ad186213ecb.png#averageHue=%23f1f1f1&clientId=u429e2987-0087-4&from=paste&height=314&id=ue8a23193&originHeight=582&originWidth=742&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=110423&status=done&style=none&taskId=ub674fa52-35d2-45ae-8524-6dbbc3ae697&title=&width=400" alt="image.png"></p>
 <h3 id="命令使用-3"><a href="#命令使用-3" class="headerlink" title="命令使用"></a><strong>命令使用</strong></h3><table>
 <thead>
 <tr>
@@ -489,7 +489,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <ul>
 <li><strong>图例</strong></li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046795662-27f20f36-efd9-477c-89e8-7c313a70203d.png#averageHue=%23efefef&clientId=u429e2987-0087-4&from=paste&height=271&id=ucd440152&name=image.png&originHeight=542&originWidth=730&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=112382&status=done&style=none&taskId=ua48b7096-4a6b-42d1-9e90-c5b381a661a&title=&width=365" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668046795662-27f20f36-efd9-477c-89e8-7c313a70203d.png#averageHue=%23efefef&clientId=u429e2987-0087-4&from=paste&height=271&id=ucd440152&originHeight=542&originWidth=730&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=112382&status=done&style=none&taskId=ua48b7096-4a6b-42d1-9e90-c5b381a661a&title=&width=365" alt="image.png"></p>
 <h3 id="命令使用-4"><a href="#命令使用-4" class="headerlink" title="命令使用"></a><strong>命令使用</strong></h3><table>
 <thead>
 <tr>
@@ -632,7 +632,7 @@ Redis 中集合是通过哈希表实现的，所以添加，删除，查找的�
 <li>消息有序性</li>
 <li>消息的持久化</li>
 </ul>
-<p>其它还要考虑啥嗯？借助美团技术团队的一篇文章，<a target="_blank" rel="noopener" href="https://tech.meituan.com/2016/07/01/mq-design.html">消息队列设计精要(opens new window)</a> 中的图<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668048056883-714411f5-c41c-4e46-8ae4-143657cf13a0.png#averageHue=%23ece7e0&clientId=u429e2987-0087-4&from=paste&id=u8cfe1626&name=image.png&originHeight=461&originWidth=490&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=53767&status=done&style=none&taskId=u2a46a21b-4487-4474-be01-a94c1391f8b&title=" alt="image.png"><br><strong>我们不妨看看 Redis 考虑了哪些设计</strong>？</p>
+<p>其它还要考虑啥嗯？借助美团技术团队的一篇文章，<a target="_blank" rel="noopener" href="https://tech.meituan.com/2016/07/01/mq-design.html">消息队列设计精要(opens new window)</a> 中的图<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1668048056883-714411f5-c41c-4e46-8ae4-143657cf13a0.png#averageHue=%23ece7e0&clientId=u429e2987-0087-4&from=paste&id=u8cfe1626&originHeight=461&originWidth=490&originalType=url%E2%88%B6=1&rotation=0&showTitle=false&size=53767&status=done&style=none&taskId=u2a46a21b-4487-4474-be01-a94c1391f8b&title=" alt="image.png"><br><strong>我们不妨看看 Redis 考虑了哪些设计</strong>？</p>
 <ul>
 <li>消息 ID 的序列化生成</li>
 <li>消息遍历</li>

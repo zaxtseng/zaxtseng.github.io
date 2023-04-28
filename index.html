@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:52" itemprop="dateModified" datetime="2023-04-25T09:12:52+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:12" itemprop="dateModified" datetime="2023-04-28T08:59:12+08:00">2023-04-28</time>
     </span>
 
   
@@ -227,7 +227,7 @@
 <li>创建视图以响应状态的变化（observer、computed）</li>
 <li>更改状态（action）</li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1671011314047-5a3aa026-a8bb-423c-9796-45492772c408.png#averageHue=%23fbfaf8&clientId=ue204e994-17e2-4&from=paste&height=574&id=u0b88d30e&name=image.png&originHeight=574&originWidth=690&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=135881&status=done&style=none&taskId=ucd8de1df-4adf-495a-ad12-0c9c19a9225&title=&width=690" alt="image.png"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1671011314047-5a3aa026-a8bb-423c-9796-45492772c408.png#averageHue=%23fbfaf8&clientId=ue204e994-17e2-4&from=paste&height=574&id=u0b88d30e&originHeight=574&originWidth=690&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=135881&status=done&style=none&taskId=ucd8de1df-4adf-495a-ad12-0c9c19a9225&title=&width=690" alt="image.png"></p>
 <h1 id="Function-组件里使用"><a href="#Function-组件里使用" class="headerlink" title="Function 组件里使用"></a>Function 组件里使用</h1><p>由于 React Hooks 的出现，以及注解的不稳定性。在 6.x 中，MobX 升级了它的使用方法。<br>这里我们以 makeAutoObservable 的 Store 设计为例：</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Store6_makeAutoObservable</span> &#123;</span><br><span class="line">  readonly base = <span class="number">5</span>;</span><br><span class="line">  <span class="title class_">MCount</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title function_">makeAutoObservable</span>(<span class="variable language_">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">setMCount</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">MCount</span>++;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">total</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">MCount</span> * <span class="variable language_">this</span>.<span class="property">base</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Store6</span>;</span><br></pre></td></tr></table></figure>
 
@@ -326,7 +326,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:53" itemprop="dateModified" datetime="2023-04-25T09:12:53+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:12" itemprop="dateModified" datetime="2023-04-28T08:59:12+08:00">2023-04-28</time>
     </span>
 
   
@@ -481,7 +481,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:53" itemprop="dateModified" datetime="2023-04-25T09:12:53+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:12" itemprop="dateModified" datetime="2023-04-28T08:59:12+08:00">2023-04-28</time>
     </span>
 
   
@@ -725,7 +725,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:53" itemprop="dateModified" datetime="2023-04-25T09:12:53+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:12" itemprop="dateModified" datetime="2023-04-28T08:59:12+08:00">2023-04-28</time>
     </span>
 
   
@@ -835,7 +835,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:53" itemprop="dateModified" datetime="2023-04-25T09:12:53+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:13" itemprop="dateModified" datetime="2023-04-28T08:59:13+08:00">2023-04-28</time>
     </span>
 
   
@@ -1071,7 +1071,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:53" itemprop="dateModified" datetime="2023-04-25T09:12:53+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:13" itemprop="dateModified" datetime="2023-04-28T08:59:13+08:00">2023-04-28</time>
     </span>
 
   
@@ -1163,7 +1163,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:54" itemprop="dateModified" datetime="2023-04-25T09:12:54+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:13" itemprop="dateModified" datetime="2023-04-28T08:59:13+08:00">2023-04-28</time>
     </span>
 
   
@@ -1176,7 +1176,7 @@ of 'team' in its own useMemo() Hook.</div>
     
     
     <div class="post-body" itemprop="articleBody">
-          <h3 id="从输入-URL-到页面加载的全过程"><a href="#从输入-URL-到页面加载的全过程" class="headerlink" title="从输入 URL 到页面加载的全过程"></a>从输入 URL 到页面加载的全过程</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578207788-7b060b5f-458e-4519-8013-0146ea4cd9ee.png#averageHue=%23eff6ed&clientId=u17b43133-bb0d-4&from=ui&id=u70015989&name=iShot2022-12-09%2017.29.44.png&originHeight=324&originWidth=804&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=111357&status=done&style=none&taskId=u6125a3f5-6b64-4757-b3e2-3b421923f99&title=" alt="iShot2022-12-09 17.29.44.png"></p>
+          <h3 id="从输入-URL-到页面加载的全过程"><a href="#从输入-URL-到页面加载的全过程" class="headerlink" title="从输入 URL 到页面加载的全过程"></a>从输入 URL 到页面加载的全过程</h3><p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578207788-7b060b5f-458e-4519-8013-0146ea4cd9ee.png#averageHue=%23eff6ed&clientId=u17b43133-bb0d-4&from=ui&id=u70015989&originHeight=324&originWidth=804&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=111357&status=done&style=none&taskId=u6125a3f5-6b64-4757-b3e2-3b421923f99&title=" alt="iShot2022-12-09 17.29.44.png"></p>
 <p><img src="/%5Bhttps:/p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image%5D(https:/p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e44aa8a92602405db3c12161b71e2094~tplv-k3u1fbpfcp-zoom-1.image)" alt="流程"></p>
 <ol>
 <li>首先在浏览器中输入 URL</li>
@@ -1203,7 +1203,7 @@ of 'team' in its own useMemo() Hook.</div>
 <li>布局（Layout）：计算出每个节点在屏幕中的位置</li>
 <li>绘制（Painting）：即遍历 render 树，并使用 UI 后端层绘制每个节点。</li>
 </ul>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578287476-3cab35ee-5402-48a7-a7f4-7c2aaadecb63.png#averageHue=%23d9e0a0&clientId=u17b43133-bb0d-4&from=ui&id=u5d982e5b&name=iShot2022-12-09%2017.31.04.png&originHeight=279&originWidth=617&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=114820&status=done&style=none&taskId=u704c06e6-e991-4fbf-acf6-fb03eb1496e&title=" alt="iShot2022-12-09 17.31.04.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a90660027f0d4c559732519bad4c6323~tplv-k3u1fbpfcp-zoom-1.image" alt="浏览器渲染流程图"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578287476-3cab35ee-5402-48a7-a7f4-7c2aaadecb63.png#averageHue=%23d9e0a0&clientId=u17b43133-bb0d-4&from=ui&id=u5d982e5b&originHeight=279&originWidth=617&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=114820&status=done&style=none&taskId=u704c06e6-e991-4fbf-acf6-fb03eb1496e&title=" alt="iShot2022-12-09 17.31.04.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a90660027f0d4c559732519bad4c6323~tplv-k3u1fbpfcp-zoom-1.image" alt="浏览器渲染流程图"></p>
 <ol start="9">
 <li>JS 引擎解析过程：调用 JS 引擎执行 JS 代码（JS 的解释阶段，预处理阶段，执行阶段生成执行上下文，VO，作用域链、回收机制等等）</li>
 </ol>
@@ -1261,7 +1261,7 @@ of 'team' in its own useMemo() Hook.</div>
 <li>构建 Nodes: 对 Node 添加特定的属性，通过指针确定 Node 的父、子、兄弟关系和所属 treeScope</li>
 <li>生成 DOM Tree: 通过 node 包含的指针确定的关系构建出 DOM<br>Tree</li>
 </ol>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578419299-8cb38d0e-823e-4f1d-a670-dfb766e262f2.png#averageHue=%23f2f0df&clientId=u17b43133-bb0d-4&from=ui&id=OiETr&name=iShot2022-12-09%2017.33.11.png&originHeight=460&originWidth=929&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=113095&status=done&style=none&taskId=u0c6edec7-0a4e-4f02-87fd-62890931c22&title=" alt="iShot2022-12-09 17.33.11.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1dc0f577836c4705bb582b2ac15bc5d1~tplv-k3u1fbpfcp-zoom-1.image" alt="2019-06-22-11-48-00"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578419299-8cb38d0e-823e-4f1d-a670-dfb766e262f2.png#averageHue=%23f2f0df&clientId=u17b43133-bb0d-4&from=ui&id=OiETr&originHeight=460&originWidth=929&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=113095&status=done&style=none&taskId=u0c6edec7-0a4e-4f02-87fd-62890931c22&title=" alt="iShot2022-12-09 17.33.11.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1dc0f577836c4705bb582b2ac15bc5d1~tplv-k3u1fbpfcp-zoom-1.image" alt="2019-06-22-11-48-00"></p>
 <h3 id="浏览器重绘与重排的区别？"><a href="#浏览器重绘与重排的区别？" class="headerlink" title="浏览器重绘与重排的区别？"></a>浏览器重绘与重排的区别？</h3><ul>
 <li><code>重排/回流（Reflow）</code>：当<code>DOM</code>的变化影响了元素的几何信息，浏览器需要重新计算元素的几何属性，将其安放在界面中的正确位置，这个过程叫做重排。表现为重新生成布局，重新排列元素。</li>
 <li><code>重绘(Repaint)</code>: 当一个元素的外观发生改变，但没有改变布局,重新把元素外观绘制出来的过程，叫做重绘。表现为某些元素的外观被改变</li>
@@ -1304,7 +1304,7 @@ of 'team' in its own useMemo() Hook.</div>
 <li>c. 协商缓存 Last-Modify&#x2F;If-Modify-Since 阶段，客户端第一次请求资源时，服务服返回的 header 中会加上 Last-Modify，Last-modify 是一个时间标识该资源的最后修改时间。再次请求该资源时，request 的请求头中会包含 If-Modify-Since，该值为缓存之前返回的 Last-Modify。服务器收到 If-Modify-Since 后，根据资源的最后修改时间判断是否命中缓存。</li>
 </ul>
 <h3 id="浏览器的缓存机制-强制缓存-amp-amp-协商缓存"><a href="#浏览器的缓存机制-强制缓存-amp-amp-协商缓存" class="headerlink" title="浏览器的缓存机制 强制缓存 &amp;&amp; 协商缓存"></a>浏览器的缓存机制 强制缓存 &amp;&amp; 协商缓存</h3><p>浏览器与服务器通信的方式为应答模式，即是：浏览器发起 HTTP 请求 – 服务器响应该请求。那么浏览器第一次向服务器发起该请求后拿到请求结果，会根据响应报文中 HTTP 头的缓存标识，决定是否缓存结果，是则将请求结果和缓存标识存入浏览器缓存中，简单的过程如下图：</p>
-<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578771184-53709d3b-a546-4907-8533-4f7084f9e6f3.png#averageHue=%23efefef&clientId=u17b43133-bb0d-4&from=paste&height=535&id=udeb7f05a&name=image.png&originHeight=535&originWidth=706&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=172984&status=done&style=none&taskId=uf894c99c-5cec-4ba4-ade2-6d04bf63708&title=&width=706" alt="image.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/487144abaada4b9a8b34bc9375191ec7~tplv-k3u1fbpfcp-zoom-1.image" alt="图片"></p>
+<p><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1670578771184-53709d3b-a546-4907-8533-4f7084f9e6f3.png#averageHue=%23efefef&clientId=u17b43133-bb0d-4&from=paste&height=535&id=udeb7f05a&originHeight=535&originWidth=706&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=172984&status=done&style=none&taskId=uf894c99c-5cec-4ba4-ade2-6d04bf63708&title=&width=706" alt="image.png"><br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/487144abaada4b9a8b34bc9375191ec7~tplv-k3u1fbpfcp-zoom-1.image" alt="图片"></p>
 <p>由上图我们可以知道：</p>
 <ul>
 <li>浏览器每次发起请求，都会<code>先在浏览器缓存中查找该请求的结果以及缓存标识</code></li>
@@ -1447,7 +1447,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:55" itemprop="dateModified" datetime="2023-04-25T09:12:55+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:14" itemprop="dateModified" datetime="2023-04-28T08:59:14+08:00">2023-04-28</time>
     </span>
 
   
@@ -2270,7 +2270,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:55" itemprop="dateModified" datetime="2023-04-25T09:12:55+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:15" itemprop="dateModified" datetime="2023-04-28T08:59:15+08:00">2023-04-28</time>
     </span>
 
   
@@ -2505,7 +2505,7 @@ of 'team' in its own useMemo() Hook.</div>
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-04-25 09:12:55" itemprop="dateModified" datetime="2023-04-25T09:12:55+08:00">2023-04-25</time>
+      <time title="Modified: 2023-04-28 08:59:15" itemprop="dateModified" datetime="2023-04-28T08:59:15+08:00">2023-04-28</time>
     </span>
 
   
