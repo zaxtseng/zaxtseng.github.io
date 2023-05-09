@@ -28,7 +28,7 @@
 <meta property="og:description" content="定时请求数据该问题的原因是 Promise 执行过程中，无法取消后续还没有定义的 setTimeout() 导致的。所以最开始想到的就是我们不应该直接对 timeoutID 进行记录，而是应该向上记录整个逻辑的 Promise 对象。当 Promise 执行完成之后我们再清除 timeout，保证我们每次都能确切的清除掉任务。 123456789101112131415161718192021im">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-21T08:51:04.000Z">
-<meta property="article:modified_time" content="2023-05-09T01:49:45.056Z">
+<meta property="article:modified_time" content="2023-05-09T02:16:30.447Z">
 <meta property="article:author" content="Zax Tseng">
 <meta property="article:tag" content="javascript, React, Vue, HTML5">
 <meta name="twitter:card" content="summary">
@@ -214,7 +214,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-09 09:49:45" itemprop="dateModified" datetime="2023-05-09T09:49:45+08:00">2023-05-09</time>
+      <time title="Modified: 2023-05-09 10:16:30" itemprop="dateModified" datetime="2023-05-09T10:16:30+08:00">2023-05-09</time>
     </span>
 
   
