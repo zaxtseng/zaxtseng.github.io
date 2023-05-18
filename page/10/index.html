@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -289,7 +289,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -338,13 +338,29 @@
 <h2 id="scroll"><a href="#scroll" class="headerlink" title="scroll"></a>scroll</h2><p>scrollTop: 上下滚动条滚动的距离<br>scrollLeft： 左右滚动条滚动的距离<br>scrollWidth： 元素实际宽度，content+padding+scrollLeft 最大值<br>scrollHeight: 元素实际高度，content+ padding+ scrollTop 最大值<br>scrollX: 文档在水平方向已滚动的像素值</p>
 <h2 id="getBoundingClientRect"><a href="#getBoundingClientRect" class="headerlink" title="getBoundingClientRect"></a>getBoundingClientRect</h2><p>获取页面中某个元素上下左右相对于视口的位置。</p>
 <h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><p>一、clientX、clientY<br>点击位置距离当前 body 可视区域的 x，y 坐标<br>二、pageX、pageY<br>对于整个页面来说，包括了被卷去的 body 部分的长度<br>三、screenX、screenY<br>点击位置距离当前电脑屏幕的 x，y 坐标<br>四、offsetX、offsetY<br>相对于带有定位的父盒子的 x，y 坐标</p>
+<h2 id="滚动条距离"><a href="#滚动条距离" class="headerlink" title="滚动条距离"></a>滚动条距离</h2><p>常规：window.pageXOffset&#x2F;pageYOffset<br>IE9 以下：<br>document.body.scrollLeft&#x2F;scrollTop<br>document.doucmentElement.scrollLeft&#x2F;scrollTop</p>
+<h2 id="可视区域"><a href="#可视区域" class="headerlink" title="可视区域"></a>可视区域</h2><p>常规：window.innerWidth&#x2F;innerHeight<br>IE9&#x2F;IE8:<br>标准：document.doucmentElement.clientWidth、clientHeight<br>怪异：document.body.clientWidth、clientHeight</p>
+<h1 id="浏览器兼容模式"><a href="#浏览器兼容模式" class="headerlink" title="浏览器兼容模式"></a>浏览器兼容模式</h1><h2 id="怪异模式和标准模式"><a href="#怪异模式和标准模式" class="headerlink" title="怪异模式和标准模式"></a>怪异模式和标准模式</h2><p>html 文件开头写了<code>&lt;!DOCTYPE html&gt;</code>就是标准模式，否则是怪异模式，就是向后兼容模式。</p>
 <h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><p>文档对象模型。</p>
 <h2 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h2><p>这是一个基类。所有 Document 对象下的对象都继承自它。</p>
 <h2 id="getElementsByClassName"><a href="#getElementsByClassName" class="headerlink" title="getElementsByClassName()"></a>getElementsByClassName()</h2><p>方法返回一个即时更新的（live）HTMLCollection，这是个集合，也即是类数组对象。包含了所有拥有指定 class 的子元素</p>
 <h2 id="getElementById"><a href="#getElementById" class="headerlink" title="getElementById()"></a>getElementById()</h2><p>返回一个匹配特定 ID 的元素。</p>
 <h2 id="querySelector"><a href="#querySelector" class="headerlink" title="querySelector()"></a>querySelector()</h2><p>方法返回文档中与指定选择器或选择器组匹配的第一个 Element 对象。如果找不到匹配项，则返回 null。</p>
 <h2 id="querySelectorAll-selector"><a href="#querySelectorAll-selector" class="headerlink" title="querySelectorAll(selector)"></a>querySelectorAll(selector)</h2><p>选择器是一个 css 选择器。<br>返回与指定的选择器组匹配的文档中的元素列表 (使用深度优先的先序遍历文档的节点)。<br>返回的对象是 NodeList 。这也是个类数组对象。</p>
-<h1 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h1><p>所谓类数组对象，就是指可以通过索引属性访问元素并且拥有 length 属性的对象。<br>常见的类数组对象：<code>arguments</code>，<code>nodeList</code>，<code>typedArray</code>。</p>
+<h2 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h2><p>创建元素。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="appenChild"><a href="#appenChild" class="headerlink" title="appenChild"></a>appenChild</h2><p>属于 Node.prototype。<br>增加子节点。如果操作已有节点，就是剪切节点。</p>
+<h2 id="insertBefore-a-b"><a href="#insertBefore-a-b" class="headerlink" title="insertBefore(a,b)"></a>insertBefore(a,b)</h2><p>插入节点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.<span class="title function_">insertBefore</span>(a, b); <span class="comment">// 在父节点c内，子节点b之前插入子节点a</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="removeChild"><a href="#removeChild" class="headerlink" title="removeChild"></a>removeChild</h2><p>删除子节点。</p>
+<h2 id="innerHTML"><a href="#innerHTML" class="headerlink" title="innerHTML"></a>innerHTML</h2><p>可以对 DOM 节点取值或者赋值。<br>取值会返回字符串。<br>赋值追加可以执行<code>div.innerHTML += &#39;123&#39;</code></p>
+<h2 id="innerText"><a href="#innerText" class="headerlink" title="innerText"></a>innerText</h2><p>返回字符实体。</p>
+<h2 id="自定义属性-data"><a href="#自定义属性-data" class="headerlink" title="自定义属性 data-*"></a>自定义属性 data-*</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div data-name=<span class="string">&quot;abc&quot;</span> data-age=<span class="string">&quot;18&quot;</span>&gt;</span><br><span class="line">  aaa</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以通过 dataset 访问。<code>div.dataset.name = &#39;abc&#39;</code><br>或者<code>getAttribute</code>：<code>div.getAttribute(&#39;data-name&#39;)</code></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h1><p>所谓类数组对象，就是指可以通过索引属性访问元素并且拥有 length 属性的对象。<br>常见的类数组对象：<code>arguments</code>，<code>nodeList</code>，<code>typedArray</code>。</p>
 <h2 id="区别-1"><a href="#区别-1" class="headerlink" title="区别"></a>区别</h2>
       
     </div>
@@ -407,7 +423,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -497,7 +513,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -646,7 +662,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -724,7 +740,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -886,7 +902,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -962,7 +978,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -1043,7 +1059,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
@@ -1204,7 +1220,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-16 16:17:33" itemprop="dateModified" datetime="2023-05-16T16:17:33+08:00">2023-05-16</time>
+      <time title="Modified: 2023-05-18 08:36:08" itemprop="dateModified" datetime="2023-05-18T08:36:08+08:00">2023-05-18</time>
     </span>
 
   
