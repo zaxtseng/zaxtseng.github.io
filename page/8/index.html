@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:48" itemprop="dateModified" datetime="2023-05-21T08:50:48+08:00">2023-05-21</time>
     </span>
 
   
@@ -221,7 +221,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="cookie-session-token"><a href="#cookie-session-token" class="headerlink" title="cookie,session.token"></a>cookie,session.token</h1><p>服务器验证是前提。<br>cookie 保存在客户端，服务器不加密不保存；大小 4K，一般保存 sessionId。<br>session 保存在服务端，服务器要加密并保存；<br>token 保存在客户端，服务器要加密不保存。明文传递给客户端，但是是加密的。</p>
+          <h1 id="cookie-session-token"><a href="#cookie-session-token" class="headerlink" title="cookie,session.token"></a>cookie,session.token</h1><p>服务器验证是前提。<br>cookie 保存在客户端，服务器不加密不保存；大小 4K，一般保存 sessionId。有 expire 和 max-age。<br>session 保存在服务端，服务器要加密并保存；<br>token 保存在客户端，服务器要加密不保存。明文传递给客户端，但是是加密的。</p>
 <h1 id="强制缓存-协商缓存"><a href="#强制缓存-协商缓存" class="headerlink" title="强制缓存,协商缓存"></a>强制缓存,协商缓存</h1><p>HTTP 缓存都是从第二次请求开始的：<br>第一次请求资源时，服务器返回资源，并在 response header 中回传资源的缓存策略；<br>第二次请求时，浏览器判断这些请求参数，击中强缓存就直接 200，否则就把请求参数加到 request header 头中传给服务器，看是否击中协商缓存，击中则返回 304，否则服务器会返回新的资源。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#averageHue=%23ebdbd0&clientId=u28f1947f-f233-4&from=paste&height=214&id=u3198c11f&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096" alt="image.png"></p>
 <h2 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h2><p>在缓存未失效时,直接使用浏览器缓存数据,不再请求服务端.生效时,状态码是 200.<br>cache-control 优先级 &gt; expires 优先级。</p>
 <h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>第一次请求服务器,或者<code>cache-control</code>和<code>Expire</code>过期,第二次请求就会与服务器协商,与服务端对比资源是否修改更新.没有修改,则返回 304 状态码,继续使用缓存数据.如果更新,则返回 200 状态码,并将缓存信息一并返回.</p>
@@ -244,7 +244,7 @@
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>解决方案有 jsonp、cors、postMessage、websocket、Node 中间件代理(两次跨域)、nginx 反向代理、window.name + iframe、location.hash + iframe、document.domain + iframe<br>日常工作中，用得比较多的跨域方案是 cors 和 nginx 反向代理</p>
 <h2 id="cors"><a href="#cors" class="headerlink" title="cors"></a>cors</h2><p>服务端设置<code>Access-Control-Allow-Origin</code>,可以设置哪些域名可以访问资源.</p>
 <h2 id="nginx-反向代理"><a href="#nginx-反向代理" class="headerlink" title="nginx 反向代理"></a>nginx 反向代理</h2><p>搭建一个中转 nginx 服务器，用于转发请求.<br>理解: 设置一个中转用的代理服务器,所有接口都访问这个服务器,在这个服务器内设置对应的目标服务器.选择目标服务器获取数据,发送给客户端.<br>实现思路：通过 nginx 配置一个代理服务器（域名与 domain1 相同，端口不同）做跳板机，反向代理访问 domain2 接口，并且可以顺便修改 cookie 中 domain 信息，方便当前域 cookie 写入，实现跨域登录。</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>   <span class="number">80</span>; <span class="comment"># 监听的端口</span></span><br><span class="line">    <span class="attribute">server_name</span>   localhost; <span class="comment"># 用户访问 localhost，反向代理到 http://webcanteen.com</span></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://webcanteen.com <span class="comment"># 即需要代理访问的地址</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 也可以写其他的比如/api</span></span><br><span class="line">    location /api &#123;</span><br><span class="line">      <span class="attribute">proxy_pass</span> http://api.web.com <span class="comment"># 这就可以将请求/api的接口代理到这个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span>   <span class="number">80</span>; <span class="comment"># 监听的端口</span></span><br><span class="line">    <span class="attribute">server_name</span>   localhost; <span class="comment"># 用户访问 localhost，反向代理到 http://webcanteen.com</span></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://webcanteen.com <span class="comment"># 即需要代理访问的地址</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"># 也可以写其他的比如/api</span></span><br><span class="line">    location /api &#123;</span><br><span class="line">      <span class="attribute">proxy_pass</span> http://api.web.com <span class="comment"># 这就可以将请求/api的接口代理到这个地址</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="保持前后端实时通信的方法"><a href="#保持前后端实时通信的方法" class="headerlink" title="保持前后端实时通信的方法"></a>保持前后端实时通信的方法</h1><ol>
 <li>websocket</li>
@@ -277,22 +277,18 @@
 </ol>
 <h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>证书可能是伪造的,可能被篡改</p>
 <h3 id="解决方法-1"><a href="#解决方法-1" class="headerlink" title="解决方法"></a>解决方法</h3><p>数字签名和摘要.<br>对传输内容通过 hash 算法计算出一段固定的串.用私钥加密,就是数字签名.<br>这个只能用 CA 的公钥解密.防止 CA 被篡改或者伪造.</p>
-<h1 id="事件机制"><a href="#事件机制" class="headerlink" title="事件机制"></a>事件机制</h1><p>事件触发过程是怎样的? 什么是事件代理?</p>
-<h2 id="事件触发"><a href="#事件触发" class="headerlink" title="事件触发"></a>事件触发</h2><p>三个阶段: 捕获阶段 &#x3D;&gt; 事件阶段 &#x3D;&gt; 冒泡阶段</p>
-<h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><p>就是事件函数返回的 e</p>
-<h3 id="target-和-currentTarget"><a href="#target-和-currentTarget" class="headerlink" title="target 和 currentTarget"></a>target 和 currentTarget</h3><p>target: 当前真正点击的元素<br>currentTarget: 事件绑定的元素.</p>
-<h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><p>有三种方法.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 在DOM中直接绑定</span></span><br><span class="line">&lt;button onclick=<span class="string">&quot;fn()&quot;</span>&gt;click&lt;/button&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. 在js中绑定</span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn2&quot;</span>&gt;</span>click<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 兼容性好,绑定多个事件时,以最后一个为准</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;btn2&quot;</span>).<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 绑定事件监听函数</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;btn2&#x27;</span>).<span class="title function_">addListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">&#125;) <span class="comment">// 默认false,冒泡</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="事件冒泡和事件捕获"><a href="#事件冒泡和事件捕获" class="headerlink" title="事件冒泡和事件捕获"></a>事件冒泡和事件捕获</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">box.<span class="title function_">addEventListener</span>(</span><br><span class="line">  <span class="string">&quot;click&quot;</span>,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="literal">false</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// 第三个参数不写,或者false 就是事件冒泡</span></span><br><span class="line"><span class="comment">// true 就是事件捕获</span></span><br></pre></td></tr></table></figure>
-
-<p>没有冒泡事件的: <code>focus</code>, <code>onblur</code>, <code>scroll</code></p>
-<h3 id="阻止事件冒泡和捕获"><a href="#阻止事件冒泡和捕获" class="headerlink" title="阻止事件冒泡和捕获"></a>阻止事件冒泡和捕获</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">event.<span class="title function_">stopPropagation</span>(); <span class="comment">// 支持IE9+</span></span><br><span class="line">event.<span class="title function_">stopImmediaPropagation</span>();</span><br><span class="line">event.<span class="property">cancelBubble</span> = <span class="literal">true</span>; <span class="comment">// 支持IE8</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="事件代理-委托"><a href="#事件代理-委托" class="headerlink" title="事件代理(委托)"></a>事件代理(委托)</h2><p>如果我们有许多以类似方式处理的元素，那么就不必为每个元素分配一个处理程序 —— 而是将单个处理程序放在它们的共同祖先上<br>在处理程序中，我们获取 event.target 以查看事件实际发生的位置并进行处理。<br>在 ul 列表绑定事件,就不用在每个 li 元素上单独绑定了,因为会冒泡到父元素上,通过 event.target 拿到.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;ul&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">  <span class="keyword">const</span> ul = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;ul&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">  ul.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">target</span>.<span class="property">value</span>);</span></span><br><span class="line"><span class="language-javascript">  &#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>事件委托的特点<br>1、提高 JS 性能<br>2、动态的添加 DOM 元素</p>
+<h1 id="请求网页的过程"><a href="#请求网页的过程" class="headerlink" title="请求网页的过程"></a>请求网页的过程</h1><h1 id="URI"><a href="#URI" class="headerlink" title="URI"></a>URI</h1><p>URI：统一资源标识符，用来标识唯一的一个资源。<br>URL：统一资源定位符。URL 可以标识一个资源，并且可以用地址定位资源。<br>URN：统一资源命名。通过名字来表示资源。用名称定位资源。<br>URL 肯定是 URI，URI 不一定是 URL，也可能是 URN。<br>URI 是比较宽范的，包含了 URL。</p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><ol>
+<li>资源标识</li>
+<li>具有资源定位功能</li>
+<li>指明了获取资源的协议</li>
+</ol>
+<h3 id="URL-组成"><a href="#URL-组成" class="headerlink" title="URL 组成"></a>URL 组成</h3><ol>
+<li>协议名称：http，https，ws</li>
+<li>主机名：域名或 IP</li>
+<li>端口号：80（http 默认），443（https 默认），3306（MySQL）</li>
+<li>路径：</li>
+</ol>
 
       
     </div>
@@ -355,7 +351,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:48" itemprop="dateModified" datetime="2023-05-21T08:50:48+08:00">2023-05-21</time>
     </span>
 
   
@@ -453,7 +449,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:48" itemprop="dateModified" datetime="2023-05-21T08:50:48+08:00">2023-05-21</time>
     </span>
 
   
@@ -632,7 +628,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:49" itemprop="dateModified" datetime="2023-05-21T08:50:49+08:00">2023-05-21</time>
     </span>
 
   
@@ -802,7 +798,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:49" itemprop="dateModified" datetime="2023-05-21T08:50:49+08:00">2023-05-21</time>
     </span>
 
   
@@ -881,7 +877,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:49" itemprop="dateModified" datetime="2023-05-21T08:50:49+08:00">2023-05-21</time>
     </span>
 
   
@@ -980,7 +976,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:49" itemprop="dateModified" datetime="2023-05-21T08:50:49+08:00">2023-05-21</time>
     </span>
 
   
@@ -1102,7 +1098,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:49" itemprop="dateModified" datetime="2023-05-21T08:50:49+08:00">2023-05-21</time>
     </span>
 
   
@@ -1267,7 +1263,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:49" itemprop="dateModified" datetime="2023-05-21T08:50:49+08:00">2023-05-21</time>
     </span>
 
   
@@ -1391,7 +1387,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-20 08:14:49" itemprop="dateModified" datetime="2023-05-20T08:14:49+08:00">2023-05-20</time>
+      <time title="Modified: 2023-05-21 08:50:49" itemprop="dateModified" datetime="2023-05-21T08:50:49+08:00">2023-05-21</time>
     </span>
 
   
