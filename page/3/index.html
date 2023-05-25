@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:28" itemprop="dateModified" datetime="2023-05-24T08:42:28+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:29" itemprop="dateModified" datetime="2023-05-25T16:55:29+08:00">2023-05-25</time>
     </span>
 
   
@@ -361,7 +361,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:29" itemprop="dateModified" datetime="2023-05-24T08:42:29+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:29" itemprop="dateModified" datetime="2023-05-25T16:55:29+08:00">2023-05-25</time>
     </span>
 
   
@@ -695,7 +695,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:29" itemprop="dateModified" datetime="2023-05-24T08:42:29+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:29" itemprop="dateModified" datetime="2023-05-25T16:55:29+08:00">2023-05-25</time>
     </span>
 
   
@@ -865,7 +865,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:29" itemprop="dateModified" datetime="2023-05-24T08:42:29+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:29" itemprop="dateModified" datetime="2023-05-25T16:55:29+08:00">2023-05-25</time>
     </span>
 
   
@@ -941,7 +941,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:29" itemprop="dateModified" datetime="2023-05-24T08:42:29+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:29" itemprop="dateModified" datetime="2023-05-25T16:55:29+08:00">2023-05-25</time>
     </span>
 
   
@@ -1107,7 +1107,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:29" itemprop="dateModified" datetime="2023-05-24T08:42:29+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:30" itemprop="dateModified" datetime="2023-05-25T16:55:30+08:00">2023-05-25</time>
     </span>
 
   
@@ -1127,7 +1127,8 @@
 <li>通过<code>module.exports</code>导出成员</li>
 <li>通过<code>require</code>函数载入模块</li>
 </ul>
-<h2 id="ES-Module"><a href="#ES-Module" class="headerlink" title="ES Module"></a>ES Module</h2><p>ESM 是 ES6 引入的 JS 标准模块化规范，它的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系和输入和输出的变量。<br>功能：模块功能主要由两个命令构成：export 和 import。export 命令用于规定模块的对外接口，import 命令用于输入其他模块提供的功能。</p>
+<h2 id="ES-Module"><a href="#ES-Module" class="headerlink" title="ES Module"></a>ES Module</h2><p>ESM 是 ES6 引入的 JS 标准模块化规范，它的设计思想是尽量的静态化，使得编译时就能确定模块的依赖关系和输入和输出的变量。</p>
+<h3 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h3><p>模块功能主要由两个命令构成：<code>export</code>和<code>import</code>。<br>export 命令用于规定模块的对外接口，<br>import 命令用于输入其他模块提供的功能。</p>
 <h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>通过给 script 添加 <code>type = module</code> 的属性，就可以以 ES Module 的标准执行其中的 js 代码了</p>
 <ul>
 <li>自动采用严格模式，忽略‘use strict’</li>
@@ -1261,14 +1262,16 @@
 <li>webpack 默认所有打包的结果放在网站根目录；为项目中的所有资源指定一个基础路径，在 output 中添加 publicPath 属性，默认值为空表示网站的根目录</li>
 <li>把 publicPath 值修改为 ‘dist&#x2F;‘ 注意“&#x2F;”不能省略，打包后是一个变量名（publicPath 值）拼接资源名（资源名前面没有“&#x2F;”）所有“&#x2F;”不能省略</li>
 </ul>
-<p><code>publicPath</code>是整个项目的静态资源的基础路径,一般在生产模式下使用.<br>而<code>webpack-dev-server</code>中的<code>publicPath</code>是打包后代码存放的路径.这里的文件访问的静态资源路径还是<code>output</code>中的<code>publicPath</code>.所以二者要保持一致.<br>假设 <code>output.publicPath</code> 设置成了 <code>&#39;./dist/&#39;</code>，那么打包后的 JS 引用路径为 <code>./dist/main.js</code>。这里会存在一个问题，相对路径在本地能正常访问到。但是如果把静态资源托管到 CDN 上，访问路径显然不能使用相对路径的。如果设置成 <code>&#39;/dist/&#39;</code>，则打包后的访问路径是 <code>localhost:8080/dist/main.js</code>，此时本地无法访问。一般解决方法就是利用 <code>webpack.DefinePlugin</code> 来定义一个全局变量（process.env.NODE_ENV）区分开发、生产环境来设定不同的值，或者是采用两份不同的配置文件来进行打包。<br>一般来说，output.publicPath 应该以 ‘&#x2F;‘ 结尾，而其他 loader 或插件的配置不要以 ‘&#x2F;‘ 开头。</p>
+<p><code>publicPath</code>是整个项目的静态资源的基础路径,一般在生产模式下使用.</p>
+<p>而<code>webpack-dev-server</code>中的<code>publicPath</code>是打包后代码存放的路径.这里的文件访问的静态资源路径还是<code>output</code>中的<code>publicPath</code>.所以二者要保持一致.</p>
+<p>假设 <code>output.publicPath</code> 设置成了 <code>&#39;./dist/&#39;</code>，那么打包后的 JS 引用路径为 <code>./dist/main.js</code>。这里会存在一个问题，相对路径在本地能正常访问到。但是如果把静态资源托管到 CDN 上，访问路径显然不能使用相对路径的。如果设置成 <code>&#39;/dist/&#39;</code>，则打包后的访问路径是 <code>localhost:8080/dist/main.js</code>，此时本地无法访问。<br>一般解决方法就是利用 <code>webpack.DefinePlugin</code> 来定义一个全局变量（process.env.NODE_ENV）区分开发、生产环境来设定不同的值，或者是采用两份不同的配置文件来进行打包。<br>一般来说，output.publicPath 应该以 ‘&#x2F;‘ 结尾，而其他 loader 或插件的配置不要以 ‘&#x2F;‘ 开头。</p>
 <h2 id="url-loader-URL-加载器"><a href="#url-loader-URL-加载器" class="headerlink" title="url-loader URL 加载器"></a>url-loader URL 加载器</h2><p>优点: 不用再发起 http 请求</p>
 <ul>
 <li>Data URLS 格式：data(协议):[mediatype(媒体类型和编码)][;base64],</li>
 <li>安装插件 <code>yarn add url-loader --dev</code></li>
 <li>在配置文件中添加 rules</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">use</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.png$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;url-loader&quot;</span>,</span><br><span class="line">          <span class="attr">option</span>: &#123;</span><br><span class="line">            <span class="attr">limit</span>: <span class="number">10</span> * <span class="number">1024</span>, <span class="comment">// 对于小于10kb的png图片使用url-loader打包；而大于10kb的会使用file-loader打包</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">use</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.png$/</span>,</span><br><span class="line">        <span class="attr">use</span>: &#123;</span><br><span class="line">          <span class="attr">loader</span>: <span class="string">&quot;url-loader&quot;</span>,</span><br><span class="line">          <span class="attr">option</span>: &#123;</span><br><span class="line">            <span class="attr">limit</span>: <span class="number">10</span> * <span class="number">1024</span>, <span class="comment">// 对于小于10kb的png图片使用url-loader打包；</span></span><br><span class="line">            <span class="comment">// 而大于10kb的会使用file-loader打包</span></span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>loader 中做大小限制还是需要安装 file-loader,不然无法解析.</p>
 <ul>
@@ -1514,7 +1517,7 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">CleanWebpackPlugin</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;clean-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">HtmlWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&quot;html-webpack-plugin&quot;</span>);</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">  <span class="attr">entry</span>: &#123;</span><br><span class="line">    <span class="attr">index</span>: <span class="string">&quot;./src/index.js&quot;</span>,</span><br><span class="line">    <span class="attr">album</span>: <span class="string">&quot;./src/album.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">output</span>: &#123;</span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;[name].bundle.js&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;style-loader&quot;</span>, <span class="string">&quot;css-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">CleanWebpackPlugin</span>(),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;Multi Entry&quot;</span>,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;./src/index.html&quot;</span>,</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;index.html&quot;</span>,</span><br><span class="line">      <span class="attr">chunks</span>: [<span class="string">&quot;index&quot;</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">HtmlWebpackPlugin</span>(&#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;Multi Entry&quot;</span>,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">&quot;./src/album.html&quot;</span>,</span><br><span class="line">      <span class="attr">filename</span>: <span class="string">&quot;album.html&quot;</span>,</span><br><span class="line">      <span class="attr">chunks</span>: [<span class="string">&quot;album&quot;</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Webpack-提取公共模块"><a href="#Webpack-提取公共模块" class="headerlink" title="Webpack 提取公共模块"></a>Webpack 提取公共模块</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">splitChunks</span>: &#123;</span><br><span class="line">      <span class="comment">// 自动提取所有公共模块到单独 bundle</span></span><br><span class="line">      <span class="attr">chunks</span>: <span class="string">&quot;all&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="Webpack-提取公共模块"><a href="#Webpack-提取公共模块" class="headerlink" title="Webpack 提取公共模块"></a>Webpack 提取公共模块</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">optimization</span>: &#123;</span><br><span class="line">    <span class="attr">splitChunks</span>: &#123;</span><br><span class="line">      <span class="comment">// 选择对哪些文件进行拆分，默认是async，即只对动态导入的文件进行拆分</span></span><br><span class="line">      <span class="attr">chunks</span>: <span class="string">&quot;all&quot;</span>,</span><br><span class="line">      <span class="comment">// 提取chunk的最小体积</span></span><br><span class="line">      <span class="attr">minSize</span>: <span class="number">20000</span>,</span><br><span class="line">      <span class="comment">// 要提取的chunk最少被引用次数</span></span><br><span class="line">      <span class="attr">minChunks</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="comment">// 对要提取的trunk进行分组</span></span><br><span class="line">      <span class="attr">cacheGroups</span>: &#123;</span><br><span class="line">        <span class="comment">// 匹配node_modules中的三方库，将其打包成一个trunk</span></span><br><span class="line">        <span class="attr">defaultVendors</span>: &#123;</span><br><span class="line">          <span class="attr">test</span>: <span class="regexp">/[\\/]node_modules[\\/]/</span>,</span><br><span class="line">          <span class="attr">name</span>: <span class="string">&quot;vendors&quot;</span>,</span><br><span class="line">          <span class="attr">priority</span>: -<span class="number">10</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">default</span>: &#123;</span><br><span class="line">          <span class="comment">// 将至少被两个trunk引入的模块提取出来打包成单独trunk</span></span><br><span class="line">          <span class="attr">minChunks</span>: <span class="number">2</span>,</span><br><span class="line">          <span class="attr">name</span>: <span class="string">&quot;default&quot;</span>,</span><br><span class="line">          <span class="attr">priority</span>: -<span class="number">20</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Webpack-动态导入"><a href="#Webpack-动态导入" class="headerlink" title="Webpack 动态导入"></a>Webpack 动态导入</h2><ul>
 <li>需要用到某个模块时，再加载这个模块</li>
@@ -1588,8 +1591,24 @@
 <p>可以将配置写在单独的<code>postcss.config.js</code>中,或者 webpack 配置中</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// postcss.config.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="built_in">require</span>(<span class="string">&quot;autoprefixer&quot;</span>)],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<h3 id="postcss-preset-env"><a href="#postcss-preset-env" class="headerlink" title="postcss-preset-env"></a>postcss-preset-env</h3><p>在一些陈旧的项目中可能会看到 autoprefixer 这个插件，现在我们可以直接使用 postcss-preset-env 这个插件，自动添加前缀的功能已经包含在了其中</p>
+<p>在项目根目录下新增 postcss.config.js 配置文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="string">&quot;postcss-preset-env&quot;</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <h2 id="post-loader"><a href="#post-loader" class="headerlink" title="post-loader"></a>post-loader</h2><p>在 webpack 中的配置</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">moudule.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">//...,</span></span><br><span class="line">  <span class="attr">modules</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/.css$/</span>,</span><br><span class="line">        <span class="attr">use</span>: [<span class="string">&quot;style-loader&quot;</span>, <span class="string">&quot;css-loader&quot;</span>, <span class="string">&quot;postcss-loader&quot;</span>],</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h1><p>在 webpack5 之前，加载图片、字体等资源需要我们使用 url-loader、 file-loader 等来处理<br>从 webpack5 开始，我们可以使用内置的资源模块类型 Asset Modules type，来替代这些 loader 的工作<br>资源模块类型 Asset Modules type 分为四种：</p>
+<ul>
+<li>asset&#x2F;resource 发送一个单独的文件并导出 URL，之前通过使用 file-loader 实现</li>
+<li>asset&#x2F;inline 导出一个资源的 data URI，之前通过使用 url-loader 实现</li>
+<li>asset&#x2F;source 导出资源的源代码，之前通过使用 raw-loader 实现</li>
+<li>asset 在导出一个 data URI 和发送一个单独的文件之间自动选择，之前通过使用 url-loader 实现，并且可以配置资源体积限制</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">epxorts</span> = &#123;</span><br><span class="line">  <span class="attr">module</span>: &#123;</span><br><span class="line">    <span class="attr">rules</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">test</span>: <span class="regexp">/\.(png|svg|jpe?g|gif)$/</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&quot;asset&quot;</span>,</span><br><span class="line">        <span class="attr">generator</span>: &#123;</span><br><span class="line">          <span class="attr">filename</span>: <span class="string">&quot;images/[name]-[hash][ext]&quot;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="文件缓存"><a href="#文件缓存" class="headerlink" title="文件缓存"></a>文件缓存</h1><p>webpack5 之前我们常用 cache-loader 、hard-source-webpack-plugin 做文件缓存，加速二次构建， webpack5 现在内置了这种能力，默认会把编译的结果缓存到内存中，通过配置还可以缓存到文件系统中<br>修改 webpack.base.js：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">cache</span>: &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;filesystem&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1652,7 +1671,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:30" itemprop="dateModified" datetime="2023-05-24T08:42:30+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:30" itemprop="dateModified" datetime="2023-05-25T16:55:30+08:00">2023-05-25</time>
     </span>
 
   
@@ -1835,7 +1854,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:30" itemprop="dateModified" datetime="2023-05-24T08:42:30+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:30" itemprop="dateModified" datetime="2023-05-25T16:55:30+08:00">2023-05-25</time>
     </span>
 
   
@@ -1921,7 +1940,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:30" itemprop="dateModified" datetime="2023-05-24T08:42:30+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:30" itemprop="dateModified" datetime="2023-05-25T16:55:30+08:00">2023-05-25</time>
     </span>
 
   
@@ -1997,7 +2016,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-24 08:42:30" itemprop="dateModified" datetime="2023-05-24T08:42:30+08:00">2023-05-24</time>
+      <time title="Modified: 2023-05-25 16:55:30" itemprop="dateModified" datetime="2023-05-25T16:55:30+08:00">2023-05-25</time>
     </span>
 
   
