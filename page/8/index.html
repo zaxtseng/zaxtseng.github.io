@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -221,7 +221,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="cookie-session-token"><a href="#cookie-session-token" class="headerlink" title="cookie,session.token"></a>cookie,session.token</h1><p>服务器验证是前提。<br>cookie 保存在客户端，服务器不加密不保存；大小 4K，一般保存 sessionId。有 expire 和 max-age。<br>session 保存在服务端，服务器要加密并保存；<br>token 保存在客户端，服务器要加密不保存。明文传递给客户端，但是是加密的。</p>
+          <h1 id="cookie-session-token"><a href="#cookie-session-token" class="headerlink" title="cookie,session,token"></a>cookie,session,token</h1><p>服务器验证是前提。<br>cookie 保存在客户端，服务器不加密不保存；大小 4K，一般保存 sessionId。有 expire 和 max-age。<br>session 保存在服务端，服务器要加密并保存；<br>token 保存在客户端，服务器要加密不保存。明文传递给客户端，但是是加密的。</p>
+<h1 id="localStorage，sessionStorage，cookie"><a href="#localStorage，sessionStorage，cookie" class="headerlink" title="localStorage，sessionStorage，cookie"></a>localStorage，sessionStorage，cookie</h1><p>localStorage：整个浏览器有效，大小 10M.永久有效。<br>sessionStorage：只在当前 tab 页有效，相邻 tab 不同共享。大小 5M.tab 关闭即失效。<br>cookie：整个浏览器有效，大小 4K.根据设置的过期时间。可以保存在浏览器和服务端。</p>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><p>cookie 是以键值对的形式保存在浏览器。以<code>=</code>相关联，以<code>;</code>分隔。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看cookie</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>;</span><br><span class="line"><span class="comment">// 新增cookie</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;name = Tom&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h2><p>同源问题：非同源的不能操作修改 localStorage。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置localStorage</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;Tom&quot;</span>);</span><br><span class="line"><span class="comment">// 查看localStorage</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;name&quot;</span>); <span class="comment">// Tom</span></span><br><span class="line"><span class="comment">// 设置相同键名，会覆盖之前的值</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;Jack&quot;</span>); <span class="comment">// name被覆盖为Jack</span></span><br><span class="line"><span class="comment">// 删除指定localStorage</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&quot;name&quot;</span>);</span><br><span class="line"><span class="comment">// 删除所有localStorage</span></span><br><span class="line"><span class="variable language_">localStorage</span>.<span class="title function_">clear</span>();</span><br></pre></td></tr></table></figure>
+
 <h1 id="强制缓存-协商缓存"><a href="#强制缓存-协商缓存" class="headerlink" title="强制缓存,协商缓存"></a>强制缓存,协商缓存</h1><p>HTTP 缓存都是从第二次请求开始的：<br>第一次请求资源时，服务器返回资源，并在 response header 中回传资源的缓存策略；<br>第二次请求时，浏览器判断这些请求参数，击中强缓存就直接 200，否则就把请求参数加到 request header 头中传给服务器，看是否击中协商缓存，击中则返回 304，否则服务器会返回新的资源。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665390838645-21dd5a7c-9d7b-46be-8f11-5295c562a9cf.png#averageHue=%23ebdbd0&clientId=u28f1947f-f233-4&from=paste&height=214&id=u3198c11f&originHeight=214&originWidth=1096&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=126739&status=done&style=none&taskId=ue0545c29-898f-42d5-84b6-38939a39296&title=&width=1096" alt="image.png"></p>
 <h2 id="强制缓存"><a href="#强制缓存" class="headerlink" title="强制缓存"></a>强制缓存</h2><p>在缓存未失效时,直接使用浏览器缓存数据,不再请求服务端.生效时,状态码是 200.<br>cache-control 优先级 &gt; expires 优先级。</p>
 <h2 id="协商缓存"><a href="#协商缓存" class="headerlink" title="协商缓存"></a>协商缓存</h2><p>第一次请求服务器,或者<code>cache-control</code>和<code>Expire</code>过期,第二次请求就会与服务器协商,与服务端对比资源是否修改更新.没有修改,则返回 304 状态码,继续使用缓存数据.如果更新,则返回 200 状态码,并将缓存信息一并返回.</p>
@@ -366,13 +373,30 @@
 <h2 id="referer"><a href="#referer" class="headerlink" title="referer"></a>referer</h2><p>来源域名。告诉服务器是从哪个域名来的。<br>比如从百度搜 qq 官网，qq 官网请求头会显示 referer:<a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a><br>场景：资源防盗链。拉取资源前判断 referer 是否是自己的域名。</p>
 <h1 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h1><p>pragma：no-cache（响应头） &#x3D;&gt; 忽略缓存。每次请求都从走服务器。</p>
 <h2 id="cache-control"><a href="#cache-control" class="headerlink" title="cache-control"></a>cache-control</h2><p>http1.0：cache-control 替代 pragma。向下兼容。<br>选项：<br>none-cache：忽略缓存（并非不要缓存）。<br>no-store：不要缓存。<br>max-age&#x3D;316000：缓存的有效时长。从请求开始到过期的时间秒数。<br>public：响应可以被任何对象缓存。<br>private：响应只能被单个用户缓存，不能被共享。</p>
-<h2 id="Expires"><a href="#Expires" class="headerlink" title="Expires"></a>Expires</h2><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
+<h2 id="Expires-x2F-max-age"><a href="#Expires-x2F-max-age" class="headerlink" title="Expires&#x2F;max-age"></a>Expires&#x2F;max-age</h2><p>过期时间。</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
 <li>发请求</li>
 <li>有缓存，查看是否过期，不过期，直接读取缓存，返回 200</li>
 <li>是否有 E-tag，Last-Modifed。有向服务端发送。E-tag(If-None-Match)优先级高，先验证它，一致后再验证 Last-Modifed(If-Modifed-Since).</li>
 <li>资源未修改，返回 304，从缓存获取资源。失效，返回 200，重新返回资源。</li>
 </ol>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+<h1 id="history"><a href="#history" class="headerlink" title="history"></a>history</h1><p>histroy 栈<br>存储历史记录。<br>length 属性：存了多少条。</p>
+<h2 id="replaceState"><a href="#replaceState" class="headerlink" title="replaceState"></a>replaceState</h2><p>用于替换 history 栈中的条目。有三个参数。</p>
+<ol>
+<li>对象</li>
+<li>网页名</li>
+<li>url 地址</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">history.<span class="title function_">replaceState</span>(<span class="string">&quot;text name&quot;</span>, <span class="literal">null</span>, <span class="string">&quot;text.html&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="pushState"><a href="#pushState" class="headerlink" title="pushState"></a>pushState</h2><p>和 replaceState 类似。也是三个参数。<br>区别：pushState 是添加，replaceState 是直接替换。<br>这两个方法修改 url 后，都不会引起渲染。</p>
+<h2 id="popState"><a href="#popState" class="headerlink" title="popState"></a>popState</h2><p>在历史活动条目发送改变时触发。<br>在 pushState 和 replaceState 触发时不改变，手动点击后退时，触发。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;popState&quot;</span>, <span class="function">() =&gt;</span> &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="hashChange"><a href="#hashChange" class="headerlink" title="hashChange"></a>hashChange</h2><p>当 hash 值改变，可以监听事件。、</p>
+<h1 id="web-worker"><a href="#web-worker" class="headerlink" title="web worker"></a>web worker</h1><p>开启一个新的线程。线程内只有 this，没有 window 和 document。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">Worker</span>) &#123;</span><br><span class="line">  <span class="comment">// 实例化</span></span><br><span class="line">  <span class="keyword">var</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">&quot;worker.js&quot;</span>);</span><br><span class="line">  <span class="comment">// 信息</span></span><br><span class="line">  <span class="keyword">var</span> message = &#123; <span class="attr">addThis</span>: &#123; <span class="attr">num</span>: <span class="number">1</span>, <span class="attr">num2</span>: <span class="number">1</span> &#125; &#125;;</span><br><span class="line">  <span class="comment">// 传递信息</span></span><br><span class="line">  myWorker.<span class="title function_">postMessage</span>(message);</span><br><span class="line">  <span class="comment">// 接收信息</span></span><br><span class="line">  myWorker.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// wokker.js</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (e.<span class="property">data</span>.<span class="property">addThs</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> message = &#123;</span><br><span class="line">      <span class="attr">result</span>: e.<span class="property">data</span>.<span class="property">addThis</span>.<span class="property">num1</span> + e.<span class="property">data</span>.<span class="property">addThis</span>.<span class="property">num2</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">postMessage</span>(message);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -434,7 +458,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -532,7 +556,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -711,7 +735,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -881,7 +905,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -960,7 +984,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -1059,7 +1083,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -1181,7 +1205,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -1412,7 +1436,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
@@ -1536,7 +1560,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-05-27 08:41:39" itemprop="dateModified" datetime="2023-05-27T08:41:39+08:00">2023-05-27</time>
+      <time title="Modified: 2023-05-28 09:29:02" itemprop="dateModified" datetime="2023-05-28T09:29:02+08:00">2023-05-28</time>
     </span>
 
   
