@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:03" itemprop="dateModified" datetime="2023-06-18T12:01:03+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:44" itemprop="dateModified" datetime="2023-06-19T09:05:44+08:00">2023-06-19</time>
     </span>
 
   
@@ -352,7 +352,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:03" itemprop="dateModified" datetime="2023-06-18T12:01:03+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:44" itemprop="dateModified" datetime="2023-06-19T09:05:44+08:00">2023-06-19</time>
     </span>
 
   
@@ -648,7 +648,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:03" itemprop="dateModified" datetime="2023-06-18T12:01:03+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:44" itemprop="dateModified" datetime="2023-06-19T09:05:44+08:00">2023-06-19</time>
     </span>
 
   
@@ -843,7 +843,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:03" itemprop="dateModified" datetime="2023-06-18T12:01:03+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:45" itemprop="dateModified" datetime="2023-06-19T09:05:45+08:00">2023-06-19</time>
     </span>
 
   
@@ -971,7 +971,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:04" itemprop="dateModified" datetime="2023-06-18T12:01:04+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:45" itemprop="dateModified" datetime="2023-06-19T09:05:45+08:00">2023-06-19</time>
     </span>
 
   
@@ -1253,7 +1253,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:04" itemprop="dateModified" datetime="2023-06-18T12:01:04+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:45" itemprop="dateModified" datetime="2023-06-19T09:05:45+08:00">2023-06-19</time>
     </span>
 
   
@@ -1777,7 +1777,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:04" itemprop="dateModified" datetime="2023-06-18T12:01:04+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:46" itemprop="dateModified" datetime="2023-06-19T09:05:46+08:00">2023-06-19</time>
     </span>
 
   
@@ -2068,7 +2068,15 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 <li>然后执行 react 合成事件</li>
 <li>最后执行真正在 document 上挂载的事件</li>
 </ul>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+<h1 id="React-事件系统"><a href="#React-事件系统" class="headerlink" title="React 事件系统"></a>React 事件系统</h1><p>React 的事件系统分为几个部分：</p>
+<ul>
+<li>事件注册；</li>
+<li>事件监听；</li>
+<li>事件合成；</li>
+<li>事件派发；</li>
+</ul>
+<p>事件系统流程：<br>在 React 代码执行时，内部会自动执行事件的注册；<br>第一次渲染，创建 fiberRoot 时，会进行事件的监听，所有的事件通过 addEventListener 委托在 id&#x3D;root 的 DOM 元素上进行监听；<br>在我们触发事件时，会进行事件合成，同类型事件复用一个合成事件类实例对象；<br>最后进行事件的派发，执行我们代码中的事件回调函数；</p>
+
       
     </div>
 
@@ -2130,7 +2138,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:04" itemprop="dateModified" datetime="2023-06-18T12:01:04+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:46" itemprop="dateModified" datetime="2023-06-19T09:05:46+08:00">2023-06-19</time>
     </span>
 
   
@@ -2257,7 +2265,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:04" itemprop="dateModified" datetime="2023-06-18T12:01:04+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:46" itemprop="dateModified" datetime="2023-06-19T09:05:46+08:00">2023-06-19</time>
     </span>
 
   
@@ -2347,7 +2355,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-06-18 12:01:04" itemprop="dateModified" datetime="2023-06-18T12:01:04+08:00">2023-06-18</time>
+      <time title="Modified: 2023-06-19 09:05:46" itemprop="dateModified" datetime="2023-06-19T09:05:46+08:00">2023-06-19</time>
     </span>
 
   
