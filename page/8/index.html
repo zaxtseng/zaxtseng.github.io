@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:55" itemprop="dateModified" datetime="2023-07-01T09:30:55+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:27" itemprop="dateModified" datetime="2023-07-01T17:05:27+08:00">2023-07-01</time>
     </span>
 
   
@@ -459,7 +459,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:55" itemprop="dateModified" datetime="2023-07-01T09:30:55+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
@@ -557,7 +557,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:56" itemprop="dateModified" datetime="2023-07-01T09:30:56+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
@@ -570,13 +570,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h1><p>捕获错误显示备用 UI,而不是整个组件崩溃.<br>无法捕获:</p>
+          <h1 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h1><p>捕获错误显示备用 UI,而不是整个组件崩溃.<br>使用 getDerivedStateFromError()渲染备用 UI，使用 ComponentDidCatch 捕获错误。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ErrorBoundary</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123; <span class="attr">hasError</span>: <span class="literal">false</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">getDerivedStateFromError</span>(<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 更新 state 使下一次渲染能够显示降级后的 UI</span></span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">hasError</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">componentDidCatch</span>(<span class="params">error, errorInfo</span>) &#123;</span><br><span class="line">    <span class="comment">// 你同样可以将错误日志上报给服务器</span></span><br><span class="line">    <span class="title function_">logErrorToMyService</span>(error, errorInfo);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">hasError</span>) &#123;</span><br><span class="line">      <span class="comment">// 你可以自定义降级后的 UI 并渲染</span></span><br><span class="line">      <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Something went wrong.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">children</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>无法捕获:</p>
 <ol>
 <li>事件处理</li>
 <li>异步代码 （例如 setTimeout 或 requestAnimationFrame 回调函数）</li>
 <li>服务端渲染</li>
 <li>错误边界自身抛出来的错误 （而不是其子组件）</li>
 </ol>
+<p>对于无法捕获的错误，可以使用 try&#x2F;catch.<br>或者监听 oneror 事件，<code>window.addEventListener(&#39;error&#39;,fn())</code></p>
+<h1 id="jsx-转-DOM-过程"><a href="#jsx-转-DOM-过程" class="headerlink" title="jsx 转 DOM 过程"></a>jsx 转 DOM 过程</h1><ul>
+<li>使用 React.createElement 或 JSX 编写 React 组件，实际上所有的 JSX 代码最后都会转换成 React.createElement(…) ，Babel 帮助我们完成了这个转换的过程。</li>
+<li>createElement 函数对 key 和 ref 等特殊的 props 进行处理，并获取 defaultProps 对默认 props 进行赋值，并且对传入的孩子节点进行处理，最终构造成一个虚拟 DOM 对象</li>
+<li>ReactDOM.render 将生成好的虚拟 DOM 渲染到指定容器上，其中采用了批处理、事务等机制并且对特定浏览器进行了性能优化，最终转换为真实 DOM</li>
+</ul>
 <h1 id="虚拟-DOM"><a href="#虚拟-DOM" class="headerlink" title="虚拟 DOM"></a>虚拟 DOM</h1><p>Virtual DOM,即虚拟 DOM 节点.使用 JS 的 Object 对象模拟 DOM 中的节点.通过特定的 render 方法将其渲染成真实 DOM.比操作真实 DOM 减小性能开销.<br>操作虚拟 DOM 并不会比操作真实 DOM 快,只不过虚拟 DOM 可以将多次操作合并为一次,也就是减少 DOM 操作.<br>比如添加 1000 个节点,操作真实 DOM 要一个个添加,虚拟 DOM 可以一次性添加.<br>通过对比前后虚拟 dom,得出变化的部分,只修改有变化的 dom,节省性能.<br>虚拟 DOM 因为是对象,所以可以支持跨平台.</p>
 <h2 id="Diff-算法"><a href="#Diff-算法" class="headerlink" title="Diff 算法"></a>Diff 算法</h2><p>传统的 Diff 算法也是一直都有的,diff 算法，会对比新老虚拟 DOM，记录下他们之间的变化，然后将变化的部分更新到视图上。其实之前的 diff 算法，是通过循环递归每个节点，然后进行对比，复杂程度为 O(n^3)，n 是树中节点的总数，这样性能是非常差的。<br>dom-diff 的原理？<br>dom-diff 算法会比较前后虚拟 DOM，从而得到 patches(补丁)，然后与老 Virtual DOM 进行对比，将其应用在需要更新的地方，将 O(n^3) 复杂度的问题转换成 O(n^1&#x3D;n) 复杂度的问题，得到新的 Virtual DOM。<br>缺点: 在同级对比中,</p>
 <h3 id="降低时间复杂度的方法："><a href="#降低时间复杂度的方法：" class="headerlink" title="降低时间复杂度的方法："></a>降低时间复杂度的方法：</h3><ol>
@@ -594,7 +603,7 @@
 <li>如果是同类型的组件,就按照原策略继续比较虚拟 DOM 树.</li>
 <li>如果不是同类型,就销毁原组件,创建新组件,</li>
 </ul>
-<h3 id="3-element-diff"><a href="#3-element-diff" class="headerlink" title="(3) element diff"></a>(3) element diff</h3><p>针对同一层级的所有节点.当节点处于同一层级,diff 提供三种操作,插入,移动,删除.</p>
+<h3 id="3-element-diff"><a href="#3-element-diff" class="headerlink" title="(3) element diff"></a>(3) element diff</h3><p>针对同一层级的所有节点.当节点处于同一层级,diff 提供三种操作,插入,移动,删除.<br>对同一层级的同组节点添加唯一的 key 进行区分.通过 key 来判断那些节点可以复用,直接使用移动操作.</p>
 <h1 id="为什么不能用-index-作为-key"><a href="#为什么不能用-index-作为-key" class="headerlink" title="为什么不能用 index 作为 key?"></a>为什么不能用 index 作为 key?</h1><p>因为 index 会变,数组中如果删除中间某个值,它的 index 会被后面的替换.</p>
 <h1 id="Fiber-和虚拟-DOM-的关系"><a href="#Fiber-和虚拟-DOM-的关系" class="headerlink" title="Fiber 和虚拟 DOM 的关系"></a>Fiber 和虚拟 DOM 的关系</h1><ul>
 <li>在 React16 之前,react 直接递归渲染 VDom,setState 会触发重新渲染,对比渲染出的新旧 VDom,对差异部分进行 dom 操作.</li>
@@ -674,7 +683,10 @@
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">LazyComponent</span> = <span class="title class_">React</span>.<span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./test.js&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Index</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span>&lt;<span class="attr">div</span>&gt;</span>loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;&gt;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">LazyComponent</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>React.lazy 是如何配合 Susponse 实现动态加载的效果的呢？实际上,lazy 内部就是做了一个 createFetcher，而上面讲到 createFetcher 得到渲染的数据，而 lazy 里面自带的 createFetcher 异步请求的是组件。lazy 内部模拟一个 promiseA 规范场景。我们完全可以理解 React.lazy 用 Promise 模拟了一个请求数据的过程，但是请求的结果不是数据，而是一个动态的组件。</p>
-<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+<h1 id="逻辑复用"><a href="#逻辑复用" class="headerlink" title="逻辑复用"></a>逻辑复用</h1><h2 id="高阶组件-HOC"><a href="#高阶组件-HOC" class="headerlink" title="高阶组件 HOC"></a>高阶组件 HOC</h2><p>接收一个组件，返回一个新的组件。<br>接收的组件接受高阶组件的 props，也就是复用的 props 和方法。</p>
+<h2 id="render-props"><a href="#render-props" class="headerlink" title="render props"></a>render props</h2><p>使用 children 属性作为传入参数。</p>
+<h2 id="自定义-hook"><a href="#自定义-hook" class="headerlink" title="自定义 hook"></a>自定义 hook</h2><p>将复用的 state 和方法抽离到一个 hook 中，返回对应的 state 和方法。</p>
+
       
     </div>
 
@@ -736,7 +748,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:56" itemprop="dateModified" datetime="2023-07-01T09:30:56+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
@@ -906,7 +918,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:56" itemprop="dateModified" datetime="2023-07-01T09:30:56+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
@@ -985,7 +997,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:56" itemprop="dateModified" datetime="2023-07-01T09:30:56+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
@@ -1084,7 +1096,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:56" itemprop="dateModified" datetime="2023-07-01T09:30:56+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
@@ -1209,7 +1221,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:56" itemprop="dateModified" datetime="2023-07-01T09:30:56+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
@@ -1447,7 +1459,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:56" itemprop="dateModified" datetime="2023-07-01T09:30:56+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
@@ -1571,7 +1583,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-01 09:30:56" itemprop="dateModified" datetime="2023-07-01T09:30:56+08:00">2023-07-01</time>
+      <time title="Modified: 2023-07-01 17:05:28" itemprop="dateModified" datetime="2023-07-01T17:05:28+08:00">2023-07-01</time>
     </span>
 
   
