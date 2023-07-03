@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:35" itemprop="dateModified" datetime="2023-07-03T15:30:35+08:00">2023-07-03</time>
     </span>
 
   
@@ -459,7 +459,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:35" itemprop="dateModified" datetime="2023-07-03T15:30:35+08:00">2023-07-03</time>
     </span>
 
   
@@ -557,7 +557,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:35" itemprop="dateModified" datetime="2023-07-03T15:30:35+08:00">2023-07-03</time>
     </span>
 
   
@@ -581,9 +581,24 @@
 <li>错误边界自身抛出来的错误 （而不是其子组件）</li>
 </ol>
 <p>对于无法捕获的错误，可以使用 try&#x2F;catch.<br>或者监听 oneror 事件，<code>window.addEventListener(&#39;error&#39;,fn())</code></p>
+<h1 id="React-更新流程"><a href="#React-更新流程" class="headerlink" title="React 更新流程"></a>React 更新流程</h1><p>通过改变 class 组件或者函数组件的状态来触发页面的更新的过程</p>
+<ol>
+<li>用户事件(点击等)产生,执行回调</li>
+<li>回调调用 setState,产生 update</li>
+<li>react 根据 update 创建渲染任务,在任务中进行 fiber 的 diff,最终会将 patch 更新到真实 DOM</li>
+<li>渲染任务并非立即执行,会放进调度器队列中,经过调度器调度执行.</li>
+</ol>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>整个过程中都有优先级:</p>
+<ol>
+<li>用户事件产生: 根据不同的事件类型执行回调,指定不同的事件优先级</li>
+<li>状态改变,产生 update: 根据产生该 update 的事件优先级,计算 update 优先级</li>
+<li>react 创建渲染任务: 根据本次 update 以及未完成的工作计算渲染优先级,根据渲染优先级计算调度优先级</li>
+<li>调度器调度执行: 根据挂载到 fiber 上的 update 优先级及渲染优先级来控制需要跳过的 fiber 及 update.</li>
+</ol>
+<h3 id="总体分为两类"><a href="#总体分为两类" class="headerlink" title="总体分为两类:"></a>总体分为两类:</h3><p>lane 优先级: 事件优先级,update 优先级,渲染优先级<br>调度优先级: 调度优先级.</p>
 <h1 id="jsx-转-DOM-过程"><a href="#jsx-转-DOM-过程" class="headerlink" title="jsx 转 DOM 过程"></a>jsx 转 DOM 过程</h1><ul>
 <li>使用 React.createElement 或 JSX 编写 React 组件，实际上所有的 JSX 代码最后都会转换成 React.createElement(…) ，Babel 帮助我们完成了这个转换的过程。</li>
-<li>createElement 函数对 key 和 ref 等特殊的 props 进行处理，并获取 defaultProps 对默认 props 进行赋值，并且对传入的孩子节点进行处理，最终构造成一个虚拟 DOM 对象</li>
+<li>createElement 函数对 key 和 ref 等特殊的 props 进行处理，并获取 defaultProps 对默认 props 进行赋值，并且对传入的子节点进行处理，最终构造成一个虚拟 DOM 对象</li>
 <li>ReactDOM.render 将生成好的虚拟 DOM 渲染到指定容器上，其中采用了批处理、事务等机制并且对特定浏览器进行了性能优化，最终转换为真实 DOM</li>
 </ul>
 <h1 id="虚拟-DOM"><a href="#虚拟-DOM" class="headerlink" title="虚拟 DOM"></a>虚拟 DOM</h1><p>Virtual DOM,即虚拟 DOM 节点.使用 JS 的 Object 对象模拟 DOM 中的节点.通过特定的 render 方法将其渲染成真实 DOM.比操作真实 DOM 减小性能开销.<br>操作虚拟 DOM 并不会比操作真实 DOM 快,只不过虚拟 DOM 可以将多次操作合并为一次,也就是减少 DOM 操作.<br>比如添加 1000 个节点,操作真实 DOM 要一个个添加,虚拟 DOM 可以一次性添加.<br>通过对比前后虚拟 dom,得出变化的部分,只修改有变化的 dom,节省性能.<br>虚拟 DOM 因为是对象,所以可以支持跨平台.</p>
@@ -604,7 +619,7 @@
 <li>如果不是同类型,就销毁原组件,创建新组件,</li>
 </ul>
 <h3 id="3-element-diff"><a href="#3-element-diff" class="headerlink" title="(3) element diff"></a>(3) element diff</h3><p>针对同一层级的所有节点.当节点处于同一层级,diff 提供三种操作,插入,移动,删除.<br>对同一层级的同组节点添加唯一的 key 进行区分.通过 key 来判断那些节点可以复用,直接使用移动操作.</p>
-<h1 id="为什么不能用-index-作为-key"><a href="#为什么不能用-index-作为-key" class="headerlink" title="为什么不能用 index 作为 key?"></a>为什么不能用 index 作为 key?</h1><p>因为 index 会变,数组中如果删除中间某个值,它的 index 会被后面的替换.</p>
+<h1 id="为什么不能用-index-作为-key"><a href="#为什么不能用-index-作为-key" class="headerlink" title="为什么不能用 index 作为 key?"></a>为什么不能用 index 作为 key?</h1><p>因为 index 会变,数组中如果删除中间某个值,它的 index 会被后面的替换.<br>key 只是在同层级唯一的,并不是在整个 React 环境下是唯一的.不然的话,复杂度太高.</p>
 <h1 id="Fiber-和虚拟-DOM-的关系"><a href="#Fiber-和虚拟-DOM-的关系" class="headerlink" title="Fiber 和虚拟 DOM 的关系"></a>Fiber 和虚拟 DOM 的关系</h1><ul>
 <li>在 React16 之前,react 直接递归渲染 VDom,setState 会触发重新渲染,对比渲染出的新旧 VDom,对差异部分进行 dom 操作.</li>
 <li>在 React16 之后,为了优化性能,会先把 vdom 转化成 fiber,也就是从树转化成连链表,然后再渲染.整体渲染流程分为两个部分:<ul>
@@ -638,6 +653,7 @@
 <p>Fiber 其实是一个 js 对象,对象中有 children 属性表示节点的子节点,有 sibling 属性表示节点的下一个兄弟节点,有 return 属性表示节点的父节点.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">type <span class="title class_">Fiber</span> = &#123;</span><br><span class="line">  <span class="comment">// 组件类型 div、span、组件构造函数</span></span><br><span class="line">  <span class="attr">type</span>: any,</span><br><span class="line">  <span class="comment">// DOM 对象</span></span><br><span class="line">  <span class="attr">stateNode</span>: any,</span><br><span class="line">  <span class="comment">// 指向自己的父级 Fiber 对象</span></span><br><span class="line">  <span class="attr">return</span>: <span class="title class_">Fiber</span> | <span class="literal">null</span>,</span><br><span class="line">  <span class="comment">// 指向自己的第一个子级 Fiber 对象</span></span><br><span class="line">  <span class="attr">child</span>: <span class="title class_">Fiber</span> | <span class="literal">null</span>,</span><br><span class="line">  <span class="comment">// 指向自己的下一个兄弟 iber 对象</span></span><br><span class="line">  <span class="attr">sibling</span>: <span class="title class_">Fiber</span> | <span class="literal">null</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/473454/1688284382494-52954ee8-827b-49d3-840d-94743dff21ab.png#averageHue=%23dbd2bd&clientId=u7a11d5bb-5c71-4&from=paste&height=241&id=u7991bf42&originHeight=241&originWidth=1461&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=108916&status=done&style=none&taskId=u490ee9d0-2056-4645-a745-25cf187d639&title=&width=1461" alt="image.png"></p>
 <h2 id="Fiber-的工作方式"><a href="#Fiber-的工作方式" class="headerlink" title="Fiber 的工作方式"></a>Fiber 的工作方式</h2><p>render 阶段: 构建 Fiber 对象,构建链表,在链表中标记要执行的 DOM 操作,可中断.<br>commit 阶段: 根据构建好的链表进行 DOM 操作,不可中断.</p>
 <blockquote>
 <p>先从上向下走，构建节点对应的 Fiber 对象，然后再从下向上走，构建 Fiber 对象及链表</p>
@@ -659,6 +675,8 @@
 <li>将链表保存在什么位置？</li>
 </ol>
 <p>链表需要被保存在 Root 中，因为在进入到第二阶段时，也就是 commitRoot 方法中，是将 Root 提交到第二阶段的。<br>在源码中，Root Fiber 下有一个叫 firstEffect 的属性，用于存储链表。<br>在构建链表的遍历过程中，C1 开始，Root 是结尾，如何才能将 C1 存储到 Root 中呢？<br>其实是链头的不断上移做到的。<br><img src="https://cdn.nlark.com/yuque/0/2022/png/473454/1665628479417-a56bd511-feff-47cf-8b2f-caa3f3ebeedd.png#averageHue=%23fbfbfb&clientId=ucd2db471-e0ef-4&from=paste&height=467&id=u732bb189&originHeight=467&originWidth=586&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=32753&status=done&style=none&taskId=uc4500bf3-9b14-40d0-af6b-a3f44970565&title=&width=586" alt="image.png"></p>
+<h2 id="fiberRoot"><a href="#fiberRoot" class="headerlink" title="fiberRoot"></a>fiberRoot</h2><p>fiberRoot 是整个应用的根节点相当于整棵 fiber 树的大脑，一方面可以作为存储载体，它记录了整个 firber 树的调度状态，以及渲染状态，更重要的是可以控制老 fiber 树和新 fiber 树的切换，从而达到双缓冲的效果。</p>
+<h2 id="rootFiber"><a href="#rootFiber" class="headerlink" title="rootFiber"></a>rootFiber</h2><p>代表 root 容器对应的 fiber 节点,作为渲染树的入口节点<br><img src="https://cdn.nlark.com/yuque/0/2023/png/473454/1688288791365-e73cff0a-c16f-4239-8ca6-6222ecce27da.png#averageHue=%23b4b4b3&clientId=uc5516c1c-37b1-4&from=paste&height=549&id=u3a488460&originHeight=549&originWidth=659&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=160434&status=done&style=none&taskId=u3b524bfd-e6bf-417f-8e88-be395d96894&title=&width=659" alt="image.png"></p>
 <h1 id="React-性能优化"><a href="#React-性能优化" class="headerlink" title="React 性能优化"></a>React 性能优化</h1><h2 id="React-memo-useMemo-useCallback"><a href="#React-memo-useMemo-useCallback" class="headerlink" title="React.memo useMemo useCallback"></a>React.memo useMemo useCallback</h2><ul>
 <li>React.memo 是包裹整个组件,浅层对比 props 的变化,决定是否渲染组件,</li>
 <li>useMemo 是更加细粒度的进行性能优化.</li>
@@ -748,7 +766,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:36" itemprop="dateModified" datetime="2023-07-03T15:30:36+08:00">2023-07-03</time>
     </span>
 
   
@@ -918,7 +936,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:36" itemprop="dateModified" datetime="2023-07-03T15:30:36+08:00">2023-07-03</time>
     </span>
 
   
@@ -997,7 +1015,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:36" itemprop="dateModified" datetime="2023-07-03T15:30:36+08:00">2023-07-03</time>
     </span>
 
   
@@ -1096,7 +1114,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:36" itemprop="dateModified" datetime="2023-07-03T15:30:36+08:00">2023-07-03</time>
     </span>
 
   
@@ -1221,7 +1239,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:36" itemprop="dateModified" datetime="2023-07-03T15:30:36+08:00">2023-07-03</time>
     </span>
 
   
@@ -1459,7 +1477,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:36" itemprop="dateModified" datetime="2023-07-03T15:30:36+08:00">2023-07-03</time>
     </span>
 
   
@@ -1583,7 +1601,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-03 09:54:10" itemprop="dateModified" datetime="2023-07-03T09:54:10+08:00">2023-07-03</time>
+      <time title="Modified: 2023-07-03 15:30:36" itemprop="dateModified" datetime="2023-07-03T15:30:36+08:00">2023-07-03</time>
     </span>
 
   
