@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:54" itemprop="dateModified" datetime="2023-07-04T12:46:54+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:26" itemprop="dateModified" datetime="2023-07-07T09:58:26+08:00">2023-07-07</time>
     </span>
 
   
@@ -345,6 +345,22 @@
 <li>路径（path）：index&#x2F;index.html</li>
 <li>查询字符串（query）：<code>?a=1&amp;b=2</code></li>
 </ol>
+<h2 id="URL-对象"><a href="#URL-对象" class="headerlink" title="URL 对象"></a>URL 对象</h2><p>创建 URL 对象,</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&quot;https://google.com/search?query=JavaScript&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="searchParams-查询参数"><a href="#searchParams-查询参数" class="headerlink" title="searchParams 查询参数"></a>searchParams 查询参数</h2><p>查询参数是 URLSearchParams 类型.<br>有以下方法:</p>
+<ul>
+<li>append(name, value) —— 按照 name 添加参数，</li>
+<li>delete(name) —— 按照 name 移除参数，</li>
+<li>get(name) —— 按照 name 获取参数，</li>
+<li>getAll(name) —— 获取相同 name 的所有参数（这是可行的，例如 ?user&#x3D;John&amp;user&#x3D;Pete），</li>
+<li>has(name) —— 按照 name 检查参数是否存在，</li>
+<li>set(name, value) —— set&#x2F;replace 参数，</li>
+<li>sort() —— 按 name 对参数进行排序，很少使用，</li>
+</ul>
+<p>……并且它是可迭代的，类似于 Map。</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="keyword">new</span> <span class="title function_">URL</span>(<span class="string">&quot;https://google.com/search&quot;</span>);</span><br><span class="line"></span><br><span class="line">url.<span class="property">searchParams</span>.<span class="title function_">set</span>(<span class="string">&quot;q&quot;</span>, <span class="string">&quot;test me!&quot;</span>); <span class="comment">// 添加带有一个空格和一个 ! 的参数</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">alert</span>(url); <span class="comment">// https://google.com/search?q=test+me%21</span></span><br><span class="line"></span><br><span class="line">url.<span class="property">searchParams</span>.<span class="title function_">set</span>(<span class="string">&quot;tbs&quot;</span>, <span class="string">&quot;qdr:y&quot;</span>); <span class="comment">// 添加带有一个冒号 : 的参数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 参数会被自动编码</span></span><br><span class="line"><span class="title function_">alert</span>(url); <span class="comment">// https://google.com/search?q=test+me%21&amp;tbs=qdr%3Ay</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历搜索参数（被解码）</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [name, value] <span class="keyword">of</span> url.<span class="property">searchParams</span>) &#123;</span><br><span class="line">  <span class="title function_">alert</span>(<span class="string">`<span class="subst">$&#123;name&#125;</span>=<span class="subst">$&#123;value&#125;</span>`</span>); <span class="comment">// q=test me!，然后是 tbs=qdr:y</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><p>传输控制协议<br>特点：面向连接（收发数据前，必须建立可靠的连接）<br>建立连接基础：三次握手<br>应用场景：数据必须准确无误的收发<br>HTTP 请求、FTP 文件传输、邮件收发<br>优点：稳定、重传机制、拥塞机制、断开连接<br>缺点：速度慢、效率低、占用资源、容易被攻击</p>
 <h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><p>类似于喇叭广播<br>特点：面向无连接（不可靠协议，无状态传输机制）<br>无连接信息发送机制<br>应用场景：无需确保通信质量且要求速度快，无需确保信息完整<br>消息收发，语音通话，直播<br>优点：安全，快速，漏洞少<br>缺点：不可靠，不稳定，易丢包<br>总结：只要目的源地址，端口号，地址，端口号 确定，就可以直接发送信息，但不保证一定能收到完整的信息。</p>
 <h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p><img src="https://cdn.nlark.com/yuque/0/2023/png/473454/1684678066485-5a519a99-2a97-4603-9b1f-e68d863f2018.png#averageHue=%23eae8ea&clientId=ubc734814-557f-4&from=ui&id=u6878ba0b&originHeight=354&originWidth=717&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=141971&status=done&style=none&taskId=u7ca76827-e5df-4898-8fff-201650d97c2&title=" alt="iShot2023-05-21 22.07.22.png"><br><img src="https://cdn.nlark.com/yuque/0/2023/png/473454/1684678078009-e12f03d6-0062-4330-b8af-c53f796f011d.png#averageHue=%23e6e5e6&clientId=ubc734814-557f-4&from=ui&id=u1e525aa7&originHeight=339&originWidth=824&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=195343&status=done&style=none&taskId=u3525f51d-9e80-4619-a177-9641e84f70f&title=" alt="iShot2023-05-21 22.06.57.png"></p>
@@ -459,7 +475,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:54" itemprop="dateModified" datetime="2023-07-04T12:46:54+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:26" itemprop="dateModified" datetime="2023-07-07T09:58:26+08:00">2023-07-07</time>
     </span>
 
   
@@ -557,7 +573,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:55" itemprop="dateModified" datetime="2023-07-04T12:46:55+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:26" itemprop="dateModified" datetime="2023-07-07T09:58:26+08:00">2023-07-07</time>
     </span>
 
   
@@ -806,7 +822,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:55" itemprop="dateModified" datetime="2023-07-04T12:46:55+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:26" itemprop="dateModified" datetime="2023-07-07T09:58:26+08:00">2023-07-07</time>
     </span>
 
   
@@ -976,7 +992,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:55" itemprop="dateModified" datetime="2023-07-04T12:46:55+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:26" itemprop="dateModified" datetime="2023-07-07T09:58:26+08:00">2023-07-07</time>
     </span>
 
   
@@ -1055,7 +1071,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:55" itemprop="dateModified" datetime="2023-07-04T12:46:55+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:26" itemprop="dateModified" datetime="2023-07-07T09:58:26+08:00">2023-07-07</time>
     </span>
 
   
@@ -1154,7 +1170,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:55" itemprop="dateModified" datetime="2023-07-04T12:46:55+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:27" itemprop="dateModified" datetime="2023-07-07T09:58:27+08:00">2023-07-07</time>
     </span>
 
   
@@ -1279,7 +1295,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:55" itemprop="dateModified" datetime="2023-07-04T12:46:55+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:27" itemprop="dateModified" datetime="2023-07-07T09:58:27+08:00">2023-07-07</time>
     </span>
 
   
@@ -1517,7 +1533,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:55" itemprop="dateModified" datetime="2023-07-04T12:46:55+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:27" itemprop="dateModified" datetime="2023-07-07T09:58:27+08:00">2023-07-07</time>
     </span>
 
   
@@ -1641,7 +1657,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:55" itemprop="dateModified" datetime="2023-07-04T12:46:55+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:27" itemprop="dateModified" datetime="2023-07-07T09:58:27+08:00">2023-07-07</time>
     </span>
 
   

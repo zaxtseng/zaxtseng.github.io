@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:28" itemprop="dateModified" datetime="2023-07-07T09:58:28+08:00">2023-07-07</time>
     </span>
 
   
@@ -289,7 +289,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:28" itemprop="dateModified" datetime="2023-07-07T09:58:28+08:00">2023-07-07</time>
     </span>
 
   
@@ -331,7 +331,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">&quot;a.js&quot;</span>&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>当浏览器解析到该元素时，会暂停其他资源的下载和处理，直到将该资源加载、编译、执行完毕，图片和框架 等元素也如此，类似于将所指向资源嵌入当前标签内。这也是为什么将 js 脚本放在底部而不是头部</p>
-<h1 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h1><p>浏览器解析 &#x3D;&gt; 加载<br>DOM 树构建<br>CSS 树构建</p>
+<h1 id="图片懒加载和预加载"><a href="#图片懒加载和预加载" class="headerlink" title="图片懒加载和预加载"></a>图片懒加载和预加载</h1><p>懒加载： 延迟加载图片，达到加载条件时再加载。<br>原理：img 的 src 属性初始不放置实际需要的链接，而是存在 data-url 属性中，达到某条件后再动态充值 src 属性值为 data-url 里的链接地址，实现懒加载。<br>作用：减轻服务器压力，节约流量，页面加载速度快。<br>预加载：提前加载图片，当用户需要查看时是直接从浏览器缓存里取的资源，用户操作体验速度快。<br>原理：在浏览器加载页面时创建 image 对象并赋值 src 链接<br>作用：让用户有快速的冲浪体验。<br>缺点：增加服务器压力，首页加载渲染时间长。<br>区别： 懒加载与预加载都有提高用于体验效果，但是优化体验效果的出发点不同，懒加载可以减轻服务器压力，但是预加载会增加服务器压力；</p>
+<h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><h2 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h2><h1 id="浏览器渲染"><a href="#浏览器渲染" class="headerlink" title="浏览器渲染"></a>浏览器渲染</h1><p>浏览器解析 &#x3D;&gt; 加载<br>DOM 树构建<br>CSS 树构建</p>
 <h2 id="渲染树构建"><a href="#渲染树构建" class="headerlink" title="渲染树构建"></a>渲染树构建</h2><p>domTree + cssTree &#x3D;&gt; renderTree 构建完毕 &#x3D;&gt; 浏览器根据它绘制页面</p>
 <ol>
 <li>渲染树每个节点都有自己的样式</li>
@@ -405,7 +406,10 @@
 <h2 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h2><p>就是事件函数返回的 e</p>
 <h3 id="target-和-currentTarget"><a href="#target-和-currentTarget" class="headerlink" title="target 和 currentTarget"></a>target 和 currentTarget</h3><p>target: 事件源对象。指当前真正点击的元素<br>currentTarget: 事件绑定的元素.</p>
 <h2 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h2><p>有三种方法.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 在DOM中直接绑定</span></span><br><span class="line">&lt;button onclick=<span class="string">&quot;fn()&quot;</span>&gt;click&lt;/button&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. 在js中绑定</span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn2&quot;</span>&gt;</span>click<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 兼容性好,绑定多个事件时,以最后一个为准</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;btn2&quot;</span>).<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 绑定事件监听函数</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;btn2&#x27;</span>).<span class="title function_">addListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">&#125;) <span class="comment">// 默认false,冒泡</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 在DOM中直接绑定</span></span><br><span class="line">&lt;button onclick=<span class="string">&quot;fn()&quot;</span>&gt;click&lt;/button&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. 在js中绑定</span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;btn2&quot;</span>&gt;</span>click<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 兼容性好,绑定多个事件时,以最后一个为准</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;btn2&quot;</span>).<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 绑定事件监听函数</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;btn2&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">&#125;) <span class="comment">// 默认false,冒泡</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="事件监听和事件绑定"><a href="#事件监听和事件绑定" class="headerlink" title="事件监听和事件绑定"></a>事件监听和事件绑定</h3><p>事件监听和事件绑定的最大区别就是事件监听可以给一个事件监听多个函数操作，而事件绑定只有一次.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 可以监听多个，不会被覆盖</span></span><br><span class="line">eventTarget.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;&#125;);</span><br><span class="line">eventTarget.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;&#125;);</span><br><span class="line"></span><br><span class="line">eventTarget.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line">eventTarget.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;; <span class="comment">// 第二个会把第一个覆盖</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="事件冒泡和事件捕获"><a href="#事件冒泡和事件捕获" class="headerlink" title="事件冒泡和事件捕获"></a>事件冒泡和事件捕获</h2><p>顺序：先执行捕获，后执行冒泡。<br>区别：捕获是父级捕获子级的事件，冒泡是子级向父级冒泡。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">box.<span class="title function_">addEventListener</span>(</span><br><span class="line">  <span class="string">&quot;click&quot;</span>,</span><br><span class="line">  <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="literal">false</span></span><br><span class="line">);</span><br><span class="line"><span class="comment">// 第三个参数不写,或者false 就是事件冒泡</span></span><br><span class="line"><span class="comment">// true 就是事件捕获</span></span><br></pre></td></tr></table></figure>
@@ -423,6 +427,41 @@
 
 <p>上面执行<code>void(0)</code>，就是 return 0。也就不会跳转。</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 锚点，点击跳转到顶部</span></span><br><span class="line">&lt;a href=<span class="string">&quot;#&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h1><p>input 的自动聚焦（autofocus）</p>
+<h2 id="拖动-drag"><a href="#拖动-drag" class="headerlink" title="拖动 drag"></a>拖动 drag</h2><p><img src="https://cdn.nlark.com/yuque/0/2023/png/473454/1685150951960-ed7b354b-a6d3-4c34-9eac-50874958c0c6.png#averageHue=%232d2d25&clientId=u5c7bc3c2-c7d6-4&from=paste&height=770&id=ufae04995&originHeight=770&originWidth=472&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=385484&status=done&style=none&taskId=u3fe275b2-22bc-46c7-b02e-e02534230d9&title=&width=472" alt="image.png"><br>dataTransfer：拖拽目标的信息。</p>
+<h2 id="地理位置"><a href="#地理位置" class="headerlink" title="地理位置"></a>地理位置</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">success</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;获取位置成功&quot;</span>, e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">failure</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;获取位置失败&quot;</span>, e);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="property">geolocation</span>.<span class="title function_">getCurrentPosition</span>(success, failure);</span><br></pre></td></tr></table></figure>
+
+<h2 id="设备信息"><a href="#设备信息" class="headerlink" title="设备信息"></a>设备信息</h2><p>devicemotion<br>加速度：devicemotion.acceleration.x<br>设备方向：deviceorientation.alpha,beta,gamma</p>
+<h2 id="文件信息"><a href="#文件信息" class="headerlink" title="文件信息"></a>文件信息</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> id=<span class="string">&quot;flieInput&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.nlark.com/yuque/0/2023/png/473454/1685154496324-7798befd-2466-43c2-a825-28b805f13627.png#averageHue=%230c1723&clientId=u5c7bc3c2-c7d6-4&from=paste&height=400&id=u6da0a443&originHeight=400&originWidth=624&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=167956&status=done&style=none&taskId=ue4e1fe67-a08d-43be-bf8c-c4fd735838b&title=&width=624" alt="image.png"><br>图片预览<br><img src="https://cdn.nlark.com/yuque/0/2023/png/473454/1685154604862-c4d09dda-3750-402f-bad3-869c8eb94afd.png#averageHue=%230f1a27&clientId=u5c7bc3c2-c7d6-4&from=paste&height=261&id=u37e91a12&originHeight=261&originWidth=509&originalType=binary%E2%88%B6=1&rotation=0&showTitle=false&size=125790&status=done&style=none&taskId=ucf32bd68-a6a5-4469-adf9-270c8bb9531&title=&width=509" alt="image.png"></p>
+<h1 id="Web-Worker"><a href="#Web-Worker" class="headerlink" title="Web Worker"></a>Web Worker</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>运行在主线程之外的脚本,<br>分为专用线程和共享线程</p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>由于 js 是单线程,遇到复杂运算,就会影响渲染进程,造成页面卡顿.<br>就可以把复杂运算放到 webworker 中,等到计算结束,将结果返回给主线程.</p>
+<h2 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h2><ol>
+<li>同源限制: 分配给 webworker 的脚本文件必须与主线程同源</li>
+<li>文件限制: workers 线程是运行在后台的,它所加载的文件必须是线上的,不能是本地的</li>
+<li>DOM 限制: workers 线程不能直接操作 DOM,如果要处理 DOM 对象,必须是将结果返回给主线程,由主线程操作</li>
+<li>脚本限制: 不能使用 alert 和 confirm 方法,可以使用 ajax 请求</li>
+<li>通信限制: workers 线程和主线程不在同一个上下文,无法使用 window 对象,不能直接通信,只能通过消息.</li>
+</ol>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在主线程中创建 worker,先判断是否支持 worker</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">worker</span>) &#123;</span><br><span class="line">  <span class="comment">// 支持worker</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>专用线程由<code>Worker()</code>方法创建,接收两个参数,第一个参数必填,是脚本的位置.第二个参数是可选的配置对象.<br>可以指定<code>type</code>,<code>credentials</code>,<code>name</code>三个属性.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">&quot;worker.js&quot;</span>);</span><br><span class="line"><span class="comment">// let worker = new Worker(&#x27;worker.js&#x27;, &#123;name: &#x27;dedicateWorker&#x27;&#125;);</span></span><br></pre></td></tr></table></figure>
+
+<p>注意: 因为 webworker 有同源策略,本地调试时也需要启动本地服务器访问.</p>
+<h2 id="数据传递"><a href="#数据传递" class="headerlink" title="数据传递"></a>数据传递</h2><p>webworker 和主线程都是通过<code>postMessage()</code>方法发送消息,通过 onmessage 事件接收消息.</p>
+<ul>
+<li>此过程中的数据不是共享而是复制的.</li>
+<li><code>Error</code>和<code>Function</code>对象不能被结构化克隆算法复制,被报错</li>
+<li>PostMessage 一次只能发一个对象.多个参数可以包装成数组或对象传递</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主线程</span></span><br><span class="line"><span class="keyword">var</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">&quot;worker.js&quot;</span>);</span><br><span class="line">worker.<span class="title function_">postMessage</span>([<span class="number">10</span>, <span class="number">24</span>]);</span><br><span class="line">worker.<span class="property">onmessage</span> = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">data</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Worker 线程</span></span><br><span class="line">onmessage = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (e.<span class="property">data</span>.<span class="property">length</span> &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="title function_">postMessage</span>(e.<span class="property">data</span>[<span class="number">1</span>] - e.<span class="property">data</span>[<span class="number">0</span>]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在子线程中,self 和 this 都可以表示子线程的全局对象.<br>下面 4 种方法通用.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 写法 1</span></span><br><span class="line">self.<span class="title function_">addEventListener</span>(<span class="string">&quot;message&quot;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写法 2</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;message&quot;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写法 3</span></span><br><span class="line"><span class="title function_">addEventListener</span>(<span class="string">&quot;message&quot;</span>, <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 写法 4</span></span><br><span class="line">onmessage = <span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -485,7 +524,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:28" itemprop="dateModified" datetime="2023-07-07T09:58:28+08:00">2023-07-07</time>
     </span>
 
   
@@ -575,7 +614,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:28" itemprop="dateModified" datetime="2023-07-07T09:58:28+08:00">2023-07-07</time>
     </span>
 
   
@@ -724,7 +763,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:29" itemprop="dateModified" datetime="2023-07-07T09:58:29+08:00">2023-07-07</time>
     </span>
 
   
@@ -802,7 +841,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:29" itemprop="dateModified" datetime="2023-07-07T09:58:29+08:00">2023-07-07</time>
     </span>
 
   
@@ -964,7 +1003,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:29" itemprop="dateModified" datetime="2023-07-07T09:58:29+08:00">2023-07-07</time>
     </span>
 
   
@@ -1040,7 +1079,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:29" itemprop="dateModified" datetime="2023-07-07T09:58:29+08:00">2023-07-07</time>
     </span>
 
   
@@ -1121,7 +1160,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:29" itemprop="dateModified" datetime="2023-07-07T09:58:29+08:00">2023-07-07</time>
     </span>
 
   
@@ -1282,7 +1321,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-04 12:46:57" itemprop="dateModified" datetime="2023-07-04T12:46:57+08:00">2023-07-04</time>
+      <time title="Modified: 2023-07-07 09:58:29" itemprop="dateModified" datetime="2023-07-07T09:58:29+08:00">2023-07-07</time>
     </span>
 
   
