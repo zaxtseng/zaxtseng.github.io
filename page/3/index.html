@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:23" itemprop="dateModified" datetime="2023-07-11T08:50:23+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:45" itemprop="dateModified" datetime="2023-07-12T10:03:45+08:00">2023-07-12</time>
     </span>
 
   
@@ -361,7 +361,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:23" itemprop="dateModified" datetime="2023-07-11T08:50:23+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
@@ -695,7 +695,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:23" itemprop="dateModified" datetime="2023-07-11T08:50:23+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
@@ -865,7 +865,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:23" itemprop="dateModified" datetime="2023-07-11T08:50:23+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
@@ -941,7 +941,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:23" itemprop="dateModified" datetime="2023-07-11T08:50:23+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
@@ -1107,7 +1107,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:24" itemprop="dateModified" datetime="2023-07-11T08:50:24+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
@@ -1678,7 +1678,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:24" itemprop="dateModified" datetime="2023-07-11T08:50:24+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
@@ -1861,7 +1861,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:24" itemprop="dateModified" datetime="2023-07-11T08:50:24+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
@@ -1885,6 +1885,23 @@
 
 <h1 id="Count-To-动态数字"><a href="#Count-To-动态数字" class="headerlink" title="Count To 动态数字"></a>Count To 动态数字</h1><p>使用自定义 Hook 封装</p>
 <figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">useCount</span> = (<span class="params">initialValue: <span class="built_in">number</span></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">maxTimes</span>: <span class="built_in">number</span> = <span class="number">200</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">interval</span>: <span class="built_in">number</span> = initialValue / maxTimes;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> <span class="attr">timer</span>: <span class="built_in">number</span> | <span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">if</span> (initialValue &lt;= maxTimes) &#123;</span><br><span class="line">      <span class="title function_">setCount</span>(initialValue);</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (i &gt;= maxTimes) &#123;</span><br><span class="line">        <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">        <span class="title function_">setCount</span>(initialValue);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">setCount</span>(<span class="function">(<span class="params">prev</span>) =&gt;</span> <span class="title class_">Math</span>.<span class="title function_">floor</span>(prev + interval));</span><br><span class="line">      i++;</span><br><span class="line">    &#125;, <span class="number">15</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">  &#125;, []);</span><br><span class="line">  <span class="keyword">return</span> [count];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="路由问题"><a href="#路由问题" class="headerlink" title="路由问题"></a>路由问题</h1><p>问题描述：先匹配 404 页面，再匹配其他页面，会闪一下 404，再匹配其他。<br>问题原因：useEffect 在页面渲染后执行。<br>详细解释：动态路由生成放在 useEffect 中，那么是在页面渲染后才生成。渲染的时候没有匹配到 home 路由，所以走通配路由。<br>解决方法：</p>
+<ol>
+<li>不使用 useEffect，使用 useLayoutEffect，或者动态生成路由是同步代码。</li>
+<li>数据过多可能会出现卡顿，不如在页面渲染前单独准备一个 home 路由。其他路由还是异步。</li>
+</ol>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">Router</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// 从store获取路由表json,该json在登录时由请求接口获取</span></span><br><span class="line">  <span class="keyword">const</span> routes = <span class="title function_">useBoundStore</span>(<span class="function">(<span class="params">state</span>) =&gt;</span> state.<span class="property">routes</span>);</span><br><span class="line">  <span class="keyword">const</span> [children, setChildren] = useState&lt;<span class="title class_">RouteObject</span>[]&gt;([]);</span><br><span class="line">  <span class="comment">// 根据路由表生成子路由</span></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> router = <span class="title function_">getRoutes</span>(routes);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;router: &quot;</span>, router);</span><br><span class="line">    <span class="title function_">setChildren</span>(router);</span><br><span class="line">  &#125;, [routes]);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 生成路由</span></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">rootRoutes</span>: <span class="title class_">RouteObject</span>[] = [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">      <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Navigate</span> <span class="attr">to</span>=<span class="string">&quot;/home&quot;</span> /&gt;</span></span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">      <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">BasicLayout</span> /&gt;</span></span>,</span><br><span class="line">      <span class="attr">children</span>: children,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;/login&quot;</span>,</span><br><span class="line">      <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">Login</span> /&gt;</span></span>,</span><br><span class="line">      <span class="comment">// errorElement: &lt;ErrorPage /&gt;,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">path</span>: <span class="string">&quot;*&quot;</span>,</span><br><span class="line">      <span class="attr">element</span>: <span class="language-xml"><span class="tag">&lt;<span class="name">NotFound</span> /&gt;</span></span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> router = <span class="title function_">useRoutes</span>(rootRoutes);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> router;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Keep-Alive"><a href="#Keep-Alive" class="headerlink" title="Keep-Alive"></a>Keep-Alive</h1><p>缓存 dom.</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>移动端中，用户访问了一个列表页，上拉浏览列表页的过程中，随着滚动高度逐渐增加，数据也将采用触底分页加载的形式逐步增加，列表页浏览到某个位置，用户看到了感兴趣的项目，点击查看其详情，进入详情页，从详情页退回列表页时，需要停留在离开列表页时的浏览位置上</li>
+<li>已填写但未提交的表单、管理系统中可切换和可关闭的功能标签等，这类数据随着用户交互逐渐变化或增长，这里理解为状态，在交互过程中，因为某些原因需要临时离开交互场景，则需要对状态进行保存</li>
+</ul>
+<p>在 React 中，我们通常会使用路由去管理不同的页面，而在切换页面时，路由将会卸载掉未匹配的页面组件，所以上述列表页例子中，当用户从详情页退回列表页时，会回到列表页顶部，因为列表页组件被路由卸载后重建了，状态被丢失。</p>
+<h1 id="useHook-实现防抖和节流"><a href="#useHook-实现防抖和节流" class="headerlink" title="useHook 实现防抖和节流"></a>useHook 实现防抖和节流</h1><h2 id="useDebounce"><a href="#useDebounce" class="headerlink" title="useDebounce"></a>useDebounce</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 防抖</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">useDebounce</span>(<span class="params">fn, delay, dep = []</span>) &#123;</span><br><span class="line">  <span class="comment">// 使用ref保存fn和timer</span></span><br><span class="line">  <span class="keyword">const</span> &#123; current &#125; = <span class="title function_">useRef</span>(&#123; fn, <span class="attr">timer</span>: <span class="literal">null</span> &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    current.<span class="property">fn</span> = fn;</span><br><span class="line">  &#125;, [fn]);</span><br><span class="line">  <span class="comment">// 使用useCallback保证返回的函数不会一直重渲染</span></span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (current.<span class="property">timer</span>) &#123;</span><br><span class="line">        <span class="built_in">clearTimeout</span>(current.<span class="property">timer</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      current.<span class="property">timer</span> = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        current.<span class="property">fn</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, ...args);</span><br><span class="line">      &#125;, delay);</span><br><span class="line">    &#125;,</span><br><span class="line">    [dep]</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="useThrottle"><a href="#useThrottle" class="headerlink" title="useThrottle"></a>useThrottle</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 节流</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">useThrottle</span>(<span class="params">fn, delay, dep = []</span>) &#123;</span><br><span class="line">  <span class="comment">// 使用ref保存fn和timer</span></span><br><span class="line">  <span class="keyword">const</span> &#123; current &#125; = <span class="title function_">useRef</span>(&#123; fn, <span class="attr">timer</span>: <span class="literal">null</span> &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    current.<span class="property">fn</span> = fn;</span><br><span class="line">  &#125;, [fn]);</span><br><span class="line">  <span class="comment">// 使用useCallback保证返回的函数不会一直重渲染</span></span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">useCallback</span>(</span><br><span class="line">    <span class="function">(<span class="params">...args</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (!current.<span class="property">timer</span>) &#123;</span><br><span class="line">        current.<span class="property">timer</span> = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">          <span class="keyword">delete</span> current.<span class="property">timer</span>;</span><br><span class="line">        &#125;, delay);</span><br><span class="line">        current.<span class="property">fn</span>.<span class="title function_">call</span>(<span class="variable language_">this</span>, ...args);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    [dep]</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个方法缺点,第一次会先执行一次</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1947,7 +1964,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:24" itemprop="dateModified" datetime="2023-07-11T08:50:24+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
@@ -2023,7 +2040,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-11 08:50:24" itemprop="dateModified" datetime="2023-07-11T08:50:24+08:00">2023-07-11</time>
+      <time title="Modified: 2023-07-12 10:03:46" itemprop="dateModified" datetime="2023-07-12T10:03:46+08:00">2023-07-12</time>
     </span>
 
   
