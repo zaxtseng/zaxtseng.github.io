@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -377,7 +377,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:24" itemprop="dateModified" datetime="2023-07-13T07:52:24+08:00">2023-07-13</time>
     </span>
 
   
@@ -598,11 +598,11 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 
 <h2 id="语法糖"><a href="#语法糖" class="headerlink" title="语法糖"></a>语法糖</h2><p>Promise.resolve()<br>Promise.reject()</p>
 <h2 id="Promise-all"><a href="#Promise-all" class="headerlink" title="Promise.all"></a>Promise.all</h2><p>如果所有都正确执行,会按顺序返回.有一个失败,就失败.</p>
-<h1 id="Async-x2F-await"><a href="#Async-x2F-await" class="headerlink" title="Async&#x2F;await"></a>Async&#x2F;await</h1><p>一个函数前加了<code>async</code>,它就会返回 Promise.它的返回值会被<code>Promise.resolve()</code>包裹.</p>
+<h1 id="Async-await"><a href="#Async-await" class="headerlink" title="Async&#x2F;await"></a>Async&#x2F;await</h1><p>一个函数前加了<code>async</code>,它就会返回 Promise.它的返回值会被<code>Promise.resolve()</code>包裹.</p>
 <div style="background: #E8F7FF;padding:10px;border: 1px solid #ABD2DA;border-radius:5px;margin-bottom:5px;">await只能配套async使用</div>
 
 <h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><p>因为 await 将异步代码改造成了同步代码，如果多个异步代码没有依赖性却使用了 await 会导致性能上的降低。<br>如果代码没有依赖性的话，完全可以使用 Promise.all 的方式</p>
-<h2 id="async-x2F-await-和-promise-的关系"><a href="#async-x2F-await-和-promise-的关系" class="headerlink" title="async&#x2F;await 和 promise 的关系"></a>async&#x2F;await 和 promise 的关系</h2><p>await 是等待 promise 的返回,await 做不了 promise 返回状态的工作.<br>await 对应<code>Promise.then</code>成功的情况.<br>await 后如果是函数,则会把函数返回的结果用<code>Promise.then()</code>返回.<br>async 中的<code>Promise.reject()</code>需要使用<code>try/catch</code>进行捕获错误.<br>async 中的函数内部属于同步代码,在遇到 await 之前都可以先执行.</p>
+<h2 id="async-await-和-promise-的关系"><a href="#async-await-和-promise-的关系" class="headerlink" title="async&#x2F;await 和 promise 的关系"></a>async&#x2F;await 和 promise 的关系</h2><p>await 是等待 promise 的返回,await 做不了 promise 返回状态的工作.<br>await 对应<code>Promise.then</code>成功的情况.<br>await 后如果是函数,则会把函数返回的结果用<code>Promise.then()</code>返回.<br>async 中的<code>Promise.reject()</code>需要使用<code>try/catch</code>进行捕获错误.<br>async 中的函数内部属于同步代码,在遇到 await 之前都可以先执行.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="title function_">b</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  a = a + (<span class="keyword">await</span> <span class="number">10</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;2&quot;</span>, a); <span class="comment">// -&gt; &#x27;2&#x27; 10</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">b</span>();</span><br><span class="line">a++;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;1&quot;</span>, a); <span class="comment">// -&gt; &#x27;1&#x27; 1</span></span><br><span class="line"><span class="comment">// 先得到&#x27;1&#x27; 1, 后得到&#x27;2&#x27; 10</span></span><br></pre></td></tr></table></figure>
 
 <ul>
@@ -673,7 +673,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:24" itemprop="dateModified" datetime="2023-07-13T07:52:24+08:00">2023-07-13</time>
     </span>
 
   
@@ -868,7 +868,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:04" itemprop="dateModified" datetime="2023-07-12T10:04:04+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:24" itemprop="dateModified" datetime="2023-07-13T07:52:24+08:00">2023-07-13</time>
     </span>
 
   
@@ -996,7 +996,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:04" itemprop="dateModified" datetime="2023-07-12T10:04:04+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:24" itemprop="dateModified" datetime="2023-07-13T07:52:24+08:00">2023-07-13</time>
     </span>
 
   
@@ -1140,7 +1140,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 
 <h3 id="动态插槽"><a href="#动态插槽" class="headerlink" title="动态插槽"></a>动态插槽</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;base-layout&gt;</span><br><span class="line">  &lt;template v-slot:[slotName]&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/base-layout&gt;</span><br></pre></td></tr></table></figure>
 
-<h2 id="动态组件-amp-异步组件"><a href="#动态组件-amp-异步组件" class="headerlink" title="动态组件&amp;异步组件"></a>动态组件&amp;异步组件</h2><h3 id="动态组件上使用-keep-alive"><a href="#动态组件上使用-keep-alive" class="headerlink" title="动态组件上使用 keep-alive"></a>动态组件上使用 keep-alive</h3><p>is 动态切换时会重新渲染,如果不需要重新渲染可以用<code>keep-alive</code>缓存下来.</p>
+<h2 id="动态组件-异步组件"><a href="#动态组件-异步组件" class="headerlink" title="动态组件&amp;异步组件"></a>动态组件&amp;异步组件</h2><h3 id="动态组件上使用-keep-alive"><a href="#动态组件上使用-keep-alive" class="headerlink" title="动态组件上使用 keep-alive"></a>动态组件上使用 keep-alive</h3><p>is 动态切换时会重新渲染,如果不需要重新渲染可以用<code>keep-alive</code>缓存下来.</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;keep-alive&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">component</span> <span class="attr">:is</span>=<span class="string">&quot;currentTabcomponent&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">component</span>&gt;</span></span></span><br><span class="line">&lt;/keep-alive&gt;</span><br></pre></td></tr></table></figure>
 
 <h3 id="异步组件"><a href="#异步组件" class="headerlink" title="异步组件"></a>异步组件</h3><p>就是异步导入,返回 Promise</p>
@@ -1215,7 +1215,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 
 <h3 id="对象字面量"><a href="#对象字面量" class="headerlink" title="对象字面量"></a>对象字面量</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-demo=<span class="string">&quot;&#123; color:&#x27;white&#x27;, text: &#x27;hello!&#x27; &#125;&quot;</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;demo&#x27;</span>,<span class="keyword">function</span>(<span class="params">el, binding</span>)&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(binding.<span class="property">value</span>.<span class="property">color</span>)	<span class="comment">//=&gt; &#x27;white&#x27;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(binding.<span class="property">value</span>.<span class="property">text</span>) <span class="comment">//=&gt; &#x27;hello!&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="渲染函数-amp-JSX"><a href="#渲染函数-amp-JSX" class="headerlink" title="渲染函数 &amp; JSX"></a>渲染函数 &amp; JSX</h2><p>通过 render 函数去解决重复而冗长的代码.</p>
+<h2 id="渲染函数-JSX"><a href="#渲染函数-JSX" class="headerlink" title="渲染函数 &amp; JSX"></a>渲染函数 &amp; JSX</h2><p>通过 render 函数去解决重复而冗长的代码.</p>
 <h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2>
       
     </div>
@@ -1278,7 +1278,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:04" itemprop="dateModified" datetime="2023-07-12T10:04:04+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:24" itemprop="dateModified" datetime="2023-07-13T07:52:24+08:00">2023-07-13</time>
     </span>
 
   
@@ -1570,7 +1570,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
 <h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><p><code>undefined</code> 表示一个变量自然的、最原始的状态值，而 <code>null</code> 则表示一个变量被人为的设置为空对象，而不是原始状态。所以，在实际使用过程中，为了保证变量所代表的语义，不要对一个变量显式的赋值 <code>undefined</code>，当需要释放一个对象时，直接赋值为 <code>null</code> 即可。<br><code>&#123; &#125;</code>是一个不完全空对象，原型链上有<code>Object</code>，<code>null</code>为原型链顶端，因此<code>Object.prototype.__proto__ === null</code>为 true。</p>
 <p>null 是完全空对象，原型链也没有。</p>
 <h1 id="相等性"><a href="#相等性" class="headerlink" title="相等性"></a>相等性</h1><p>严格相等：&#x3D;&#x3D;&#x3D;<br>非严格：&#x3D;&#x3D;<br>Object.is：判断是否是同一个值</p>
-<h1 id="0-1-0-2-x3D-0-3"><a href="#0-1-0-2-x3D-0-3" class="headerlink" title="0.1+0.2 !&#x3D; 0.3"></a>0.1+0.2 !&#x3D; 0.3</h1><p>因为 JS 采用 IEEE 754 双精度版本（64 位），并且只要采用 IEEE 754 的语言都有该问题。<br>0.1 在二进制中是无限循环的一些数字，其实不只是 0.1，其实很多十进制小数用二进制表示都是无限循环的。这样其实没什么问题，但是 JS 采用的浮点数标准却会裁剪掉我们的数字。</p>
+<h1 id="0-1-0-2-0-3"><a href="#0-1-0-2-0-3" class="headerlink" title="0.1+0.2 !&#x3D; 0.3"></a>0.1+0.2 !&#x3D; 0.3</h1><p>因为 JS 采用 IEEE 754 双精度版本（64 位），并且只要采用 IEEE 754 的语言都有该问题。<br>0.1 在二进制中是无限循环的一些数字，其实不只是 0.1，其实很多十进制小数用二进制表示都是无限循环的。这样其实没什么问题，但是 JS 采用的浮点数标准却会裁剪掉我们的数字。</p>
 <p>那么这些循环的数字被裁剪了，就会出现精度丢失的问题，也就造成了 0.1 不再是 0.1 了，而是变成了 0.100000000000000002.</p>
 <p>那么可能你又会有一个疑问，既然 0.1 不是 0.1，那为什么 console.log(0.1) 却是正确的呢？</p>
 <p>因为在输入内容的时候，二进制被转换为了十进制，十进制又被转换为了字符串，在这个转换的过程中发生了取近似值的过程，所以打印出来的其实是一个近似值.</p>
@@ -1802,7 +1802,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:04" itemprop="dateModified" datetime="2023-07-12T10:04:04+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:25" itemprop="dateModified" datetime="2023-07-13T07:52:25+08:00">2023-07-13</time>
     </span>
 
   
@@ -2163,7 +2163,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:04" itemprop="dateModified" datetime="2023-07-12T10:04:04+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:25" itemprop="dateModified" datetime="2023-07-13T07:52:25+08:00">2023-07-13</time>
     </span>
 
   
@@ -2290,7 +2290,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:04" itemprop="dateModified" datetime="2023-07-12T10:04:04+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:25" itemprop="dateModified" datetime="2023-07-13T07:52:25+08:00">2023-07-13</time>
     </span>
 
   
@@ -2380,7 +2380,7 @@ target 代表需要添加代理的对象，handler 用来自定义对象中的�
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:04" itemprop="dateModified" datetime="2023-07-12T10:04:04+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:25" itemprop="dateModified" datetime="2023-07-13T07:52:25+08:00">2023-07-13</time>
     </span>
 
   

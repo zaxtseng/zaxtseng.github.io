@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:02" itemprop="dateModified" datetime="2023-07-12T10:04:02+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -289,7 +289,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -524,7 +524,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -614,7 +614,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -763,7 +763,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -841,7 +841,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -920,7 +920,7 @@
 <h2 id="独立的computed属性"><a href="#独立的computed属性" class="headerlink" title="独立的computed属性"></a>独立的<code>computed</code>属性</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ref, computed &#125; <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> counter = ref[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">const</span> twiceTheCounter = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> counter.<span class="property">value</span> * <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">counter.<span class="property">value</span>++;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="property">value</span>); <span class="comment">//1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(twiceTheCounter.<span class="property">value</span>); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
 
 <p>新创建的计算变量的 twiceTheCounter 也需要使用<code>.value</code>的方式调用.</p>
-<h1 id="Provide-x2F-Inject"><a href="#Provide-x2F-Inject" class="headerlink" title="Provide&#x2F;Inject"></a>Provide&#x2F;Inject</h1><h3 id="使用-provide"><a href="#使用-provide" class="headerlink" title="使用 provide"></a>使用 provide</h3><p>provide 有两个参数,name(<String>类型)和 value</p>
+<h1 id="Provide-Inject"><a href="#Provide-Inject" class="headerlink" title="Provide&#x2F;Inject"></a>Provide&#x2F;Inject</h1><h3 id="使用-provide"><a href="#使用-provide" class="headerlink" title="使用 provide"></a>使用 provide</h3><p>provide 有两个参数,name(<String>类型)和 value</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Vue2</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line"> 	<span class="language-xml"><span class="tag">&lt;<span class="name">MyMarker</span> /&gt;</span></span></span><br><span class="line"> &lt;/template&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">import</span> <span class="title class_">MyMarker</span> <span class="keyword">from</span> <span class="string">&#x27;./MyMarker.vue&#x27;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="attr">components</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title class_">MyMarker</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="attr">provide</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">location</span>: <span class="string">&#x27;North Pole&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">geolocation</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">longitude</span>: <span class="number">90</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">latitude</span>: <span class="number">135</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">//MyMarker.vue</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	<span class="attr">inject</span>: [<span class="string">&#x27;location&#x27;</span>, <span class="string">&#x27;geolocation&#x27;</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Vue3重构</span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">import</span> &#123; provide &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">	<span class="keyword">import</span> <span class="title class_">MyMarker</span> <span class="keyword">from</span> <span class="string">&#x27;./MyMarker.vue&#x27;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="attr">components</span>: &#123;</span><br><span class="line">      <span class="title class_">MyMarker</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">setup</span>(<span class="params"></span>)&#123;</span><br><span class="line">      <span class="title function_">provide</span>(<span class="string">&#x27;location&#x27;</span>,<span class="string">&#x27;North Pole&#x27;</span>)</span><br><span class="line">      <span class="title function_">provide</span>(<span class="string">&#x27;geolocation&#x27;</span>, &#123;</span><br><span class="line">        <span class="attr">longitude</span>: <span class="number">90</span>,</span><br><span class="line">        <span class="attr">latitude</span>: <span class="number">135</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="使用-inject"><a href="#使用-inject" class="headerlink" title="使用 inject"></a>使用 inject</h3><p>inject 有两个参数,一个是要注入的属性 name,一个是默认值(可选)</p>
@@ -1003,7 +1003,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -1079,7 +1079,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -1160,7 +1160,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
@@ -1321,7 +1321,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-12 10:04:03" itemprop="dateModified" datetime="2023-07-12T10:04:03+08:00">2023-07-12</time>
+      <time title="Modified: 2023-07-13 07:52:23" itemprop="dateModified" datetime="2023-07-13T07:52:23+08:00">2023-07-13</time>
     </span>
 
   
