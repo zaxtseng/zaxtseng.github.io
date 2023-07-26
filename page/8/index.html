@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:29" itemprop="dateModified" datetime="2023-07-25T08:44:29+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:07" itemprop="dateModified" datetime="2023-07-26T11:47:07+08:00">2023-07-26</time>
     </span>
 
   
@@ -475,7 +475,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:29" itemprop="dateModified" datetime="2023-07-25T08:44:29+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:07" itemprop="dateModified" datetime="2023-07-26T11:47:07+08:00">2023-07-26</time>
     </span>
 
   
@@ -573,7 +573,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:30" itemprop="dateModified" datetime="2023-07-25T08:44:30+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:07" itemprop="dateModified" datetime="2023-07-26T11:47:07+08:00">2023-07-26</time>
     </span>
 
   
@@ -597,6 +597,41 @@
 <li>错误边界自身抛出来的错误 （而不是其子组件）</li>
 </ol>
 <p>对于无法捕获的错误，可以使用 try&#x2F;catch.<br>或者监听 oneror 事件，<code>window.addEventListener(&#39;error&#39;,fn())</code></p>
+<h2 id="ErrorBoundary-是什么"><a href="#ErrorBoundary-是什么" class="headerlink" title="ErrorBoundary 是什么?"></a>ErrorBoundary 是什么?</h2><ul>
+<li>在 React 中，ErrorBoundary 是一个组件</li>
+<li>用于处理渲染期间出现的 JavaScript 错误</li>
+<li>当在渲染组件期间抛出未捕获的错误时，React 会在组件树中向上寻找最近的 ErrorBoundary 组件，然后调用它的 componentDidCatch() 方法</li>
+</ul>
+<h2 id="componentDidCatch-怎么用？"><a href="#componentDidCatch-怎么用？" class="headerlink" title="componentDidCatch() 怎么用？"></a>componentDidCatch() 怎么用？</h2><ul>
+<li>componentDidCatch() 接收两个参数：error（表示发生的错误）和 info（包含有关错误发生位置的组件树信息）</li>
+</ul>
+<h2 id="ErrorBoundary-还有哪些作用？"><a href="#ErrorBoundary-还有哪些作用？" class="headerlink" title="ErrorBoundary 还有哪些作用？"></a>ErrorBoundary 还有哪些作用？</h2><ul>
+<li>ErrorBoundary 组件可以将错误信息记录到日志中，或者渲染一些错误信息</li>
+<li>ErrorBoundary 组件还可以帮助防止应用程序崩溃</li>
+</ul>
+<h2 id="作为抛出未捕获错误的-ErrorBoundary-和-try-catch-异常捕获之间什么关系？"><a href="#作为抛出未捕获错误的-ErrorBoundary-和-try-catch-异常捕获之间什么关系？" class="headerlink" title="作为抛出未捕获错误的 ErrorBoundary 和 try-catch 异常捕获之间什么关系？"></a>作为抛出未捕获错误的 ErrorBoundary 和 try-catch 异常捕获之间什么关系？</h2><p>React 的 ErrorBoundary 和 try-catch 的区别在于</p>
+<ol>
+<li>ErrorBoundary 可以捕获并处理子组件内部的错误，包括渲染错误和生命周期错误</li>
+<li>try-catch 只能捕获当前代码块内的同步错误</li>
+<li>ErrorBoundary 可以显示错误信息和 fallback UI，让用户知道发生了错误</li>
+<li>try-catch 只能通过 console.log 等方式输出错误信息</li>
+<li>ErrorBoundary 只能用于类组件，而 try-catch 可以用于函数和类组件</li>
+</ol>
+<h2 id="为什么-ErrorBoundary-一定要写在类里面？"><a href="#为什么-ErrorBoundary-一定要写在类里面？" class="headerlink" title="为什么 ErrorBoundary 一定要写在类里面？"></a>为什么 ErrorBoundary 一定要写在类里面？</h2><ul>
+<li>ErrorBoundary 是一个类组件，因此它必须被定义在类的范围内</li>
+<li>在 React 中，只有类组件才能成为高阶组件</li>
+<li>ErrorBoundary 需要通过继承 React.Component 类来创建一个组件，因此必须使用类声明来定义</li>
+</ul>
+<p>如果想在函数组件中使用 ErrorBoundary，可以考虑使用 React Hooks 中的 useErrorBoundary<br>下面是一个简单的 ErrorBoundary 的示例：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ErrorBoundary</span> <span class="keyword">extends</span> <span class="title class_ inherited__">React.Component</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(props);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">state</span> = &#123; <span class="attr">hasError</span>: <span class="literal">false</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">getDerivedStateFromError</span>(<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// Update state so the next render will show the fallback UI.</span></span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">hasError</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">componentDidCatch</span>(<span class="params">error, errorInfo</span>) &#123;</span><br><span class="line">    <span class="comment">// You can also log the error to an error reporting service</span></span><br><span class="line">    <span class="title function_">logErrorToMyService</span>(error, errorInfo);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">hasError</span>) &#123;</span><br><span class="line">      <span class="comment">// You can render any custom fallback UI      return</span></span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Something went wrong.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">children</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>可以像常规组件一样访问这个组件</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">ErrorBoundary</span>&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">MyWidget</span> /&gt;</span></span></span><br><span class="line">&lt;/<span class="title class_">ErrorBoundary</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="已有的工具-react-error-boundary"><a href="#已有的工具-react-error-boundary" class="headerlink" title="已有的工具 react-error-boundary"></a>已有的工具 react-error-boundary</h2><p>直接使用工具</p>
 <h1 id="React-更新流程"><a href="#React-更新流程" class="headerlink" title="React 更新流程"></a>React 更新流程</h1><p>通过改变 class 组件或者函数组件的状态来触发页面的更新的过程</p>
 <ol>
 <li>用户事件(点击等)产生,执行回调</li>
@@ -612,7 +647,8 @@
 <li>调度器调度执行: 根据挂载到 fiber 上的 update 优先级及渲染优先级来控制需要跳过的 fiber 及 update.</li>
 </ol>
 <h3 id="总体分为两类"><a href="#总体分为两类" class="headerlink" title="总体分为两类:"></a>总体分为两类:</h3><p>lane 优先级: 事件优先级,update 优先级,渲染优先级<br>调度优先级: 调度优先级.</p>
-<h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><p>type：用于标识节点的类型。它可以是类似“h1”“div”这样的标准 HTML 标签字符串，也可以是 React 组件类型或 React fragment 类型。<br>config：以对象形式传入，组件所有的属性都会以键值对的形式存储在 config 对象中。<br>children：以对象形式传入，它记录的是组件标签之间嵌套的内容，也就是所谓的“子节点”“子元素”。</p>
+<h1 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h1><p>JSX 即 JavaScript XML。一种在 React 组件内部构建标签的类 XML 语法。JSX 为 react.js 开发的一套语法糖</p>
+<p>type：用于标识节点的类型。它可以是类似“h1”“div”这样的标准 HTML 标签字符串，也可以是 React 组件类型或 React fragment 类型。<br>config：以对象形式传入，组件所有的属性都会以键值对的形式存储在 config 对象中。<br>children：以对象形式传入，它记录的是组件标签之间嵌套的内容，也就是所谓的“子节点”“子元素”。</p>
 <h2 id="jsx-转-DOM-过程"><a href="#jsx-转-DOM-过程" class="headerlink" title="jsx 转 DOM 过程"></a>jsx 转 DOM 过程</h2><ul>
 <li>使用 React.createElement 或 JSX 编写 React 组件，实际上所有的 JSX 代码最后都会转换成 React.createElement(…) ，Babel 帮助我们完成了这个转换的过程。</li>
 <li>createElement 函数对 key 和 ref 等特殊的 props 进行处理，并获取 defaultProps 对默认 props 进行赋值，并且对传入的子节点进行处理，最终构造成一个虚拟 DOM 对象</li>
@@ -757,7 +793,13 @@
 <h2 id="lazy-和-Suspense"><a href="#lazy-和-Suspense" class="headerlink" title="lazy 和 Suspense"></a>lazy 和 Suspense</h2><p>异步加载组件<br>React.lazy 接受一个函数，这个函数需要动态调用 import()。它必须返回一个 Promise ，该 Promise 需要 resolve 一个 default export 的 React 组件。</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title class_">LazyComponent</span> = <span class="title class_">React</span>.<span class="title function_">lazy</span>(<span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">&quot;./test.js&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Index</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span>&lt;<span class="attr">div</span>&gt;</span>loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span>&#125;&gt;</span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">LazyComponent</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>React.lazy 是如何配合 Susponse 实现动态加载的效果的呢？实际上,lazy 内部就是做了一个 createFetcher，而上面讲到 createFetcher 得到渲染的数据，而 lazy 里面自带的 createFetcher 异步请求的是组件。lazy 内部模拟一个 promiseA 规范场景。我们完全可以理解 React.lazy 用 Promise 模拟了一个请求数据的过程，但是请求的结果不是数据，而是一个动态的组件。</p>
+<p>React.lazy 是如何配合 Susponse 实现动态加载的效果的呢？</p>
+<p>实际上,lazy 内部就是做了一个 createFetcher，而上面讲到 createFetcher 得到渲染的数据，而 lazy 里面自带的 createFetcher 异步请求的是组件。lazy 内部模拟一个 promiseA 规范场景。我们完全可以理解 React.lazy 用 Promise 模拟了一个请求数据的过程，但是请求的结果不是数据，而是一个动态的组件。</p>
+<h1 id="createPortal"><a href="#createPortal" class="headerlink" title="createPortal"></a>createPortal</h1><p>将 jsx 作为 children 渲染到 DOM 的不同部分,</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">SomeComponent</span> /&gt;</span></span></span><br><span class="line">  &#123;<span class="title function_">createPortal</span>(children, domNode, key?)&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"><span class="comment">//-----------------------</span></span><br><span class="line"><span class="keyword">import</span> &#123; createPortal &#125; <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这个子节点被放置在父节点 div 中。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  &#123;createPortal(</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>这个子节点被放置在 document body 中。<span class="tag">&lt;/<span class="name">p</span>&gt;</span>,</span></span><br><span class="line"><span class="language-xml">    document.body</span></span><br><span class="line"><span class="language-xml">  )&#125;</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>portal 只改变 DOM 节点的所处位置。在其他方面，渲染至 portal 的 JSX 的行为表现与作为 React 组件的子节点一致。该子节点可以访问由父节点树提供的 context 对象、事件将从子节点依循 React 树冒泡到父节点。<br>portal 中的事件传播遵循 React 树而不是 DOM 树。例如点击 <div onClick> 内部的 portal，将触发 onClick 处理程序。如果这会导致意外的问题，请在 portal 内部停止事件传播，或将 portal 移动到 React 树中的上层。</p>
+<p>portal 允许组件将它们的某些子元素渲染到 DOM 中的不同位置。这使得组件的一部分可以“逃脱”它所在的容器。例如组件可以在页面其余部分上方或外部显示模态对话框和提示框。</p>
 <h1 id="逻辑复用"><a href="#逻辑复用" class="headerlink" title="逻辑复用"></a>逻辑复用</h1><h2 id="高阶组件-HOC"><a href="#高阶组件-HOC" class="headerlink" title="高阶组件 HOC"></a>高阶组件 HOC</h2><p>接收一个组件，返回一个新的组件。<br>接收的组件接受高阶组件的 props，也就是复用的 props 和方法。</p>
 <h2 id="render-props"><a href="#render-props" class="headerlink" title="render props"></a>render props</h2><p>使用 children 属性作为传入参数。</p>
 <h2 id="自定义-hook"><a href="#自定义-hook" class="headerlink" title="自定义 hook"></a>自定义 hook</h2><p>将复用的 state 和方法抽离到一个 hook 中，返回对应的 state 和方法。</p>
@@ -854,7 +896,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:30" itemprop="dateModified" datetime="2023-07-25T08:44:30+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:07" itemprop="dateModified" datetime="2023-07-26T11:47:07+08:00">2023-07-26</time>
     </span>
 
   
@@ -1024,7 +1066,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:30" itemprop="dateModified" datetime="2023-07-25T08:44:30+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:07" itemprop="dateModified" datetime="2023-07-26T11:47:07+08:00">2023-07-26</time>
     </span>
 
   
@@ -1103,7 +1145,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:30" itemprop="dateModified" datetime="2023-07-25T08:44:30+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:07" itemprop="dateModified" datetime="2023-07-26T11:47:07+08:00">2023-07-26</time>
     </span>
 
   
@@ -1202,7 +1244,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:30" itemprop="dateModified" datetime="2023-07-25T08:44:30+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:07" itemprop="dateModified" datetime="2023-07-26T11:47:07+08:00">2023-07-26</time>
     </span>
 
   
@@ -1327,7 +1369,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:30" itemprop="dateModified" datetime="2023-07-25T08:44:30+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:07" itemprop="dateModified" datetime="2023-07-26T11:47:07+08:00">2023-07-26</time>
     </span>
 
   
@@ -1565,7 +1607,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:30" itemprop="dateModified" datetime="2023-07-25T08:44:30+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:08" itemprop="dateModified" datetime="2023-07-26T11:47:08+08:00">2023-07-26</time>
     </span>
 
   
@@ -1689,7 +1731,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-25 08:44:30" itemprop="dateModified" datetime="2023-07-25T08:44:30+08:00">2023-07-25</time>
+      <time title="Modified: 2023-07-26 11:47:08" itemprop="dateModified" datetime="2023-07-26T11:47:08+08:00">2023-07-26</time>
     </span>
 
   
