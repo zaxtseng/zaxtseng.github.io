@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:11" itemprop="dateModified" datetime="2023-07-26T11:47:11+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:36" itemprop="dateModified" datetime="2023-07-27T09:36:36+08:00">2023-07-27</time>
     </span>
 
   
@@ -300,7 +300,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:11" itemprop="dateModified" datetime="2023-07-26T11:47:11+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:36" itemprop="dateModified" datetime="2023-07-27T09:36:36+08:00">2023-07-27</time>
     </span>
 
   
@@ -524,7 +524,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:12" itemprop="dateModified" datetime="2023-07-26T11:47:12+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:36" itemprop="dateModified" datetime="2023-07-27T09:36:36+08:00">2023-07-27</time>
     </span>
 
   
@@ -822,7 +822,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:12" itemprop="dateModified" datetime="2023-07-26T11:47:12+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:36" itemprop="dateModified" datetime="2023-07-27T09:36:36+08:00">2023-07-27</time>
     </span>
 
   
@@ -956,7 +956,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:12" itemprop="dateModified" datetime="2023-07-26T11:47:12+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:36" itemprop="dateModified" datetime="2023-07-27T09:36:36+08:00">2023-07-27</time>
     </span>
 
   
@@ -1032,7 +1032,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:12" itemprop="dateModified" datetime="2023-07-26T11:47:12+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:36" itemprop="dateModified" datetime="2023-07-27T09:36:36+08:00">2023-07-27</time>
     </span>
 
   
@@ -1122,7 +1122,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:13" itemprop="dateModified" datetime="2023-07-26T11:47:13+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:37" itemprop="dateModified" datetime="2023-07-27T09:36:37+08:00">2023-07-27</time>
     </span>
 
   
@@ -1412,9 +1412,13 @@
 </ol>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">RenderCounter</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> counter = <span class="title function_">useRef</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handler</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">      counter.<span class="property">current</span> = counter.<span class="property">current</span> + <span class="number">1</span>;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(counter.<span class="property">current</span>); <span class="comment">// 虽然打印123，但是没有re-render，页面始终是0</span></span><br><span class="line">      <span class="comment">//所以应该在useEffect中写</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handler&#125;</span>&gt;</span>add<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;`The component has been re-rendered $&#123;counter.current&#125; times`&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">RenderCounter</span> /&gt;</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="函数回调获取-ref"><a href="#函数回调获取-ref" class="headerlink" title="函数回调获取 ref"></a>函数回调获取 ref</h2><figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Child</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> inputRef;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">ref</span>=<span class="string">&#123;dom</span> =&gt;</span>&#123; inputRef = dom&#125;&#125; /&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="函数回调获取-ref-ref-callback"><a href="#函数回调获取-ref-ref-callback" class="headerlink" title="函数回调获取 ref(ref callback)"></a>函数回调获取 ref(ref callback)</h2><p>ref 属性除了接受 ref 对象之外，还可以接受函数也就是 ref callback。在该函数中，DOM 元素作为其唯一参数。<br>与 effect 函数一样，React 在组件周期中的某些时刻中调用它。当创建 DOM 元素之后会立即执行 ref callback（参数是 DOM 元素），在删除元素时也会再次调用 ref callback，只不过这时的参数是 null。<br>如果 ref callback 被定义为内联函数，React 将在每次渲染时调用它两次，第一次的参数是 null，第二次的参数是 DOM 元素。<br>虽然内联 ref callback 被调用两次可能会令人惊讶，如果从 React 的角度来看，我认为这种行为是合理的。它保证了一致性，因为每次渲染都会创建新的函数实例，它可能是一个完全不同的函数。这些函数可能会依赖 props 或 state，而这些 props 或 state 也可能在此期间发生了变化。<br>因此 React 需要清除旧的 ref callback（参数是 null），然后设置新的回调（参数是 DOM 元素）。这样我们可以根据条件来设置 ref 属性的值，甚至在 React 元素之间交换它们</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Child</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> inputRef;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">ref</span>=<span class="string">&#123;dom</span> =&gt;</span>&#123; inputRef = dom&#125;&#125; /&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="useref-案例"><a href="#useref-案例" class="headerlink" title="useref 案例"></a>useref 案例</h2><p>案例: 主要利用 ref 保存了计时器的设置函数,因为在 useEffect 中,每次计算都会重新计算,如果不加 count 依赖,就不再重新计时,需要使用 ref 将计时器方法保存.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [size, setSize] = <span class="title function_">useState</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> measureRef = <span class="title function_">useCallback</span>(<span class="function">(<span class="params">node</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">setSize</span>(node.<span class="title function_">getBoundingClientRect</span>());</span><br><span class="line">&#125;, []);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&#123;measureRef&#125;</span>&gt;</span>&#123;children&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>在这个案例中，没有选择使用 useRef，因为当 ref 是一个对象时，它并不会把当前 ref 值的变化情况通知到我们。使用 callback ref 可以确保即便被测量的节点在子组件延迟显示 (比如为了响应一次点击)，我们依然能够在父组件接收到相关的信息，以便更新测量结果。注意到我们传递了 [] 作为 useCallback 的依赖列表。这确保了 ref callback 不会在再次渲染时改变，因此 React 不会在非必要的时候调用它。</p>
+<h2 id="useRef-案例"><a href="#useRef-案例" class="headerlink" title="useRef 案例"></a>useRef 案例</h2><p>案例: 主要利用 ref 保存了计时器的设置函数,因为在 useEffect 中,每次计算都会重新计算,如果不加 count 依赖,就不再重新计时,需要使用 ref 将计时器方法保存.</p>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState, useEffect, useRef &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./style.css&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [open, setOpen] = <span class="title function_">useState</span>(<span class="literal">false</span>);</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = <span class="title function_">useState</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> ref = <span class="title function_">useRef</span>();</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    ref.<span class="property">current</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">setCount</span>(count + <span class="number">1</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">useEffect</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (open) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(open, <span class="string">&quot;timer open&quot;</span>);</span><br><span class="line">      timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> ref.<span class="title function_">current</span>(), <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!open) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(open);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(open, <span class="string">&quot;卸载&quot;</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;, [open]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">toggleModal</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (!open) &#123;</span><br><span class="line">      <span class="title function_">setOpen</span>(<span class="literal">true</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="title function_">setOpen</span>(<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">Modal</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">display:</span> <span class="attr">open</span> ? &quot;<span class="attr">block</span>&quot; <span class="attr">:</span> &quot;<span class="attr">none</span>&quot; &#125;&#125;&gt;</span>模态框<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;toggleModal&#125;</span>&gt;</span>打开模态框<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Modal</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h1 id="forwardRef"><a href="#forwardRef" class="headerlink" title="forwardRef"></a>forwardRef</h1><p>接收两个参数,一个是 props,一个是 ref.</p>
@@ -1503,7 +1507,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:13" itemprop="dateModified" datetime="2023-07-26T11:47:13+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:37" itemprop="dateModified" datetime="2023-07-27T09:36:37+08:00">2023-07-27</time>
     </span>
 
   
@@ -1582,7 +1586,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:13" itemprop="dateModified" datetime="2023-07-26T11:47:13+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:37" itemprop="dateModified" datetime="2023-07-27T09:36:37+08:00">2023-07-27</time>
     </span>
 
   
@@ -1681,7 +1685,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-26 11:47:13" itemprop="dateModified" datetime="2023-07-26T11:47:13+08:00">2023-07-26</time>
+      <time title="Modified: 2023-07-27 09:36:37" itemprop="dateModified" datetime="2023-07-27T09:36:37+08:00">2023-07-27</time>
     </span>
 
   
