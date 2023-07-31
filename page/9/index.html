@@ -208,7 +208,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:00" itemprop="dateModified" datetime="2023-07-30T08:51:00+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:10" itemprop="dateModified" datetime="2023-07-31T09:04:10+08:00">2023-07-31</time>
     </span>
 
   
@@ -300,7 +300,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:00" itemprop="dateModified" datetime="2023-07-30T08:51:00+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:10" itemprop="dateModified" datetime="2023-07-31T09:04:10+08:00">2023-07-31</time>
     </span>
 
   
@@ -524,7 +524,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:01" itemprop="dateModified" datetime="2023-07-30T08:51:01+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:10" itemprop="dateModified" datetime="2023-07-31T09:04:10+08:00">2023-07-31</time>
     </span>
 
   
@@ -822,7 +822,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:01" itemprop="dateModified" datetime="2023-07-30T08:51:01+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:10" itemprop="dateModified" datetime="2023-07-31T09:04:10+08:00">2023-07-31</time>
     </span>
 
   
@@ -956,7 +956,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:01" itemprop="dateModified" datetime="2023-07-30T08:51:01+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:10" itemprop="dateModified" datetime="2023-07-31T09:04:10+08:00">2023-07-31</time>
     </span>
 
   
@@ -1032,7 +1032,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:01" itemprop="dateModified" datetime="2023-07-30T08:51:01+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:10" itemprop="dateModified" datetime="2023-07-31T09:04:10+08:00">2023-07-31</time>
     </span>
 
   
@@ -1122,7 +1122,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:02" itemprop="dateModified" datetime="2023-07-30T08:51:02+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:11" itemprop="dateModified" datetime="2023-07-31T09:04:11+08:00">2023-07-31</time>
     </span>
 
   
@@ -1444,6 +1444,13 @@
 <p>第二个作用是保存数据<br>即使组件重新渲染,保存的数据仍然存在.保存的数据被更改不会触发组件渲染.</p>
 <p>useRef 是在 memorizedState 链表中放一个对象，current 保存某个值。<br>初始化的时候创建了一个对象放在 memorizedState 上，后面始终返回这个对象。</p>
 <p>这样通过 useRef 保存回调函数，然后在 useEffect 里从 ref.current 来取函数再调用，避免了直接调用，也就没有闭包陷阱的问题了。</p>
+<h2 id="何时使用-ref"><a href="#何时使用-ref" class="headerlink" title="何时使用 ref"></a>何时使用 ref</h2><p>通常，当你的组件需要“跳出” React 并与外部 API 通信时，你会用到 ref —— 通常是不会影响组件外观的浏览器 API。以下是这些罕见情况中的几个：</p>
+<ol>
+<li>存储 timeout ID</li>
+<li>存储和操作 DOM 元素</li>
+<li>存储不需要被用来计算 JSX 的其他对象。</li>
+</ol>
+<p>如果你的组件需要存储一些值，但不影响渲染逻辑，请选择 ref。</p>
 <p>注意:<br>使用 useRef 创建 div 元素时,如果存在循环创建,一定要把创建写在里面,不要在外面创建一个然后引用,因为引用的都是同一个</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误❌</span></span><br><span class="line"><span class="keyword">const</span> boxRef = useRef &lt; <span class="title class_">HTMLDivElement</span> &gt; <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: <span class="title class_">IBox</span>[] = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  list.<span class="title function_">push</span>(&#123; <span class="attr">text</span>: <span class="string">&quot;content&quot;</span>, boxRef &#125;); <span class="comment">// 这里是10个一样的</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 正确✅</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">list</span>: <span class="title class_">IBox</span>[] = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  list.<span class="title function_">push</span>(&#123; <span class="attr">text</span>: <span class="string">&quot;content&quot;</span>, <span class="attr">boxRef</span>: useRef &lt; <span class="title class_">HTMLDivElement</span> &gt; <span class="literal">null</span> &#125;);</span><br><span class="line">  <span class="comment">// 这里是10个就是不一样的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1580,7 +1587,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:02" itemprop="dateModified" datetime="2023-07-30T08:51:02+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:11" itemprop="dateModified" datetime="2023-07-31T09:04:11+08:00">2023-07-31</time>
     </span>
 
   
@@ -1659,7 +1666,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:02" itemprop="dateModified" datetime="2023-07-30T08:51:02+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:11" itemprop="dateModified" datetime="2023-07-31T09:04:11+08:00">2023-07-31</time>
     </span>
 
   
@@ -1758,7 +1765,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-07-30 08:51:02" itemprop="dateModified" datetime="2023-07-30T08:51:02+08:00">2023-07-30</time>
+      <time title="Modified: 2023-07-31 09:04:11" itemprop="dateModified" datetime="2023-07-31T09:04:11+08:00">2023-07-31</time>
     </span>
 
   
